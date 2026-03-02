@@ -1,0 +1,8 @@
+Nexus System Report
+-------------------
+Timestamp: {{timestamp}}
+Status: {{status}}
+Recovered RAM: {{ram_freed}}
+Junk Cleared: {{junk_count}} items
+-------------------
+NEXUS: Lite but Fast.

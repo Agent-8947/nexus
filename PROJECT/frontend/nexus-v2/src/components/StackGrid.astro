@@ -1,0 +1,63 @@
+---
+const items = [
+    {
+        title: "🎨 FRONTEND",
+        color: "border-sky-500",
+        desc: "Astro v5 + Svelte / Next.js 15 Integration",
+        sub: "Speed / Island Arch",
+    },
+    {
+        title: "⚙️ BACKEND",
+        color: "border-emerald-500",
+        desc: "FastAPI + Hono / Pydantic v2 Engine",
+        sub: "Performance / Valid",
+    },
+    {
+        title: "🤖 AI / AUTO",
+        color: "border-purple-500",
+        desc: "Claude 3.5 + LangGraph Agents",
+        sub: "Strategic Thinking",
+    },
+    {
+        title: "🗄 DATABASE",
+        color: "border-amber-500",
+        desc: "Supabase + SQLite / Cloudflare D1",
+        sub: "Reliable / Distributed",
+    },
+    {
+        title: "🚀 DEVOPS",
+        color: "border-blue-500",
+        desc: "Vercel / Railway / CF Workers",
+        sub: "Zero-Ops Deployment",
+    },
+    {
+        title: "🖥 DESKTOP",
+        color: "border-red-500",
+        desc: "Python / Tauri / Local FS Access",
+        sub: "Hardware Interface",
+    },
+];
+---
+
+<section
+    id="stack"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-20"
+>
+    {
+        items.map((item) => (
+            <div
+                class={`glass-card p-10 rounded-3xl border-l-[6px] ${item.color} transform transition-all hover:translate-y-[-5px] hover:border-r-1 cursor-default group`}
+            >
+                <h4 class="text-xl font-bold mb-4 tracking-tight group-hover:text-white transition-colors">
+                    {item.title}
+                </h4>
+                <p class="text-sm text-slate-400 mb-6 leading-relaxed font-light">
+                    {item.desc}
+                </p>
+                <div class="text-[10px] font-bold mono text-slate-500 uppercase tracking-[0.2em] opacity-60">
+                    // {item.sub}
+                </div>
+            </div>
+        ))
+    }
+</section>

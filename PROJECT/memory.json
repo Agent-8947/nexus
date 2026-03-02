@@ -1,0 +1,106 @@
+{
+  "project_name": "Antigravity-IDE-Setup",
+  "archetype": "AI-Orchestrated-NEXUS-v2",
+  "stack": {
+    "frontend": {
+      "static": "Astro v5 (Landed)",
+      "apps": "Next.js 15 (Target)",
+      "islands": "Svelte",
+      "styles": "Tailwind / shadcn"
+    },
+    "backend": {
+      "main": "FastAPI (Python 3.13)",
+      "edge": "Hono (TypeScript)",
+      "queues": "Celery + Redis",
+      "validation": "Pydantic v2"
+    },
+    "ai_automation": {
+      "sdk": "Vercel AI SDK",
+      "llm": "Anthropic (Claude-3.5-Sonnet)",
+      "agents": "LangGraph / CrewAI",
+      "parsing": "Crawl4AI / Playwright"
+    },
+    "database": {
+      "main": "Supabase (PostgreSQL)",
+      "edge": "Cloudflare D1",
+      "cache": "Upstash Redis",
+      "storage": "Cloudflare R2 / S3",
+      "local": "SQLite"
+    },
+    "devops": {
+      "deployment": "Vercel / Railway / Cloudflare",
+      "containers": "Docker",
+      "monitoring": "Sentry",
+      "secrets": "Doppler / .env"
+    },
+    "desktop": {
+      "cli": "Python (Typer/Click)",
+      "gui": "Tauri (Rust+Web) / Streamlit",
+      "automation": "PyAutoGUI / Playwright",
+      "fs_access": "E:\\ (pathlib)"
+    },
+    "3d_forge": {
+      "standards": "OpenSCAD / build123d",
+      "output_dir": "PROJECT/outputs/3d/",
+      "active": true
+    }
+  },
+  "status": "Skills-based Architecture (mgechev standard)",
+  "goals": [
+    "Lite Development (local)",
+    "Turbo Production (remote scaling)"
+  ],
+  "protocols": {
+    "on_start": "Read PROJECT/CONSTITUTION.md first. Check PROJECT/fault_registry.json for relevant prevention rules",
+    "on_error": "Run /+ workflow to document the bug",
+    "on_architectural_change": "Update PROJECT/DOCS/SPECS/ before execution"
+  },
+  "infrastructure": [
+    "Docker (Inactive/Stopped)",
+    "PostgreSQL 16 (Offline)",
+    "WSL (Shutdown)",
+    "PowerShell Core"
+  ],
+  "history": [
+    {
+      "timestamp": "2026-02-26T00:35:00Z",
+      "action": "Stack upgraded to Multi-Engine by Language Expert recommendation"
+    },
+    {
+      "timestamp": "2026-02-26T00:40:00Z",
+      "action": "Rolled back to Python/Go for hardware resource efficiency"
+    },
+    {
+      "timestamp": "2026-02-26T23:59:00Z",
+      "action": "Migrated core tools to nexus-system-control skill (mgechev standard)"
+    },
+    {
+      "timestamp": "2026-02-28T00:41:00Z",
+      "action": "Core messaging benchmark validated: 104k msg/s via Python Named Pipes protocol"
+    },
+    {
+      "timestamp": "2026-02-28T08:43:00Z",
+      "action": "Stack expanded: Integrated Cloudflare (Pages/Workers), Astro v5, Hono, and Bun for Modern 2026 performance standards."
+    },
+    {
+      "timestamp": "2026-02-28T08:50:00Z",
+      "action": "Stack expansion finalized: Added Fastify (High-load) and NestJS (Enterprise Core) as target architectures for scaling."
+    },
+    {
+      "timestamp": "2026-02-28T08:52:00Z",
+      "action": "Full S-Tier Alignment: Integrated Vite, Vitest, Svelte, and Playwright based on State of JS 2025 report for maximum efficiency."
+    },
+    {
+      "timestamp": "2026-03-01T15:05:00Z",
+      "action": "Integrated High-Tier Animation Stack: Added nexus-visual-motion skill (GSAP, Lenis, Threlte)."
+    },
+    {
+      "timestamp": "2026-03-02T09:35:00Z",
+      "action": "Implemented 'Codified Context' (arXiv:2602.20478): Initialized CONSTITUTION.md and SPECS/ hierarchy. Activated 3D-Forge capability."
+    },
+    {
+      "timestamp": "2026-03-02T14:13:00Z",
+      "action": "Backend v2.0: Unified FastAPI replacing stub main.py + Flask api_bridge. Integrated Dispatcher, SQLite (command_history logging), Metrics, Faults, Assets APIs. All endpoints validated at Exit Code 0."
+    }
+  ]
+}

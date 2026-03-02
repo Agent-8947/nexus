@@ -1,0 +1,95 @@
+---
+
+---
+
+<div
+    class="relative w-full max-w-xl mx-auto aspect-square flex items-center justify-center p-4"
+>
+    <!-- Base Layer: T-Shirt -->
+    <div class="relative w-full h-full">
+        <img
+            src="/assets/tshirt.png"
+            alt="Premium T-Shirt"
+            class="w-full h-full object-contain pointer-events-none drop-shadow-2xl"
+        />
+
+        <!-- Interactive Overlay: Print -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <!-- Printing Container -->
+            <div class="relative w-[38%] h-[48%] mt-[-5%] group">
+                <!-- Glowing Aura during printing -->
+                <div
+                    class="absolute inset-0 bg-sky-400/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                >
+                </div>
+
+                <!-- The Logo with Printing Animation -->
+                <img
+                    src="/assets/logo.png"
+                    alt="Nexus Print"
+                    class="print-image relative w-full h-full object-contain mix-blend-screen brightness-110 contrast-125 transition-all duration-300 group-hover:scale-105"
+                />
+
+                <!-- Printing Progress Line (Optional Visual) -->
+                <div
+                    class="print-line absolute top-[-5px] left-[-10%] right-[-10%] h-[2px] bg-sky-400 shadow-[0_0_15px_#38bdf8] opacity-0"
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Printing Effect Logic */
+    .print-image {
+        clip-path: inset(100% 0 0 0); /* Start hidden from bottom */
+        animation: print-reveal 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation-delay: 1.5s;
+        filter: grayscale(1) opacity(0);
+    }
+
+    .print-line {
+        animation: line-move 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes print-reveal {
+        0% {
+            clip-path: inset(100% 0 0 0);
+            filter: grayscale(1) opacity(0);
+        }
+        20% {
+            filter: grayscale(0.5) opacity(0.5);
+        }
+        100% {
+            clip-path: inset(0 0 0 0);
+            filter: grayscale(0) opacity(1);
+        }
+    }
+
+    @keyframes line-move {
+        0% {
+            top: 100%;
+            opacity: 1;
+        }
+        95% {
+            opacity: 1;
+        }
+        100% {
+            top: 0%;
+            opacity: 0;
+        }
+    }
+
+    /* Subtle texture simulation */
+    .print-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.1;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+    }
+</style>

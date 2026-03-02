@@ -1,0 +1,40 @@
+# === NEXUS .gitignore ===
+
+# Secrets (CRITICAL)
+.env
+.env.*
+.env.mcp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+.astro/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Database (local dev)
+*.db
+*.sqlite3
+
+# Build outputs (large files)
+PROJECT/outputs/*.html
+PROJECT/outputs/*.pdf
+
+# Temp
+tmp/
+*.tmp
+*.log

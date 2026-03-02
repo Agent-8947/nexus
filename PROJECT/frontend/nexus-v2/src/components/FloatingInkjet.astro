@@ -1,0 +1,237 @@
+---
+
+---
+
+<div
+    class="hero-capture relative w-full h-[600px] flex items-center justify-center bg-white overflow-hidden font-['Outfit']"
+>
+    <!-- Ambient Background Gradients -->
+    <div
+        class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-40"
+    >
+        <div
+            class="absolute -top-[20%] -left-[10%] w-[60%] h-[80%] bg-blue-100 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+            class="absolute top-[20%] -right-[10%] w-[50%] h-[70%] bg-purple-100 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+            class="absolute -bottom-[20%] left-[20%] w-[40%] h-[60%] bg-pink-100 rounded-full blur-[100px]"
+        >
+        </div>
+    </div>
+
+    <div
+        class="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center"
+    >
+        <!-- Heading -->
+        <h1
+            class="text-[56px] md:text-[64px] font-bold text-center leading-[1.1] tracking-tight text-slate-900 mb-16"
+        >
+            Order a transfer <br />
+            in minutes – <br />
+            <span class="text-[#e91e63]">easy</span> and simple
+        </h1>
+
+        <div
+            class="relative w-full flex flex-col md:flex-row items-center justify-between gap-12"
+        >
+            <!-- Left: CTA Button -->
+            <div class="md:w-1/4 flex justify-start">
+                <a
+                    href="#order"
+                    class="bg-black text-white px-8 py-4 rounded-full flex items-center gap-3 text-sm font-semibold hover:scale-105 transition-transform shadow-xl"
+                >
+                    order DTF transfer
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </a>
+            </div>
+
+            <!-- Center: Floating T-Shirt with Loop Animation -->
+            <div class="md:w-1/2 flex justify-center perspective-1000">
+                <div
+                    id="levitating-unit"
+                    class="relative w-full max-w-[420px] aspect-square"
+                >
+                    <!-- Shadow below -->
+                    <div
+                        id="tshirt-shadow"
+                        class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[60%] h-4 bg-black/5 rounded-full blur-xl scale-x-125"
+                    >
+                    </div>
+
+                    <div class="tshirt-container w-full h-full relative">
+                        <img
+                            src="/assets/tshirt.png"
+                            class="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                            alt="Floating T-Shirt"
+                        />
+
+                        <!-- Print Zone -->
+                        <div
+                            class="absolute top-[17.5%] left-1/2 -translate-x-1/2 w-[32.5%] h-[48%] pointer-events-none overflow-hidden"
+                        >
+                            <!-- Blue Laser Carriage -->
+                            <div
+                                class="laser-head absolute top-full left-[-20%] right-[-20%] h-[3px] bg-sky-400 shadow-[0_0_15px_#38bdf8] opacity-0 z-20"
+                            >
+                            </div>
+
+                            <!-- The Logo -->
+                            <img
+                                id="loop-logo"
+                                src="/assets/logo_transparent.png"
+                                class="w-[90%] h-[90%] mx-auto object-contain mix-blend-multiply opacity-0"
+                                style="clip-path: inset(100% 0 0 0);"
+                                alt="Logo"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Secondary Text -->
+            <div class="md:w-1/4 text-left">
+                <p
+                    class="text-[17px] leading-[1.4] text-slate-800 font-medium max-w-[200px]"
+                >
+                    Printivo offers <br />
+                    a premium quality <br />
+                    at the best price <br />
+                    in Canada
+                </p>
+            </div>
+
+            <!-- Floating Promo Badge -->
+            <div
+                class="absolute top-[-40px] right-0 md:right-[-40px] w-32 h-32 rounded-full shadow-2xl overflow-hidden animate-bounce-slow flex items-center justify-center p-4 bg-gradient-to-tr from-[#3f51b5] via-[#e91e63] to-[#ff9800] text-white text-center"
+            >
+                <div class="flex flex-col items-center">
+                    <span class="text-xs font-bold leading-tight">50% OFF</span>
+                    <span
+                        class="text-[10px] uppercase font-bold tracking-tighter"
+                        >first order</span
+                    >
+                    <span class="text-[8px] opacity-80 mt-1 uppercase"
+                        >GET YOUR WELCOME DISCOUNT</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+
+    // 1. LEVITATION ANIMATION
+    gsap.to("#levitating-unit", {
+        y: -20,
+        duration: 2.5,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+    });
+
+    gsap.to("#tshirt-shadow", {
+        scaleX: 0.8,
+        opacity: 0.02,
+        duration: 2.5,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+    });
+
+    // 2. LOOPING PRINT ANIMATION
+    const logo = document.getElementById("loop-logo");
+    const laser = document.querySelector(".laser-head");
+
+    function startPrintCycle() {
+        const tl = gsap.timeline({
+            onComplete: () => {
+                // Wait 4 seconds after print is done
+                gsap.delayedCall(4, () => {
+                    // Fade out logo
+                    gsap.to(logo, {
+                        duration: 1.5,
+                        opacity: 0,
+                        filter: "blur(10px) brightness(1.5)",
+                        onComplete: () => {
+                            // Recursively restart
+                            startPrintCycle();
+                        },
+                    });
+                });
+            },
+        });
+
+        // Reset state
+        gsap.set(logo, {
+            clipPath: "inset(100% 0 0 0)",
+            opacity: 1,
+            filter: "none",
+        });
+        gsap.set(laser, { top: "100%", opacity: 0 });
+
+        const passes = 22;
+        tl.to(laser, { duration: 0.3, opacity: 1 });
+
+        for (let i = 0; i < passes; i++) {
+            const verticalPos = 100 - (i + 1) * (100 / passes);
+            const side = i % 2 === 0 ? "80%" : "-10%";
+
+            tl.to(laser, {
+                duration: 0.4,
+                top: verticalPos + "%",
+                left: side,
+                ease: "power1.inOut",
+            });
+
+            tl.to(
+                logo,
+                {
+                    duration: 0.4,
+                    clipPath: `inset(${verticalPos}% 0 0 0)`,
+                    ease: "none",
+                },
+                "-=0.4",
+            );
+        }
+
+        tl.to(laser, { duration: 0.2, opacity: 0 });
+    }
+
+    // Start on mount
+    setTimeout(startPrintCycle, 1000);
+</script>
+
+<style>
+    @keyframes bounce-slow {
+        0%,
+        100% {
+            transform: translateY(0) rotate(10deg);
+        }
+        50% {
+            transform: translateY(-15px) rotate(15deg);
+        }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 4s infinite ease-in-out;
+    }
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+</style>

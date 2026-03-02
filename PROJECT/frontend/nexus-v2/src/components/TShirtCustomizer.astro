@@ -1,0 +1,210 @@
+---
+
+---
+
+<div
+    class="customizer-block glass-card rounded-[3rem] p-10 md:p-20 overflow-hidden relative bg-white transition-all duration-700 hover:shadow-2xl"
+>
+    <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- Visual Section (Left) -->
+        <div
+            class="flex-1 relative group w-full max-w-md mx-auto aspect-square flex items-center justify-center"
+        >
+            <!-- T-Shirt Image -->
+            <img
+                src="/assets/tshirt.png"
+                alt="Studio T-Shirt"
+                class="tshirt-base w-full h-full object-contain filter drop-shadow-xl select-none"
+            />
+
+            <!-- Print Area (Centred Rectangle) -->
+            <div
+                class="print-zone absolute top-[17.5%] left-1/2 -translate-x-1/2 w-[32%] h-[48%] flex items-center justify-center pointer-events-none"
+            >
+                <!-- Laser Scan Line -->
+                <div
+                    class="laser-scanner absolute top-0 left-[-10%] right-[-10%] h-[3px] bg-sky-500 shadow-[0_0_15px_#38bdf8] opacity-0 z-20"
+                >
+                </div>
+
+                <!-- The Logo (Target) -->
+                <img
+                    id="nexus-logo-preview"
+                    src="/assets/logo_transparent.png"
+                    alt="Logo Preview"
+                    class="logo-preview w-[90%] h-[90%] object-contain opacity-0 mix-blend-multiply filter contrast(1.1) brightness(1.1) blur(5px) scale(1.1)"
+                />
+            </div>
+        </div>
+
+        <!-- Content Section (Right) -->
+        <div class="flex-1 text-left">
+            <div
+                class="text-[10px] font-bold mono text-sky-500 uppercase tracking-[0.5em] mb-4"
+            >
+                // UNIT PRODUCTION //
+            </div>
+            <h3
+                class="text-4xl font-bold mb-6 tracking-tighter leading-tight text-slate-900"
+            >
+                INDUSTRIAL_PRINT <br />
+                SIMULATION V3.1
+            </h3>
+            <p class="text-slate-500 font-light leading-relaxed mb-10 text-lg">
+                Испытай мощь **NEXUS Fabrication**. Нажми кнопку ниже, чтобы
+                запустить процесс нанесения твоего логотипа на премиальную
+                ткань. Мы используем **GSAP Engine** для управления «лазерным
+                нанесением» со скоростью 100k msg/s.
+            </p>
+
+            <div class="buttons flex flex-wrap gap-4">
+                <button
+                    id="trigger-print"
+                    class="bg-slate-900 text-white font-bold px-10 py-5 rounded-2xl uppercase tracking-[0.2em] text-[10px] hover:bg-sky-500 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/10"
+                >
+                    Start Production
+                </button>
+                <button
+                    id="reset-print"
+                    class="border border-slate-200 text-slate-400 font-bold px-8 py-5 rounded-2xl uppercase tracking-[0.2em] text-[10px] hover:bg-slate-50 transition-all"
+                >
+                    Reset Gear
+                </button>
+            </div>
+
+            <!-- Telemetry Logs -->
+            <div
+                class="mt-12 pt-8 border-t border-slate-100 grid grid-cols-2 gap-8 font-mono"
+            >
+                <div>
+                    <div
+                        class="text-[9px] text-slate-400 uppercase tracking-widest mb-1"
+                    >
+                        Laser Intensity
+                    </div>
+                    <div
+                        id="laser-stat"
+                        class="text-xl font-bold text-slate-300 tracking-tighter"
+                    >
+                        0.0W
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="text-[9px] text-slate-400 uppercase tracking-widest mb-1"
+                    >
+                        Status
+                    </div>
+                    <div
+                        id="status-stat"
+                        class="text-xl font-bold text-slate-300 tracking-tighter lowercase italic"
+                    >
+                        waiting...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+
+    const triggerBtn = document.getElementById("trigger-print");
+    const resetBtn = document.getElementById("reset-print");
+    const logo = document.getElementById("nexus-logo-preview");
+    const laser = document.querySelector(".laser-scanner");
+    const statusLine = document.getElementById("status-stat");
+    const laserStat = document.getElementById("laser-stat");
+
+    let isPrinting = false;
+
+    // 🚀 THE ANIMATION ENGINE (GSAP)
+    function runProduction() {
+        if (isPrinting) return;
+        isPrinting = true;
+
+        // Reset state
+        gsap.set(logo, {
+            opacity: 0,
+            scale: 1.1,
+            filter: "blur(10px) brightness(1.5)",
+            clipPath: "inset(100% 0 0 0)",
+        });
+        gsap.set(laser, { top: "0%", opacity: 0 });
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                isPrinting = false;
+                statusLine.innerText = "success // finished";
+                statusLine.classList.remove("text-amber-500");
+                statusLine.classList.add("text-emerald-500");
+                laserStat.innerText = "0.0W";
+            },
+        });
+
+        tl.to(statusLine, {
+            duration: 0.3,
+            text: "centering...",
+            opacity: 0.5,
+        });
+        tl.to(
+            statusLine,
+            {
+                duration: 0.5,
+                opacity: 1,
+                text: "printing...",
+                color: "#f59e0b",
+            },
+            "+=0.2",
+        );
+
+        // ⚡ Laser Animation
+        tl.to(laser, { duration: 0.2, opacity: 1 });
+        tl.set(laserStat, { text: "450.5W" }, "-=0.2");
+
+        tl.to(laser, {
+            duration: 2.5,
+            top: "100%",
+            ease: "power2.inOut",
+        });
+
+        // 🎨 Logo Reveal (Reveal following laser)
+        tl.to(
+            logo,
+            {
+                duration: 2.5,
+                clipPath: "inset(0% 0 0 0)",
+                opacity: 1,
+                scale: 1,
+                filter: "blur(0px) brightness(1.1)",
+                ease: "power2.inOut",
+            },
+            "-=2.5",
+        );
+
+        // Finish
+        tl.to(laser, { duration: 0.2, opacity: 0 });
+    }
+
+    triggerBtn.addEventListener("click", runProduction);
+
+    resetBtn.addEventListener("click", () => {
+        gsap.to(logo, {
+            duration: 0.5,
+            opacity: 0,
+            filter: "blur(5px)",
+            scale: 1.05,
+        });
+        statusLine.innerText = "ready";
+        statusLine.style.color = "#cbd5e1";
+    });
+</script>
+
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+</style>

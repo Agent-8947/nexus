@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS OS | Project Presentation 2026</title>
+    <meta name="description" content="NEXUS — Cognitive Operating System for AI-orchestrated development.">
+
+    <!-- SEO & Sharing -->
+    <meta property="og:title" content="NEXUS OS | Project Presentation 2026">
+    <meta property="og:description"
+        content="NEXUS — Cognitive Operating System for AI-orchestrated development. 104k msg/s, 14 MCP, 9 AI Agents.">
+    <meta property="og:image" content="nexus_preview.png">
+    <meta property="og:url" content="https://nexus-presentation-v2.vercel.app">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEXUS OS | Project Presentation 2026">
+    <meta name="twitter:description" content="Autonomous AI-Orchestrated System for next-gen development.">
+    <meta name="twitter:image" content="nexus_preview.png">
+    <link rel="icon" type="image/png" href="nexus_preview.png">
+    <link rel="apple-touch-icon" href="nexus_preview.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #12121a;
+            --sf: #1a1a26;
+            --sf2: #222233;
+            --ac: #ff3b30;
+            --ac2: #ff6b5b;
+            --cy: #00e5ff;
+            --tx: #e8e8f0;
+            --tx2: #8888aa;
+            --bd: rgba(255, 255, 255, .06);
+            --gw: rgba(255, 59, 48, .15)
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased
+        }
+
+        ::selection {
+            background: var(--ac);
+            color: #fff
+        }
+
+        .nb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--bd);
+            padding: 0 40px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .nb-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--ac);
+            letter-spacing: 2px
+        }
+
+        .nb-links {
+            display: flex;
+            gap: 24px
+        }
+
+        .nb-links a {
+            text-decoration: none;
+            color: var(--tx2);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color .3s;
+            position: relative
+        }
+
+        .nb-links a:hover,
+        .nb-links a.active {
+            color: var(--ac)
+        }
+
+        .nb-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--ac)
+        }
+
+        .nb-right {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .lang-sw {
+            display: flex;
+            gap: 2px
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--bd);
+            color: var(--tx2);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .65rem;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: all .3s;
+            text-transform: uppercase
+        }
+
+        .lang-btn:hover {
+            border-color: var(--ac);
+            color: var(--tx)
+        }
+
+        .lang-btn.active {
+            background: var(--ac);
+            color: #fff;
+            border-color: var(--ac)
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--ac);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all .3s;
+            border-radius: 4px
+        }
+
+        .dl-btn:hover {
+            background: var(--ac2);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px var(--gw)
+        }
+
+        .dl-btn.loading {
+            opacity: .6;
+            pointer-events: none
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 60px 80px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+            background-size: 80px 80px
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gw) 0%, transparent 70%);
+            top: 20%;
+            right: -10%;
+            z-index: 0;
+            filter: blur(80px)
+        }
+
+        .hero-c {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px
+        }
+
+        .hero-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .75rem;
+            color: var(--ac);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--ac)
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 900;
+            line-height: .85;
+            letter-spacing: -6px;
+            margin-bottom: 30px
+        }
+
+        .hero h1 span {
+            color: var(--ac)
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: var(--tx2);
+            max-width: 600px;
+            line-height: 1.7;
+            font-weight: 300
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--bd);
+            flex-wrap: wrap
+        }
+
+        .si {
+            text-align: left
+        }
+
+        .sv {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--ac);
+            display: block
+        }
+
+        .sl {
+            font-size: .72rem;
+            color: var(--tx2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px
+        }
+
+        .ct {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative
+        }
+
+        section+section {
+            border-top: 1px solid var(--bd)
+        }
+
+        .stag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .7rem;
+            color: var(--ac);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .stag::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--ac)
+        }
+
+        .stit {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 60px;
+            line-height: 1.1
+        }
+
+        .cg {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px
+        }
+
+        .cg3 {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+        }
+
+        .cd {
+            background: var(--sf);
+            border: 1px solid var(--bd);
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            transition: all .5s cubic-bezier(.2, 1, .3, 1);
+            opacity: 0;
+            transform: translateY(40px)
+        }
+
+        .cd::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ac), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .5s
+        }
+
+        .cd:hover {
+            border-color: rgba(255, 59, 48, .2);
+            background: var(--sf2);
+            transform: translateY(-4px)
+        }
+
+        .cd:hover::before {
+            transform: scaleX(1)
+        }
+
+        .cb {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .63rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ac);
+            padding: 4px 12px;
+            border: 1px solid rgba(255, 59, 48, .3);
+            display: inline-block;
+            margin-bottom: 14px
+        }
+
+        .cd h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -.5px
+        }
+
+        .cd p {
+            color: var(--tx2);
+            line-height: 1.65;
+            font-size: .9rem
+        }
+
+        .ct-t {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            color: var(--ac);
+            margin-top: 16px;
+            display: block;
+            letter-spacing: .5px
+        }
+
+        .dt {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px
+        }
+
+        .dt th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ac);
+            text-align: left;
+            padding: 14px 18px;
+            border-bottom: 2px solid rgba(255, 59, 48, .3)
+        }
+
+        .dt td {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--bd);
+            font-size: .88rem;
+            color: var(--tx2);
+            vertical-align: top
+        }
+
+        .dt td:first-child {
+            color: var(--tx);
+            font-weight: 600
+        }
+
+        .dt tr {
+            transition: background .3s
+        }
+
+        .dt tr:hover {
+            background: rgba(255, 255, 255, .02)
+        }
+
+        .wg {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 10px
+        }
+
+        .wi {
+            background: var(--sf);
+            border: 1px solid var(--bd);
+            padding: 14px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .78rem;
+            transition: all .3s;
+            cursor: default
+        }
+
+        .wi:hover {
+            border-color: var(--ac);
+            background: var(--sf2)
+        }
+
+        .wi .wc {
+            color: var(--ac);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .wi .wd {
+            color: var(--tx2);
+            font-size: .68rem;
+            font-family: 'Outfit', sans-serif
+        }
+
+        .mb {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2px;
+            margin: 60px 0;
+            background: var(--bd)
+        }
+
+        .mt {
+            background: var(--sf);
+            padding: 28px;
+            text-align: center;
+            transition: background .3s
+        }
+
+        .mt:hover {
+            background: var(--sf2)
+        }
+
+        .mv {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ac);
+            display: block
+        }
+
+        .ml {
+            font-size: .68rem;
+            color: var(--tx2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px
+        }
+
+        .ab {
+            background: var(--sf);
+            border: 1px solid var(--bd);
+            padding: 36px;
+            overflow-x: auto;
+            margin-bottom: 40px
+        }
+
+        .ab pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .72rem;
+            color: var(--cy);
+            line-height: 1.5;
+            white-space: pre
+        }
+
+        .sf {
+            border-top: 1px solid var(--bd);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .72rem;
+            color: var(--tx2)
+        }
+
+        @media(max-width:768px) {
+            .hero {
+                padding: 100px 20px 60px
+            }
+
+            .ct {
+                padding: 0 20px
+            }
+
+            .nb-links {
+                display: none
+            }
+
+            .cg {
+                grid-template-columns: 1fr
+            }
+
+            .wg {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        /* PDF hidden doc */
+        #pdf-doc {
+            display: none
+        }
+
+        @media print {
+
+            .nb,
+            .hero-grid,
+            .hero-glow {
+                display: none !important
+            }
+
+            body {
+                background: #fff;
+                color: #111
+            }
+
+            .cd,
+            .ab,
+            .wi,
+            .mt {
+                border-color: #ddd;
+                background: #fafafa
+            }
+
+            .cb,
+            .stag,
+            .sv,
+            .mv,
+            .ct-t {
+                color: #c00
+            }
+
+            .cd p,
+            .dt td,
+            .wi .wd,
+            .hero-sub {
+                color: #444
+            }
+
+            section {
+                padding: 40px 0;
+                page-break-inside: avoid
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nb">
+        <div class="nb-brand">⬡ NEXUS</div>
+        <div class="nb-links" id="navLinks"></div>
+        <div class="nb-right">
+            <div class="lang-sw">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('ua')">UA</button>
+                <button class="lang-btn" onclick="setLang('ru')">RU</button>
+            </div>
+            <button class="dl-btn" id="dlBtn" onclick="generatePDF()" title="Download PDF Presentation"><span
+                    id="dlText"></span></button>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-c">
+            <div class="hero-tag" id="heroTag"></div>
+            <h1>NEX<span>US</span></h1>
+            <p class="hero-sub" id="heroSub"></p>
+            <div class="hero-stats" id="heroStats"></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="ct">
+            <div class="stag" id="s1tag"></div>
+            <h2 class="stit" id="s1tit"></h2>
+            <div class="cg" id="s1cards"></div>
+        </div>
+    </section>
+
+    <section id="arch">
+        <div class="ct">
+            <div class="stag" id="s2tag"></div>
+            <h2 class="stit" id="s2tit"></h2>
+            <div class="ab">
+                <pre>                           +-----------------------------+
+                           |      NEXUS CONSTITUTION     |
+                           |    (Hot Memory / Laws)      |
+                           +--------------+--------------+
+                                          |
+                                          v
+  +-----------------------+    +-----------------------+    +-----------------------+
+  |      FRONTEND         |    |   NEXUS ORCHESTRATOR  |    |        BACKEND        |
+  |   (Astro v5 / Next)   | &lt;-&gt;|   (Polymorphic AI)    | &lt;-&gt;|   (FastAPI / Python)  |
+  +-----------+-----------+    +-----------+-----------+    +-----------+-----------+
+              |                            |                            |
+              v                            v                            v
+  +-----------------------+    +-----------------------+    +-----------------------+
+  |      VISUALS          |    |      MEMORY.JSON      |    |       DATABASE        |
+  |   (GSAP / Threlte)    |    |   (Sync State / FS)   |    | (Supabase / SQLite)   |
+  +-----------------------+    +-----------+-----------+    +-----------------------+</pre>
+            </div>
+            <div class="cg" id="s2cards"></div>
+        </div>
+    </section>
+
+    <section id="stack">
+        <div class="ct">
+            <div class="stag" id="s3tag"></div>
+            <h2 class="stit" id="s3tit"></h2>
+            <div class="cg cg3" id="s3cards"></div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="ct">
+            <div class="stag" id="s4tag"></div>
+            <h2 class="stit" id="s4tit"></h2>
+            <table class="dt" id="s4table"></table>
+        </div>
+    </section>
+
+    <section id="agents">
+        <div class="ct">
+            <div class="stag" id="s5tag"></div>
+            <h2 class="stit" id="s5tit"></h2>
+            <div class="cg cg3" id="s5cards"></div>
+        </div>
+    </section>
+
+    <section id="workflows">
+        <div class="ct">
+            <div class="stag" id="s6tag"></div>
+            <h2 class="stit" id="s6tit"></h2>
+            <div class="wg" id="s6grid"></div>
+        </div>
+    </section>
+
+    <section id="mcp">
+        <div class="ct">
+            <div class="stag" id="s7tag"></div>
+            <h2 class="stit" id="s7tit"></h2>
+            <table class="dt" id="s7table"></table>
+        </div>
+    </section>
+
+    <section id="metrics">
+        <div class="ct">
+            <div class="stag" id="s8tag"></div>
+            <h2 class="stit" id="s8tit"></h2>
+            <div class="mb" id="s8metrics"></div>
+            <div class="cg" id="s8cards"></div>
+        </div>
+    </section>
+
+    <footer class="sf"><span id="ft1"></span><span id="ft2"></span></footer>
+
+    <!-- Hidden PDF document container -->
+    <div id="pdf-doc"></div>
+
+    <script src="nexus_translations.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        let curLang = 'en';
+        function $id(id) { return document.getElementById(id) }
+        function card(b, h, p, t) { return `<div class="cd"><div class="cb">${b}</div><h3>${h}</h3><p>${p}</p>${t ? `<span class="ct-t">${t}</span>` : ''}</div>` }
+
+        function render(L) {
+            const d = T[L]; if (!d) return;
+            // Nav
+            const ids = ['about', 'arch', 'stack', 'skills', 'agents', 'workflows', 'mcp', 'metrics'];
+            $id('navLinks').innerHTML = d.nav.map((n, i) => `<a href="#${ids[i]}">${n}</a>`).join('');
+            $id('dlText').textContent = d.dlBtn;
+            // Hero
+            $id('heroTag').textContent = d.heroTag;
+            $id('heroSub').textContent = d.heroSub;
+            $id('heroStats').innerHTML = [['s1', 's1l'], ['s2', 's2l'], ['s3', 's3l'], ['s4', 's4l'], ['s5', 's5l']].map(([v, l]) => `<div class="si"><span class="sv">${d[v]}</span><span class="sl">${d[l]}</span></div>`).join('');
+            // S1
+            $id('s1tag').textContent = d.sec1tag; $id('s1tit').textContent = d.sec1title;
+            $id('s1cards').innerHTML = card(d.c1b, d.c1h, d.c1p) + card(d.c2b, d.c2h, d.c2p) + card(d.c3b, d.c3h, d.c3p);
+            // S2
+            $id('s2tag').textContent = d.sec2tag; $id('s2tit').textContent = d.sec2title;
+            $id('s2cards').innerHTML = card(d.a1b, d.a1h, d.a1p, d.a1t) + card(d.a2b, d.a2h, d.a2p, d.a2t) + card(d.a3b, d.a3h, d.a3p, d.a3t);
+            // S3
+            $id('s3tag').textContent = d.sec3tag; $id('s3tit').textContent = d.sec3title;
+            $id('s3cards').innerHTML = d.st.map(s => card(s.b, s.h, s.p, s.t)).join('');
+            // S4
+            $id('s4tag').textContent = d.sec4tag; $id('s4tit').textContent = d.sec4title;
+            $id('s4table').innerHTML = `<thead><tr>${d.skTh.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${d.sk.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+            // S5
+            $id('s5tag').textContent = d.sec5tag; $id('s5tit').textContent = d.sec5title;
+            $id('s5cards').innerHTML = d.ag.map(a => card(a.b, a.h, a.p, a.t)).join('');
+            // S6
+            $id('s6tag').textContent = d.sec6tag; $id('s6tit').textContent = d.sec6title;
+            $id('s6grid').innerHTML = d.wf.map(w => `<div class="wi"><span class="wc">${w[0]}</span><span class="wd">${w[1]}</span></div>`).join('');
+            // S7
+            $id('s7tag').textContent = d.sec7tag; $id('s7tit').textContent = d.sec7title;
+            $id('s7table').innerHTML = `<thead><tr>${d.mcpTh.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${d.mcp.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</tbody>`;
+            // S8
+            $id('s8tag').textContent = d.sec8tag; $id('s8tit').textContent = d.sec8title;
+            $id('s8metrics').innerHTML = d.mVals.map((v, i) => `<div class="mt"><span class="mv">${v}</span><span class="ml">${d.mLabels[i]}</span></div>`).join('');
+            $id('s8cards').innerHTML = card(d.fb1b, d.fb1h, d.fb1p, d.fb1t) + card(d.fb2b, d.fb2h, d.fb2p, d.fb2t);
+            // Footer
+            $id('ft1').textContent = d.footer1; $id('ft2').textContent = d.footer2;
+            // Re-animate cards
+            document.querySelectorAll('.cd').forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(40px)'; });
+            initAnimations();
+        }
+
+        function setLang(lang) {
+            curLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(b => { b.classList.toggle('active', b.textContent.toLowerCase() === lang) });
+            render(lang);
+        }
+
+        function initAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.getAll().forEach(t => t.kill());
+            document.querySelectorAll('.stit').forEach(t => { gsap.from(t, { scrollTrigger: { trigger: t, start: "top 88%" }, opacity: 0, x: -50, duration: .9, ease: "power4.out" }) });
+            document.querySelectorAll('.cd').forEach((c, i) => { gsap.to(c, { scrollTrigger: { trigger: c, start: "top 92%", toggleActions: "play none none reverse" }, opacity: 1, y: 0, duration: .8, ease: "power3.out", delay: (i % 3) * .08 }) });
+            document.querySelectorAll('.wi').forEach((w, i) => { gsap.from(w, { scrollTrigger: { trigger: w, start: "top 95%" }, opacity: 0, scale: .92, duration: .35, delay: (i % 6) * .03 }) });
+        }
+
+        function buildPdfDoc() {
+            const d = T[curLang];
+            const sec = (tag, title, body) => `<div style="margin-bottom:28px;page-break-inside:avoid"><p style="color:#c00;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;font-family:monospace">${tag}</p><h2 style="font-size:20px;margin-bottom:14px;border-bottom:2px solid #c00;padding-bottom:6px">${title}</h2>${body}</div>`;
+            const tbl = (headers, rows) => `<table style="width:100%;border-collapse:collapse;font-size:11px;margin-top:8px">${`<tr>${headers.map(h => `<th style="text-align:left;padding:8px 10px;border-bottom:2px solid #c00;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#c00">${h}</th>`).join('')}</tr>`}${rows.map(r => `<tr>${r.map((c, i) => `<td style="padding:7px 10px;border-bottom:1px solid #e0e0e0;${i === 0 ? 'font-weight:600;color:#111' : ''}">${c}</td>`).join('')}</tr>`).join('')}</table>`;
+            const crd = (items) => items.map(it => `<div style="background:#f7f7f7;border:1px solid #e0e0e0;border-left:3px solid #c00;padding:14px 16px;margin-bottom:10px;page-break-inside:avoid"><p style="font-size:9px;color:#c00;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">${it.b}</p><p style="font-size:14px;font-weight:700;margin-bottom:6px">${it.h}</p><p style="font-size:11px;color:#444;line-height:1.6">${it.p}</p>${it.t ? `<p style="font-size:9px;color:#c00;margin-top:6px;font-family:monospace">${it.t}</p>` : ''}</div>`).join('');
+
+            let html = `<div style="font-family:'Outfit',Helvetica,Arial,sans-serif;color:#111;max-width:700px;margin:0 auto;padding:40px 30px;line-height:1.5">`;
+            // Header
+            html += `<div style="border-bottom:3px solid #c00;padding-bottom:20px;margin-bottom:30px">
+  <p style="font-size:9px;color:#888;letter-spacing:2px;text-transform:uppercase;font-family:monospace">${d.pdfArch}</p>
+  <h1 style="font-size:36px;font-weight:900;letter-spacing:-2px;margin:8px 0">NEXUS OS</h1>
+  <p style="font-size:14px;color:#444;max-width:500px;line-height:1.6">${d.pdfSummary}</p>
+  <p style="font-size:9px;color:#888;margin-top:12px;font-family:monospace">${d.pdfDate} | Language: ${curLang.toUpperCase()}</p>
+ </div>`;
+            // Key metrics
+            html += `<div style="display:flex;gap:0;margin-bottom:30px;flex-wrap:wrap">${d.mVals.map((v, i) => `<div style="flex:1;min-width:70px;text-align:center;padding:12px 8px;border:1px solid #e0e0e0;border-right:none"><span style="font-size:18px;font-weight:700;color:#c00;display:block;font-family:monospace">${v}</span><span style="font-size:8px;color:#888;text-transform:uppercase;letter-spacing:.5px">${d.mLabels[i]}</span></div>`).join('')}</div>`;
+            // S1
+            html += sec(d.sec1tag, d.sec1title, crd([{ b: d.c1b, h: d.c1h, p: d.c1p }, { b: d.c2b, h: d.c2h, p: d.c2p }, { b: d.c3b, h: d.c3h, p: d.c3p }]));
+            // S2
+            html += sec(d.sec2tag, d.sec2title, crd([{ b: d.a1b, h: d.a1h, p: d.a1p, t: d.a1t }, { b: d.a2b, h: d.a2h, p: d.a2p, t: d.a2t }, { b: d.a3b, h: d.a3h, p: d.a3p, t: d.a3t }]));
+            // S3
+            html += sec(d.sec3tag, d.sec3title, crd(d.st));
+            // S4
+            html += sec(d.sec4tag, d.sec4title, tbl(d.skTh, d.sk));
+            // S5
+            html += sec(d.sec5tag, d.sec5title, crd(d.ag));
+            // S6
+            html += sec(d.sec6tag, d.sec6title, `<div style="display:flex;flex-wrap:wrap;gap:6px">${d.wf.map(w => `<span style="background:#f0f0f0;border:1px solid #ddd;padding:5px 10px;font-size:10px;font-family:monospace"><b style="color:#c00">${w[0]}</b> ${w[1]}</span>`).join('')}</div>`);
+            // S7
+            html += sec(d.sec7tag, d.sec7title, tbl(d.mcpTh, d.mcp));
+            // S8
+            html += sec(d.sec8tag, d.sec8title, crd([{ b: d.fb1b, h: d.fb1h, p: d.fb1p, t: d.fb1t }, { b: d.fb2b, h: d.fb2h, p: d.fb2p, t: d.fb2t }]));
+            // Footer
+            html += `<div style="border-top:2px solid #111;padding-top:14px;margin-top:30px;display:flex;justify-content:space-between;font-size:9px;color:#888;font-family:monospace"><span>${d.footer1}</span><span>${d.footer2}</span></div>`;
+            html += `</div>`;
+            return html;
+        }
+
+        function generatePDF() {
+            const btn = $id('dlBtn'), txt = $id('dlText');
+            const d = T[curLang];
+            btn.classList.add('loading'); txt.textContent = d.dlLoading;
+            const container = $id('pdf-doc');
+            container.innerHTML = buildPdfDoc();
+            container.style.display = 'block';
+            html2pdf().set({
+                margin: [12, 10, 12, 10],
+                filename: `NEXUS_Presentation_${curLang.toUpperCase()}_2026.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            }).from(container).save().then(() => {
+                container.style.display = 'none';
+                btn.classList.remove('loading');
+                txt.textContent = d.dlDone;
+                setTimeout(() => { txt.textContent = d.dlBtn }, 3000);
+            }).catch(() => {
+                container.style.display = 'none';
+                btn.classList.remove('loading');
+                txt.textContent = d.dlBtn;
+            });
+        }
+
+        // Init
+        render('en');
+        gsap.from(".hero-tag", { opacity: 0, y: 20, duration: 1, delay: .2 });
+        gsap.from(".hero h1", { opacity: 0, y: 120, duration: 1.5, ease: "expo.out", delay: .3 });
+        gsap.from(".hero-sub", { opacity: 0, y: 60, duration: 1.2, ease: "power4.out", delay: .6 });
+        gsap.from(".si", { opacity: 0, y: 40, duration: .8, stagger: .1, delay: 1, ease: "power3.out" });
+
+        // Hero parallax
+        document.querySelector('.hero').addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth - .5) * 30, y = (e.clientY / window.innerHeight - .5) * 30;
+            gsap.to('.hero-glow', { x: x * 2, y: y * 2, duration: 2, ease: "power2.out" });
+            gsap.to('.hero-grid', { x: x * .5, y: y * .5, duration: 2, ease: "power2.out" });
+        });
+
+        // ScrollSpy
+        window.addEventListener('scroll', () => {
+            let cur = '';
+            document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id });
+            document.querySelectorAll('.nb-links a').forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + cur) });
+        }, { passive: true });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Supabase local alternative (or just standalone Postgres)
+  postgres:
+    image: postgres:16
+    container_name: nexus_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: nexus_admin
+      POSTGRES_PASSWORD: nexus_password
+      POSTGRES_DB: nexus_core
+    volumes:
+      - nexus_pgdata:/var/lib/postgresql/data
+
+  # Upstash Redis local alternative
+  redis:
+    image: redis:7-alpine
+    container_name: nexus_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - nexus_redis_data:/data
+
+  # FastAPI Backend Service (Placeholder for production deploy)
+  # backend:
+  #   build: ./backend
+  #   container_name: nexus_api
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   env_file:
+  #     - .env
+
+volumes:
+  nexus_pgdata:
+  nexus_redis_data:

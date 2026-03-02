@@ -1,0 +1,11 @@
+[
+    {
+        "id": "ERR-000-INIT",
+        "timestamp": "2026-02-27T17:15:00Z",
+        "fault_type": "UI_REGRESSION",
+        "description": "Initial setup of the fault registry. Placeholder for the first documented error.",
+        "root_cause": "N/A",
+        "solution": "Establishment of the registry itself.",
+        "prevention_rule": "Always check PROJECT/fault_registry.json before starting a UI or Core refactor."
+    }
+]

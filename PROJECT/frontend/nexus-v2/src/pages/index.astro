@@ -1,0 +1,153 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Scene from "../components/ThreeD/Scene.svelte";
+
+const navLinks = [
+	{ name: "3D Forge", href: "#forge" },
+	{ name: "Constitution", href: "#constitution" },
+	{ name: "Architecture", href: "#architecture" },
+	{ name: "Specs", href: "#specs" },
+];
+
+const nexusFeatures = [
+	{
+		title: "Parametric Forge",
+		icon: "🛠️",
+		text: "Code-driven 3D modeling via OpenSCAD & build123d.",
+	},
+	{
+		title: "Codified Context",
+		icon: "🧠",
+		text: "High-fidelity memory infrastructure based on arXiv:2602.20478.",
+	},
+	{
+		title: "Visual Motion",
+		icon: "✨",
+		text: "Premium GSAP & Threlte animations for industrial interfaces.",
+	},
+	{
+		title: "Agnostic Core",
+		icon: "🌐",
+		text: "Decoupled logic for cross-platform execution.",
+	},
+];
+---
+
+<Layout>
+	<nav
+		class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/5 px-10 py-5 flex justify-between items-center transition-all duration-500"
+	>
+		<div class="flex items-center gap-16">
+			<div class="text-3xl font-bold tracking-tighter text-white">
+				NEXUS
+			</div>
+			<div
+				class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40"
+			>
+				{
+					navLinks.map((link) => (
+						<a
+							href={link.href}
+							class="hover:text-[#00f3ff] transition-colors"
+						>
+							{link.name}
+						</a>
+					))
+				}
+			</div>
+		</div>
+		<div class="flex items-center gap-8 text-[10px]">
+			<button
+				class="bg-white/5 border border-white/10 text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-[#00f3ff] hover:text-black hover:border-transparent transition-all"
+				>Neural Console</button
+			>
+		</div>
+	</nav>
+
+	<main
+		class="relative bg-black text-white selection:bg-[#00f3ff] selection:text-black min-h-screen"
+	>
+		<!-- HERO / 3D SECTION -->
+		<section
+			class="min-h-screen flex flex-col items-center justify-center relative px-10 overflow-hidden pt-32"
+		>
+			<!-- 3D Scene - INLINE TEST -->
+			<div class="absolute inset-0 z-0 bg-black">
+				<Scene client:only="svelte" />
+			</div>
+
+			<div class="relative z-10 text-center pointer-events-none mb-20">
+				<div
+					class="text-[10px] font-bold uppercase tracking-[0.6em] text-[#00f3ff] mb-12 animate-fade-in opacity-40"
+				>
+					// Neural Architecture Protocol v1.0 //
+				</div>
+				<h1
+					class="text-7xl md:text-[8rem] lg:text-[11rem] font-bold tracking-tight mb-12 leading-[0.8] uppercase"
+				>
+					NEXUS <br />
+					<span class="gradient-text text-white">OS.</span>
+				</h1>
+				<p
+					class="text-white/30 text-lg md:text-xl font-light mb-20 max-w-xl mx-auto leading-relaxed"
+				>
+					Establishing physical equilibrium between logic and
+					geometry. <br />
+				</p>
+			</div>
+
+			<!-- SCROLL INDICATOR -->
+			<div
+				class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 opacity-20"
+			>
+				<div
+					class="text-[8px] uppercase tracking-[0.5em] font-bold text-[#00f3ff]"
+				>
+					Initialize Interface Sync
+				</div>
+				<div class="w-[1px] h-24 bg-[#00f3ff] animate-pulse"></div>
+			</div>
+		</section>
+
+		<!-- FEATURES GRID -->
+		<section
+			id="forge"
+			class="max-w-7xl mx-auto px-10 py-48 grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-t border-white/10"
+		>
+			{
+				nexusFeatures.map((feature) => (
+					<div class="group border border-white/5 p-10 rounded-3xl hover:bg-white/[0.02] hover:border-[#00f3ff]/30 transition-all duration-500 bg-black/20 backdrop-blur-sm">
+						<div class="text-4xl mb-8 group-hover:scale-110 transition-transform">
+							{feature.icon}
+						</div>
+						<h3 class="text-lg font-bold mb-4 tracking-widest uppercase text-white/90">
+							{feature.title}
+						</h3>
+						<p class="text-sm text-white/30 font-light leading-relaxed">
+							{feature.text}
+						</p>
+					</div>
+				))
+			}
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.gradient-text {
+		color: white;
+	}
+	.animate-fade-in {
+		animation: fadeIn 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
