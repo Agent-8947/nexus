@@ -1,0 +1,114 @@
+{
+    "project": {
+        "name": "NEXUS OS",
+        "version": "2026.1",
+        "archetype": "AI-Orchestrated-NEXUS-v2",
+        "philosophy": "Codified Context (arXiv:2602.20478)",
+        "description": "Cognitive Operating System for AI-orchestrated development, transforming IDEs into autonomous command centers."
+    },
+    "architecture": {
+        "layers": {
+            "control": "Orchestrator + Constitution (Hot Memory)",
+            "intelligence": "14 MCP Neural Connectors + 9 AI Agents",
+            "memory": "6-Level Persistent Memory (Hot, Cold, State, Fault, DB, Graph)",
+            "execution": "FastAPI Backend + Astro/Svelte Frontend",
+            "physical": "3D Forge (OpenSCAD/build123d)"
+        },
+        "core_metrics": {
+            "throughput": "104,000 msg/s (Named Pipes)",
+            "mcp_connectors": 14,
+            "ai_agents": 9,
+            "workflows": 24
+        }
+    },
+    "stack": {
+        "frontend": [
+            "Astro v5",
+            "Next.js 15",
+            "Svelte",
+            "Tailwind",
+            "GSAP"
+        ],
+        "backend": [
+            "FastAPI (Python 3.13)",
+            "Hono (TS Edge)",
+            "Celery",
+            "Redis"
+        ],
+        "ai": [
+            "Anthropic Claude 3.5/3.7",
+            "Vercel AI SDK",
+            "LangGraph",
+            "CrewAI"
+        ],
+        "database": [
+            "Supabase (Postgres)",
+            "Cloudflare D1",
+            "SQLite",
+            "R2 Storage"
+        ],
+        "devops": [
+            "GitHub Actions",
+            "Docker",
+            "Sentry",
+            "Doppler"
+        ]
+    },
+    "active_agents": [
+        "Dispatcher (Supervisor)",
+        "Self-Healing Agent",
+        "Document Factory",
+        "Plan & Execute Orchestrator",
+        "Marketing Strategist",
+        "Researcher",
+        "DB Chat Agent (NL-to-SQL)",
+        "Token Analyzer",
+        "Adaptive RAG Search"
+    ],
+    "mcp_neural_net": [
+        "filesystem",
+        "git",
+        "memory",
+        "sqlite",
+        "fetch",
+        "brave-search",
+        "sentry",
+        "puppeteer",
+        "sequentialthinking",
+        "everart",
+        "obsidian",
+        "contentful",
+        "osp-marketing",
+        "ai-therapist"
+    ],
+    "slash_commands": [
+        "/status",
+        "/turbo",
+        "/monitor",
+        "/deploy",
+        "/vercel",
+        "/github",
+        "/test",
+        "/audit",
+        "/doc",
+        "/pdf",
+        "/telegram",
+        "/snapshot",
+        "/freeze-nexus",
+        "/idea",
+        "/motion",
+        "/agnostic",
+        "/clean-code",
+        "/clean-docs",
+        "/token",
+        "/prime",
+        "/jules",
+        "/+",
+        "/menu",
+        "/reflect"
+    ],
+    "links": {
+        "presentation": "https://nexus-presentation-v2.vercel.app",
+        "repository": "https://github.com/Agent-8947/nexus"
+    }
+}

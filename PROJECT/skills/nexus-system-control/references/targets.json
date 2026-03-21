@@ -1,0 +1,24 @@
+{
+    "bloat_processes": [
+        "msedge.exe",
+        "chrome.exe",
+        "browser_broker.exe",
+        "discord.exe",
+        "slack.exe",
+        "teams.exe",
+        "whatsapp.exe",
+        "language_server_windows_x64.exe",
+        "Node.exe",
+        "Java.exe",
+        "Gardener.exe"
+    ],
+    "turbo_targets": [
+        "git-remote-https.exe",
+        "SearchIndexer.exe",
+        "CompPkgSrv.exe"
+    ],
+    "cleanup_paths": [
+        "LOCAL_TEMP",
+        "C:\\Windows\\Temp"
+    ]
+}

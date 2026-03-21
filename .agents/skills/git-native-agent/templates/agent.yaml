@@ -1,0 +1,29 @@
+spec_version: "0.1.0"
+name: nexus-agent-template
+version: 1.0.0
+description: Standard template for NEXUS agents
+author: NEXUS-Orchestrator
+license: MIT
+
+model:
+  preferred: claude-3-7-sonnet-latest
+  fallback:
+    - gpt-4o
+    - claude-3-5-haiku
+  constraints:
+    temperature: 0.1
+    max_tokens: 4096
+
+# Define skills from the NEXUS Skill-Vault
+skills:
+  - security-audit
+  - codebase-inspection
+
+# Runtime constraints
+runtime:
+  max_turns: 20
+  timeout: 300 # seconds
+
+compliance:
+  sod: true # Require Segregation of Duties
+  hitl: true # Human-in-the-loop for terminal commands
