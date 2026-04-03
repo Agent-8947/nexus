@@ -76,7 +76,10 @@ def create_dashboard_html():
             </div>
             <div class="reveal relative" style="animation-delay: 0.3s">
                 <div class="absolute -inset-20 bg-emerald-500/10 rounded-full blur-[120px]"></div>
-                <img src="C:\\Users\\MAC\\.gemini\\antigravity\\brain\\858d0bd1-44f8-418a-847c-07d05808974d\\nexus_monolith_concept_1772197577106.png" class="w-full h-auto rounded-3xl shadow-2xl float opacity-90 grayscale hover:grayscale-0 transition-all duration-1000" alt="Nexus Monolith">
+                <!-- Path placeholder for dynamic asset -->
+                <div class="w-full h-64 bg-slate-900 rounded-3xl flex items-center justify-center border border-white/5">
+                    <span class="text-slate-500 uppercase tracking-widest text-[10px]">Asset Placeholder</span>
+                </div>
             </div>
         </div>
 

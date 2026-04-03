@@ -2,9 +2,11 @@ import os
 import shutil
 from pathlib import Path
 
-# Configuration
-SOURCE_DIR = Path(r"e:\Downloads\--ANTIGRAVITY store\IDE-optimus")
-BLUEPRINT_DIR = Path(r"e:\Downloads\--ANTIGRAVITY store\NEXUS-CORE-BLUEPRINT")
+# Dynamic Path Configuration
+SCRIPTS_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+SOURCE_DIR = PROJECT_ROOT
+BLUEPRINT_DIR = PROJECT_ROOT.parent / "NEXUS-CORE-BLUEPRINT"
 
 FILES_TO_FREEZE = [
     "START.md",

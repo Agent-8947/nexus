@@ -1,8 +1,12 @@
 import json
 import os
+from pathlib import Path
 
 def enrich_major_tools():
-    root_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\LLM-TOOLKIT-PORTAL\src\data\locales'
+    # Dynamic Path Resolution
+    SCRIPTS_DIR = Path(__file__).resolve().parent
+    PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+    root_path = PROJECT_ROOT / 'PROJECT' / 'LLM-TOOLKIT-PORTAL' / 'src' / 'data' / 'locales'
     
     enrichments = {
         "unsloth": {

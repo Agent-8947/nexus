@@ -106,9 +106,9 @@ def create_persona_pdf():
         "and the tools you use to solve it.\""
     ), 0, 'C')
 
-    output_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\outputs\Nexus_Operator_Profile.pdf'
+    output_path = PROJECT_ROOT / 'PROJECT' / 'outputs' / 'Nexus_Operator_Profile.pdf'
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    pdf.output(output_path)
+    pdf.output(str(output_path))
     print(f"OPERATOR_PROFILE_GENERATED: {output_path}")
 
 if __name__ == "__main__":

@@ -38,3 +38,12 @@ PROJECT/outputs/*.pdf
 tmp/
 *.tmp
 *.log
+
+# NEXUS Reports (Identity Protection)
+**/reports/*.md
+**/reports/*.json
+PROJECT/NEXUS-OSINT-ADVANCED/reports/
+
+# Nested Secrets
+PROJECT/.env
+PROJECT/**/.env

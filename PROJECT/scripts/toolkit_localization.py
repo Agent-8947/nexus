@@ -102,8 +102,13 @@ def localize_data(raw_data, lang):
     return localized
 
 def main():
-    root_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\LLM-TOOLKIT-PORTAL\src\data'
-    raw_path = os.path.join(root_path, 'toolkit_raw.json')
+    # Dynamic Path Resolution
+    from pathlib import Path
+    SCRIPTS_DIR = Path(__file__).resolve().parent
+    PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+    root_path = PROJECT_ROOT / 'PROJECT' / 'LLM-TOOLKIT-PORTAL' / 'src' / 'data'
+    
+    raw_path = os.path.join(str(root_path), 'toolkit_raw.json')
     
     with open(raw_path, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)

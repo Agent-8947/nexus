@@ -8,7 +8,11 @@ def slugify(text):
     return re.sub(r'-+', '-', text).strip('-')
 
 def update_localized_with_slugs():
-    root_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\LLM-TOOLKIT-PORTAL\src\data\locales'
+    # Dynamic Path Resolution
+    from pathlib import Path
+    SCRIPTS_DIR = Path(__file__).resolve().parent
+    PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+    root_path = PROJECT_ROOT / 'PROJECT' / 'LLM-TOOLKIT-PORTAL' / 'src' / 'data' / 'locales'
     
     for lang in ['en', 'uk', 'ru']:
         file_path = os.path.join(root_path, f'{lang}.json')

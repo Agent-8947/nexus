@@ -3,7 +3,10 @@ import shutil
 import sys
 from pathlib import Path
 
-BLUEPRINT_DIR = Path(r"e:\Downloads\--ANTIGRAVITY store\NEXUS-CORE-BLUEPRINT")
+# Dynamic Path Resolution
+SCRIPTS_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+BLUEPRINT_DIR = PROJECT_ROOT.parent / "NEXUS-CORE-BLUEPRINT"
 
 def replicate(target_dir_str):
     target_dir = Path(target_dir_str)

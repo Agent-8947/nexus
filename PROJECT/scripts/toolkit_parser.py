@@ -60,8 +60,13 @@ def parse_markdown_tables(file_path):
     return data
 
 def main():
-    root_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT'
-    readme_path = os.path.join(root_path, 'llm-engineer-toolkit', 'README.md')
+    # Dynamic Path Resolution
+    from pathlib import Path
+    SCRIPTS_DIR = Path(__file__).resolve().parent
+    PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+    root_path = PROJECT_ROOT / 'PROJECT'
+    
+    readme_path = os.path.join(str(root_path), 'llm-engineer-toolkit', 'README.md')
     output_path = os.path.join(root_path, 'LLM-TOOLKIT-PORTAL', 'src', 'data', 'toolkit_raw.json')
     
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

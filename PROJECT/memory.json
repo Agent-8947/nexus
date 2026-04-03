@@ -38,7 +38,7 @@
       "cli": "Python (Typer/Click)",
       "gui": "Tauri (Rust+Web) / Streamlit",
       "automation": "PyAutoGUI / Playwright",
-      "fs_access": "E:\\ (pathlib)"
+      "fs_access": "DYNAMIC_ROOT (pathlib)"
     },
     "3d_forge": {
       "standards": "OpenSCAD / build123d",

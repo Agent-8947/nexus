@@ -130,10 +130,15 @@ def create_premium_report():
         "top-level decisions require high agility and easy integration with modern AI models."
     , style='List Bullet')
 
+    # Dynamic Path Resolution
+    from pathlib import Path
+    SCRIPTS_DIR = Path(__file__).resolve().parent
+    PROJECT_ROOT = SCRIPTS_DIR.parent.parent.parent
+    
     # Save
-    output_path = r'e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\outputs\Architecture_Report_Nexus.docx'
+    output_path = PROJECT_ROOT / 'PROJECT' / 'outputs' / 'Architecture_Report_Nexus.docx'
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    doc.save(output_path)
+    doc.save(str(output_path))
     print(f"ULTRA_PREMIUM_REPORT_GENERATED: {output_path}")
 
 if __name__ == "__main__":
