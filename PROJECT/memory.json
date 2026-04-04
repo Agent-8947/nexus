@@ -35,7 +35,9 @@
       "secrets": "Doppler / .env",
       "recon": "ProjectDiscovery (Nuclei, Subfinder, HTTPX)",
       "social_eng": "Social-Engineer Toolkit (SET)",
-      "audit": "Gitleaks, Trivy, Semgrep, Prowler, Claude OWASP"
+      "audit": "Gitleaks, Trivy, Semgrep, Prowler, Claude OWASP",
+      "orchestration": "Apache Airflow (DAGs)",
+      "testing": "Awesome-Testing (TheJambo)"
     },
     "desktop": {
       "cli": "Python (Typer/Click)",

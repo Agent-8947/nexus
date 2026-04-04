@@ -38,6 +38,42 @@ services:
     volumes:
       - nexus_neo4j_data:/data
 
+  # Apache Airflow Orchestrator
+  airflow-webserver:
+    image: apache/airflow:2.9.0
+    container_name: nexus_airflow_web
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - LOAD_EX = n
+      - EXECUTOR = CeleryExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN = postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - AIRFLOW__CELERY__BROKER_URL = redis://redis:6379/1
+    ports:
+      - "8081:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  airflow-scheduler:
+    image: apache/airflow:2.9.0
+    container_name: nexus_airflow_scheduler
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - LOAD_EX = n
+      - EXECUTOR = CeleryExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN = postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - AIRFLOW__CELERY__BROKER_URL = redis://redis:6379/1
+    command: scheduler
+
   # FastAPI Backend Service (Placeholder for production deploy)
   # backend:
   #   build: ./backend
@@ -54,3 +90,4 @@ volumes:
   nexus_pgdata:
   nexus_redis_data:
   nexus_neo4j_data:
+  nexus_airflow_logs:
