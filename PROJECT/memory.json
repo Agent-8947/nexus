@@ -34,7 +34,8 @@
       "monitoring": "Sentry",
       "secrets": "Doppler / .env",
       "recon": "ProjectDiscovery (Nuclei, Subfinder, HTTPX)",
-      "social_eng": "Social-Engineer Toolkit (SET)"
+      "social_eng": "Social-Engineer Toolkit (SET)",
+      "audit": "Gitleaks, Trivy, Semgrep, Prowler, Claude OWASP"
     },
     "desktop": {
       "cli": "Python (Typer/Click)",
