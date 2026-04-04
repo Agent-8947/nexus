@@ -33,7 +33,8 @@
       "containers": "Docker",
       "monitoring": "Sentry",
       "secrets": "Doppler / .env",
-      "recon": "ProjectDiscovery (Nuclei, Subfinder, HTTPX)"
+      "recon": "ProjectDiscovery (Nuclei, Subfinder, HTTPX)",
+      "social_eng": "Social-Engineer Toolkit (SET)"
     },
     "desktop": {
       "cli": "Python (Typer/Click)",
