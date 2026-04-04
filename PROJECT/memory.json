@@ -32,7 +32,8 @@
       "deployment": "Vercel / Railway / Cloudflare",
       "containers": "Docker",
       "monitoring": "Sentry",
-      "secrets": "Doppler / .env"
+      "secrets": "Doppler / .env",
+      "recon": "ProjectDiscovery (Nuclei, Subfinder, HTTPX)"
     },
     "desktop": {
       "cli": "Python (Typer/Click)",
