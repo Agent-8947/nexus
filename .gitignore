@@ -1,11 +1,13 @@
-# === NEXUS .gitignore ===
+# === NEXUS PARANOID .gitignore ===
 
-# Secrets (CRITICAL)
+# Secrets & Environment (CRITICAL)
 .env
 .env.*
 .env.mcp
+**/.env
+**/.env.*
 
-# Python
+# Python Architecture
 __pycache__/
 *.pyc
 *.pyo
@@ -13,37 +15,50 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Node
+# Node Architecture
 node_modules/
 .astro/
+.next/
+dist/
+out/
 
-# IDE
+# IDE & OS
 .vscode/
 .idea/
-
-# OS
+.project
+.classpath
+.settings/
 Thumbs.db
 Desktop.ini
 .DS_Store
 
-# Database (local dev)
+# Database & Vectors
 *.db
 *.sqlite3
+*.bin
+*.pkl
+**/*.db
+**/*.sqlite3
 
-# Build outputs (large files)
-PROJECT/outputs/*.html
-PROJECT/outputs/*.pdf
+# NEXUS Reports & Outputs (TOTAL BLOCK)
+**/reports/
+**/outputs/
+**/logs/
+**/*.log
+**/*.pdf
+**/*.docx
+**/*.html (except templates)
+!**/templates/*.html
+!PROJECT/WIKI-DASHBOARD/index.html
 
-# Temp
+# Tools & Temp
 tmp/
 *.tmp
-*.log
+.temp/
+.cache/
+.pytest_cache/
+.tox/
 
-# NEXUS Reports (Identity Protection)
-**/reports/*.md
-**/reports/*.json
-PROJECT/NEXUS-OSINT-ADVANCED/reports/
-
-# Nested Secrets
-PROJECT/.env
-PROJECT/**/.env
+# Submodules & External (Only Structure allowed)
+PROJECT/EXTERNAL-LIBRARY/**/.git/
+PROJECT/EXTERNAL-LIBRARY/**/.github/
