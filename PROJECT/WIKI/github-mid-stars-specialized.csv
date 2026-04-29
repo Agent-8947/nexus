@@ -1,0 +1,25 @@
+Category,Repository,Link,Stars,Language,Description
+Math & Mathematics,manim,https://github.com/ManimCommunity/manim,37562,Python,A community-maintained Python framework for creating mathematical animations. 
+Math & Mathematics,math-as-code,https://github.com/Experience-Monks/math-as-code,15473,,a cheat-sheet for mathematical notation in code form
+Math & Mathematics,Book-Mathematical-Foundation-of-Reinforcement-Learning,https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning,15182,MATLAB,"This is the homepage of a new book entitled ""Mathematical Foundations of Reinforcement Learning."""
+Math & Mathematics,awesome-math,https://github.com/rossant/awesome-math,13913,Python,A curated list of awesome mathematics resources
+Data Analysis,Ai-Learn,https://github.com/tangyudi/Ai-Learn,12826,,"人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensorflow machine-learning,deep-learning data-analysis data-mining mathematics data-science artificial-intelligence python tensorflow tensorflow2 caffe keras pytorch algorithm numpy pandas matplotlib seaborn nlp cv等热门领域"
+Math & Mathematics,MathJax,https://github.com/mathjax/MathJax,10805,JavaScript,Beautiful and accessible math in all browsers
+Math & Mathematics,MathModel,https://github.com/zhanwen/MathModel,9968,TeX,研究生数学建模，本科生数学建模、数学建模竞赛优秀论文，数学建模算法，LaTeX论文模板，算法思维导图，参考书籍，Matlab软件教程，PPT
+Math & Mathematics,math,https://github.com/ossu/math,8578,,🧮  Path to a free self-taught education in Mathematics!
+Math & Mathematics,Book3_Elements-of-Mathematics,https://github.com/Visualize-ML/Book3_Elements-of-Mathematics,7402,Jupyter Notebook,Book_3_《数学要素》 |   鸢尾花书：从加减乘除到机器学习；上架；欢迎继续纠错，纠错多的同学还会有赠书！
+Data Analysis,machine-learning-mindmap,https://github.com/dformoso/machine-learning-mindmap,6260,,"A mindmap summarising Machine Learning concepts, from Data Analysis to Deep Learning."
+Math & Mathematics,Mathematics-for-ML,https://github.com/dair-ai/Mathematics-for-ML,5883,,🧮  A collection of resources to learn mathematics for machine learning
+Math & Mathematics,stdlib,https://github.com/stdlib-js/stdlib,5790,JavaScript,✨ The fundamental numerical library for JavaScript and TypeScript. ✨
+Data Analysis,DataSciencePython,https://github.com/ujjwalkarn/DataSciencePython,5745,Python,common data analysis and machine learning tasks using python
+Data Analysis,Data-Analysis,https://github.com/WillKoehrsen/Data-Analysis,5509,Jupyter Notebook,Data Science Using Python
+Data Analysis,deepvariant,https://github.com/google/deepvariant,3670,Python,DeepVariant is an analysis pipeline that uses a deep neural network to call genetic variants from next-generation DNA sequencing data.
+Math & Mathematics,programmers-introduction-to-mathematics,https://github.com/pim-book/programmers-introduction-to-mathematics,3645,JavaScript,Code for A Programmer's Introduction to Mathematics
+Math & Mathematics,mathematics-roadmap,https://github.com/TalalAlrawajfeh/mathematics-roadmap,3395,,A Comprehensive Roadmap to Mathematics
+Math & Mathematics,learn_math_fast,https://github.com/llSourcell/learn_math_fast,3294,Python,"This is the Curriculum for ""How to Learn Mathematics Fast"" By Siraj Raval on Youtube"
+Math & Mathematics,DeepSeek-Math,https://github.com/deepseek-ai/DeepSeek-Math,3223,Python,DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models
+Math & Mathematics,maths-cs-ai-compendium,https://github.com/HenryNdubuaku/maths-cs-ai-compendium,2882,TypeScript,Become a cracked AI/ML Research Engineer
+Math & Mathematics,texme,https://github.com/susam/texme,2429,JavaScript,Self-rendering Markdown + LaTeX documents
+Math & Mathematics,math-php,https://github.com/markrogoyski/math-php,2402,PHP,"Powerful modern math library for PHP: Features descriptive statistics and regressions; Continuous and discrete probability distributions; Linear algebra with matrices and vectors, Numerical analysis; special mathematical functions; Algebra"
+Math & Mathematics,mathAI,https://github.com/Roujack/mathAI,2374,Python,一个拍照做题程序。输入一张包含数学计算题的图片，输出识别出的数学计算式以及计算结果。This is a mathematic expression recognition project.
+Math & Mathematics,Algorithms_MathModels,https://github.com/HuangCongQing/Algorithms_MathModels,2332,MATLAB,【国赛】【美赛】数学建模相关算法 MATLAB实现（2018年初整理）

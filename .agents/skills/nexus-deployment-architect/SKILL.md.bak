@@ -1,0 +1,9 @@
+# Nexus Deployment Architect
+Deploys NEXUS framework apps to servers.
+Very important to check config before deploying. 
+
+Deploy targets:
+* Localhost
+* Cloud 
+
+Make sure port 9999 is open. Check docker.

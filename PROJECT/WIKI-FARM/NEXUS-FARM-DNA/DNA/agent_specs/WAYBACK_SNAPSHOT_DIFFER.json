@@ -1,0 +1,34 @@
+{
+  "agent_id": "WAYBACK_SNAPSHOT_DIFFER",
+  "domain": "OSINT",
+  "purpose": "Compare historical website snapshots from Wayback Machine CDX API",
+  "api_endpoints": [
+    "https://web.archive.org/cdx/search/cdx?url={domain}&output=json",
+    "https://web.archive.org/web/{timestamp}/{url}"
+  ],
+  "data_model": {
+    "domain": "TEXT",
+    "timestamp": "TEXT",
+    "status_code": "INTEGER",
+    "digest": "TEXT",
+    "mime_type": "TEXT",
+    "content_length": "INTEGER"
+  },
+  "core_algorithm": "Wayback CDX temporal diffing with content digest comparison",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json"
+  ],
+  "logic_markers": [
+    "web.archive.org",
+    "cdx/search",
+    "timestamp",
+    "digest"
+  ],
+  "spec_hash": "789fee081c8e5c18"
+}

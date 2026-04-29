@@ -1,0 +1,28 @@
+# Проектирования баз данных
+
+- [Базы данных в 2020 (введение, история, состояние)](https://youtu.be/8RjT2VYBWNQ)
+  - Слайды: https://www.slideshare.net/tshemsedinov/2020-228734914
+- [Введение в SQL: SELECT](https://youtu.be/Z679c8S0d7I)
+  - Слайды: https://www.slideshare.net/tshemsedinov/sql-structured-query-language-228735217
+- [Введение в SQL: CREATE, ALTER, DROP, ключи, индексы](https://youtu.be/QF0v29ZneYE)
+- [PostgreSQL: установка, настройка, консоль](https://youtu.be/Fm6yLb8qCh4)
+- [Базы данных: ER, ERD, IDEF1x, сущность-связь](https://youtu.be/ByWfj3e0HnE)
+- [SQL SELECT: math functions, aliases, limit, with, into](https://youtu.be/lle4Yp58z6k)
+- SQL JOINS: CROSS, INNER, LEFT, RIGHT, FULL
+- Нормальные формы
+- [Слой доступа к данным, курсор, транзакция](https://youtu.be/CRcSWtWVvrA)
+  - Примеры кода: https://github.com/HowProgrammingWorks/Transaction
+- [Работа с базами данных в Node.js на примере PostgreSQL](https://youtu.be/2tDvHQCBt3w)
+  - Примеры кода: https://github.com/HowProgrammingWorks/Databases
+- [CQS, CQRS, Event Sourcing - Разделение запросов и модификации данных](https://youtu.be/T2tRc80Q8Qw)
+  - CQS: https://github.com/HowProgrammingWorks/CQS
+  - CQRS: https://github.com/HowProgrammingWorks/CQRS
+  - EventSourcing: https://github.com/HowProgrammingWorks/EventSourcing
+- Трехзвенные приложения баз данных
+- Инъекции SQL и защита от них
+- [Применение EventSourcing](https://youtu.be/kFNtKiK2SPs)
+  - https://github.com/HowProgrammingWorks/EventSourcing
+  - https://github.com/HowProgrammingWorks/CQRS
+  - https://github.com/HowProgrammingWorks/Command
+- [Безопасность приложений Node.js](https://youtu.be/Pdfo1G-gI6s)
+  - Слайды: https://www.slideshare.net/tshemsedinov/nodejs-security-199004963

@@ -1,0 +1,11 @@
+{
+    "name": "GRADIO",
+    "indexed_at": "2026-04-05 14:31:34",
+    "domains": [
+        "OSINT",
+        "MACHINE_LEARNING"
+    ],
+    "core_identity": "Инструмент на стыке: OSINT + MACHINE_LEARNING",
+    "legal_devops_perspective": "Извлечение цифровых следов и разведка по закрытым/открытым базам для сбора улик. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak).",
+    "readiness": "LOCAL_AVAILABLE"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@rebass/forms",
+  "version": "4.0.6",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "prepare": "rebass-bundler"
+  },
+  "dependencies": {
+    "reflexbox": "^4.0.6"
+  },
+  "repository": "rebassjs/rebass",
+  "bugs": {
+    "url": "https://github.com/rebassjs/rebass/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "f0f01843e9fb63ca69112d7e97a1451b27ee9e6c"
+}

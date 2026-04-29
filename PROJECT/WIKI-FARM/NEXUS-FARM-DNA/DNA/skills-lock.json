@@ -1,0 +1,1466 @@
+{
+  "version": 1,
+  "engine": "NEXUS-V5",
+  "skills": {
+    "92_NEXUS_DNA_ORCHESTRATOR_synthesized_agent": {
+      "path": "92_NEXUS_DNA_ORCHESTRATOR_synthesized_agent.py",
+      "hash": "a243da396cd487702d6c8bfe378f32fbc7c65d1436172c5be7fa798dfceec774",
+      "version": "1.0.0"
+    },
+    "93_ORCHESTRATOR_STRESS_TEST": {
+      "path": "93_ORCHESTRATOR_STRESS_TEST.py",
+      "hash": "81d210b92e6b2cc18ddf1db7977ee521697f2566889a2d08dce343359d89d011",
+      "version": "1.0.0"
+    },
+    "95_COMMITTEE_ORCHESTRATOR": {
+      "path": "95_COMMITTEE_ORCHESTRATOR.py",
+      "hash": "aa988e70881e74c175d59034950bae53e18e445a3ba213fbf9241dccada15d33",
+      "version": "1.0.0"
+    },
+    "DNA--000": {
+      "path": "DNA--000.py",
+      "hash": "95352540848225f5cc04ec8939564b51a7ce486ca4fe34d775f272c52e246f4a",
+      "version": "1.0.0"
+    },
+    "DNA_02_Master_Harvester": {
+      "path": "DNA_02_Master_Harvester.py",
+      "hash": "1fc3e743830b1de5824bb9f4419703539b0f2677ef7cd0a03f60d306614a0369",
+      "version": "1.0.0"
+    },
+    "DNA_03_Core_Builder": {
+      "path": "DNA_03_Core_Builder.py",
+      "hash": "943cb661c394ac4f4861a0585ddc204983c0d077315dcdabffd834b5eb86cb0b",
+      "version": "1.0.0"
+    },
+    "DNA_07_Evolution_Logic": {
+      "path": "DNA_07_Evolution_Logic.py",
+      "hash": "0102d6323cddbdb4d1206a26264c64c0f1f2341595b8aa100e223dd85ff83f63",
+      "version": "1.0.0"
+    },
+    "DNA_09_Mission_Control": {
+      "path": "DNA_09_Mission_Control.py",
+      "hash": "9a8e0e410da6b399a3dc024ae8a9abd05609c320f57904d9cd6831488fbea481",
+      "version": "1.0.0"
+    },
+    "DNA_10_Code_Assembler": {
+      "path": "DNA_10_Code_Assembler.py",
+      "hash": "2425f349c769920bdad8790c26d51ce2e7693084b46ecca38d731a6e1c3d9075",
+      "version": "1.0.0"
+    },
+    "DNA_11_Check_Validator": {
+      "path": "DNA_11_Check_Validator.py",
+      "hash": "a9753b58cd02e8f0355b9d4262af72c0e05387257022946216463f91934bed6a",
+      "version": "1.0.0"
+    },
+    "DNA_14_Reliable_Tools": {
+      "path": "DNA_14_Reliable_Tools.py",
+      "hash": "1031f56106951277aa858a670839ad59ec38b43205d3167c243e9c508f4152e9",
+      "version": "1.0.0"
+    },
+    "DNA_15_Resynth_Engine": {
+      "path": "DNA_15_Resynth_Engine.py",
+      "hash": "355452beca70672d3680b546f6faa646e7b2b25f6a6cd5333330bed17b312c5c",
+      "version": "1.0.0"
+    },
+    "DNA_16_Vault_Bridge": {
+      "path": "DNA_16_Vault_Bridge.py",
+      "hash": "04852b264d5a3c3c30859ca3825c8bad3fecaf82f8e0c5237d3bbc685eb6aa52",
+      "version": "1.0.0"
+    },
+    "DNA_17_Lock_Generator": {
+      "path": "DNA_17_Lock_Generator.py",
+      "hash": "e53fafa0bd790112aa43d4209d7bbee1d7bf11cc5e610a7e412de36c47c11fab",
+      "version": "1.0.0"
+    },
+    "DNA_17_Manifest_Generator": {
+      "path": "DNA_17_Manifest_Generator.py",
+      "hash": "0bb07310a722f93bf07dd6cbe112a2023431041425025f6cb283a3c4d79efa73",
+      "version": "1.0.0"
+    },
+    "DNA_18_Legacy_Renderer": {
+      "path": "DNA_18_Legacy_Renderer.py",
+      "hash": "7da212e97f8bad2b13dea6a1431a8b10fdc2bfeacebc41b30cd5340756d4d48d",
+      "version": "1.0.0"
+    },
+    "DNA_21_Scaffold_Generator": {
+      "path": "DNA_21_Scaffold_Generator.py",
+      "hash": "0f4f296e5f02343fccd0f472c72b7c7ab12c3c99737e3bcba7578c7395ac8714",
+      "version": "1.0.0"
+    },
+    "DNA_22_Functional_Tester": {
+      "path": "DNA_22_Functional_Tester.py",
+      "hash": "11e872950ea5ce65e15783ef6a5178cc78b33bb6bfaba11a23cdda1ac1767ade",
+      "version": "1.0.0"
+    },
+    "DNA_23_Domain_Blocks": {
+      "path": "DNA_23_Domain_Blocks.py",
+      "hash": "56e5e4fff47e91aec70afe4bb4bd5d261cc7b7acb7973f953e4504009a9eb368",
+      "version": "1.0.0"
+    },
+    "DNA_25_Role_Contracts": {
+      "path": "DNA_25_Role_Contracts.py",
+      "hash": "51f6361d460a784b52d63485d4d53f3cdd5c392c9ecad73d8466f61308d89cea",
+      "version": "1.0.0"
+    },
+    "DNA_26_Pattern_Bank": {
+      "path": "DNA_26_Pattern_Bank.py",
+      "hash": "786335519bd2721642efa8e6d3c5bfa9f54a741675b4b44c829d59f0a613fd5c",
+      "version": "1.0.0"
+    },
+    "DNA_94_DAEMON_PROTOTYPE": {
+      "path": "DNA_94_DAEMON_PROTOTYPE.py",
+      "hash": "fd12c6504204fa59cb8897ec40bf27dcb48755968ca51323b5bb845580f61af0",
+      "version": "1.0.0"
+    },
+    "dna_core": {
+      "path": "dna_core.py",
+      "hash": "6af38cdd6e824f861bd05649d22f13e1ff8bda6775b9fce506acd29bd1f2f539",
+      "version": "1.0.0"
+    },
+    "DNA_Utils": {
+      "path": "DNA_Utils.py",
+      "hash": "eecbc61b5840400ac0761b5267dfa3c8fb9255b7168b2c0c66305e53eef5ba29",
+      "version": "1.0.0"
+    },
+    "expand_specs_batch1": {
+      "path": "expand_specs_batch1.py",
+      "hash": "afa587e115eda4b165bb9649931067f41964a2315d080c0f662121e11ab0b97e",
+      "version": "1.0.0"
+    },
+    "expand_specs_batch2": {
+      "path": "expand_specs_batch2.py",
+      "hash": "10278f85211e4218db54127ff14260938d905472ef124cae54ee77d9cc6b3072",
+      "version": "1.0.0"
+    },
+    "expand_specs_batch3_4_5": {
+      "path": "expand_specs_batch3_4_5.py",
+      "hash": "976547f29d8372b677a9701058cdf022a3bd5c9ce22ae425f7c653daecabf46d",
+      "version": "1.0.0"
+    },
+    "extract_names": {
+      "path": "extract_names.py",
+      "hash": "39a913706375054458a58239d2bfb200ce3475a7f8c4cb34353045dd44a2464a",
+      "version": "1.0.0"
+    },
+    "generate_dashboard": {
+      "path": "generate_dashboard.py",
+      "hash": "d576ff8d8e07650826a813cf10239d52f6fcd4ec799e38a739730d681c5677b9",
+      "version": "1.0.0"
+    },
+    "llm_evaluator": {
+      "path": "llm_evaluator.py",
+      "hash": "3d5b08b7daf91af84dd14508d8d0b02162022b41dab4a1de1faad0a999030f44",
+      "version": "1.0.0"
+    },
+    "synthesize_osint_top": {
+      "path": "synthesize_osint_top.py",
+      "hash": "c5863f169364e36a6ac6e494dd2c40c4a242ab73eb6980b7a7217835e5151eb3",
+      "version": "1.0.0"
+    },
+    "synth_agent": {
+      "path": "synth_agent.py",
+      "hash": "be817a99ed8d5245ff56094808b3e8afc6a4a8df7ca162423bd762dd98e7e0b2",
+      "version": "1.0.0"
+    },
+    "synth_design": {
+      "path": "synth_design.py",
+      "hash": "88dae9309868189b9d98bf73a5dfd9e2bf7b94fc3b857f788d9e3328f79dcd26",
+      "version": "1.0.0"
+    },
+    "synth_designer": {
+      "path": "synth_designer.py",
+      "hash": "b11affdbbe009cdba537892d35bed434c9bd141b53182ed5643680d620ce3385",
+      "version": "1.0.0"
+    },
+    "synth_engine_v3": {
+      "path": "synth_engine_v3.py",
+      "hash": "1a17f7988af2923f282913797f47a85250a23df1f27857f403a82da88943e5ba",
+      "version": "1.0.0"
+    },
+    "synth_extra": {
+      "path": "synth_extra.py",
+      "hash": "ea6b4ec13517d3acf3ab5a94a6cf968bad4e733c0cf04b728e89a54181fe8020",
+      "version": "1.0.0"
+    },
+    "synth_patrol": {
+      "path": "synth_patrol.py",
+      "hash": "92ceda69b2523de18d5529916929e1d76f97fc424dbea17f04f863c4c5d027a8",
+      "version": "1.0.0"
+    },
+    "synth_presenter_pro": {
+      "path": "synth_presenter_pro.py",
+      "hash": "ac8f561cec249bb466d09f40f7bbf61127720ea22cb72d622d08198b756a225e",
+      "version": "1.0.0"
+    },
+    "synth_protocol_v2": {
+      "path": "synth_protocol_v2.py",
+      "hash": "c979c12a713b1e97a68ad97572595275cae3d575902a914c68821972e6ea9c85",
+      "version": "1.0.0"
+    },
+    "synth_sys_design": {
+      "path": "synth_sys_design.py",
+      "hash": "a789d2daa5c21ab08dbbcf56ba4196cac3d565a1de8f3aec9394b44f7663e57b",
+      "version": "1.0.0"
+    },
+    "synth_three": {
+      "path": "synth_three.py",
+      "hash": "750f6e8886bd889bd1a517264b9c1174c5a385cfd936382c953632e52e49d1c9",
+      "version": "1.0.0"
+    },
+    "synth_three_more": {
+      "path": "synth_three_more.py",
+      "hash": "2832c519f9cd2b6c7f5d95ca3e3a2d65d29effd4d57fb2cba8a62f4e48c17cf5",
+      "version": "1.0.0"
+    },
+    "synth_uav": {
+      "path": "synth_uav.py",
+      "hash": "24206f50678c76a47757591c7c937af819b56c1266f38dfc1be51cf2ca0b7f9a",
+      "version": "1.0.0"
+    },
+    "HYBRID_ALGS4_x_LORA_synthesized_agent": {
+      "path": "DNA_12_AST_RENDER/HYBRID_ALGS4_x_LORA_synthesized_agent.py",
+      "hash": "98fb0440db94ba8d9620d4a2cab76fd581771f11cd1390142a24e69a9e9dfeae",
+      "version": "1.0.0"
+    },
+    "HYBRID_ELEVATION_MAPPING_x_LORA_synthesized_agent": {
+      "path": "DNA_12_AST_RENDER/HYBRID_ELEVATION_MAPPING_x_LORA_synthesized_agent.py",
+      "hash": "a13e8891efbfe15655ecbc7902ad78e269c1f9f39e192b62f701349c9517c498",
+      "version": "1.0.0"
+    },
+    "HYBRID_LUNA_x_BULLET3_synthesized_agent": {
+      "path": "DNA_12_AST_RENDER/HYBRID_LUNA_x_BULLET3_synthesized_agent.py",
+      "hash": "d645e5c7f45612a55558154dceb2036552e37f31e4d76353465fbc2194c99ae4",
+      "version": "1.0.0"
+    },
+    "HYBRID_OBJECT_DETECTION_METRICS_x_LORA_synthesized_agent": {
+      "path": "DNA_12_AST_RENDER/HYBRID_OBJECT_DETECTION_METRICS_x_LORA_synthesized_agent.py",
+      "hash": "6c92b9c959a29a5ff9be1084b5ac3303036f23c67bb3a33fa09d2a1e33d73fdd",
+      "version": "1.0.0"
+    },
+    "NEXUS_HARVESTER": {
+      "path": "DNA_20_SPAWNER/memory/quarantine/NEXUS_HARVESTER.py",
+      "hash": "d8e11497db5d7ea626b4675b525275b322157e4aed8cbbe8430ced5d9cc930ec",
+      "version": "1.0.0"
+    },
+    "OSINT_AUDITOR_X": {
+      "path": "DNA_20_SPAWNER/agents/gen_1/OSINT_AUDITOR_X.py",
+      "hash": "9609dad3dc4e627feb40a6f0983e658d9b1c283cf34e170897be5725d5a0a618",
+      "version": "1.0.0"
+    },
+    "THREAT_STALKER_V1": {
+      "path": "DNA_20_SPAWNER/agents/gen_2/THREAT_STALKER_V1.py",
+      "hash": "b5d20905f39429d9c714e42cd7beb785e7625618ff9d0a2ae670b31826e3bff4",
+      "version": "1.0.0"
+    },
+    "evaluator": {
+      "path": "DNA_20_SPAWNER/engine/evaluator.py",
+      "hash": "d7df33cd8e328b162001e352623682e34a5b0c12741d94915ed19e5eeec05fcc",
+      "version": "1.0.0"
+    },
+    "mutator": {
+      "path": "DNA_20_SPAWNER/engine/mutator.py",
+      "hash": "b9370c05559b640e7a88dc62c59f9e27693fce6b56f0bf97cdf16be7b5a7811d",
+      "version": "1.0.0"
+    },
+    "run": {
+      "path": "DNA_20_SPAWNER/engine/run.py",
+      "hash": "5aa5119a751d541b011a475ba401d910c21341dd4a02d8815f10b32b485b8c86",
+      "version": "1.0.0"
+    },
+    "spawner": {
+      "path": "DNA_20_SPAWNER/engine/spawner.py",
+      "hash": "5b1d54d6e9529df3813163bb304e548792061fb58b8776c995bd28922de18e5a",
+      "version": "1.0.0"
+    },
+    "synthesis_guard": {
+      "path": "DNA_20_SPAWNER/engine/synthesis_guard.py",
+      "hash": "bd4df2d720254f611ac386ac0b1b45122f0eda5a2d3892f24fae1e3ef13d2734",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_2026-AI-COLLEGE-JOBS_x_NLP_synthesized_agent": {
+      "path": "DNA_AI_ML/01_HYBRID_2026-AI-COLLEGE-JOBS_x_NLP_synthesized_agent.py",
+      "hash": "62bd4a72321f66bc5bb662cfc8fb4ccb84d241b597b6357f8f161bb68612b649",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_ABRACADABRA_x_FREEDOMAIN_synthesized_agent": {
+      "path": "DNA_AI_ML/02_HYBRID_ABRACADABRA_x_FREEDOMAIN_synthesized_agent.py",
+      "hash": "c6d650d0216e6d9ff1e5da5ee8bcb57ef41c58274012e93b21761e667e0482cd",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_ACT_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_AI_ML/03_HYBRID_ACT_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "8d4386aea5a26d2ea90d2f0cbfd9172b3e7856f075549e812009826edcc1db09",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_AIF360_x_AEGIS_synthesized_agent": {
+      "path": "DNA_AI_ML/04_HYBRID_AIF360_x_AEGIS_synthesized_agent.py",
+      "hash": "238d74267cc157c2ddedf09097f287df91341cf463154cb4b73f6109068b15d2",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_AMARANTH_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_AI_ML/05_HYBRID_AMARANTH_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "ead02db67205f690b28df906dec65b9ae42215630e18cfedac25f8aa6a568a6c",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_BULLET3_x_STANFORD_CS_229_MACHINE_LEARNING_synthesized_agent": {
+      "path": "DNA_AI_ML/06_HYBRID_BULLET3_x_STANFORD_CS_229_MACHINE_LEARNING_synthesized_agent.py",
+      "hash": "fbf83af61656f830513a36c7deafa6a6c522f63d864e74163ccd4e679753b6a9",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_CIPHEY_x_STANFORD_CS_230_DEEP_LEARNING_synthesized_agent": {
+      "path": "DNA_AI_ML/07_HYBRID_CIPHEY_x_STANFORD_CS_230_DEEP_LEARNING_synthesized_agent.py",
+      "hash": "7c3a4e0241fbff95f44c749653702383e7ab373c0e0ed86c2e0a781a542c4172",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_AI_ML/08_HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "330815c832503654233bb6e3b95c091dd79407afec151715ba9014fb29267638",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_ELKJS_x_AILAB_synthesized_agent": {
+      "path": "DNA_AI_ML/09_HYBRID_ELKJS_x_AILAB_synthesized_agent.py",
+      "hash": "e1338474e9e206c2f1722f8f0fca29fd63f4de4120ea840dfcf74db2c1019264",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_FAST_LIVO_x_PYTORCH_synthesized_agent": {
+      "path": "DNA_AI_ML/10_HYBRID_FAST_LIVO_x_PYTORCH_synthesized_agent.py",
+      "hash": "eb9be5af0394befa5effdc5ed62548484cac2d91365fd36ef2f49a87b6d2c346",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_HERMES_x_MATHCODE_synthesized_agent": {
+      "path": "DNA_AI_ML/11_HYBRID_HERMES_x_MATHCODE_synthesized_agent.py",
+      "hash": "4f586b13d04154b0168462986ddbcf0d31719654f9c1f107acf3cd3d814ce837",
+      "version": "1.0.0"
+    },
+    "12_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_AI_ML/12_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "93f10fba52fb099253aabe86f882a2b3797466dfebd884e6a1a844890779b840",
+      "version": "1.0.0"
+    },
+    "13_HYBRID_KERAS_x_HYBRID_2026-AI-COLLEGE-JOBS_x_NLP_synthesized_agent": {
+      "path": "DNA_AI_ML/13_HYBRID_KERAS_x_HYBRID_2026-AI-COLLEGE-JOBS_x_NLP_synthesized_agent.py",
+      "hash": "1a4fbf885ffd29f2e776b2dea441720388068ef98c68c832220ab414e1d80181",
+      "version": "1.0.0"
+    },
+    "14_HYBRID_LAGO_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_AI_ML/14_HYBRID_LAGO_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "5dc69514fefdfdc25b93d3a0ea60d4dae434d3c8eb2350fa4dd70859682b7a18",
+      "version": "1.0.0"
+    },
+    "15_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent": {
+      "path": "DNA_AI_ML/15_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent.py",
+      "hash": "0ee0afdca6f79ac085f7278dbcfc1e5323bd6b8d0e652ac6c8c3cbbafdb5955f",
+      "version": "1.0.0"
+    },
+    "16_HYBRID_MACHINE_LEARNING_WITH_PYTHON_x_DETECTRON_synthesized_agent": {
+      "path": "DNA_AI_ML/16_HYBRID_MACHINE_LEARNING_WITH_PYTHON_x_DETECTRON_synthesized_agent.py",
+      "hash": "54135e16581c94c8e8ec582cf899a1cb2125281751f544401e24e45ec691628a",
+      "version": "1.0.0"
+    },
+    "17_HYBRID_NEURAL_STYLE_x_PYTHON_MACHINE_LEARNING_BOOK_synthesized_agent": {
+      "path": "DNA_AI_ML/17_HYBRID_NEURAL_STYLE_x_PYTHON_MACHINE_LEARNING_BOOK_synthesized_agent.py",
+      "hash": "b6e5503e0ed407ac92c36b4ebc54849b778471ca8045c50eac0af53f0f9ea66a",
+      "version": "1.0.0"
+    },
+    "18_HYBRID_PYTHON_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_AI_ML/18_HYBRID_PYTHON_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "26a5844e48d05da1327de4cd3e2c1d0e7fc838ac86c08a9315acfb08debf31d7",
+      "version": "1.0.0"
+    },
+    "19_HYBRID_PYTORCH_x_LOCAL_DEEP_RESEARCH_synthesized_agent": {
+      "path": "DNA_AI_ML/19_HYBRID_PYTORCH_x_LOCAL_DEEP_RESEARCH_synthesized_agent.py",
+      "hash": "fd95cab2c269fc003750b2388160f1699fa9455b877e08ce985cccb6d5d46e65",
+      "version": "1.0.0"
+    },
+    "20_HYBRID_RUST_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_AI_ML/20_HYBRID_RUST_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "b8f2680548129388787474ecd8564c980ed8d26d8ed702bf4204c997f559588d",
+      "version": "1.0.0"
+    },
+    "21_HYBRID_SPIFFS_x_ML_FROM_SCRATCH_synthesized_agent": {
+      "path": "DNA_AI_ML/21_HYBRID_SPIFFS_x_ML_FROM_SCRATCH_synthesized_agent.py",
+      "hash": "af4654df35920949bfd8058344894ab89e873867f05cfebc31bfa824d4192978",
+      "version": "1.0.0"
+    },
+    "22_VISION_TO_PROMPT_synthesized_agent": {
+      "path": "DNA_AI_ML/22_VISION_TO_PROMPT_synthesized_agent.py",
+      "hash": "75a517ff044dae189e2aadb0547b5da55b8472c32e0002d36656a04d0034597b",
+      "version": "1.0.0"
+    },
+    "23_LLM_PROMPT_INJECTION_TESTER_synthesized_agent": {
+      "path": "DNA_AI_ML/23_LLM_PROMPT_INJECTION_TESTER_synthesized_agent.py",
+      "hash": "64af9eb978b6806043d7392ffcf82f0d75489d59d0186a27d35e422aadd709b1",
+      "version": "1.0.0"
+    },
+    "24_MODEL_DRIFT_MONITOR_synthesized_agent": {
+      "path": "DNA_AI_ML/24_MODEL_DRIFT_MONITOR_synthesized_agent.py",
+      "hash": "ab93187a2908e3c8c8d2596032e78478c89ede88480ed12f78229aebdfc3eaa1",
+      "version": "1.0.0"
+    },
+    "25_HF_MODEL_METADATA_SCRAPER_synthesized_agent": {
+      "path": "DNA_AI_ML/25_HF_MODEL_METADATA_SCRAPER_synthesized_agent.py",
+      "hash": "d4edc8a6a689a8279f7f3870a056e96cf4bd80dad0987afce060170420c6eb2d",
+      "version": "1.0.0"
+    },
+    "27_SYNTHETIC_DATA_GENERATOR_synthesized_agent": {
+      "path": "DNA_AI_ML/27_SYNTHETIC_DATA_GENERATOR_synthesized_agent.py",
+      "hash": "6203944abbc7ea130e3f7021464c3d80d302b6388cc400292e50a8168001af91",
+      "version": "1.0.0"
+    },
+    "28_AUTONOMOUS_HYPERPARAM_TUNER_synthesized_agent": {
+      "path": "DNA_AI_ML/28_AUTONOMOUS_HYPERPARAM_TUNER_synthesized_agent.py",
+      "hash": "d1ddaa5e08bf7040c2b8943baa57ca9405480f892ba4a789a753e0d87cd16e57",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/01_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "fbf82a554aab2c530b6e18937860478b8caefb82840c823bcaf5f14a1de641d8",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent": {
+      "path": "DNA_HARDWARE/02_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent.py",
+      "hash": "81aebcd43fd5e0efaa25140a6c1a122a2d303c73322178d10ce9dca98744f2f1",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_2026-AI-COLLEGE-JOBS_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/03_HYBRID_2026-AI-COLLEGE-JOBS_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "0d0ee1350ce3e584d77fe2f7effa80cfbd4d0aedbf8aaf0fe3574d162b4ae776",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_ALGS4_x_LIDAR_CAMERA_CALIBRATION_synthesized_agent": {
+      "path": "DNA_HARDWARE/04_HYBRID_ALGS4_x_LIDAR_CAMERA_CALIBRATION_synthesized_agent.py",
+      "hash": "6dbcd287553c85e1b8c92b88c4b91feca4e191c592b35a7ea80b1322fc11e72c",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_ALGS4_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/05_HYBRID_ALGS4_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "3446193a3c56232c0bd3a917fdb814a3959532be735bdd32223262030d13bf69",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HA-PROXY_synthesized_agent": {
+      "path": "DNA_HARDWARE/06_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HA-PROXY_synthesized_agent.py",
+      "hash": "16b2e0e782234576a4907664eb1eadfd1ba9d03f76d2f44a96fcd480227ad5f6",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent": {
+      "path": "DNA_HARDWARE/07_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent.py",
+      "hash": "93703e433e7ba8c95d657f39b8e2e29342ad2d2acbd82178d500235a049277ae",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/08_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "3752ca4de8c7855e04aaea213b4b38483679b84062690992ba148191b442dbb4",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/09_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "ab3c3dc6261bc120a4a1921721f96a15bb23643dbb338d74aad6a95770a71647",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_BEARER_x_XTDRONE_synthesized_agent": {
+      "path": "DNA_HARDWARE/10_HYBRID_BEARER_x_XTDRONE_synthesized_agent.py",
+      "hash": "75d819289303141999c982d88450666f44ebf8d625f88961f2c13a5a159d798d",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_BUCKET4J_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/11_HYBRID_BUCKET4J_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "10de0ae8ea622a6759b957e50bb40540ca5572d24f100b80416e19eed1d68312",
+      "version": "1.0.0"
+    },
+    "12_HYBRID_DEEP-LIVE-CAM_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/12_HYBRID_DEEP-LIVE-CAM_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "b852a85a31e485247b80c8ee22a43dfb62cef734ccee84715fd78f7c0e64a8b4",
+      "version": "1.0.0"
+    },
+    "13_HYBRID_ESP32_DIV_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/13_HYBRID_ESP32_DIV_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "2ba353be8e785bd15b22410a13044e1cbe9587ecccc6837cedc1373cc12bb07a",
+      "version": "1.0.0"
+    },
+    "14_HYBRID_FAST_LIVO_x_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_HARDWARE/14_HYBRID_FAST_LIVO_x_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "ad4182ee01a3f05dd15cea53dba574e5dabbfbf8f34771da81de13522bd03959",
+      "version": "1.0.0"
+    },
+    "15_HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/15_HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "2af48c2093caf2bf640108c447da14243b02bc1294dff3b6e7bca9c76a4c07a9",
+      "version": "1.0.0"
+    },
+    "16_HYBRID_FAST_LIVO_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/16_HYBRID_FAST_LIVO_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "e9363da56e010ea46cf2f09bfb702d7a9ff8a44815f661e53bb992b45faa6e6e",
+      "version": "1.0.0"
+    },
+    "17_HYBRID_HYBRID_WIREGUARD_FPGA_x_AGENIX_x_PROXYCAT_synthesized_agent": {
+      "path": "DNA_HARDWARE/17_HYBRID_HYBRID_WIREGUARD_FPGA_x_AGENIX_x_PROXYCAT_synthesized_agent.py",
+      "hash": "eaa97905e223af08aac863b0844250b2d6a1a152fbacc64a5f1a3dbc7c6a07c8",
+      "version": "1.0.0"
+    },
+    "18_HYBRID_INFRASTRUCTURE_x_HYBRID_ALGS4_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/18_HYBRID_INFRASTRUCTURE_x_HYBRID_ALGS4_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "c251946c20a5531edbcdf753bed4bf71953d436fcd0cc16c584d8c934fd46ded",
+      "version": "1.0.0"
+    },
+    "19_HYBRID_INFRASTRUCTURE_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/19_HYBRID_INFRASTRUCTURE_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "802545c73d2209e398a184e7fb73901bef4bfa3dae60d7a65a026c5c26f5dbd8",
+      "version": "1.0.0"
+    },
+    "20_HYBRID_KERAS_x_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent": {
+      "path": "DNA_HARDWARE/20_HYBRID_KERAS_x_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent.py",
+      "hash": "714df6b37d33050b00887f20feabb0b5112ef17faf7484304ebc976973857e9e",
+      "version": "1.0.0"
+    },
+    "21_HYBRID_MEM0_x_ESP32_synthesized_agent": {
+      "path": "DNA_HARDWARE/21_HYBRID_MEM0_x_ESP32_synthesized_agent.py",
+      "hash": "8406e644cbf250414e8ccf5b17c31d80d6f454a6f7983a4370ae9bdd2d45dd7a",
+      "version": "1.0.0"
+    },
+    "22_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent": {
+      "path": "DNA_HARDWARE/22_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_MACHINE_LEARNING_EXAMPLES_x_SPARK_synthesized_agent.py",
+      "hash": "73f2ac6eb7b93d6c1a1c2af1d3e35810a0f937b41703a411ad8cf8dc8c38ad28",
+      "version": "1.0.0"
+    },
+    "23_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_HARDWARE/23_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "32303aed8f05caac74d9ec9b622c2c8ebe1a09f8f0d6b6dc054f2b0787b5905d",
+      "version": "1.0.0"
+    },
+    "24_HYBRID_OHMYZSH_x_HYBRID_2026-AI-COLLEGE-JOBS_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/24_HYBRID_OHMYZSH_x_HYBRID_2026-AI-COLLEGE-JOBS_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "427c50a82c966bbaa9d797897541bafb6986ec146f36e135991f7010b279dbe3",
+      "version": "1.0.0"
+    },
+    "25_HYBRID_OPEN_DRONELOG_x_BEARER_synthesized_agent": {
+      "path": "DNA_HARDWARE/25_HYBRID_OPEN_DRONELOG_x_BEARER_synthesized_agent.py",
+      "hash": "4e679128090cd881d7cecd46a141069acab5acc0737e680be547123fc6c27adc",
+      "version": "1.0.0"
+    },
+    "26_HYBRID_RUSTSCAN_x_ESP32_synthesized_agent": {
+      "path": "DNA_HARDWARE/26_HYBRID_RUSTSCAN_x_ESP32_synthesized_agent.py",
+      "hash": "d02eb6afe651b943d12f7c77cd5557e35be117656e3f75035a3e802725eb22ee",
+      "version": "1.0.0"
+    },
+    "27_HYBRID_TYPESCRIPT_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_HARDWARE/27_HYBRID_TYPESCRIPT_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "1522700411e482e42b58d054e1a5fad48556b8a7b1f266bb49287ddd7be5213b",
+      "version": "1.0.0"
+    },
+    "28_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/28_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "c7cf2151f30cd46f628e5be06c10b456f1929a59275ccbdd0cdc47e5563298f5",
+      "version": "1.0.0"
+    },
+    "29_HYBRID_WIREGUARD_FPGA_x_AGENIX_synthesized_agent": {
+      "path": "DNA_HARDWARE/29_HYBRID_WIREGUARD_FPGA_x_AGENIX_synthesized_agent.py",
+      "hash": "433888607a707a4d6678f8410957c551cfe46a08fa81d3342de61b37369cf557",
+      "version": "1.0.0"
+    },
+    "30_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_HARDWARE/30_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "4acbd9bd5cf1ab639e5bbe9adaf5f1dd084aadf39eb013ee9a9e3857334d93a5",
+      "version": "1.0.0"
+    },
+    "31_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent": {
+      "path": "DNA_HARDWARE/31_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent.py",
+      "hash": "3db7a7883af5b3de28b4fa7f997ed54f9f6acf4d3321a9ce4ee3b5d035dd35a4",
+      "version": "1.0.0"
+    },
+    "32_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_HARDWARE/32_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "2ecb4eac6d61581b7e004b3551f6d7e2b20fee8dfb2db2f9c4591bebd5b6faa2",
+      "version": "1.0.0"
+    },
+    "33_HYBRID_WIREGUARD_FPGA_x_ROS_ACADEMY_FOR_BEGINNERS_synthesized_agent": {
+      "path": "DNA_HARDWARE/33_HYBRID_WIREGUARD_FPGA_x_ROS_ACADEMY_FOR_BEGINNERS_synthesized_agent.py",
+      "hash": "f75f6a462733c1c93b2dc08548c21424a6b65c65bd99064b40e57b43f1605d2c",
+      "version": "1.0.0"
+    },
+    "34_NEXUS_UAV_AUTOPILOT_synthesized_agent": {
+      "path": "DNA_HARDWARE/34_NEXUS_UAV_AUTOPILOT_synthesized_agent.py",
+      "hash": "346e8d8caf676a708fa03ba265b8a4b5b553620cdd389a4f268bb43540efee32",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_AIRFLOW_x_ALLUXIO_synthesized_agent": {
+      "path": "DNA_INFRA/01_HYBRID_AIRFLOW_x_ALLUXIO_synthesized_agent.py",
+      "hash": "b533b49b6c69a8de4b9c58d8d96be2c300fa8348244c4116c0584c1b0d939a65",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_ALLUXIO_x_AUTOAWQ_synthesized_agent": {
+      "path": "DNA_INFRA/02_HYBRID_ALLUXIO_x_AUTOAWQ_synthesized_agent.py",
+      "hash": "11c0f62f30874c390662cfac957214539db9ab588f9f067ac9124734732a4f96",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_AUTOGLUON_x_ALLUXIO_synthesized_agent": {
+      "path": "DNA_INFRA/03_HYBRID_AUTOGLUON_x_ALLUXIO_synthesized_agent.py",
+      "hash": "e3def31cf8a68b8c99a191a1aa0020ed42f0bfa46524e7d6d89d1151d495afe0",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_DOTENV_x_VAULTWARDEN_synthesized_agent": {
+      "path": "DNA_INFRA/04_HYBRID_DOTENV_x_VAULTWARDEN_synthesized_agent.py",
+      "hash": "9a0ffb039cd3e1cb54018fd5c5f94dfd9c854a0aa57b40a833cf0fa0070d30ec",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_FLOWISE_x_BUCKET4J_synthesized_agent": {
+      "path": "DNA_INFRA/05_HYBRID_FLOWISE_x_BUCKET4J_synthesized_agent.py",
+      "hash": "8b394f0cf40bc5f6fccb12de46873d198b2ccf6098bbad13f8c81d85778a3c39",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_GRAFANA_x_ANOMALIB_synthesized_agent": {
+      "path": "DNA_INFRA/06_HYBRID_GRAFANA_x_ANOMALIB_synthesized_agent.py",
+      "hash": "1ffbdaad439847272bee29a618c792217224a89db97a1d2194f78ae03c8f17e3",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HA-PROXY_synthesized_agent": {
+      "path": "DNA_INFRA/07_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HA-PROXY_synthesized_agent.py",
+      "hash": "4288fc30374db856e3f18571c941b4582bdf273df9a3291f2ab6774513e55a9a",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_LINUX_synthesized_agent": {
+      "path": "DNA_INFRA/08_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_LINUX_synthesized_agent.py",
+      "hash": "f14067ef8c3820b3349f95c163c7e17f35bcfdb31aa7e9d1f3bd5d6f97c2ce93",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_FRP_synthesized_agent": {
+      "path": "DNA_INFRA/09_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_FRP_synthesized_agent.py",
+      "hash": "df2c382e3a9554fc23c27ed0281d7b2838cb6abcd9da21f2ec54c31a9d415468",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_INFRASTRUCTURE_x_FRP_synthesized_agent": {
+      "path": "DNA_INFRA/10_HYBRID_INFRASTRUCTURE_x_FRP_synthesized_agent.py",
+      "hash": "189263aced8e5b85016a1a158e6e5854fab2bfe4307959addfdabf7ddea718c5",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_OHMYZSH_x_SPARK_synthesized_agent": {
+      "path": "DNA_INFRA/11_HYBRID_OHMYZSH_x_SPARK_synthesized_agent.py",
+      "hash": "cd7a79104d0a4e4954cee81b07469825434801d26fb34b557a7720e665e1f512",
+      "version": "1.0.0"
+    },
+    "12_NEXUS_INFRA_OVERSEER_synthesized_agent": {
+      "path": "DNA_INFRA/12_NEXUS_INFRA_OVERSEER_synthesized_agent.py",
+      "hash": "3dc43960bb1459fb14d0f3201ce3af0e3f5ae31ad8e1a190ac4c0e0f1d2d63e7",
+      "version": "1.0.0"
+    },
+    "13_NEXUS_SYSTEM_ARCHITECT_synthesized_agent": {
+      "path": "DNA_INFRA/13_NEXUS_SYSTEM_ARCHITECT_synthesized_agent.py",
+      "hash": "0b2dfc00038a34d1748543c2d2aaf243e7a7dc71bef52ff7f0c1ccd56bfb8bf9",
+      "version": "1.0.0"
+    },
+    "14_K8S_RBAC_AUDITOR_synthesized_agent": {
+      "path": "DNA_INFRA/14_K8S_RBAC_AUDITOR_synthesized_agent.py",
+      "hash": "b96d317231d6d1d94a4823daff01b19ec22cb65a3551250fe31dd308ead71b16",
+      "version": "1.0.0"
+    },
+    "15_DOCKER_CONTAINER_MONITOR_synthesized_agent": {
+      "path": "DNA_INFRA/15_DOCKER_CONTAINER_MONITOR_synthesized_agent.py",
+      "hash": "67b633a9d42fde5b5a4798ea6ae19b47e83ac3f551f738cccad87a7d0b407503",
+      "version": "1.0.0"
+    },
+    "16_SSL_CERT_EXPIRY_WATCHER_synthesized_agent": {
+      "path": "DNA_INFRA/16_SSL_CERT_EXPIRY_WATCHER_synthesized_agent.py",
+      "hash": "122ae28ac0b2a5e2c170e4fe822f3d5c2b2999817b9a34013d305137830411a7",
+      "version": "1.0.0"
+    },
+    "18_SSH_BRUTEFORCE_LOG_ANALYZER_synthesized_agent": {
+      "path": "DNA_INFRA/18_SSH_BRUTEFORCE_LOG_ANALYZER_synthesized_agent.py",
+      "hash": "d1ccf992e63d109ebed36ab9e920479a1ea49c101db77a41094d2626a4fd79bc",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_ALGS4_x_HYBRID_HYBRID_SPIFFS_x_SEAL_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/01_HYBRID_ALGS4_x_HYBRID_HYBRID_SPIFFS_x_SEAL_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "8596677d54f808cd93099af6456fe5ca91562d68f5b592fb2733ee155cdb9968",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/02_HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "85153dfae3d20ca1cf5a5230037d396d0d503dfdf6e08369a1e3d09932ffd1ca",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_APPINFOSCANNER_x_AKSHARE_synthesized_agent": {
+      "path": "DNA_OSINT/03_HYBRID_APPINFOSCANNER_x_AKSHARE_synthesized_agent.py",
+      "hash": "d69063f9b60102cd3240790cfd1b7303a1288b87e44d85b65c5377835bda0a5f",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_APPINFOSCANNER_x_SQLITE_synthesized_agent": {
+      "path": "DNA_OSINT/04_HYBRID_APPINFOSCANNER_x_SQLITE_synthesized_agent.py",
+      "hash": "fe8d5f2def1c0f5ecd66251400cb29e01009be26223cbf80ad35f494079a5725",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_AUTOGEN_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/05_HYBRID_AUTOGEN_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "b119db7139cb4cd5167e1791a0c3ff29fce21fd2becc858f6b141db1d625802f",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent": {
+      "path": "DNA_OSINT/06_HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+      "hash": "135602bacd597995450db374d0b300c01909492676a05c306332701c2e8e7981",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/07_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "e236ef2e5432e146556cbdd9c492f843d3a665924ac50fe90154d3190244fc85",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/08_HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT_synthesized_agent.py",
+      "hash": "ecc73b5fb0568d27dd5b235e5231d37e502c5476cd134152ca6021e3f9b1bdd4",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_CHIPSEC_x_LINUX_EXPLOIT_SUGGESTER_synthesized_agent": {
+      "path": "DNA_OSINT/09_HYBRID_CHIPSEC_x_LINUX_EXPLOIT_SUGGESTER_synthesized_agent.py",
+      "hash": "a8fe23df364d6c69f39470c515cdb49dab66f2e802f0a5431efddb037a62786e",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_CHRONOS-FORECASTING_x_CHIPSEC_synthesized_agent": {
+      "path": "DNA_OSINT/10_HYBRID_CHRONOS-FORECASTING_x_CHIPSEC_synthesized_agent.py",
+      "hash": "a29cab19900e6c40fe9aca1ff9eb26e37ae1514d34d7069791228d51f832ed21",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/11_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "f078ea949d7013f2bcbb3abceeefd6505e35074631fa14eb74de9ad78da63982",
+      "version": "1.0.0"
+    },
+    "12_HYBRID_CRAWL4AI_x_ANYTHING-LLM_synthesized_agent": {
+      "path": "DNA_OSINT/12_HYBRID_CRAWL4AI_x_ANYTHING-LLM_synthesized_agent.py",
+      "hash": "c7534f091f8b28f887ba337140fdb1fd551ea407c6596b6519bb94bcea6cee7e",
+      "version": "1.0.0"
+    },
+    "13_HYBRID_CRAWL4AI_x_METASPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/13_HYBRID_CRAWL4AI_x_METASPLOIT_synthesized_agent.py",
+      "hash": "d21894659733f553a9a3a9a3e05a61598e59e7f57398e85c87d548e03e4bc8d0",
+      "version": "1.0.0"
+    },
+    "14_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/14_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "f3ce952b625f2c9aadd1d7a9b473d678f8ecded16a7548410501db6c2911f89c",
+      "version": "1.0.0"
+    },
+    "15_HYBRID_ELEVATION_MAPPING_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/15_HYBRID_ELEVATION_MAPPING_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "f2e2b3ac6c35e72052cbabcd925979717ccb94bde0a58a31e978dd81dd2dd940",
+      "version": "1.0.0"
+    },
+    "16_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/16_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "dac76f9aefe8a463e0216c86187bc1ec225459ded76ea7ce168be0d73513fefb",
+      "version": "1.0.0"
+    },
+    "17_HYBRID_EXCELIZE_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/17_HYBRID_EXCELIZE_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "b03e55e9d671a6193eec8e42a48784a180d43fd1772b6b267ca49974a6f15853",
+      "version": "1.0.0"
+    },
+    "18_HYBRID_EXCELIZE_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/18_HYBRID_EXCELIZE_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "27b9ec35cc8289593d97c537a0a508f6f6bd17f0aee43ca12951b3850251467e",
+      "version": "1.0.0"
+    },
+    "19_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/19_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "0a1869c243c32b950bd50085784a1dff0813c0eb62cc8a2bcb578fe53446eb58",
+      "version": "1.0.0"
+    },
+    "20_HYBRID_FAST_LIVO_x_HYBRID_RQALPHA_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/20_HYBRID_FAST_LIVO_x_HYBRID_RQALPHA_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "75357b527a6ccc2c17aef366219ac11a4415990f7cec42e311cffec588ebd9c6",
+      "version": "1.0.0"
+    },
+    "21_HYBRID_FUEL_CORE_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/21_HYBRID_FUEL_CORE_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "a1e335364240e22a29581114c4fdb96d416f5cbe1a43931482e66ac48d2e9039",
+      "version": "1.0.0"
+    },
+    "22_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/22_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "0e7c45128234e877e6e8f524b55cb771a70d5655a5a9b5ebe81b4a347cfd5b3d",
+      "version": "1.0.0"
+    },
+    "23_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_FUEL_CORE_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/23_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_FUEL_CORE_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "6f5c865fafade7fcbcd7e772215bcbb323d426a2332fcc7b9243ec7c4f2689ec",
+      "version": "1.0.0"
+    },
+    "24_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent": {
+      "path": "DNA_OSINT/24_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent.py",
+      "hash": "d4d33a1b886f32bfe83a9d17dba813b8ab0b7b43434b844021a6678dbca49135",
+      "version": "1.0.0"
+    },
+    "25_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_OSINT/25_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "31f20713b626489bec326a34dd919473246f9addfc40ed3c623dc527efa4fb0f",
+      "version": "1.0.0"
+    },
+    "26_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/26_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "8fb21d44f5af866948ef4d5593ff56ca1e3b596660b0828180f9a7716a1a0648",
+      "version": "1.0.0"
+    },
+    "27_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_FRP_synthesized_agent": {
+      "path": "DNA_OSINT/27_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_FRP_synthesized_agent.py",
+      "hash": "b6d3c3ee5c2888631c67269c4cbf78f2939c729a0325c279601749a843e61910",
+      "version": "1.0.0"
+    },
+    "28_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_INFRASTRUCTURE_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent": {
+      "path": "DNA_OSINT/28_HYBRID_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_x_HYBRID_INFRASTRUCTURE_x_HYBRID_BAREMETAL-OS-LEGACY_x_SLAM_BOOK_synthesized_agent.py",
+      "hash": "3e7fc25aee7d07a605ef8fb1767c1fd0a49de85823b67d53902ed7ce7ec6f9cd",
+      "version": "1.0.0"
+    },
+    "29_HYBRID_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_x_HYBRID_OHMYZSH_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/29_HYBRID_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_x_HYBRID_OHMYZSH_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "102f34b11369e7d86c9ee0cc76b04fbf21053f9b423365693e0f175ba88d4823",
+      "version": "1.0.0"
+    },
+    "30_HYBRID_HYBRID_SPIFFS_x_SEAL_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/30_HYBRID_HYBRID_SPIFFS_x_SEAL_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "1ae89e1c44a75afea586e5bbc890311ac5ec9d8b9295945d893fd90e8d8eb1fe",
+      "version": "1.0.0"
+    },
+    "31_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/31_HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "ba586fb515665d775292276e4460baa4ac74d79427170caca42bee56423c3376",
+      "version": "1.0.0"
+    },
+    "32_HYBRID_KERAS_x_HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/32_HYBRID_KERAS_x_HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT_synthesized_agent.py",
+      "hash": "feaf5881d8cd8517e091bc35dabbfd9ad6b0d5dac5c85eff03ea484ec026f9ee",
+      "version": "1.0.0"
+    },
+    "33_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/33_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "8cd6254f55c1853521d5ae94925e0e80c51a257548d10fc05d1d201f069a2a86",
+      "version": "1.0.0"
+    },
+    "34_HYBRID_LEETCODE_101_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/34_HYBRID_LEETCODE_101_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "7b17f3a2e83e7a6d3e6f35b31e4404c6893a5ba891d15bba267f1fef5143917e",
+      "version": "1.0.0"
+    },
+    "35_HYBRID_LEETCODE_101_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/35_HYBRID_LEETCODE_101_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "adebbd10f33566e99b5ae89c4a0d54ac622fea9decc93ea276e7cadd9cc843d2",
+      "version": "1.0.0"
+    },
+    "36_HYBRID_LINUX_EXPLOIT_SUGGESTER_x_ML_WORKSPACE_synthesized_agent": {
+      "path": "DNA_OSINT/36_HYBRID_LINUX_EXPLOIT_SUGGESTER_x_ML_WORKSPACE_synthesized_agent.py",
+      "hash": "a6bdacd4b9003ab765119b052ac6641290b875f69f5ad0eb10fa411f7017d2da",
+      "version": "1.0.0"
+    },
+    "37_HYBRID_MACHINE_LEARNING_FOR_TRADING_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/37_HYBRID_MACHINE_LEARNING_FOR_TRADING_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "97f46384ffadeb644306180c7b5ff4d630d5d0ece63d5165b7b62c9859cd63e9",
+      "version": "1.0.0"
+    },
+    "38_HYBRID_NESA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/38_HYBRID_NESA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "99e79515f3ad93a9b769d8db738b32ac64916efc9e48f7f586be679dd36fde39",
+      "version": "1.0.0"
+    },
+    "39_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_LEETCODE_101_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/39_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_LEETCODE_101_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "64356ed6f4b7aa9f90b9f60756e580e7450a4edb5e1a89de929dd7b9570191a5",
+      "version": "1.0.0"
+    },
+    "40_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_RAPIDSCAN_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/40_HYBRID_OBJECT_DETECTION_METRICS_x_HYBRID_RAPIDSCAN_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "b40eadbe3045aa400eced7e2f902e4f6b56d711d0966f06402e0844d140a50ed",
+      "version": "1.0.0"
+    },
+    "41_HYBRID_OHMYZSH_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/41_HYBRID_OHMYZSH_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "e5c7e4ac9636a9e74cd21d6701112ef480b38a1a2263e027acb616293759bdb4",
+      "version": "1.0.0"
+    },
+    "42_HYBRID_OHMYZSH_x_HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/42_HYBRID_OHMYZSH_x_HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "8eec49345a55f5d4986d69a2bd3801d0f75f30f297c20a410ff95b5a982fa220",
+      "version": "1.0.0"
+    },
+    "43_HYBRID_OHMYZSH_x_HYBRID_NESA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/43_HYBRID_OHMYZSH_x_HYBRID_NESA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "3467257bbe07986ef822fbea5636a5ad7da15329165d5e5b0d3241880ae00c64",
+      "version": "1.0.0"
+    },
+    "44_HYBRID_PICOCRYPT_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/44_HYBRID_PICOCRYPT_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "8062d30bbc447cd3e2a38c0da4a89357bf98c783f135180abb41d12ca6af0057",
+      "version": "1.0.0"
+    },
+    "45_HYBRID_PRIVATEBIN_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/45_HYBRID_PRIVATEBIN_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "542d98b8b05f230e73c7755cb23df729654a6e94ba3578669512ff5d34b52e97",
+      "version": "1.0.0"
+    },
+    "46_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/46_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "3006cd90af356c131e48b4ae24b175a3af1c8fab1ea906c502e6ddcbf3866c9d",
+      "version": "1.0.0"
+    },
+    "47_HYBRID_RAPIDSCAN_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/47_HYBRID_RAPIDSCAN_x_HYBRID_CIPHEY_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "505d7f49ae61410338c71aa3f8d3bf2104855d3c94fbba5e56f9e54f69134c01",
+      "version": "1.0.0"
+    },
+    "48_HYBRID_RAPIDSCAN_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/48_HYBRID_RAPIDSCAN_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "808d0d4c06c91990349d4c2861ba88d9229e977888761f9415ccd4264a5f7f7e",
+      "version": "1.0.0"
+    },
+    "49_HYBRID_RIO_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/49_HYBRID_RIO_x_HYBRID_BAREMETAL-OS-LEGACY_x_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "1331d6ea5c306388dd82d8f6404cd07c7c9b3cbee11a85fd1d8a5750ce69a97d",
+      "version": "1.0.0"
+    },
+    "50_HYBRID_RQALPHA_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/50_HYBRID_RQALPHA_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "26cd9f9d5fd6500e907fa4fcc9095647c4c86afd4d90b73392dd1d3a2635fc8b",
+      "version": "1.0.0"
+    },
+    "51_HYBRID_RQALPHA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/51_HYBRID_RQALPHA_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "49dbc5e2108bea3c652755a13d434e8495c51802ca623b6685c67082ce30036a",
+      "version": "1.0.0"
+    },
+    "52_HYBRID_STATSMODELS_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/52_HYBRID_STATSMODELS_x_HYBRID_DOCLING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "f932f3e148b770f781c65a437e9d71facb87b00327c14b0d432e24b3fe9d49f7",
+      "version": "1.0.0"
+    },
+    "53_HYBRID_TABLESAW_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/53_HYBRID_TABLESAW_x_HYBRID_ELEVATION_MAPPING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "fb733a0ae23d7cae53f97a58ab3b59d6e520535fe7cb94d4ec063aa15e470bdd",
+      "version": "1.0.0"
+    },
+    "54_HYBRID_TAILWIND_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent": {
+      "path": "DNA_OSINT/54_HYBRID_TAILWIND_x_HYBRID_EXPRESS_x_AUTOSPLOIT_synthesized_agent.py",
+      "hash": "32c951d5a20609c83cb859329cc16d5fd921858508cdd78d50ccc5053adfbeed",
+      "version": "1.0.0"
+    },
+    "55_NEXUS_FIRMWARE_AUDITOR_synthesized_agent": {
+      "path": "DNA_OSINT/55_NEXUS_FIRMWARE_AUDITOR_synthesized_agent.py",
+      "hash": "faa7ea511b21199c38e627a507d18ab501b817ddf4265f63a296e6903c562dc4",
+      "version": "1.0.0"
+    },
+    "56_NEXUS_GODEYE_ORACLE_synthesized_agent": {
+      "path": "DNA_OSINT/56_NEXUS_GODEYE_ORACLE_synthesized_agent.py",
+      "hash": "94202b763457c5faeacf7a43a29162183cdab2013fba166e2ae8eec6eef07cf6",
+      "version": "1.0.0"
+    },
+    "57_NEXUS_HARDWARE_AUDITOR_synthesized_agent": {
+      "path": "DNA_OSINT/57_NEXUS_HARDWARE_AUDITOR_synthesized_agent.py",
+      "hash": "61f391382d286a74338051c4690236677bf5e51758f3338a5b0f12a58ac908bc",
+      "version": "1.0.0"
+    },
+    "58_NEXUS_THREAT_REPORTER_synthesized_agent": {
+      "path": "DNA_OSINT/58_NEXUS_THREAT_REPORTER_synthesized_agent.py",
+      "hash": "f75670a23edc38db9cb7b1da2881f33c28e07967c2b38f0ab01c371b4a22bcdd",
+      "version": "1.0.0"
+    },
+    "60_DNS_ENUMERATOR_synthesized_agent": {
+      "path": "DNA_OSINT/60_DNS_ENUMERATOR_synthesized_agent.py",
+      "hash": "1137879c2a5bd3626a29d96d8e489a2d8b16cdc1774cb7c23055be793ba79d0a",
+      "version": "1.0.0"
+    },
+    "61_SUBDOMAIN_DISCOVERY_synthesized_agent": {
+      "path": "DNA_OSINT/61_SUBDOMAIN_DISCOVERY_synthesized_agent.py",
+      "hash": "8a63f48bfc6e5ad89c8c578fceb4718cbc72dcbdebdc0f83a7acaf88daa5175c",
+      "version": "1.0.0"
+    },
+    "62_DARKWEB_MARKET_MONITOR_synthesized_agent": {
+      "path": "DNA_OSINT/62_DARKWEB_MARKET_MONITOR_synthesized_agent.py",
+      "hash": "79f1c3caaa37f50d6dcd81e9be2014e39a122290395d8636c2f51a0777f170d2",
+      "version": "1.0.0"
+    },
+    "63_SOCIAL_GRAPH_ANALYZER_synthesized_agent": {
+      "path": "DNA_OSINT/63_SOCIAL_GRAPH_ANALYZER_synthesized_agent.py",
+      "hash": "fadfc99eb54183357b5cdd20501c09636dc159cb9e14549dfd0613e544678c27",
+      "version": "1.0.0"
+    },
+    "64_LEAKED_CREDENTIAL_SCANNER_synthesized_agent": {
+      "path": "DNA_OSINT/64_LEAKED_CREDENTIAL_SCANNER_synthesized_agent.py",
+      "hash": "f7af0a403e9a2d2b6768a80ab82c21fe0ebc3a2ab1cd1bab8f89478c00a83ce2",
+      "version": "1.0.0"
+    },
+    "65_IP_REPUTATION_CHECKER_synthesized_agent": {
+      "path": "DNA_OSINT/65_IP_REPUTATION_CHECKER_synthesized_agent.py",
+      "hash": "2d28ee6208df644b579e5b94a6cd42d3ec3197c6badfecc57cf3b5d8acb4681f",
+      "version": "1.0.0"
+    },
+    "66_CERTIFICATE_TRANSPARENCY_synthesized_agent": {
+      "path": "DNA_OSINT/66_CERTIFICATE_TRANSPARENCY_synthesized_agent.py",
+      "hash": "28ef2de090c465a85926232de03fbfde161f619cde429f80ea9bfb71565d9648",
+      "version": "1.0.0"
+    },
+    "67_WHOIS_MONITOR_synthesized_agent": {
+      "path": "DNA_OSINT/67_WHOIS_MONITOR_synthesized_agent.py",
+      "hash": "3b76ebae1b0696f26cd4be0c86324cf6aeb91d7671d609d8cb7915c26f139224",
+      "version": "1.0.0"
+    },
+    "68_BGP_ROUTE_ANALYZER_synthesized_agent": {
+      "path": "DNA_OSINT/68_BGP_ROUTE_ANALYZER_synthesized_agent.py",
+      "hash": "8a4ec02670aabe706ff12a21fb8c5c59dbcfdc1210446a8509c8dc97a24e31d2",
+      "version": "1.0.0"
+    },
+    "69_METADATA_EXTRACTOR_synthesized_agent": {
+      "path": "DNA_OSINT/69_METADATA_EXTRACTOR_synthesized_agent.py",
+      "hash": "560a2a0fd24485630152a548c6fe79cdd18e2c9585fa0b8b11f1f54738d468c5",
+      "version": "1.0.0"
+    },
+    "70_SHODAN_DEVICE_SCANNER_synthesized_agent": {
+      "path": "DNA_OSINT/70_SHODAN_DEVICE_SCANNER_synthesized_agent.py",
+      "hash": "00b8a8f65674eb9d62689fa6653fc82fa1d51a8b897efd21a1153b5187481385",
+      "version": "1.0.0"
+    },
+    "71_GITHUB_SECRET_SCANNER_synthesized_agent": {
+      "path": "DNA_OSINT/71_GITHUB_SECRET_SCANNER_synthesized_agent.py",
+      "hash": "fb438e618c6f2aec313e25ac61e2a2118cf0e5b346d2c30d2c7c038c5a98df96",
+      "version": "1.0.0"
+    },
+    "72_PASTEBIN_INTEL_MONITOR_synthesized_agent": {
+      "path": "DNA_OSINT/72_PASTEBIN_INTEL_MONITOR_synthesized_agent.py",
+      "hash": "aa39c40a142b6bec1d20ef8d25127a33ee82b868a7544bead762e53cc9dcded0",
+      "version": "1.0.0"
+    },
+    "73_THREAT_INTEL_FEED_synthesized_agent": {
+      "path": "DNA_OSINT/73_THREAT_INTEL_FEED_synthesized_agent.py",
+      "hash": "08a6f9a0985919123245dbe5aba9c0a8117937b0330b1a9588415a8595a19fc0",
+      "version": "1.0.0"
+    },
+    "74_EMAIL_REPUTATION_PROFILER_synthesized_agent": {
+      "path": "DNA_OSINT/74_EMAIL_REPUTATION_PROFILER_synthesized_agent.py",
+      "hash": "d560a03b7174494be7b94b8bfb1db69402f60d3d8cf41a5062855ab0ba13531c",
+      "version": "1.0.0"
+    },
+    "75_TECHNOLOGY_PROFILER_synthesized_agent": {
+      "path": "DNA_OSINT/75_TECHNOLOGY_PROFILER_synthesized_agent.py",
+      "hash": "4d0f85d47cfc6b4cca1c755a06676430d46e9e326ffdef7ff6273f51aeb297f4",
+      "version": "1.0.0"
+    },
+    "76_DNS_HISTORY_TRACKER_synthesized_agent": {
+      "path": "DNA_OSINT/76_DNS_HISTORY_TRACKER_synthesized_agent.py",
+      "hash": "f9c0fe841d5af21977ef3e704926b33c7dbad1948fe56d2cfdcc8207c4e18574",
+      "version": "1.0.0"
+    },
+    "77_ASN_OWNERSHIP_MAPPER_synthesized_agent": {
+      "path": "DNA_OSINT/77_ASN_OWNERSHIP_MAPPER_synthesized_agent.py",
+      "hash": "34e8a124e86363efdfc830505e108054ed829abf64c6ea4f4232ca0f540c6aa2",
+      "version": "1.0.0"
+    },
+    "78_FAVICON_HASH_HUNTER_synthesized_agent": {
+      "path": "DNA_OSINT/78_FAVICON_HASH_HUNTER_synthesized_agent.py",
+      "hash": "6cd2905827627943566e02b53a1f36b65aa427e52541e8491311bdb672aab14b",
+      "version": "1.0.0"
+    },
+    "79_WAYBACK_SNAPSHOT_DIFFER_synthesized_agent": {
+      "path": "DNA_OSINT/79_WAYBACK_SNAPSHOT_DIFFER_synthesized_agent.py",
+      "hash": "3f637b12538446f8f526e73d3e91a4469aebdbe00421d06fde4fd7cd2adb5d92",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_ANYTHING-LLM_x_CHAOS-ROOTKIT_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/01_HYBRID_ANYTHING-LLM_x_CHAOS-ROOTKIT_synthesized_agent.py",
+      "hash": "3348f674c84fa7304ba5c85fe93669334737be39c91a259eb18c633e3b6b7a45",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_CRYFS_x_ZEN_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/02_HYBRID_CRYFS_x_ZEN_synthesized_agent.py",
+      "hash": "a302d70f80217b58211502881325bf9f8204ac2fbb994bd136a934869fd48a74",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_NESA_x_GPG_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/03_HYBRID_NESA_x_GPG_synthesized_agent.py",
+      "hash": "37caac0dc00c3dc2b70072f8094deca20f28687dc5a5ec76a3184dbbdde93107",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_PENTEST_WINDOWS_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/04_HYBRID_PENTEST_WINDOWS_x_BACKOFF_synthesized_agent.py",
+      "hash": "b8747991d49c638969326b00543be56cb9ed4a3be06d3bd72e0a0ddfb4dd4cf7",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_SPIFFS_x_SEAL_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/05_HYBRID_SPIFFS_x_SEAL_synthesized_agent.py",
+      "hash": "6a2cf2ea3a742fe7922581341b4efc8a967a004397be8515a012369fa1dd79c1",
+      "version": "1.0.0"
+    },
+    "06_NEXUS_CODE_AUDITOR_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/06_NEXUS_CODE_AUDITOR_synthesized_agent.py",
+      "hash": "04f69f37de773de9ace01669f6452dca3465f57db35e1073173b3eeec1cf2d12",
+      "version": "1.0.0"
+    },
+    "07_CVE_EXPLOIT_MATCHER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/07_CVE_EXPLOIT_MATCHER_synthesized_agent.py",
+      "hash": "732e81bca28def3abceedc84b03f30a4965cf27c8267501502e890ed65c34b63",
+      "version": "1.0.0"
+    },
+    "08_JWT_VULN_SCANNER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/08_JWT_VULN_SCANNER_synthesized_agent.py",
+      "hash": "4a737c4caddb19415e11f78e7798426f678a082d6baad4609237e065e2717e49",
+      "version": "1.0.0"
+    },
+    "09_SQL_INJECTION_FUZZER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/09_SQL_INJECTION_FUZZER_synthesized_agent.py",
+      "hash": "deb194149f27744891213c8c72a9ef8e70099d0e5400ffe9145a2eca6f9cd514",
+      "version": "1.0.0"
+    },
+    "10_XSS_POLYGLOT_TESTER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/10_XSS_POLYGLOT_TESTER_synthesized_agent.py",
+      "hash": "a5ac9f4070b2b84f1243e64de0c60fa322cab2bbcedc01d8bf8592f9889af1d0",
+      "version": "1.0.0"
+    },
+    "11_DOCKER_IMAGE_AUDITOR_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/11_DOCKER_IMAGE_AUDITOR_synthesized_agent.py",
+      "hash": "824c88c025b41bcf16074f9852f88418716b554f1a1cf75c7617ed4d47ca9551",
+      "version": "1.0.0"
+    },
+    "12_AWS_S3_BUCKET_SCANNER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/12_AWS_S3_BUCKET_SCANNER_synthesized_agent.py",
+      "hash": "9d3dd17428cd07b57e421cbe685d7860a0080b60b02414be20af029c6b96a11d",
+      "version": "1.0.0"
+    },
+    "91_ADVERSARIAL_RED_TEAMER_synthesized_agent": {
+      "path": "DNA_SECURITY_ADV/91_ADVERSARIAL_RED_TEAMER_synthesized_agent.py",
+      "hash": "889883ed4e6545876cf2279702b6152111191ad1ee9c8c8027c7b085b3ab4d14",
+      "version": "1.0.0"
+    },
+    "80_NEURAL_SIGNAL_ANALYST_synthesized_agent": {
+      "path": "DNA_SIGNAL/80_NEURAL_SIGNAL_ANALYST_synthesized_agent.py",
+      "hash": "52417983ed974c7cc37b0e06da4025dba2be3e96eee286058772cfc79a3d017d",
+      "version": "1.0.0"
+    },
+    "84_NEURO_RECON_OSINT_synthesized_agent": {
+      "path": "DNA_SIGNAL/84_NEURO_RECON_OSINT_synthesized_agent.py",
+      "hash": "f0dc176695d674343188c5facc655a299fe68a9ef6075f5268c8bfd77e087d3d",
+      "version": "1.0.0"
+    },
+    "85_NEURO_UI_DESIGNER_synthesized_agent": {
+      "path": "DNA_SIGNAL/85_NEURO_UI_DESIGNER_synthesized_agent.py",
+      "hash": "96e85373766acbc9ceb72095aec201e466a01dc52d5bd4146188b2a43f2e5fe9",
+      "version": "1.0.0"
+    },
+    "86_SECURE_NEURO_ORCHESTRATOR_synthesized_agent": {
+      "path": "DNA_SIGNAL/86_SECURE_NEURO_ORCHESTRATOR_synthesized_agent.py",
+      "hash": "5425b372523b6df15eae2f82d4ded162c4c206dfd490b3d0e24f41204988bf12",
+      "version": "1.0.0"
+    },
+    "87_BCI_BENCHMARK_QA_synthesized_agent": {
+      "path": "DNA_SIGNAL/87_BCI_BENCHMARK_QA_synthesized_agent.py",
+      "hash": "7470ed9ce0be5083f7633927951c5397be940024391eeb1c6dd79634202947b1",
+      "version": "1.0.0"
+    },
+    "88_BAYESIAN_OSINT_FACT_CHECKER_synthesized_agent": {
+      "path": "DNA_SIGNAL/88_BAYESIAN_OSINT_FACT_CHECKER_synthesized_agent.py",
+      "hash": "9b8479164201ba98afa3bf855fdd5a4912e19f93c451cdf53596c041818bf789",
+      "version": "1.0.0"
+    },
+    "89_WIKI_CONTENT_STRUCTURIZER_synthesized_agent": {
+      "path": "DNA_SIGNAL/89_WIKI_CONTENT_STRUCTURIZER_synthesized_agent.py",
+      "hash": "42324c1096d6c0515b963243077150e33a586c5a9ccf68ccea69ce853ec60693",
+      "version": "1.0.0"
+    },
+    "90_GOLDEN_ARCHIVE_CURATOR_synthesized_agent": {
+      "path": "DNA_SIGNAL/90_GOLDEN_ARCHIVE_CURATOR_synthesized_agent.py",
+      "hash": "4694501c2332ad8f1b24260bfb1377b4c385b2abe72bb03a34b7a856c1643e33",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_30-DAYS-OF-PYTHON_x_1EARN_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/01_HYBRID_30-DAYS-OF-PYTHON_x_1EARN_synthesized_agent.py",
+      "hash": "50e235ee171826fcaf87954e7ae233d9266a01cecf4d8d4dd2a1211e4a4d6d65",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_ALGS4_x_HYBRID_SPACEDRIVE_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/02_HYBRID_ALGS4_x_HYBRID_SPACEDRIVE_x_BACKOFF_synthesized_agent.py",
+      "hash": "e0c4e4456c5c52b3c987ff2307af5633fb9ec7ef9a4d30206717924b5f6fbd1f",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/03_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_synthesized_agent.py",
+      "hash": "1ad6b9147a548e75c45ac1cd398011db893b7aa9c5ded43bb28aedc2e9c03338",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_EVIDENCE_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/04_HYBRID_EVIDENCE_x_BACKOFF_synthesized_agent.py",
+      "hash": "220bf675d334a8ad8ec377bd63c880875d95320848203df951094a830012ed5d",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_AGIBOT_X1_INFER_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/05_HYBRID_HYBRID_DOTENV_x_TEACH_REPEAT_REPLAN_x_AGIBOT_X1_INFER_synthesized_agent.py",
+      "hash": "8942cd5bf1ecb4c22f9cc685109a13979fc54082f7a59f96623957f4df143fec",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_DEEPLNOTE_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/06_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_DEEPLNOTE_synthesized_agent.py",
+      "hash": "c85f1a524fe0c0243359c00a6bb7e6df80d3176057684805ca4fd5ac324ff45c",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_LADYBIRD_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/07_HYBRID_LADYBIRD_x_BACKOFF_synthesized_agent.py",
+      "hash": "7c9583486f2a3ca8455481d014f3e3b7bb2ee21a03534a70e379ad082740c936",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_LIBPOINTMATCHER_x_LADYBIRD_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/08_HYBRID_LIBPOINTMATCHER_x_LADYBIRD_synthesized_agent.py",
+      "hash": "bcba6f2a80f65cba0868c4d198f1c8af2c4eef655903f3e4def3220c9dd7db3f",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_LIBPOINTMATCHER_x_NANOCHAT_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/09_HYBRID_LIBPOINTMATCHER_x_NANOCHAT_synthesized_agent.py",
+      "hash": "8d35fdec7fc51b2f1b42e97319005a10bac737ce1db93fb6df8e8542d01bd947",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_MASTER_EVOLVER_v2_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/10_HYBRID_MASTER_EVOLVER_v2_synthesized_agent.py",
+      "hash": "0dd076778e2d72e24372d20ad70133480ea8355b0618a98d506f7ea0ec9dce1b",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_R4DS_x_BULLET3_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/11_HYBRID_R4DS_x_BULLET3_synthesized_agent.py",
+      "hash": "b3faa88e421d79f1b97e6f031870b1b6163a47e2cb33ca291ab3c490091888b8",
+      "version": "1.0.0"
+    },
+    "12_HYBRID_SOCKET.IO_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/12_HYBRID_SOCKET.IO_x_BACKOFF_synthesized_agent.py",
+      "hash": "84f6335c5a795197e8b3f01225617c52e2e76df5184fa4136964152927982d80",
+      "version": "1.0.0"
+    },
+    "13_HYBRID_SPACEDRIVE_x_BACKOFF_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/13_HYBRID_SPACEDRIVE_x_BACKOFF_synthesized_agent.py",
+      "hash": "e3d795dd9a5c73b4111af5526b7b6675dd95dd27615b933dfa02a651d8e93d00",
+      "version": "1.0.0"
+    },
+    "14_HYBRID_SPIFFS_x_LINFA_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/14_HYBRID_SPIFFS_x_LINFA_synthesized_agent.py",
+      "hash": "88ed373a112baa334d6150cf49c11dbb0f35915769cf75c7852c54b4f69eef24",
+      "version": "1.0.0"
+    },
+    "15_HYBRID_TROUBLESHOOTING_x_CRATE_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/15_HYBRID_TROUBLESHOOTING_x_CRATE_synthesized_agent.py",
+      "hash": "7a0b704d767c3b868fc78bc45408cfc9586a241e170c9afbb118d1b41680c8b0",
+      "version": "1.0.0"
+    },
+    "16_NEXUS_DATA_VIZ_ENGINE_synthesized_agent": {
+      "path": "DNA_SYNTH_TOOLS/16_NEXUS_DATA_VIZ_ENGINE_synthesized_agent.py",
+      "hash": "f1130da4446bfbf8429af0d4954b54f5c535ec8bccb62197d942de405508aa76",
+      "version": "1.0.0"
+    },
+    "01_HYBRID_98.CSS_x_TAILWIND_synthesized_agent": {
+      "path": "DNA_WEB/01_HYBRID_98.CSS_x_TAILWIND_synthesized_agent.py",
+      "hash": "12f413f07ffc1770715c122817fb9c6a9a69cdfeeb844dfea3f7ed67a767dffc",
+      "version": "1.0.0"
+    },
+    "02_HYBRID_AILAB_x_NORMALIZE.CSS_synthesized_agent": {
+      "path": "DNA_WEB/02_HYBRID_AILAB_x_NORMALIZE.CSS_synthesized_agent.py",
+      "hash": "d59492db1b5d046da30220360b28f47e44501821b33551c8521e9077596096d3",
+      "version": "1.0.0"
+    },
+    "03_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent": {
+      "path": "DNA_WEB/03_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent.py",
+      "hash": "ba94d767b482c4cfca19661f4493dfb647fbddd0aab4c3a871d5f84bdeb37dd6",
+      "version": "1.0.0"
+    },
+    "04_HYBRID_AUTOFORMER_x_BUILD-YOUR-OWN-X_synthesized_agent": {
+      "path": "DNA_WEB/04_HYBRID_AUTOFORMER_x_BUILD-YOUR-OWN-X_synthesized_agent.py",
+      "hash": "99bfee2921f113a71a2843f66bda30b0a158e9feb771451621b3cb5205e6340f",
+      "version": "1.0.0"
+    },
+    "05_HYBRID_BORG_x_BUILD-YOUR-OWN-X_synthesized_agent": {
+      "path": "DNA_WEB/05_HYBRID_BORG_x_BUILD-YOUR-OWN-X_synthesized_agent.py",
+      "hash": "eebfaed85a136242a815f822f65ff8d1ff05beac02fa33a65bd4d39f9c14e9a2",
+      "version": "1.0.0"
+    },
+    "06_HYBRID_COMFYUI_x_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent": {
+      "path": "DNA_WEB/06_HYBRID_COMFYUI_x_HYBRID_AMARANTH_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent.py",
+      "hash": "c721d46876f5caf92e379e74411c85463001f626a92b9cfecd81b982da58a657",
+      "version": "1.0.0"
+    },
+    "07_HYBRID_COMFYUI_x_HYBRID_LAGO_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent": {
+      "path": "DNA_WEB/07_HYBRID_COMFYUI_x_HYBRID_LAGO_x_MACHINE_LEARNING_WITH_PYTHON_synthesized_agent.py",
+      "hash": "cc105d572a68b09078142a807f56a5a71e50486d7779a2ca2c13e738f3c86bfa",
+      "version": "1.0.0"
+    },
+    "08_HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent": {
+      "path": "DNA_WEB/08_HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_synthesized_agent.py",
+      "hash": "edbf6f16159fd0c33654a8d0a85aed45b7730139baa7194a6f21e1e0cbb635e6",
+      "version": "1.0.0"
+    },
+    "09_HYBRID_DESIGN-PATTERNS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_WEB/09_HYBRID_DESIGN-PATTERNS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "7ba9e7080c2dc79da1f946bcef7812dfd273666b17754cbe13f1f359b28b7664",
+      "version": "1.0.0"
+    },
+    "10_HYBRID_DOTENV_x_UMAMI_synthesized_agent": {
+      "path": "DNA_WEB/10_HYBRID_DOTENV_x_UMAMI_synthesized_agent.py",
+      "hash": "c6310cf5181cdfdb2ece2f299ac57790f5822eba795e95d830fea0f8acbafe52",
+      "version": "1.0.0"
+    },
+    "11_HYBRID_ELASTICSEARCH_x_BUILD-YOUR-OWN-X_synthesized_agent": {
+      "path": "DNA_WEB/11_HYBRID_ELASTICSEARCH_x_BUILD-YOUR-OWN-X_synthesized_agent.py",
+      "hash": "5e7fe732ccfae597f78fc53fae6678b52aa0e70255df057585ec54b9a30b7d6c",
+      "version": "1.0.0"
+    },
+    "12_HYBRID_HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_x_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent": {
+      "path": "DNA_WEB/12_HYBRID_HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA_x_HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING_synthesized_agent.py",
+      "hash": "9261d4450f49f07096a0037595366aceca1edc7246806cdaaea7b6cfc9fab1fd",
+      "version": "1.0.0"
+    },
+    "13_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_HYBRID_INFRASTRUCTURE_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_WEB/13_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_HYBRID_INFRASTRUCTURE_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "7723ba40f231965152b0595328a4297267f3d37252188dc4879b4b0fe9754a67",
+      "version": "1.0.0"
+    },
+    "14_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_STABLE_DIFFUSION_WEBUI_synthesized_agent": {
+      "path": "DNA_WEB/14_HYBRID_HYBRID_LADYBIRD_x_BACKOFF_x_STABLE_DIFFUSION_WEBUI_synthesized_agent.py",
+      "hash": "4eae0006acb7b26080057e8955713748732e3995ad5d6a7316d8491debff2b66",
+      "version": "1.0.0"
+    },
+    "15_HYBRID_HYBRID_TAILWIND_x_GPG_x_TYPESCRIPT_synthesized_agent": {
+      "path": "DNA_WEB/15_HYBRID_HYBRID_TAILWIND_x_GPG_x_TYPESCRIPT_synthesized_agent.py",
+      "hash": "c12501b071d5b932aa63cf639451dfaed9d8a020c5e9531410bf541518fd0970",
+      "version": "1.0.0"
+    },
+    "16_HYBRID_INFRASTRUCTURE_x_HYBRID_DOTENV_x_UMAMI_synthesized_agent": {
+      "path": "DNA_WEB/16_HYBRID_INFRASTRUCTURE_x_HYBRID_DOTENV_x_UMAMI_synthesized_agent.py",
+      "hash": "4a4c463d673f362f43403c774ab65652474dd160030457d7e93cb42abd7a3000",
+      "version": "1.0.0"
+    },
+    "17_HYBRID_INFRASTRUCTURE_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_WEB/17_HYBRID_INFRASTRUCTURE_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "22ce3d3d8b1c733d2483369b5c1528829e813aaefc0bcceeb56144c77462d750",
+      "version": "1.0.0"
+    },
+    "18_HYBRID_KERAS_x_HYBRID_DESIGN-PATTERNS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_WEB/18_HYBRID_KERAS_x_HYBRID_DESIGN-PATTERNS_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "8327c60605bd52ec98f14bbe9437035e10dde0a1dd1b5ecbff5aad06054785bb",
+      "version": "1.0.0"
+    },
+    "19_HYBRID_KERAS_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_WEB/19_HYBRID_KERAS_x_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "43783bf4e7451780fda7a029e0ccf50ec65483a3ce822467d79fcb10871684b7",
+      "version": "1.0.0"
+    },
+    "20_HYBRID_LIBPOINTMATCHER_x_HUGO_synthesized_agent": {
+      "path": "DNA_WEB/20_HYBRID_LIBPOINTMATCHER_x_HUGO_synthesized_agent.py",
+      "hash": "609fc728deb230a0ccd4d356c145825be1338b9daa52b1a7fccabf349200b721",
+      "version": "1.0.0"
+    },
+    "21_HYBRID_MOTION_X_GSAP_synthesized_agent": {
+      "path": "DNA_WEB/21_HYBRID_MOTION_X_GSAP_synthesized_agent.py",
+      "hash": "f0ef8bf79b33e954d6012e52673c199172e3b3573d36b2ea5af629c5a035c6d0",
+      "version": "1.0.0"
+    },
+    "22_HYBRID_NUXT_x_MAMBA_synthesized_agent": {
+      "path": "DNA_WEB/22_HYBRID_NUXT_x_MAMBA_synthesized_agent.py",
+      "hash": "df4304c65c1adeb61d682a95e625629238140553451d4f16ebc0687118be71ce",
+      "version": "1.0.0"
+    },
+    "23_HYBRID_NUXT_x_TRANSFORMERS_synthesized_agent": {
+      "path": "DNA_WEB/23_HYBRID_NUXT_x_TRANSFORMERS_synthesized_agent.py",
+      "hash": "2dc87229a49f600b7204812d12528c2f84437d8a60db5400386120be28c2e3ce",
+      "version": "1.0.0"
+    },
+    "24_HYBRID_OPEN_DRONELOG_x_TAILWIND_synthesized_agent": {
+      "path": "DNA_WEB/24_HYBRID_OPEN_DRONELOG_x_TAILWIND_synthesized_agent.py",
+      "hash": "251c25cf530bceec18307d83890e283c8cde02d58a999cee5c910326ede1e9ff",
+      "version": "1.0.0"
+    },
+    "25_HYBRID_RUST_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent": {
+      "path": "DNA_WEB/25_HYBRID_RUST_x_WEB_DEV_FOR_BEGINNERS_synthesized_agent.py",
+      "hash": "b89c98bfe9921fa7c9c23fa985730a4ecc61b0cae4dd8f249daa2e4015093816",
+      "version": "1.0.0"
+    },
+    "26_HYBRID_TAILWIND_x_GPG_synthesized_agent": {
+      "path": "DNA_WEB/26_HYBRID_TAILWIND_x_GPG_synthesized_agent.py",
+      "hash": "b67ac41506683cc73d5cd33f98407d90c836119880d4e9b6f585d439c1934d0a",
+      "version": "1.0.0"
+    },
+    "27_HYBRID_TAILWIND_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent": {
+      "path": "DNA_WEB/27_HYBRID_TAILWIND_x_HYBRID_WIREGUARD_FPGA_x_BUN_synthesized_agent.py",
+      "hash": "d1a7771639c966ea1f1195b63d09e267c01800a8351fc5c808018bec98218eff",
+      "version": "1.0.0"
+    },
+    "28_HYBRID_THE_ALGORITHM_ML_x_NUXT_synthesized_agent": {
+      "path": "DNA_WEB/28_HYBRID_THE_ALGORITHM_ML_x_NUXT_synthesized_agent.py",
+      "hash": "8ce770074bb1c7ad43f40766f2657f6c075d3bb81f648b0048af42ecde88aa67",
+      "version": "1.0.0"
+    },
+    "29_HYBRID_WEB_DEV_FOR_BEGINNERS_x_AILAB_synthesized_agent": {
+      "path": "DNA_WEB/29_HYBRID_WEB_DEV_FOR_BEGINNERS_x_AILAB_synthesized_agent.py",
+      "hash": "e67503b315eb8e892441df9e9e29c63050db4e62ba295c0a28a6d382d6a79e29",
+      "version": "1.0.0"
+    },
+    "30_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent": {
+      "path": "DNA_WEB/30_HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING_synthesized_agent.py",
+      "hash": "715044559378f50a0c589cd6bfe55cf864e403b4fd57bb0dc9ca87ed4663649e",
+      "version": "1.0.0"
+    },
+    "31_HYBRID_WEB_DEV_FOR_BEGINNERS_x_VUE_synthesized_agent": {
+      "path": "DNA_WEB/31_HYBRID_WEB_DEV_FOR_BEGINNERS_x_VUE_synthesized_agent.py",
+      "hash": "b0fef08c2b37c172cfb23ad32df734c09001a65a37bb6212d97933b6f6dc9e75",
+      "version": "1.0.0"
+    },
+    "32_NEXUS_AD_VIDEO_SYNTHESIZER": {
+      "path": "DNA_WEB/32_NEXUS_AD_VIDEO_SYNTHESIZER.py",
+      "hash": "e795c507f004a3f13aaaf1c40052c505126ae9a8a7f9ba3613c03c6d71b89100",
+      "version": "1.0.0"
+    },
+    "33_NEXUS_AI_PRESENTER_PRO_synthesized_agent": {
+      "path": "DNA_WEB/33_NEXUS_AI_PRESENTER_PRO_synthesized_agent.py",
+      "hash": "f75720b51793d14b29bb4d7e649b55c3ebd8695dda333dca0e4dd059771f9a25",
+      "version": "1.0.0"
+    },
+    "34_NEXUS_DESIGN_AI_PRESENTER_synthesized_agent": {
+      "path": "DNA_WEB/34_NEXUS_DESIGN_AI_PRESENTER_synthesized_agent.py",
+      "hash": "e197603a470c0d6314dacb3a2308e5a6b7c2bbd9dc38437f9a48badf90df6e4c",
+      "version": "1.0.0"
+    },
+    "35_NEXUS_MASTER_DESIGN_ORCHESTRATOR": {
+      "path": "DNA_WEB/35_NEXUS_MASTER_DESIGN_ORCHESTRATOR.py",
+      "hash": "7c1385737fb779a6297e542e78b93474853eef7d7a598947b11da0181242f815",
+      "version": "1.0.0"
+    },
+    "36_NEXUS_OMNI_GIGA_GEN": {
+      "path": "DNA_WEB/36_NEXUS_OMNI_GIGA_GEN.py",
+      "hash": "a0f682196fb42905565757252af0f44f24a85b57cdb2990cd761bc5409982982",
+      "version": "1.0.0"
+    },
+    "37_NEXUS_UI_GENERATOR_synthesized_agent": {
+      "path": "DNA_WEB/37_NEXUS_UI_GENERATOR_synthesized_agent.py",
+      "hash": "a3e39c28b587c7cc3a01eb3f2eb54a331f788ad2c55585ac57b7b5cd4ab8b5ce",
+      "version": "1.0.0"
+    },
+    "38_SPATIAL_3D_X_THREEJS_synthesized_agent": {
+      "path": "DNA_WEB/38_SPATIAL_3D_X_THREEJS_synthesized_agent.py",
+      "hash": "238bb895c7e81c351fba4540220f9912d978219a32d51260d5af124d7e1118e2",
+      "version": "1.0.0"
+    },
+    "39_WEB_MOTION_RECORDER_synthesized_agent": {
+      "path": "DNA_WEB/39_WEB_MOTION_RECORDER_synthesized_agent.py",
+      "hash": "910a0f62c8204ec4cb0eeca37d79c04dba6d46e972428ebc3f7bdd20d975ee89",
+      "version": "1.0.0"
+    },
+    "40_SEO_SITEMAP_CRAWLER_synthesized_agent": {
+      "path": "DNA_WEB/40_SEO_SITEMAP_CRAWLER_synthesized_agent.py",
+      "hash": "17fc8b447abb0e3690f10a5d521c7c947ba194a96aa37d08f504e2d47c58dec5",
+      "version": "1.0.0"
+    },
+    "41_WEB_PERF_LIGHTHOUSE_SIMULATOR_synthesized_agent": {
+      "path": "DNA_WEB/41_WEB_PERF_LIGHTHOUSE_SIMULATOR_synthesized_agent.py",
+      "hash": "d0a4f07d0fc437fc968f0627d06817fdd09f7399b7f760ba4b8da55e850e2b13",
+      "version": "1.0.0"
+    },
+    "42_BROKEN_IMAGE_HUNTER_synthesized_agent": {
+      "path": "DNA_WEB/42_BROKEN_IMAGE_HUNTER_synthesized_agent.py",
+      "hash": "0299b9cc30f84903fede30539cf9bfa1d6b214742e603e0656befb536735f32f",
+      "version": "1.0.0"
+    },
+    "44_ROBOTS_TXT_AUDITOR_synthesized_agent": {
+      "path": "DNA_WEB/44_ROBOTS_TXT_AUDITOR_synthesized_agent.py",
+      "hash": "ec5f7121f8f2f0115f3ad16eb5f94deccf5da7002c6a15016ede07bac4c92ac7",
+      "version": "1.0.0"
+    },
+    "45_API_ENDPOINT_DISCOVERY_synthesized_agent": {
+      "path": "DNA_WEB/45_API_ENDPOINT_DISCOVERY_synthesized_agent.py",
+      "hash": "83df7acc88b90375a4e72a99439052eebe444d9fca009869723af802eebdaa17",
+      "version": "1.0.0"
+    }
+  }
+}

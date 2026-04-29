@@ -1,0 +1,29 @@
+{
+  "agent_id": "PROMPT_TEMPLATE_EVOLVER",
+  "domain": "AI_ML",
+  "purpose": "Iteratively mutate prompt templates to maximize model performance metrics",
+  "api_endpoints": [],
+  "data_model": {
+    "template_v1": "TEXT",
+    "template_v2": "TEXT",
+    "score_v1": "REAL",
+    "score_v2": "REAL",
+    "improvement": "REAL"
+  },
+  "core_algorithm": "Genetic algorithm-based prompt mutation loop",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "logging",
+    "sqlite3",
+    "random",
+    "re"
+  ],
+  "logic_markers": [
+    "evolution",
+    "mutation",
+    "template",
+    "fitness",
+    "score"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "lib",
+		"rootDir": "src",
+		"jsx": "react",
+		"skipLibCheck": true,
+		"moduleResolution": "node",
+		"lib": ["dom", "es2017"]
+	},
+	"include": ["src"]
+}

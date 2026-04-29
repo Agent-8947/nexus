@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>NEXUS LIVE DASHBOARD</title>
+    <style>
+        :root {
+            --bg: #030712;
+            --card: #111827;
+            --accent: #3b82f6;
+            --text: #f8fafc;
+            --dim: #94a3b8;
+            --star: #fbbf24;
+            --border: #1f2937;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .header {
+            width: 100%;
+            padding: 2rem 0;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .status-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .progress-bar {
+            height: 10px;
+            background: #1e293b;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+        }
+        .stat-label {
+            color: var(--dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .repo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .repo-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .domain-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .score-tag {
+            color: var(--star);
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        .full-registry {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem 0;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .search-box:focus { border-color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; color: var(--dim); padding: 1rem; font-size: 0.75rem; border-bottom: 1px solid var(--border); }
+        td { padding: 1.2rem 1rem; border-bottom: 1px solid #0f172a; font-size: 0.9rem; }
+        tr:hover { background: rgba(59, 130, 246, 0.05); }
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 12px #10b981;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.6; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.6; transform: scale(0.9); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin: 0; letter-spacing: 4px; font-weight: 900;">NEXUS LIVE FEED</h1>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; margin-top: 1rem;">
+            <div><span class="pulse"></span><span style="color: #10b981; font-weight: 700; font-size: 0.9rem;">REACTIVE AGENT-24</span></div>
+            <div id="lastSync" style="color: var(--dim); font-size: 0.9rem;">Syncing...</div>
+        </div>
+    </div>
+
+    <div class="status-container">
+        <div class="card">
+            <div class="stat-label">Global Knowledge Intake</div>
+            <div id="progressVal" class="stat-value">0%</div>
+            <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--dim);">
+                <span>Processed: <b id="procCount" style="color: white;">0</b></span>
+                <span>Total Map: <b id="totalCount" style="color: white;">0</b></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="stat-label">System Top Finds</div>
+            <ul id="topList" class="repo-list"></ul>
+        </div>
+
+        <div class="card">
+            <div class="stat-label">Recent Intelligence Dossiers</div>
+            <ul id="recentList" class="repo-list"></ul>
+        </div>
+    </div>
+
+    <div class="full-registry">
+        <div class="stat-label">Intelligence Archive Index</div>
+        <input type="text" id="repoSearch" class="search-box" onkeyup="filterTable()" placeholder="Quick intelligence search...">
+        <table id="mainTable">
+            <thead>
+                <tr>
+                    <th>Repository</th>
+                    <th>Intelligence Domain</th>
+                    <th>Score</th>
+                    <th>NEXUS Synthesis</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const response = await fetch('http://localhost:8844/api/stats');
+                const data = await response.json();
+
+                // Stats
+                document.getElementById('progressVal').innerText = data.progress + '%';
+                document.getElementById('progressFill').style.width = data.progress + '%';
+                document.getElementById('procCount').innerText = data.processed_count;
+                document.getElementById('totalCount').innerText = data.total_count;
+                document.getElementById('lastSync').innerText = 'Last Sync: ' + data.timestamp;
+
+                // Recent List
+                const recentList = document.getElementById('recentList');
+                recentList.innerHTML = data.recent.reverse().map(a => `
+                    <li class="repo-item">
+                        <span>${a.name.substring(0, 22)}</span>
+                        <span class="domain-tag">${a.domain}</span>
+                    </li>
+                `).join('');
+
+                // Top List
+                const topList = document.getElementById('topList');
+                topList.innerHTML = data.top.map(a => `
+                    <li class="repo-item">
+                        <span>${a.name.substring(0, 22)}</span>
+                        <span class="score-tag">⭐ ${a.score}</span>
+                    </li>
+                `).join('');
+
+                // Table
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = data.all_processed.map(a => `
+                    <tr class="repo-row">
+                        <td style="font-weight:700; color:var(--accent);">${a.name}</td>
+                        <td><span class="domain-tag">${a.domain}</span></td>
+                        <td class="score-tag">${a.score}/10</td>
+                        <td style="color:var(--dim); font-size:0.8rem; max-width: 400px;">${a.summary}</td>
+                    </tr>
+                `).join('');
+
+            } catch (error) {
+                document.getElementById('lastSync').innerText = 'OFFLINE: Start NEXUS API';
+                document.getElementById('lastSync').style.color = '#ef4444';
+            }
+        }
+
+        function filterTable() {
+            let input = document.getElementById('repoSearch');
+            let filter = input.value.toUpperCase();
+            let tr = document.querySelectorAll('.repo-row');
+            tr.forEach(row => {
+                let text = row.textContent || row.innerText;
+                row.style.display = text.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+            });
+        }
+
+        setInterval(updateDashboard, 15000); // Live sync every 15s
+        updateDashboard();
+    </script>
+
+    <div style="padding: 3rem; color: var(--dim); font-size: 0.8rem;">
+        NEXUS Intelligence Factory • 2026 MSD • Localhost 9898 Active
+    </div>
+</body>
+</html>

@@ -1,0 +1,2554 @@
+{
+  "0": [
+    {
+      "bbox": [
+        468.8399963378906,
+        780.656005859375,
+        541.0800170898438,
+        792.697998046875
+      ],
+      "en_text": "第 1   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        104.4000015258789,
+        284.0240478515625,
+        492.17010498046875,
+        344.28509521484375
+      ],
+      "en_text": "ADL07K10 Powder   Shaking   Machine   Instructions",
+      "font_size": 26.05000114440918
+    },
+    {
+      "bbox": [
+        176.15899658203125,
+        682.218994140625,
+        420.4197998046875,
+        702.2890014648438
+      ],
+      "en_text": "Henan Yindu Digital Technology Co., Ltd.",
+      "font_size": 15.0
+    },
+    {
+      "bbox": [
+        192.60000610351562,
+        716.152099609375,
+        402.6567077636719,
+        731.152099609375
+      ],
+      "en_text": "HENAN   AUDLEY   DIGITAL   CO.,LTD",
+      "font_size": 15.0
+    }
+  ],
+  "1": [
+    {
+      "bbox": [
+        54.0,
+        22.864463806152344,
+        264.0640869140625,
+        33.3144645690918
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        468.8399963378906,
+        766.2559814453125,
+        541.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 2   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        168.95899963378906,
+        642.802734375,
+        434.8637390136719,
+        677.6576538085938
+      ],
+      "en_text": "Powder Shaking Machine",
+      "font_size": 26.05000114440918
+    },
+    {
+      "bbox": [
+        255.0,
+        685.4093017578125,
+        360.4186096191406,
+        714.7783813476562
+      ],
+      "en_text": "Instructions",
+      "font_size": 21.950000762939453
+    },
+    {
+      "bbox": [
+        131.8800048828125,
+        736.1903076171875,
+        471.473388671875,
+        754.9903564453125
+      ],
+      "en_text": "☞Please   read this instruction carefully before use and keep it properly .",
+      "font_size": 18.0
+    }
+  ],
+  "2": [
+    {
+      "bbox": [
+        54.0,
+        22.864463806152344,
+        264.0640869140625,
+        33.3144645690918
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        468.8399963378906,
+        766.2559814453125,
+        541.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 3   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        269.3999938964844,
+        95.88529968261719,
+        327.5943298339844,
+        117.22640228271484
+      ],
+      "en_text": "Contents",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        54.0,
+        158.01104736328125,
+        541.3493041992188,
+        177.35360717773438
+      ],
+      "en_text": "Chapter 1 Equipment Parameters   .................................................................................. 6",
+      "font_size": 14.050000190734863
+    },
+    {
+      "bbox": [
+        54.0,
+        189.2110595703125,
+        541.3493041992188,
+        208.55360412597656
+      ],
+      "en_text": "Chapter 2 Equipment Operation Guide   .........................................................................  6",
+      "font_size": 14.050000190734863
+    },
+    {
+      "bbox": [
+        54.0,
+        220.4110565185547,
+        541.3493041992188,
+        239.75360107421875
+      ],
+      "en_text": "Chapter 3 Equipment Maintenance and Troubleshooting   .........................................  1 3",
+      "font_size": 14.050000190734863
+    }
+  ],
+  "3": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 4   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        187.67999267578125,
+        271.92529296875,
+        411.2469787597656,
+        293.26641845703125
+      ],
+      "en_text": "Ensure installation and correct use",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        243.24000549316406,
+        492.0042724609375,
+        357.2113037109375,
+        513.3453979492188
+      ],
+      "en_text": "Safety Instruction",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        271.0799865722656,
+        70.44429779052734,
+        319.4454345703125,
+        91.785400390625
+      ],
+      "en_text": "Preface",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        119.16829681396484,
+        310.0733947753906,
+        133.15040588378906
+      ],
+      "en_text": " Thank you very much for choosing to purchase our printer .",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        136.9282989501953,
+        543.466796875,
+        166.51040649414062
+      ],
+      "en_text": " To ensure that you fully understand the performance of this product and its correct and safe use, please be sure to read this instruction manual thoroughly and keep it properly.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        170.2873077392578,
+        531.7632446289062,
+        199.86940002441406
+      ],
+      "en_text": " The contents of this manual and product parameters are subject to change without prior notice. If you have any questions about the product, please consult relevant technical personnel.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        204.8483123779297,
+        540.5132446289062,
+        218.83041381835938
+      ],
+      "en_text": " We have done our best to edit this description and test this product. If you find any errors, please let us know. We",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        222.72830200195312,
+        155.150390625,
+        236.7104034423828
+      ],
+      "en_text": "would be very grateful.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        240.72830200195312,
+        446.15106201171875,
+        254.7104034423828
+      ],
+      "en_text": " To ensure safe and correct use of this product, please read this manual carefully before use.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        302.5282897949219,
+        311.3907165527344,
+        316.5104064941406
+      ],
+      "en_text": " Please keep it in a safe place and refer to it when necessary.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        320.28729248046875,
+        326.5067443847656,
+        334.2694091796875
+      ],
+      "en_text": " Keep this product out of reach of children or non-professionals.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        355.5653076171875,
+        197.37826538085938,
+        376.9064025878906
+      ],
+      "en_text": "Explain usage conventions",
+      "font_size": 15.46409797668457
+    },
+    {
+      "bbox": [
+        36.0,
+        390.2472839355469,
+        507.39251708984375,
+        404.2294006347656
+      ],
+      "en_text": " To ensure safe and   correct use   of this product   and prevent   personal injury   and property   damage,   make",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        408.2472839355469,
+        507.0329284667969,
+        422.2294006347656
+      ],
+      "en_text": "sure   you   fully   understand   the   differences   between   the   following   categories   before   reading   the",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        426.3682861328125,
+        109.78977966308594,
+        440.35040283203125
+      ],
+      "en_text": "instructions.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        444.3682861328125,
+        414.2320556640625,
+        458.35040283203125
+      ],
+      "en_text": " Ignoring precautionary information such as WARNING may result in operator injury.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        460.56829833984375,
+        354.71160888671875,
+        474.5504150390625
+      ],
+      "en_text": " such as CAUTION may result in operator injury or equipment damage.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        534.9683227539062,
+        308.39019775390625,
+        548.9503784179688
+      ],
+      "en_text": "Please read the following instructions before using this product.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        559.5653076171875,
+        189.70126342773438,
+        580.9063720703125
+      ],
+      "en_text": "Printer Installation Notes",
+      "font_size": 15.46409797668457
+    },
+    {
+      "bbox": [
+        64.08000183105469,
+        601.5682983398438,
+        107.3823013305664,
+        615.5503540039062
+      ],
+      "en_text": "WARNING",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        629.768310546875,
+        562.80517578125,
+        643.7503662109375
+      ],
+      "en_text": " Do not   install   or   use   the   product   near   volatile   solvents   (alcohol   or   thinners). Do not   place any   objects   on   top   of   this",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        647.8873291015625,
+        93.23114013671875,
+        661.869384765625
+      ],
+      "en_text": "product.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        64.08000183105469,
+        707.6473388671875,
+        103.69844055175781,
+        721.62939453125
+      ],
+      "en_text": "CAUTION",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        734.768310546875,
+        286.79205322265625,
+        748.7503662109375
+      ],
+      "en_text": " Do not place this product in a tilted or vibrating place.",
+      "font_size": 10.449999809265137
+    }
+  ],
+  "4": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 5   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        58.08729934692383,
+        341.99017333984375,
+        72.06939697265625
+      ],
+      "en_text": " Placing it this way may cause the device to tip over or be damaged.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        78.24829864501953,
+        257.1645812988281,
+        92.23040008544922
+      ],
+      "en_text": "Avoid using this product in the following places",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        94.44829559326172,
+        190.44459533691406,
+        108.4303970336914
+      ],
+      "en_text": " Excessively humid or dry places",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        110.64830017089844,
+        118.68818664550781,
+        124.63040161132812
+      ],
+      "en_text": " Direct sunlight",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        128.40830993652344,
+        161.64459228515625,
+        142.39041137695312
+      ],
+      "en_text": " High temperature places",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        146.16830444335938,
+        184.5918426513672,
+        160.15040588378906
+      ],
+      "en_text": " Near open flames or moisture",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        164.04830932617188,
+        451.1920166015625,
+        178.03041076660156
+      ],
+      "en_text": " The suitable environment for this product is: temperature 18  ℃ -30  ℃ , humidity 40 % -60%.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        182.10446166992188,
+        198.78134155273438,
+        192.55445861816406
+      ],
+      "en_text": "Power   supply   safety   precautions",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        65.75900268554688,
+        209.55470275878906,
+        123.80900573730469,
+        228.35360717773438
+      ],
+      "en_text": "WARNING",
+      "font_size": 14.050000190734863
+    },
+    {
+      "bbox": [
+        57.47999954223633,
+        240.72830200195312,
+        505.865478515625,
+        254.7104034423828
+      ],
+      "en_text": "If the power cord is damaged, please disconnect the power cord as soon as possible and repair it yourself",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        258.4873046875,
+        415.1923522949219,
+        272.46942138671875
+      ],
+      "en_text": " Be careful that electricity may leak from damaged areas, causing fire or short circuit.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        276.248291015625,
+        440.8713684082031,
+        290.23040771484375
+      ],
+      "en_text": " Do not use wet hands to switch the power on or off to avoid electric shock or short circuit.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.47999954223633,
+        324.00830078125,
+        292.8041076660156,
+        337.99041748046875
+      ],
+      "en_text": "Avoid using the same power outlet for multiple devices",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        341.7682800292969,
+        243.11264038085938,
+        355.7503967285156
+      ],
+      "en_text": " This may cause a short circuit or even a fire.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.47999954223633,
+        389.4082946777344,
+        221.9656524658203,
+        403.3904113769531
+      ],
+      "en_text": "Do not bundle or wrap the power cord",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        407.1683044433594,
+        243.11264038085938,
+        421.1504211425781
+      ],
+      "en_text": " This may cause a short circuit or even a fire.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.47999954223633,
+        454.92828369140625,
+        335.84564208984375,
+        468.910400390625
+      ],
+      "en_text": "When installing the ground wire, special attention should be paid",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        472.56829833984375,
+        401.1505432128906,
+        486.5504150390625
+      ],
+      "en_text": " Suitable ground wire locations: power supply terminal and ground stake terminal",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        490.3282775878906,
+        530.2713623046875,
+        504.3103942871094
+      ],
+      "en_text": " It is prohibited to connect grounding wires to water pipes, gas pipes, telephone lines, lightning conductors, etc.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        545.5352172851562,
+        276.0526428222656,
+        561.4852294921875
+      ],
+      "en_text": "Operational   safety   precautions",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        65.75900268554688,
+        587.9147338867188,
+        123.80900573730469,
+        606.713623046875
+      ],
+      "en_text": "WARNING",
+      "font_size": 14.050000190734863
+    },
+    {
+      "bbox": [
+        36.0,
+        619.0873413085938,
+        312.8304138183594,
+        633.0693969726562
+      ],
+      "en_text": " Do not attempt to disassemble or repair the device yourself.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        638.0473022460938,
+        462.36956787109375,
+        652.0293579101562
+      ],
+      "en_text": " If the device makes noise, produces smoke or flames, or emits unpleasant odors, etc., you must",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        656.1683349609375,
+        485.63128662109375,
+        670.150390625
+      ],
+      "en_text": "immediately turn off the power and contact the manufacturer from which you purchased the device.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        672.3683471679688,
+        317.9915771484375,
+        686.3504028320312
+      ],
+      "en_text": " Do not use flammable objects or products around the device.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        688.5682983398438,
+        364.07147216796875,
+        702.5503540039062
+      ],
+      "en_text": " Before moving the device, you need to unplug it from the power source.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        706.3283081054688,
+        398.51104736328125,
+        720.3103637695312
+      ],
+      "en_text": " When transporting the device, make sure the print head is in the home position.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        732.3652954101562,
+        220.53176879882812,
+        753.7063598632812
+      ],
+      "en_text": "Maintenance and inspection",
+      "font_size": 15.949999809265137
+    }
+  ],
+  "5": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 6   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        181.5590057373047,
+        169.20530700683594,
+        397.0726623535156,
+        190.54640197753906
+      ],
+      "en_text": "Chapter 1 Equipment Parameters",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        155.63999938964844,
+        602.5253295898438,
+        404.8854064941406,
+        623.8663940429688
+      ],
+      "en_text": "Chapter 2 Equipment Operation Guide",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        65.75900268554688,
+        64.47470092773438,
+        123.80900573730469,
+        83.27359771728516
+      ],
+      "en_text": "WARNING",
+      "font_size": 14.050000190734863
+    },
+    {
+      "bbox": [
+        36.0,
+        95.64830017089844,
+        559.8328857421875,
+        125.23040008544922
+      ],
+      "en_text": " Before cleaning, make sure the power is off and the power cord is unplugged. Clean the printer with a cloth moistened with cleaning fluid. Do not use volatile solvents such as alcohol lamps to clean the",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        282.239990234375,
+        126.84830474853516,
+        313.3110046386719,
+        140.83041381835938
+      ],
+      "en_text": "printer.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        219.54200744628906,
+        205.19821166992188,
+        231.7220001220703
+      ],
+      "en_text": "Product   Technical   Parameters",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        252.4462890625,
+        173.71511840820312,
+        262.4143981933594
+      ],
+      "en_text": "Product Model ADL07K10.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        270.4462890625,
+        177.67739868164062,
+        280.4143981933594
+      ],
+      "en_text": "Applicable film width ≤ 600 MM .",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        45.84000015258789,
+        286.5252990722656,
+        179.32720947265625,
+        297.57440185546875
+      ],
+      "en_text": "Applicable speed ≤ 5-30 m²/h .",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        304.64630126953125,
+        135.30108642578125,
+        314.6144104003906
+      ],
+      "en_text": "Recommended platform",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        320.2463073730469,
+        110.49889373779297,
+        330.21441650390625
+      ],
+      "en_text": "heating temperature",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        140.63999938964844,
+        304.7652893066406,
+        157.6363983154297,
+        314.7333984375
+      ],
+      "en_text": "75 ℃ .",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        337.4062805175781,
+        135.25823974609375,
+        347.3743896484375
+      ],
+      "en_text": "Recommended drying",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        353.00628662109375,
+        110.49889373779297,
+        362.9743957519531
+      ],
+      "en_text": "heating temperature",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        140.63999938964844,
+        337.5252990722656,
+        175.1573944091797,
+        347.493408203125
+      ],
+      "en_text": "100-150 ℃ .",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        370.165283203125,
+        192.55648803710938,
+        380.1333923339844
+      ],
+      "en_text": "Media Type PET transfer film.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        387.206298828125,
+        310.154541015625,
+        397.1744079589844
+      ],
+      "en_text": "Media Transfer Net belt transmission system and paper delivery device.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        404.36529541015625,
+        255.7949676513672,
+        414.3334045410156
+      ],
+      "en_text": "Powder shaking speed It can be adjusted according to needs.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        421.5252990722656,
+        535.0606079101562,
+        431.493408203125
+      ],
+      "en_text": "Powder feeding speed The   device   will   automatically   add   powder   according   to   the   current   powder   amount.   It   is   recommended   to   adjust   the   powde",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        140.63999938964844,
+        437.12628173828125,
+        239.47677612304688,
+        447.0943908691406
+      ],
+      "en_text": "adding speed to more than 40%.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        454.2862854003906,
+        200.3406219482422,
+        464.25439453125
+      ],
+      "en_text": "power supply AC220V, 50Hz-60Hz",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        471.4462890625,
+        295.5805969238281,
+        481.4143981933594
+      ],
+      "en_text": "power Full power: 4000W. Operating power: 2200-3000W",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        499.2862854003906,
+        118.52455139160156,
+        509.25439453125
+      ],
+      "en_text": "Operating Environment",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        140.63999938964844,
+        489.92529296875,
+        211.9340057373047,
+        499.8934020996094
+      ],
+      "en_text": "Temperature: 18 ℃ -30 ℃",
+      "font_size": 7.14578914642334
+    },
+    {
+      "bbox": [
+        140.63999938964844,
+        508.7652893066406,
+        205.47830200195312,
+        518.7333984375
+      ],
+      "en_text": "Humidity: 40 % -60 %",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        527.1253051757812,
+        295.89422607421875,
+        537.0933837890625
+      ],
+      "en_text": "Machine weight Machine net weight 310KG 375KG (with packaging)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        544.2863159179688,
+        292.1688232421875,
+        554.25439453125
+      ],
+      "en_text": "Machine size 2226mmX940mmX945mm (length*width*height)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        47.400001525878906,
+        561.3253173828125,
+        301.6282653808594,
+        571.2933959960938
+      ],
+      "en_text": "Packing size 2310mmX1084mmX1130mm (length*width*height).",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        654.5419921875,
+        120.0,
+        666.7219848632812
+      ],
+      "en_text": "Main   interface",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        686.6063232421875,
+        564.53173828125,
+        696.5744018554688
+      ],
+      "en_text": "Manual/Auto/Stop status: The main interface is mainly used to switch the working mode in manual or automatic mode, and open and close the winding, mesh belt, suction,",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        702.206298828125,
+        564.3417358398438,
+        712.1743774414062
+      ],
+      "en_text": "powder   shaking,   and   powder   sprinkling   functions.   After   switching   from   manual   to   automatic   mode,   all   functions   will   be   opened   by   default.   However,   because   some",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        717.8063354492188,
+        564.548583984375,
+        727.7744140625
+      ],
+      "en_text": "functions are controlled by the film detection sensor in the automatic state, the winding, mesh belt, and powder shaking functions will be automatically closed and opened",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        733.4063110351562,
+        564.363525390625,
+        743.3743896484375
+      ],
+      "en_text": "according   to   the   state   of   the   film   detected   by   the   film   detection   sensor   unless   they   are   considered   closed   in   the   automatic   state.   The   suction   will   not   be   automatically",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        749.00634765625,
+        382.15374755859375,
+        758.9744262695312
+      ],
+      "en_text": "closed, and the powder sprinkling will be automatically opened and closed according to the weight of the powder.",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "6": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 7   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        58.88629913330078,
+        112.45909881591797,
+        68.85440063476562
+      ],
+      "en_text": "Front guide plate heating",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        74.48629760742188,
+        324.9417419433594,
+        84.45439910888672
+      ],
+      "en_text": "Front guide plate: Displays the set temperature and actual temperature of the front guide plate",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        90.0863037109375,
+        301.12872314453125,
+        100.05440521240234
+      ],
+      "en_text": "Drying 1: Displays the set heating temperature and actual temperature of drying zone 1",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        105.6863021850586,
+        301.12872314453125,
+        115.65440368652344
+      ],
+      "en_text": "Drying 2: Displays the set heating temperature and actual temperature of drying zone 2",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        121.28629302978516,
+        301.12872314453125,
+        131.25439453125
+      ],
+      "en_text": "Drying 3: Displays the set heating temperature and actual temperature of drying zone 3",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        416.8219909667969,
+        132.0,
+        429.00201416015625
+      ],
+      "en_text": "Debug   interface:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        698.486328125,
+        526.6348876953125,
+        708.4544067382812
+      ],
+      "en_text": "Winding speed: The rotation speed of the film winding motor is 0%-100%. Set the motor rotation speed according to the actual situation. The default is 30%-60%.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        714.0863037109375,
+        549.7949829101562,
+        724.0543823242188
+      ],
+      "en_text": "Mesh belt speed: The rotation speed of the mesh belt motor is 0%-100%. Under normal circumstances, the speed is recommended to be 10% higher than the film speed.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        729.6863403320312,
+        564.3164672851562,
+        739.6544189453125
+      ],
+      "en_text": "Powder shaking speed: The rotation speed of the powder shaking motor is 0%-100%. The speed of the powder shaking motor is set according to the powder left on the film.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        745.2863159179688,
+        130.99560546875,
+        755.25439453125
+      ],
+      "en_text": "The default setting is 30%-50%.",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "7": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 8   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        58.88629913330078,
+        564.1116943359375,
+        68.85440063476562
+      ],
+      "en_text": "Powder   spreading   speed:   The   rotation   speed   of   the   powder   spreading   motor   is   0%-100%.   The   speed   of   powder   spreading   is   set   according   to   the   actual   situation   of",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        74.48629760742188,
+        167.23484802246094,
+        84.45439910888672
+      ],
+      "en_text": "powdering. The default setting is 40%-60%.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        90.206298828125,
+        512.8799438476562,
+        100.17440032958984
+      ],
+      "en_text": "Powder return: The switch function of the automatic powder return motor. After it is turned off, the automatic powder return will not work  automatically.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        105.6863021850586,
+        374.58917236328125,
+        115.65440368652344
+      ],
+      "en_text": "Mesh belt: forward and backward, control the forward and reverse rotation of the mesh belt. Default is forward",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        121.28629302978516,
+        564.0195922851562,
+        131.25439453125
+      ],
+      "en_text": "Powder   Sprinkling:   Forward   and   reverse,   control   the   counterclockwise   and   clockwise   rotation   of   the   powder   shaft,   mainly   used   to   solve   the   problem   of   the   motor   being",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        136.88629150390625,
+        192.43467712402344,
+        146.85440063476562
+      ],
+      "en_text": "stuck due to foreign objects. The default is forward.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        152.48629760742188,
+        564.67041015625,
+        162.45440673828125
+      ],
+      "en_text": "Temperature setting: used to adjust the temperature settings of the front guide plate, drying zone 1, drying zone 2, and drying   zone 3. The drying zone 1 is   not enabled for",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        168.08628845214844,
+        116.23500061035156,
+        178.0543975830078
+      ],
+      "en_text": "the double-head machine.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        183.80628967285156,
+        563.861572265625,
+        193.77439880371094
+      ],
+      "en_text": "Front   guide   plate:   Pre-drying   treatment   of   ink   before   powdering   to   reduce   the   moisture   in   the   ink.   The   recommended   temperature   for   two   heads   is   50 ℃ ,   the",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        199.4062957763672,
+        564.0234985351562,
+        209.37440490722656
+      ],
+      "en_text": "recommended   temperature   for   four   heads   is   60 ℃ ,   and   the   recommended   temperature   for   six   heads   is   60-80 ℃ .   It   can   be   increased   or   decreased   according   to   actual",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        214.88629150390625,
+        69.55260467529297,
+        224.85440063476562
+      ],
+      "en_text": "conditions.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        230.60629272460938,
+        563.7926635742188,
+        240.57440185546875
+      ],
+      "en_text": "Drying   zone   1:   Pre-drying   treatment   of   powdered   materials.   The   recommended   temperature   for   two   heads   is   60 ℃ ,   the   recommended   temperature   for   four   heads   is",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        246.206298828125,
+        494.8326416015625,
+        256.1744079589844
+      ],
+      "en_text": "70-80 ℃ , and the recommended temperature for six heads is 80-100 ℃ . The temperature can be increased or decreased according to actual conditions.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        261.8063049316406,
+        563.7926635742188,
+        271.7744140625
+      ],
+      "en_text": "Drying   zone   2:   Pre-drying   treatment   of   powdered   materials.   The   recommended   temperature   for   two   heads   is   90 ℃ ,   the   recommended   temperature   for   four   heads   is",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        277.4062805175781,
+        502.39263916015625,
+        287.3743896484375
+      ],
+      "en_text": "90-120 ℃ , and the recommended temperature for six heads is 120-140 ℃ . The temperature can be increased or decreased according to actual conditions.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        293.00628662109375,
+        564.0326538085938,
+        302.9743957519531
+      ],
+      "en_text": "Drying   zone   three:   pre-drying   treatment   of   powdered   materials.   The   recommended   temperature   for   two   heads   is   90 ℃ ,   the   recommended   temperature   for   four   heads   is",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        308.6062927246094,
+        502.39263916015625,
+        335.4020080566406
+      ],
+      "en_text": "90-120 ℃ , and the recommended temperature for six heads is 120-140 ℃ . The temperature can be increased or decreased according to actual conditions. Information   interface:",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        604.8863525390625,
+        544.751220703125,
+        614.8544311523438
+      ],
+      "en_text": "Motor stall/Fan overcurrent/Powder feeding timeout: When the machine is running normally, the box in front of the word will be dark green, and it will be red when an",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        620.486328125,
+        259.0369567871094,
+        630.4544067382812
+      ],
+      "en_text": "alarm occurs. Click the recovery button opposite to it to cancel the alarm.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        636.0863037109375,
+        536.861572265625,
+        646.0543823242188
+      ],
+      "en_text": "Device board information [control board information] [touch screen information]: Displays the version name and compilation date, used to distinguish or identify the",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        651.6863403320312,
+        125.22958374023438,
+        661.6544189453125
+      ],
+      "en_text": "program version of the board",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        682.0220336914062,
+        150.0,
+        694.2020263671875
+      ],
+      "en_text": "Parameter   settings:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        698.486328125,
+        76.4720458984375,
+        708.4544067382812
+      ],
+      "en_text": "Sensor status",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "8": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        486.8399963378906,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 9   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        324.0863037109375,
+        328.41497802734375,
+        334.0544128417969
+      ],
+      "en_text": "IN1-Safety cover switch: 0 (displayed according to actual situation, cannot be changed manually)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        339.686279296875,
+        380.8539733886719,
+        349.6543884277344
+      ],
+      "en_text": "IN2-rewinding photoelectric sensor: 0 (displayed according to actual conditions and cannot be changed manually)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        355.2862854003906,
+        341.6149597167969,
+        365.25439453125
+      ],
+      "en_text": "IN3-membrane sensor: 0 (displayed according to actual conditions and cannot be changed manually)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        370.88629150390625,
+        358.1749572753906,
+        380.8544006347656
+      ],
+      "en_text": "IN4-Proximity switch sensor: 0 (displayed according to actual conditions and cannot be changed manually)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        386.4862976074219,
+        316.1749572753906,
+        413.4020080566406
+      ],
+      "en_text": "IN5-Drying switch: 1 (displayed according to actual conditions, cannot be changed manually) Front   guide:",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        419.05047607421875,
+        559.0831298828125,
+        426.6122131347656
+      ],
+      "en_text": "After   receiving   the   machine   and   unpacking   it,   you   need   to   open   the   left   and   right   cabinet   doors   and   adjust   the   fixed   position   of   the   front   guide",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        434.65045166015625,
+        369.6036376953125,
+        442.2121887207031
+      ],
+      "en_text": "plate   here.   There   is   one   on   each   side   of   the   machine,   and   it   is   adjusted   in   the   same   way.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        666.4219970703125,
+        78.0,
+        678.6019897460938
+      ],
+      "en_text": "switch:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        684.25048828125,
+        463.3221130371094,
+        691.8121948242188
+      ],
+      "en_text": "Main   Switch:   The   power   switch   of   the   host,   used   to   control   the   AC   contactor   to   turn   on   and   off   the   entire   circuit.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        699.8504638671875,
+        455.8815002441406,
+        707.4121704101562
+      ],
+      "en_text": "Emergency   Button:   Emergency   stop   switch,   used   to   cut   off   the   power   supply   of   the   entire   machine   in   an   emergency.",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "9": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 10   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        229.6219940185547,
+        84.0,
+        241.80198669433594
+      ],
+      "en_text": "Rolling:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        246.3262939453125,
+        536.946533203125,
+        256.2944030761719
+      ],
+      "en_text": "1 、 Where the middle LED light bar is located, you can see three stainless steel shafts, which are used to guide the heat transfer film. For the specific film penetration",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        103.44000244140625,
+        261.686279296875,
+        266.4747619628906,
+        271.6543884277344
+      ],
+      "en_text": "method, please refer to the film penetration diagram.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        277.5252990722656,
+        502.6348876953125,
+        287.493408203125
+      ],
+      "en_text": "2 、 The switch in the green circle on the right is the switch of the LED light bar, which is used to observe the printing effect and load and unload materials.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        293.12628173828125,
+        478.636474609375,
+        303.0943908691406
+      ],
+      "en_text": "3 、 There are three fans behind the three protective nets in the middle, which are used to cool the inside of the chassis and the heat transfer film.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        308.7262878417969,
+        535.3934936523438,
+        318.69439697265625
+      ],
+      "en_text": "4 、 The yellow paper roll is for taking up the printed heat transfer film. There is a switch below the green light on the right side for switching the rewinding direction.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        479.22198486328125,
+        78.0,
+        491.4020080566406
+      ],
+      "en_text": "Gating:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        495.8063049316406,
+        556.1500854492188,
+        505.7744140625
+      ],
+      "en_text": "1 . Powder shaking cover door control. When the powder shaking motor is in working state, the powder shaking motor stops working after the cover is opened. The powder",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.47999954223633,
+        511.2862854003906,
+        287.7149963378906,
+        521.25439453125
+      ],
+      "en_text": "shaking motor will not work until the powder shaking compartment door is closed.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        667.2863159179688,
+        555.4620361328125,
+        677.25439453125
+      ],
+      "en_text": "2.   The powder spreading chute is gated. When the powder spreading motor is in working state, open the upper cover and the powder spreading motor stops working. The",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        682.8863525390625,
+        245.59498596191406,
+        692.8544311523438
+      ],
+      "en_text": "powder spreading motor will not work until the gate switch is closed.",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "10": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 11   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        214.14199829101562,
+        120.0,
+        226.32199096679688
+      ],
+      "en_text": "Probe   control:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        231.97044372558594,
+        559.2040405273438,
+        239.53219604492188
+      ],
+      "en_text": "1、Photoelectric   switch:   detects   whether   there   is   heat   transfer   film,   used   to   control   the   powder   shaking   motor,   mesh   belt   motor,   purifier,   and",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        103.44000244140625,
+        247.57044982910156,
+        152.16212463378906,
+        255.1322021484375
+      ],
+      "en_text": "oven   heating.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.91999816894531,
+        263.1694641113281,
+        559.0831298828125,
+        270.731201171875
+      ],
+      "en_text": "Powder   shaking   motor:   The   photoelectric   switch   starts   timing   when   it   detects   no   heat   transfer   film.   If   no   heat   transfer   film   is   detected   after",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.439998626708984,
+        278.76947021484375,
+        282.6025695800781,
+        286.3312072753906
+      ],
+      "en_text": "ten   seconds,   the   powder   shaking   motor   stops   shaking   the   powder.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.91999816894531,
+        294.3704528808594,
+        559.2040405273438,
+        301.93218994140625
+      ],
+      "en_text": "Mesh   belt   motor:   When   the   photoelectric   switch   cannot   detect   the   heat   transfer   film,   the   mesh   belt   motor   stops   working   directly.   When   the",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.439998626708984,
+        309.970458984375,
+        559.2025146484375,
+        317.5321960449219
+      ],
+      "en_text": "photoelectric   switch   detects   the   heat   transfer   film,   the   mesh   belt   motor   and   powder   shaking   motor   start   working   after   a   delay   of   1   second.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.91999816894531,
+        325.5704650878906,
+        559.203125,
+        333.1322021484375
+      ],
+      "en_text": "Oven   heating:   When   the   photoelectric   switch   detects   no   heat   transfer   film,   the   heating   and   purifier   will   stop   working   at   the   same   time   after",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        46.439998626708984,
+        341.1694641113281,
+        95.16215515136719,
+        348.731201171875
+      ],
+      "en_text": "five   minutes.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.47999954223633,
+        543.2379760742188,
+        283.97772216796875,
+        552.3729858398438
+      ],
+      "en_text": "Proximity   switch:   used   to   control   the   weight   of   powder.",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        558.206298828125,
+        553.6097412109375,
+        568.1743774414062
+      ],
+      "en_text": "Powder quantity adjustment: If the position of the metal pointer is shifted by one grid above or below 5, the powder quantity does not change significantly. When it is at 5",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        103.44000244140625,
+        573.8063354492188,
+        296.7174072265625,
+        583.7744140625
+      ],
+      "en_text": "grids, the amount on the heat transfer film is about 500g-600g .",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        589.4063110351562,
+        551.8296508789062,
+        599.3743896484375
+      ],
+      "en_text": "Note: The adjustment position cannot be too low. If it is too low, the powder will continue to be poured without stopping, and the abnormal red warning light will light up",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        103.44000244140625,
+        605.00634765625,
+        520.5350952148438,
+        614.9744262695312
+      ],
+      "en_text": "every five minutes. (The time the warning light is on can be set in the background. Generally, it is not recommended to exceed 5 minutes)",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        620.6063232421875,
+        539.6045532226562,
+        630.5744018554688
+      ],
+      "en_text": "The adjustment position cannot be less than 3. If it is less than 3, the amount of powder will be relatively small, which may cause some parts of the picture to have no",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        103.44000244140625,
+        636.206298828125,
+        128.2346954345703,
+        646.1743774414062
+      ],
+      "en_text": "powder.",
+      "font_size": 7.450000286102295
+    }
+  ],
+  "11": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 12   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        246.718994140625,
+        143.93626403808594,
+        255.85400390625
+      ],
+      "en_text": "Powder   saver   adjustment:",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        261.686279296875,
+        550.6620483398438,
+        271.6543884277344
+      ],
+      "en_text": "The supporting parts in the blue box are the structure of the heat transfer film and powder, and do not need to be adjusted. The two arrows in the red circular box can be",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.47999954223633,
+        277.2862854003906,
+        451.27593994140625,
+        287.25439453125
+      ],
+      "en_text": "pinched by hand to move the powder baffle in the red circle. After releasing them, it will automatically lock and cannot move on its own.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        494.8219909667969,
+        156.0,
+        507.00201416015625
+      ],
+      "en_text": "Purification   device:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        47.040000915527344,
+        511.2862854003906,
+        535.781005859375,
+        521.25439453125
+      ],
+      "en_text": "The purifier uses electric field separation plus a metal mesh, activated carbon, and HEPA filter pads for four-stage filtration to effectively reduce air pollution. The",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        526.8863525390625,
+        543.55078125,
+        536.8544311523438
+      ],
+      "en_text": "lifespan of the activated carbon and HEPA filters varies depending on the environment. Clean the filter and replace the activated carbon and HEPA filters based on their",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        542.486328125,
+        314.4738464355469,
+        552.4544067382812
+      ],
+      "en_text": "effectiveness. If outdoor emissions are present, the replacement frequency can be reduced.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        744.4219970703125,
+        228.0,
+        756.6019897460938
+      ],
+      "en_text": "Diagram   of   membrane   penetration:",
+      "font_size": 12.0
+    }
+  ],
+  "12": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 13   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        103.80000305175781,
+        346.20428466796875,
+        468.05401611328125,
+        367.54541015625
+      ],
+      "en_text": "Chapter 3 Equipment Maintenance and Troubleshooting",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        383.2220153808594,
+        232.97781372070312,
+        399.87799072265625
+      ],
+      "en_text": "1.   Equipment maintenance details:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        434.9924621582031,
+        122.4786376953125,
+        449.4970703125
+      ],
+      "en_text": "(1)   Daily inspection",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        458.5282897949219,
+        561.634521484375,
+        472.5104064941406
+      ],
+      "en_text": " Check the   powder collecting box   and powder adding box and   clean   them   if necessary   to prevent the rubber   powder",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        481.92828369140625,
+        372.8314208984375,
+        495.910400390625
+      ],
+      "en_text": "from getting damp or mixed with foreign objects, which may cause failure.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        505.3282775878906,
+        561.8076782226562,
+        519.3103637695312
+      ],
+      "en_text": " Check   the   condensation   around   the   drying   box   and   clean   it   up   in   time   to   prevent   liquid   from   invading   electronic",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        528.7283325195312,
+        201.83160400390625,
+        542.7103881835938
+      ],
+      "en_text": "components and causing damage.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        551.992431640625,
+        134.83763122558594,
+        566.4970092773438
+      ],
+      "en_text": "(2) Monthly inspection",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        575.5283203125,
+        561.685791015625,
+        589.5103759765625
+      ],
+      "en_text": " Check whether   there is glue powder covering   the paper detection   sensor and   the powder shaking box, and   clean   up",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        598.9283447265625,
+        203.51248168945312,
+        612.910400390625
+      ],
+      "en_text": "the dirt around the sensor in time.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        622.3283081054688,
+        552.3506469726562,
+        636.3103637695312
+      ],
+      "en_text": " Check whether the powder shaking shaft rotates smoothly and whether there is any abnormal noise during rotation.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        645.7283325195312,
+        364.19232177734375,
+        659.7103881835938
+      ],
+      "en_text": " Wipe away the dust and glue powder that has fallen into the power box.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        668.992431640625,
+        152.119384765625,
+        683.4970092773438
+      ],
+      "en_text": "(3) Semi-annual inspection",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        692.5283203125,
+        453.14825439453125,
+        706.5103759765625
+      ],
+      "en_text": " Check the entire circuit to see if there is any looseness or disconnection, and repair it in time;",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        715.79248046875,
+        147.8130340576172,
+        730.2970581054688
+      ],
+      "en_text": "(4) Care and maintenance",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        739.3283081054688,
+        473.5491638183594,
+        753.3103637695312
+      ],
+      "en_text": " Powder and foreign matter in the powder shaking machine mesh belt need to be cleaned in time ;",
+      "font_size": 10.449999809265137
+    }
+  ],
+  "13": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 14   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        60.72829818725586,
+        561.6802368164062,
+        74.71039581298828
+      ],
+      "en_text": " The   flexibility   of   the   powder   saver   and   paper   collector   swing   arm   needs   to   be   checked.   If   any   problems   are   found,",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        84.1282958984375,
+        248.15249633789062,
+        98.11039733886719
+      ],
+      "en_text": "they need to be repaired or replaced in time.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        107.5282974243164,
+        531.4725952148438,
+        121.5103988647461
+      ],
+      "en_text": " Each moving part contains bearings. Check regularly whether it rotates smoothly and add lubricating oil in time.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        57.0,
+        157.02200317382812,
+        203.3365936279297,
+        173.67800903320312
+      ],
+      "en_text": "2.   Common troubleshooting:",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        39.84000015258789,
+        216.06199645996094,
+        85.02989959716797,
+        232.71800231933594
+      ],
+      "en_text": "Common",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        48.599998474121094,
+        255.06199645996094,
+        76.5346450805664,
+        271.7179870605469
+      ],
+      "en_text": "faults",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        227.63999938964844,
+        213.2779541015625,
+        398.78497314453125,
+        235.4165496826172
+      ],
+      "en_text": "Troubleshooting direction",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        294.6969909667969,
+        50.124000549316406,
+        310.75299072265625
+      ],
+      "en_text": "No",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        333.6969909667969,
+        73.53390502929688,
+        349.75299072265625
+      ],
+      "en_text": "powder",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        282.93798828125,
+        527.541748046875,
+        392.593994140625
+      ],
+      "en_text": "Possibility   1:   Check   whether   the   powder   bin   door   is   closed   and   the   door   switch   is triggered. Possibility 2: Is the motor parameter on the display 0? Possibility   3:   Board   output   failure,   check   the   output   signal   line   and   the   power   supply line to the motor Possibility 4: Has the powder level in the powder shaker reached the set requirement? Possibility 5: The proximity switch of the powder saver is damaged or loose",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        404.37799072265625,
+        73.17450714111328,
+        420.4339904785156
+      ],
+      "en_text": "Powder",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        443.37799072265625,
+        89.12339782714844,
+        459.4339904785156
+      ],
+      "en_text": "shaker   do",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        482.37799072265625,
+        52.726802825927734,
+        498.4339904785156
+      ],
+      "en_text": "not",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        521.3779907226562,
+        75.29585266113281,
+        537.4340209960938
+      ],
+      "en_text": "rotation",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        392.73797607421875,
+        527.6979370117188,
+        408.7939758300781
+      ],
+      "en_text": "Possibility 1: Check whether the powder shaking bin door is closed and the door switch",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        408.3379821777344,
+        527.6025390625,
+        486.7939758300781
+      ],
+      "en_text": "is triggered. Possibility 2: Is the motor parameter on the display 0? Possibility   3:   Board   output   failure,   check   the   output   signal   line   and   the   power   supply line to the motor Possibility   4:   Manually   check   the   motor   rotation   to   see   if   it   is   abnormal   when   the",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        486.3379821777344,
+        527.4835815429688,
+        549.1940307617188
+      ],
+      "en_text": "machine   is   turned   off.   If   there   is   a   lot   of   resistance,   check   whether   the powder shaking rod is properly installed. Possibility 5: The motor is damaged. Possibility 6: 24V power supply box output failure or line failure.",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        560.8569946289062,
+        50.124000549316406,
+        576.9130249023438
+      ],
+      "en_text": "No",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        599.8569946289062,
+        72.71745300292969,
+        615.9130249023438
+      ],
+      "en_text": "heating",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        549.218017578125,
+        407.7807312011719,
+        612.0740356445312
+      ],
+      "en_text": "Possibility 1: The temperature parameter settings are incorrect. Possibility 2: The temperature probe or relay is damaged. Possibility 3: The micro switch stroke is not in place. Possibility 4: The lamp is damaged or the circuit is faulty.",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        639.3380126953125,
+        89.13435363769531,
+        655.39404296875
+      ],
+      "en_text": "No film",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        36.0,
+        678.3380126953125,
+        88.96665954589844,
+        694.39404296875
+      ],
+      "en_text": "movement",
+      "font_size": 12.0
+    },
+    {
+      "bbox": [
+        99.72000122070312,
+        627.6969604492188,
+        527.9620361328125,
+        706.1530151367188
+      ],
+      "en_text": "Possibility 1: The switch is in automatic state, the sensor is damaged or the membrane is not sensed. Possibility 2: Motor parameter setting error. Possibility 3: 24V power supply box output failure or circuit failure. Possibility 4: The suction motor switch is not turned on.",
+      "font_size": 12.0
+    }
+  ],
+  "14": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 15   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        63.86894989013672,
+        540.05322265625,
+        80.05819702148438
+      ],
+      "en_text": "Other   parameters:The   following   content   is   not   open   to   customers",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        95.0689468383789,
+        100.01334381103516,
+        111.25819396972656
+      ],
+      "en_text": "directly",
+      "font_size": 15.949999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        121.28629302978516,
+        461.4753112792969,
+        131.25439453125
+      ],
+      "en_text": "Enter password: Click the dialog box at the back to enter the password 111111. After entering the password, you can see the settings below.",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        136.88629150390625,
+        87.6302490234375,
+        146.85440063476562
+      ],
+      "en_text": "Time parameters",
+      "font_size": 7.450000286102295
+    },
+    {
+      "bbox": [
+        36.0,
+        399.9682922363281,
+        558.5155639648438,
+        523.150390625
+      ],
+      "en_text": "Delayed working time of powder shaking motor after pause: In automatic state, if the film measuring sensor is not triggered again within the set time after starting, it will stop working. Waiting time after film-moving photoelectric trigger: the motor delay working time after the proximity switch senses that there is no film. Powder recycle working time: the time the powder recycle motor cycles when the powder recycle function is turned on. Powder return interval time: When the powder return function is turned on, the powder return motor stops working. After the set time, the powder return motor will continue to work. Heating and purifier working time when automatic stop: When the machine is in automatic state, the timing starts when it",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        524.768310546875,
+        557.3885498046875,
+        585.5503540039062
+      ],
+      "en_text": "does not sense the heat transfer film. After the set time, the purifier and heating will stop working. Powder supply timeout: If the powder supply is still insufficient after the set time, the alarm light will turn red. Start weight sensor detection: It is closed by default. When it is turned on, the angle proximity switch will not work. After",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        36.0,
+        587.1683349609375,
+        537.8330078125,
+        725.9503784179688
+      ],
+      "en_text": "the powder feeding timeout period is exceeded, the alarm light will turn red and a buzzer will sound. Speed parameter (kHz) Film movement 1 Maximum speed of motor: default 40 (maximum setting 40) Film movement 2 Maximum speed of motor: default 40 (maximum setting 40) Maximum speed of powder spreading motor: default 40 (maximum setting 40) Maximum speed of the powder shaking motor: default 40 (maximum setting 20) Maximum speed of winding motor: default 40 (maximum setting 40) Other parameters 1",
+      "font_size": 10.449999809265137
+    }
+  ],
+  "15": [
+    {
+      "bbox": [
+        36.0,
+        44.10446548461914,
+        246.0640869140625,
+        54.554466247558594
+      ],
+      "en_text": "Henan   Yindu   Digital   Technology   Co.,   Ltd.",
+      "font_size": 10.449999809265137
+    },
+    {
+      "bbox": [
+        482.3999938964844,
+        766.2559814453125,
+        559.0800170898438,
+        778.2979736328125
+      ],
+      "en_text": "第 16   页共 16   页",
+      "font_size": 9.0
+    },
+    {
+      "bbox": [
+        36.0,
+        290.7682800292969,
+        504.72943115234375,
+        523.150390625
+      ],
+      "en_text": "PT100 temperature calculation compensation parameters: Default 1.018 cannot be changed Front heating KP: 50 (the default parameters include the following parameters, which can be changed. It is not recommended to change them without special needs) Front heating KI: 20 Front heating KD: 50 Drying KP1: 83 Drying KI1: 25 Drying KD1: 45 Drying KP2: 90 Drying KI2: 10 Drying KD2: 70 Drying KP3: 85 Drying KI3: 28 Drying KD3: 65 Drying curve line diagram: The curve line shows the state of heating",
+      "font_size": 10.449999809265137
+    }
+  ]
+}

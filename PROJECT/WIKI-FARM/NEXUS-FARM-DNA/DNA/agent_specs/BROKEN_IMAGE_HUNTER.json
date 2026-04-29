@@ -1,0 +1,30 @@
+{
+  "agent_id": "BROKEN_IMAGE_HUNTER",
+  "domain": "WEB",
+  "purpose": "Scan page HTML for <img> tags with broken or inaccessible source URLs",
+  "api_endpoints": [
+    "{domain}"
+  ],
+  "data_model": {
+    "page_url": "TEXT",
+    "image_url": "TEXT",
+    "status_code": "INTEGER",
+    "alt_text": "TEXT"
+  },
+  "core_algorithm": "HTML parsing and concurrent image-link validation",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "re"
+  ],
+  "logic_markers": [
+    "<img",
+    "src=",
+    "404",
+    "alt=",
+    "Inaccessible"
+  ]
+}

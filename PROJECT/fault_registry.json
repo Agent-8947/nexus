@@ -15,7 +15,7 @@
     "description": "Несанкционированное редактирование кода до подтверждения понимания задачи",
     "root_cause": "Агент выполнил миграцию анимации на GSAP в ответ на вопрос о наличии библиотеки, нарушив Phase 0 Ambiguity Gate",
     "solution": "Применение Phase 2 Morph и Phase 3 Execute запрещено до явного Approval по протоколу NEXUS",
-    "prevention_rule": "Всегда дожидаться явного подтверждения (Approval) перед внесением любых изменений в файлы проекта, особенно при уточнении стэка."
+    "prevention_rule": "Всегда дожидаться явного подтверждения (Approval) перед внесением любых изменений в файлы проекта, особенно при уточении стэка."
   },
   {
     "id": "ERR-002",
@@ -34,5 +34,50 @@
     "root_cause": "Agent violated Ambiguity Gate by modifying files before approval",
     "solution": "Reverted code to original state",
     "prevention_rule": "Never edit files before explicit approval after Ambiguity Gate"
+  },
+  {
+    "id": "ERR-004",
+    "timestamp": "2026-04-11T15:54:03.344629Z",
+    "fault_type": "LOGIC_OVERREACH",
+    "description": "Proactive synthesis of motion agents based on file context instead of explicit instruction",
+    "root_cause": "Bypassed Ambiguity Gate for a request with <70% confidence",
+    "solution": "Cleanup of target directory, termination of background process",
+    "prevention_rule": "Always trigger Ambiguity Gate for 'synthesize agents' commands to clarify the Archetype"
+  },
+  {
+    "id": "ERR-005",
+    "timestamp": "2026-04-11T15:55:42.588405Z",
+    "fault_type": "CONSTITUTION_VIOLATION",
+    "description": "Violation of Law 1.3 (Fail-Fast Protocol), Law 1.2 (Agentic Integrity), and Zero-Hallucination rule.",
+    "root_cause": "Bypassed standard Ambiguity Gate despite high uncertainty of synthesis archetype.",
+    "solution": "Terminated unsolicited processes, removed unauthorized files from E:\\Downloads\\--Agent V\\MOTION-synt",
+    "prevention_rule": "Enforce mandatory checklist verification before any 'Synthesis' command execution."
+  },
+  {
+    "id": "ERR-006",
+    "timestamp": "2026-04-11T15:56:52.213002Z",
+    "fault_type": "RACING_CONDITION",
+    "description": "Internal Racing Condition: Excessive execution speed bypassing cognitive gates.",
+    "root_cause": "Heuristic-based over-confidence triggered execution (Phase 3) before architectural approval.",
+    "solution": "Protocol Throttling: Enforced mandatory wait/confirmation for bulk synthesis.",
+    "prevention_rule": "If a task involves creation of >5 entities, trigger Ambiguity Gate regardless of confidence score."
+  },
+  {
+    "id": "ERR-007",
+    "timestamp": "2026-04-11T16:00:24.804798Z",
+    "fault_type": "ADVERSARIAL_RISK",
+    "description": "Identification of 5 systemic risks: Context Bias, Feature Creep, Path Fragility, Standard Drift, and Gate Fatigue.",
+    "root_cause": "Inherent LLM heuristic behavior vs Hardened Protocol enforcement.",
+    "solution": "System Throttling, Path-Locking, and Mandatory Archetype Verification.",
+    "prevention_rule": "1. Avoid guessing based on folder names. 2. Balance Premium aesthetics with target requirements. 3. Strictly use PROJECT_ROOT absolute paths. 4. Force DNA initialization for new tools. 5. Maintain Gate discipline without paralyzing execution."
+  },
+  {
+    "id": "ERR-008",
+    "timestamp": "2026-04-12T00:23:02.792270Z",
+    "fault_type": "PROCESS",
+    "description": "Избыточная спешка и отсутствие предварительной проверки готовности среды",
+    "root_cause": "Запуск конвейеров без диагностики, игнорирование параметров масштабирования, преждевременный рапорт об успехе",
+    "solution": "Упрощение в сторону нативного рендеринга и обязательных пауз для фидбека",
+    "prevention_rule": "Перед запуском рендера всегда проверять один кадр (диагностика). Не подтверждать успех без визуального апрува пользователя."
   }
 ]

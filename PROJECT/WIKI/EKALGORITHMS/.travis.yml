@@ -1,0 +1,12 @@
+language: objective-c
+osx_image: xcode7.3
+
+before_install:
+- sw_vers
+- cd EKAlgorithmsApp
+
+install: make install
+
+script: make ci
+
+

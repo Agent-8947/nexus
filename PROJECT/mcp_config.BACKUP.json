@@ -1,0 +1,185 @@
+{
+    "mcpServers": {
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "e:/Downloads/--ANTIGRAVITY store/IDE-NEXUS/PROJECT"
+            ]
+        },
+        "git": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-git",
+                "--repository",
+                "e:/Downloads/--ANTIGRAVITY store/IDE-NEXUS/PROJECT"
+            ]
+        },
+        "memory": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory"
+            ]
+        },
+        "sqlite": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sqlite",
+                "--db",
+                "e:/Downloads/--ANTIGRAVITY store/IDE-NEXUS/PROJECT/nexus_core.db"
+            ]
+        },
+        "fetch": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-fetch"
+            ]
+        },
+        "brave-search": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-brave-search"
+            ],
+            "env": {
+                "BRAVE_API_KEY": ""
+            }
+        },
+        "sentry": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sentry"
+            ],
+            "env": {
+                "SENTRY_AUTH_TOKEN": "",
+                "SENTRY_ORG": ""
+            }
+        },
+        "puppeteer": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-puppeteer"
+            ]
+        },
+        "sequentialthinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequentialthinking"
+            ]
+        },
+        "everart": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-everart"
+            ],
+            "env": {
+                "EVERART_API_KEY": ""
+            }
+        },
+        "obsidian": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-server-obsidian",
+                "--vault",
+                "e:/Downloads/--ANTIGRAVITY store/IDE-NEXUS/PROJECT/OBSIDIAN_VAULT"
+            ]
+        },
+        "contentful": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-contentful"
+            ],
+            "env": {
+                "CONTENTFUL_SPACE_ID": "",
+                "CONTENTFUL_ACCESS_TOKEN": ""
+            }
+        },
+        "osp-marketing": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "osp-marketing-mcp-tools"
+            ]
+        },
+        "ai-therapist": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@danieldunderfelt/ai-therapist-mcp"
+            ]
+        },
+        "pare-git": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/git"
+            ]
+        },
+        "pare-github": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/github"
+            ]
+        },
+        "pare-search": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/search"
+            ]
+        },
+        "pare-python": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/python"
+            ]
+        },
+        "pare-process": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/process"
+            ]
+        },
+        "pare-http": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@paretools/http"
+            ]
+        },
+        "neo4j": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-server-neo4j",
+                "--neo4j-uri",
+                "bolt://localhost:7687",
+                "--neo4j-user",
+                "neo4j",
+                "--neo4j-password",
+                "nexus_graph_db"
+            ]
+        },
+        "postgres": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-postgres",
+                "postgresql://nexus_admin:nexus_password@localhost:5432/nexus_core"
+            ]
+        }
+    }
+}

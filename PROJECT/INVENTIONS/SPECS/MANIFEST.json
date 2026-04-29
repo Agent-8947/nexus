@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-04-06T03:46:43.057771",
+  "agent": "06_WIKI_ENGINEER_v2",
+  "total_specs": 6,
+  "specs": [
+    {
+      "module": "network_recon",
+      "title": "Network Reconnaissance",
+      "domain": "network_recon"
+    },
+    {
+      "module": "breach_intel",
+      "title": "Breach Intelligence",
+      "domain": "data_breach"
+    },
+    {
+      "module": "web_crawler",
+      "title": "Web Crawler",
+      "domain": "web_scraping"
+    },
+    {
+      "module": "identity_profiler",
+      "title": "Identity Profiler",
+      "domain": "osint_profiling"
+    },
+    {
+      "module": "security_analyzer",
+      "title": "Security Header Analyzer",
+      "domain": "crypto_security"
+    },
+    {
+      "module": "endpoint_monitor",
+      "title": "Endpoint Monitor",
+      "domain": "monitoring"
+    }
+  ]
+}

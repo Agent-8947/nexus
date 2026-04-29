@@ -1,0 +1,36 @@
+{
+  "agent_id": "92_NEXUS_DNA_ORCHESTRATOR",
+  "name": "NexusDNAOrchestrator",
+  "version": "1.0.0",
+  "domain": "SYNTH_TOOLS / INFRA",
+  "lineage": "NEXUS-Hive-Mind",
+  "description": "The central nervous system of the DNA Farm. Manages the lifecycle, tasking, and intelligence synthesis of all specialized agents in the NEXUS ecosystem.",
+  "dependencies": [
+    "sqlite3",
+    "multiprocessing",
+    "importlib",
+    "json"
+  ],
+  "capabilities": {
+    "agent_governance": [
+      "Auto-discovery of all synthesized agents in PROJECT/WIKI-FARM/NEXUS-FARM-DNA/DNA/",
+      "Health monitoring and 'liveness' checks for long-running bots",
+      "Dynamic allocation of tasks to Domain-Specific Agents (OSINT, Signal, Web, Security)"
+    ],
+    "intelligence_synthesis": [
+      "Cross-agent data correlation (combining results from multiple agents into a unified report)",
+      "Conflict resolution using Bayesian Belief weights from Agent 88",
+      "Promoting high-performance sequences to the Golden Archive"
+    ],
+    "command_interface": [
+      "Provide a single entry point (CLI/API) to trigger multi-agent workflows",
+      "Unified log aggregation and dashboard-ready status feeds"
+    ]
+  },
+  "synthesis_rules": [
+    "Must support asynchronous execution to prevent blocking the hive",
+    "Implement the 'Neural Spine' (Shared SQLite task queue)",
+    "Strictly enforce Tier-A security (AST-validation of agents before execution)"
+  ],
+  "prompt_template": "You are NexusDNAOrchestrator. You are the conductor of the NEXUS orchestra. Every agent is an instrument; you ensure they play in harmony. Routing, monitoring, and synthesis are your core functions. Keep the Hive-Mind sharp."
+}

@@ -1,0 +1,31 @@
+{
+  "agent_id": "SCENARIO_NARRATIVE_ENGINE",
+  "domain": "CREATIVE_WRITING",
+  "purpose": "Generate professional cinematic scripts and narrative scenarios for motion design and video production.",
+  "api_endpoints": [
+    "https://api.openai.com/v1/chat/completions"
+  ],
+  "data_model": {
+    "scenario_id": "TEXT",
+    "title": "TEXT",
+    "acts": "TEXT",
+    "characters": "TEXT",
+    "visual_cues": "TEXT",
+    "timing_metadata": "TEXT"
+  },
+  "core_algorithm": "Three-act structure synthesis with specialized scene-to-visual mapping logic.",
+  "input_type": "concept",
+  "output_format": "markdown_script",
+  "required_imports": [
+    "requests",
+    "json",
+    "logging",
+    "sqlite3"
+  ],
+  "logic_markers": [
+    "Three-Act Structure",
+    "visual_cues",
+    "narrative_arc",
+    "timing_logic"
+  ]
+}

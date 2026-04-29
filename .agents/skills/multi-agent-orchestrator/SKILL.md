@@ -15,6 +15,7 @@ Use when a task needs a concrete multi-agent plan with clear role separation, de
 - Parallelization boundaries to avoid duplicate/conflicting edits.
 - Explicit output schemas and wait strategies.
 - Merge/conflict risk control for concurrent implementation tasks.
+- **Resource Selection**: Use `nvidia-catalog` for tasks requiring high-parameter reasoning (e.g., Llama 3.1 405B).
 
 ## Quality Checks
 - Verify every delegated task is materially useful and non-overlapping.

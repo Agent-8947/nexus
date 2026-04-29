@@ -1,0 +1,97 @@
+{
+  "child_id": "INFRASTRUCTURE__X__FRP",
+  "parent_a": {
+    "node_id": "INFRASTRUCTURE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "analyzer",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "medium",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.059,
+        0.021,
+        0.031,
+        0.013,
+        0.009,
+        0.047,
+        0.0,
+        0.053,
+        0.0,
+        0.805
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.2,
+        "completeness": 0.33,
+        "overall": 0.44
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "FRP",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.003
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.32,
+        "completeness": 0.33,
+        "overall": 0.61
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T19:34:24.945070"
+}

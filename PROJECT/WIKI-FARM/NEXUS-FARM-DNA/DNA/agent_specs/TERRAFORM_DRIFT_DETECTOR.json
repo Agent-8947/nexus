@@ -1,0 +1,30 @@
+{
+  "agent_id": "TERRAFORM_DRIFT_DETECTOR",
+  "domain": "INFRA",
+  "purpose": "Detect drift between local Terraform state and actual cloud resources via provider APIs",
+  "api_endpoints": [
+    "https://{provider_api}.com/v1/resources"
+  ],
+  "data_model": {
+    "resource_id": "TEXT",
+    "state_value": "TEXT",
+    "actual_value": "TEXT",
+    "drifted": "INTEGER"
+  },
+  "core_algorithm": "State-to-API property diffing with fuzzy matching",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "json",
+    "re"
+  ],
+  "logic_markers": [
+    "terraform.tfstate",
+    "drift",
+    "managed",
+    "provider",
+    "attribute"
+  ]
+}

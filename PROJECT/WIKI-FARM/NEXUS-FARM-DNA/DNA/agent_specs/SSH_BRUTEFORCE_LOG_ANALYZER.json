@@ -1,0 +1,30 @@
+{
+  "agent_id": "SSH_BRUTEFORCE_LOG_ANALYZER",
+  "domain": "INFRA",
+  "purpose": "Analyze auth.log for SSH bruteforce attempts and extract attacker IPs",
+  "api_endpoints": [],
+  "data_model": {
+    "ip": "TEXT",
+    "attempt_count": "INTEGER",
+    "users_tried": "TEXT",
+    "first_seen": "TEXT",
+    "last_seen": "TEXT"
+  },
+  "core_algorithm": "System-auth log parsing and frequency clustering per IP",
+  "input_type": "file",
+  "output_format": "json_report",
+  "required_imports": [
+    "re",
+    "logging",
+    "sqlite3",
+    "json",
+    "time"
+  ],
+  "logic_markers": [
+    "Failed password",
+    "Invalid user",
+    "auth.log",
+    "ssh",
+    "Accepted"
+  ]
+}

@@ -53,10 +53,10 @@ class NexusEngineerLoop:
             items = results.get('files', [])
             if items:
                 self.file_id = items[0]['id']
-                print(f"✅ Таблица найдена: {self.file_id}")
+                print(f" Таблица найдена: {self.file_id}")
             return service
         except Exception as e:
-            print(f"❌ Ошибка авторизации Drive: {e}")
+            print(f" Ошибка авторизации Drive: {e}")
             return None
 
     def _read_dna(self):
@@ -116,9 +116,9 @@ class NexusEngineerLoop:
                 file_metadata = {'name': SHEET_NAME, 'mimeType': 'application/vnd.google-apps.spreadsheet'}
                 file = self.service.files().create(body=file_metadata, media_body=media, fields='id').execute()
                 self.file_id = file.get('id')
-            print(f"  ☁️ Drive Sync: ОСИНТ-Легал Таблица успешно обновлена.")
+            print(f"   Drive Sync: ОСИНТ-Легал Таблица успешно обновлена.")
         except Exception as e:
-            print(f"  ❌ Ошибка загрузки: {e}")
+            print(f"   Ошибка загрузки: {e}")
 
     def loop_agent(self):
         generation_cycle = 1
@@ -136,11 +136,11 @@ class NexusEngineerLoop:
                     writer.writeheader()
                 for i in ideas:
                     writer.writerow(i)
-                    print(f"  💡 {i['Категория']}: {i['Архитектура (Технологии)']}")
+                    print(f"   {i['Категория']}: {i['Архитектура (Технологии)']}")
                     
             self._upload_drive()
             
-            print(f"⏳ Ждём 60 секунд. Данные ушли в защитный контур...")
+            print(f" Ждём 60 секунд. Данные ушли в защитный контур...")
             generation_cycle += 1
             time.sleep(60)
 

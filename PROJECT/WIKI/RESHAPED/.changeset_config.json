@@ -1,0 +1,10 @@
+{
+	"$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+	"changelog": ["@changesets/changelog-github", { "repo": "reshaped-ui/reshaped" }],
+	"commit": false,
+	"access": "public",
+	"baseBranch": "main",
+	"updateInternalDependencies": "patch",
+	"fixed": [["reshaped", "@reshaped/headless", "@reshaped/utilities"]],
+	"ignore": []
+}

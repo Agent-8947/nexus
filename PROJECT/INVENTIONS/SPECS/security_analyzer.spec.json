@@ -1,0 +1,71 @@
+{
+  "module_name": "security_analyzer",
+  "title": "Security Header Analyzer",
+  "description": "HTTP security header audit — checks HSTS, CSP, X-Frame-Options, and more",
+  "inputs": [
+    "target: str (domain)",
+    "timeout: float"
+  ],
+  "outputs": [
+    "SecurityReport with header_present: dict, score: int, server_info: str"
+  ],
+  "stdlib_deps": [
+    "urllib.request",
+    "ssl",
+    "socket",
+    "json"
+  ],
+  "api_endpoints": [],
+  "reference_pattern": "HTTPS HEAD request + header dict comparison against known security headers",
+  "domain": "crypto_security",
+  "evidence_repos": [
+    {
+      "repo": "PRACTICAL-CRYPTOGRAPHY-FOR-DEVELOPERS-BOOK",
+      "score": 15,
+      "evidence": [
+        "keywords: encrypt, cipher, aes, rsa, signature",
+        "dossier: machine_learning, crypto, legal, infrastructure",
+        "functions: encrypt, sign"
+      ]
+    },
+    {
+      "repo": "DUPLICATI",
+      "score": 13,
+      "evidence": [
+        "keywords: encrypt, aes, pgp, signature",
+        "dossier: legal, crypto, infrastructure",
+        "functions: encrypt, sign"
+      ]
+    },
+    {
+      "repo": "END-TO-END",
+      "score": 13,
+      "evidence": [
+        "keywords: encrypt, pgp, signature",
+        "dossier: crypto, infrastructure",
+        "functions: encrypt, decrypt, sign, verify"
+      ]
+    },
+    {
+      "repo": "AWESOME-CRYPTOGRAPHY",
+      "score": 12,
+      "evidence": [
+        "keywords: encrypt, cipher, aes",
+        "dossier: machine_learning, crypto, osint, infrastructure, legal",
+        "functions: encrypt, decrypt, sign"
+      ]
+    },
+    {
+      "repo": "RSACTFTOOL",
+      "score": 12,
+      "evidence": [
+        "keywords: encrypt, cipher, rsa",
+        "dossier: legal, crypto, infrastructure",
+        "functions: encrypt, decrypt, sign"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [],
+  "generated_at": "2026-04-06T03:46:43.055233"
+}

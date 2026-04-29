@@ -1,0 +1,29 @@
+{
+  "agent_id": "LLM_PROMPT_INJECTION_TESTER",
+  "domain": "AI_ML",
+  "purpose": "Test LLM applications for prompt injection vulnerabilities using adversarial payloads",
+  "api_endpoints": [
+    "{target_llm_url}"
+  ],
+  "data_model": {
+    "payload": "TEXT",
+    "response": "TEXT",
+    "is_jailbroken": "INTEGER",
+    "pattern_detected": "TEXT"
+  },
+  "core_algorithm": "Adversarial prompt injection with pattern-based jailbreak detection",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "DAN mode",
+    "Ignore previous instructions",
+    "system prompt",
+    "jailbreak"
+  ]
+}

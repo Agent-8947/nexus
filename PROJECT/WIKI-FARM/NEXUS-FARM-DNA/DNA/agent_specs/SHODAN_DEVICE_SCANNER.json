@@ -1,0 +1,33 @@
+{
+  "agent_id": "SHODAN_DEVICE_SCANNER",
+  "domain": "OSINT",
+  "purpose": "Discover internet-connected devices and open ports via Shodan InternetDB",
+  "api_endpoints": [
+    "https://internetdb.shodan.io/{ip}"
+  ],
+  "data_model": {
+    "ip": "TEXT",
+    "ports": "TEXT",
+    "hostnames": "TEXT",
+    "cpes": "TEXT",
+    "vulns": "TEXT",
+    "tags": "TEXT"
+  },
+  "core_algorithm": "Shodan InternetDB passive reconnaissance",
+  "input_type": "ip",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json",
+    "dataclasses"
+  ],
+  "logic_markers": [
+    "internetdb.shodan.io",
+    "cpes",
+    "vulns"
+  ],
+  "spec_hash": "c321b3d8dabaf87c"
+}

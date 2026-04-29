@@ -1,0 +1,70 @@
+{
+  "module_name": "identity_profiler",
+  "title": "Identity Profiler",
+  "description": "Username presence detection across social platforms via HTTP HEAD requests",
+  "inputs": [
+    "username: str",
+    "platforms: list[str] (optional)"
+  ],
+  "outputs": [
+    "ProfileResult with platform, url, found: bool per platform"
+  ],
+  "stdlib_deps": [
+    "urllib.request",
+    "urllib.error",
+    "json",
+    "concurrent.futures"
+  ],
+  "api_endpoints": [],
+  "reference_pattern": "ThreadPoolExecutor + HEAD requests against platform URL templates",
+  "domain": "osint_profiling",
+  "evidence_repos": [
+    {
+      "repo": "AWESOME-OSINT-FOR-EVERYTHING",
+      "score": 10,
+      "evidence": [
+        "keywords: username, social, identity",
+        "dossier: machine_learning, crypto, osint, infrastructure, legal",
+        "functions: search"
+      ]
+    },
+    {
+      "repo": "FBI-TOOLS",
+      "score": 8,
+      "evidence": [
+        "keywords: username, social",
+        "dossier: osint, machine_learning, infrastructure",
+        "functions: search"
+      ]
+    },
+    {
+      "repo": "SOCIAL-ANALYZER",
+      "score": 8,
+      "evidence": [
+        "keywords: profile, social",
+        "dossier: osint, legal, infrastructure",
+        "functions: search"
+      ]
+    },
+    {
+      "repo": "ALGO",
+      "score": 7,
+      "evidence": [
+        "keywords: profile, social",
+        "dossier: osint, crypto, infrastructure"
+      ]
+    },
+    {
+      "repo": "GO-HARDWARE",
+      "score": 7,
+      "evidence": [
+        "keywords: footprint",
+        "dossier: osint, infrastructure",
+        "functions: match, compile"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [],
+  "generated_at": "2026-04-06T03:46:43.055007"
+}

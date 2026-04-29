@@ -1,0 +1,10 @@
+{
+    "name": "PDF.JS",
+    "indexed_at": "2026-04-05 14:21:28",
+    "domains": [
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: INFRASTRUCTURE",
+    "legal_devops_perspective": "Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

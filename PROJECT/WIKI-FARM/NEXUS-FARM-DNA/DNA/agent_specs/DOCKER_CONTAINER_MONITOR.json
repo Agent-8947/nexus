@@ -1,0 +1,31 @@
+{
+  "agent_id": "DOCKER_CONTAINER_MONITOR",
+  "domain": "INFRA",
+  "purpose": "Monitor running Docker containers for resource spikes and insecure port mappings",
+  "api_endpoints": [
+    "http://localhost:2375/containers/json?stats=1"
+  ],
+  "data_model": {
+    "container_id": "TEXT",
+    "cpu_usage": "REAL",
+    "mem_usage": "REAL",
+    "exposed_ports": "TEXT",
+    "is_healthy": "INTEGER"
+  },
+  "core_algorithm": "Docker Engine API polling and resource threshold analysis",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "time"
+  ],
+  "logic_markers": [
+    "docker.sock",
+    "container",
+    "stats",
+    "Networks",
+    "Ports"
+  ]
+}

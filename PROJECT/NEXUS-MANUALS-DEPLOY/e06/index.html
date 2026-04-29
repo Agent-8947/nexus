@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADL07E06 — Гладильная машина</title>
+<meta name="description" content="Полное руководство для гладильной машины Audley ADL07E06. Калибровка, ПО, обслуживание.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nexus-manuals-adl07.vercel.app/e06/">
+<meta property="og:title" content="ADL07E06 — Руководство по эксплуатации">
+<meta property="og:description" content="Интерактивная инструкция для гладильной машины ADL07E06. Установка, калибровка, обслуживание.">
+<meta property="og:image" content="https://nexus-manuals-adl07.vercel.app/e06/images/img_p11_95.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="ADL07E06 — Руководство по эксплуатации">
+<meta property="twitter:description" content="Интерактивная инструкция для гладильной машины ADL07E06.">
+<meta property="twitter:image" content="https://nexus-manuals-adl07.vercel.app/e06/images/img_p11_95.png">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root {
+  --accent: #1A73E8;
+  --accent-light: #1A73E818;
+  --bg: #FFFFFF;
+  --sidebar: #111317;
+  --black: #18191C;
+  --gray-text: #555;
+  --gray-border: #E8E9EC;
+  --gray-bg: #F7F8FA;
+  --danger-bg: #FFF4F4;
+  --danger-border: #E74C3C;
+  --warn-bg: #FFFBF0;
+  --warn-border: #F39C12;
+  --note-bg: #F0F7FF;
+  --note-border: #3498DB;
+  --font: 'Inter', system-ui, sans-serif;
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--gray-bg); color: var(--black); display: flex; }
+
+aside { width: 260px; min-width: 260px; height: 100vh; position: sticky; top: 0; background: var(--sidebar); overflow-y: auto; display: flex; flex-direction: column; flex-shrink: 0; }
+.sb-brand { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sb-brand .sb-tag { color: var(--accent); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: var(--font-head); margin-bottom: 6px; }
+.sb-brand .sb-model { color: #fff; font-family: var(--font-head); font-size: 20px; font-weight: 700; line-height: 1.2; }
+nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+nav a { display: block; padding: 10px 24px; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.15s; }
+nav a:hover, nav a.on { color: #fff; border-left-color: var(--accent); background: rgba(255,255,255,0.05); }
+.nav-section-label { padding: 20px 24px 6px; color: rgba(255,255,255,0.25); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+.sb-foot { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.2); font-size: 10px; line-height: 1.6; }
+
+main { flex: 1; overflow-x: hidden; }
+
+.cover { background: var(--sidebar); min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+.cover-stripe { height: 6px; background: var(--accent); }
+.cover-body { flex: 1; padding: 80px 64px; display: flex; flex-direction: column; justify-content: flex-end; }
+.cover-kicker { font-family: var(--font-head); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.cover-h1 { font-family: var(--font-head); font-size: clamp(48px, 8vw, 80px); font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 24px; }
+.cover-desc { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 440px; line-height: 1.7; }
+.cover-chips { padding: 40px 64px; display: flex; gap: 40px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
+.chip .chip-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.chip .chip-val { font-family: var(--font-head); font-size: 16px; font-weight: 600; color: #fff; }
+
+.content-block { background: var(--bg); margin: 24px 32px; border-radius: 16px; border: 1px solid var(--gray-border); box-shadow: var(--shadow); overflow: hidden; }
+.block-header { padding: 28px 36px 20px; border-bottom: 1px solid var(--gray-border); display: flex; align-items: center; gap: 12px; }
+.block-num { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 4px 10px; border-radius: 20px; }
+.block-title { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--black); }
+.block-body { padding: 28px 36px; }
+
+.t-body { font-size: 15px; color: var(--gray-text); line-height: 1.8; margin-bottom: 14px; }
+h3.t-sub { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--black); margin: 28px 0 12px; padding-left: 12px; border-left: 3px solid var(--accent); }
+
+.t-list { list-style: none; margin: 8px 0 16px; }
+.t-list li { font-size: 14px; color: var(--gray-text); padding: 9px 0 9px 20px; position: relative; border-bottom: 1px solid var(--gray-border); }
+.t-list li:last-child { border-bottom: none; }
+.t-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-size: 18px; line-height: 1; top: 8px; }
+
+.alert { background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 5px solid var(--warn-border); border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; display: flex; gap: 14px; align-items: flex-start; }
+.alert.danger { background: var(--danger-bg); border-color: var(--danger-border); border-left-color: var(--danger-border); }
+.alert.note { background: var(--note-bg); border-color: var(--note-border); border-left-color: var(--note-border); }
+.alert-icon { font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+.alert-text .alert-head { font-family: var(--font-head); font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.alert.danger .alert-head { color: var(--danger-border); }
+.alert.note .alert-head { color: var(--note-border); }
+.alert-text p { font-size: 14px; color: var(--gray-text); margin: 0; }
+
+.img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+.img-card { border: 1px solid var(--gray-border); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.img-card img { width: 100%; display: block; cursor: zoom-in; transition: transform 0.3s; }
+.img-card img:hover { transform: scale(1.02); }
+.img-card .img-cap { padding: 8px 12px; font-size: 11px; color: rgba(0,0,0,0.35); letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid var(--gray-border); }
+
+.spec-card { background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: var(--radius); padding: 16px 20px; margin: 8px 0; }
+.spec-card .sc-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(0,0,0,0.35); margin-bottom: 6px; }
+.spec-card .sc-value { font-family: var(--font-head); font-size: 18px; font-weight: 600; color: var(--black); }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+
+.fault-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+.fault-table th { background: var(--black); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--font-head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.fault-table th:first-child { background: var(--accent); color: #fff; width: 220px; }
+.fault-table td { padding: 14px 16px; vertical-align: top; border-bottom: 1px solid var(--gray-border); }
+.fault-table td:first-child { font-family: var(--font-head); font-weight: 600; color: var(--accent); }
+
+#lb { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); justify-content: center; align-items: center; cursor: zoom-out; }
+#lb.show { display: flex; }
+#lb img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+@media (max-width: 768px) { body { flex-direction: column; } aside { width: 100%; height: auto; position: relative; } .cover-body { padding: 40px 24px; } .content-block { margin: 12px; } .block-body { padding: 20px; } .img-grid { grid-template-columns: 1fr; } }
+@media print { aside { display: none; } .cover { page-break-after: always; } .content-block { break-inside: avoid; box-shadow: none; } #lb { display: none !important; } }
+</style>
+</head>
+<body>
+<div id="lb"><img id="lb-img" src="" alt=""></div>
+
+<aside>
+<div class="sb-brand">
+  <div class="sb-tag">Audley · Руководство</div>
+  <div class="sb-model">ADL07E06</div>
+</div>
+<nav>
+  <div class="nav-section-label">Содержание</div>
+  <a href="#cover" data-id="cover">Обложка</a>
+  <a href="#ch-safety" data-id="ch-safety">Безопасность</a>
+  <a href="#ch1" data-id="ch1">Глава I · Параметры</a>
+  <a href="#ch2" data-id="ch2">Глава II · Установка</a>
+  <a href="#ch2-legs" data-id="ch2-legs">Сборка ножек</a>
+  <a href="#ch2-holder" data-id="ch2-holder">Держатель и расходники</a>
+  <a href="#ch2-ink" data-id="ch2-ink">Система чернил</a>
+  <a href="#ch2-pc" data-id="ch2-pc">Компьютер и питание</a>
+  <a href="#ch3" data-id="ch3">Глава III · Эксплуатация</a>
+  <a href="#ch3-lcd" data-id="ch3-lcd">LCD-клавиши</a>
+  <a href="#ch3-temp" data-id="ch3-temp">Управление температурой</a>
+  <a href="#ch4" data-id="ch4">Глава IV · Программное обеспечение</a>
+  <a href="#ch4-printexp" data-id="ch4-printexp">PrintExp — настройка</a>
+  <a href="#ch4-calib" data-id="ch4-calib">Калибровка</a>
+  <a href="#ch4-ctl" data-id="ch4-ctl">Центр управления</a>
+  <a href="#ch4-rip" data-id="ch4-rip">RIP-программа</a>
+  <a href="#ch4-params" data-id="ch4-params">Параметры прошивки</a>
+  <a href="#ch5" data-id="ch5">Глава V · Обслуживание</a>
+  <a href="#ch5-trouble" data-id="ch5-trouble">Поиск неисправностей</a>
+<a href="#ch-gallery" data-id="ch-gallery">Иллюстрации</a>
+</nav>
+<div class="sb-foot">Henan Audley Digital Co., Ltd.<br>© NEXUS Translation Engine</div>
+</aside>
+
+<main>
+
+<!-- ═══ ОБЛОЖКА ═══ -->
+<section class="cover" id="cover" data-block="cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-body">
+    <div class="cover-kicker">Руководство по эксплуатации</div>
+    <h1 class="cover-h1">Гладильная машина</h1>
+    <p class="cover-desc">Полное руководство по установке, эксплуатации и обслуживанию оборудования ADL07E06.</p>
+  </div>
+  <div class="cover-chips">
+    <div class="chip"><div class="chip-label">Модель</div><div class="chip-val">ADL07E06</div></div>
+    <div class="chip"><div class="chip-label">Страниц</div><div class="chip-val">68</div></div>
+    <div class="chip"><div class="chip-label">Производитель</div><div class="chip-val">AUDLEY DIGITAL</div></div>
+  </div>
+</section>
+
+<!-- ═══ БЕЗОПАСНОСТЬ ═══ -->
+<div class="content-block" id="ch-safety" data-block="ch-safety">
+<div class="block-header"><span class="block-num">Важно</span><span class="block-title">Инструкция по безопасности</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Предисловие</h3>
+<p class="t-body">Благодарим вас за выбор нашего оборудования. Для полного понимания характеристик данного продукта и его безопасного использования обязательно внимательно прочтите настоящее руководство и сохраните его.</p>
+<p class="t-body">Содержание данного руководства и параметры продукта могут быть изменены без предварительного уведомления. При возникновении вопросов обращайтесь к техническому персоналу. Не допускайте детей и неквалифицированный персонал к оборудованию.</p>
+
+<h3 class="t-sub">Условные обозначения</h3>
+<div class="alert danger"><span class="alert-icon">⚠️</span><div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Игнорирование данного знака может привести к серьёзной травме оператора.</p></div></div>
+<div class="alert"><span class="alert-icon">⚠️</span><div class="alert-text"><div class="alert-head">ОСТОРОЖНО</div><p>Игнорирование данного знака может привести к травме оператора или повреждению оборудования.</p></div></div>
+
+<h3 class="t-sub">Требования к месту установки</h3>
+<div class="alert danger"><span class="alert-icon">⚠️</span><div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Запрещается устанавливать принтер вблизи летучих растворителей (спирт, разбавители). Запрещается размещать посторонние предметы на корпусе машины. Не устанавливайте машину в наклонном положении или в месте с вибрацией.</p></div></div>
+<p class="t-body">Избегайте следующих условий: чрезмерная влажность/сухость, прямые солнечные лучи, высокая температура, близость к открытому огню или источникам влаги.</p>
+<div class="spec-card"><div class="sc-label">Рекомендуемые условия</div><div class="sc-value">Температура 20–30 ℃ · Влажность 40–60%</div></div>
+
+<h3 class="t-sub">Электробезопасность</h3>
+<div class="alert danger"><span class="alert-icon">⚠️</span><div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>При повреждении кабеля питания немедленно отключите его. Через повреждённые участки возможна утечка тока, что может вызвать пожар или короткое замыкание.</p></div></div>
+<ul class="t-list">
+  <li>Не касайтесь выключателей мокрыми руками — опасность поражения электрическим током.</li>
+  <li>Не подключайте несколько устройств к одной розетке — возможно короткое замыкание.</li>
+  <li>Не скручивайте и не перегибайте кабель питания.</li>
+  <li>Обязательно подключите провод заземления. Запрещается подключать заземление к водопроводным, газовым трубам, телефонным линиям или молниеотводам.</li>
+</ul>
+
+<h3 class="t-sub">Безопасность при эксплуатации</h3>
+<ul class="t-list">
+  <li>Не разбирайте и не ремонтируйте устройство самостоятельно.</li>
+  <li>При появлении шума, дыма, пламени или неприятного запаха — немедленно отключите питание и обратитесь к производителю.</li>
+  <li>Не используйте легковоспламеняющиеся предметы вблизи оборудования.</li>
+  <li>Перед перемещением устройства отключите его от электросети.</li>
+  <li>При транспортировке убедитесь, что печатающая головка находится в начальной позиции.</li>
+</ul>
+
+<h3 class="t-sub">Обслуживание и чернила</h3>
+<div class="alert danger"><span class="alert-icon">⚠️</span><div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Перед чисткой выключите питание и отсоедините кабель от сети. Протирайте машину тканью, смоченной чистящим раствором. Не используйте летучие растворители.</p></div></div>
+<ul class="t-list">
+  <li>Используйте только чернила указанного типа. Некачественные чернила влияют на качество печати.</li>
+  <li>Не используйте чернила с истёкшим сроком годности — возможен выход оборудования из строя.</li>
+  <li>Утилизация отработанных чернил должна соответствовать действующему законодательству.</li>
+  <li>Избегайте попадания чернил на кожу или одежду.</li>
+  <li>Регулярно проверяйте ёмкость для отработанных чернил во избежание перелива.</li>
+  <li>Храните чернила в прохладном месте, вдали от прямых солнечных лучей.</li>
+</ul>
+
+</div></div>
+
+<!-- ═══ ГЛАВА I: ПАРАМЕТРЫ ═══ -->
+<div class="content-block" id="ch1" data-block="ch1">
+<div class="block-header"><span class="block-num">Глава I</span><span class="block-title">Параметры оборудования</span></div>
+<div class="block-body">
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Модель</div><div class="sc-value">ADL07E06</div></div>
+  <div class="spec-card"><div class="sc-label">Печатающая головка</div><div class="sc-value">Epson 3200A1</div></div>
+  <div class="spec-card"><div class="sc-label">Носитель печати</div><div class="sc-value">Термотрансферная плёнка</div></div>
+  <div class="spec-card"><div class="sc-label">Подача носителя</div><div class="sc-value">Трёхступенчатый регулируемый прижимной ролик</div></div>
+  <div class="spec-card"><div class="sc-label">Ширина печати</div><div class="sc-value">700 мм</div></div>
+  <div class="spec-card"><div class="sc-label">Цвета чернил</div><div class="sc-value">C · M · Y · K · W</div></div>
+  <div class="spec-card"><div class="sc-label">Тип чернил</div><div class="sc-value">Пигментные</div></div>
+  <div class="spec-card"><div class="sc-label">Порт печати</div><div class="sc-value">Высокоскоростной USB 3.0</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость печати</div><div class="sc-value">6 проходов · 40 м²/ч</div></div>
+  <div class="spec-card"><div class="sc-label">Входное напряжение</div><div class="sc-value">220 В AC 10 A / 110 В AC 20 A</div></div>
+  <div class="spec-card"><div class="sc-label">Мощность</div><div class="sc-value">2200 Вт</div></div>
+  <div class="spec-card"><div class="sc-label">Рабочая среда</div><div class="sc-value">20–30 ℃ / 40–60% влажность</div></div>
+  <div class="spec-card"><div class="sc-label">Подача чернил</div><div class="sc-value">Цветные: сифонная подача · Белые: интеллектуальная циркуляция</div></div>
+</div>
+</div></div>
+
+<!-- ═══ ГЛАВА II: УСТАНОВКА ═══ -->
+<div class="content-block" id="ch2" data-block="ch2">
+<div class="block-header"><span class="block-num">Глава II</span><span class="block-title">Руководство по установке</span></div>
+<div class="block-body">
+<p class="t-body">Данная глава описывает порядок сборки оборудования, установку ножек, держателей, головок и системы подачи чернил.</p>
+
+<h3 class="t-sub">Порядок сборки</h3>
+<ul class="t-list">
+  <li>1. Соберите ножки машины (левая и правая ножки поставляются в собранном виде). Установите среднюю часть, кронштейн для компьютера и подставку для ёмкости отработанных чернил.</li>
+  <li>2. Установите левую и правую ножки согласно схемам ниже.</li>
+  <li>3. Установите держатель рулона бумаги и кронштейн.</li>
+  <li>4. Установите печатающие головки (сопла) в правильное положение.</li>
+  <li>5. Установите расходные материалы в указанном направлении.</li>
+  <li>6. Подключите систему подачи чернил согласно схеме трубопровода.</li>
+</ul>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p6_59.png" loading="lazy" onclick="zoom(this.src)" alt="Схема сборки"><div class="img-cap">Общая схема сборки</div></div>
+<div class="img-card"><img src="images/img_p6_60.png" loading="lazy" onclick="zoom(this.src)" alt="Ножки"><div class="img-cap">Схема ножек машины</div></div>
+</div>
+</div></div>
+
+<div class="content-block" id="ch2-legs" data-block="ch2-legs">
+<div class="block-header"><span class="block-num">Раздел 2.1</span><span class="block-title">Держатель бумаги и направляющие</span></div>
+<div class="block-body">
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p7_63.png" loading="lazy" onclick="zoom(this.src)" alt="Держатель бумаги"><div class="img-cap">Схема установки держателя</div></div>
+<div class="img-card"><img src="images/img_p7_64.png" loading="lazy" onclick="zoom(this.src)" alt="Сопло"><div class="img-cap">Положение сопел</div></div>
+<div class="img-card"><img src="images/img_p7_65.png" loading="lazy" onclick="zoom(this.src)" alt="Расходники"><div class="img-cap">Направление установки расходников</div></div>
+<div class="img-card"><img src="images/img_p7_66.png" loading="lazy" onclick="zoom(this.src)" alt="Детали"><div class="img-cap">Детали сборки</div></div>
+</div>
+</div></div>
+
+<div class="content-block" id="ch2-holder" data-block="ch2-holder">
+<div class="block-header"><span class="block-num">Раздел 2.2</span><span class="block-title">Расходные материалы и сопла</span></div>
+<div class="block-body">
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p8_69.png" loading="lazy" onclick="zoom(this.src)" alt="Трубки чернил"><div class="img-cap">Схема подключения чернильных трубок</div></div>
+<div class="img-card"><img src="images/img_p8_71.png" loading="lazy" onclick="zoom(this.src)" alt="Чернила"><div class="img-cap">Система подачи чернил</div></div>
+</div>
+</div></div>
+
+<div class="content-block" id="ch2-ink" data-block="ch2-ink">
+<div class="block-header"><span class="block-num">Раздел 2.3</span><span class="block-title">Система чернил и трубопровод</span></div>
+<div class="block-body">
+<p class="t-body">Подключите чернильные трубки согласно схеме. Убедитесь, что соединения плотные и не перекручены. Белые чернила подаются через систему интеллектуальной циркуляции с автоматическим перемешиванием.</p>
+</div></div>
+
+<div class="content-block" id="ch2-pc" data-block="ch2-pc">
+<div class="block-header"><span class="block-num">Раздел 2.4</span><span class="block-title">Компьютер и электропитание</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Рекомендуемая конфигурация ПК</h3>
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Операционная система</div><div class="sc-value">Windows 7 / 10 (64-бит)</div></div>
+  <div class="spec-card"><div class="sc-label">Процессор</div><div class="sc-value">Intel Core i7-10700 или выше</div></div>
+  <div class="spec-card"><div class="sc-label">Оперативная память</div><div class="sc-value">16 ГБ (минимум 8 ГБ)</div></div>
+  <div class="spec-card"><div class="sc-label">Накопитель</div><div class="sc-value">SSD 240 ГБ + HDD 1 ТБ</div></div>
+</div>
+
+<h3 class="t-sub">Требования к электропитанию</h3>
+<ul class="t-list">
+  <li>Принтер: AC 220 В, 50 Гц. Компьютер: в соответствии с требованиями оборудования.</li>
+  <li>Обязательно подключите заземление к заземляющей клемме машины.</li>
+  <li>Рекомендуется использовать ИБП (UPS) со стабилизатором напряжения.</li>
+  <li>Питание машины и встряхивателя порошка должно быть подключено к отдельным линиям.</li>
+</ul>
+
+<h3 class="t-sub">Ввод в эксплуатацию</h3>
+<ul class="t-list">
+  <li>Осмотрите машину после распаковки: проверьте зазор между платформой и кареткой (1,8–2,2 мм).</li>
+  <li>Проверьте положение растровой линейки и декодера, положение концевого выключателя каретки.</li>
+  <li>Убедитесь, что чернильные трубки не перекручены и не пережаты.</li>
+  <li>Проверьте входное напряжение мультиметром: 220 В ± 10 В. При отклонении используйте стабилизатор от 1000 ВА.</li>
+  <li>Напряжение между нулевым проводом и корпусом машины должно быть менее 5 В.</li>
+  <li>Проверьте комплектность аксессуаров по упаковочному листу.</li>
+</ul>
+
+<div class="alert">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ОСТОРОЖНО</div><p>Перед включением тщательно удалите транспортировочную пену, ленту и фиксирующие элементы сопел. Убедитесь, что ходу каретки ничего не мешает.</p></div>
+</div>
+
+</div></div>
+
+<!-- ═══ ГЛАВА III: ЭКСПЛУАТАЦИЯ ═══ -->
+<div class="content-block" id="ch3" data-block="ch3">
+<div class="block-header"><span class="block-num">Глава III</span><span class="block-title">Руководство по эксплуатации</span></div>
+<div class="block-body">
+<p class="t-body">Данная глава описывает работу с LCD-панелью, управление температурой платформы, настройку всасывания и скорости циркуляции белых чернил.</p>
+</div></div>
+
+<div class="content-block" id="ch3-lcd" data-block="ch3-lcd">
+<div class="block-header"><span class="block-num">Раздел 3.1</span><span class="block-title">Описание клавиш LCD-панели</span></div>
+<div class="block-body">
+
+<table class="fault-table">
+  <tr><th>Клавиша</th><th>Функция</th></tr>
+  <tr><td>Очистка</td><td>Автоматическая очистка сопел</td></tr>
+  <tr><td>Тест</td><td>Печать тестовой страницы</td></tr>
+  <tr><td>Отмена</td><td>Отмена текущей печати</td></tr>
+  <tr><td>Пауза</td><td>Приостановка печати</td></tr>
+  <tr><td>Начало координат</td><td>Установка текущей позиции как начала координат</td></tr>
+  <tr><td>Вверх / Вниз</td><td>Перемещение носителя вперёд / назад</td></tr>
+  <tr><td>Влево / Вправо</td><td>Перемещение каретки сопел влево / вправо</td></tr>
+  <tr><td>Выход</td><td>Возврат из меню</td></tr>
+  <tr><td>Ввод</td><td>Подтверждение выбора в меню</td></tr>
+</table>
+
+<p class="t-body">Внешний вид клавиатуры может различаться в зависимости от модификации машины.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p11_95.png" loading="lazy" onclick="zoom(this.src)" alt="LCD панель"><div class="img-cap">LCD-панель управления</div></div>
+<div class="img-card"><img src="images/img_p11_96.png" loading="lazy" onclick="zoom(this.src)" alt="Температура"><div class="img-cap">Панель управления температурой</div></div>
+</div>
+
+</div></div>
+
+<div class="content-block" id="ch3-temp" data-block="ch3-temp">
+<div class="block-header"><span class="block-num">Раздел 3.2</span><span class="block-title">Управление температурой и всасыванием</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Панель температуры и всасывания</h3>
+<ul class="t-list">
+  <li><strong>Питание:</strong> Переключатель нагрева.</li>
+  <li><strong>CH:</strong> Кнопка выбора канала — нажмите для входа в настройки нагрева, повторное нажатие переключает каналы.</li>
+  <li><strong>+/−:</strong> Увеличение / уменьшение параметров нагрева.</li>
+  <li><strong>Вакуум:</strong> Регулировка силы всасывания платформы (9 ступеней, циклическое переключение 0–9).</li>
+</ul>
+
+<h3 class="t-sub">Регулятор скорости циркуляции белых чернил</h3>
+<p class="t-body">Ручка регулировки: по часовой стрелке — увеличение скорости, против часовой стрелки — уменьшение. Настраивайте в соответствии с фактическими условиями работы.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p12_100.png" loading="lazy" onclick="zoom(this.src)" alt="Схема установки"><div class="img-cap">Расположение панелей управления</div></div>
+<div class="img-card"><img src="images/img_p12_99.png" loading="lazy" onclick="zoom(this.src)" alt="Регулятор"><div class="img-cap">Регулятор белых чернил</div></div>
+</div>
+
+</div></div>
+
+<!-- ═══ ГЛАВА IV: ПО ═══ -->
+<div class="content-block" id="ch4" data-block="ch4">
+<div class="block-header"><span class="block-num">Глава IV</span><span class="block-title">Программное обеспечение</span></div>
+<div class="block-body">
+<p class="t-body">Данная глава описывает установку и настройку программного обеспечения для управления печатью, включая PrintExp, RIP-программу и центр управления прошивкой.</p>
+</div></div>
+
+<div class="content-block" id="ch4-printexp" data-block="ch4-printexp">
+<div class="block-header"><span class="block-num">Раздел 4.1</span><span class="block-title">PrintExp — основной интерфейс</span></div>
+<div class="block-body">
+<p class="t-body">PrintExp — основная программа управления печатью. Главный интерфейс содержит меню: Файл, Печать, Настройки, Калибровка и дополнительные инструменты.</p>
+
+<h3 class="t-sub">Работа с файлами</h3>
+<ul class="t-list">
+  <li>Нажмите «Файл» → «Открыть» для загрузки изображения.</li>
+  <li>Поддерживаемые форматы: TIFF, BMP, JPG, PNG.</li>
+</ul>
+
+<h3 class="t-sub">Печать</h3>
+<ul class="t-list">
+  <li>Нажмите «Печать» в меню для начала печати загруженного изображения.</li>
+  <li>Перед печатью убедитесь, что носитель правильно установлен и выполнена калибровка.</li>
+</ul>
+
+<h3 class="t-sub">Настройка задания печати</h3>
+<p class="t-body">Задайте параметры печати: количество копий, зеркальное отображение, размер изображения, режим печати (однонаправленная / двунаправленная), количество проходов.</p>
+
+</div></div>
+
+<div class="content-block" id="ch4-calib" data-block="ch4-calib">
+<div class="block-header"><span class="block-num">Раздел 4.2</span><span class="block-title">Калибровка</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Типы калибровки</h3>
+<ul class="t-list">
+  <li><strong>Вертикальная механическая калибровка:</strong> Выравнивание сопел по вертикали. Выберите нужное сопло и отрегулируйте положение до совпадения линий.</li>
+  <li><strong>Горизонтальная калибровка:</strong> Настройка расстояния между соплами по горизонтали для точного совмещения цветов.</li>
+  <li><strong>Калибровка шага подачи:</strong> Регулировка точности подачи носителя между проходами печати. Неправильная настройка приводит к горизонтальным полосам.</li>
+  <li><strong>Двунаправленная калибровка:</strong> Настройка совпадения при печати в обоих направлениях. Неправильная настройка вызывает размытие изображения.</li>
+  <li><strong>Цветовая калибровка:</strong> Точная настройка совмещения цветовых каналов (CMYK + W).</li>
+</ul>
+
+<div class="alert note">
+  <span class="alert-icon">💡</span>
+  <div class="alert-text"><div class="alert-head">ВАЖНО</div><p>Выполняйте калибровку в следующем порядке: 1) Вертикальная механическая → 2) Горизонтальная → 3) Шаг подачи → 4) Двунаправленная → 5) Цветовая. Нарушение порядка может привести к неточной калибровке.</p></div>
+</div>
+
+</div></div>
+
+<div class="content-block" id="ch4-ctl" data-block="ch4-ctl">
+<div class="block-header"><span class="block-num">Раздел 4.3</span><span class="block-title">Центр управления</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Основные функции</h3>
+<ul class="t-list">
+  <li><strong>Температура сопел (только чтение):</strong> Текущая температура печатающих головок.</li>
+  <li><strong>Давление чернил:</strong> Отображение давления в системе подачи чернил.</li>
+  <li><strong>Статус платы управления:</strong> Информация о версии прошивки и дате компиляции.</li>
+</ul>
+
+<h3 class="t-sub">Режим производителя</h3>
+<p class="t-body">Режим производителя предоставляет доступ к расширенным настройкам: параметры моторов, параметры хода каретки, настройки циклической промывки чернил, параметры импульсной продувки сопел.</p>
+
+<table class="fault-table">
+  <tr><th>Параметр</th><th>Описание</th></tr>
+  <tr><td>Параметры X-мотора</td><td>Скорость, ускорение и ход каретки по горизонтали</td></tr>
+  <tr><td>Параметры Y-мотора</td><td>Скорость подачи носителя и шаг</td></tr>
+  <tr><td>Параметры хода</td><td>Максимальный и минимальный ход каретки</td></tr>
+  <tr><td>Циклическая промывка</td><td>Параметры автоматической промывки чернильной системы</td></tr>
+  <tr><td>Импульсная продувка</td><td>Настройка продувки сопел для предотвращения засорения</td></tr>
+</table>
+
+</div></div>
+
+<div class="content-block" id="ch4-rip" data-block="ch4-rip">
+<div class="block-header"><span class="block-num">Раздел 4.4</span><span class="block-title">RIP-программа</span></div>
+<div class="block-body">
+<p class="t-body">RIP-программа используется для растрирования изображений перед печатью. Она управляет цветовыми профилями, разрешением и режимом вывода.</p>
+
+<h3 class="t-sub">Основные возможности</h3>
+<ul class="t-list">
+  <li>Управление цветовыми кривыми для каждого канала (C, M, Y, K, W).</li>
+  <li>Настройка количества проходов печати (4, 6, 8 проходов).</li>
+  <li>Боковое и продольное объединение изображений для широкоформатной печати.</li>
+  <li>Статистика использования оборудования: общий объём печати, расход чернил.</li>
+</ul>
+
+</div></div>
+
+<div class="content-block" id="ch4-params" data-block="ch4-params">
+<div class="block-header"><span class="block-num">Раздел 4.5</span><span class="block-title">Параметры прошивки</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Обновление прошивки</h3>
+<p class="t-body">Для обновления прошивки: выберите файл обновления → нажмите «Записать» → дождитесь завершения. Не отключайте питание во время обновления.</p>
+
+<h3 class="t-sub">Экспорт и импорт параметров</h3>
+<ul class="t-list">
+  <li><strong>Экспорт:</strong> Сохранение текущих параметров прошивки в файл для резервного копирования.</li>
+  <li><strong>Импорт:</strong> Загрузка ранее сохранённых параметров для восстановления настроек.</li>
+</ul>
+
+<h3 class="t-sub">Настройка датчика температуры</h3>
+<p class="t-body">Калибровка показаний датчика температуры сопел. Рекомендуется выполнять только при существенном расхождении показаний с фактической температурой.</p>
+
+</div></div>
+
+<!-- ═══ ГЛАВА V: ОБСЛУЖИВАНИЕ ═══ -->
+<div class="content-block" id="ch5" data-block="ch5">
+<div class="block-header"><span class="block-num">Глава V</span><span class="block-title">Обслуживание оборудования</span></div>
+<div class="block-body">
+
+<h3 class="t-sub">Ежедневное обслуживание</h3>
+<ul class="t-list">
+  <li>Протирайте поверхность платформы и каретки от пыли и чернильных загрязнений.</li>
+  <li>Проверяйте уровень чернил во всех ёмкостях.</li>
+  <li>Выполняйте автоматическую очистку сопел (нажатие кнопки «Очистка» на LCD-панели).</li>
+</ul>
+
+<h3 class="t-sub">Увлажнение сопел перед выключением</h3>
+<p class="t-body">Перед выключением машины на длительное время выполните процедуру увлажнения сопел. Это предотвратит высыхание чернил в каналах печатающих головок.</p>
+
+<h3 class="t-sub">Периодическое обслуживание</h3>
+<ul class="t-list">
+  <li>Очищайте скребок и заглушку сопел от засохших чернил.</li>
+  <li>Проверяйте натяжение приводных ремней и состояние растровой линейки.</li>
+  <li>Проверяйте герметичность чернильных трубок и соединений.</li>
+  <li>Смазывайте направляющие каретки специальным маслом.</li>
+</ul>
+
+</div></div>
+
+<div class="content-block" id="ch5-trouble" data-block="ch5-trouble">
+<div class="block-header"><span class="block-num">Раздел 5.1</span><span class="block-title">Поиск неисправностей</span></div>
+<div class="block-body">
+
+<table class="fault-table">
+  <tr><th>Неисправность</th><th>Причина и решение</th></tr>
+  <tr><td>Пропуски при печати (белые полосы)</td><td>1. Выполните очистку сопел (2–3 цикла).<br>2. Проверьте уровень чернил.<br>3. Проверьте давление в системе подачи чернил.<br>4. При продолжении проблемы — замочите головку в чистящем растворе.</td></tr>
+  <tr><td>Размытое изображение</td><td>1. Проверьте двунаправленную калибровку.<br>2. Проверьте калибровку шага подачи.<br>3. Убедитесь, что зазор между головкой и носителем составляет 1,8–2,2 мм.</td></tr>
+  <tr><td>Цвета не совпадают</td><td>1. Выполните цветовую калибровку.<br>2. Проверьте горизонтальную калибровку сопел.<br>3. Убедитесь, что используется правильный цветовой профиль в RIP.</td></tr>
+  <tr><td>Каретка не движется</td><td>1. Проверьте подключение мотора каретки.<br>2. Проверьте, не заблокирована ли каретка посторонними предметами.<br>3. Проверьте моторный предохранитель на плате управления.</td></tr>
+  <tr><td>Принтер не подключается к ПК</td><td>1. Проверьте USB-кабель и порт.<br>2. Переустановите драйвер принтера.<br>3. Используйте чистую версию Windows 7/10 (64-бит).<br>4. При проблемах с паузами при печати — замените сетевую карту на дискретную.</td></tr>
+  <tr><td>Нагрев не работает</td><td>1. Проверьте переключатель питания нагрева.<br>2. Проверьте настройки температуры на панели.<br>3. Проверьте подключение нагревательных элементов.</td></tr>
+  <tr><td>Чернила подтекают</td><td>1. Проверьте герметичность трубок и соединений.<br>2. Проверьте давление в системе подачи.<br>3. Проверьте состояние чернильных картриджей.</td></tr>
+</table>
+
+<h3 class="t-sub">Сервисная информация</h3>
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Производитель</div><div class="sc-value">Henan Audley Digital Co., Ltd.</div></div>
+  <div class="spec-card"><div class="sc-label">Техническая поддержка</div><div class="sc-value">Обратитесь к дилеру, у которого приобретено оборудование</div></div>
+</div>
+
+</div></div>
+
+<!-- ═════ ГАЛЕРЕЯ ═════ -->
+<div class="content-block" id="ch-gallery" data-block="ch-gallery">
+<div class="block-header"><span class="block-num">Галерея</span><span class="block-title">Дополнительные иллюстрации</span></div>
+<div class="block-body">
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p13_108.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p13_108</div></div>
+<div class="img-card"><img src="images/img_p14_111.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p14_111</div></div>
+<div class="img-card"><img src="images/img_p14_113.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p14_113</div></div>
+<div class="img-card"><img src="images/img_p15_116.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p15_116</div></div>
+<div class="img-card"><img src="images/img_p16_119.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p16_119</div></div>
+<div class="img-card"><img src="images/img_p16_120.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p16_120</div></div>
+<div class="img-card"><img src="images/img_p17_123.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p17_123</div></div>
+<div class="img-card"><img src="images/img_p18_126.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p18_126</div></div>
+<div class="img-card"><img src="images/img_p19_129.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p19_129</div></div>
+<div class="img-card"><img src="images/img_p19_130.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p19_130</div></div>
+<div class="img-card"><img src="images/img_p20_133.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p20_133</div></div>
+<div class="img-card"><img src="images/img_p22_138.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p22_138</div></div>
+<div class="img-card"><img src="images/img_p23_141.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p23_141</div></div>
+<div class="img-card"><img src="images/img_p23_142.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p23_142</div></div>
+<div class="img-card"><img src="images/img_p24_145.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p24_145</div></div>
+<div class="img-card"><img src="images/img_p24_146.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p24_146</div></div>
+<div class="img-card"><img src="images/img_p25_149.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p25_149</div></div>
+<div class="img-card"><img src="images/img_p25_150.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p25_150</div></div>
+<div class="img-card"><img src="images/img_p25_151.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p25_151</div></div>
+<div class="img-card"><img src="images/img_p26_154.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p26_154</div></div>
+<div class="img-card"><img src="images/img_p26_155.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p26_155</div></div>
+<div class="img-card"><img src="images/img_p27_158.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p27_158</div></div>
+<div class="img-card"><img src="images/img_p27_159.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p27_159</div></div>
+<div class="img-card"><img src="images/img_p27_160.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p27_160</div></div>
+<div class="img-card"><img src="images/img_p28_163.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p28_163</div></div>
+<div class="img-card"><img src="images/img_p28_164.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p28_164</div></div>
+<div class="img-card"><img src="images/img_p29_167.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p29_167</div></div>
+<div class="img-card"><img src="images/img_p29_168.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p29_168</div></div>
+<div class="img-card"><img src="images/img_p29_169.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p29_169</div></div>
+<div class="img-card"><img src="images/img_p30_172.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p30_172</div></div>
+<div class="img-card"><img src="images/img_p31_175.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p31_175</div></div>
+<div class="img-card"><img src="images/img_p31_176.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p31_176</div></div>
+<div class="img-card"><img src="images/img_p32_179.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p32_179</div></div>
+<div class="img-card"><img src="images/img_p32_180.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p32_180</div></div>
+<div class="img-card"><img src="images/img_p33_183.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p33_183</div></div>
+<div class="img-card"><img src="images/img_p33_184.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p33_184</div></div>
+<div class="img-card"><img src="images/img_p34_187.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p34_187</div></div>
+<div class="img-card"><img src="images/img_p34_188.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p34_188</div></div>
+<div class="img-card"><img src="images/img_p35_191.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p35_191</div></div>
+<div class="img-card"><img src="images/img_p35_192.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p35_192</div></div>
+<div class="img-card"><img src="images/img_p35_193.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p35_193</div></div>
+<div class="img-card"><img src="images/img_p35_194.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p35_194</div></div>
+<div class="img-card"><img src="images/img_p36_197.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p36_197</div></div>
+<div class="img-card"><img src="images/img_p37_200.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p37_200</div></div>
+<div class="img-card"><img src="images/img_p38_203.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p38_203</div></div>
+<div class="img-card"><img src="images/img_p38_204.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p38_204</div></div>
+<div class="img-card"><img src="images/img_p39_207.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p39_207</div></div>
+<div class="img-card"><img src="images/img_p39_208.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p39_208</div></div>
+<div class="img-card"><img src="images/img_p40_211.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p40_211</div></div>
+<div class="img-card"><img src="images/img_p40_212.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p40_212</div></div>
+<div class="img-card"><img src="images/img_p42_217.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_217</div></div>
+<div class="img-card"><img src="images/img_p42_218.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_218</div></div>
+<div class="img-card"><img src="images/img_p42_219.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_219</div></div>
+<div class="img-card"><img src="images/img_p42_220.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_220</div></div>
+<div class="img-card"><img src="images/img_p42_221.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_221</div></div>
+<div class="img-card"><img src="images/img_p42_222.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_222</div></div>
+<div class="img-card"><img src="images/img_p42_223.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_223</div></div>
+<div class="img-card"><img src="images/img_p42_224.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_224</div></div>
+<div class="img-card"><img src="images/img_p42_225.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_225</div></div>
+<div class="img-card"><img src="images/img_p42_226.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p42_226</div></div>
+<div class="img-card"><img src="images/img_p43_234.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p43_234</div></div>
+<div class="img-card"><img src="images/img_p43_235.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p43_235</div></div>
+<div class="img-card"><img src="images/img_p43_236.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p43_236</div></div>
+<div class="img-card"><img src="images/img_p43_237.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p43_237</div></div>
+<div class="img-card"><img src="images/img_p44_253.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p44_253</div></div>
+<div class="img-card"><img src="images/img_p44_254.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p44_254</div></div>
+<div class="img-card"><img src="images/img_p45_257.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p45_257</div></div>
+<div class="img-card"><img src="images/img_p46_257.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p46_257</div></div>
+<div class="img-card"><img src="images/img_p47_262.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p47_262</div></div>
+<div class="img-card"><img src="images/img_p48_265.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p48_265</div></div>
+<div class="img-card"><img src="images/img_p49_268.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p49_268</div></div>
+<div class="img-card"><img src="images/img_p50_271.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p50_271</div></div>
+<div class="img-card"><img src="images/img_p50_272.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p50_272</div></div>
+<div class="img-card"><img src="images/img_p51_275.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p51_275</div></div>
+<div class="img-card"><img src="images/img_p52_278.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p52_278</div></div>
+<div class="img-card"><img src="images/img_p53_281.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p53_281</div></div>
+<div class="img-card"><img src="images/img_p54_284.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p54_284</div></div>
+<div class="img-card"><img src="images/img_p55_292.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p55_292</div></div>
+<div class="img-card"><img src="images/img_p56_295.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p56_295</div></div>
+<div class="img-card"><img src="images/img_p57_298.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p57_298</div></div>
+<div class="img-card"><img src="images/img_p58_301.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p58_301</div></div>
+<div class="img-card"><img src="images/img_p59_304.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p59_304</div></div>
+<div class="img-card"><img src="images/img_p59_305.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p59_305</div></div>
+<div class="img-card"><img src="images/img_p60_308.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p60_308</div></div>
+<div class="img-card"><img src="images/img_p61_311.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p61_311</div></div>
+<div class="img-card"><img src="images/img_p62_314.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p62_314</div></div>
+<div class="img-card"><img src="images/img_p62_315.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p62_315</div></div>
+<div class="img-card"><img src="images/img_p62_316.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p62_316</div></div>
+<div class="img-card"><img src="images/img_p63_311.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p63_311</div></div>
+<div class="img-card"><img src="images/img_p63_314.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p63_314</div></div>
+</div>
+</div></div>
+</main>
+
+<script>
+const links = document.querySelectorAll('nav a[data-id]');
+const blocks = document.querySelectorAll('[data-block]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('on', l.dataset.id === e.target.dataset.block));
+    }
+  });
+}, {threshold: 0.1, rootMargin: '-20% 0px -70% 0px'});
+blocks.forEach(b => observer.observe(b));
+function zoom(src) { document.getElementById('lb-img').src = src; document.getElementById('lb').classList.add('show'); }
+document.getElementById('lb').addEventListener('click', () => document.getElementById('lb').classList.remove('show'));
+</script>
+</body>
+</html>

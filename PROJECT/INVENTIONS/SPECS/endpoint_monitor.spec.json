@@ -1,0 +1,76 @@
+{
+  "module_name": "endpoint_monitor",
+  "title": "Endpoint Monitor",
+  "description": "HTTP endpoint availability checker with latency measurement and status tracking",
+  "inputs": [
+    "targets: list[str]",
+    "timeout: float",
+    "interval: int (for loop mode)"
+  ],
+  "outputs": [
+    "ProbeResult with url, status, latency_ms, ok: bool"
+  ],
+  "stdlib_deps": [
+    "urllib.request",
+    "time",
+    "json",
+    "concurrent.futures"
+  ],
+  "api_endpoints": [],
+  "reference_pattern": "Concurrent HTTP probes with perf_counter timing",
+  "domain": "monitoring",
+  "evidence_repos": [
+    {
+      "repo": "UPTIME-KUMA",
+      "score": 8,
+      "evidence": [
+        "keywords: uptime, status",
+        "dossier: osint, infrastructure",
+        "functions: monitor"
+      ]
+    },
+    {
+      "repo": "AWESOME-BUSINESS-INTELLIGENCE",
+      "score": 7,
+      "evidence": [
+        "keywords: metric",
+        "dossier: osint, machine_learning, infrastructure",
+        "functions: monitor, alert"
+      ]
+    },
+    {
+      "repo": "MYIP",
+      "score": 7,
+      "evidence": [
+        "keywords: latency, availability",
+        "dossier: osint, infrastructure"
+      ]
+    },
+    {
+      "repo": "OI-WIKI",
+      "score": 7,
+      "evidence": [
+        "keywords: uptime, status",
+        "dossier: osint, infrastructure"
+      ]
+    },
+    {
+      "repo": "OPENCVE",
+      "score": 7,
+      "evidence": [
+        "keywords: status",
+        "dossier: osint, infrastructure",
+        "functions: monitor, alert"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [
+    "https://raw.githubusercontent.com/opencve/opencve/v2/logo.png",
+    "https://github.com/opencve/opencve/actions?query=workflow%3ATests",
+    "https://github.com/opencve/opencve/releases/tag/v2.0.0",
+    "https://www.hyperquery.ai",
+    "https://trendshift.io/api/badge/repositories/5332"
+  ],
+  "generated_at": "2026-04-06T03:46:43.055461"
+}

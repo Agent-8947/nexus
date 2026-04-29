@@ -1,0 +1,31 @@
+{
+  "agent_id": "K8S_RBAC_AUDITOR",
+  "domain": "INFRA",
+  "purpose": "Audit Kubernetes Role-Based Access Control (RBAC) for overly permissive rules (e.g. cluster-admin)",
+  "api_endpoints": [
+    "{k8s_api_url}/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+  ],
+  "data_model": {
+    "subject": "TEXT",
+    "role": "TEXT",
+    "namespace": "TEXT",
+    "is_dangerous": "INTEGER",
+    "finding": "TEXT"
+  },
+  "core_algorithm": "RBAC graph analysis and rule-set pattern matching",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "json"
+  ],
+  "logic_markers": [
+    "ClusterRole",
+    "verbs",
+    "resources",
+    "*",
+    "privileged"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "module_name": "breach_intel",
+  "title": "Breach Intelligence",
+  "description": "Password breach check via HIBP k-anonymity API. Email breach lookup (requires API key).",
+  "inputs": [
+    "target: str (email or password)",
+    "api_key: str (optional, from env)"
+  ],
+  "outputs": [
+    "BreachResult with pwned: bool, count: int, breach_names: list"
+  ],
+  "stdlib_deps": [
+    "hashlib",
+    "urllib.request",
+    "os",
+    "json"
+  ],
+  "api_endpoints": [
+    "https://api.pwnedpasswords.com/range/{prefix}",
+    "https://haveibeenpwned.com/api/v3/breachedaccount/{email}"
+  ],
+  "reference_pattern": "SHA1 k-anonymity prefix match for password + full API for email",
+  "domain": "data_breach",
+  "evidence_repos": [
+    {
+      "repo": "AWESOME-OSINT-FOR-EVERYTHING",
+      "score": 9,
+      "evidence": [
+        "keywords: breach, leak, hash",
+        "dossier: machine_learning, crypto, osint, infrastructure, legal"
+      ]
+    },
+    {
+      "repo": "TRUFFLEHOG",
+      "score": 9,
+      "evidence": [
+        "keywords: leak, credential, password",
+        "dossier: osint, crypto, legal, infrastructure"
+      ]
+    },
+    {
+      "repo": "AWESOME-COINS",
+      "score": 7,
+      "evidence": [
+        "keywords: leak, hash",
+        "dossier: osint, crypto, forecasting, infrastructure"
+      ]
+    },
+    {
+      "repo": "AWESOME-CRYPTOGRAPHY",
+      "score": 7,
+      "evidence": [
+        "keywords: leak, hash",
+        "dossier: machine_learning, crypto, osint, infrastructure, legal"
+      ]
+    },
+    {
+      "repo": "AWESOME-HACKER-SEARCH-ENGINES",
+      "score": 7,
+      "evidence": [
+        "keywords: leak, credential",
+        "dossier: osint, crypto, infrastructure"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [
+    "https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png",
+    "https://goreportcard.com/badge/github.com/trufflesecurity/trufflehog/v3",
+    "https://goreportcard.com/report/github.com/trufflesecurity/trufflehog/v3",
+    "https://storage.googleapis.com/truffle-demos/non-interactive.svg"
+  ],
+  "generated_at": "2026-04-06T03:46:43.054571"
+}

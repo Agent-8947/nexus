@@ -1,0 +1,97 @@
+{
+  "child_id": "DIAMORPHINE__X__MACHINE_LEARNING_WITH_PYTHON",
+  "parent_a": {
+    "node_id": "DIAMORPHINE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "security",
+        "role": "payload",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "critical",
+        "autonomy": "manual",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.085,
+        0.0,
+        0.0,
+        0.0,
+        0.033,
+        0.456
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.06,
+        "completeness": 0.33,
+        "overall": 0.49
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "MACHINE_LEARNING_WITH_PYTHON",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.046,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.055
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.28,
+        "completeness": 0.33,
+        "overall": 0.6
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an AI model monitoring and anomaly detection system",
+  "ts": "2026-04-09T18:51:11.604316"
+}

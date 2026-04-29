@@ -1,9 +1,19 @@
+"""
+NEXUS CLEANER v2.0
+Maintains root project hygiene by sorting orphaned files into target directories.
+
+Usage:
+  python NEXUS_CLEANER.py              # Execute cleanup
+  python NEXUS_CLEANER.py --dry-run    # Preview changes without moving files
+"""
 import os
+import sys
 import shutil
 from pathlib import Path
 
-# --- CONFIGURATION (NEXUS 2026 STANDARDS) ---
-ROOT_DIR = Path("e:/Downloads/--ANTIGRAVITY store/IDE-optimus")
+# --- PATH-AGNOSTIC CONFIGURATION ---
+ROOT_DIR = Path(__file__).resolve().parent
+
 STRUCTURE = {
     "DOCS": {
         "patterns": ["AGNOSTIC_ADR.md", "findings.md", "*.pdf", "*.docx"],
@@ -27,40 +37,72 @@ STRUCTURE = {
     }
 }
 
-PROTECTED = ["START.md", "TURBO-BOOST.bat", "PROJECT", ".agents", ".agent", ".venv", ".git"]
+PROTECTED = [
+    "START.md", "TURBO-BOOST.bat", "NEXUS_CLEANER.py",
+    "PROJECT", ".agents", ".agent", ".venv", ".git",
+    "DOCS", "LOGS", "SYSTEM", "INBOX", "ARCHIVE", "tmp"
+]
 
-def clean_nexus():
-    print("🚀 NEXUS CLEANER: Starting organization...")
-    
+def clean_nexus(dry_run: bool = False):
+    mode = "DRY-RUN" if dry_run else "EXECUTE"
+    print(f"NEXUS CLEANER v2.0 [{mode}]")
+
+    actions = []
+
     for folder_name, config in STRUCTURE.items():
         target_path = ROOT_DIR / folder_name
-        if not target_path.exists():
-            target_path.mkdir(parents=True, exist_ok=True)
-            print(f" [+] Created: {folder_name}/")
 
         for pattern in config["patterns"]:
             for item in ROOT_DIR.glob(pattern):
                 if item.name in PROTECTED:
                     continue
-                
-                # Special case for directories
-                target_item = target_path / item.name
-                try:
-                    if item.is_dir():
-                        if target_item.exists():
-                             # Merge or skip if subdirectory exists? For now, we move contents.
-                             for subitem in item.iterdir():
-                                 shutil.move(str(subitem), str(target_item / subitem.name))
-                             item.rmdir()
-                        else:
-                            shutil.move(str(item), str(target_item))
-                    else:
-                        shutil.move(str(item), str(target_item))
-                    print(f"  -> Moved {item.name} to {folder_name}/")
-                except Exception as e:
-                    print(f"  [!] Error moving {item.name}: {e}")
+                # Skip items already in target dirs
+                if item.parent != ROOT_DIR:
+                    continue
 
-    print("✅ NEXUS CLEANER: Workspace optimized.")
+                target_item = target_path / item.name
+                actions.append({
+                    "source": item,
+                    "dest": target_item,
+                    "folder": folder_name,
+                    "is_dir": item.is_dir()
+                })
+
+    if not actions:
+        print("[OK] Workspace is clean. Nothing to move.")
+        return
+
+    print(f"   Found {len(actions)} item(s) to organize:\n")
+
+    for action in actions:
+        label = "[DIR]" if action["is_dir"] else "[FILE]"
+        print(f"   {label} {action['source'].name} → {action['folder']}/")
+
+    if dry_run:
+        print(f"\n   [PAUSE] Dry-run complete. No files were moved.")
+        return
+
+    # Execute
+    for action in actions:
+        target_dir = action["dest"].parent
+        target_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            if action["is_dir"]:
+                if action["dest"].exists():
+                    for subitem in action["source"].iterdir():
+                        shutil.move(str(subitem), str(action["dest"] / subitem.name))
+                    action["source"].rmdir()
+                else:
+                    shutil.move(str(action["source"]), str(action["dest"]))
+            else:
+                shutil.move(str(action["source"]), str(action["dest"]))
+            print(f"   [OK] Moved {action['source'].name}")
+        except Exception as e:
+            print(f"   [ERROR] {action['source'].name} — {e}")
+
+    print(f"\n[DONE] NEXUS CLEANER: {len(actions)} item(s) organized.")
+
 
 if __name__ == "__main__":
-    clean_nexus()
+    is_dry = "--dry-run" in sys.argv
+    clean_nexus(dry_run=is_dry)

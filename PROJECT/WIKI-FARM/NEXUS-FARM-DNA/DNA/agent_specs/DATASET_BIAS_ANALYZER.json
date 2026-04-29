@@ -1,0 +1,28 @@
+{
+  "agent_id": "DATASET_BIAS_ANALYZER",
+  "domain": "AI_ML",
+  "purpose": "Detect statistical bias in training datasets against sensitive attributes",
+  "api_endpoints": [],
+  "data_model": {
+    "column": "TEXT",
+    "attribute": "TEXT",
+    "disparate_impact": "REAL",
+    "is_biased": "INTEGER",
+    "sample_size": "INTEGER"
+  },
+  "core_algorithm": "Disparate Impact Ratio and Equal Opportunity Difference calculation",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "logging",
+    "sqlite3",
+    "math",
+    "json"
+  ],
+  "logic_markers": [
+    "Disparate Impact",
+    "bias",
+    "fairness",
+    "sensitive attribute"
+  ]
+}

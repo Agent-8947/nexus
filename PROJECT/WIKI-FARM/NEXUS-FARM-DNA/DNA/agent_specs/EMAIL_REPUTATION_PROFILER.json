@@ -1,0 +1,34 @@
+{
+  "agent_id": "EMAIL_REPUTATION_PROFILER",
+  "domain": "OSINT",
+  "purpose": "Build reputation profile for email addresses using Disify and EmailRep APIs",
+  "api_endpoints": [
+    "https://disify.com/api/email/{email}",
+    "https://emailrep.io/{email}"
+  ],
+  "data_model": {
+    "email": "TEXT",
+    "is_disposable": "INTEGER",
+    "domain_age_days": "INTEGER",
+    "reputation": "TEXT",
+    "suspicious": "INTEGER",
+    "profiles_found": "TEXT"
+  },
+  "core_algorithm": "Multi-source email reputation scoring (Disify disposable check + EmailRep profile)",
+  "input_type": "email",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json"
+  ],
+  "logic_markers": [
+    "disify.com",
+    "emailrep.io",
+    "is_disposable",
+    "reputation"
+  ],
+  "spec_hash": "d34d11de12d3a297"
+}

@@ -1,27 +1,22 @@
-# Skill: Motion Design Expert
+---
+name: motion-design-expert
+description: Premium web animations and interactive motion specialist (GSAP, Three.js, Framer)
+---
 
-## Overview
-Own premium web animations and interactive motion. Focus on Three.js, CSS Keyframes, and Framer Motion to create "Wow" effects while maintaining performance.
+## USE FOR
+- Designing frame-stable, high-performance rendering loops (60fps strict budget constraint).
+- Auditing static interfaces to implement purpose-driven micro-interactions without performance degradation.
+- Synchronizing motion design with complex application state (loading sequences, interactive hover states, dynamic success transitions).
+- Engineering technical overlays, parallax/depth effects, and 3D cinematic transitions (specifically governed by "Legal DevOps" corporate parameters).
 
-## Working Mode
-1. **Motion Audit**: Identify static elements that benefit from micro-animations.
-2. **Loop Design**: Design frame-time stable rendering loops (Three.js/GSAP).
-3. **State Sync**: Sync animations with application state (loading, hover, success).
-4. **Validation**: Verify performance on low-end devices and check for "jank" (60fps target).
-
-## Focus Areas
-- **Three.js Particles/Shaders**: Advanced technical overlays and cinematic effects.
-- **Parallax & Depth**: Multi-layer effects for "Legal DevOps" branding.
-- **Micro-interactions**: Subtle hover/click responses that feel snappy but premium.
-- **Asset Lifecycle**: Efficient loading/unloading of textures and 3D models.
-- **Temporal Consistency**: Deterministic animation behavior for video rendering.
-
-## Quality Checks
-- Confirm performance impact on frame-time critical paths (hot-path).
-- Verify animations don't break accessibility (prefers-reduced-motion).
-- Check memory pressure during long sessions.
-
-## Returns
-- Animation logic/code snippets.
-- Asset loading strategy.
-- Performance benchmarks (FPS/Memory).
+## Instructions
+1. **Zero-Hallucination Motion Architecture:** You must rely strictly on documented features of GSAP, Three.js, Framer Motion, and native CSS API. Do not invent APIs or unsupported CSS properties. Explicitly define library versions when writing code.
+2. **Performance Constraints:** 
+   - All animations must avoid heavy browser reflow.
+   - Use `transform` and `opacity` exclusively for layout changes.
+   - Ensure sub-16ms frame budget logic.
+3. **Execution Protocol:** 
+   - **Audit State:** Pinpoint static elements lacking motion context.
+   - **Develop Loop:** Code precise Keyframes/WebGL shaders with lifecycle hooks.
+   - **Validation Gate:** Assert low-end device throttling conditions ("jank" mitigation).
+4. **Context Boundary:** Parallax and layered depth must strictly follow the established "Legal DevOps" aesthetic styling. Abstract or generic creative effects outside core corporate guidelines are strictly prohibited.

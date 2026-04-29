@@ -1,0 +1,122 @@
+Category,Repository,Link,Stars,Language,Description (RU)
+Algorithms,algorithm-visualizer,https://github.com/algorithm-visualizer/algorithm-visualizer,48475,JavaScript,":fireworks:Интерактивная онлайн-платформа, визуализирующая алгоритмы из кода"
+Algorithms,interview,https://github.com/huihut/interview,37689,C++,"📚 Краткое изложение базовых знаний по техническим собеседованиям C/C++, включая язык, библиотеку программ, структуру данных, алгоритм, систему, сеть, библиотеку загрузки ссылок и другие знания, а также опыт собеседований, подбор персонала, внутренние направления и другую информацию. Этот репозиторий представляет собой сводку базовых знаний по подбору соискателей и новичков в направлении технологии C/C++, включая язык, библиотеку программ, структуру данных, алгоритм, систему, сеть, библиотеку загрузки ссылок, опыт собеседований, подбор персонала, рекомендации и т.д."
+Math & Mathematics,manim,https://github.com/ManimCommunity/manim,37562,Python,Поддерживаемая сообществом платформа Python для создания математической анимации.
+Algorithms,GFPGAN,https://github.com/TencentARC/GFPGAN,37410,Python,GFPAN нацелен на разработку практических алгоритмов восстановления лица в реальных условиях.
+Algorithms,gym,https://github.com/openai/gym,37135,Python,Набор инструментов для разработки и сравнения алгоритмов обучения с подкреплением.
+Algorithms,hello-algorithm,https://github.com/geekxh/hello-algorithm,36054,Java,🌍 针对小白的算法训练 | 包括四部分：①.大厂面经 ②.力扣图解  ③.千本开源电子书 ④.百张技术思维导图（项目花了上百小时，希望可以点 star 支持，🌹感谢~）推荐免费ChatGPT使用网站
+Algorithms,leetcode,https://github.com/doocs/leetcode,35847,Java,"🔥Решения LeetCode на любом языке программирования | Несколько языков программирования для реализации LeetCode, решения вопросов «Предложение Sword Pointer (2-е издание)», «Код для собеседования с программистом (6-е издание)»"
+Algorithms,Real-ESRGAN,https://github.com/xinntao/Real-ESRGAN,34918,Python,Целью Real-ESRGAN является разработка практических алгоритмов общего восстановления изображений/видео.
+Algorithms,JavaScript,https://github.com/TheAlgorithms/JavaScript,34085,JavaScript,"Алгоритмы и структуры данных, реализованные на JavaScript для начинающих, с использованием лучших практик."
+Algorithms,C-Plus-Plus,https://github.com/TheAlgorithms/C-Plus-Plus,34008,C++,"Коллекция различных алгоритмов по математике, машинному обучению, информатике и физике, реализованная на C++ для образовательных целей."
+Algorithms,LeetCode-Go,https://github.com/halfrost/LeetCode-Go,33799,Go,"✅ Решения LeetCode от Go, 100% тестовое покрытие, превосходное время выполнения на 100% / LeetCode 题解"
+Algorithms,interactive-coding-challenges,https://github.com/donnemartin/interactive-coding-challenges,31300,Python,Более 120 интерактивных задач на собеседовании по программированию на Python (алгоритмы и структуры данных).  Включает карточки Anki.
+Algorithms,ML-From-Scratch,https://github.com/eriklindernoren/ML-From-Scratch,31208,Python,Машинное обучение с нуля. Простые реализации NumPy моделей и алгоритмов машинного обучения с упором на доступность. Цель: охватить все: от линейной регрессии до глубокого обучения.
+Algorithms,swift-algorithm-club,https://github.com/kodecocodes/swift-algorithm-club,29121,Swift,Алгоритмы и структуры данных в Swift с пояснениями!
+Algorithms,PythonRobotics,https://github.com/AtsushiSakai/PythonRobotics,29062,Python,Примеры кода Python и учебник по алгоритмам робототехники.
+Algorithms,JCSprout,https://github.com/crossoverJie/JCSprout,26988,Java,"👨‍🎓 Java Core Sprout: базовый, параллельный, алгоритм"
+Algorithms,zstd,https://github.com/facebook/zstd,26907,C,Zstandard — быстрый алгоритм сжатия в реальном времени.
+Algorithms,CS-Books,https://github.com/forthespada/CS-Books,26540,,"🔥🔥Более 1000 классических компьютерных книг, личных заметок и ресурсов, задействованных в моих статьях, опубликованных на различных платформах. Ресурсы книги включают C/C++, Java, Python, язык Go, структуры данных и алгоритмы, операционные системы, серверную архитектуру, знания компьютерных систем, базы данных, компьютерные сети, шаблоны проектирования, интерфейсную часть, сборку и различные собеседования для школьного и социального набора ~"
+Algorithms,Detectron,https://github.com/facebookresearch/Detectron,26400,Python,"Исследовательская платформа FAIR для исследования обнаружения объектов, реализующая популярные алгоритмы, такие как Mask R-CNN и RetinaNet."
+Algorithms,OI-wiki,https://github.com/OI-wiki/OI-wiki,25801,TypeScript,":star2: Вики ОИ/ICPC для всех. (Онлайн-руководство по большой игре, включая классную арифметическую магию)"
+Algorithms,Rust,https://github.com/TheAlgorithms/Rust,25620,Rust,Все алгоритмы реализованы на Rust
+Algorithms,algorithms,https://github.com/keon/algorithms,25413,Python,Минимальные примеры структур данных и алгоритмов в Python
+Algorithms,awesome-algorithms,https://github.com/tayllan/awesome-algorithms,24951,,Кураторский список замечательных мест для изучения и/или практики алгоритмов.
+Algorithms,homemade-machine-learning,https://github.com/trekhleb/homemade-machine-learning,24446,Jupyter Notebook,🤖 Примеры популярных алгоритмов машинного обучения на Python с интерактивными демонстрациями Jupyter и математическими объяснениями.
+Algorithms,DSA-Bootcamp-Java,https://github.com/kunal-kushwaha/DSA-Bootcamp-Java,22432,Java,"Этот репозиторий состоит из примеров кода, заданий и примечаний по структурам и алгоритмам данных Java, а также курса WeMakeDevs по подготовке к собеседованию."
+Algorithms,reinforcement-learning,https://github.com/dennybritz/reinforcement-learning,21943,Jupyter Notebook,"Реализация алгоритмов обучения с подкреплением. Python, OpenAI Gym, Tensorflow. Упражнения и решения в дополнение к книге Саттона и курсу Дэвида Сильвера."
+Algorithms,C,https://github.com/TheAlgorithms/C,21872,C,"Коллекция различных алгоритмов по математике, машинному обучению, информатике, физике и т. д., реализованная на языке C для образовательных целей."
+Algorithms,zipline,https://github.com/quantopian/zipline,19606,Python,"Zipline, Pythonic алгоритмическая торговая библиотека"
+Algorithms,taipy,https://github.com/Avaiga/taipy,19151,Python,В кратчайшие сроки превращает алгоритмы обработки данных и искусственного интеллекта в готовые к использованию веб-приложения.
+Algorithms,Algorithms,https://github.com/williamfiset/Algorithms,18558,Java,Коллекция алгоритмов и структур данных.
+Algorithms,CS-Interview-Knowledge-Map,https://github.com/InterviewMap/CS-Interview-Knowledge-Map,18299,,"Создайте лучшую карту интервью. Текущий контент включает в себя JS, сеть, браузер, оптимизацию производительности, безопасность, инфраструктуру, Git, структуру данных, алгоритм и т. д."
+Algorithms,neural-style,https://github.com/jcjohnson/neural-style,18295,Lua,Реализация алгоритма нейронного стиля Torch
+Algorithms,Lean,https://github.com/QuantConnect/Lean,18245,C#,"Механизм бережливой алгоритмической торговли от QuantConnect (Python, C#)"
+Algorithms,LightGBM,https://github.com/lightgbm-org/LightGBM,18216,C++,"Быстрая, распределенная и высокопроизводительная среда повышения градиента (GBT, GBDT, GBRT, GBM или MART), основанная на алгоритмах дерева решений, используемая для ранжирования, классификации и многих других задач машинного обучения."
+Algorithms,Go,https://github.com/TheAlgorithms/Go,17922,Go,"Алгоритмы и структуры данных, реализованные на Go для начинающих, с учетом лучших практик."
+Algorithms,machine-learning-for-trading,https://github.com/stefan-jansen/machine-learning-for-trading,16988,Jupyter Notebook,"Код машинного обучения для алгоритмической торговли, 2-е издание."
+Algorithms,baselines,https://github.com/openai/baselines,16685,Python,OpenAI Baselines: высококачественные реализации алгоритмов обучения с подкреплением
+Algorithms,x-algorithm,https://github.com/xai-org/x-algorithm,16239,Rust,"Алгоритм, обеспечивающий питание For You на X"
+Algorithms,awesome-leetcode-resources,https://github.com/ashishps1/awesome-leetcode-resources,16154,Java,Потрясающие ресурсы LeetCode для изучения структур данных и алгоритмов и подготовки к собеседованиям по программированию.
+Math & Mathematics,math-as-code,https://github.com/Experience-Monks/math-as-code,15473,,шпаргалка по математической записи в кодовой форме
+Math & Mathematics,Book-Mathematical-Foundation-of-Reinforcement-Learning,https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning,15182,MATLAB,Это домашняя страница новой книги под названием «Математические основы обучения с подкреплением».
+Algorithms,scipy,https://github.com/scipy/scipy,14585,Python,Основной репозиторий библиотеки SciPy
+Math & Mathematics,awesome-math,https://github.com/rossant/awesome-math,13913,Python,Кураторский список замечательных ресурсов по математике
+Algorithms,awesome-competitive-programming,https://github.com/lnishan/awesome-competitive-programming,13836,,":gem: Кураторский список замечательных ресурсов по соревновательному программированию, алгоритмам и структурам данных."
+Algorithms,grokking_algorithms,https://github.com/egonSchiele/grokking_algorithms,13357,JavaScript,Код для книги «Алгоритмы гроккинга» (https://www.amazon.com/dp/1633438538)
+Algorithms,stable-baselines3,https://github.com/DLR-RM/stable-baselines3,13027,Python,"PyTorch версия Stable Baselines, надежная реализация алгоритмов обучения с подкреплением."
+Algorithms,react-fiber-architecture,https://github.com/acdlite/react-fiber-architecture,12892,,"Описание нового основного алгоритма React, React Fiber."
+Data Analysis,Ai-Learn,https://github.com/tangyudi/Ai-Learn,12826,,"Дорожная карта обучения искусственному интеллекту, в которой собрано около 200 практических случаев и проектов, предоставлены бесплатные вспомогательные учебные материалы, нулевой вход и практическое трудоустройство! В том числе: Python, математика, машинное обучение, анализ данных, глубокое обучение, компьютерное зрение, обработка естественного языка, PyTorch, тензорный поток, машинное обучение, анализ данных глубокого обучения, интеллектуальный анализ данных, математика, наука о данных, искусственный интеллект, python, тензорный поток, тензорный поток2, кафе, керас, алгоритм pytorch, numpy pandas, matplotlib, seaborn, nlp, cv и другие популярные области."
+Algorithms,virtual-dom,https://github.com/Matt-Esch/virtual-dom,11994,JavaScript,Виртуальный DOM и алгоритм сравнения
+Algorithms,The-Complete-FAANG-Preparation,https://github.com/AkashSingh3031/The-Complete-FAANG-Preparation,11777,Jupyter Notebook,"Погрузитесь в этот репозиторий, всеобъемлющий ресурс, охватывающий структуры данных, алгоритмы, 450 DSA Лава Баббара, лист Striver DSA, лист DSA колледжа Apna и вопросы FAANG! 🚀 Это еще не все! У нас есть такие технические предметы, как операционные системы, СУБД, SQL, компьютерные сети и объектно-ориентированное программирование, которые ждут вас."
+Algorithms,lz4,https://github.com/lz4/lz4,11747,C,Чрезвычайно быстрый алгоритм сжатия
+Algorithms,leetcode-patterns,https://github.com/seanprashad/leetcode-patterns,11727,TypeScript,Шаблонный подход к изучению вопросов технического интервью
+Algorithms,PRML,https://github.com/ctgk/PRML,11722,Jupyter Notebook,"Алгоритмы PRML, реализованные на Python"
+Algorithms,CS-Book,https://github.com/iamshuaidi/CS-Book,11519,,"Часто используемые электронные книги по информатике собраны и снабжены ссылками для скачивания, включая книги по Java, Python, Linux, Go, C, C++, структурам данных и алгоритмам, искусственному интеллекту, основам работы с компьютером, интервью, шаблонам проектирования, базам данных, интерфейсу и т. д."
+Algorithms,CtCI-6th-Edition,https://github.com/careercup/CtCI-6th-Edition,11471,Java,"Интервью «Взлом кодирования», 6-е изд. Решения"
+Algorithms,MLAlgorithms,https://github.com/rushter/MLAlgorithms,10971,Python,Минимальные и понятные примеры реализации алгоритмов машинного обучения
+Algorithms,xxHash,https://github.com/Cyan4973/xxHash,10971,C,Чрезвычайно быстрый некриптографический алгоритм хеширования
+Algorithms,dopamine,https://github.com/google/dopamine,10863,Jupyter Notebook,Дофамин — это исследовательская основа для быстрого прототипирования алгоритмов обучения с подкреплением.
+Math & Mathematics,MathJax,https://github.com/mathjax/MathJax,10805,JavaScript,Красивая и доступная математика во всех браузерах
+Algorithms,numerical-linear-algebra,https://github.com/fastai/numerical-linear-algebra,10781,Jupyter Notebook,Бесплатный онлайн-учебник блокнотов Jupyter для курса fast.ai Вычислительная линейная алгебра
+Algorithms,algorithm-base,https://github.com/chefyuan/algorithm-base,10732,,"Программист, который любит готовить, полон решимости использовать анимацию для объяснения алгоритмов в простой для понимания форме. Мой сайт интервью www.chengxuchu.com"
+Algorithms,the-algorithm-ml,https://github.com/twitter/the-algorithm-ml,10557,Python,Исходный код алгоритма рекомендаций Twitter
+Algorithms,CryptoSwift,https://github.com/krzyzanowskim/CryptoSwift,10548,Swift,"CryptoSwift — это растущая коллекция стандартных и безопасных криптографических алгоритмов, реализованных в Swift."
+Algorithms,mlcourse.ai,https://github.com/Yorko/mlcourse.ai,10533,Python,Открытый курс машинного обучения
+Algorithms,minbpe,https://github.com/karpathy/minbpe,10409,Python,"Минимальный чистый код для алгоритма кодирования пар байтов (BPE), обычно используемого при токенизации LLM."
+Algorithms,cp-algorithms,https://github.com/cp-algorithms/cp-algorithms,10384,C++,Статьи об алгоритмах и структурах данных для https://cp-algorithms.com (по материалам http://e-maxx.ru)
+Algorithms,trianglify,https://github.com/qrohlf/trianglify,10094,JavaScript,Алгоритмически созданное изображение треугольника
+Algorithms,leetcode_101,https://github.com/cgao96/leetcode_101,10025,,LeetCode 101: Руководство LeetCode по написанию вопросов
+Math & Mathematics,MathModel,https://github.com/zhanwen/MathModel,9968,TeX,"Математическое моделирование для выпускников, математическое моделирование для студентов, выдающиеся статьи на конкурсах по математическому моделированию, алгоритмы математического моделирования, шаблоны документов LaTeX, алгоритмические интеллект-карты, справочники, учебные пособия по программному обеспечению Matlab, PPT"
+Algorithms,CLRS,https://github.com/gzc/CLRS,9602,C++,:notebook:Решения для введения в алгоритмы
+Algorithms,StockSharp,https://github.com/StockSharp/StockSharp,9579,C#,"Платформа с открытым исходным кодом для алгоритмической и количественной торговли для разработки торговых роботов (фондовые рынки, форекс, криптовалюта, биткойны и опционы)."
+Algorithms,cleanrl,https://github.com/vwxyzjn/cleanrl,9485,Python,"Высококачественная реализация алгоритмов глубокого обучения с подкреплением в одном файле с удобными для исследований функциями (PPO, DQN, C51, DDPG, TD3, SAC, PPG)"
+Algorithms,maskrcnn-benchmark,https://github.com/facebookresearch/maskrcnn-benchmark,9383,Python,Быстрая модульная эталонная реализация алгоритмов сегментации экземпляров и обнаружения объектов в PyTorch.
+Algorithms,machinelearning,https://github.com/dotnet/machinelearning,9333,C#,ML.NET — это кроссплатформенная среда машинного обучения с открытым исходным кодом для .NET.
+Algorithms,PathPlanning,https://github.com/zhm-real/PathPlanning,9230,Python,Распространенные алгоритмы планирования пути с анимацией.
+Algorithms,computer-science-in-javascript,https://github.com/humanwhocodes/computer-science-in-javascript,9123,JavaScript,"Коллекция классических парадигм, алгоритмов и подходов информатики, написанных на JavaScript."
+Algorithms,computer-science-flash-cards,https://github.com/jwasham/computer-science-flash-cards,8971,HTML,"Мини-сайт для тестирования как общих знаний в области компьютерных наук, так и практики кодирования и запоминания общих алгоритмов/структур данных."
+Algorithms,Learn-Algorithms,https://github.com/nonstriater/Learn-Algorithms,8914,C,Примечания к изучению алгоритма
+Algorithms,awesome-java-leetcode,https://github.com/Blankj/awesome-java-leetcode,8730,Java,:crown: LeetCode алгоритмов с Java-решением(обновление).
+Algorithms,aima-python,https://github.com/aimacode/aima-python,8710,Jupyter Notebook,Реализация Python алгоритмов из книги Рассела и Норвига «Искусственный интеллект – современный подход».
+Math & Mathematics,math,https://github.com/ossu/math,8578,,🧮Путь к бесплатному самоучителю по математике!
+Algorithms,codeforces-go,https://github.com/EndlessCheng/codeforces-go,8290,Go,Библиотека шаблонов соревнований по алгоритмам от Lingcha Shanaifu 💭💡🎈
+Algorithms,LeetCode-Book,https://github.com/krahets/LeetCode-Book,8216,Java,"«Предложение Sword Finger» «Структура данных графического алгоритма» «88 избранных вопросов из интервью Крахца» Код решения задач на Python, Java, C++"
+Algorithms,C-Sharp,https://github.com/TheAlgorithms/C-Sharp,8080,C#,Все алгоритмы реализованы на C#.
+Algorithms,MarkovJunior,https://github.com/mxgmn/MarkovJunior,8068,C#,"Вероятностный язык, основанный на сопоставлении с образцом и распространении ограничений, 153 примера"
+Algorithms,ailab,https://github.com/microsoft/ailab,7864,C#,"Испытывайте, изучайте и кодируйте последние революционные инновации с помощью Microsoft AI."
+Algorithms,javascript-algorithms,https://github.com/mgechev/javascript-algorithms,7853,JavaScript,💻 JavaScript-реализации алгоритмов информатики
+Algorithms,dsa.js-data-structures-algorithms-javascript,https://github.com/amejiarosario/dsa.js-data-structures-algorithms-javascript,7764,JavaScript,🥞Структуры данных и алгоритмы объяснены и реализованы на JavaScript + электронная книга
+Algorithms,AlgoNote,https://github.com/itcharge/AlgoNote,7670,Python,"⛽️ «Руководство по очистке алгоритмов»: учебное пособие «Алгоритм и структура данных» с нуля, 200 «Популярные вопросы для собеседований по алгоритмам», более 1000 «Анализ вопросов LeetCode», постоянно обновляется!"
+Algorithms,algs4,https://github.com/kevin-wayne/algs4,7525,Java,"Алгоритмы, код учебника 4-го издания и библиотеки"
+Algorithms,100days,https://github.com/coells/100days,7496,Jupyter Notebook,100 дней алгоритмов
+Algorithms,web-skills,https://github.com/andreasbm/web-skills,7491,JavaScript,"Визуальный обзор полезных навыков, которые нужно освоить веб-разработчику"
+Math & Mathematics,Book3_Elements-of-Mathematics,https://github.com/Visualize-ML/Book3_Elements-of-Mathematics,7402,Jupyter Notebook,"Книга_3_""Элементы математики"" | Iris Book: От сложения, вычитания, умножения и деления к машинному обучению; теперь на полках; Вы можете продолжать исправлять ошибки, а студенты, исправившие больше ошибок, получат бесплатные книги!"
+Algorithms,machine-learning-course,https://github.com/instillai/machine-learning-course,7049,Python,:speech_balloon: Курс машинного обучения на Python:
+Algorithms,VoxelSpace,https://github.com/s-macke/VoxelSpace,6702,C,Алгоритм рендеринга местности менее чем в 20 строк кода
+Algorithms,supercollider,https://github.com/supercollider/supercollider,6499,C++,"Аудиосервер, язык программирования и IDE для синтеза звука и алгоритмической композиции."
+Algorithms,baekjoon,https://github.com/tony9402/baekjoon,6402,C++,Рабочая тетрадь для подготовки к тесту по кодированию (онлайн-судья Пэкджун)
+Algorithms,scikit-opt,https://github.com/guofei9987/scikit-opt,6400,Python,"Генетический алгоритм, оптимизация роя частиц, имитация отжига, алгоритм оптимизации колонии муравьев, иммунный алгоритм, алгоритм роя искусственных рыб, дифференциальная эволюция и TSP (коммивояжер)"
+Algorithms,deap,https://github.com/DEAP/deap,6366,Python,Распределенные эволюционные алгоритмы в Python
+Algorithms,AlgoXY,https://github.com/liuxinyu95/AlgoXY,6332,TeX,Книга элементарных функциональных алгоритмов и структур данных
+Algorithms,swift-algorithms,https://github.com/apple/swift-algorithms,6315,Swift,Часто используемые алгоритмы последовательности и сбора для Swift
+Algorithms,rqalpha,https://github.com/ricequant/rqalpha,6279,Python,"Расширяемая, заменяемая алгоритмическая платформа для тестирования и торговли Python, поддерживающая несколько ценных бумаг."
+Data Analysis,machine-learning-mindmap,https://github.com/dformoso/machine-learning-mindmap,6260,,"Ментальная карта, обобщающая концепции машинного обучения, от анализа данных до глубокого обучения."
+Algorithms,PRMLT,https://github.com/PRML/PRMLT,6205,MATLAB,Код Matlab алгоритмов машинного обучения в книге PRML
+Algorithms,LeetCode,https://github.com/wisdompeak/LeetCode,6171,C++,"Этот репозиторий содержит решения и объяснения проблем алгоритмов LeetCode. Включены только средние или выше. Все они написаны на C++/Python и реализованы мной. Проблемы, решаемые несколько раз, помечены гиперссылками."
+Algorithms,C-Sharp-Algorithms,https://github.com/aalhour/C-Sharp-Algorithms,6153,C#,:books: :chart_with_upwards_trend: Готовый к использованию проект библиотеки классов стандартных структур данных и алгоритмов на C#.
+Algorithms,algorithms_and_data_structures,https://github.com/mandliya/algorithms_and_data_structures,6123,C++,180+ задач по алгоритмам и структурам данных с использованием C++
+Math & Mathematics,Mathematics-for-ML,https://github.com/dair-ai/Mathematics-for-ML,5884,,🧮 Коллекция ресурсов для изучения математики для машинного обучения.
+Math & Mathematics,stdlib,https://github.com/stdlib-js/stdlib,5790,JavaScript,✨ Фундаментальная числовая библиотека для JavaScript и TypeScript. ✨
+Data Analysis,DataSciencePython,https://github.com/ujjwalkarn/DataSciencePython,5745,Python,общие задачи анализа данных и машинного обучения с использованием Python
+Data Analysis,Data-Analysis,https://github.com/WillKoehrsen/Data-Analysis,5509,Jupyter Notebook,Наука о данных с использованием Python
+Data Analysis,deepvariant,https://github.com/google/deepvariant,3670,Python,"DeepVariant — это конвейер анализа, который использует глубокую нейронную сеть для вызова генетических вариантов из данных секвенирования ДНК следующего поколения."
+Math & Mathematics,programmers-introduction-to-mathematics,https://github.com/pim-book/programmers-introduction-to-mathematics,3645,JavaScript,Код для введения программиста в математику
+Math & Mathematics,mathematics-roadmap,https://github.com/TalalAlrawajfeh/mathematics-roadmap,3395,,Комплексная дорожная карта по математике
+Math & Mathematics,learn_math_fast,https://github.com/llSourcell/learn_math_fast,3294,Python,"Это учебная программа «Как быстро выучить математику», написанная Сираджем Равалем на Youtube."
+Math & Mathematics,DeepSeek-Math,https://github.com/deepseek-ai/DeepSeek-Math,3223,Python,DeepSeekMath: расширяя границы математических рассуждений в моделях открытого языка
+Math & Mathematics,maths-cs-ai-compendium,https://github.com/HenryNdubuaku/maths-cs-ai-compendium,2883,TypeScript,Станьте опытным инженером-исследователем AI/ML
+Math & Mathematics,texme,https://github.com/susam/texme,2429,JavaScript,Самостоятельная визуализация документов Markdown + LaTeX
+Math & Mathematics,math-php,https://github.com/markrogoyski/math-php,2402,PHP,"Мощная современная математическая библиотека для PHP: содержит описательную статистику и регрессии; Непрерывные и дискретные распределения вероятностей; Линейная алгебра с матрицами и векторами, Численный анализ; специальные математические функции; Алгебра"
+Math & Mathematics,mathAI,https://github.com/Roujack/mathAI,2374,Python,"Программа для фотографирования и ответов на вопросы. Введите изображение, содержащее задачу математического расчета, и выведите распознанную формулу математического расчета и результаты расчета. Это проект распознавания математических выражений."
+Math & Mathematics,Algorithms_MathModels,https://github.com/HuangCongQing/Algorithms_MathModels,2332,MATLAB,"[Национальный конкурс] [Американский конкурс] Реализация MATLAB алгоритмов, связанных с математическим моделированием (будет составлен в начале 2018 г.)"

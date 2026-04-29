@@ -1,5 +1,5 @@
 """
-NEXUS Agent Orchestrator — run_agent.py
+NEXUS Agent Orchestrator  run_agent.py
 ========================================
 Запускает любого агента по номеру (01-14).
 После завершения АВТОМАТИЧЕСКИ вызывает Агента 12 (Архивариус)
@@ -38,26 +38,26 @@ SORTER_SCRIPT = AGENT_DIR / "12_WIKI_SORTER.py"
 
 # Связки: после запуска агента X автоматически запустить Y, Z...
 PIPELINES = {
-    "06": ["09", "08"],    # Инженер → Визионер → Аудитор
-    "11": ["14", "13"],   # Строитель → Копирайтер (нейминг) → Маркетолог (берёт имя)
+    "06": ["09", "08"],    # Инженер  Визионер  Аудитор
+    "11": ["14", "13"],   # Строитель  Копирайтер (нейминг)  Маркетолог (берёт имя)
     "13": ["14"],          # Маркетолог в одиночку тоже зовёт Копирайтера первым
 }
 
 def print_banner():
     print("\n" + "=" * 58)
-    print("  NEXUS ORCHESTRATOR — Agent Dispatcher")
+    print("  NEXUS ORCHESTRATOR  Agent Dispatcher")
     print("  Режим: Выполнение + Авто-сортировка (Агент 12)")
     print("=" * 58 + "\n")
 
 def list_agents():
     print("Доступные агенты:")
     for num, (file, desc) in REGISTRY.items():
-        exists = "✅" if (AGENT_DIR / file).exists() else "❌"
+        exists = "" if (AGENT_DIR / file).exists() else ""
         print(f"  {exists} [{num}] {desc}")
 
 def run(agent_num, extra_args=None):
     if agent_num not in REGISTRY:
-        print(f"❌ Агент [{agent_num}] не найден в реестре.")
+        print(f" Агент [{agent_num}] не найден в реестре.")
         list_agents()
         return
 
@@ -65,14 +65,14 @@ def run(agent_num, extra_args=None):
     script_path = AGENT_DIR / filename
 
     if not script_path.exists():
-        print(f"❌ Файл не найден: {script_path}")
+        print(f" Файл не найден: {script_path}")
         return
 
     # --- Запуск основного агента ---
     cmd = ["python", str(script_path)] + (extra_args or [])
-    print(f"[→] Запуск Агента {agent_num}: {desc}")
+    print(f"[] Запуск Агента {agent_num}: {desc}")
     result = subprocess.run(cmd, cwd=str(AGENT_DIR))
-    print(f"\n[←] Агент {agent_num} завершён (Exit code: {result.returncode})")
+    print(f"\n[] Агент {agent_num} завершён (Exit code: {result.returncode})")
 
     # --- Автоматические связки из PIPELINES ---
     pipeline = PIPELINES.get(agent_num, [])
@@ -81,24 +81,24 @@ def run(agent_num, extra_args=None):
             linked_file, linked_desc = REGISTRY[linked_num]
             linked_path = AGENT_DIR / linked_file
             if linked_path.exists():
-                print(f"\n[⚙] Авто-связка: Запуск Агента {linked_num} ({linked_desc})...")
+                print(f"\n[] Авто-связка: Запуск Агента {linked_num} ({linked_desc})...")
                 subprocess.run(["python", str(linked_path)], cwd=str(AGENT_DIR))
-                print(f"[←] Агент {linked_num} завершён.")
+                print(f"[] Агент {linked_num} завершён.")
             else:
                 print(f"[!] Агент {linked_num} пропущен (файл не найден).")
 
     # --- Агент 12 всегда последний ---
     if agent_num != "12":
-        print(f"\n[🧹] Авто-сортировка: Агент 12 (Архивариус)...")
+        print(f"\n[] Авто-сортировка: Агент 12 (Архивариус)...")
         subprocess.run(["python", str(SORTER_SCRIPT)], cwd=str(AGENT_DIR))
 
-    print("\n✅ Сеанс завершён.\n")
+    print("\n Сеанс завершён.\n")
 
 if __name__ == "__main__":
     print_banner()
 
     if len(sys.argv) < 2:
-        print("💡 Использование: python run_agent.py <номер> [доп. аргументы]")
+        print(" Использование: python run_agent.py <номер> [доп. аргументы]")
         print("   Пример: python run_agent.py 06")
         print("   Пример: python run_agent.py 11 path/to/blueprint.md\n")
         list_agents()

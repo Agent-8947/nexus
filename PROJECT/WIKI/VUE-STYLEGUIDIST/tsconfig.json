@@ -1,0 +1,42 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"lib": ["es2021", "DOM"],
+		"esModuleInterop": true,
+		"strict": true,
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"noUnusedLocals": true,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"strictFunctionTypes": false,
+		"resolveJsonModule": true,
+		"types": ["vitest/globals"]
+	},
+	"include": [
+		"test/**/*.ts",
+    "packages/**/*.spec.ts",
+    "packages/**/*.test.ts"
+	],
+	"exclude": ["test/**/*.d.ts", "**/*.cy.*", "test/cypress/**/*.ts"],
+	"references": [
+		{
+			"path": "./tsconfig.e2e.cy.json"
+		},
+		{
+			"path": "./tsconfig.testSetup.json"
+		},
+		{
+			"path": "./packages/vue-docgen-cli/tsconfig.json"
+		},
+		{
+			"path": "./packages/vue-docgen-api/tsconfig.json"
+		},
+		{
+			"path": "./packages/vue-inbrowser-prismjs-highlighter/tsconfig.json"
+		},
+		{
+			"path": "./packages/vue-styleguidist/tsconfig.json"
+		}
+	]
+}

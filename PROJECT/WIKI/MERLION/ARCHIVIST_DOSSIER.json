@@ -1,0 +1,13 @@
+{
+    "name": "MERLION",
+    "indexed_at": "2026-04-05 15:41:48",
+    "domains": [
+        "OSINT",
+        "FORECASTING",
+        "MACHINE_LEARNING",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: OSINT + FORECASTING + MACHINE_LEARNING + INFRASTRUCTURE",
+    "legal_devops_perspective": "Извлечение цифровых следов и разведка по закрытым/открытым базам для сбора улик. | Построение математических моделей для предсказания корпоративных и финансовых рисков. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXUS OS | Project Presentation 2026</title>
+
+    <meta name="description" content="NEXUS — Personal Agentic System for wide-range problem solving.">
+
+
+
+    <!-- SEO & Sharing -->
+
+    <meta property="og:title" content="NEXUS OS | Project Presentation 2026">
+
+    <meta property="og:description"
+
+        content="NEXUS — Personal Agentic System for wide-range problem solving. 104k msg/s, 14 MCP, 9 AI Agents.">
+
+    <meta property="og:image" content="nexus_preview.png">
+
+    <meta property="og:url" content="https://nexus-presentation-v2.vercel.app">
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="NEXUS OS | Project Presentation 2026">
+
+    <meta name="twitter:description" content="Autonomous AI-Orchestrated System for next-gen development.">
+
+    <meta name="twitter:image" content="nexus_preview.png">
+
+    <link rel="icon" type="image/png" href="nexus_preview.png">
+
+    <link rel="apple-touch-icon" href="nexus_preview.png">
+
+    <link
+
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;700&display=swap"
+
+        rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg: #0a0a0f;
+
+            --bg2: #12121a;
+
+            --sf: #1a1a26;
+
+            --sf2: #222233;
+
+            --ac: #ff3b30;
+
+            --ac2: #ff6b5b;
+
+            --cy: #00e5ff;
+
+            --tx: #e8e8f0;
+
+            --tx2: #8888aa;
+
+            --bd: rgba(255, 255, 255, .06);
+
+            --gw: rgba(255, 59, 48, .15)
+
+        }
+
+
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0
+
+        }
+
+
+
+        html {
+
+            scroll-behavior: smooth
+
+        }
+
+
+
+        body {
+
+            background: var(--bg);
+
+            color: var(--tx);
+
+            font-family: 'Outfit', sans-serif;
+
+            overflow-x: hidden;
+
+            -webkit-font-smoothing: antialiased
+
+        }
+
+
+
+        ::selection {
+
+            background: var(--ac);
+
+            color: #fff
+
+        }
+
+
+
+        .nb {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            -webkit-backdrop-filter: blur(20px);
+
+            backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid var(--bd);
+
+            padding: 0 40px;
+
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between
+
+        }
+
+
+
+        .nb-brand {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            color: var(--ac);
+
+            letter-spacing: 2px
+
+        }
+
+
+
+        .nb-links {
+
+            display: flex;
+
+            gap: 24px
+
+        }
+
+
+
+        .nb-links a {
+
+            text-decoration: none;
+
+            color: var(--tx2);
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            transition: color .3s;
+
+            position: relative
+
+        }
+
+
+
+        .nb-links a:hover,
+
+        .nb-links a.active {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .nb-links a.active::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -4px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 2px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .nb-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px
+
+        }
+
+
+
+        .lang-sw {
+
+            display: flex;
+
+            gap: 2px
+
+        }
+
+
+
+        .lang-btn {
+
+            background: transparent;
+
+            border: 1px solid var(--bd);
+
+            color: var(--tx2);
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .65rem;
+
+            padding: 6px 10px;
+
+            cursor: pointer;
+
+            transition: all .3s;
+
+            text-transform: uppercase
+
+        }
+
+
+
+        .lang-btn:hover {
+
+            border-color: var(--ac);
+
+            color: var(--tx)
+
+        }
+
+
+
+        .lang-btn.active {
+
+            background: var(--ac);
+
+            color: #fff;
+
+            border-color: var(--ac)
+
+        }
+
+
+
+        .gh-link {
+
+            color: var(--tx2);
+
+            transition: color .3s;
+
+            display: flex;
+
+            align-items: center;
+
+            margin: 0 8px
+
+        }
+
+
+
+        .gh-link:hover {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .dl-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: var(--ac);
+
+            color: #fff;
+
+            border: none;
+
+            padding: 8px 18px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition: all .3s;
+
+            border-radius: 4px
+
+        }
+
+
+
+        .dl-btn:hover {
+
+            background: var(--ac2);
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 8px 30px var(--gw)
+
+        }
+
+
+
+        .dl-btn.loading {
+
+            opacity: .6;
+
+            pointer-events: none
+
+        }
+
+
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 120px 60px 80px;
+
+            position: relative;
+
+            overflow: hidden
+
+        }
+
+
+
+        .hero-grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 0;
+
+            background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+
+            background-size: 80px 80px
+
+        }
+
+
+
+        .hero-glow {
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            background: radial-gradient(circle, var(--gw) 0%, transparent 70%);
+
+            top: 20%;
+
+            right: -10%;
+
+            z-index: 0;
+
+            filter: blur(80px)
+
+        }
+
+
+
+        .hero-c {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 1000px
+
+        }
+
+
+
+        .hero-tag {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .75rem;
+
+            color: var(--ac);
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 24px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px
+
+        }
+
+
+
+        .hero-tag::before {
+
+            content: '';
+
+            width: 40px;
+
+            height: 1px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .hero h1 {
+
+            font-size: clamp(4rem, 12vw, 10rem);
+
+            font-weight: 900;
+
+            line-height: .85;
+
+            letter-spacing: -6px;
+
+            margin-bottom: 30px
+
+        }
+
+
+
+        .hero h1 span {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .hero-sub {
+
+            font-size: 1.3rem;
+
+            color: var(--tx2);
+
+            max-width: 600px;
+
+            line-height: 1.7;
+
+            font-weight: 300
+
+        }
+
+
+
+        .hero-stats {
+
+            display: flex;
+
+            gap: 50px;
+
+            margin-top: 60px;
+
+            padding-top: 40px;
+
+            border-top: 1px solid var(--bd);
+
+            flex-wrap: wrap
+
+        }
+
+
+
+        .si {
+
+            text-align: left
+
+        }
+
+
+
+        .sv {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: 2.2rem;
+
+            font-weight: 700;
+
+            color: var(--ac);
+
+            display: block
+
+        }
+
+
+
+        .sl {
+
+            font-size: .72rem;
+
+            color: var(--tx2);
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-top: 4px
+
+        }
+
+
+
+        .ct {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 0 40px
+
+        }
+
+
+
+        section {
+
+            padding: 120px 0;
+
+            position: relative
+
+        }
+
+
+
+        section+section {
+
+            border-top: 1px solid var(--bd)
+
+        }
+
+
+
+        .stag {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .7rem;
+
+            color: var(--ac);
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px
+
+        }
+
+
+
+        .stag::before {
+
+            content: '';
+
+            width: 24px;
+
+            height: 1px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .stit {
+
+            font-size: clamp(2rem, 4vw, 3.2rem);
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 60px;
+
+            line-height: 1.1
+
+        }
+
+
+
+        .cg {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 24px
+
+        }
+
+
+
+        .cg3 {
+
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+
+        }
+
+
+
+        .cd {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 36px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: all .5s cubic-bezier(.2, 1, .3, 1);
+
+            opacity: 0;
+
+            transform: translateY(40px)
+
+        }
+
+
+
+        .cd::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 3px;
+
+            background: linear-gradient(90deg, var(--ac), transparent);
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: transform .5s
+
+        }
+
+
+
+        .cd:hover {
+
+            border-color: rgba(255, 59, 48, .2);
+
+            background: var(--sf2);
+
+            transform: translateY(-4px)
+
+        }
+
+
+
+        .cd:hover::before {
+
+            transform: scaleX(1)
+
+        }
+
+
+
+        .cb {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .63rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: var(--ac);
+
+            padding: 4px 12px;
+
+            border: 1px solid rgba(255, 59, 48, .3);
+
+            display: inline-block;
+
+            margin-bottom: 14px
+
+        }
+
+
+
+        .cd h3 {
+
+            font-size: 1.35rem;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            letter-spacing: -.5px
+
+        }
+
+
+
+        .cd p {
+
+            color: var(--tx2);
+
+            line-height: 1.65;
+
+            font-size: .9rem
+
+        }
+
+
+
+        .ct-t {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            color: var(--ac);
+
+            margin-top: 16px;
+
+            display: block;
+
+            letter-spacing: .5px
+
+        }
+
+
+
+        .dt {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 30px
+
+        }
+
+
+
+        .dt th {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: var(--ac);
+
+            text-align: left;
+
+            padding: 14px 18px;
+
+            border-bottom: 2px solid rgba(255, 59, 48, .3)
+
+        }
+
+
+
+        .dt td {
+
+            padding: 12px 18px;
+
+            border-bottom: 1px solid var(--bd);
+
+            font-size: .88rem;
+
+            color: var(--tx2);
+
+            vertical-align: top
+
+        }
+
+
+
+        .dt td:first-child {
+
+            color: var(--tx);
+
+            font-weight: 600
+
+        }
+
+
+
+        .dt tr {
+
+            transition: background .3s
+
+        }
+
+
+
+        .dt tr:hover {
+
+            background: rgba(255, 255, 255, .02)
+
+        }
+
+
+
+        .wg {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+
+            gap: 10px
+
+        }
+
+
+
+        .wi {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 14px 18px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .78rem;
+
+            transition: all .3s;
+
+            cursor: default
+
+        }
+
+
+
+        .wi:hover {
+
+            border-color: var(--ac);
+
+            background: var(--sf2)
+
+        }
+
+
+
+        .wi .wc {
+
+            color: var(--ac);
+
+            font-weight: 700;
+
+            display: block;
+
+            margin-bottom: 4px
+
+        }
+
+
+
+        .wi .wd {
+
+            color: var(--tx2);
+
+            font-size: .68rem;
+
+            font-family: 'Outfit', sans-serif
+
+        }
+
+
+
+        .mb {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
+            gap: 2px;
+
+            margin: 60px 0;
+
+            background: var(--bd)
+
+        }
+
+
+
+        .mt {
+
+            background: var(--sf);
+
+            padding: 28px;
+
+            text-align: center;
+
+            transition: background .3s
+
+        }
+
+
+
+        .mt:hover {
+
+            background: var(--sf2)
+
+        }
+
+
+
+        .mv {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: 1.8rem;
+
+            font-weight: 700;
+
+            color: var(--ac);
+
+            display: block
+
+        }
+
+
+
+        .ml {
+
+            font-size: .68rem;
+
+            color: var(--tx2);
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-top: 6px
+
+        }
+
+
+
+        .ab {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 36px;
+
+            overflow-x: auto;
+
+            margin-bottom: 40px
+
+        }
+
+
+
+        .ab pre {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .72rem;
+
+            color: var(--cy);
+
+            line-height: 1.5;
+
+            white-space: pre
+
+        }
+
+
+
+        .sf {
+
+            border-top: 1px solid var(--bd);
+
+            padding: 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .72rem;
+
+            color: var(--tx2)
+
+        }
+
+
+
+        @media(max-width:768px) {
+
+            .hero {
+
+                padding: 100px 20px 60px
+
+            }
+
+
+
+            .ct {
+
+                padding: 0 20px
+
+            }
+
+
+
+            .nb-links {
+
+                display: none
+
+            }
+
+
+
+            .cg {
+
+                grid-template-columns: 1fr
+
+            }
+
+
+
+            .wg {
+
+                grid-template-columns: repeat(2, 1fr)
+
+            }
+
+        }
+
+
+
+        /* PDF hidden doc */
+
+        #pdf-doc {
+
+            display: none
+
+        }
+
+
+
+        @media print {
+
+
+
+            .nb,
+
+            .hero-grid,
+
+            .hero-glow {
+
+                display: none !important
+
+            }
+
+
+
+            body {
+
+                background: #fff;
+
+                color: #111
+
+            }
+
+
+
+            .cd,
+
+            .ab,
+
+            .wi,
+
+            .mt {
+
+                border-color: #ddd;
+
+                background: #fafafa
+
+            }
+
+
+
+            .cb,
+
+            .stag,
+
+            .sv,
+
+            .mv,
+
+            .ct-t {
+
+                color: #c00
+
+            }
+
+
+
+            .cd p,
+
+            .dt td,
+
+            .wi .wd,
+
+            .hero-sub {
+
+                color: #444
+
+            }
+
+
+
+            section {
+
+                padding: 40px 0;
+
+                page-break-inside: avoid
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+    
+<style>
+/* Adjustments for static document */
+body { overflow-y: auto; }
+.hero { min-height: 50vh; padding: 100px 40px 40px; }
+.hero h1 { font-size: 4rem; }
+.instruction-section { padding: 40px; max-width: 1000px; margin: 0 auto; }
+.instruction-card { background: var(--sf); border: 1px solid var(--bd); padding: 30px; margin-bottom: 20px; border-radius: 8px; }
+.instruction-card h3 { color: var(--ac); font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; margin-bottom: 10px; }
+.instruction-card p { font-size: 1.1rem; line-height: 1.6; color: var(--tx2); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+    <div class="noise"></div>
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-c">
+            <div class="hero-tag">NEXUS OPERATIONAL MANUAL</div>
+            <h1>NEXUS <span>INSTRUCTION</span></h1>
+            <p class="hero-sub">Language: UA</p>
+        </div>
+    </section>
+    
+    <div class="instruction-section">
+<div class="instruction-card"><h3>Introduction - Флот AI-Агентів і Скілів - Повний опис — 25 агентів</h3><p>«Кожен агент — спеціалізований експерт зі своєю методологією»</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - Флот AI-агентів NEXUS OS</h3><p>NEXUS OS управляється флотом спеціалізованих AI-агентів. Кожен агент — це не просто інструмент, а повноцінний експерт зі своєю методологією, зоною відповідальності та стандартами якості. Агенти поділяються на два класи: системні (вбудовані в ядро) і скіли (підключувані модулі).</p><p>Всього агентів і скілів: 25 (4 системних + 21 скіл). Агенти працюють автономно або у складі багатоагентних пайплайнів через Multi-Agent Orchestrator.</p></div><div class="instruction-card"><h3>Системні агенти (ядро)</h3><p>Ці агенти вбудовані в ядро NEXUS і забезпечують базові операції: оркестрацію, самовідновлення, генерацію документів і роботу з базами даних.</p></div><div class="instruction-card"><h3>Спеціалізовані скіли</h3><p>Підключувані модулі з вузькою спеціалізацією. Кожен скіл має власний SKILL.md із детальною методологією та інструкціями щодо застосування.</p></div><div class="instruction-card"><h3>Answering Engine</h3><p>AI-пошуковий рушій із Deep Search Loop (пошук → верифікація → синтез). Бореться з галюцинаціями через принцип «Істина назовні» — інтегрує SearXNG, Exa, Tavily.</p></div><div class="instruction-card"><h3>OSINT Tactician</h3><p>Методологія розвідки на основі Intelligence Cycle і принципів Hunchly. Планує розслідування корпоративної розвідки, пошуку людей і маппінгу інфраструктури. Підтримує Dark Web Recon.</p></div><div class="instruction-card"><h3>Security Audit</h3><p>AI-аудит безпеки на базі Ship Safe v5.0. Сканує секрети, ін'єкції та вразливості. Захищає AI-агентів від prompt injection. Містить готові сніппети Rate Limiting, JWT, CORS.</p></div><div class="instruction-card"><h3>Motion Design Expert</h3><p>Преміальні веб-анімації та інтерактивний motion. Спеціалізується на Three.js, GSAP, Framer Motion. Гарантує стабільні 60fps, працює з частинками, шейдерами та паралакс-ефектами.</p></div><div class="instruction-card"><h3>Knowledge Synthesizer</h3><p>Синтез знань із кількох джерел без дублювання. Нормалізує вхідні дані, розділяє підтверджені факти від гіпотез, будує рішення-орієнтований огляд.</p></div><div class="instruction-card"><h3>Domain Intel</h3><p>Пасивна розвідка доменів: субдомени, SSL-сертифікати, WHOIS, DNS-записи, доступність домену. Zero dependencies — чистий Python stdlib без API-ключів.</p></div><div class="instruction-card"><h3>Firecrawl</h3><p>Офіційний CLI-скіл для веб-скрейпінгу, пошуку та браузерної автоматизації. Повертає чистий Markdown, оптимізований для LLM-контексту. Підтримує bulk crawling та маппінг сайтів.</p></div><div class="instruction-card"><h3>Frontend Orchestrator</h3><p>Оркестрація frontend-розробки. Керує маппінгом роутів, станом компонентів і контрактами API. Фокус на React, Vite, Three.js зі збереженням design system.</p></div><div class="instruction-card"><h3>Git-Native Agent</h3><p>Фреймворк-агностичний стандарт Open-GitAgent для визначення AI-агентів у Git. Керує версіонуванням агентів, Segregation of Duties і enterprise compliance.</p></div><div class="instruction-card"><h3>GitHub PR Workflow</h3><p>Повний lifecycle Pull Request: створення гілки → коміти → push → PR → моніторинг CI → merge. Використовує gh CLI з fallback на git + curl.</p></div><div class="instruction-card"><h3>JustDoIt</h3><p>Основний рушій виконання задач v5.0. Реалізує цикл Understand → Plan → Act → Verify. Усуває дрейф контексту та галюцинації. Створює plans.md, status.md, test-plan.md.</p></div><div class="instruction-card"><h3>Context Manager</h3><p>Пакування контексту для субагентів. Маппінг релевантної архітектури, витягання обмежень, компресія в мінімальний пакет із явним зазначенням невідомих.</p></div><div class="instruction-card"><h3>Multi-Agent Orchestrator</h3><p>Планування багатоагентного виконання з чітким розподілом ролей, залежностями та інтеграцією результатів. Максимізує паралельний прогрес без втрати контролю.</p></div><div class="instruction-card"><h3>Nexus QA</h3><p>QA Lead Mode v5.0. Автоматично тестує веб-застосунки через браузерну автоматизацію. Diff-Aware тестування, перевірка 404/500 і клікабельності. Генерує qa_report.md з Health Score.</p></div><div class="instruction-card"><h3>Nexus Vision (CEO Mode)</h3><p>Режим «Партнера YC». Переформулює задачі, оскаржує допущення, забезпечує product-market fit до початку розробки. Результат — design_doc.md із Pain, Wedge, Engineering Constraints.</p></div><div class="instruction-card"><h3>Legal Compliance Expert</h3><p>Аналіз правових ризиків і регуляторної відповідності. Маппінг юридичного домену, розділення підтверджених фактів від допущень, adversarial валідація.</p></div><div class="instruction-card"><h3>UI/UX Designer</h3><p>Implementation-ready UI-керівництва з преміальною естетикою (glassmorphism, micro-animations). Фокус на візуальній ієрархії, ARIA, keyboard navigation і design system токенах.</p></div><div class="instruction-card"><h3>arXiv Research</h3><p>Пошук і отримання академічних статей через arXiv REST API. Без API-ключів. Інтеграція з Semantic Scholar для цитат. Генерація BibTeX цитат.</p></div><div class="instruction-card"><h3>Codebase Inspection</h3><p>Аналіз кодової бази через pygount: підрахунок LOC, розбивка по мовах, співвідношення код/коментарі. Метрики репозиторію для pre-refactor аудиту.</p></div><div class="instruction-card"><h3>MathLib Advisor</h3><p>База знань з математики та формальної логіки на базі Lean 4 Mathlib. Пошук теорем, визначень і лем у найбільшій бібліотеці формалізованої математики.</p></div><div class="instruction-card"><h3>PowerShell UI Architect</h3><p>Інтерактивні інструменти та термінальні UI для Windows. TUI, WinForms/WPF інтеграція, фонові задачі без заморозки інтерфейсу, безпечне виконання привілейованих операцій.</p></div><div class="instruction-card"><h3>Всього агентів і скілів: 25 - MCP Neural Net — Конектори - Повний опис — 22 конектори</h3><p>«MCP-конектори — це руки та очі NEXUS, що пов'язують AI із реальними системами»</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - MCP Neural Net — 22 зовнішні конектори</h3><p>MCP (Model Context Protocol) — це нейронна мережа NEXUS, що надає системі прямий доступ до зовнішніх інструментів і сервісів. Без MCP AI бачить лише текст; із MCP він може читати файли, робити коміти, шукати в інтернеті, запускати браузер і керувати базами даних.</p><p>Всі MCP-сервери налаштовані в PROJECT/mcp_config.json і запускаються автоматично при старті Claude Desktop / VS Code Copilot. Pare-інструменти забезпечують економію токенів 40–70%.</p></div><div class="instruction-card"><h3>Файлова система та дані</h3><p>Конектори для роботи з локальними файлами, репозиторієм і базами даних.</p></div><div class="instruction-card"><h3>filesystem</h3><p>Прямий доступ до файлової системи проєкту (читання, запис, лістинг директорій). Точка монтування: PROJECT/</p></div><div class="instruction-card"><h3>git</h3><p>Нативна інтеграція з Git-репозиторієм: коміти, діффи, історія, гілки прямо з контексту AI.</p></div><div class="instruction-card"><h3>memory</h3><p>Персистентне Key-Value сховище пам'яті через @modelcontextprotocol/server-memory. Зберігає контекст між сесіями.</p></div><div class="instruction-card"><h3>sqlite</h3><p>Прямі запити до локальної SQLite бази nexus_core.db. Використовується для логування команд і метрик API.</p></div><div class="instruction-card"><h3>fetch</h3><p>HTTP-клієнт для отримання веб-сторінок і REST API даних. Базовий інструмент для збору зовнішніх даних.</p></div><div class="instruction-card"><h3>brave-search</h3><p>Веб-пошук через Brave Search API в реальному часі. Основний інструмент для отримання актуальної інформації з інтернету.</p></div><div class="instruction-card"><h3>Зовнішні сервіси та інтеграції</h3><p>Підключення до хмарних сервісів, моніторингу, CMS і браузерної автоматизації.</p></div><div class="instruction-card"><h3>sentry</h3><p>Інтеграція з Sentry для моніторингу помилок. Отримання stack trace, подій і performance-метрик прямо в контексті AI.</p></div><div class="instruction-card"><h3>puppeteer</h3><p>Браузерна автоматизація через Puppeteer: скриншоти, кліки, навігація, рендеринг JS-сторінок. Використовується QA-агентом і motion-рекордером.</p></div><div class="instruction-card"><h3>sequentialthinking</h3><p>Інструмент структурованого послідовного мислення. Розбиває складні задачі на атомарні кроки з явними проміжними станами.</p></div><div class="instruction-card"><h3>everart</h3><p>AI-генерація зображень через EverArt. Використовується Document Factory для створення візуальних активів у документах.</p></div><div class="instruction-card"><h3>obsidian</h3><p>Підключення до Obsidian Vault як до бази знань. Читання і запис нотаток, маппінг зв'язків між концептами проєкту.</p></div><div class="instruction-card"><h3>contentful</h3><p>Headless CMS інтеграція. Управління контентом, публікація записів і отримання даних через Contentful API.</p></div><div class="instruction-card"><h3>osp-marketing</h3><p>Маркетингові MCP-інструменти OSP. Генерація маркетингового контенту, аналіз цільової аудиторії та стратегій.</p></div><div class="instruction-card"><h3>ai-therapist</h3><p>Когнітивний конектор для аналізу робочих патернів і усунення «токсичних» циклів розробки. Допомагає в рефлексії та ретроспективах.</p><p>Pare-оптимізовані інструменти та граф-БД</p><p>Оптимізовані через Pare Tools версії Git/GitHub/Search/HTTP з економією токенів, а також граф-база Neo4j і PostgreSQL.</p></div><div class="instruction-card"><h3>pare-git</h3><p>Оптимізований Git через Pare Tools. Структурований JSON-вивід замість raw CLI. Економія токенів 40–70% порівняно з прямими git-командами.</p></div><div class="instruction-card"><h3>pare-github</h3><p>Оптимізований GitHub через Pare Tools. PR, Issues, Actions через структурований API з мінімальним споживанням токенів.</p></div><div class="instruction-card"><h3>pare-search</h3><p>Оптимізований пошук через Pare Tools. Структуровані результати пошуку з економією токенів і фільтрацією шуму.</p></div><div class="instruction-card"><h3>pare-python</h3><p>Запуск Python-коду через Pare Tools зі структурованим виводом. Безпечне виконання скриптів у контрольованому середовищі.</p></div><div class="instruction-card"><h3>pare-process</h3><p>Управління системними процесами через Pare Tools. Запуск, моніторинг і зупинка процесів із JSON-відповідями.</p></div><div class="instruction-card"><h3>pare-http</h3><p>HTTP-запити через Pare Tools зі структурованим виводом. REST API виклики з автоматичною серіалізацією та обробкою помилок.</p></div><div class="instruction-card"><h3>neo4j</h3><p>Граф-база даних Neo4j для зберігання динамічних зв'язків між сутностями проєкту. Адреса: bolt://localhost:7687, база nexus_graph_db.</p></div><div class="instruction-card"><h3>postgres</h3><p>Підключення до PostgreSQL через Supabase. Основна реляційна база даних проєкту. Адреса: nexus_core (localhost:5432).</p></div><div class="instruction-card"><h3>Всього MCP-конекторів: 22 - 24 Slash-Команди (Воркфлоу) - Повний опис кожної команди</h3><p>«Вся потужність NEXUS викликається однією командою з термінала»</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - 24 Slash-команди NEXUS OS</h3><p>Воркфлоу — це модульні команди, що активують певний ланцюжок дій NEXUS. Вони вводяться прямо в чат IDE (Claude/Copilot) і запускають автоматизовані пайплайни: від форматування коду до повного деплою в production.</p><p>Воркфлоу зберігаються в .agents/workflows/*.md. Команда /menu виводить повний список у будь-який момент. Більшість воркфлоу позначені // turbo-all — автономне виконання без уточнень.</p></div>
+    </div>
+</body>
+</html>

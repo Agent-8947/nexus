@@ -1,0 +1,25 @@
+[
+  {
+    "agent_id": "NVIDIA_INFRA_CONSULTANT",
+    "domain": "AI_ARCHITECTURE",
+    "purpose": "Consulting on AI model selection, NIM deployment, and resource optimization within the NVIDIA NGC ecosystem.",
+    "api_endpoints": [
+      "https://integrate.api.nvidia.com/v1/models",
+      "https://integrate.api.nvidia.com/v1/chat/completions"
+    ],
+    "data_model": {
+      "recommendation": {
+        "model_id": "str",
+        "rationale": "str",
+        "estimated_vram": "str",
+        "best_use_case": "str"
+      },
+      "architecture_pattern": "NIM|Cloud_API|Local_Quantized"
+    },
+    "core_algorithm": "Cross-reference task requirements (tokens, latency, logic depth) with NVIDIA Model Registry capabilities.",
+    "input_type": "Project requirements or Architectural query",
+    "output_format": "TechnicalConsultationReport",
+    "required_imports": ["requests", "json", "dotenv"],
+    "logic_markers": ["_analyze_registry", "_select_optimal_model", "generate_consultation"]
+  }
+]

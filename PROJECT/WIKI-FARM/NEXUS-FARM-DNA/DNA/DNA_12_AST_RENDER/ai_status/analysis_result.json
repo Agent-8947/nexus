@@ -1,0 +1,42 @@
+{
+  "agent": "HYBRID_AUTOFORMER_x_BUILD-YOUR-OWN-X",
+  "timestamp": "2026-04-09T05:07:33.792743",
+  "source": "HYBRID_ELASTICSEARCH_x_BUILD-YOUR-OWN-X",
+  "result": {
+    "health_score": 0.1,
+    "avg_cpu": 22.38,
+    "avg_ram": 94.04,
+    "anomalies": [
+      {
+        "ts": "2026-04-09T05:07:30.677154",
+        "type": "RAM_CRITICAL",
+        "val": 94.0
+      },
+      {
+        "ts": "2026-04-09T05:07:31.288678",
+        "type": "RAM_CRITICAL",
+        "val": 94.1
+      },
+      {
+        "ts": "2026-04-09T05:07:31.896298",
+        "type": "RAM_CRITICAL",
+        "val": 94.1
+      },
+      {
+        "ts": "2026-04-09T05:07:32.505100",
+        "type": "RAM_CRITICAL",
+        "val": 94.0
+      },
+      {
+        "ts": "2026-04-09T05:07:33.113518",
+        "type": "RAM_CRITICAL",
+        "val": 94.0
+      },
+      {
+        "type": "CPU_SPIKE",
+        "delta": 53.1
+      }
+    ],
+    "verdict": "CRITICAL"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "EASYPROTECTOR",
+    "indexed_at": "2026-04-05 16:11:57",
+    "domains": [
+        "LEGAL",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: LEGAL + INFRASTRUCTURE",
+    "legal_devops_perspective": "Прямая автоматизация комплаенса и выявления нарушений законодательства/лицензий. | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

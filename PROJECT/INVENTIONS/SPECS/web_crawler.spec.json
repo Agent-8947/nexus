@@ -1,0 +1,77 @@
+{
+  "module_name": "web_crawler",
+  "title": "Web Crawler",
+  "description": "HTTP content fetcher with header extraction, redirect following, and response analysis",
+  "inputs": [
+    "urls: list[str]",
+    "timeout: float",
+    "max_depth: int"
+  ],
+  "outputs": [
+    "CrawlResult with status, headers, content_length, redirects"
+  ],
+  "stdlib_deps": [
+    "urllib.request",
+    "urllib.error",
+    "json",
+    "html.parser"
+  ],
+  "api_endpoints": [],
+  "reference_pattern": "Concurrent URL probing with redirect chain tracking",
+  "domain": "web_scraping",
+  "evidence_repos": [
+    {
+      "repo": "FIRECRAWL",
+      "score": 10,
+      "evidence": [
+        "keywords: crawl, scrape, parse",
+        "dossier: osint, legal, machine_learning, infrastructure",
+        "functions: parse"
+      ]
+    },
+    {
+      "repo": "CRAWL4AI",
+      "score": 9,
+      "evidence": [
+        "keywords: crawl, scrape, extract",
+        "dossier: osint, machine_learning, infrastructure"
+      ]
+    },
+    {
+      "repo": "OWASP-WEB-CHECKLIST",
+      "score": 9,
+      "evidence": [
+        "keywords: crawl, spider, html",
+        "dossier: osint, crypto, infrastructure"
+      ]
+    },
+    {
+      "repo": "CHIPSEC",
+      "score": 8,
+      "evidence": [
+        "keywords: parse, html",
+        "dossier: osint, infrastructure",
+        "functions: parse"
+      ]
+    },
+    {
+      "repo": "CHATLAB",
+      "score": 7,
+      "evidence": [
+        "keywords: extract, html",
+        "dossier: osint, crypto, machine_learning, infrastructure"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [
+    "https://github.com/chipsec/chipsec/actions/workflows/tests.yml?query=branch%3Amain",
+    "http://127.0.0.1:5200/api/v1/sessions/abc123/messages?page=1&limit=50&keyword=hello",
+    "http://127.0.0.1:5200/api/v1/sessions/abc123/messages?page=1&limit=50&keyword=你好",
+    "https://github.com/chipsec/chipsec/actions/workflows/tests.yml/badge.svg?query=branch%3Amain",
+    "https://www.firecrawl.dev/blog/the-worlds-best-web-data-api-v25",
+    "https://trendshift.io/api/badge/repositories/11716",
+    "http://127.0.0.1:5200/api/v1/status"
+  ],
+  "generated_at": "2026-04-06T03:46:43.054789"
+}

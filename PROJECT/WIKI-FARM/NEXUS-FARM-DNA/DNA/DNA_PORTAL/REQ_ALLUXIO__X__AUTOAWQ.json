@@ -1,0 +1,89 @@
+{
+  "child_id": "ALLUXIO__X__AUTOAWQ",
+  "parent_a": {
+    "node_id": "ALLUXIO",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "orchestrator",
+        "computing": "gpu",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "manual",
+        "interface": "api"
+      },
+      "dna_signature": [
+        1.0,
+        0.4,
+        0.4,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.5,
+        "completeness": 0.67,
+        "overall": 0.72
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "AUTOAWQ",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "library",
+        "computing": "gpu",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "manual",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.71,
+        "completeness": 0.67,
+        "overall": 0.8
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an OSINT intelligence gathering and analysis pipeline",
+  "ts": "2026-04-09T04:25:33.722925"
+}

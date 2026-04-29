@@ -1,0 +1,30 @@
+{
+  "agent_id": "JWT_VULN_SCANNER",
+  "domain": "SECURITY_ADV",
+  "purpose": "Detect common JWT vulnerabilities: none-algorithm, weak secrets, and kid-injection",
+  "api_endpoints": [],
+  "data_model": {
+    "token": "TEXT",
+    "header": "TEXT",
+    "payload": "TEXT",
+    "vulnerabilities": "TEXT",
+    "is_exploitable": "INTEGER"
+  },
+  "core_algorithm": "JWT header decoding and algorithm manipulation (HS256 -> none)",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "base64",
+    "json",
+    "hashlib",
+    "logging",
+    "re"
+  ],
+  "logic_markers": [
+    "eyJ",
+    "alg",
+    "none",
+    "kid",
+    "secret"
+  ]
+}

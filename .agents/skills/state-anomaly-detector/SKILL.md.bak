@@ -1,0 +1,5 @@
+# State Anomaly Detector
+Look for weird things in the system.
+If memory is high, kill stuff. 
+Check logs for errors.
+Used to keep NEXUS running smooth.

@@ -1,0 +1,30 @@
+{
+  "agent_id": "MODEL_DRIFT_MONITOR",
+  "domain": "AI_ML",
+  "purpose": "Monitor ML models for performance drift and data distribution shifts",
+  "api_endpoints": [],
+  "data_model": {
+    "model_name": "TEXT",
+    "metric": "TEXT",
+    "reference_value": "REAL",
+    "current_value": "REAL",
+    "drift_detected": "INTEGER"
+  },
+  "core_algorithm": "PSI (Population Stability Index) and KL Divergence monitoring",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "logging",
+    "sqlite3",
+    "math",
+    "statistics",
+    "json"
+  ],
+  "logic_markers": [
+    "KL divergence",
+    "PSI",
+    "drift",
+    "distribution",
+    "shift"
+  ]
+}

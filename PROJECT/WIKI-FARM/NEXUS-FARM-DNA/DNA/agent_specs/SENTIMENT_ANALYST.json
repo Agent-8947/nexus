@@ -1,0 +1,25 @@
+{
+  "agent_id": "SENTIMENT_ANALYST",
+  "domain": "FINANCE",
+  "purpose": "Scan news headlines, social media, and earnings transcripts for bullish or bearish sentiment.",
+  "api_endpoints": [
+    "https://news.google.com/search?q={ticker}+stock+news",
+    "https://www.social-searcher.com/api/v2/search?q={ticker}"
+  ],
+  "data_model": {
+    "sentiment_score": "float",
+    "news_summary": "str",
+    "mood": "bullish|bearish|neutral"
+  },
+  "core_algorithm": "NLP analysis of news headlines and social mentions to quantify market psychology.",
+  "input_type": "Stock Ticker",
+  "output_format": "SentimentReport",
+  "required_imports": [
+    "beautifulsoup4",
+    "requests"
+  ],
+  "logic_markers": [
+    "_scrape_news",
+    "_analyze_sentiment"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../actions" },
+    { "path": "../commutable" },
+    { "path": "../core" },
+    { "path": "../editor" },
+    { "path": "../mythic-configuration" },
+    { "path": "../mythic-notifications" },
+    { "path": "../presentational-components" },
+    { "path": "../stateful-components" },
+    { "path": "../selectors" },
+    { "path": "../types" }
+  ]
+}

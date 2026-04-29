@@ -1,0 +1,97 @@
+{
+  "child_id": "NEURAL_STYLE__X__PYTHON_MACHINE_LEARNING_BOOK",
+  "parent_a": {
+    "node_id": "NEURAL_STYLE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.053,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.076
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.27,
+        "completeness": 0.33,
+        "overall": 0.59
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "PYTHON_MACHINE_LEARNING_BOOK",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.046,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.262
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.15,
+        "completeness": 0.33,
+        "overall": 0.55
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:43:38.930054"
+}

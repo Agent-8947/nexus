@@ -1,0 +1,89 @@
+{
+  "child_id": "PANDAS__X__BLACK-HAT-RUST",
+  "parent_a": {
+    "node_id": "PANDAS",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.6,
+        1.0,
+        0.4,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.29,
+        "completeness": 0.67,
+        "overall": 0.52
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "BLACK-HAT-RUST",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "storage",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "critical",
+        "autonomy": "manual",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.4,
+        0.2,
+        0.2,
+        0.0,
+        0.8,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.77,
+        "completeness": 0.67,
+        "overall": 0.8
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an OSINT intelligence gathering and analysis pipeline",
+  "ts": "2026-04-08T17:20:56.824254"
+}

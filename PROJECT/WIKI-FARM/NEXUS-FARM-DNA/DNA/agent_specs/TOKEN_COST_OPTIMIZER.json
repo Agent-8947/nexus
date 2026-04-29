@@ -1,0 +1,28 @@
+{
+  "agent_id": "TOKEN_COST_OPTIMIZER",
+  "domain": "AI_ML",
+  "purpose": "Analyze LLM token usage and recommend cost-saving prompts (summarization vs raw)",
+  "api_endpoints": [],
+  "data_model": {
+    "prompt_len": "INTEGER",
+    "estimated_cost": "REAL",
+    "optimization_saved": "REAL",
+    "model_price": "TEXT"
+  },
+  "core_algorithm": "Tiktoken-based estimation and prompt truncation heuristic",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "logging",
+    "sqlite3",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "token",
+    "pricing",
+    "cl100k_base",
+    "cost",
+    "tokens_per_request"
+  ]
+}

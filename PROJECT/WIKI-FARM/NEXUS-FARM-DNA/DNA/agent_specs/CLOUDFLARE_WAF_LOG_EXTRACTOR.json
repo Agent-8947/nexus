@@ -1,0 +1,31 @@
+{
+  "agent_id": "CLOUDFLARE_WAF_LOG_EXTRACTOR",
+  "domain": "INFRA",
+  "purpose": "Extract and summarize blocked threats from Cloudflare WAF logs",
+  "api_endpoints": [
+    "https://api.cloudflare.com/client/v4/zones/{zone}/logs/received"
+  ],
+  "data_model": {
+    "ip": "TEXT",
+    "action": "TEXT",
+    "rule_id": "TEXT",
+    "country": "TEXT",
+    "ua": "TEXT"
+  },
+  "core_algorithm": "Cloudflare Logs API streaming and event categorization",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "json"
+  ],
+  "logic_markers": [
+    "X-Auth-Key",
+    "zones/logs",
+    "waf",
+    "EdgeStartTimestamp",
+    "ClientRequestPath"
+  ]
+}

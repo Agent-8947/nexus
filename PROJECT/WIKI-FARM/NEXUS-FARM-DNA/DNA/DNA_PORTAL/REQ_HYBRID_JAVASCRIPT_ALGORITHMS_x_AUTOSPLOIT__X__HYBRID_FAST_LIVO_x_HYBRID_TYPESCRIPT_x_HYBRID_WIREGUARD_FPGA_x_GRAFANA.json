@@ -1,0 +1,107 @@
+{
+  "child_id": "HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT__X__HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA",
+  "parent_a": {
+    "node_id": "HYBRID_JAVASCRIPT_ALGORITHMS_x_AUTOSPLOIT",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "payload",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "critical",
+        "autonomy": "agentic",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.07,
+        0.0,
+        0.139,
+        0.0,
+        0.0,
+        0.0,
+        0.283,
+        0.006,
+        0.0,
+        0.576
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.542,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "JAVASCRIPT_ALGORITHMS",
+          "AUTOSPLOIT"
+        ],
+        "generation": 1,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T18:48:56.234850"
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_FAST_LIVO_x_HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "hardware",
+        "role": "collector",
+        "computing": "fpga",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.239,
+        0.002,
+        0.091,
+        0.22,
+        0.0,
+        0.127,
+        0.0,
+        0.21,
+        0.496
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.431,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "FAST_LIVO",
+          "HYBRID_TYPESCRIPT_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA"
+        ],
+        "generation": 3,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T20:19:50.694503"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:26:48.069948"
+}

@@ -1,0 +1,102 @@
+{
+  "child_id": "HYBRID_LADYBIRD_x_BACKOFF__X__DEEPLNOTE",
+  "parent_a": {
+    "node_id": "HYBRID_LADYBIRD_x_BACKOFF",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "security",
+        "role": "library",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.24,
+        0.446,
+        0.268,
+        0.007,
+        0.164,
+        0.188,
+        0.0,
+        0.066,
+        0.183,
+        0.745
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.81
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.32,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "LADYBIRD",
+          "BACKOFF"
+        ],
+        "generation": 1,
+        "compat_score": 0.808,
+        "synthesized_at": "2026-04-09T18:50:33.784451"
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "DEEPLNOTE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "data",
+        "role": "presentation",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.017,
+        0.013,
+        0.0,
+        0.0,
+        0.0,
+        0.018,
+        0.0,
+        0.086,
+        0.007,
+        0.902
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.26,
+        "completeness": 0.67,
+        "overall": 0.63
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:11:51.852229"
+}

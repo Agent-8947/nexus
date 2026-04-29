@@ -1,0 +1,35 @@
+{
+  "agent_id": "THREAT_INTEL_FEED",
+  "domain": "OSINT",
+  "purpose": "Aggregate indicators of compromise (IoCs) from public threat intelligence feeds",
+  "api_endpoints": [
+    "https://otx.alienvault.com/api/v1/indicators/IPv4/{ip}/general",
+    "https://urlhaus-api.abuse.ch/v1/"
+  ],
+  "data_model": {
+    "indicator": "TEXT",
+    "indicator_type": "TEXT",
+    "source": "TEXT",
+    "pulse_count": "INTEGER",
+    "threat_score": "REAL",
+    "tags": "TEXT"
+  },
+  "core_algorithm": "Multi-source IoC correlation (AlienVault OTX + URLhaus)",
+  "input_type": "ip",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json",
+    "dataclasses"
+  ],
+  "logic_markers": [
+    "otx.alienvault.com",
+    "urlhaus-api.abuse.ch",
+    "pulse_count",
+    "indicator_type"
+  ],
+  "spec_hash": "6ae79175b1138c31"
+}

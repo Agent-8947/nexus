@@ -1,0 +1,31 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "paths": {
+      "gestalt": ["../packages/gestalt"],
+      "gestalt-charts": ["../packages/gestalt-charts"],
+      "gestalt-datepicker": ["../packages/gestalt-datepicker"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "../packages/gestalt" },
+    { "path": "../packages/gestalt-charts" },
+    { "path": "../packages/gestalt-datepicker" }
+  ]
+}

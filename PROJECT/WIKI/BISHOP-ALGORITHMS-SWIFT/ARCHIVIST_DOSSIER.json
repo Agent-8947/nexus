@@ -1,0 +1,13 @@
+{
+    "name": "BISHOP-ALGORITHMS-SWIFT",
+    "indexed_at": "2026-04-05 14:21:19",
+    "domains": [
+        "OSINT",
+        "CRYPTO",
+        "MACHINE_LEARNING",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: OSINT + CRYPTO + MACHINE_LEARNING + INFRASTRUCTURE",
+    "legal_devops_perspective": "Извлечение цифровых следов и разведка по закрытым/открытым базам для сбора улик. | Анализ защищенных данных, аудит смарт-контрактов, деанонимизация блокчейн-транзакций. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

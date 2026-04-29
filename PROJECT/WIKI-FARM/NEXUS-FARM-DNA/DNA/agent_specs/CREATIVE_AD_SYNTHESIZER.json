@@ -1,0 +1,32 @@
+{
+  "agent_id": "CREATIVE_AD_SYNTHESIZER",
+  "domain": "MARKETING",
+  "purpose": "Synthesize multi-modal advertising creatives including copy, visual layout logic, and aesthetic tokens based on campaign goals.",
+  "api_endpoints": [
+    "https://api.openai.com/v1/chat/completions",
+    "https://api.firecrawl.dev/search"
+  ],
+  "data_model": {
+    "campaign_id": "TEXT",
+    "headline": "TEXT",
+    "body_copy": "TEXT",
+    "visual_brief": "TEXT",
+    "style_tokens": "TEXT",
+    "cta": "TEXT"
+  },
+  "core_algorithm": "Market-trend analysis followed by LLM-driven creative synthesis using AIDA framework.",
+  "input_type": "brief",
+  "output_format": "json_creative_package",
+  "required_imports": [
+    "requests",
+    "json",
+    "logging",
+    "sqlite3"
+  ],
+  "logic_markers": [
+    "AIDA",
+    "visual_brief",
+    "aesthetic_tokens",
+    "cta_logic"
+  ]
+}

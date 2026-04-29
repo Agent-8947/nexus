@@ -1,0 +1,1 @@
+本题和 [1561. 你可以获得的最大硬币数目](https://leetcode.cn/problems/maximum-number-of-coins-you-can-get/) 完全一样，请看 [我的题解](https://leetcode.cn/problems/maximum-number-of-coins-you-can-get/solutions/3035907/tan-xin-jian-ji-xie-fa-pythonjavaccgojsr-2ptn/)。

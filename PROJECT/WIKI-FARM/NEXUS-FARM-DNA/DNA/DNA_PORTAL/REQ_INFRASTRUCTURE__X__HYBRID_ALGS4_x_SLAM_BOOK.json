@@ -1,0 +1,102 @@
+{
+  "child_id": "INFRASTRUCTURE__X__HYBRID_ALGS4_x_SLAM_BOOK",
+  "parent_a": {
+    "node_id": "INFRASTRUCTURE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "analyzer",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "medium",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.059,
+        0.021,
+        0.031,
+        0.013,
+        0.009,
+        0.047,
+        0.0,
+        0.053,
+        0.0,
+        0.805
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.2,
+        "completeness": 0.33,
+        "overall": 0.44
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_ALGS4_x_SLAM_BOOK",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "cs",
+        "role": "analyzer",
+        "computing": "agnostic",
+        "latency": "batch",
+        "security_level": "none",
+        "autonomy": "manual",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.254,
+        0.0,
+        0.074,
+        0.027,
+        0.0,
+        0.118,
+        0.0,
+        0.258,
+        0.0,
+        0.288
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.314,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "ALGS4",
+          "SLAM_BOOK"
+        ],
+        "generation": 1,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T18:59:06.847777"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T19:34:29.068152"
+}

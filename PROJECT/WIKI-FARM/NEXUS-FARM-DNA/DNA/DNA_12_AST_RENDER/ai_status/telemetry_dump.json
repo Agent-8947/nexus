@@ -1,0 +1,45 @@
+{
+  "agent": "HYBRID_ELASTICSEARCH_x_BUILD-YOUR-OWN-X",
+  "timestamp": "2026-04-09T05:07:33.614066",
+  "metadata": {
+    "has_psutil": true,
+    "samples": 5
+  },
+  "payload": [
+    {
+      "cpu_pct": 26.8,
+      "ram_pct": 94.0,
+      "disk_pct": 82.5,
+      "process_count": 254,
+      "timestamp": "2026-04-09T05:07:30.677154"
+    },
+    {
+      "cpu_pct": 64.6,
+      "ram_pct": 94.1,
+      "disk_pct": 82.5,
+      "process_count": 256,
+      "timestamp": "2026-04-09T05:07:31.288678"
+    },
+    {
+      "cpu_pct": 11.5,
+      "ram_pct": 94.1,
+      "disk_pct": 82.5,
+      "process_count": 255,
+      "timestamp": "2026-04-09T05:07:31.896298"
+    },
+    {
+      "cpu_pct": 3.5,
+      "ram_pct": 94.0,
+      "disk_pct": 82.5,
+      "process_count": 255,
+      "timestamp": "2026-04-09T05:07:32.505100"
+    },
+    {
+      "cpu_pct": 5.5,
+      "ram_pct": 94.0,
+      "disk_pct": 82.5,
+      "process_count": 255,
+      "timestamp": "2026-04-09T05:07:33.113518"
+    }
+  ]
+}

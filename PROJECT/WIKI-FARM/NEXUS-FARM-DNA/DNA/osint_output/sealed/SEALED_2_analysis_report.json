@@ -1,0 +1,1184 @@
+{
+  "nexus_sealed_report": {
+    "version": "2.0",
+    "sealed_at": "2026-04-09T05:05:13.447779",
+    "source_agent": "HYBRID_AUTOGLUON_x_ALLUXIO",
+    "source_file": "E:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI-FARM\\NEXUS-FARM-DNA\\DNA\\osint_output\\2_analysis_report.json",
+    "integrity": {
+      "algorithm": "HMAC-SHA256",
+      "content_hash": "38280ffea52cdebbe22e4fd494fe638606ee6966a92320213a26b1fd7b81ec9e",
+      "signature": "26094fda2a8b3f8e9e136ef705afa87d7872311b6552bbffa77dccbbbce39cd6",
+      "key_hint": "NEXUS_SEAL_KEY env var"
+    },
+    "stats_summary": {
+      "total_findings": 57,
+      "top_risk_score": 1.0,
+      "mean_risk_score": 0.232,
+      "risk_verdict": "CRITICAL"
+    }
+  },
+  "payload": {
+    "agent": "HYBRID_AUTOGLUON_x_ALLUXIO",
+    "version": "2.0",
+    "timestamp": "2026-04-09T05:05:02.021272",
+    "source": "HYBRID_TROUBLESHOOTING_x_CRATE",
+    "analysis": {
+      "total_findings": 57,
+      "top_risk_score": 1.0,
+      "mean_risk_score": 0.232,
+      "by_priority": {
+        "P0-IMMEDIATE": 3,
+        "P1-URGENT": 1,
+        "P2-REVIEW": 22,
+        "P3-INFO": 31
+      },
+      "by_category": {
+        "credential": 5,
+        "network": 52
+      },
+      "risk_verdict": "CRITICAL"
+    },
+    "enriched_findings": [
+      {
+        "rule_id": "connection_string",
+        "severity": "CRITICAL",
+        "category": "credential",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1359,
+        "match": "mongodb:****",
+        "context": "- **код / запуск**: `from pymongo import MongoClient ■  ■ # 1. Подключение к кластеру NEXUS ■ client = MongoClient(\"mongodb://nexus-db:27017/\") ■ db = client.nexus_vault ■...`",
+        "checksum": "5f773d27398b",
+        "risk_score": 1.0,
+        "priority": "P0-IMMEDIATE",
+        "remediation": "Move connection string to .env or secrets manager. Rotate credentials.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 1.0,
+          "category_weight": 1.0,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "connection_string",
+        "severity": "CRITICAL",
+        "category": "credential",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 20,
+        "match": "mongodb:****",
+        "context": "\"context\": \"- **код / запуск**: `from pymongo import MongoClient ■  ■ # 1. Подключение к кластеру NEXUS ■ client = MongoClient(\\\"mongodb://nexus-db:27017/\\\") ■ db = client.nexus_vault ■...`\",",
+        "checksum": "63d139807078",
+        "risk_score": 1.0,
+        "priority": "P0-IMMEDIATE",
+        "remediation": "Move connection string to .env or secrets manager. Rotate credentials.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 1.0,
+          "category_weight": 1.0,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "connection_string",
+        "severity": "CRITICAL",
+        "category": "credential",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 30,
+        "match": "mongodb:****",
+        "context": "\"context\": \"- **код / запуск**: `from pymongo import MongoClient ■  ■ # 1. Подключение к кластеру NEXUS ■ client = MongoClient(\\\"mongodb://nexus-db:27017/\\\") ■ db = client.nexus_vault ■...`\",",
+        "checksum": "63d139807078",
+        "risk_score": 1.0,
+        "priority": "P0-IMMEDIATE",
+        "remediation": "Move connection string to .env or secrets manager. Rotate credentials.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 1.0,
+          "category_weight": 1.0,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "generic_secret",
+        "severity": "HIGH",
+        "category": "credential",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1609,
+        "match": "TOKEN = ****",
+        "context": "- **код / запуск**: `import asyncio ■ from aiogram import Bot, Dispatcher, types ■  ■ # 1. Ваш тайный ключ (Token) ■ BOT_TOKEN = \"ВАШ_СЕКРЕТНЫЙ_ТОКЕН\" ■ bot = Bot(token=BO...`",
+        "checksum": "7002c3a59a80",
+        "risk_score": 0.75,
+        "priority": "P1-URGENT",
+        "remediation": "Move secret to environment variable or vault (HashiCorp Vault / AWS SSM).",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.75,
+          "category_weight": 1.0,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_12_AST_RENDER\\HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+        "line": 80,
+        "match": "env.****",
+        "context": "for name in [\".env\", \".env.local\", \".env.production\"]:",
+        "checksum": "3af1d11e9408",
+        "risk_score": 0.378,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.4,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_12_AST_RENDER\\HYBRID_TROUBLESHOOTING_x_CRATE_synthesized_agent.py",
+        "line": 125,
+        "match": "env.****",
+        "context": "\"dockerfile\", \".env\", \".env.local\", \".env.production\", \"makefile\"",
+        "checksum": "3af1d11e9408",
+        "risk_score": 0.378,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.4,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 110,
+        "match": "env.****",
+        "context": "\"context\": \"\\\"dockerfile\\\", \\\".env\\\", \\\".env.local\\\", \\\".env.production\\\", \\\"makefile\\\"\",",
+        "checksum": "3af1d11e9408",
+        "risk_score": 0.378,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.4,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 70,
+        "match": "env.****",
+        "context": "\"context\": \"\\\"dockerfile\\\", \\\".env\\\", \\\".env.local\\\", \\\".env.production\\\", \\\"makefile\\\"\",",
+        "checksum": "3af1d11e9408",
+        "risk_score": 0.378,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.4,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 419,
+        "match": "192.****",
+        "context": "- **код / запуск**: `# Сканирование целой подсети на стандартные порты (554) ■ cameradar -t 192.168.1.0/24 ■  ■ # С использованием кастомного словаря паролей ■ cameradar -...`",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 599,
+        "match": "192.****",
+        "context": "- **код / запуск**: `// ContainerSSH шлет POST на ваш URL ■ { ■   \"username\": \"nexus_agent_1\", ■   \"remote_addr\": \"192.168.1.10\" ■ } ■ // Ваш ответ-решение: ■ { ■   \"succe...`",
+        "checksum": "8f337c973339",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1149,
+        "match": "192.****",
+        "context": "- **код / запуск**: `import ipaddress ■  ■ # 1. Создаем объект подсети (CIDR) ■ net = ipaddress.ip_network(\"192.168.1.0/24\") ■  ■ # 2. Узнаем параметры сети ■ print(f\"Mask...`",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1249,
+        "match": "nexu****",
+        "context": "- **код / запуск**: `# 1. Запуск аудита прямо в терминале ■ lighthouse https://nexus.local --output=html --output-path=./report.html ■  ■ # 2. Аудит в мобильном режиме (им...`",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1389,
+        "match": "nexu****",
+        "context": "- **код / запуск**: `import asyncio ■ import nats ■  ■ async def main(): ■     # 1. Соединение с шиной NEXUS ■     nc = await nats.connect(\"nats://nexus.local:4222\") ■    ...`",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1549,
+        "match": "sent****",
+        "context": "- **код / запуск**: `import sentry_sdk ■  ■ # 1. Запуск радара безопасности ■ sentry_sdk.init( ■     dsn=\"https://your_nexus_dsn@sentry.local/1\", ■     traces_sample_rate=...`",
+        "checksum": "140a74de0204",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 40,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `# Сканирование целой подсети на стандартные порты (554) ■ cameradar -t 192.168.1.0/24 ■  ■ # С использованием кастомного словаря паролей ■ cameradar -...`\",",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 50,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `// ContainerSSH шлет POST на ваш URL ■ { ■   \\\"username\\\": \\\"nexus_agent_1\\\", ■   \\\"remote_addr\\\": \\\"192.168.1.10\\\" ■ } ■ // Ваш ответ-решение: ■ { ■   \\\"succe...`\",",
+        "checksum": "8f337c973339",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 60,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `import ipaddress ■  ■ # 1. Создаем объект подсети (CIDR) ■ net = ipaddress.ip_network(\\\"192.168.1.0/24\\\") ■  ■ # 2. Узнаем параметры сети ■ print(f\\\"Mask...`\",",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 80,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Запуск аудита прямо в терминале ■ lighthouse https://nexus.local --output=html --output-path=./report.html ■  ■ # 2. Аудит в мобильном режиме (им...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 90,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `import asyncio ■ import nats ■  ■ async def main(): ■     # 1. Соединение с шиной NEXUS ■     nc = await nats.connect(\\\"nats://nexus.local:4222\\\") ■    ...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 100,
+        "match": "sent****",
+        "context": "\"context\": \"- **код / запуск**: `import sentry_sdk ■  ■ # 1. Запуск радара безопасности ■ sentry_sdk.init( ■     dsn=\\\"https://your_nexus_dsn@sentry.local/1\\\", ■     traces_sample_rate=...`\",",
+        "checksum": "140a74de0204",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 90,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `# Сканирование целой подсети на стандартные порты (554) ■ cameradar -t 192.168.1.0/24 ■  ■ # С использованием кастомного словаря паролей ■ cameradar -...`\",",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 110,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `// ContainerSSH шлет POST на ваш URL ■ { ■   \\\"username\\\": \\\"nexus_agent_1\\\", ■   \\\"remote_addr\\\": \\\"192.168.1.10\\\" ■ } ■ // Ваш ответ-решение: ■ { ■   \\\"succe...`\",",
+        "checksum": "8f337c973339",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_private",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 130,
+        "match": "192.****",
+        "context": "\"context\": \"- **код / запуск**: `import ipaddress ■  ■ # 1. Создаем объект подсети (CIDR) ■ net = ipaddress.ip_network(\\\"192.168.1.0/24\\\") ■  ■ # 2. Узнаем параметры сети ■ print(f\\\"Mask...`\",",
+        "checksum": "2c8826d5d440",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Verify this internal IP is intentional. Remove if leaked.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 150,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Запуск аудита прямо в терминале ■ lighthouse https://nexus.local --output=html --output-path=./report.html ■  ■ # 2. Аудит в мобильном режиме (им...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 170,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `import asyncio ■ import nats ■  ■ async def main(): ■     # 1. Соединение с шиной NEXUS ■     nc = await nats.connect(\\\"nats://nexus.local:4222\\\") ■    ...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 190,
+        "match": "sent****",
+        "context": "\"context\": \"- **код / запуск**: `import sentry_sdk ■  ■ # 1. Запуск радара безопасности ■ sentry_sdk.init( ■     dsn=\\\"https://your_nexus_dsn@sentry.local/1\\\", ■     traces_sample_rate=...`\",",
+        "checksum": "140a74de0204",
+        "risk_score": 0.27,
+        "priority": "P2-REVIEW",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "generic_secret",
+        "severity": "HIGH",
+        "category": "credential",
+        "file": "DNA_22_Functional_Tester.py",
+        "line": 128,
+        "match": "password****",
+        "context": "dummy.write_text('# test\\npassword = \"secret123\"\\nDEBUG = True\\n', encoding=\"utf-8\")",
+        "checksum": "167d67c7d968",
+        "risk_score": 0.15,
+        "priority": "P3-INFO",
+        "remediation": "Move secret to environment variable or vault (HashiCorp Vault / AWS SSM).",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.75,
+          "category_weight": 1.0,
+          "context_mult": 0.5,
+          "path_mult": 0.4
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1029,
+        "match": "nexu****",
+        "context": "- **код / запуск**: `# 1. Логин в ваш частный Harbor ■ docker login harbor.nexus.local ■  ■ # 2. Пуш образа новой версии агента ■ docker tag nexus-agent:latest harbor.nexu...`",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 0.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 70,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Логин в ваш частный Harbor ■ docker login harbor.nexus.local ■  ■ # 2. Пуш образа новой версии агента ■ docker tag nexus-agent:latest harbor.nexu...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 0.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "domain_internal",
+        "severity": "MEDIUM",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 210,
+        "match": "nexu****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Логин в ваш частный Harbor ■ docker login harbor.nexus.local ■  ■ # 2. Пуш образа новой версии агента ■ docker tag nexus-agent:latest harbor.nexu...`\",",
+        "checksum": "3ed36efcd946",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Confirm internal domain is not exposed in public repo.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.45,
+          "category_weight": 0.6,
+          "context_mult": 0.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "DNA_12_AST_RENDER\\HYBRID_AUTOGLUON_x_ALLUXIO_synthesized_agent.py",
+        "line": 40,
+        "match": "0.0.****",
+        "context": "\"0.0.0.0\":    1.5,",
+        "checksum": "f1f17934834a",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 160,
+        "match": "0.0.****",
+        "context": "\"context\": \"\\\"0.0.0.0\\\":    1.5,\",",
+        "checksum": "f1f17934834a",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 230,
+        "match": "0.0.****",
+        "context": "\"context\": \"\\\"0.0.0.0\\\":    1.5,\",",
+        "checksum": "f1f17934834a",
+        "risk_score": 0.135,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.5,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1099,
+        "match": "1.1.****",
+        "context": "- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \"IP\": [\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"...`",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1099,
+        "match": "2.2.****",
+        "context": "- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \"IP\": [\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"...`",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1099,
+        "match": "3.3.****",
+        "context": "- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \"IP\": [\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"...`",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "DNA_01_Global_Docs.md",
+        "line": 1159,
+        "match": "1.2.****",
+        "context": "- **код / запуск**: `# 1. Быстрый скан всех портов (Masscan) ■ masscan -p1-65535 1.2.3.4 --rate=1000 ■  ■ # 2. Детальный анализ найденных портов (Nmap) ■ nmap -sV -sC -A -...`",
+        "checksum": "6465ec74397c",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 120,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 120,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 120,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 130,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 130,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 130,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 140,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 140,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 140,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\1_collector_report.json",
+        "line": 150,
+        "match": "1.2.****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Быстрый скан всех портов (Masscan) ■ masscan -p1-65535 1.2.3.4 --rate=1000 ■  ■ # 2. Детальный анализ найденных портов (Nmap) ■ nmap -sV -sC -A -...`\",",
+        "checksum": "6465ec74397c",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 250,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 250,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 250,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 270,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 270,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 270,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 290,
+        "match": "1.1.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "e086aa137fa1",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 290,
+        "match": "2.2.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "5b8656aafcb4",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 290,
+        "match": "3.3.****",
+        "context": "\"context\": \"- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     \\\"IP\\\": [\\\"1.1.1.1\\\", \\\"2.2.2.2\\\", \\\"3.3.3.3\\\"...`\",",
+        "checksum": "0f0d823e84fa",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      },
+      {
+        "rule_id": "ipv4_public",
+        "severity": "LOW",
+        "category": "network",
+        "file": "osint_output\\2_analysis_report.json",
+        "line": 310,
+        "match": "1.2.****",
+        "context": "\"context\": \"- **код / запуск**: `# 1. Быстрый скан всех портов (Masscan) ■ masscan -p1-65535 1.2.3.4 --rate=1000 ■  ■ # 2. Детальный анализ найденных портов (Nmap) ■ nmap -sV -sC -A -...`\",",
+        "checksum": "6465ec74397c",
+        "risk_score": 0.09,
+        "priority": "P3-INFO",
+        "remediation": "Assess exposure. Add to asset inventory if production.",
+        "model": "autogluon_composite_v2",
+        "dimensions": {
+          "base_severity": 0.15,
+          "category_weight": 0.6,
+          "context_mult": 1.0,
+          "path_mult": 1.0
+        }
+      }
+    ]
+  }
+}

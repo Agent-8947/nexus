@@ -1,0 +1,31 @@
+{
+  "agent_id": "SUBDOMAIN_TAKEOVER_HUNTER",
+  "domain": "SECURITY_ADV",
+  "purpose": "Detect dangling DNS records (CNAME) pointing to unclaimed cloud services (S3, Heroku, etc.)",
+  "api_endpoints": [
+    "https://raw.githubusercontent.com/EdOverflow/can-i-take-over-xyz/master/fingerprints.json"
+  ],
+  "data_model": {
+    "subdomain": "TEXT",
+    "cname": "TEXT",
+    "service": "TEXT",
+    "status": "TEXT",
+    "vulnerable": "INTEGER"
+  },
+  "core_algorithm": "CNAME resolution and signature-based service mismatch detection",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "socket"
+  ],
+  "logic_markers": [
+    "CNAME",
+    "takeover",
+    "NoSuchBucket",
+    "Heroku",
+    "S3"
+  ]
+}

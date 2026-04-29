@@ -1,0 +1,24 @@
+{
+  "agent_id": "FUNDAMENTAL_ANALYST",
+  "domain": "FINANCE",
+  "purpose": "Examine financial statements, EPS, P/E ratio, and revenue growth to determine intrinsic value.",
+  "api_endpoints": [
+    "https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
+  ],
+  "data_model": {
+    "pe_ratio": "float",
+    "eps": "float",
+    "revenue_growth": "float",
+    "valuation_status": "undervalued|overvalued|fair"
+  },
+  "core_algorithm": "Discounted Cash Flow (DCF) proxy calculation based on growth and earnings stability.",
+  "input_type": "Stock Ticker",
+  "output_format": "FundamentalReport",
+  "required_imports": [
+    "yfinance"
+  ],
+  "logic_markers": [
+    "_analyze_statements",
+    "_calc_intrinsic_value"
+  ]
+}

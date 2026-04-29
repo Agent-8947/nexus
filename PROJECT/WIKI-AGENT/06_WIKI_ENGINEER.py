@@ -1,5 +1,5 @@
 """
-NEXUS Agent 06 — WIKI_ENGINEER v2.0
+NEXUS Agent 06  WIKI_ENGINEER v2.0
 ====================================
 Spec-Driven Code Synthesis Engine.
 
@@ -25,7 +25,7 @@ WIKI_DIR = PROJECT_ROOT / "PROJECT" / "WIKI"
 INVENTIONS_DIR = PROJECT_ROOT / "PROJECT" / "INVENTIONS"
 SPEC_OUTPUT = INVENTIONS_DIR / "SPECS"
 
-# Domains → specific code patterns to hunt for
+# Domains  specific code patterns to hunt for
 DOMAIN_SIGNATURES = {
     "network_recon": {
         "imports": ["socket", "ssl", "urllib", "requests", "httpx", "aiohttp"],
@@ -76,11 +76,11 @@ class NexusEngineerAgent:
     @staticmethod
     def _banner():
         print("\n" + "=" * 60)
-        print("  NEXUS AGENT 06 — SPEC-DRIVEN ENGINEER v2.0")
-        print("  Mode: Read Code → Extract Patterns → Write Specs")
+        print("  NEXUS AGENT 06  SPEC-DRIVEN ENGINEER v2.0")
+        print("  Mode: Read Code  Extract Patterns  Write Specs")
         print("=" * 60 + "\n")
 
-    # ─── PHASE 1: Documentation Analysis ────────────────────────────────────
+    #  PHASE 1: Documentation Analysis 
     def _analyze_repo(self, repo_path: Path) -> dict | None:
         """Extract patterns from repo documentation (README, dossier, docs).
         WIKI contains only documentation, not cloned source code."""
@@ -155,7 +155,7 @@ class NexusEngineerAgent:
         print(f"  Scanned: {scanned} | Repos with useful docs: {useful}")
         return useful
 
-    # ─── PHASE 2: Domain Matching ─────────────────────────────────────────
+    #  PHASE 2: Domain Matching 
     def classify_domains(self):
         """Phase 2: Match repos to domains based on documentation evidence."""
         print("[2] Classifying repos by documentation evidence...")
@@ -207,9 +207,9 @@ class NexusEngineerAgent:
             top_names = [m["repo"] for m in top]
             print(f"  {domain}: {len(matches)} repos (top: {', '.join(top_names) or 'none'})")
 
-    # ─── PHASE 2.5: GitHub Source Fetch ───────────────────────────────────
+    #  PHASE 2.5: GitHub Source Fetch 
     def _resolve_github_url(self, repo_name: str) -> str | None:
-        """Resolve WIKI folder name → GitHub owner/repo via CSV or API."""
+        """Resolve WIKI folder name  GitHub owner/repo via CSV or API."""
         import csv as csv_mod
         csv_files = [
             WIKI_DIR / "github-mid-stars-specialized-ru-extended.csv",
@@ -224,7 +224,7 @@ class NexusEngineerAgent:
                 with open(csv_path, encoding="utf-8", errors="ignore") as f:
                     for row in csv_mod.DictReader(f):
                         link = row.get("Link", "")
-                        # Match: folder SPIDERFOOT → github.com/smicallef/spiderfoot
+                        # Match: folder SPIDERFOOT  github.com/smicallef/spiderfoot
                         if f"/{repo_name.lower()}" in link.lower() or repo_name.lower() in link.lower():
                             return link.replace("https://github.com/", "").strip("/")
             except Exception:
@@ -419,7 +419,7 @@ class NexusEngineerAgent:
             "crypto_security": {
                 "module_name": "security_analyzer",
                 "title": "Security Header Analyzer",
-                "description": "HTTP security header audit — checks HSTS, CSP, X-Frame-Options, and more",
+                "description": "HTTP security header audit  checks HSTS, CSP, X-Frame-Options, and more",
                 "inputs": ["target: str (domain)", "timeout: float"],
                 "outputs": ["SecurityReport with header_present: dict, score: int, server_info: str"],
                 "stdlib_deps": ["urllib.request", "ssl", "socket", "json"],
@@ -459,11 +459,11 @@ class NexusEngineerAgent:
 
         return specs
 
-    # ─── PHASE 4: Persist ─────────────────────────────────────────────────
+    #  PHASE 4: Persist 
     def save_specs(self, specs: list):
         """Phase 4: Save specs as structured JSON for Agent 11."""
         if not specs:
-            print("  No specs generated — insufficient code evidence in WIKI.")
+            print("  No specs generated  insufficient code evidence in WIKI.")
             return
 
         timestamp = int(time.time())
@@ -505,7 +505,7 @@ class NexusEngineerAgent:
         print(f"\n  Saved {len(specs)} specs to {SPEC_OUTPUT}")
         print(f"  Blueprint: {blueprint_file.name}")
 
-    # ─── RUN ──────────────────────────────────────────────────────────────
+    #  RUN 
     def run(self, max_repos: int = 200):
         useful = self.read_codebase(max_repos)
         if useful == 0:

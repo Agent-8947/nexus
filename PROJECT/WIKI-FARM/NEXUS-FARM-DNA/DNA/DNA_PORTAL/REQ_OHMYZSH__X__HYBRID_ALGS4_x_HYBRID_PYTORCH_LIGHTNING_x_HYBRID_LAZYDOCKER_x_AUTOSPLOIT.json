@@ -1,0 +1,102 @@
+{
+  "child_id": "OHMYZSH__X__HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT",
+  "parent_a": {
+    "node_id": "OHMYZSH",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.91
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.26,
+        "completeness": 0.33,
+        "overall": 0.59
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_ALGS4_x_HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "analyzer",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "critical",
+        "autonomy": "agentic",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.218,
+        0.094,
+        0.292,
+        0.0,
+        0.436,
+        0.174,
+        0.0,
+        0.004,
+        0.304,
+        0.6
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.319,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "ALGS4",
+          "HYBRID_PYTORCH_LIGHTNING_x_HYBRID_LAZYDOCKER_x_AUTOSPLOIT"
+        ],
+        "generation": 3,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T19:34:49.952842"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:22:59.368105"
+}

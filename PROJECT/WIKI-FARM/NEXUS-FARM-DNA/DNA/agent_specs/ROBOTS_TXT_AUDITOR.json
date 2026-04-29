@@ -1,0 +1,30 @@
+{
+  "agent_id": "ROBOTS_TXT_AUDITOR",
+  "domain": "WEB",
+  "purpose": "Audit robots.txt for sensitive paths exposed to search engines",
+  "api_endpoints": [
+    "{domain}/robots.txt"
+  ],
+  "data_model": {
+    "domain": "TEXT",
+    "disallow_path": "TEXT",
+    "is_sensitive": "INTEGER",
+    "finding": "TEXT"
+  },
+  "core_algorithm": "Robots.txt parsing and sensitive-pattern (admin, backup, private) matching",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "re"
+  ],
+  "logic_markers": [
+    "Disallow:",
+    "User-agent:",
+    "robots.txt",
+    "Allow:",
+    "admin"
+  ]
+}

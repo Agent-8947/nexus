@@ -1,0 +1,10 @@
+{
+    "name": "IMBALANCED-LEARN",
+    "indexed_at": "2026-04-05 15:11:40",
+    "domains": [
+        "MACHINE_LEARNING"
+    ],
+    "core_identity": "Инструмент на стыке: MACHINE_LEARNING",
+    "legal_devops_perspective": "Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak).",
+    "readiness": "LOCAL_AVAILABLE"
+}

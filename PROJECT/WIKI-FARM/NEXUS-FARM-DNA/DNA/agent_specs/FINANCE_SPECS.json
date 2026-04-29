@@ -1,0 +1,64 @@
+[
+  {
+    "agent_id": "TECHNICAL_ANALYST",
+    "domain": "FINANCE",
+    "purpose": "Analyze stock price patterns, technical indicators (RSI, MACD, Bollinger Bands), and market trends to generate buy/sell signals.",
+    "api_endpoints": [
+      "https://query1.finance.yahoo.com/v8/finance/chart/{ticker}",
+      "https://api.polygon.io/v2/aggs/ticker/{ticker}/prev"
+    ],
+    "data_model": {
+      "ticker": "str",
+      "signal": "buy|sell|hold",
+      "confidence": "float",
+      "indicators": {
+        "rsi": "float",
+        "macd": "float",
+        "trend": "str"
+      }
+    },
+    "core_algorithm": "Calculate RSI and MACD based on historical OHLCV data. Identify trend breakouts.",
+    "input_type": "Stock Ticker",
+    "output_format": "TechnicalAnalysisReport",
+    "required_imports": ["pandas", "numpy", "yfinance"],
+    "logic_markers": ["_calculate_indicators", "_check_breakouts", "generate_signal"]
+  },
+  {
+    "agent_id": "FUNDAMENTAL_ANALYST",
+    "domain": "FINANCE",
+    "purpose": "Examine financial statements, EPS, P/E ratio, and revenue growth to determine intrinsic value.",
+    "api_endpoints": [
+      "https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
+    ],
+    "data_model": {
+      "pe_ratio": "float",
+      "eps": "float",
+      "revenue_growth": "float",
+      "valuation_status": "undervalued|overvalued|fair"
+    },
+    "core_algorithm": "Discounted Cash Flow (DCF) proxy calculation based on growth and earnings stability.",
+    "input_type": "Stock Ticker",
+    "output_format": "FundamentalReport",
+    "required_imports": ["yfinance"],
+    "logic_markers": ["_analyze_statements", "_calc_intrinsic_value"]
+  },
+  {
+    "agent_id": "SENTIMENT_ANALYST",
+    "domain": "FINANCE",
+    "purpose": "Scan news headlines, social media, and earnings transcripts for bullish or bearish sentiment.",
+    "api_endpoints": [
+      "https://news.google.com/search?q={ticker}+stock+news",
+      "https://www.social-searcher.com/api/v2/search?q={ticker}"
+    ],
+    "data_model": {
+      "sentiment_score": "float",
+      "news_summary": "str",
+      "mood": "bullish|bearish|neutral"
+    },
+    "core_algorithm": "NLP analysis of news headlines and social mentions to quantify market psychology.",
+    "input_type": "Stock Ticker",
+    "output_format": "SentimentReport",
+    "required_imports": ["beautifulsoup4", "requests"],
+    "logic_markers": ["_scrape_news", "_analyze_sentiment"]
+  }
+]

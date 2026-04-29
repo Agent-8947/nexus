@@ -1,0 +1,29 @@
+{
+  "agent_id": "TELEGRAM_LEAK_TRACKER",
+  "domain": "CYBER_INTEL",
+  "purpose": "Search public Telegram preview sites for keyword-based data leaks",
+  "api_endpoints": [
+    "https://t.me/s/{channel}/?q={query}"
+  ],
+  "data_model": {
+    "channel": "TEXT",
+    "post_date": "TEXT",
+    "snippet": "TEXT",
+    "mentions_target": "INTEGER"
+  },
+  "core_algorithm": "HTML scraping of Telegram web previews with keyword tagging",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "tgme_widget_message_text",
+    "t.me/s/",
+    "mentions",
+    "leak"
+  ]
+}

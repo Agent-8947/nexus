@@ -1,0 +1,30 @@
+{
+  "agent_id": "API_ENDPOINT_DISCOVERY",
+  "domain": "WEB",
+  "purpose": "Crawl Javascript files on a page to discover hidden internal API endpoints",
+  "api_endpoints": [
+    "{domain}"
+  ],
+  "data_model": {
+    "page_url": "TEXT",
+    "api_url": "TEXT",
+    "method_hint": "TEXT",
+    "js_file": "TEXT"
+  },
+  "core_algorithm": "Regex-based URL extraction from .js files with path normalization",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "/api/v1/",
+    "/api/v2/",
+    "fetch(",
+    "axios.",
+    ".js"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "child_id": "THREAT_STALKER_V1",
+  "generation": 0,
+  "traits": {
+    "role": "analyzer",
+    "computing": "agnostic",
+    "security": "critical",
+    "interface": "api"
+  },
+  "context": "",
+  "instruction": "Build a REAL production-ready Python script according to Protocol V5.0. NO MOCKS."
+}

@@ -1,0 +1,97 @@
+{
+  "child_id": "LIBPOINTMATCHER__X__HUGO",
+  "parent_a": {
+    "node_id": "LIBPOINTMATCHER",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.122
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.24,
+        "completeness": 0.33,
+        "overall": 0.58
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HUGO",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "web",
+        "role": "orchestrator",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.008,
+        0.0,
+        0.018,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.012,
+        0.0,
+        0.343
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.1,
+        "completeness": 0.33,
+        "overall": 0.53
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an OSINT intelligence gathering and analysis pipeline",
+  "ts": "2026-04-09T18:49:24.751114"
+}

@@ -1,0 +1,16 @@
+{
+  "agent": "HYBRID_HERMES_x_MATHCODE_synthesized_agent",
+  "ts": "2026-04-14T03:11:04.692695",
+  "applied_genes": [
+    "SELF_EVOLUTION",
+    "FORMAL_VERIFICATION"
+  ],
+  "result": {
+    "mutation": {
+      "original_fragment": "BASE_SKILL",
+      "mutation_tactic": "Few-shot Expansion + Chain-of-Thought induction",
+      "mutant_id": "HERMES-5963"
+    },
+    "status": "PROMOTED"
+  }
+}

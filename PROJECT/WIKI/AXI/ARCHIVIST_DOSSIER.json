@@ -1,0 +1,19 @@
+{
+    "name": "AXI",
+    "indexed_at": "2026-04-09 05:42:00",
+    "domains": [
+        "HARDWARE",
+        "SOC_INTERCONNECT",
+        "FPGA"
+    ],
+    "core_identity": "On-Chip Communication Fabric / Agent Bus Blueprint",
+    "genetic_traits": [
+        "crossbar_topology",
+        "data_width_conversion",
+        "clock_domain_crossing",
+        "atomic_operations",
+        "throttle_control"
+    ],
+    "legal_devops_perspective": "Паттерны маршрутизации AXI — прямой аналог внутренней шины NEXUS для безопасной и эффективной передачи данных между агентами. Atomic operations = lock-free state sharing.",
+    "readiness": "GENE_METADATA_LOCKED"
+}

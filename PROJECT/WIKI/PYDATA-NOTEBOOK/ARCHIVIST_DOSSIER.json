@@ -1,0 +1,11 @@
+{
+    "name": "PYDATA-NOTEBOOK",
+    "indexed_at": "2026-04-05 15:31:47",
+    "domains": [
+        "CRYPTO",
+        "MACHINE_LEARNING"
+    ],
+    "core_identity": "Инструмент на стыке: CRYPTO + MACHINE_LEARNING",
+    "legal_devops_perspective": "Анализ защищенных данных, аудит смарт-контрактов, деанонимизация блокчейн-транзакций. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak).",
+    "readiness": "LOCAL_AVAILABLE"
+}

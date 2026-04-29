@@ -3,7 +3,7 @@ import sys
 import os
 from datetime import datetime
 
-REGISTRY_PATH = r"e:\Downloads\--ANTIGRAVITY store\IDE-optimus\PROJECT\fault_registry.json"
+REGISTRY_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "fault_registry.json")
 
 def record_error(fault_type, description, root_cause, solution, prevention_rule):
     if not os.path.exists(REGISTRY_PATH):

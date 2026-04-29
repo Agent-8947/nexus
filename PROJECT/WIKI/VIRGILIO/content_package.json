@@ -1,0 +1,30 @@
+{
+  "name": "virgilio",
+  "version": "0.0.1",
+  "description": "Your new Mentor for Data Science E-Learning.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "vuepress build",
+    "deploy": "vuepress build && npx gh-pages -d .vuepress/dist -b master",
+    "dev": "vuepress dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virgili0/Virgilio.git"
+  },
+  "author": "Antonio Vivace, Giacomo Ciarlini",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/virgili0/Virgilio/issues"
+  },
+  "homepage": "https://virgili0.github.io/Virgilio",
+  "devDependencies": {
+    "vuepress": "^1.4.1"
+  },
+  "dependencies": {
+    "vuepress-plugin-sitemap": "^2.3.1"
+  }
+}

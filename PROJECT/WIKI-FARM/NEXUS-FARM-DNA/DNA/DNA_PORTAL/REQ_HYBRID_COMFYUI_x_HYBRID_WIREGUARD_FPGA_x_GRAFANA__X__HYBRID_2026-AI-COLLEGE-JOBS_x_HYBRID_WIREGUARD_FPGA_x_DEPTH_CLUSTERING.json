@@ -1,0 +1,107 @@
+{
+  "child_id": "HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA__X__HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING",
+  "parent_a": {
+    "node_id": "HYBRID_COMFYUI_x_HYBRID_WIREGUARD_FPGA_x_GRAFANA",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "hardware",
+        "role": "collector",
+        "computing": "fpga",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.425,
+        0.0,
+        0.0,
+        0.22,
+        0.0,
+        0.0,
+        0.186,
+        0.275,
+        0.28,
+        0.457
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.35,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "COMFYUI",
+          "HYBRID_WIREGUARD_FPGA_x_GRAFANA"
+        ],
+        "generation": 2,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T19:03:37.018019"
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_2026-AI-COLLEGE-JOBS_x_HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "hardware",
+        "role": "collector",
+        "computing": "fpga",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.012,
+        0.031,
+        0.0,
+        0.016,
+        0.138,
+        0.131,
+        0.097,
+        0.241
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.483,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "2026-AI-COLLEGE-JOBS",
+          "HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING"
+        ],
+        "generation": 2,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T19:17:48.539027"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-10T19:23:59.307063"
+}

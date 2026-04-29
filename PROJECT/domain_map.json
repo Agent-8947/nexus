@@ -1,0 +1,1338 @@
+{
+  "domains": {
+    "AI": {
+      "count": 90,
+      "avg_score": 7.122222222222222,
+      "tech_stack": [
+        "3D Multi-Object Tracking",
+        "3D modeling",
+        "@anthropic-ai/claude-code",
+        "AI",
+        "AI Agents",
+        "AI training",
+        "API",
+        "Alink",
+        "AutoML",
+        "Autonomous Driving",
+        "Beamer",
+        "C++",
+        "CI/CD",
+        "CMake",
+        "CUDA",
+        "ChatGPT",
+        "Claude",
+        "Claude Scientific Skills",
+        "Cognitive Search",
+        "Computer Vision",
+        "DM_Control",
+        "DOXYGEN",
+        "Data Cleaning",
+        "Data Science",
+        "Deep Learning",
+        "Deep RL",
+        "Deep Reinforcement Learning",
+        "Deepfake",
+        "Deepnote CLI",
+        "Documentation",
+        "Efficient and Illumination-Robust System",
+        "Evolution Strategies",
+        "Face Swap",
+        "Flink",
+        "GOOGLETEST",
+        "GPT",
+        "GPT-4",
+        "GPTQ",
+        "Genetic Algorithms",
+        "Git",
+        "GitHub",
+        "Github",
+        "Group",
+        "Huggingface",
+        "Java",
+        "JavaScript",
+        "Jupyter",
+        "Jupyter Notebook",
+        "Jupyter notebooks",
+        "K-Dense BYOK",
+        "LLM routing",
+        "Labelling",
+        "Latex",
+        "Lightning",
+        "MCP",
+        "ML",
+        "Machine Learning",
+        "Machine Reading Comprehension",
+        "Markdown",
+        "Mujoco",
+        "Multi-agent Teams",
+        "Multi-objective Optimization",
+        "NCNN",
+        "NLP",
+        "NPM",
+        "Natural Language Processing",
+        "Node.js",
+        "Open Source",
+        "OpenAI",
+        "OpenAI API",
+        "OpenAI client",
+        "OpenCV",
+        "Pandas",
+        "Point-Line Visual SLAM",
+        "PyTorch",
+        "Python",
+        "Quantization",
+        "Quantum Machine Learning",
+        "R",
+        "RAG",
+        "README.md",
+        "REPLs",
+        "React",
+        "Reinforcement Learning",
+        "SQL",
+        "Scikit-learn",
+        "TensorFlow",
+        "TensorRT",
+        "Time Series Analysis",
+        "Time-series forecasting",
+        "Torch",
+        "Transformer",
+        "TypeScript",
+        "UI/UX",
+        "VS Code",
+        "Video Processing",
+        "Visual Editor",
+        "Visual Studio tools for AI",
+        "Voice Agents",
+        "Voice Recognition",
+        "WASM",
+        "Web Scraping",
+        "World Model",
+        "artificial intelligence",
+        "attnGAN",
+        "cuTile Python",
+        "custom vision",
+        "deep learning",
+        "desktop application",
+        "fastai",
+        "forecasting",
+        "machine learning",
+        "multi-framework code",
+        "python",
+        "quantization",
+        "reinforcement learning",
+        "research-friendly features",
+        "single-file implementation",
+        "time series analysis",
+        "transformers",
+        "机器学习",
+        "深度学习"
+      ],
+      "top_repos": [
+        "ANYTHING-LLM",
+        "100-DAYS-OF-ML-CODE",
+        "2026-AI-COLLEGE-JOBS",
+        "ALLENNLP",
+        "100DAYS"
+      ]
+    },
+    "DATA": {
+      "count": 52,
+      "avg_score": 7.153846153846154,
+      "tech_stack": [
+        "AI",
+        "ALGO",
+        "Algorithm",
+        "Algorithm Learning",
+        "Algorithms",
+        "Android Development",
+        "Apache Airflow",
+        "Apache Arrow",
+        "Bazel",
+        "Brew",
+        "C",
+        "C++",
+        "CSS",
+        "Caching Platform",
+        "Cookiecutter",
+        "DAGs",
+        "DS",
+        "DSA",
+        "Data Science",
+        "Data Structures",
+        "Data Visualization",
+        "Distributed Filesystem",
+        "Distributed Programming",
+        "Distributed Systems",
+        "Docker",
+        "DockerHub",
+        "Document Data Model",
+        "Frameworks",
+        "GIT",
+        "GO",
+        "Git",
+        "GitHub",
+        "Github",
+        "Go",
+        "HTML",
+        "IPython Notebook",
+        "Java",
+        "JavaScript",
+        "Jupyter Notebook",
+        "Kotlin",
+        "LEETCODE",
+        "LeetCode",
+        "License",
+        "MATH",
+        "Machine Learning",
+        "Markdown",
+        "Open Source",
+        "Pandas",
+        "Python",
+        "R",
+        "RDBMS",
+        "README",
+        "Rust",
+        "SQL",
+        "TensorFlow",
+        "Testing",
+        "Web",
+        "YouTube",
+        "algorithm",
+        "algorithms",
+        "code",
+        "data",
+        "data structure",
+        "data structures",
+        "data_management",
+        "git",
+        "github",
+        "markdown",
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "python",
+        "repository_analysis",
+        "scikit-learn",
+        "seaborn",
+        "ydata-profiling"
+      ],
+      "top_repos": [
+        "AIRFLOW",
+        "ALGS4",
+        "CUDF",
+        "DATA-JUICER",
+        "DATA-SCIENCE-INTERVIEWS"
+      ]
+    },
+    "SECURITY": {
+      "count": 28,
+      "avg_score": 6.785714285714286,
+      "tech_stack": [
+        ".NET",
+        "ADB",
+        "Android",
+        "Automated Exploitation",
+        "Bug Bounty",
+        "C#",
+        "CodeQL",
+        "Cryptography",
+        "Docker",
+        "GEM",
+        "GITHUB",
+        "Git",
+        "GitHub",
+        "Go",
+        "IoT",
+        "Java",
+        "JavaScript",
+        "Kubernetes",
+        "Linux",
+        "Markdown",
+        "NuGet",
+        "Nuget",
+        "Offensive Security",
+        "Open Source",
+        "PE_loader",
+        "PHP",
+        "Penetration Testing",
+        "Python",
+        "Recon Tools",
+        "Remote Hosts",
+        "Ruby",
+        "Ruby on Rails",
+        "Rust",
+        "SGN_encoder",
+        "SSH",
+        "Security Audit",
+        "UEFI",
+        "USB OTG",
+        "Ubuntu",
+        "Windows",
+        "ansible",
+        "bash",
+        "cyber-script",
+        "duckyscript",
+        "fast-scripting",
+        "in-memory execution",
+        "ipsec",
+        "javascript",
+        "kernel internals",
+        "osint",
+        "reflection",
+        "rootkit",
+        "web",
+        "wireguard",
+        "x64"
+      ],
+      "top_repos": [
+        "ATTACKSURFACEANALYZER",
+        "AWESOME-SOCIAL-ENGINEERING",
+        "BLACK-HAT-RUST",
+        "1EARN",
+        "AEGIS"
+      ]
+    },
+    "OTHER": {
+      "count": 61,
+      "avg_score": 4.262295081967213,
+      "tech_stack": [
+        "API",
+        "Algorithms",
+        "Android",
+        "Backup",
+        "Bash",
+        "C",
+        "C programming",
+        "C#",
+        "C99",
+        "Collections Module",
+        "DSL",
+        "Dart",
+        "Data",
+        "Design Patterns",
+        "Docker",
+        "Elastic",
+        "Electron",
+        "Git",
+        "GitHub",
+        "GitHub Actions",
+        "Go",
+        "Golang",
+        "Google Forms",
+        "HTTP",
+        "JSON",
+        "Java",
+        "JavaScriptCore",
+        "LeetCode",
+        "MIT Courses",
+        "Markdown",
+        "Netlify",
+        "Open Source Hardware",
+        "Python",
+        "REACT",
+        "Raspberry Pi",
+        "React",
+        "Readme",
+        "Readme.md",
+        "Ruby",
+        "Rust",
+        "SDR",
+        "SMS Gateway",
+        "Shell scripting",
+        "Slack",
+        "Submodules",
+        "Sword Finger Offer",
+        "TAURI",
+        "Tech1",
+        "Tech2",
+        "UI/UX",
+        "Utilities",
+        "Version Control",
+        "Web",
+        "YouTube",
+        "Zag.js",
+        "Zig",
+        "algorithm",
+        "book",
+        "contest",
+        "cpp",
+        "data structures",
+        "data_structures",
+        "frameworks",
+        "macOS",
+        "programming",
+        "rust",
+        "tech1",
+        "tech2",
+        "tech3",
+        "translation",
+        "工具",
+        "微信小程序",
+        "插件"
+      ],
+      "top_repos": [
+        "AWESOME-GOLANG-ALGORITHM",
+        "ALGORITHM-VISUALIZER",
+        "AWESOME",
+        "CTCI-6TH-EDITION",
+        "2023-CS-STUDY"
+      ]
+    },
+    "WEB": {
+      "count": 39,
+      "avg_score": 7.153846153846154,
+      "tech_stack": [
+        ".NET",
+        "ASP.NET Core",
+        "Algorithms",
+        "Android",
+        "AngularJS",
+        "Astro",
+        "BEM",
+        "Bootstrap",
+        "CI/CD",
+        "CSS",
+        "Carbon Design System",
+        "Chakra UI",
+        "Data Structures",
+        "Entity Framework Core",
+        "Express",
+        "Flask",
+        "Git",
+        "GitHub",
+        "Go",
+        "HTML",
+        "Java",
+        "JavaScript",
+        "LLM friendly web crawler & scraper",
+        "Markdown",
+        "MongoDB",
+        "Node.js",
+        "Open-source",
+        "Postman",
+        "Python",
+        "React",
+        "Requestly",
+        "SASS",
+        "SCSS",
+        "SQLite",
+        "Sass",
+        "Svelte",
+        "Swift",
+        "Tailwind CSS",
+        "TypeScript",
+        "UI",
+        "Vue",
+        "Vue.js",
+        "Web Components",
+        "WebGPU",
+        "Webpack",
+        "Yarn",
+        "computer science",
+        "css",
+        "iOS",
+        "javascript",
+        "npm",
+        "react",
+        "书籍"
+      ],
+      "top_repos": [
+        "AACHARTKIT-SWIFT",
+        "AWESOME-CODING-JS",
+        "ANALYTICS",
+        "ANGULAR.JS",
+        "BASSCSS"
+      ]
+    },
+    "SYSTEMS": {
+      "count": 26,
+      "avg_score": 7.153846153846154,
+      "tech_stack": [
+        "AWS",
+        "AXI",
+        "Assembly",
+        "Azure",
+        "BRPC",
+        "Boost.Lockfree",
+        "C",
+        "C++",
+        "CANopen",
+        "CI/CD",
+        "CSS",
+        "ConcurrencyKit",
+        "Docker",
+        "Encryption",
+        "Folly",
+        "GIT",
+        "GitHub Actions",
+        "Go",
+        "Golang",
+        "HTML",
+        "HTML/CSS/JS",
+        "Haskell",
+        "Java",
+        "JavaScript",
+        "Junction",
+        "Kernel Development",
+        "Keystone",
+        "Kubernetes",
+        "Linux",
+        "MATLAB",
+        "MPMCQueue",
+        "Make",
+        "Maven",
+        "Node.js",
+        "NodeJS",
+        "OpenUPM",
+        "PostgreSQL",
+        "Python",
+        "RAFT",
+        "README",
+        "RISC-V",
+        "SPSCQueue",
+        "Seqlock",
+        "System Software",
+        "SystemVerilog",
+        "Typescript",
+        "Unity",
+        "Userspace RCU",
+        "VHDL",
+        "Verilog",
+        "algorithm",
+        "containerization",
+        "crossbeam",
+        "development",
+        "docker",
+        "embedded",
+        "java",
+        "kubernetes",
+        "libcds",
+        "liblfds",
+        "microcontrollers",
+        "web",
+        "xenium"
+      ],
+      "top_repos": [
+        "DATA-STRUCTURES-IN-PRACTICE-PUBLIC",
+        "ANDROID-USB-GADGET",
+        "CS-NOTES",
+        "6.S081-ALL-IN-ONE",
+        "98"
+      ]
+    },
+    "UI/UX": {
+      "count": 3,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "CSS",
+        "CSS-in-JS",
+        "React",
+        "Typescript"
+      ],
+      "top_repos": [
+        "98.CSS",
+        "ANT-DESIGN",
+        "ARCO-DESIGN"
+      ]
+    },
+    "OSINT": {
+      "count": 27,
+      "avg_score": 6.222222222222222,
+      "tech_stack": [
+        "Awesome Geospatial",
+        "C",
+        "C++",
+        "Cortex-M",
+        "Dictionary Attacks",
+        "Elixir",
+        "Embedded Systems",
+        "Erlang",
+        "FUSE",
+        "First Timers Only",
+        "Git",
+        "GitHub",
+        "Go",
+        "IPv6",
+        "JavaScript",
+        "Linux",
+        "Markdown",
+        "NPM",
+        "OSINT",
+        "Online Resources",
+        "Open Source Tools",
+        "README",
+        "RISC-V",
+        "RTSP",
+        "Rust",
+        "Shodan",
+        "TypeScript",
+        "Unix",
+        "Vue.js",
+        "Xtensa",
+        "assembly",
+        "distributed hash table",
+        "marketing",
+        "operating system",
+        "operating systems",
+        "parallel computing",
+        "public-key cryptography",
+        "search engines",
+        "virtual processor",
+        "web"
+      ],
+      "top_repos": [
+        "996.ICU",
+        "AWESOME-MAC",
+        "AWESOME-OSINT-FOR-EVERYTHING",
+        "CUSTOMASM",
+        "APFS-FUSE"
+      ]
+    },
+    "SOFTWARE": {
+      "count": 2,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "Concurrency",
+        "Distributed Systems",
+        "Go",
+        "Java",
+        "parallel processing"
+      ],
+      "top_repos": [
+        "BILD",
+        "ADVANCED-JAVA"
+      ]
+    },
+    "CRYPTO": {
+      "count": 23,
+      "avg_score": 6.782608695652174,
+      "tech_stack": [
+        "AGE",
+        "Android",
+        "Blockchain",
+        "C",
+        "C#",
+        "C++",
+        "CI/CD",
+        "CLI",
+        "Crypto++",
+        "Cryptography",
+        "GO",
+        "Git",
+        "GitHub",
+        "Go",
+        "Java",
+        "Kotlin",
+        "NEXUS Intelligence Analyst",
+        "NixOS",
+        "OMEMO",
+        "OTR",
+        "PKI",
+        "PROTOBUF",
+        "Python",
+        "README",
+        "Rust",
+        "SQL",
+        "Swift",
+        "XMPP",
+        "compression",
+        "cryptography",
+        "deduplication",
+        "encryption",
+        "end-to-end encryption",
+        "header files",
+        "iOS",
+        "peer-to-peer",
+        "quantum computing"
+      ],
+      "top_repos": [
+        "AWESOME-BLOCKCHAIN-RUST",
+        "AWESOME-CRYPTO-PAPERS",
+        "BOTAN",
+        "AGENIX",
+        "ALT-SENDME"
+      ]
+    },
+    "ROBOTICS": {
+      "count": 20,
+      "avg_score": 6.9,
+      "tech_stack": [
+        "3D sensors",
+        "ANALYSIS",
+        "Arduino",
+        "BLDC",
+        "C++",
+        "CMake",
+        "DATASET",
+        "Eigen",
+        "GTest",
+        "Gaming",
+        "Genesis",
+        "GitHub",
+        "HTTP",
+        "Isaac Gym",
+        "IsaacGym",
+        "IsaacSim",
+        "LIDAR",
+        "MJCF",
+        "Mathematics",
+        "Open Source",
+        "OpenCV",
+        "Optimization",
+        "PlatformIO",
+        "PyTorch",
+        "Python",
+        "RADAR",
+        "README",
+        "ROS2",
+        "Reinforcement Learning",
+        "Robotics",
+        "Rust",
+        "Rust first",
+        "SLAM",
+        "Simulation",
+        "Stepper motors",
+        "URDF",
+        "VO",
+        "Xacro",
+        "awesome-lists",
+        "embedded systems",
+        "firmware",
+        "gRPC",
+        "physics",
+        "robotics",
+        "simulators",
+        "software"
+      ],
+      "top_repos": [
+        "AGIBOT_X1_TRAIN",
+        "AIMRT",
+        "ARDUINO-FOC",
+        "ARDUPILOT",
+        "ASAP"
+      ]
+    },
+    "MATH": {
+      "count": 5,
+      "avg_score": 6.4,
+      "tech_stack": [
+        "C++",
+        "CGAL",
+        "GitHub",
+        "MATLAB",
+        "Markdown",
+        "PDF",
+        "seo",
+        "web"
+      ],
+      "top_repos": [
+        "ALGORITHMS_MATHMODELS",
+        "ALGOXY",
+        "AWESOME-MATH",
+        "BOOK3_ELEMENTS-OF-MATHEMATICS",
+        "CGAL"
+      ]
+    },
+    "ANDROID": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "Android",
+        "Java",
+        "Performance Optimization"
+      ],
+      "top_repos": [
+        "ANDROID-NOTES"
+      ]
+    },
+    "ALGORITHM": {
+      "count": 1,
+      "avg_score": 6.0,
+      "tech_stack": [
+        "python",
+        "web"
+      ],
+      "top_repos": [
+        "AWESOME-ALGORITHMS"
+      ]
+    },
+    "AUTOMOTIVE": {
+      "count": 1,
+      "avg_score": 8.0,
+      "tech_stack": [
+        "AUTOMOTIVE",
+        "CONTRIBUTING",
+        "REVIEW"
+      ],
+      "top_repos": [
+        "AWESOME-AUTOMOTIVE"
+      ]
+    },
+    "COMPUTER SCIENCE": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "GitHub",
+        "Markdown"
+      ],
+      "top_repos": [
+        "AWESOME-COMPETITIVE-PROGRAMMING"
+      ]
+    },
+    "CS": {
+      "count": 1,
+      "avg_score": 8.0,
+      "tech_stack": [
+        "tech1",
+        "tech2",
+        "tech3"
+      ],
+      "top_repos": [
+        "AWESOME-COURSES"
+      ]
+    },
+    "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER": {
+      "count": 4,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "Algorithms",
+        "Awesome List",
+        "C++",
+        "Data Structures",
+        "GitHub",
+        "README",
+        "Swift",
+        "tech1",
+        "tech2",
+        "tech3"
+      ],
+      "top_repos": [
+        "AWESOME-CPP",
+        "BISHOP-ALGORITHMS-SWIFT",
+        "BOOK5_ESSENTIALS-OF-PROBABILITY-AND-STATISTICS",
+        "CODING-INTERVIEW"
+      ]
+    },
+    "AI|ROBOTICS": {
+      "count": 3,
+      "avg_score": 7.666666666666667,
+      "tech_stack": [
+        "Contextual AI",
+        "GPT-4",
+        "Implicit Representations",
+        "ML",
+        "NeRF",
+        "OpenAI API",
+        "OpenCV",
+        "Robotics"
+      ],
+      "top_repos": [
+        "AWESOME-IMAGE-REGISTRATION",
+        "AWESOME-IMPLICIT-NERF-ROBOTICS",
+        "CONTEXT7"
+      ]
+    },
+    "UNKNOWN": {
+      "count": 1,
+      "avg_score": 0.0,
+      "tech_stack": [],
+      "top_repos": [
+        "AWESOME-PYTORCH-LIST"
+      ]
+    },
+    "OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "Git integration",
+        "bat",
+        "syntax highlighting"
+      ],
+      "top_repos": [
+        "BAT"
+      ]
+    },
+    "NETWORK": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "Bash",
+        "Brook server",
+        "Nami.sh"
+      ],
+      "top_repos": [
+        "BROOK"
+      ]
+    },
+    "ONE OF: OTHER": {
+      "count": 1,
+      "avg_score": 9.0,
+      "tech_stack": [
+        "Instructional guides",
+        "Re-creation of technologies from scratch"
+      ],
+      "top_repos": [
+        "BUILD-YOUR-OWN-X"
+      ]
+    },
+    "WEBS": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "CSS",
+        "Flexbox"
+      ],
+      "top_repos": [
+        "BULMA"
+      ]
+    },
+    "ALGORITHMS": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "C"
+      ],
+      "top_repos": [
+        "C"
+      ]
+    },
+    "C-PLUS-PLUS": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "C++",
+        "CI/CD",
+        "Documentation"
+      ],
+      "top_repos": [
+        "C-PLUS-PLUS"
+      ]
+    },
+    "TECHNOLOGY|COMPUTER_SCIENCE": {
+      "count": 1,
+      "avg_score": 7.0,
+      "tech_stack": [
+        "algorithm",
+        "competitive_programming",
+        "programming"
+      ],
+      "top_repos": [
+        "CP-ALGORITHMS"
+      ]
+    }
+  },
+  "descriptions": {
+    "AI": "Искусственный интеллект, LLM, нейросети и машинное обучение. Фундамент для принятия решений в NEXUS.",
+    "OSINT": "Сведения из открытых источников, разведка, парсинг данных и анализ цифровых следов.",
+    "ROBOTICS": "Автономные системы, управление манипуляторами и сенсорная обработка.",
+    "SECURITY": "Информационная безопасность, аудит кода, поиск уязвимостей и защита систем.",
+    "UAV": "Беспилотные летательные аппараты, навигация, управление роями и аэродинамика.",
+    "CRYPTO": "Криптография, блокчейн, смарт-контракты и приватность данных.",
+    "LEGAL": "Юридические технологии, анализ контрактов, нормативная база и комплаенс.",
+    "SYSTEMS": "Низкоуровневое ПО, операционные системы, драйверы и архитектура железа.",
+    "MATH": "Математическое моделирование, алгоритмы оптимизации и численные методы.",
+    "DATA": "Хранение, обработка и визуализация больших данных.",
+    "WEB": "Веб-интерфейсы, дашборды, API и сетевые протоколы.",
+    "OTHER": "Прочие инструменты, библиотеки общего назначения и вспомогательные скрипты."
+  },
+  "cross_links": {
+    "Python": [
+      "ROBOTICS",
+      "AI",
+      "WEB",
+      "SYSTEMS",
+      "CRYPTO",
+      "OTHER",
+      "SECURITY",
+      "DATA"
+    ],
+    "Jupyter Notebook": [
+      "AI",
+      "DATA"
+    ],
+    "Git": [
+      "AI",
+      "WEB",
+      "CRYPTO",
+      "OSINT",
+      "OTHER",
+      "SECURITY",
+      "DATA"
+    ],
+    "Markdown": [
+      "AI",
+      "COMPUTER SCIENCE",
+      "WEB",
+      "OSINT",
+      "MATH",
+      "OTHER",
+      "SECURITY",
+      "DATA"
+    ],
+    "GitHub": [
+      "ROBOTICS",
+      "AI",
+      "COMPUTER SCIENCE",
+      "WEB",
+      "CRYPTO",
+      "OSINT",
+      "MATH",
+      "OTHER",
+      "SECURITY",
+      "DATA",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "JavaScript": [
+      "AI",
+      "WEB",
+      "SYSTEMS",
+      "OSINT",
+      "SECURITY",
+      "DATA"
+    ],
+    "Machine Learning": [
+      "AI",
+      "DATA"
+    ],
+    "GIT": [
+      "SYSTEMS",
+      "DATA"
+    ],
+    "HTML": [
+      "SYSTEMS",
+      "DATA",
+      "WEB"
+    ],
+    "CSS": [
+      "WEBS",
+      "WEB",
+      "SYSTEMS",
+      "UI/UX",
+      "DATA"
+    ],
+    "Swift": [
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER",
+      "CRYPTO",
+      "WEB"
+    ],
+    "iOS": [
+      "CRYPTO",
+      "WEB"
+    ],
+    "NPM": [
+      "OSINT",
+      "AI"
+    ],
+    "C": [
+      "SYSTEMS",
+      "CRYPTO",
+      "OSINT",
+      "ALGORITHMS",
+      "OTHER",
+      "DATA"
+    ],
+    "MATLAB": [
+      "SYSTEMS",
+      "MATH"
+    ],
+    "programming": [
+      "OTHER",
+      "TECHNOLOGY|COMPUTER_SCIENCE"
+    ],
+    "algorithm": [
+      "DATA",
+      "SYSTEMS",
+      "OTHER",
+      "TECHNOLOGY|COMPUTER_SCIENCE"
+    ],
+    "GitHub Actions": [
+      "SYSTEMS",
+      "OTHER"
+    ],
+    "Java": [
+      "SOFTWARE",
+      "AI",
+      "WEB",
+      "SYSTEMS",
+      "CRYPTO",
+      "OTHER",
+      "SECURITY",
+      "ANDROID",
+      "DATA"
+    ],
+    "Distributed Systems": [
+      "SOFTWARE",
+      "DATA"
+    ],
+    "Android": [
+      "WEB",
+      "CRYPTO",
+      "OTHER",
+      "SECURITY",
+      "ANDROID"
+    ],
+    "Cryptography": [
+      "SECURITY",
+      "CRYPTO"
+    ],
+    "Open Source": [
+      "ROBOTICS",
+      "AI",
+      "SECURITY",
+      "DATA"
+    ],
+    "OpenAI API": [
+      "AI|ROBOTICS",
+      "AI"
+    ],
+    "GPT-4": [
+      "AI|ROBOTICS",
+      "AI"
+    ],
+    "CMake": [
+      "AI",
+      "ROBOTICS"
+    ],
+    "Reinforcement Learning": [
+      "AI",
+      "ROBOTICS"
+    ],
+    "PyTorch": [
+      "AI",
+      "ROBOTICS"
+    ],
+    "TensorFlow": [
+      "AI",
+      "DATA"
+    ],
+    "Github": [
+      "AI",
+      "DATA"
+    ],
+    "R": [
+      "AI",
+      "DATA"
+    ],
+    "CI/CD": [
+      "AI",
+      "WEB",
+      "SYSTEMS",
+      "CRYPTO",
+      "C-PLUS-PLUS"
+    ],
+    "Documentation": [
+      "C-PLUS-PLUS",
+      "AI"
+    ],
+    "UI/UX": [
+      "AI",
+      "OTHER"
+    ],
+    "API": [
+      "AI",
+      "OTHER"
+    ],
+    "C++": [
+      "AI",
+      "SYSTEMS",
+      "CRYPTO",
+      "OSINT",
+      "MATH",
+      "C-PLUS-PLUS",
+      "ROBOTICS",
+      "DATA",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "HTTP": [
+      "ROBOTICS",
+      "OTHER"
+    ],
+    "Rust": [
+      "ROBOTICS",
+      "CRYPTO",
+      "OSINT",
+      "OTHER",
+      "SECURITY",
+      "DATA"
+    ],
+    "python": [
+      "ALGORITHM",
+      "AI",
+      "DATA"
+    ],
+    "Web": [
+      "OTHER",
+      "DATA"
+    ],
+    "Algorithms": [
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER",
+      "OTHER",
+      "DATA",
+      "WEB"
+    ],
+    "Pandas": [
+      "AI",
+      "DATA"
+    ],
+    "data structures": [
+      "OTHER",
+      "DATA"
+    ],
+    "Node.js": [
+      "SYSTEMS",
+      "AI",
+      "WEB"
+    ],
+    "Linux": [
+      "OSINT",
+      "SYSTEMS",
+      "SECURITY"
+    ],
+    "TypeScript": [
+      "OSINT",
+      "AI",
+      "WEB"
+    ],
+    "React": [
+      "AI",
+      "UI/UX",
+      "OTHER",
+      "WEB"
+    ],
+    "tech1": [
+      "CS",
+      "OTHER",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "tech2": [
+      "CS",
+      "OTHER",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "ML": [
+      "AI|ROBOTICS",
+      "AI"
+    ],
+    "Data Science": [
+      "AI",
+      "DATA"
+    ],
+    ".NET": [
+      "SECURITY",
+      "WEB"
+    ],
+    "Typescript": [
+      "SYSTEMS",
+      "UI/UX"
+    ],
+    "RISC-V": [
+      "OSINT",
+      "SYSTEMS"
+    ],
+    "C#": [
+      "SECURITY",
+      "OTHER",
+      "CRYPTO"
+    ],
+    "web": [
+      "SYSTEMS",
+      "ALGORITHM",
+      "OSINT",
+      "MATH",
+      "SECURITY"
+    ],
+    "AI": [
+      "AI",
+      "DATA"
+    ],
+    "Data Structures": [
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER",
+      "DATA",
+      "WEB"
+    ],
+    "README": [
+      "SYSTEMS",
+      "CRYPTO",
+      "OSINT",
+      "ROBOTICS",
+      "DATA",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "tech3": [
+      "CS",
+      "OTHER",
+      "ONE OF: OSINT|AI|ROBOTICS|CRYPTO|LEGAL|MATH|UAV|SECURITY|WEB|SYSTEMS|DATA|OTHER"
+    ],
+    "Golang": [
+      "SYSTEMS",
+      "OTHER"
+    ],
+    "LeetCode": [
+      "DATA",
+      "OTHER"
+    ],
+    "OpenCV": [
+      "ROBOTICS",
+      "AI|ROBOTICS",
+      "AI"
+    ],
+    "Robotics": [
+      "AI|ROBOTICS",
+      "ROBOTICS"
+    ],
+    "Docker": [
+      "DATA",
+      "SECURITY",
+      "OTHER",
+      "SYSTEMS"
+    ],
+    "SQL": [
+      "AI",
+      "DATA",
+      "CRYPTO"
+    ],
+    "Go": [
+      "SOFTWARE",
+      "WEB",
+      "SYSTEMS",
+      "CRYPTO",
+      "OSINT",
+      "OTHER",
+      "SECURITY",
+      "DATA"
+    ],
+    "Ruby": [
+      "SECURITY",
+      "OTHER"
+    ],
+    "Bash": [
+      "NETWORK",
+      "OTHER"
+    ],
+    "GO": [
+      "DATA",
+      "CRYPTO"
+    ],
+    "Vue.js": [
+      "OSINT",
+      "WEB"
+    ],
+    "Kotlin": [
+      "DATA",
+      "CRYPTO"
+    ],
+    "javascript": [
+      "SECURITY",
+      "WEB"
+    ],
+    "YouTube": [
+      "DATA",
+      "OTHER"
+    ],
+    "Kubernetes": [
+      "SECURITY",
+      "SYSTEMS"
+    ]
+  },
+  "total_processed": 396
+}

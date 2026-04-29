@@ -1,0 +1,89 @@
+{
+  "child_id": "FLOWISE__X__BUCKET4J",
+  "parent_a": {
+    "node_id": "FLOWISE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.4,
+        1.0,
+        0.6,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.27,
+        "completeness": 0.33,
+        "overall": 0.59
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "BUCKET4J",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "library",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "manual",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.6,
+        0.4,
+        0.0,
+        0.0,
+        0.0,
+        0.8
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.93,
+        "completeness": 0.33,
+        "overall": 0.84
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an IoT device reconnaissance and firmware analysis tool",
+  "ts": "2026-04-09T18:22:33.327331"
+}

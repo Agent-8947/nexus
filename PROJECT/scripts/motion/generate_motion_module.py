@@ -3,9 +3,9 @@ import json
 from pathlib import Path
 
 def generate_motion_demo():
-    print("🎬 Initializing NEXUS Motion Engine [ULTRA-PREMIUM TIER]...")
+    print("Initializing NEXUS Motion Engine [ULTRA-PREMIUM TIER]...")
     
-    project_root = Path("e:/Downloads/--ANTIGRAVITY store/IDE-optimus")
+    project_root = Path("e:/Downloads/--ANTIGRAVITY store/IDE-NEXUS")
     output_path = project_root / "PROJECT" / "outputs" / "Motion_Premium_Showcase.html"
     
     # HTML template with embedded nexus-visual-motion patterns (GSAP + Three.js + Lenis)
@@ -402,7 +402,7 @@ def generate_motion_demo():
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_content)
         
-    print(f"✅ Motion Ultra-Premium Showcase generated: {output_path}")
+    print(f"DONE: Motion Ultra-Premium Showcase generated: {output_path}")
 
 if __name__ == "__main__":
     generate_motion_demo()

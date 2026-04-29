@@ -1,0 +1,11 @@
+{
+    "name": "GRAPHEMBEDDING",
+    "indexed_at": "2026-04-05 14:21:24",
+    "domains": [
+        "MACHINE_LEARNING",
+        "LEGAL"
+    ],
+    "core_identity": "Инструмент на стыке: MACHINE_LEARNING + LEGAL",
+    "legal_devops_perspective": "Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Прямая автоматизация комплаенса и выявления нарушений законодательства/лицензий.",
+    "readiness": "LOCAL_AVAILABLE"
+}

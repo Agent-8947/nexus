@@ -1,0 +1,12 @@
+{
+    "name": "RUSTIC",
+    "indexed_at": "2026-04-05 15:51:51",
+    "domains": [
+        "FORECASTING",
+        "LEGAL",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: FORECASTING + LEGAL + INFRASTRUCTURE",
+    "legal_devops_perspective": "Построение математических моделей для предсказания корпоративных и финансовых рисков. | Прямая автоматизация комплаенса и выявления нарушений законодательства/лицензий. | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

@@ -1,0 +1,12 @@
+{
+  "child_id": "NEXUS_HARVESTER",
+  "generation": 0,
+  "traits": {
+    "role": "etl_daemon",
+    "computing": "agnostic",
+    "security": "high",
+    "interface": "cli"
+  },
+  "context": "FAILURES TO FIX: ['Exit Code 1 | OSError: [WinError 10106] Не удается загрузить или инициализировать нужного поставщика услуг']",
+  "instruction": "REQUIREMENTS FOR INDUSTRIAL MASTERPIECE:\n1. RESOLVE CONTRADICTIONS: If traits contradict (e.g., API interface + Local Cryptography), you MUST define a clear Architecture Topology (e.g., Distributed Zero-Trust or Local Daemon) BEFORE coding. Do not build chimeras.\n2. NO SECURITY THEATER: Real encryption requires proper key separation.\n3. TRUE FUNCTIONALITY: All ML or logic must drive actual outputs, not serve as decorations.\n4. ZERO-GUESSING VALIDATION: Code must execute cleanly. Strict exception handling required."
+}

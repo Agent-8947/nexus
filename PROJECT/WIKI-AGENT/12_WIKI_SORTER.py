@@ -16,7 +16,7 @@ class NexusSorterAgent:
     """Агент 12: Архивариус V2. Трёхзначная нумерация + B-префикс для Сборок."""
     def __init__(self):
         print("\n" + "=" * 58)
-        print("  NEXUS AGENT 12 — ARCHIVIST V2 🧹")
+        print("  NEXUS AGENT 12  ARCHIVIST V2 ")
         print("  Standard: 001/002... | Builds: B001/B002...")
         print("=" * 58 + "\n")
 
@@ -95,9 +95,6 @@ class NexusSorterAgent:
                 is_build = sub_folder.name == "BUILD"
                 print(f"  [*] Indexing: {domain.name}/{sub_folder.name}")
                 self._index_directory(sub_folder, is_build=is_build)
-
-        print("\n✅ V2 Organization & Indexing complete.")
-        print("   Files: 001_... | Builds: B001_...")
 
 if __name__ == "__main__":
     sorter = NexusSorterAgent()

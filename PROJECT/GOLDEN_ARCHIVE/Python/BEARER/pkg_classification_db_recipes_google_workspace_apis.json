@@ -1,0 +1,24 @@
+{
+  "metadata": { "version": "1.0" },
+  "name": "Google Workspace APIs",
+  "type": "external_service",
+  "urls": [
+    "https://ldap.google.com",
+    "https://accounts.google.com",
+    "https://oauth2.googleapis.com",
+    "https://slides.googleapis.com",
+    "https://chat.googleapis.com",
+    "https://googleapis.com/calendar",
+    "https://gmail.googleapis.com",
+    "https://docs.googleapis.com"
+  ],
+  "packages": [
+    {
+      "name": "omniauth-google-oauth2",
+      "group": null,
+      "package_manager": "rubygems"
+    }
+  ],
+  "uuid": "fcf6a2de-0bdd-4fe9-b1a7-696b947128df",
+  "sub_type": "third_party"
+}

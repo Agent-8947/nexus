@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXUS OS | Project Presentation 2026</title>
+
+    <meta name="description" content="NEXUS — Personal Agentic System for wide-range problem solving.">
+
+
+
+    <!-- SEO & Sharing -->
+
+    <meta property="og:title" content="NEXUS OS | Project Presentation 2026">
+
+    <meta property="og:description"
+
+        content="NEXUS — Personal Agentic System for wide-range problem solving. 104k msg/s, 14 MCP, 9 AI Agents.">
+
+    <meta property="og:image" content="nexus_preview.png">
+
+    <meta property="og:url" content="https://nexus-presentation-v2.vercel.app">
+
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="NEXUS OS | Project Presentation 2026">
+
+    <meta name="twitter:description" content="Autonomous AI-Orchestrated System for next-gen development.">
+
+    <meta name="twitter:image" content="nexus_preview.png">
+
+    <link rel="icon" type="image/png" href="nexus_preview.png">
+
+    <link rel="apple-touch-icon" href="nexus_preview.png">
+
+    <link
+
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;700&display=swap"
+
+        rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg: #0a0a0f;
+
+            --bg2: #12121a;
+
+            --sf: #1a1a26;
+
+            --sf2: #222233;
+
+            --ac: #ff3b30;
+
+            --ac2: #ff6b5b;
+
+            --cy: #00e5ff;
+
+            --tx: #e8e8f0;
+
+            --tx2: #8888aa;
+
+            --bd: rgba(255, 255, 255, .06);
+
+            --gw: rgba(255, 59, 48, .15)
+
+        }
+
+
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0
+
+        }
+
+
+
+        html {
+
+            scroll-behavior: smooth
+
+        }
+
+
+
+        body {
+
+            background: var(--bg);
+
+            color: var(--tx);
+
+            font-family: 'Outfit', sans-serif;
+
+            overflow-x: hidden;
+
+            -webkit-font-smoothing: antialiased
+
+        }
+
+
+
+        ::selection {
+
+            background: var(--ac);
+
+            color: #fff
+
+        }
+
+
+
+        .nb {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            -webkit-backdrop-filter: blur(20px);
+
+            backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid var(--bd);
+
+            padding: 0 40px;
+
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between
+
+        }
+
+
+
+        .nb-brand {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            color: var(--ac);
+
+            letter-spacing: 2px
+
+        }
+
+
+
+        .nb-links {
+
+            display: flex;
+
+            gap: 24px
+
+        }
+
+
+
+        .nb-links a {
+
+            text-decoration: none;
+
+            color: var(--tx2);
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            transition: color .3s;
+
+            position: relative
+
+        }
+
+
+
+        .nb-links a:hover,
+
+        .nb-links a.active {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .nb-links a.active::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -4px;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 2px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .nb-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px
+
+        }
+
+
+
+        .lang-sw {
+
+            display: flex;
+
+            gap: 2px
+
+        }
+
+
+
+        .lang-btn {
+
+            background: transparent;
+
+            border: 1px solid var(--bd);
+
+            color: var(--tx2);
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .65rem;
+
+            padding: 6px 10px;
+
+            cursor: pointer;
+
+            transition: all .3s;
+
+            text-transform: uppercase
+
+        }
+
+
+
+        .lang-btn:hover {
+
+            border-color: var(--ac);
+
+            color: var(--tx)
+
+        }
+
+
+
+        .lang-btn.active {
+
+            background: var(--ac);
+
+            color: #fff;
+
+            border-color: var(--ac)
+
+        }
+
+
+
+        .gh-link {
+
+            color: var(--tx2);
+
+            transition: color .3s;
+
+            display: flex;
+
+            align-items: center;
+
+            margin: 0 8px
+
+        }
+
+
+
+        .gh-link:hover {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .dl-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: var(--ac);
+
+            color: #fff;
+
+            border: none;
+
+            padding: 8px 18px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition: all .3s;
+
+            border-radius: 4px
+
+        }
+
+
+
+        .dl-btn:hover {
+
+            background: var(--ac2);
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 8px 30px var(--gw)
+
+        }
+
+
+
+        .dl-btn.loading {
+
+            opacity: .6;
+
+            pointer-events: none
+
+        }
+
+
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 120px 60px 80px;
+
+            position: relative;
+
+            overflow: hidden
+
+        }
+
+
+
+        .hero-grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 0;
+
+            background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+
+            background-size: 80px 80px
+
+        }
+
+
+
+        .hero-glow {
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            background: radial-gradient(circle, var(--gw) 0%, transparent 70%);
+
+            top: 20%;
+
+            right: -10%;
+
+            z-index: 0;
+
+            filter: blur(80px)
+
+        }
+
+
+
+        .hero-c {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 1000px
+
+        }
+
+
+
+        .hero-tag {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .75rem;
+
+            color: var(--ac);
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 24px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px
+
+        }
+
+
+
+        .hero-tag::before {
+
+            content: '';
+
+            width: 40px;
+
+            height: 1px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .hero h1 {
+
+            font-size: clamp(4rem, 12vw, 10rem);
+
+            font-weight: 900;
+
+            line-height: .85;
+
+            letter-spacing: -6px;
+
+            margin-bottom: 30px
+
+        }
+
+
+
+        .hero h1 span {
+
+            color: var(--ac)
+
+        }
+
+
+
+        .hero-sub {
+
+            font-size: 1.3rem;
+
+            color: var(--tx2);
+
+            max-width: 600px;
+
+            line-height: 1.7;
+
+            font-weight: 300
+
+        }
+
+
+
+        .hero-stats {
+
+            display: flex;
+
+            gap: 50px;
+
+            margin-top: 60px;
+
+            padding-top: 40px;
+
+            border-top: 1px solid var(--bd);
+
+            flex-wrap: wrap
+
+        }
+
+
+
+        .si {
+
+            text-align: left
+
+        }
+
+
+
+        .sv {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: 2.2rem;
+
+            font-weight: 700;
+
+            color: var(--ac);
+
+            display: block
+
+        }
+
+
+
+        .sl {
+
+            font-size: .72rem;
+
+            color: var(--tx2);
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-top: 4px
+
+        }
+
+
+
+        .ct {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 0 40px
+
+        }
+
+
+
+        section {
+
+            padding: 120px 0;
+
+            position: relative
+
+        }
+
+
+
+        section+section {
+
+            border-top: 1px solid var(--bd)
+
+        }
+
+
+
+        .stag {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .7rem;
+
+            color: var(--ac);
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px
+
+        }
+
+
+
+        .stag::before {
+
+            content: '';
+
+            width: 24px;
+
+            height: 1px;
+
+            background: var(--ac)
+
+        }
+
+
+
+        .stit {
+
+            font-size: clamp(2rem, 4vw, 3.2rem);
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 60px;
+
+            line-height: 1.1
+
+        }
+
+
+
+        .cg {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 24px
+
+        }
+
+
+
+        .cg3 {
+
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+
+        }
+
+
+
+        .cd {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 36px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: all .5s cubic-bezier(.2, 1, .3, 1);
+
+            opacity: 0;
+
+            transform: translateY(40px)
+
+        }
+
+
+
+        .cd::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 3px;
+
+            background: linear-gradient(90deg, var(--ac), transparent);
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: transform .5s
+
+        }
+
+
+
+        .cd:hover {
+
+            border-color: rgba(255, 59, 48, .2);
+
+            background: var(--sf2);
+
+            transform: translateY(-4px)
+
+        }
+
+
+
+        .cd:hover::before {
+
+            transform: scaleX(1)
+
+        }
+
+
+
+        .cb {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .63rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: var(--ac);
+
+            padding: 4px 12px;
+
+            border: 1px solid rgba(255, 59, 48, .3);
+
+            display: inline-block;
+
+            margin-bottom: 14px
+
+        }
+
+
+
+        .cd h3 {
+
+            font-size: 1.35rem;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            letter-spacing: -.5px
+
+        }
+
+
+
+        .cd p {
+
+            color: var(--tx2);
+
+            line-height: 1.65;
+
+            font-size: .9rem
+
+        }
+
+
+
+        .ct-t {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            color: var(--ac);
+
+            margin-top: 16px;
+
+            display: block;
+
+            letter-spacing: .5px
+
+        }
+
+
+
+        .dt {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 30px
+
+        }
+
+
+
+        .dt th {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .68rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: var(--ac);
+
+            text-align: left;
+
+            padding: 14px 18px;
+
+            border-bottom: 2px solid rgba(255, 59, 48, .3)
+
+        }
+
+
+
+        .dt td {
+
+            padding: 12px 18px;
+
+            border-bottom: 1px solid var(--bd);
+
+            font-size: .88rem;
+
+            color: var(--tx2);
+
+            vertical-align: top
+
+        }
+
+
+
+        .dt td:first-child {
+
+            color: var(--tx);
+
+            font-weight: 600
+
+        }
+
+
+
+        .dt tr {
+
+            transition: background .3s
+
+        }
+
+
+
+        .dt tr:hover {
+
+            background: rgba(255, 255, 255, .02)
+
+        }
+
+
+
+        .wg {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+
+            gap: 10px
+
+        }
+
+
+
+        .wi {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 14px 18px;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .78rem;
+
+            transition: all .3s;
+
+            cursor: default
+
+        }
+
+
+
+        .wi:hover {
+
+            border-color: var(--ac);
+
+            background: var(--sf2)
+
+        }
+
+
+
+        .wi .wc {
+
+            color: var(--ac);
+
+            font-weight: 700;
+
+            display: block;
+
+            margin-bottom: 4px
+
+        }
+
+
+
+        .wi .wd {
+
+            color: var(--tx2);
+
+            font-size: .68rem;
+
+            font-family: 'Outfit', sans-serif
+
+        }
+
+
+
+        .mb {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
+            gap: 2px;
+
+            margin: 60px 0;
+
+            background: var(--bd)
+
+        }
+
+
+
+        .mt {
+
+            background: var(--sf);
+
+            padding: 28px;
+
+            text-align: center;
+
+            transition: background .3s
+
+        }
+
+
+
+        .mt:hover {
+
+            background: var(--sf2)
+
+        }
+
+
+
+        .mv {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: 1.8rem;
+
+            font-weight: 700;
+
+            color: var(--ac);
+
+            display: block
+
+        }
+
+
+
+        .ml {
+
+            font-size: .68rem;
+
+            color: var(--tx2);
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-top: 6px
+
+        }
+
+
+
+        .ab {
+
+            background: var(--sf);
+
+            border: 1px solid var(--bd);
+
+            padding: 36px;
+
+            overflow-x: auto;
+
+            margin-bottom: 40px
+
+        }
+
+
+
+        .ab pre {
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .72rem;
+
+            color: var(--cy);
+
+            line-height: 1.5;
+
+            white-space: pre
+
+        }
+
+
+
+        .sf {
+
+            border-top: 1px solid var(--bd);
+
+            padding: 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            font-family: 'JetBrains Mono', monospace;
+
+            font-size: .72rem;
+
+            color: var(--tx2)
+
+        }
+
+
+
+        @media(max-width:768px) {
+
+            .hero {
+
+                padding: 100px 20px 60px
+
+            }
+
+
+
+            .ct {
+
+                padding: 0 20px
+
+            }
+
+
+
+            .nb-links {
+
+                display: none
+
+            }
+
+
+
+            .cg {
+
+                grid-template-columns: 1fr
+
+            }
+
+
+
+            .wg {
+
+                grid-template-columns: repeat(2, 1fr)
+
+            }
+
+        }
+
+
+
+        /* PDF hidden doc */
+
+        #pdf-doc {
+
+            display: none
+
+        }
+
+
+
+        @media print {
+
+
+
+            .nb,
+
+            .hero-grid,
+
+            .hero-glow {
+
+                display: none !important
+
+            }
+
+
+
+            body {
+
+                background: #fff;
+
+                color: #111
+
+            }
+
+
+
+            .cd,
+
+            .ab,
+
+            .wi,
+
+            .mt {
+
+                border-color: #ddd;
+
+                background: #fafafa
+
+            }
+
+
+
+            .cb,
+
+            .stag,
+
+            .sv,
+
+            .mv,
+
+            .ct-t {
+
+                color: #c00
+
+            }
+
+
+
+            .cd p,
+
+            .dt td,
+
+            .wi .wd,
+
+            .hero-sub {
+
+                color: #444
+
+            }
+
+
+
+            section {
+
+                padding: 40px 0;
+
+                page-break-inside: avoid
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+    
+<style>
+/* Adjustments for static document */
+body { overflow-y: auto; }
+.hero { min-height: 50vh; padding: 100px 40px 40px; }
+.hero h1 { font-size: 4rem; }
+.instruction-section { padding: 40px; max-width: 1000px; margin: 0 auto; }
+.instruction-card { background: var(--sf); border: 1px solid var(--bd); padding: 30px; margin-bottom: 20px; border-radius: 8px; }
+.instruction-card h3 { color: var(--ac); font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; margin-bottom: 10px; }
+.instruction-card p { font-size: 1.1rem; line-height: 1.6; color: var(--tx2); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+    <div class="noise"></div>
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-c">
+            <div class="hero-tag">NEXUS OPERATIONAL MANUAL</div>
+            <h1>NEXUS <span>INSTRUCTION</span></h1>
+            <p class="hero-sub">Language: EN</p>
+        </div>
+    </section>
+    
+    <div class="instruction-section">
+<div class="instruction-card"><h3>Introduction - AI Agent Fleet - Complete Description — 25 Agents</h3><p>"Each agent is a specialized expert with its own methodology"</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - NEXUS OS AI Agent Fleet</h3><p>NEXUS OS is operated by a fleet of specialized AI agents. Each agent is not just a tool — it is a fully-fledged expert with its own methodology, area of responsibility, and quality standards. Agents are divided into two classes: core (built into the kernel) and skills (pluggable modules).</p><p>Total agents and skills: 25 (4 core + 21 skills). Agents operate autonomously or as part of multi-agent pipelines via the Multi-Agent Orchestrator.</p></div><div class="instruction-card"><h3>Core agents (kernel)</h3><p>These agents are built into the NEXUS kernel and provide fundamental operations: orchestration, self-healing, document generation, and database interaction.</p></div><div class="instruction-card"><h3>Specialized skills</h3><p>Pluggable modules with narrow specialization. Each skill has its own SKILL.md with detailed methodology and usage instructions.</p></div><div class="instruction-card"><h3>Answering Engine</h3><p>AI-powered search engine with Deep Search Loop (search → verify → synthesize). Fights hallucinations via the 'Truth is Outside' principle — integrates SearXNG, Exa, Tavily.</p></div><div class="instruction-card"><h3>OSINT Tactician</h3><p>Intelligence methodology based on the Intelligence Cycle and Hunchly principles. Plans corporate reconnaissance, people discovery, and infrastructure mapping investigations. Supports Dark Web Recon.</p></div><div class="instruction-card"><h3>Security Audit</h3><p>AI-powered security audit based on Ship Safe v5.0. Scans for secrets, injections, and vulnerabilities. Protects AI agents from prompt injection. Includes Rate Limiting, JWT, CORS snippets.</p></div><div class="instruction-card"><h3>Motion Design Expert</h3><p>Premium web animations and interactive motion. Specializes in Three.js, GSAP, Framer Motion. Guarantees stable 60fps, handles particles, shaders, and parallax effects.</p></div><div class="instruction-card"><h3>Knowledge Synthesizer</h3><p>Multi-source knowledge synthesis without duplication. Normalizes inputs, separates confirmed facts from hypotheses, builds decision-oriented views with explicit unresolved gaps.</p></div><div class="instruction-card"><h3>Domain Intel</h3><p>Passive domain reconnaissance: subdomains, SSL certificates, WHOIS, DNS records, domain availability. Zero dependencies — pure Python stdlib, no API keys required.</p></div><div class="instruction-card"><h3>Firecrawl</h3><p>Official CLI skill for web scraping, search, and browser automation. Returns clean LLM-optimized Markdown. Supports bulk crawling and site mapping.</p></div><div class="instruction-card"><h3>Frontend Orchestrator</h3><p>Frontend development orchestration. Manages route mapping, component state, and API contracts. Focus on React, Vite, Three.js with design system adherence.</p></div><div class="instruction-card"><h3>Git-Native Agent</h3><p>Framework-agnostic Open-GitAgent standard for defining AI agents in Git. Manages agent versioning, Segregation of Duties, and enterprise compliance audit trails.</p></div><div class="instruction-card"><h3>GitHub PR Workflow</h3><p>Complete Pull Request lifecycle: branch creation → commits → push → PR → CI monitoring → merge. Uses gh CLI with git + curl fallback.</p></div><div class="instruction-card"><h3>JustDoIt</h3><p>Core task execution engine v5.0. Implements the Understand → Plan → Act → Verify cycle. Eliminates context drift and hallucinations. Creates plans.md, status.md, test-plan.md.</p></div><div class="instruction-card"><h3>Context Manager</h3><p>Context packaging for subagents. Maps relevant architecture, extracts constraints, compresses into a minimal packet with explicit unknowns flagged.</p></div><div class="instruction-card"><h3>Multi-Agent Orchestrator</h3><p>Multi-agent execution planning with clear role separation, dependencies, and result integration. Maximizes parallel progress without losing integration control.</p></div><div class="instruction-card"><h3>Nexus QA</h3><p>QA Lead Mode v5.0. Automatically tests web applications via browser automation. Diff-Aware testing, 404/500 and clickability checks. Generates qa_report.md with Health Score 0–100%.</p></div><div class="instruction-card"><h3>Nexus Vision (CEO Mode)</h3><p>YC Partner mode. Reframes tasks, challenges assumptions, ensures product-market fit before development starts. Output: design_doc.md with Pain, Wedge, and Engineering Constraints.</p></div><div class="instruction-card"><h3>Legal Compliance Expert</h3><p>Legal risk analysis and regulatory alignment. Maps the legal domain, separates confirmed facts from assumptions, adversarial validation of normal and failure paths.</p></div><div class="instruction-card"><h3>UI/UX Designer</h3><p>Implementation-ready UI guidance with premium aesthetics (glassmorphism, micro-animations). Focus on visual hierarchy, ARIA, keyboard navigation, and design system tokens.</p></div><div class="instruction-card"><h3>arXiv Research</h3><p>Search and retrieve academic papers via arXiv REST API. No API keys. Integrates Semantic Scholar for citations and related papers. Generates BibTeX citations.</p></div><div class="instruction-card"><h3>Codebase Inspection</h3><p>Codebase analysis via pygount: LOC counts, language breakdown, code-vs-comment ratios. Repository metrics for pre-refactor audits.</p></div><div class="instruction-card"><h3>MathLib Advisor</h3><p>Mathematics and formal logic knowledge base via Lean 4 Mathlib. Search theorems, definitions, and lemmas in the world's largest formalized math library.</p></div><div class="instruction-card"><h3>PowerShell UI Architect</h3><p>Interactive tooling and terminal UIs for Windows. TUI, WinForms/WPF integration, background jobs without UI freezing, safe execution of privileged operations.</p></div><div class="instruction-card"><h3>Total agents and skills: 25 - MCP Neural Net — Connectors - Complete Description — 22 Connectors</h3><p>"MCP connectors are NEXUS's hands and eyes, linking AI to real systems"</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - MCP Neural Net — 22 External Connectors</h3><p>MCP (Model Context Protocol) is the neural network of NEXUS, giving the system direct access to external tools and services. Without MCP the AI only sees text; with MCP it can read files, make commits, search the web, run a browser, and manage databases.</p><p>All MCP servers are configured in PROJECT/mcp_config.json and start automatically on Claude Desktop / VS Code Copilot launch. Pare tools provide 40–70% token savings.</p></div><div class="instruction-card"><h3>File system and data</h3><p>Connectors for working with local files, the repository, and databases.</p></div><div class="instruction-card"><h3>filesystem</h3><p>Direct access to the project file system (read, write, directory listing). Mount point: PROJECT/</p></div><div class="instruction-card"><h3>git</h3><p>Native Git repository integration: commits, diffs, history, and branches directly from AI context.</p></div><div class="instruction-card"><h3>memory</h3><p>Persistent Key-Value memory store via @modelcontextprotocol/server-memory. Preserves context between sessions.</p></div><div class="instruction-card"><h3>sqlite</h3><p>Direct queries to local SQLite database nexus_core.db. Used for command logging and API metrics.</p></div><div class="instruction-card"><h3>fetch</h3><p>HTTP client for fetching web pages and REST API data. Primary tool for collecting external data.</p></div><div class="instruction-card"><h3>brave-search</h3><p>Real-time web search via Brave Search API. Main tool for retrieving up-to-date information from the internet.</p></div><div class="instruction-card"><h3>External services and integrations</h3><p>Connections to cloud services, monitoring, CMS, and browser automation.</p></div><div class="instruction-card"><h3>sentry</h3><p>Sentry error monitoring integration. Retrieves stack traces, events, and performance metrics directly in AI context.</p></div><div class="instruction-card"><h3>puppeteer</h3><p>Browser automation via Puppeteer: screenshots, clicks, navigation, JS-rendered pages. Used by QA agent and motion recorder.</p></div><div class="instruction-card"><h3>sequentialthinking</h3><p>Structured sequential thinking tool. Breaks complex tasks into atomic steps with explicit intermediate states.</p></div><div class="instruction-card"><h3>everart</h3><p>AI image generation via EverArt. Used by Document Factory to create visual assets inside documents.</p></div><div class="instruction-card"><h3>obsidian</h3><p>Connects to Obsidian Vault as a knowledge base. Reads and writes notes, maps relationships between project concepts.</p></div><div class="instruction-card"><h3>contentful</h3><p>Headless CMS integration. Manages content, publishes entries, and retrieves data via Contentful API.</p></div><div class="instruction-card"><h3>osp-marketing</h3><p>OSP marketing MCP tools. Generates marketing content, audience analysis, and strategy recommendations.</p></div><div class="instruction-card"><h3>ai-therapist</h3><p>Cognitive connector for analyzing work patterns and eliminating toxic development cycles. Assists with reflection and retrospectives.</p></div><div class="instruction-card"><h3>Pare-optimized tools and graph database</h3><p>Pare-optimized versions of Git/GitHub/Search/HTTP with token savings, plus Neo4j graph database and PostgreSQL.</p></div><div class="instruction-card"><h3>pare-git</h3><p>Optimized Git via Pare Tools. Structured JSON output instead of raw CLI. 40–70% token savings vs direct git commands.</p></div><div class="instruction-card"><h3>pare-github</h3><p>Optimized GitHub via Pare Tools. PRs, Issues, Actions via structured API with minimal token consumption.</p></div><div class="instruction-card"><h3>pare-search</h3><p>Optimized search via Pare Tools. Structured search results with token savings and noise filtering.</p></div><div class="instruction-card"><h3>pare-python</h3><p>Python code execution via Pare Tools with structured output. Safe script execution in a controlled environment.</p></div><div class="instruction-card"><h3>pare-process</h3><p>System process management via Pare Tools. Start, monitor, and stop processes with JSON responses.</p></div><div class="instruction-card"><h3>pare-http</h3><p>HTTP requests via Pare Tools with structured output. REST API calls with automatic serialization and error handling.</p></div><div class="instruction-card"><h3>neo4j</h3><p>Neo4j graph database for storing dynamic relationships between project entities. Address: bolt://localhost:7687, db: nexus_graph_db.</p></div><div class="instruction-card"><h3>postgres</h3><p>PostgreSQL connection via Supabase. Primary relational database. Address: nexus_core (localhost:5432).</p></div><div class="instruction-card"><h3>Total MCP connectors: 22 - 24 Slash Commands (Workflows) - Complete Description of Each Command</h3><p>"The full power of NEXUS is invoked with a single terminal command"</p></div><div class="instruction-card"><h3>AI-Orchestrated-NEXUS-v2  |  2026 - nexus-presentation-v2.vercel.app - 24 NEXUS OS Slash Commands</h3><p>Workflows are modular commands that activate a specific chain of NEXUS actions. They are typed directly into the IDE chat (Claude/Copilot) and trigger automated pipelines — from code formatting to full production deployment.</p><p>Workflows are stored in .agents/workflows/*.md. The /menu command lists all available commands at any time. Most workflows are tagged // turbo-all — autonomous execution without follow-up questions.</p></div>
+    </div>
+</body>
+</html>

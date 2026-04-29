@@ -1,0 +1,25 @@
+name: objectbox_generator_test
+
+environment:
+  sdk: '^3.0.0' # Require 3.0 to use sealed classes for freezed
+
+dependencies:
+  objectbox: any # override below to use local package
+  json_annotation: '^4.6.0'
+  freezed_annotation: '^3.1.0'
+
+dev_dependencies:
+  json_serializable: '^6.10.0' # Require 6.10.0 to allow build 3 required by objectbox_generator
+  freezed: '^3.0.0' # Require 3.0.0 to allow build 3 and source_gen 3.1 required by objectbox_generator
+  objectbox_generator: any # override below to use local package
+  test: '^1.21.4'
+  build_runner: '^2.3.3'
+  build_test: '^3.0.0'
+  io: '^1.0.4'
+  path: '^1.8.3'
+
+dependency_overrides:
+  objectbox:
+    path: ../../../objectbox
+  objectbox_generator:
+    path: ../../

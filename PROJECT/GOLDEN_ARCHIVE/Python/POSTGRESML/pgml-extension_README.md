@@ -1,0 +1,1 @@
+Please see the [quick start instructions](https://postgresml.org/docs/open-source/pgml/developers/quick-start-with-docker) for general information on installing or deploying PostgresML. A [developer guide](https://postgresml.org/docs/open-source/pgml/developers/contributing) is also available for those who would like to contribute.

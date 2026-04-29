@@ -1,0 +1,30 @@
+{
+  "agent_id": "VECTOR_DB_COLLECTION_AUDITOR",
+  "domain": "AI_ML",
+  "purpose": "Audit Vector DB (Chroma/Pinecone) collections for data redundancy and orphan nodes",
+  "api_endpoints": [
+    "{db_url}/collections/{collection_name}"
+  ],
+  "data_model": {
+    "collection": "TEXT",
+    "vector_count": "INTEGER",
+    "redundant_percent": "REAL",
+    "avg_similarity": "REAL"
+  },
+  "core_algorithm": "Cosine similarity clustering for redundancy detection",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "math",
+    "sqlite3"
+  ],
+  "logic_markers": [
+    "vector",
+    "embedding",
+    "cosine similarity",
+    "collection",
+    "centroid"
+  ]
+}

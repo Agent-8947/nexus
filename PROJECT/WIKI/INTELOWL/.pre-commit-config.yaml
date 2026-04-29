@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.10
+    hooks:
+      # Run the linter (replaces flake8 + isort)
+      - id: ruff
+        name: ruff lint
+        args: [--fix]
+      # Run the formatter (replaces black)
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.16.0
+    hooks:
+      - id: eslint
+        additional_dependencies:
+          - eslint@8.16.0
+          - eslint-config-airbnb@19.0.4
+          - eslint-config-prettier@8.5.0
+          - eslint-plugin-import@2.26.0
+          - eslint-plugin-jsx-a11y@6.5.1
+          - eslint-plugin-react@7.30.0
+          - eslint-plugin-react-hooks@4.5.0
+        args: ["--fix"]
+        files: frontend/(src|tests)/
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        files: frontend/(src|tests)/
+  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+    rev: 0.0.2
+    hooks:
+      - id: stylelint
+        additional_dependencies:
+          - stylelint@14.8.5
+          - stylelint-config-prettier@9.0.3
+          - stylelint-config-standard-scss@4.0.0
+        args: ["--fix"]
+        files: frontend/src/styles/.*(css|scss)$
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.7.2
+    hooks:
+      - id: shellcheck
+        args: ["--severity=warning"] 

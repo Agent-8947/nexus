@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.options.json",
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@theme-ui/core",
+    "alwaysStrict": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false
+  },
+  "include": ["./packages/*/test"],
+  "exclude": ["node_modules", "**/node_modules/**", "./packages/*/dist"]
+}

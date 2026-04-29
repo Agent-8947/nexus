@@ -1,0 +1,28 @@
+{
+  "agent_id": "AUTONOMOUS_HYPERPARAM_TUNER",
+  "domain": "AI_ML",
+  "purpose": "Optimize ML model hyperparameters using Bayesian search or TPE",
+  "api_endpoints": [],
+  "data_model": {
+    "param_grid": "TEXT",
+    "best_params": "TEXT",
+    "best_score": "REAL",
+    "duration": "REAL"
+  },
+  "core_algorithm": "Random Search / Bayesian Optimization simulation loop",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "logging",
+    "sqlite3",
+    "random",
+    "time"
+  ],
+  "logic_markers": [
+    "learning_rate",
+    "batch_size",
+    "epoch",
+    "optimization",
+    "params"
+  ]
+}

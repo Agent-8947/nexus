@@ -1,0 +1,30 @@
+{
+  "agent_id": "HF_MODEL_METADATA_SCRAPER",
+  "domain": "AI_ML",
+  "purpose": "Fetch metadata, architectures, and performance metrics from HuggingFace models",
+  "api_endpoints": [
+    "https://huggingface.co/api/models/{model_id}"
+  ],
+  "data_model": {
+    "model_id": "TEXT",
+    "architecture": "TEXT",
+    "downloads": "INTEGER",
+    "likes": "INTEGER",
+    "tags": "TEXT"
+  },
+  "core_algorithm": "HuggingFace Hub API scraping and tag categorization",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "json"
+  ],
+  "logic_markers": [
+    "huggingface.co/api",
+    "modelId",
+    "transformers",
+    "pipeline_tag"
+  ]
+}

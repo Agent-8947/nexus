@@ -1,0 +1,20 @@
+{
+  "child_id": "THREAT_STALKER_V1",
+  "generation": 0,
+  "scores": {
+    "gene_expression_rate": 0.5,
+    "has_mocks": 1.0,
+    "has_real_io": 1.0,
+    "has_error_handling": 0.0,
+    "security_implemented": 1.0,
+    "has_logging": 1.0
+  },
+  "failures": [
+    "Missing try/except blocks"
+  ],
+  "improvements": [
+    "Zero mock logic detected",
+    "Real I/O implemented"
+  ],
+  "overall_fitness": 0.75
+}

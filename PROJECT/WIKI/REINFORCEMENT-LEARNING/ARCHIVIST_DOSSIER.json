@@ -1,0 +1,14 @@
+{
+    "name": "REINFORCEMENT-LEARNING",
+    "indexed_at": "2026-04-05 16:01:55",
+    "domains": [
+        "CRYPTO",
+        "FORECASTING",
+        "MACHINE_LEARNING",
+        "LEGAL",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: CRYPTO + FORECASTING + MACHINE_LEARNING + LEGAL + INFRASTRUCTURE",
+    "legal_devops_perspective": "Анализ защищенных данных, аудит смарт-контрактов, деанонимизация блокчейн-транзакций. | Построение математических моделей для предсказания корпоративных и финансовых рисков. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Прямая автоматизация комплаенса и выявления нарушений законодательства/лицензий. | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

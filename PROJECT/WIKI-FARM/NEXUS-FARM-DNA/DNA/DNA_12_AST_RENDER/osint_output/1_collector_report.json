@@ -1,0 +1,24 @@
+{
+  "agent": "HYBRID_TROUBLESHOOTING_x_CRATE",
+  "version": "2.0",
+  "timestamp": "2026-04-09T05:07:26.929578",
+  "target": "C:\\Users\\MAC\\AppData\\Local\\Temp\\tmpt2jb6ti8",
+  "stats": {
+    "files_scanned": 1,
+    "files_skipped": 0,
+    "findings": 1,
+    "errors": 0
+  },
+  "findings": [
+    {
+      "rule_id": "generic_secret",
+      "severity": "HIGH",
+      "category": "credential",
+      "file": "test_file.py",
+      "line": 2,
+      "match": "password****",
+      "context": "password = \"secret123\"",
+      "checksum": "167d67c7d968"
+    }
+  ]
+}

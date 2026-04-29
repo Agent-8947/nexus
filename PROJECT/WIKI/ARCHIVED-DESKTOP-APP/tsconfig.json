@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages" },
+    { "path": "applications/desktop" },
+    { "path": "applications/jupyter-extension/nteract_on_jupyter" },
+    { "path": "applications/web" }
+  ]
+}

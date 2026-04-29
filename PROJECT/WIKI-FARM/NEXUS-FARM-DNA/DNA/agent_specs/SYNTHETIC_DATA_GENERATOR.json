@@ -1,0 +1,29 @@
+{
+  "agent_id": "SYNTHETIC_DATA_GENERATOR",
+  "domain": "AI_ML",
+  "purpose": "Generate privacy-preserving synthetic tabular data for training",
+  "api_endpoints": [],
+  "data_model": {
+    "schema": "TEXT",
+    "row_count": "INTEGER",
+    "fied_distribution": "TEXT",
+    "data": "TEXT"
+  },
+  "core_algorithm": "Probabilistic distribution-based data synthesis",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "random",
+    "logging",
+    "sqlite3",
+    "json",
+    "datetime"
+  ],
+  "logic_markers": [
+    "synthetic",
+    "seed",
+    "distribution",
+    "mock",
+    "generator"
+  ]
+}

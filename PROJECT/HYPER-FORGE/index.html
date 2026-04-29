@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <title>NEXUS HyperFrames Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #050505;
+        font-family: 'Outfit', sans-serif;
+        color: white;
+      }
+      #stage {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+      }
+      .nexus-logo {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 120px;
+        font-weight: 700;
+        box-shadow: 0 0 100px rgba(79, 172, 254, 0.5);
+        position: relative;
+        z-index: 2;
+      }
+      .nexus-logo::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid rgba(0, 242, 254, 0.3);
+        border-radius: 50%;
+      }
+      .title-container {
+        position: absolute;
+        bottom: 150px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 80px;
+        letter-spacing: 10px;
+        text-transform: uppercase;
+        background: linear-gradient(to bottom, #fff, #888);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+      .tagline {
+        font-size: 24px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+      .grid {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 100px 100px;
+        transform: perspective(1000px) rotateX(60deg) translateY(-500px);
+        z-index: 1;
+        opacity: 0.3;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="nexus-intro"
+      data-start="0"
+      data-duration="6"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="stage">
+        <div class="grid"></div>
+        <div class="nexus-logo">N</div>
+        <div class="title-container">
+          <h1 id="title">HYPERFRAMES</h1>
+          <div class="tagline" id="tagline">Engineered for NEXUS Intelligence</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Animations
+      tl.from(".nexus-logo", { scale: 0, rotation: 180, duration: 1.5, ease: "expo.out" }, 0.5);
+      tl.to(".nexus-logo", { boxShadow: "0 0 150px rgba(79, 172, 254, 0.8)", repeat: -1, yoyo: true, duration: 2 }, 2);
+      
+      tl.from("#title", { opacity: 0, y: 50, duration: 1, ease: "power3.out" }, 1.5);
+      tl.from("#tagline", { opacity: 0, y: 20, duration: 1, ease: "power3.out" }, 2.0);
+      
+      tl.to(".grid", { backgroundPosition: "0 1000px", duration: 10, ease: "none" }, 0);
+
+      window.__timelines["nexus-intro"] = tl;
+    </script>
+  </body>
+</html>

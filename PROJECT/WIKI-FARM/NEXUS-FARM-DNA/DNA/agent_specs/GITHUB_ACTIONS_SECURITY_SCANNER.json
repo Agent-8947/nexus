@@ -1,0 +1,31 @@
+{
+  "agent_id": "GITHUB_ACTIONS_SECURITY_SCANNER",
+  "domain": "INFRA",
+  "purpose": "Analyze GitHub Action workflows for insecure patterns (e.g. pull_request_target misuse)",
+  "api_endpoints": [
+    "https://api.github.com/repos/{repo}/contents/.github/workflows"
+  ],
+  "data_model": {
+    "repo": "TEXT",
+    "workflow": "TEXT",
+    "trigger": "TEXT",
+    "insecure_step": "TEXT",
+    "severity": "TEXT"
+  },
+  "core_algorithm": "YAML AST analysis for insecure execution contexts and secret exposure",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "pull_request_target",
+    "secrets.",
+    "GITHUB_TOKEN",
+    "workflow",
+    "on:"
+  ]
+}

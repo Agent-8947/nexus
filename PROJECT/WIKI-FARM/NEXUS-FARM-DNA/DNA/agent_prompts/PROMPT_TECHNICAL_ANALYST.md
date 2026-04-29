@@ -1,0 +1,1751 @@
+# SYSTEM
+You are an Elite NEXUS DNA Architectural Synthesizer (2026 Edition).
+Your mission is to generate COMPLETE, PRODUCTION-READY, S-TIER Python scripts for the NEXUS ecosystem.
+
+## CORE ARCHITECTURAL LAWS (MANDATORY):
+1. **Output ONLY Python code**. Start with #!/usr/bin/env python3. No preambles.
+2. **ZERO STUBS**: Do not use `pass` or `TODO`. Implement ALL logic.
+3. **MULTI-PHASE EXECUTION**: The `execute_scan` MUST orchestrate at least 3 distinct internal phases.
+4. **FALLBACK & RESILIENCY**: Use `requests.Session()` with retries.
+5. **PERSISTENCE**: Use sqlite3. Prevent duplicates using SHA-256 data_hash.
+6. **TEAMMATE IDENTITY**: Implement a `profile()` method returning a dict with (name, role, specialty, status).
+
+## DOMAIN KNOWLEDGE (CONTEXT SNAPSHOT):
+# NEXUS PLATFORM: MASTER DNA ARCHIVE
+
+---
+
+## [ADVANCED-JAVA]
+- **категория**: Backend / Architecture
+- **суть**: Масштабный справочник по продвинутым концепциям Java для backend-разработчиков. Охватывает высоконагруженные системы, распределенные архитектуры, микросервисы и системное проектирование на уровне Seni
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[AIRFLOW]], [[BRAFT]], [[BUCKET4J]]
+
+---
+
+## [AEGIS]
+- **категория**: Security / Authentication
+- **суть**: Бесплатное, безопасное и open-source приложение двухфакторной аутентификации (2FA) для Android. Альтернатива Google Authenticator и Authy с полным контролем над данными.
+- **суперсила**: Зашифрованное хранилище — все секреты защищены AES-256-GCM ; Биометрическая разблокировка — отпечаток / Face ID ; Импорт из 20+ приложений — Google Authenticator, Authy, FreeOTP, и др. ; TOTP / HOTP / Steam — поддержка всех стандартов 2FA ; Автоматический бэкап — в зашифрованном формате
+- **код / запуск**: `# Импорт из Google Authenticator ■ aegis import --format=google-authenticator backup.json ■`
+- **архитектура**: Паттерн: Локальное шифрование секретов без облака — идеально для OSINT-агентов ; Интеграция: Можно извлечь логику AES-256-GCM для шифрования `memory.json` и state-файлов агентов ; Риск: Только Android — нет CLI или API для автоматизации
+- **связи**: [[BUTTERCUP-DESKTOP]], [[BOTAN]], [[CERTIFICATES]]
+
+---
+
+## [AIF360]
+- **категория**: AI / Ethics
+- **суть**: Open-source toolkit от IBM Research для обнаружения и устранения дискриминации (bias) в моделях машинного обучения. Позволяет аудировать датасеты и модели на предмет расовых, гендерных и других предвз
+- **суперсила**: Pre-processing: Reweighing, Disparate Impact Remover ; In-processing: Adversarial Debiasing, Meta-Fair Classifier ; Post-processing: Calibrated Equalized Odds, Reject Option ; Метрики: Statistical Parity, Equal Opportunity, Disparate Impact Ratio
+- **код / запуск**: `from aif360.datasets import BinaryLabelDataset ■ from aif360.metrics import BinaryLabelDatasetMetric ■  ■ dataset = BinaryLabelDataset( ■     df=df, l...`
+- **архитектура**: Паттерн: Аудит bias в данных — критично для Legal-DevOps (судебные решения, HR-скоринг) ; Интеграция: Встраивается в pipeline перед любой ML-моделью как "фильтр справедливости" ; Ключевое: Для NEXUS Legal Module — проверка алгоритмических решений на дискриминацию
+- **связи**: [[CLEANLAB]], [[CAUSALML]], [[AUTOGLUON]]
+
+---
+
+## [AIRFLOW]
+- **категория**: Infrastructure / Orchestration
+- **суть**: Apache Airflow — платформа для программирования, планирования и мониторинга рабочих процессов (workflows). Определяет задачи как DAG (Directed Acyclic Graph) на Python. Стандарт индустрии для ETL, ML 
+- **суперсила**: 1. DAG — граф задач без циклов, описывает зависимости между этапами 2. Operators — единицы работы (BashOperator, PythonOperator, DockerOperator) 3. Sensors — ожидание внешнего события (файл, API, врем...
+- **код / запуск**: `from airflow import DAG ■ from airflow.operators.python import PythonOperator ■ from datetime import datetime ■  ■ def scan_targets(**ctx): ■     # Ag...`
+- **архитектура**: Паттерн: DAG-оркестрация — идеально для координации множества автономных агентов ; Интеграция: Каждый агент NEXUS = один Operator. DAG = миссия. Scheduler = мета-оркестратор ; Ключевое: XCom механизм — межагентная коммуникация (агент A передает результат агенту B)
+- **связи**: [[CONTAINERSSH]], [[AUTOGEN]], [[CLOUDQUERY]]
+
+---
+
+## [ALGS4]
+- **категория**: CS / Algorithms
+- **суть**: Официальная библиотека к самому популярному курсу алгоритмов в мире (Princeton University). Содержит реализацию всех базовых структур данных и алгоритмов на Java. Это "золотой стандарт" чистоты и эффе
+- **суперсила**: Sorting — Quicksort (Dual-pivot), Mergesort, Shellsort. ; Searching — Red-Black BSTs, Hash Tables (Linear Probing), TSTs. ; Graphs — Dijkstra, Prim, Kruskal, Bellman-Ford, Max-Flow/Min-Cut. ; Strings — KMP, Boyer-Moore, Huffman compression, LZW. ; Fundamentals — Union-Find (Weighted Quick Union), Stack, Queues (Priority Queues).
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Использование Union-Find для анализа связей в графах (например, связей между юридическими лицами). ; Интеграция: Референсная реализация String-поиска (KMP) для сверхбыстрого сканирования документов. ; Ключевое: Библиотека идеальна как база для написания критических путей NEXUS Core.
+- **связи**: [[C-ALGORITHMS]], [[ADVANCED-JAVA]], [[BISHOP-ALGORITHMS-SWIFT]]
+
+---
+
+## [ALIBI-DETECT]
+- **категория**: AI / Monitoring (Data Drift)
+- **суть**: Брат-близнец ALIBI, но сфокусированный на мониторинге данных в реальном времени. Обнаруживает аномалии, выбросы (outliers) и дрейф данных (когда модель начинает ошибаться, потому что мир изменился).
+- **суперсила**: 1. Outlier Detection — поиск редких событий (фрод, сбой датчика). 2. Data Drift Detection — сравнение входящего потока данных с эталоном. 3. Adversarial Detection — обнаружение атак на МО (враждебных ...
+- **код / запуск**: `from alibi_detect.cd import KSDrift ■ cd = KSDrift(X_ref, p_val=.05) ■ preds = cd.predict(X_test) ■ print(f"Drift detected: {preds['data']['is_drift']...`
+- **архитектура**: Паттерн: Система раннего предупреждения. "Поток данных от агентов изменился!" (Началась атака или сбой). ; Интеграция: Модуль NEXUS Monitor — автоматическая проверка качества данных в реальном времени. ; Ключевое: Работает с картинками (через VAE) и текстом (через эмбеддинги).
+- **связи**: [[CLEANLAB]], [[ALIBI]], [[AIF360]], [[CHRONOS-FORECASTING]]
+
+---
+
+## [ALIBI]
+- **категория**: AI / XAI (Explainable AI)
+- **суть**: Alibi — библиотека от Seldon для интерпретации моделей машинного обучения. Она отвечает на вопрос: "ПОЧЕМУ черная коробка (нейросеть) выдала именно этот прогноз?". Позволяет анализировать как классиче
+- **суперсила**: 1. Accumulated Local Effects (ALE) — влияние фич на предсказание. 2. Anchors — правила, объясняющие исход (сквозные правила "Если А, то Б"). 3. Counterfactuals — "Что нужно изменить в данных, чтобы по...
+- **код / запуск**: `from alibi.explainers import Counterfactual ■ # "Что изменить в зарплате и возрасте для одобрения кредита?" ■ cf = Counterfactual(predict_fn, shape=(1...`
+- **архитектура**: Паттерн: Доверительный ИИ. Если агент NEXUS ошибается, Alibi находит причину. ; Интеграция: Для NEXUS Legal — обоснование отказа или решения (юридическая прозрачность алгоритмов). ; Ключевое: Работает с текстом, числами и изображениями.
+- **связи**: [[CLEANLAB]], [[CAUSALML]], [[ALIBI-DETECT]], [[AIF360]]
+
+---
+
+## [ALINK]
+- **категория**: AI / Distributed ML
+- **суть**: Alink — это алгоритмическая платформа от Alibaba Group на базе Apache Flink. Позволяет объединить пакетную (batch) и потоковую (streaming) обработку данных для решения задач МО в масштабе всей корпора
+- **суперсила**: N/A
+- **код / запуск**: `from pyalink.alink import * ■ useLocalEnv(1) ■  ■ # Создание источника данных (Batch) ■ source = CsvSourceBatchOp().setFilePath("data.csv").setSchemaS...`
+- **архитектура**: Паттерн: Сплав обучения и работы (Streaming + Batch). Прямая реализация идеи "непрерывного обучения". ; Интеграция: Идеально для NEXUS Orchestrator в сценариях, где нам нужно быстро обрабатывать миллионы событий (сообщений агентов) в реальном времени. ; Ключевое: Поддержка графовых алгоритмов (PageRank, Community Detection) на распределенных данных.
+- **связи**: [[ALGS4]], [[AUTOGLUON]], [[ALLUXIO]], [[AIRFLOW]]
+
+---
+
+## [ALLUXIO]
+- **категория**: Infrastructure / Data Virtualization
+- **суть**: Alluxio (бывший Tachyon) — это уровень виртуализации данных, который объединяет разрозненные хранилища (HDFS, S3, Azure, Google Cloud, Ceph) в единое логическое пространство. Он кэширует данные в опер
+- **суперсила**: N/A
+- **код / запуск**: `# Монтируем Alluxio как локальную папку ■ ./bin/alluxio-fuse mount /mnt/alluxio /alluxio-mount-point ■  ■ # Теперь работаем как с обычным диском ■ ls ...`
+- **архитектура**: Паттерн: Единое Хранилище (Global Vault). Агенты NEXUS могут читать свои датасеты из `alluxio://` не беспокоясь, лежат они в AWS или в локальной папке. ; Интеграция: Использование gRPC-клиента Alluxio для быстрого доступа к обучающим данным (например, ArXiv документам) во время инференса. ; Ключевое: Поддержка POSIX-интерфейса (монтирование как диска).
+- **связи**: [[ALINK]], [[CONTAINERSSH]], [[AIRFLOW]], [[ARCTICDB]]
+
+---
+
+## [ALPHAZERO_GOMOKU]
+- **категория**: AI / Reinforcement Learning
+- **суть**: AlphaZero General — чистая и понятная реализация алгоритма AlphaZero от DeepMind. Хотя в названии указано "Gomoku" (Пять в ряд), архитектура полностью универсальна и позволяет обучить ИИ играть в любу
+- **суперсила**: N/A
+- **код / запуск**: `class GomokuGame(Game): ■     def getValidMoves(self, board, player): ■         # Логика игры: где можно поставить фишку ■         ... ■      ■     de...`
+- **архитектура**: N/A
+- **связи**: [[ALGS4]], [[AUTOGLUON]], [[CLEANRL]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]]
+
+---
+
+## [AMARANTH]
+- **категория**: Hardware / Chip Design (EDA)
+- **суть**: Amaranth (ранее nMigen) — это современный язык описания аппаратуры (HDL) на базе Python. Он заменяет классические Verilog и VHDL, используя силу Python для генерации сложных цифровых схем. Код Amarant
+- **суперсила**: N/A
+- **код / запуск**: `from amaranth import * ■  ■ class Counter(Elaboratable): ■     def __init__(self, width): ■         self.v = Signal(width) ■  ■     def elaborate(self...`
+- **архитектура**: Паттерн: Hardware Acceleration через Python. Если агент NEXUS нуждается в ускорении (например, кастомный крипто-процессор на FPGA), Amaranth — это путь. ; Интеграция: Автоматическая генерация FPGA-прошивок для OSINT (например, аппаратный брутфорс хэшей на чипах). ; Ключевое: Идеально для проектов на стыке софта и "железа" (IoT, робототехника).
+- **связи**: [[ARDUINO-FOC]], [[CHIPSEC]], [[BASIC_VERILOG]], [[BIRDISCV]]
+
+---
+
+## [AMBER]
+- **категория**: Security / Offensive
+- **суть**: Amber — reflective PE loader (загрузчик исполняемых файлов) с встроенным обходом антивирусов. Использует SGN encoder для полиморфного шифрования пейлоада и CRC32/IAT API hashing для сокрытия вызовов W
+- **суперсила**: No static imports in IAT ; Encrypted payload body ; Randomized stub generation ; No disk write (reflective load)
+- **код / запуск**: `SGN Encoder Pipeline: ■ PE File → XOR Encryption → Polymorphic Stub → CRC32 API Resolution → In-Memory Execution ■  ■ Anti-Detection: ■ - No static im...`
+- **архитектура**: Паттерн: Техника рефлективной загрузки — применима для загрузки агентов в память без записи на диск ; Интеграция: API hashing через CRC32 — полезно для stealth-модулей NEXUS ; Риск: Высокий — инструмент наступательной безопасности. Только для Red Team / аудита
+- **связи**: [[CHAOS-ROOTKIT]], [[CHIPSEC]], [[BLACK-HAT-RUST]], [[AUTOSPLOIT]]
+
+---
+
+## [ANOMA]
+- **категория**: Infrastructure / Privacy Protocols
+- **суть**: Anoma — это первый в мире протокол обмена активами на основе "намерений" (intents). Вместо транзакции "A пересылает B токены X", пользователь отправляет "намерение": "Я хочу получить токены Y в обмен 
+- **суперсила**: 1. Intents — декларативный подход к сделкам (описывается "что хочу", а не "как"). 2. Infinite Multi-Chain Aggregation — находит лучшие пути обмена между любыми блокчейнами. 3. Shielded Pool — скрывает...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Система управления намерениями (Intent Engine). Это фундамент для автономных агентов. Агент говорит: "Я хочу собрать отчет по X", а NEXUS-солверы ищут способы это сделать. ; Интеграция: Использование ZKP (нулевого разглашения) для анонимной оплаты ресурсов OSINT-агентами. ; Ключевое: Работает без "наблюдаемого посредника". Полная приватность транзакций.
+- **связи**: [[ARIEL-OS]], [[BRAFT]], [[BLACK-HAT-RUST]], [[CERTIFICATES]]
+
+---
+
+## [ANOMALIB]
+- **категория**: AI / Computer Vision
+- **суть**: Anomalib — это современная библиотека (библиотека-флагман от Intel/OpenVINO) для обнаружения аномалий в изображениях и видео. Она предназначена для задач контроля качества на производстве (поиск дефек
+- **суперсила**: 1. Reconstruction-based — нейросеть учится "нормальному" виду объекта; аномалия — то, что она не может восстановить. 2. Embedding-based — сравнение признаков (embeddings) "нормального" и "текущего" об...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Автоматический контроль качества визуальных данных. "Это фото — подделка (Deepfake) или оригинал?" ; Интеграция: Модуль NEXUS Vision — обнаружение посторонних лиц, предметов или подозрительной активности на видеопотоках (через [[CAMERADAR]]). ; Ключевое: Использование OpenVINO для сверхбыстрого инференса на обычных процессорах CPU.
+- **связи**: [[CELLPOSE]], [[COMPUTERVISION-RECIPES]], [[CAMERADAR]], [[ALIBI-DETECT]], [[AUTOGLUON]]
+
+---
+
+## [ANYTHING-LLM]
+- **категория**: AI / RAG Frameworks
+- **суть**: Anything-LLM — это комплексный инструмент для превращения ваших документов (PDF, TXT, Word, Obsidian) в базу знаний для локальных и облачных нейросетей. Позволяет создавать изолированные "рабочие прос
+- **суперсила**: N/A
+- **код / запуск**: `# Anything-LLM может напрямую "подхватить" вашу папку Obsidian ■ # Все новые .md файлы будут автоматически индексироваться ■ # И вы сможете спросить: ...`
+- **архитектура**: Паттерн: Персональный NEXUS Brain. Это готовый интерфейс для общения с вашей библиотекой из 1400+ репозиториев. ; Интеграция: Использование API Anything-LLM для предоставления агентам NEXUS доступа к WIKI-базе (RAG). ; Ключевое: Работает на 100% локально (через [[OLLAMA]]).
+- **связи**: [[DNA-FARM]], [[CRAWL4AI]], [[AUTOGEN]], [[OLLAMA]]
+
+---
+
+## [APFS-FUSE]
+- **категория**: OS / Filesystems
+- **суть**: Драйвер для интерфейса FUSE (Filesystem in Userspace), который позволяет читать данные из файловой системы APFS (Apple File System) на операционных системах Linux. APFS является стандартом для macOS (
+- **суперсила**: N/A
+- **код / запуск**: `# Определяем раздел с APFS (используем lsblk) ■ # Монтируем раздел /dev/sdb2 в папку /mnt/mac ■ apfs-fuse /dev/sdb2 /mnt/mac ■  ■ # Для разделов с шиф...`
+- **архитектура**: Паттерн: Кросс-платформенная совместимость данных. Если агенту NEXUS нужно проанализировать образ диска iPhone (iOS), APFS-FUSE — это точка входа. ; Интеграция: Модуль NEXUS Recon — автоматическое монтирование найденных образов дисков Apple. ; Ключевое: Работает в userspace, что минимизирует риск падения ядра (Kernel Panic).
+- **связи**: [[CHIPSEC]], [[AMBER]], [[BRUTAL]]
+
+---
+
+## [APPINFOSCANNER]
+- **категория**: Security / Mobile Apps Audit
+- **суть**: AppInfoScanner — это комплексный инструмент на Python для автоматического анализа мобильных приложений (Android APK, iOS IPA). Он сканирует исходный код и ресурсы приложений на предмет утечки конфиден
+- **суперсила**: 1. Creds Extraction — автоматический поиск паролей, AWS-ключей, Firebase-секретов. 2. Reverse Engineering — декомпиляция APK/IPA для поиска уязвимых алгоритмов. 3. URL Discovery — вытягивание всех энд...
+- **код / запуск**: `# Рекурсивное сканирование папки с APK файлами ■ python AppInfoScanner.py -p /path/to/apk_files/ ■  ■ # Фокус на поиске конкретных ключевых слов (напр...`
+- **архитектура**: Паттерн: Автоматизированный аудит безопасности кода (Mobile focus). ; Интеграция: Модуль NEXUS Recon может использовать AppInfoScanner для проверки "доверенности" скачиваемых приложений. ; Ключевое: Работает с декомпилированным кодом (Bytecode), а не только с манифестом.
+- **связи**: [[ANDROID-PIN-BRUTEFORCE]], [[APPLICATIONINSPECTOR]], [[APPWRITE]], [[CHATSECURE-IOS]]
+
+---
+
+## [APPLICATIONINSPECTOR]
+- **категория**: Security / Software Supply Chain
+- **суть**: ApplicationInspector (Microsoft) — это кросс-платформенный инструмент командной строки, который помогает идентифицировать и анализировать "характеристики" исходного кода. Это не просто сканер уязвимос
+- **суперсила**: N/A
+- **код / запуск**: `# Базовый анализ проекта в папке src ■ appinspector analyze -s ./src/ -f html -o report.html ■  ■ # Только проверка на криптографию ■ appinspector ana...`
+- **архитектура**: Паттерн: Глубокая Прозрачность Кода (Full Transparency). Если агент NEXUS планирует интегрировать какой-то модуль из GitHub — ApplicationInspector сначала проверяет его. ; Интеграция: Можно встроить в NEXUS Constructor для автоматического написания документации к коду (на основе выявленных паттернов). ; Ключевое: В отличие от антивирусов, он фокусируется на "намерениях" кода.
+- **связи**: [[APPINFOSCANNER]], [[CHIPSEC]], [[AUTO-GLUON]], [[BUNDLER-AUDIT]]
+
+---
+
+## [APPWRITE]
+- **категория**: Infrastructure / Backend-as-a-Service
+- **суть**: Appwrite — это полноценная backend-платформа для мобильных и веб-приложений. Она предоставляет API для аутентификации, баз данных, облачных функций и файловых хранилищ. Платформа разработана как откры
+- **суперсила**: 1. Auth — OAuth, Email/Pass, SMS, Anonymous. 2. Database — NoSQL база с гибким управлением правами. 3. Storage — хранение и оптимизация изображений/видео. 4. Cloud Functions — запуск кода (JavaScript,...
+- **код / запуск**: `from appwrite.client import Client ■ from appwrite.services.databases import Databases ■  ■ client = Client() ■ client.set_endpoint('https://localhost...`
+- **архитектура**: Паттерн: Backend-in-a-box. Если агентам NEXUS нужно общее хранилище данных и единая аутентификация — Appwrite готов к работе. ; Интеграция: Можно использовать Appwrite Cloud Functions для запуска легких Python-агентов по триггеру в базе данных. ; Ключевое: Использование асинхронных воркеров для масштабируемости (через Redis).
+- **связи**: [[ANYTHING-LLM]], [[APPINFOSCANNER]], [[ALLUXIO]], [[AIRFLOW]]
+
+---
+
+## [ARDUPILOT]
+- **категория**: Hardware / Autopilot (Drone)
+- **суть**: ArduPilot — самая передовая, полнофункциональная и надежная система автопилота с открытым исходным кодом. Поддерживает мультикоптеры (ArduCopter), самолеты (ArduPlane), вездеходы (ArduRover), подводны
+- **суперсила**: 1. EKF3 Logic — сложнейшая математика для объединения данных акселерометра, гироскопа, барометра и GPS. 2. Autonomous Missions — планирование полета по точкам (Waypoints) с обходом препятствий. 3. Sma...
+- **код / запуск**: `# Взлет дрона на 10 метров (автоматически) ■ takeoff 10 ■  ■ # Движение к точке (latitude, longitude) ■ guided 55.7558 37.6173 ■`
+- **архитектура**: Паттерн: Автономная навигация в физическом мире (Physical Intelligence). Если NEXUS должен управлять реальным агентом (дроном-разведчиком), ArduPilot — это стандарт. ; Интеграция: Использование MAVProxy (Python) для командного управления дронами удаленно. ; Ключевое: Использование асинхронного планировщика задач для жесткого реального времени.
+- **связи**: [[ARIEL-OS]], [[ARDUINO-FOC]], [[CHIPSEC]], [[ARGON-DESIGN-SYSTEM]]
+
+---
+
+## [ARIEL-OS]
+- **категория**: OS / Security / IoT
+- **суть**: Ariel-OS — это современная операционная система для встраиваемых систем и устройств Internet of Things (IoT), написанная полностью на языке Rust. Она фокусируется на максимальной безопасности (memory 
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Безопасное Мелкоядерное Проектирование (Safe Kernel Architecture). Идеальная модель для построения сверхзащищенных NEXUS-сенсоров. ; Интеграция: Можно использовать Ariel-OS как "прошивку" для автономных полевых агентов (hardware agents). ; Ключевое: Использование асинхронного подхода Rust (`async/await`) для обработки событий с минимальными задержками.
+- **связи**: [[ANOMA]], [[BASIC_VERILOG]], [[BOTAN]], [[ARDUPILOT]], [[BLACK-HAT-RUST]]
+
+---
+
+## [ATTACKSURFACEANALYZER]
+- **категория**: Security / Infrastructure Audit
+- **суть**: Attack Surface Analyzer — это продвинутый инструмент аудита от Microsoft, который сравнивает состояние системы ДО и ПОСЛЕ установки программного обеспечения или изменения конфигурации. Он находит всё:
+- **суперсила**: 1. File System — находит новосозданные или измененные файлы (даже скрытые). 2. Registry (Windows) — отслеживает манипуляции с ключами автозагрузки и системными настройками. 3. Network Ports — детектир...
+- **код / запуск**: `# Делаем "чистый" снимок системы ДО установки ■ asa.exe collect --name BeforeUpdate ■  ■ # Устанавливаем сомнительный софт... ■ # Делаем снимок ПОСЛЕ ...`
+- **архитектура**: Паттерн: Контроль Поверхности Атаки (Attack Surface Control). "Что изменилось в моем окружении?" ; Интеграция: Модуль NEXUS Monitor — автоматическое сканирование системы раз в час для обнаружения скрытых изменений (Intrusion Detection). ; Ключевое: Использование инкрементальных снимков (Snapshotting) для точного сравнения состояний.
+- **связи**: [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[AMBER]], [[AUTOSPLOIT]], [[BLACK-HAT-RUST]]
+
+---
+
+## [ATTIFYOS]
+- **категория**: Security / IoT Audit Distro
+- **суть**: AttifyOS — это специализированный дистрибутив на базе Ubuntu, созданный специально для проведения аудита безопасности и пентеста IoT-устройств (Internet of Things). Он содержит все необходимые инструм
+- **суперсила**: N/A
+- **код / запуск**: `# Распаковка прошивки и поиск интересного ■ binwalk -e firmware.bin ■ cd _firmware.bin.extracted ■ firmwalker . ■ # (Firmwalker выведет список всех па...`
+- **архитектура**: Паттерн: Единое рабочее место IoT-аудитора. Это "швейцарский нож" для вскрытия любых железных устройств. ; Интеграция: Можно использовать Docker-версии утилит из AttifyOS в NEXUS-агентах для автоматического анализа прошивок. ; Ключевое: Использование QEMU для запуска прошивок роутеров без реального железа (Эмуляция).
+- **связи**: [[ARIEL-OS]], [[BASIC_VERILOG]], [[CAMERADAR]], [[CHIPSEC]], [[BLACK-HAT-RUST]]
+
+---
+
+## [AUTOAWQ]
+- **категория**: AI / Model Optimization
+- **суть**: AutoAWQ — это передовая библиотека для квантования весов (Weight Quantization) больших языковых моделей (LLM, таких как Llama-3, Mixtral) до 4 бит. В ней используется алгоритм AWQ (Activation-aware We
+- **суперсила**: N/A
+- **код / запуск**: `from awq import AutoAWQForCausalLM ■ from transformers import AutoTokenizer ■  ■ model_path = "meta-llama/Llama-3-8b" ■ quant_path = "Llama-3-8b-awq" ...`
+- **архитектура**: Паттерн: Экономика ресурсов (VRAM Economics). Как запустить мощный ИИ в локальном NEXUS "подвале". ; Интеграция: Модуль NEXUS Deployer — автоматическое квантование новых моделей перед их использованием агентами. ; Ключевое: Использование ядра Marlin для сверхскоростного вывода (инференса).
+- **связи**: [[ANYTHING-LLM]], [[CHARTGPU]], [[AUTOGPTQ]], [[OLLAMA]]
+
+---
+
+## [AUTOFORMER]
+- **категория**: AI / Forecasting (SOTA)
+- **суть**: Autoformer — это передовая архитектура нейросети от Tsinghua University (THU) для долгосрочного прогнозирования временных рядов. Она превосходит классические трансформеры благодаря механизму Auto-Corr
+- **суперсила**: N/A
+- **код / запуск**: `from models.Autoformer import Model ■ import torch ■  ■ # Параметры модели (инкапсулированные в скриптах репозитория) ■ exp = Exp_Main(args) # Загрузк...`
+- **архитектура**: N/A
+- **связи**: [[CAUSALML]], [[DEEP-LEARNING-TIME-SERIES]], [[AUTOGLUON]], [[CHRONOS-FORECASTING]]
+
+---
+
+## [AUTOGEN]
+- **категория**: AI / Agentic Systems
+- **суть**: Фреймворк от Microsoft Research для создания мультиагентных AI-приложений. Агенты могут общаться друг с другом, делегировать задачи, использовать инструменты и выполнять код — всё это автономно или с 
+- **суперсила**: 1. ConversableAgent — базовый агент с возможностью диалога 2. AssistantAgent — агент-исполнитель (пишет код, анализирует) 3. UserProxyAgent — прокси для человека (может автоматически исполнять код) 4....
+- **код / запуск**: `from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager ■  ■ # Агент-Разведчик ■ scout = AssistantAgent( ■     name="NEXUS_Sco...`
+- **архитектура**: Паттерн: Прямой аналог NEXUS Orchestrator — агенты общаются и делегируют задачи ; Интеграция: Можно обернуть каждого WIKI-агента (Brain, Constructor, Deployer) в AutoGen Agent ; Ключевое: `GroupChat` = NEXUS Mission. `GroupChatManager` = NEXUS Оркестратор
+- **связи**: [[ANYTHING-LLM]], [[AUTOGLUON]], [[AIRFLOW]], [[CRAWL4AI]]
+
+---
+
+## [AUTOGLUON]
+- **категория**: AI / Auto-ML
+- **суть**: AutoGluon — библиотека от AWS, которая позволяет обучать сверхточные модели для табличных данных, текста и изображений всего тремя строками кода. Она автоматически выбирает лучшие алгоритмы (XGBoost, 
+- **суперсила**: Tabular Data Mastery— лучшая в мире модель для "табличек" (CSV/Excel). ; Multi-modal Support— может одновременно учиться на тексте, цифрах и картинках в одной таблице. ; Deep Stacking— строит иерархию моделей (одни модели учатся на ошибках других). ; Time-limit Aware— скажи ей: "У тебя 1 час", и она выдаст лучший результат за это время.
+- **код / запуск**: `from autogluon.tabular import TabularPredictor ■  ■ # Обучение на "грязных" данных ■ predictor = TabularPredictor(label='target').fit(train_data) ■  ■...`
+- **архитектура**: Паттерн: Автономное обучение без Data Scientist-а. Агент может сам обучить модель на собранных данных. ; Интеграция: Идеально для NEXUS Legal Module (классификация документов) и NEXUS Security (классификация атак). ; Ключевое: Не нужно настраивать гиперпараметры — всё делается "под капотом".
+- **связи**: [[CLEANLAB]], [[AIF360]], [[CHRONOS-FORECASTING]], [[CAUSALML]], [[DATA-JUICER]]
+
+---
+
+## [AUTOGPTQ]
+- **категория**: AI / Model Optimization
+- **суть**: AutoGPTQ — это одна из старейших и наиболее проверенных библиотек для квантования больших моделей (LLM, таких как Llama, Qwen, Mistral). Она основана на алгоритме GPTQ (Generalized PTQ), который позво
+- **суперсила**: N/A
+- **код / запуск**: `from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig ■  ■ quantize_config = BaseQuantizeConfig( ■     bits=4, group_size=128, damp_percent=0....`
+- **архитектура**: Паттерн: Масштабирование Интеллекта (Intel Scalability). Как запустить Llama-70B на потребительской видеокарте с 24 Гб VRAM (напр. RTX 3090/4090). ; Интеграция: Модуль NEXUS Inventory — хранение и автоматическая раздача квантованных моделей агентам. ; Ключевое: Самая широкая поддержка моделей среди всех инструментов квантования.
+- **связи**: [[ANYTHING-LLM]], [[OLLAMA]], [[AUTOAWQ]], [[BREVITAS]]
+
+---
+
+## [AUTOSPLOIT]
+- **категория**: Security / Offensive / OSINT
+- **суть**: Автоматизирует сбор целей через Shodan/Censys/Zoomeye и эксплуатацию через модули Metasploit Framework. Полная цепочка: поиск уязвимых хостов → подбор эксплоита → получение reverse shell.
+- **суперсила**: Shodan Integration: `shodan search "port:445 os:Windows"` → автоматический список целей ; Censys/Zoomeye: альтернативные поисковые движки ; Metasploit RPC: программный контроль MSF через API ; Custom Queries: свои NSE/Shodan запросы для таргетинга
+- **код / запуск**: `[1] Target Discovery ■     Shodan Query: "apache 2.4.49" → список IP ■      ■ [2] Exploit Selection ■     CVE → Metasploit module mapping ■      ■ [3]...`
+- **архитектура**: Паттерн: Полный pipeline "Discover → Exploit → Report" — шаблон для любого автономного агента ; Интеграция: Shodan API + автоматический отбор целей = модель для NEXUS OSINT-агента ; Риск: Очень высокий. Только для авторизованного пентеста / Red Team
+- **связи**: [[ATTACKSURFACEANALYZER]], [[CHEATSHEET-GOD]], [[CAMERADAR]], [[AWESOME-SHODAN-QUERIES]], [[CHAOS-ROOTKIT]]
+
+---
+
+## [AWESOME-SECURITY-HARDENING]
+- **категория**: Security / Infrastructure Hardening
+- **суть**: Awesome Security Hardening — это масштабный кураторский список лучших ресурсов, скриптов и руководств по усилению защиты (hardening) информационных систем. Это путь от "открытой всем ветрам" системы (
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Отключение неиспользуемых протоколов в Linux (/etc/sysctl.conf) ■ net.ipv4.conf.all.accept_redirects = 0 ■ net.ipv4.conf.all.send_redirects = 0 ■...`
+- **архитектура**: Паттерн: Best Practices по Безопасности. Это стандарт, по которому должен быть настроен любой сервер NEXUS. ; Интеграция: Модуль NEXUS Hardener — автоматическое применение этих правил при разворачивании инфраструктуры. ; Ключевое: Использование готовых Ansible/Puppet/Terraform скриптов для массовой защиты хостов.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[CERTIFICATES]], [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[AUTOSPLOIT]]
+
+---
+
+## [AWESOME-SHODAN-QUERIES]
+- **категория**: Security / OSINT
+- **суть**: Awesome Shodan Queries — это крупнейшая коллекция проверенных поисковых запросов для поисковика Shodan. Список охватывает всё: от незащищенных баз данных и вебкамер до критической инфраструктуры (элек
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Поиск открытых баз данных MongoDB ■ "MongoDB Server Information" port:27017 -authentication ■  ■ # 2. Поиск веб-камер с заголовком "Server: Camer...`
+- **архитектура**: Паттерн: Автоматизированная Разведка (Reconnaissance-as-a-Code). Это "топливо" для OSINT-агентов NEXUS. ; Интеграция: Модуль NEXUS Recon — автоматический прогон этих запросов через Shodan API для поиска целей. ; Ключевое: Позволяет за секунды оценить поверхность атаки или защищенность периметра организации.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[CAMERADAR]], [[AWESOME-SHODAN-QUERIES]], [[AUTOSPLOIT]], [[DNA-FARM]]
+
+---
+
+## [AWSOME-ROBOT-DESCRIPTIONS]
+- **категория**: Hardware / Robotics Modeling
+- **суть**: Awesome Robot Descriptions — это курируемый список описаний роботов (Robot Description Files). Он содержит ссылки на файлы в форматах URDF (Unified Robot Description Format) и SDF (Simulation Descript
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Цифровой Двойник Робота (Digital Twin). Знание структуры робота — основа для его автономного управления. ; Интеграция: Модуль NEXUS Robotics — автоматическая загрузка нужной модели в симулятор при обнаружении нового физического агента. ; Ключевое: Содержит "скелеты" (URDF) для почти всех промышленных роботов мира.
+- **связи**: [[ARDUINO-FOC]], [[AWSOME-WEEKLY-ROBOTICS]], [[AGIBOT_X1_INFER]], [[ARDUPILOT]], [[BULLET3]]
+
+---
+
+## [BLACK-HAT-RUST]
+- **категория**: Security / Offensive / Rust
+- **суть**: Black Hat Rust — это концептуальный проект и база знаний (связанная с одноименной книгой) по использованию языка Rust для целей наступательной безопасности (offensive security). Она демонстрирует, как
+- **суперсила**: 1. Malware Development — создание шеллкода (shellcode), инжекторов и реверс-шеллов. 2. Exploit Writing — написание эксплоитов для известных уязвимостей. 3. Advanced Recon — написание сверхбыстрых скан...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Использование "безопасного языка" для "опасных задач". Это основа для построения Red Team модулей NEXUS. ; Интеграция: Модуль NEXUS Stealth — техники сокрытия активности агентов (напр. использование `tokio` для бесшумной работы по сети). ; Ключевое: Библиотека примеров того, как в 2024-2026 годах пишутся современные киберугрозы.
+- **связи**: [[BLACKHAT-ARSENAL-TOOLS]], [[ARIEL-OS]], [[AMBER]], [[AUTOSPLOIT]], [[CHAOS-ROOTKIT]]
+
+---
+
+## [BORG]
+- **категория**: Infrastructure / Backup (Enterprise)
+- **суть**: BorgBackup (Borg) — это невероятно эффективная программа для резервного копирования с открытым исходным кодом. Она фокусируется на двух вещах: дедупликация (Deduplication) и безопасность (Encryption).
+- **суперсила**: N/A
+- **код / запуск**: `# Инициализация шифрованного репозитория ■ borg init --encryption=repokey /path/to/repo ■  ■ # Создание бэкапа папки проекта ■ borg create --stats --p...`
+- **архитектура**: Паттерн: Эффективная Инкрементальная Копия (Snapshotting). Идеально для сохранения состояния всех 1400+ репозиториев фермы. ; Интеграция: Модуль NEXUS Vault — автоматическое резервное копирование всей WIKI и базы данных Obsidian по расписанию в зашифрованный архив. ; Ключевое: Работает молниеносно на миллионах мелких файлов (как у нас сейчас).
+- **связи**: [[BACKUP]], [[ALLUXIO]], [[AIRFLOW]], [[ANYTHING-LLM]], [[BUTTERCUP-DESKTOP]]
+
+---
+
+## [BOTAN]
+- **категория**: Security / Cryptography Library
+- **суть**: Botan — это одна из наиболее надежных и современных библиотек для реализации криптографии. Она поддерживает огромное количество алгоритмов: от классических (AES, RSA, SHA) до передовых (Пост-квантовая
+- **суперсила**: 1. Full Protocol Stack — реализация TLS (1.2, 1.3), DTLS (для UDP), SSH (клиент и сервер). 2. PKI Support — полная поддержка сертификатов X.509 (как в браузере). 3. Public Key AI— поддержка современно...
+- **код / запуск**: `# Генерация закрытого RSA-ключа ■ botan keygen --algo=RSA --params=4096 --passphrase=nexus_secret ■  ■ # Хеширование файла ■ botan hash --algo=SHA-3 R...`
+- **архитектура**: Паттерн: Масштабируемая Шифрованная Связь (Scalable Cryptography). Позволяет агентам NEXUS шифровать общение через TLS 1.3. ; Интеграция: Использование Python-биндингов Botan для шифрования `vault`-файлов и управления `identity` агентов. ; Ключевое: Поддержка пост-квантовых алгоритмов (защита от будущих квантовых компьютеров).
+- **связи**: [[AEGIS]], [[CERTIFICATES]], [[BORG]], [[BUTTERCUP-DESKTOP]], [[BLACK-HAT-RUST]]
+
+---
+
+## [BRAFT]
+- **категория**: Infrastructure / Distributed Systems
+- **суть**: Промышленная реализация протокола RAFT на C++ от Baidu. Обеспечивает распределенный консенсус с поддержкой протокола bRPC. Используется в продакшене Baidu для управления состоянием распределенных сист
+- **суперсила**: 1. Leader Election — автоматический выбор лидера при отказе 2. Log Replication — все ноды содержат идентичный лог команд  3. Snapshot — периодическое сжатие лога для экономии памяти 4. Membership Chan...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: RAFT — фундамент для координации агентов. Если 5 агентов NEXUS должны договориться о результате — RAFT решает эту задачу ; Интеграция: bRPC — высокопроизводительный RPC, подходящий для межагентной коммуникации на уровне ядра ; Ключевое: Leader Election = автоматический выбор `NEXUS Orchestrator` при отказе текущего
+- **связи**: [[AIRFLOW]], [[ADVANCED-JAVA]], [[BUCKET4J]]
+
+---
+
+## [BREVITAS]
+- **категория**: AI / Model Optimization (Hardened)
+- **суть**: Brevitas от AMD/Xilinx — это экспертная библиотека для квантования (Quantization-Aware Training) нейросетей в PyTorch. В отличие от GPTQ или AWQ (которые квантуют готовую модель), Brevitas позволяет у
+- **суперсила**: N/A
+- **код / запуск**: `import torch.nn as nn ■ from brevitas.nn import QuantLinear ■  ■ # Создаем слой с 4-битным квантованием весов ■ class NexusQuantModel(nn.Module): ■   ...`
+- **архитектура**: Паттерн: Сверхлегкий Инференс (Ultra-light Inference). Позволяет запускать "мини-мозги" прямо на датчиках (IoT) через [[ARIEL-OS]]. ; Интеграция: Модуль NEXUS Lab — обучение узкоспециализированных детектеров (напр. звука или движения) для работы на микроконтроллерах. ; Ключевое: Использование квантованных весов для ускорения работы агентов на старых видеокартах.
+- **связи**: [[AMARANTH]], [[ARIEL-OS]], [[AUTOAWQ]], [[AUTOGPTQ]], [[CHRTGPU]], [[OLLAMA]]
+
+---
+
+## [BUCKET4J]
+- **категория**: Infrastructure / Service Stability
+- **суть**: Bucket4j — это легковесная и потокобезопасная библиотека на Java для реализации Rate Limiting (ограничения скорости). Она основана на классическом алгоритме Token Bucket и позволяет защищать API, микр
+- **суперсила**: 1. Zero Locking — высокая производительность под нагрузкой без блокировок потоков (CAS-операции). 2. Distributed Ready — поддержка кластеризации через сторонние кеши (Redis, Ignite), что позволяет син...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Стабильность Системы (Service Stability). Агенты NEXUS должны ограничивать свои запросы к внешним API (напр. Shodan), чтобы не получить бан. ; Интеграция: Использование Bucket4j в качестве прослойки (middleware) для оркестратора — контроль частоты межагентной связи. ; Ключевое: Использование JCache для распределенного контроля лимитов в облаке.
+- **связи**: [[ALLUXIO]], [[AIRFLOW]], [[ADVANCED-JAVA]], [[CAMERADAR]], [[BUTTERCUP-DESKTOP]]
+
+---
+
+## [BUILD-YOUR-OWN-X]
+- **категория**: Education / Systems Engineering
+- **суть**: Build your own X — это уникальный курируемый список руководств по созданию сложных системных программ с нуля. Это путь "от новичка к архитектору" через практику. Если вы когда-либо хотели написать сво
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Понимание Глубинных Слой (Deep Understanding). Это теоретическая база для создания кастомных инструментов NEXUS. ; Интеграция: Можно использовать уроки "Build your own Docker" для создания изолированных песочниц (Sandbox), в которых агенты NEXUS будут запускать сомнительный код. ; Ключевое: Использование референсных реализаций для отладки сложного системного софта.
+- **связи**: [[AMARANTH]], [[ARIEL-OS]], [[ALGS4]], [[ANYTHING-LLM]], [[BLACK-HAT-RUST]]
+
+---
+
+## [BULLET3]
+- **категория**: Hardware / Physics Engine (Real-time)
+- **суть**: Bullet Physics SDK (Bullet3) — это один из самых мощных в мире профессиональных физических движков с открытым исходным кодом. Он повсеместно используется в кино (VFX), видеоиграх (GTA V, RDR 2) и, что
+- **суперсила**: N/A
+- **код / запуск**: `import pybullet as p ■ import pybullet_data ■  ■ # Создаем физический мир ■ p.connect(p.GUI) ■ p.setAdditionalSearchPath(pybullet_data.getDataPath()) ...`
+- **архитектура**: Паттерн: Физическое Представление (Physical Awareness). Агент должен знать, что произойдет, если он нажмет на рычаг или если дрон врежется в стену. ; Интеграция: Модуль NEXUS Simulation — запуск быстрых сценариев "что если" (What-if) перед физическим действием дрона или робота. ; Ключевое: Использование асинхронного PyBullet-сервера для параллельного обучения агентов.
+- **связи**: [[ARDUINO-FOC]], [[ALGS4]], [[ARDUPILOT]], [[AWSOME-ROBOT-DESCRIPTIONS]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]]
+
+---
+
+## [BUN]
+- **категория**: Infrastructure / Web Platform (High-Speed)
+- **суть**: Bun — это прямой и невероятно быстрый конкурент Node.js и Deno. Он написан на языке Zig и использует движок JavaScriptCore (от Apple Safari), в то время как Node использует V8. Bun — это не просто сре
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Мгновенный Вычислительный Агент (Fast Computational Agent). Использование Bun для микросервисов NEXUS — радикальное ускорение по сравнению с Node.js. ; Интеграция: Модуль NEXUS API — запуск высоконагруженного REST-интерфейса вашей базы знаний. ; Ключевое: Поддержка работы с файлами в 10 раз быстрее стандарта (`Bun.write`, `Bun.file`).
+- **связи**: [[ASTRO]], [[ANYTHING-LLM]], [[ALLUXIO]], [[APPWRITE]]
+
+---
+
+## [CAMERADAR]
+- **категория**: Security / Network
+- **суть**: Cameradar — специализированный инструмент на Go для проведения аудита безопасности камер видеонаблюдения, работающих по протоколу RTSP. Он умеет обнаруживать камеры в сети, перебирать стандартные паро
+- **суперсила**: N/A
+- **код / запуск**: `# Сканирование целой подсети на стандартные порты (554) ■ cameradar -t 192.168.1.0/24 ■  ■ # С использованием кастомного словаря паролей ■ cameradar -...`
+- **архитектура**: Паттерн: Автоматическое обнаружение IoT-устройств. Техника сканирования портов и перебора "словарем". ; Интеграция: Модуль NEXUS Recon может использовать логику Cameradar для проверки безопасности "умных зданий". ; Ключевое: Использование асинхронных Go-процедур для сверхбыстрого сканирования тысяч IP-адресов.
+- **связи**: [[CAMERADAR]], [[CHIPSEC]], [[AWESOME-SHODAN-QUERIES]], [[AUTOSPLOIT]]
+
+---
+
+## [CANOPENNODE]
+- **категория**: Hardware / Industrial Networking (CAN)
+- **суть**: CANopenNode — это полнофункциональная реализация стека CANopen (сетевой протокол высокого уровня для шины CAN). Он используется в промышленности для управления моторами, сенсорами и автоматикой в авто
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Стабильная Промышленная Сеть (Industrial Resilience). Если NEXUS должен интегрироваться с физическим заводом или "умной машиной", CANopenNode — это ключ. ; Интеграция: Использование SocketCAN на Linux-агенте NEXUS для удаленного управления промышленным оборудованием через CAN-шину. ; Ключевое: Работает на микроконтроллерах с памятью от 8 Кб RAM.
+- **связи**: [[ARDUINO-FOC]], [[AMARANTH]], [[BASIC_VERILOG]], [[CHIPSEC]], [[ARDUPILOT]]
+
+---
+
+## [CAUSALML]
+- **категория**: AI / Causal ML
+- **суть**: Пакет от Uber для причинно-следственного анализа и uplift-моделирования. В отличие от обычного ML (который находит корреляции), CausalML отвечает на вопрос: "Что ИМЕННО вызвало этот результат?"
+- **суперсила**: 1. S-Learner — единая модель с treatment как фичей 2. T-Learner — отдельные модели для treatment/control 3. X-Learner — гибрид S и T (лучше при малых выборках) 4. R-Learner — residual-based (Robinson'...
+- **код / запуск**: `from causalml.inference.meta import BaseSClassifier ■ from sklearn.ensemble import GradientBoostingClassifier ■  ■ # Данные: X=фичи, treatment=0/1, y=...`
+- **архитектура**: Паттерн: Причинность вместо корреляции — революция для Legal-DevOps. "Виноват ли X в результате Y?" ; Интеграция: Для судебной аналитики NEXUS: «Привело ли действие A к убытку B?» — это прямая задача CausalML ; Ключевое: Uplift-моделирование позволяет оценить эффект вмешательства до его осуществления
+- **связи**: [[CLEANLAB]], [[AUTOGLUON]], [[AIF360]], [[CHRONOS-FORECASTING]]
+
+---
+
+## [CELLPOSE]
+- **категория**: AI / Biology & Microscopy
+- **суть**: Cellpose — это передовой инструмент на PyTorch для сегментации биологических объектов (клеток) на изображениях. В отличие от старых методов, он использует нейронные векторные поля (Vector Fields), что
+- **суперсила**: N/A
+- **код / запуск**: `from cellpose import models, io ■  ■ # Загружаем универсальную модель ■ model = models.Cellpose(gpu=True, model_type='cyto') ■ # Читаем картинку ■ img...`
+- **архитектура**: Паттерн: Распознавание Объектов в Шуме (Object Detection in Noise). Математика "потоков" может быть применена к разделению сигналов в других областях (напр. в спектрограммах). ; Интеграция: Модуль NEXUS Bio-Recon — если вашим агентам нужно анализировать научные статьи или снимки био-лабораторий в рамках OSINT. ; Ключевое: Использование векторных полей (Vector Flows) как альтернативы обычной сегментации.
+- **связи**: [[AUTOGLUON]], [[ANOMALIB]], [[D3]], [[COMPUTERVISION-RECIPES]]
+
+---
+
+## [CGAL]
+- **категория**: CS / Computational Geometry (High Precision)
+- **суть**: CGAL — это мощнейшая и наиболее академически точная библиотека в мире для выполнения геометрических вычислений. В отличие от простых библиотек графики, CGAL гарантирует точный результат (Exact Computa
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Геометрическая Истина (Geometric Truth). Если NEXUS должен проектировать физические объекты или анализировать 3D-сканы OSINT-объектов — CGAL это единственный способ сделать это без ошибок. ; Интеграция: Использование CGAL для "сшивания" (stitching) 3D-карт из облака точек, полученных лидаром дрона [[ARDUPILOT]]. ; Ключевое: Поддержка чисел произвольной точности (MPFR).
+- **связи**: [[AMARANTH]], [[ANOMALIB]], [[ALGS4]], [[ARDUPILOT]], [[AWSOME-ROBOT-DESCRIPTIONS]], [[BULLET3]]
+
+---
+
+## [CHAKRA-UI]
+- **категория**: Web / UI Design Frameworks
+- **суть**: Chakra UI — это простая, модульная и очень мощная библиотека компонентов для React, которая дает вам строительные блоки для быстрого создания современных веб-приложенений. Она ставит во главу угла дос
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Консистентность Интерфейса Агента (Unified UX). Идеально для вашего NEXUS Dashboard и визуальных панелей мониторинга. ; Интеграция: Можно использовать Chakra-UI для мгновенного создания премиум-интерфейса вашей базы знаний Obsidian (если разворачивать её как веб-сайт). ; Ключевое: Использование системы "хуков" (`useDisclosure`, `useBreakpointValue`) для динамических интерфейсов.
+- **связи**: [[ASTRO]], [[ANT-DESIGN]], [[ARGON-DESIGN-SYSTEM]], [[BUN]], [[ANYTHING-LLM]]
+
+---
+
+## [CHAOS-ROOTKIT]
+- **категория**: Security / Offensive / Kernel
+- **суть**: Командный rootkit для Windows x64, работающий на уровне ядра с привилегиями виртуальной машины. Способен скрывать процессы, файлы и сетевые соединения от пользовательского пространства.
+- **суперсила**: 1. Process Hiding — удаление процесса из `EPROCESS` linked list 2. File Hiding — перехват `NtQueryDirectoryFile`  3. Network Hiding — скрытие TCP/UDP соединений 4. Privilege Escalation — модификация т...
+- **код / запуск**: `DKOM Process Hiding: ■ 1. Получить указатель на EPROCESS текущего процесса ■ 2. Найти целевой процесс по PID ■ 3. Отсоединить его ActiveProcessLinks о...`
+- **архитектура**: ``` DKOM Process Hiding: 1. Получить указатель на EPROCESS текущего процесса 2. Найти целевой процесс по PID 3. Отсоединить его ActiveProcessLinks от двунаправленного списка:    target->ActiveProcessL...
+- **связи**: [[ATTACKSURFACEANALYZER]], [[CHIPSEC]], [[AMBER]], [[AUTOSPLOIT]], [[BLACK-HAT-RUST]]
+
+---
+
+## [CHATGPT]
+- **категория**: AI / LLM Mastery & Prompting
+- **суть**: Awesome ChatGPT Prompts — это самый большой в мире список мастер-промптов (Prompts) для извлечения максимальной пользы из ChatGPT, Claude, Gemini и других LLM. Список превращает "просто чат" в мощнейш
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Инженерия Намерений (Intent Engineering). Это база для `system_message` ваших автономных агентов. ; Интеграция: Модуль NEXUS Agent Core — автоматический выбор промпта в зависимости от роли агента (Разведчик, Архитектор, Юрист). ; Ключевое: Использование мета-промптов (промпты, которые пишут промпты) для адаптации ИИ к новым задачам.
+- **связи**: [[CHARTGPU]], [[CLEAN-CODE-JAVASCRIPT]], [[CAUSALML]], [[AUTOGEN]], [[ANYTHING-LLM]]
+
+---
+
+## [CHIPSEC]
+- **категория**: Security / Computer Architecture & Firmware
+- **суть**: CHIPSEC — это самый глубокий и мощный в мире фреймворк с открытым исходным кодом для анализа безопасности аппаратных платформ, чипсетов, процессоров и прошивок (BIOS/UEFI). Если антивирус работает на 
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Загрузка драйвера (в Windows/Linux) ■ python chipsec_main.py --drv ■  ■ # 2. Полный аудит платформы (поиск критических дыр в BIOS) ■ python chips...`
+- **архитектура**: Паттерн: Абсолютное Доверие Железу (Root of Trust Audit). Перед запуском NEXUS-фермы на новом сервере, CHIPSEC подтверждает, что в BIOS нет "закладок". ; Интеграция: Модуль NEXUS Hardware Watchdog — периодическая автоматическая проверка BIOS/UEFI во время работы системы для обнаружения низкоуровневых атак. ; Ключевое: Единственный способ узнать, что ваш UEFI не взломан на лету.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[AMARANTH]], [[BASIC_VERILOG]], [[APPLICATIONINSPECTOR]], [[CHAOS-ROOTKIT]]
+
+---
+
+## [CHRONOS-FORECASTING]
+- **категория**: AI / Forecasting
+- **суть**: Chronos — семейство предобученных моделей от Amazon Science для прогнозирования временных рядов. Основная идея в том, что временные ряды можно представлять как языковую задачу (tokenizer превращает чи
+- **суперсила**: Zero-Shot Forecasting — модель работает на новых данных без их дообучения. ; Probabilistic Forecasts — выдает не одну линию, а облако вероятностей. ; Универсальность — обучена на сотнях датасетов: от экономики до погоды. ; Интеграция — один интерфейс для всех типов временных данных.
+- **код / запуск**: `from chronos import ChronosPipeline ■ import torch ■  ■ pipeline = ChronosPipeline.from_pretrained("amazon/chronos-t5-small") ■ # Данные в виде тензор...`
+- **архитектура**: N/A
+- **связи**: [[DATASCIENCEPYTHON]], [[CAUSALML]], [[DEEP-LEARNING-TIME-SERIES]], [[AUTOGLUON]]
+
+---
+
+## [CIRQ]
+- **категория**: AI / Quantum Computing (Sim)
+- **суть**: Cirq — это передовая библиотека на Python от Google Quantum AI Team для проектирования, симуляции и исполнения квантовых схем (Quantum Circuits) на современных шумных квантовых компьютерах промежуточн
+- **суперсила**: N/A
+- **код / запуск**: `import cirq ■  ■ # Создаем 2 кубита ■ q0, q1 = cirq.LineQubit.range(2) ■ # Создаем квантовую цепь ■ circuit = cirq.Circuit( ■     cirq.H(q0),         ...`
+- **архитектура**: Паттерн: Будущее Вычислений (Quantum Roadmap). Как решать задачи, невозможные для обычных CPU (напр. взлом сложной криптографии). ; Интеграция: Модуль NEXUS Quantum — подготовка и симуляция квантовых алгоритмов оптимизации (QAOA) для логистики. ; Ключевое: Использование тензоров для эффективной симуляции квантового состояния.
+- **связи**: [[AMARANTH]], [[BUILD-YOUR-OWN-X]], [[BOTAN]], [[CLOUDQUERY]], [[BLACK-HAT-RUST]]
+
+---
+
+## [CLARITY]
+- **категория**: Web / UI Design Frameworks (Enterprise)
+- **суть**: Clarity — это серьезная Enterprise-дизайн-система от VMware. Она объединяет UX-принципы, набор HTML/CSS фреймворков и библиотеку Angular-компонентов. В отличие от "модных" Chakra или Tailwind, Clarity
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Информационная Емкость (Information Density). Идеально для основного интерфейса NEXUS Orchestrator Control Panel. ; Интеграция: Использование Clarity Datagrid для управления списком из 1400+ репозиториев (поиск, тегирование, массовая обработка). ; Ключевое: Поддержка сложной навигации (Side Navigation + Subnav).
+- **связи**: [[CHAKRA-UI]], [[ANT-DESIGN]], [[NODE-JS]], [[ANYTHING-LLM]], [[BUN]], [[ASTRO]]
+
+---
+
+## [CLEAN-CODE-JAVASCRIPT]
+- **категория**: Education / Software Engineering (Clean Code)
+- **суть**: Clean Code JavaScript — это адаптация принципов из легендарной книги Роберта Мартина "Чистый код" для языка JavaScript. Это набор правил и руководств, которые позволяют писать код, который легко читат
+- **суперсила**: 1. Meaningful Names— "Зачем ты здесь?". Имена переменных должны отвечать на вопрос о их назначении: `daysSinceCreation` вместо `d`. 2. Small Functions— Функции должны делать одну вещь, иметь минимум а...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Качество Автоматического Кода (Code Quality Assurance). Агенты-Конструкторы NEXUS должны писать код именно по этим правилам. ; Интеграция: Модуль NEXUS Code Auditor — автоматическая проверка кода новых репозиториев на соответствие правилам "чистоты". ; Ключевое: Читаемость кода важнее его написания (код читается в 10 раз чаще, чем пишется).
+- **связи**: [[CHAKRA-UI]], [[NODE-JS]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[APPLICATIONINSPECTOR]], [[BUN]], [[GIT-GUIDE]]
+
+---
+
+## [CLEANLAB]
+- **категория**: AI / Data-Centric ML (Data Quality)
+- **суть**: Cleanlab — это современная библиотека на Python для автоматического поиска и исправления ошибок в данных (noisy labels). Она основана на методологии "Confident Learning" и позволяет находить неправиль
+- **суперсила**: N/A
+- **код / запуск**: `import cleanlab ■ from cleanlab.classification import CleanLearning ■ from sklearn.linear_model import LogisticRegression ■  ■ # Данные: X (фичи), y (...`
+- **архитектура**: Паттерн: Автоматическое Качество Данных (Data Quality First). Агенты-исследователи NEXUS должны постоянно пропускать собранные данные через Cleanlab. ; Интеграция: Модуль NEXUS Lab — проверка обучающих выборок для локальных моделей Llama/Qwen. ; Ключевое: Позволяет строить надежные модели даже на "шумных" данных из интернета (Scraping).
+- **связи**: [[DATASCIENCEPYTHON]], [[AIF360]], [[CAUSALML]], [[CELLPOSE]], [[AUTOGLUON]]
+
+---
+
+## [CLEANRL]
+- **категория**: AI / Reinforcement Learning (Simplicity)
+- **суть**: CleanRL — это библиотека на PyTorch для глубокого обучения с подкреплением (Deep Reinforcement Learning). Но её главная фишка («The Philosophy of CleanRL») в том, что все алгоритмы реализованы в одном
+- **суперсила**: N/A
+- **код / запуск**: `# Обучение агента играть в LunarLander (PPO) ■ python ppo.py --env LunarLander-v2 --total-timesteps 100000 ■  ■ # Визуализация обучения (W&B) ■ python...`
+- **архитектура**: Паттерн: Самообучающиеся Агенты-Пилоты (RL-based Agents). Использование PPO-реализации для обучения NEXUS-дронов [[ARDUPILOT]] в симуляторе [[BULLET3]]. ; Интеграция: Модуль NEXUS RL-Lab — быстрое создание экспериментальных ИИ-агентов для сложных стратегий (напр. борьба с DDOS). ; Ключевое: Использование DreamerV3 (мировой лидер в обучении на основе "образа мира") для долгосрочного планирования.
+- **связи**: [[CLEAN-CODE-JAVASCRIPT]], [[AUTOGLUON]], [[ALPHAZERO_GOMOKU]], [[ARDUPILOT]], [[BULLET3]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]]
+
+---
+
+## [CLEVERALGORITHMS]
+- **категория**: AI / Nature-inspired Algorithms
+- **суть**: Clever Algorithms — это интерактивная энциклопедия и набор реализаций природных алгоритмов (Nature-inspired Metaheuristics). Она содержит всё: от генетических алгоритмов и муравьиных колоний до роя ча
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Роевой Интеллект (Swarm Intelligence). Как 1000 мелких NEXUS-агентов могут решить одну сложную задачу без центрального сервера. ; Интеграция: Использование "Муравьиного алгоритма" (ACO) для поиска оптимальных путей обхода блокировок при OSINT-разведке. ; Ключевое: Поддержка эволюционных стратегий для саморазвивающегося кода (Self-evolving software).
+- **связи**: [[DEAP]], [[AIRFLOW]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[CLEANRL]]
+
+---
+
+## [CLOUDQUERY]
+- **категория**: Infrastructure / Cloud Security & Asset Management
+- **суть**: CloudQuery (написано на Go) — это высокопроизводительный инструмент для сбора данных о всех ваших облачных активах (инстансы, базы данных, пользователи, ключи S3, VPC) и их сохранения в единую SQL-баз
+- **суперсила**: N/A
+- **код / запуск**: `# Инициализация плагина (напр. AWS) ■ cloudquery init aws ■  ■ # Синхронизация данных (CloudQuery → PostgreSQL) ■ cloudquery sync config.yml ■  ■ # За...`
+- **архитектура**: Паттерн: Тотальная Облачная Видимость (Total Cloud Visibility). "Что у нас развернуто во всем мире прямо сейчас?" ; Интеграция: Модуль NEXUS Cloud Watcher — ежечасный сбор состояния всей инфраструктуры в SQLite базу для анализа агентами. ; Ключевое: Использование SQL для глубокой аналитики облака.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[ALLUXIO]], [[AIRFLOW]], [[CLOUDCOLLECTION]], [[AWS]], [[CHIPSEC]]
+
+---
+
+## [CODING-INTERVIEW-UNIVERSITY]
+- **категория**: Education / CS Mastery Plan
+- **суть**: Coding Interview University — это легендарный учебный план по компьютерным наукам (Computer Science) для тех, кто хочет стать Senior Software Engineer в топовых компаниях (Amazon, Google, Microsoft) б
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[CLEAN-CODE-JAVASCRIPT]], [[ADVANCED-JAVA]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[APPLICATIONINSPECTOR]]
+
+---
+
+## [CONTAINERSSH]
+- **категория**: Security / Access Control (SSH Gateway)
+- **суть**: ContainerSSH — это продвинутый SSH-сервер (написанный на Go), который не дает пользователю доступ к реальной ОС. Вместо этого, при каждом входе он мгновенно создает новый Docker-контейнер или Kubernet
+- **суперсила**: N/A
+- **код / запуск**: `// ContainerSSH шлет POST на ваш URL ■ { ■   "username": "nexus_agent_1", ■   "remote_addr": "192.168.1.10" ■ } ■ // Ваш ответ-решение: ■ { ■   "succe...`
+- **архитектура**: Паттерн: Изолированная Среда Исполнения (Ephemeral Execution). Агенты NEXUS могут заходить по SSH в ContainerSSH для безопасного выполнения сомнительного кода. ; Интеграция: Модуль NEXUS Sandbox — автоматическое создание контейнеров для тестирования скриптов из 1400+ репозиториев без риска для основной системы. ; Ключевое: Предотвращение побега (escape) из контейнера на хост-систему.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[ALLUXIO]], [[AIRFLOW]], [[BUILD-YOUR-OWN-X]], [[BLACK-HAT-RUST]]
+
+---
+
+## [CPP-CHEAT-SHEET]
+- **категория**: Education / Programming Languages (C++)
+- **суть**: C++ Cheat Sheet — это компактный, структурированный справочник по языку C++ (включая стандарты C++11, 14, 17, 20). Он охватывает всё: от примитивных типов и циклов до управления памятью (Smart Pointer
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Высокая Производительность (High Performance). Если агент NEXUS пишет модуль на С++, он должен следовать этим лучшим практикам. ; Интеграция: Модуль NEXUS Code Constructor — генерация и отладка низкоуровневых системных компонентов. ; Ключевое: Охватывает темы управления памятью, что критично для стабильности.
+- **связи**: [[CLEAN-CODE-JAVASCRIPT]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[APPLICATIONINSPECTOR]], [[CGAL]], [[BULLET3]]
+
+---
+
+## [CRANE]
+- **категория**: Infrastructure / Container Management
+- **суть**: Crane — это легковесный и сверхбыстрый инструмент командной строки (написан на Go) от Google для взаимодействия с реестрами контейнерных образов (Docker Hub, GCR, ECR, GitHub Packages). Главная фишка:
+- **суперсила**: N/A
+- **код / запуск**: `# Посмотреть содержимое образа без скачивания ■ crane ls gcr.io/google-containers/pause ■  ■ # Скопировать образ из одного реестра в другой (мгновенно...`
+- **архитектура**: Паттерн: Удаленное Управление Контейнерами (Remote OCI Ops). Позволяет NEXUS Deployer-у работать с облаками напрямую. ; Интеграция: Модуль NEXUS CI/CD — автоматическая проверка и пересылка образов между реестрами. ; Ключевое: Работает внутри маленьких контейнеров или бинарных агентов.
+- **связи**: [[ATTACKSURFACEANALYZER]], [[ALLUXIO]], [[CONTAINERSSH]], [[AIRFLOW]], [[BUILD-YOUR-OWN-X]]
+
+---
+
+## [CRATE]
+- **категория**: Infrastructure / Distributed SQL & Storage
+- **суть**: CrateDB (Crate) — это распределенная, масштабируемая SQL-база данных, которая сочетает в себе простоту SQL и мощь поискового инженерии (Elasticsearch-like). Она разработана для работы с огромными объе
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Масштабируемое Аналитическое Хранилище (Analytical Lake). Использование CrateDB для хранения гигантских баз OSINT-сканирований (миллионов IP и доменов). ; Интеграция: Модуль NEXUS Insights — мгновенный поиск по всем когда-либо собранным данным. ; Ключевое: Работает одинаково на 1 и на 1000 серверах.
+- **связи**: [[ALLUXIO]], [[AIRFLOW]], [[ALGS4]], [[BORG]], [[CLOUDQUERY]], [[ASTRO]]
+
+---
+
+## [CRAWL4AI]
+- **категория**: AI / Data Extraction (Scraping)
+- **суть**: Crawl4AI — это специализированный инструмент на Python, который решает главную боль ИИ-разработчиков: как превратить "замусоренный" HTML веб-сайта в чистый, структурированный Markdown, который нейросе
+- **суперсила**: N/A
+- **код / запуск**: `from crawl4ai import WebCrawler ■  ■ # Создаем скрапер ■ crawler = WebCrawler() ■ crawler.warmup() ■  ■ # Запускаем сбор контента ■ result = crawler.r...`
+- **архитектура**: Паттерн: Поток Знаний для ИИ (AI Data Ingestion). Ваш Vault может пополняться автоматически из документаций GitHub. ; Интеграция: Модуль NEXUS Scraping — автоматическое превращение найденных сайтов в обучающие материалы для агентов. ; Ключевое: Преобразование таблиц HTML в чистые Markdown-таблицы (как в нашей Wiki).
+- **связи**: [[CLEANLAB]], [[ASTRO]], [[AUTOGEN]], [[DNA-FARM]], [[CLOUDQUERY]], [[ANYTHING-LLM]]
+
+---
+
+## [CRYFS]
+- **категория**: Security / Encrypted Filesystems (Cloud Focus)
+- **суть**: CryFS — это специализированная зашифрованная файловая система, разработанная специально для использования с облачными хранилищами (Dropbox, Google Drive, OneDrive). В отличие от классических систем ши
+- **суперсила**: N/A
+- **код / запуск**: `# Создание/Монтирование шифрованной папки ■ # /base - путь к папке в облаке (в зашифрованном виде) ■ # /mount - путь к папке, где вы видите свои файлы...`
+- **архитектура**: Паттерн: Параноидальная Облачная Безопасность (Paranoid Cloud Security). Хранение секретных отчетов NEXUS в публичных облаках без шанса на утечку. ; Интеграция: Модуль NEXUS Vault Sync — автоматическое монтирование шифрованных папок перед записью результатов OSINT. ; Ключевое: Работает в userspace, что гарантирует стабильность системы.
+- **связи**: [[APFS-FUSE]], [[ATTACKSURFACEANALYZER]], [[BORG]], [[BOTAN]], [[CRYPTOGRAPHY]], [[BLACK-HAT-RUST]]
+
+---
+
+## [CRYPTOGRAPHY]
+- **категория**: Security / Cryptography Toolkit (Standard)
+- **суть**: Cryptography (от PyCA) — это самая надежная и широко используемая библиотека в экосистеме Python для реализации любых криптографических операций. Она разработана с принципом "безопасность по умолчанию
+- **суперсила**: N/A
+- **код / запуск**: `from cryptography.fernet import Fernet ■  ■ # 1. Генерация ключа (сохраните его!) ■ key = Fernet.generate_key() ■ f = Fernet(key) ■  ■ # 2. Шифрование...`
+- **архитектура**: Паттерн: Надежное Шифрование Приложения (App-level Encryption). Использование Fernet для шифрования всех `memory.json` файлов ваших агентов. ; Интеграция: Модуль NEXUS Key Manager — генерация, хранение и ротация ключей шифрования. ; Ключевое: Поддержка всех современных протоколов (Ed25519, X25519, Poly1305).
+- **связи**: [[AEGIS]], [[CERTIFICATES]], [[BORG]], [[BOTAN]], [[CRYFS]]
+
+---
+
+## [D3]
+- **категория**: Data / Visualization Frameworks
+- **суть**: D3.js — это легендарная JavaScript-библиотека для манипулирования документами на основе данных. В отличие от простых библиотек графиков, D3 не дает вам "готовых" чартов, а дает низкоуровневые инструме
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Визуализация Сложных Связей (Entity Relationship Graph). Идеально для графа знаний вашего Obsidian Vault — вы можете построить свою карту связей репозиториев на D3. ; Интеграция: Модуль NEXUS Dashboard — отрисовка состояния сети, межагентской коммуникации и OSINT-карт целей. ; Ключевое: Использование асинхронной загрузки данных (`d3.csv`, `d3.json`).
+- **связи**: [[DATASCIENCEPYTHON]], [[CHAKRA-UI]], [[ASTRO]], [[CAUSALML]], [[ALGS4]], [[DNA-FARM]]
+
+---
+
+## [DART]
+- **категория**: Hardware / Robotics & Simulation (High Fidelity)
+- **суть**: DART — это мощная и точная библиотека для моделирования динамики абсолютно твердых тел (Rigid Body Dynamics). Она специально спроектирована для работы с робототехникой и биомеханикой. В отличие от игр
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Высокоточный Биометрический Анализ (Precision Robotics). Если NEXUS проектирует сложную механическую руку или ногу [[AWSOME-ROBOT-DESCRIPTIONS]], DART — это лучший способ её протестировать. ; Интеграция: Модуль NEXUS Robotics Design — автоматический расчет усилий в моторах [[ARDUINO-FOC]] на основе симуляции в DART. ; Ключевое: Использование асинхронных потоков для моделирования сложных роботов (напр. гуманоидов с 50+ суставами).
+- **связи**: [[ARDUINO-FOC]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[DEEPLEARNING-500-QUESTIONS]], [[ALLUXIO]], [[ALGS4]], [[APPLICATIONINSPECTOR]], [[CRAWL4AI]], [[DNA-FARM]], [[ARDUPILOT]], [[AWSOME-ROBOT-DESCRIPTIONS]], [[BULLET3]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]]
+
+---
+
+## [DATASCIENCEPYTHON]
+- **категория**: Data / Data Science Stack & Reference
+- **суть**: Data Science IPython Notebooks — это гигантская база знаний и кода (сотни Jupyter ноутбуков) по всем инструментам Python Data Science. Это "живая" энциклопедия, охватывающая всё: от основ NumPy и Pand
+- **суперсила**: N/A
+- **код / запуск**: `import pandas as pd ■  ■ # Загружаем данные по сканам ■ df = pd.read_csv('nexus_scans.csv') ■  ■ # 1. Удаляем пустые значения ■ df.dropna(subset=['tar...`
+- **архитектура**: Паттерн: Стандартизация Стека Данных (Data Stack Standard). Использование этих ноутбуков как "золотого стандарта" для обучения ваших аналитических агентов. ; Интеграция: Модуль NEXUS Lab — создание шаблонов для подготовки отчетов по результатам OSINT-анализа. ; Ключевое: Использование Pandas Profiling для мгновенного аудита качества любых новых данных.
+- **связи**: [[CLEANLAB]], [[CHRONOS-FORECASTING]], [[CAUSALML]], [[ALINK]], [[AIRFLOW]], [[BI-ANALYSIS]], [[D3]], [[DNA-FARM]], [[BUILT-YOUR-OWN-X]]
+
+---
+
+## [DATASTRUCTURES-ALGORITHMS]
+- **категория**: Education / Algorithms & Data Structures (Java)
+- **суть**: Algorithms (William Fiset) — это одна из самых высоко оцененных в мире библиотек на Java, содержащая реализации практически всех известных алгоритмов и структур данных. Каждое решение отточено до сове
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Масштабируемая Логика (Algorithmic Logic Scale). Использование Suffix Tree для сверхбыстрого полнотекстового поиска по всем 1400+ репозиториям. ; Интеграция: Модуль NEXUS Optimizer — автоматический выбор лучшего алгоритма для решения текущих подзадач агентов. ; Ключевое: Использование DSU (Disjoint Set Union) для анализа кластеров связанных данных в OSINT.
+- **связи**: [[DATASCIENCEPYTHON]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[DEEPLEARNING-500-QUESTIONS]], [[ADVANCED-JAVA]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[DNA-FARM]]
+
+---
+
+## [DEAP]
+- **категория**: AI / Evolutionary Computation & Optimization
+- **суть**: DEAP — это передовой фреймворк на Python для реализации эволюционных (генетических) алгоритмов. В отличие от простых библиотек, он дает вам "кубики" (примитивы), из которых можно собрать любой алгорит
+- **суперсила**: N/A
+- **код / запуск**: `from deap import base, creator, tools ■  ■ # 1. Создаем типы: Максимзация фитнеса (FitnessMax) ■ creator.create("FitnessMax", base.Fitness, weights=(1...`
+- **архитектура**: Паттерн: Автономная Эволюция Агентов (Self-Improving Agents). Использование DEAP для "выращивания" лучших стратегий поведения агентов в симуляторе [[BULLET3]]. ; Интеграция: Модуль NEXUS Evolution — подбор оптимальных весов и структуры для локальных нейросетей-агентов. ; Ключевое: Использование генетического программирования для автоматической генерации скриптов автоматизации.
+- **связи**: [[DATASCIENCEPYTHON]], [[AIRFLOW]], [[CLEVERALGORITHMS]], [[ALGS4]], [[AUTOGLUON]], [[BULLET3]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]]
+
+---
+
+## [DEEP-LEARNING-TIME-SERIES]
+- **категория**: AI / Forecasting (Advanced Time Series)
+- **суть**: Этот репозиторий (часто связываемый с легендарной статьей по Informer и Autoformer) представляет собой коллекцию передовых архитектур нейросетей для долгосрочного прогнозирования временных рядов (LSTF
+- **суперсила**: 1. Informer (SOTA 2021)— Внедрение ProbSparse Self-attention, который уменьшает сложность до $O(L \log L)$, позволяя работать с экстремально длинными окнами. 2. Autoformer (SOTA 2022)— Иерархическое р...
+- **код / запуск**: `# Запуск обучения Informer на датасете Electricity ■ python -u main_informer.py --model informer --data custom --features M --seq_len 96 --label_len 4...`
+- **архитектура**: N/A
+- **связи**: [[DATASCIENCEPYTHON]], [[DESIGN-PATTERNS]], [[CHRONOS-FORECASTING]], [[CAUSALML]], [[DEEPLEARNING-500-QUESTIONS]], [[AIRFLOW]], [[AUTOFORMER.md]], [[D3]], [[DNA-FARM]]
+
+---
+
+## [DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]
+- **категория**: AI / Reinforcement Learning (Industrial Implementation)
+- **суть**: Этот репозиторий является одной из наиболее полных и структурированных коллекций реализаций алгоритмов глубокого обучения с подкреплением (Deep Reinforcement Learning) на базе PyTorch. Он содержит всё
+- **суперсила**: N/A
+- **код / запуск**: `# Обучение агента PPO в среде "Картошка в космосе" (или LunarLander) ■ python trainer.py --algorithm PPO --env LunarLanderContinuous-v2 ■  ■ # Визуали...`
+- **архитектура**: Паттерн: Автономное Оптимальное Действие (Optimal Action Loop). Используйте PPO/SAC для обучения NEXUS-агентов навигации в сложных сетях. ; Интеграция: Модуль NEXUS Pilot — обучение системы автоматического реагирования на сетевые инциденты (инструмент принятия решений). ; Ключевое: Использование асинхронных методов для ускорения обучения на GPU.
+- **связи**: [[DATASCIENCEPYTHON]], [[DESIGN-PATTERNS]], [[DEEPLEARNING-500-QUESTIONS]], [[BREVITAS]], [[ALGS4]], [[AUTOGLUON]], [[CLEANRL]], [[DNA-FARM]], [[ARDUPILOT]], [[BULLET3]]
+
+---
+
+## [DEEPANALYZE]
+- **категория**: Security / Binary Analysis & Reversing
+- **суть**: DeepAnalyze — это специализированная платформа для автоматизированного анализа бинарных файлов (EXE, DLL, ELF) и образов прошивок (Firmware Images). Она использует комбинацию классического статическог
+- **суперсила**: N/A
+- **код / запуск**: `# Анализ файла на предмет уязвимостей ■ deepanalyze --file malicious.exe --scan all ■  ■ # Проверка прошивки с использованием кастомных YARA правил ■ ...`
+- **архитектура**: Паттерн: Автоматическое Декомпилирование (Auto-Reversing). Это "вторые глаза" OSINT-агента при анализе подозрительного софта. ; Интеграция: Модуль NEXUS Binary Scanner — автоматическая проверка всех странных файлов, найденных в сети, на наличие скрытых функций (Backdoors). ; Ключевое: Интеграция с Unicorn Engine позволяет "прокручивать" части кода в памяти, чтобы увидеть их реальное поведение.
+- **связи**: [[ANYTHING-LLM]], [[AIRFLOW]], [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[AMBER]], [[AUTOSPLOIT]], [[CHAOS-ROOTKIT]], [[BUTTERCUP-DESKTOP]], [[BLACK-HAT-RUST]], [[ATTIFYOS]]
+
+---
+
+## [DEEPDETECT]
+- **категория**: AI / Model Deployment (Inference Engine)
+- **суть**: DeepDetect — это специализированный инференс-сервер (Inference Server) на языке C++, разработанный для развертывания моделей машинного обучения в продакшене. Он объединяет в себе поддержку всех основн
+- **суперсила**: N/A
+- **код / запуск**: `# Создание службы для классификации изображений (ResNet) ■ curl -X PUT "http://localhost:8080/services/images" -d '{ ■   "mllib": "caffe", ■   "descri...`
+- **архитектура**: Паттерн: Интеллектуальный Сервис-Хаб (AI-as-a-Service Hub). Идеальный "движок" для ваших агентов, когда им нужно распознать объект на фото или классифицировать текст. ; Интеграция: Модуль NEXUS Vision API — централизованный сервер, куда все NEXUS-камеры [[CAMERADAR]] шлют кадры для распознавания в реальном времени. ; Ключевое: Поддержка инференса на CPU (через OpenVINO), если нет видеокарты.
+- **связи**: [[DATASCIENCEPYTHON]], [[DESIGN-PATTERNS]], [[DEEPLEARNING-500-QUESTIONS]], [[AIRFLOW]], [[DEEPSEARCH]], [[CAMERADAR]], [[AUTOGLUON]], [[D3]], [[DNA-FARM]]
+
+---
+
+## [DEEPLEARNING-500-QUESTIONS]
+- **категория**: Education / AI & Deep Learning (Complete Guide)
+- **суть**: Deep Learning 500 Questions — это колоссальная база знаний (в формате 18+ глав), которая содержит ответы на самые глубокие и сложные вопросы в области нейронных сетей и МО. Это не просто "учебник", а 
+- **суперсила**: 1. Mathematical Foundations— Linear Algebra, Probability Theory, Calculus for AI. 2. Machine Learning Basics— Bias vs Variance, Loss functions, Regularization (L1, L2). 3. Deep Learning Core— CNN (Зре...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[DATASCIENCEPYTHON]], [[AIF360]], [[CHRONOS-FORECASTING]], [[CAUSALML]], [[AUTOAWQ]], [[AUTOGPTQ]], [[BREVITAS]], [[ALGS4]], [[AUTOGLUON]], [[CLEANRL]], [[DNA-FARM]]
+
+---
+
+## [DEEPLNOTE]
+- **категория**: AI / Collaborative Analytics & Notebooks
+- **суть**: Deepnote (Deeplnote) — это облачный (и локальный в open-source версии) интерфейс для работы с Jupyter Notebooks, разработанный для совместной работы команд аналитиков. В отличие от стандартного Jupyte
+- **суперсила**: N/A
+- **код / запуск**: `# Агент NEXUS пишет код в Deepnote блокнот ■ import pandas as pd ■ import plotly.express as px ■  ■ # 1. Запрос к базе данных (напр. CrateDB или SQLit...`
+- **архитектура**: Паттерн: Совместный Когнитивный Анализ (Collaborative Insight). Это точка сбора для ваших агентов и вас, где вы вместе анализируете собранные данные. ; Интеграция: Модуль NEXUS Lab Dashboard — предоставление вам отчетов от аналитических агентов в виде интерактивного блокнота. ; Ключевое: Поддержка всех библиотек из [[DATASCIENCEPYTHON]].
+- **связи**: [[DATASCIENCEPYTHON]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[DEEPLEARNING-500-QUESTIONS]], [[AIRFLOW]], [[DNA-FARM]], [[DEEPSEARCH]], [[AUTOGLUON]], [[D3]], [[ANYTHING-LLM]]
+
+---
+
+## [DEEPSEARCH]
+- **категория**: AI / Intelligent Search (Deep Search)
+- **суть**: DeepSearch — это современная технология (и репозиторий) для создания интеллектуального поиска по документам. В отличие от обычного "Ctrl+F" (поиск по словам), DeepSearch понимает суть (Semantic Search
+- **суперсила**: N/A
+- **код / запуск**: `# Поиск в базе знаний по смыслу ■ query = "How to automate Shodan scans for legal audits?" ■ results = vector_db.similarity_search(query, k=5) ■  ■ # ...`
+- **архитектура**: Паттерн: Поиск Знаний в Хаосе (Knowledge in Chaos). Это "сердце" вашего NEXUS Brain. ; Интеграция: Модуль NEXUS Oracle — инструмент, который позволяет вам "разговаривать" со своей Obsidian-базой. ; Ключевое: Поддержка Hybrid Search (Keyword + Semantic) для максимальной точности.
+- **связи**: [[DATASCIENCEPYTHON]], [[CHRONOS-FORECASTING]], [[DEEPLEARNING-500-QUESTIONS]], [[AUTOGEN]], [[DNA-FARM]], [[D3]], [[CRAWL4AI]], [[ANYTHING-LLM]]
+
+---
+
+## [DESIGN-PATTERNS]
+- **категория**: Education / Software Architecture (Visual Guide)
+- **суть**: Design Patterns — это коллекция проверенных временем шаблонов проектирования, которые решают типовые проблемы в объектно-ориентированном программировании (ООП). Это язык, на котором общаются Senior-ар
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Масштабируемая Автономия (Scalable Autonomy). Весь NEXUS Orchestrator построен на паттернах: Command (команды агентам), Observer (метки прогресса), Strategy (смена LLM-моделей на лету). ; Интеграция: Агенты-Конструкторы NEXUS должны использовать эти паттерны при генерации нового софта. ; Ключевое: Разделение бизнес-логики и инфраструктуры (Facade/Proxy).
+- **связи**: [[CLEAN-CODE-JAVASCRIPT]], [[ADVANCED-JAVA]], [[BUILD-YOUR-OWN-X]], [[ALGS4]], [[APPLICATIONINSPECTOR]], [[ANYTHING-LLM]]
+
+---
+
+## [DRF]
+- **категория**: Web / API Frameworks (High-Performance)
+- **суть**: Django REST Framework (DRF) — это самый мощный и популярный в мире набор инструментов для создания Web API на базе Django. Он превращает вашу базу данных в структурированный JSON-интерфейс за считанны
+- **суперсила**: N/A
+- **код / запуск**: `from rest_framework import viewsets ■ from .models import NexusRepo ■ from .serializers import RepoSerializer ■  ■ # Один класс делает ВСЁ: список, со...`
+- **архитектура**: Паттерн: Масштабируемый Серверный Слой (Standardized Backend). Основной API-шлюз для управления вашей WIKI-фермой и агентами. ; Интеграция: Модуль NEXUS API — предоставление доступа к 1400+ репозиториям через стандартный REST-интерфейс. ; Ключевое: Использование системы разрешений (Permissions) для тонкой настройки доступа к секретным данным.
+- **связи**: [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[NODE-JS]], [[ALLUXIO]], [[APPWRITE]], [[DEEPLEARNING-500-QUESTIONS]], [[ANYTHING-LLM]], [[DEEPSEARCH]], [[DJANGO]], [[APPLICATIONINSPECTOR]], [[BUN]], [[BUCKET4J]], [[DNA-FARM]], [[CRAWL4AI]]
+
+---
+
+## [EDGE-AI]
+- **категория**: AI / Edge AI & TinyML (Embedded Devices)
+- **суть**: Edge AI — это технология (и коллекция библиотек) для запуска нейронных сетей прямо на мелких устройствах (микроконтроллеры, датчики, камеры наблюдения) без использования облака. Это позволяет делать у
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Распознавание Образов "в полях" (Field Intelligence). Идеально для ваших автономных датчиков NEXUS Sensor, разбросанных в физическом мире. ; Интеграция: Модуль NEXUS Edge — запуск локального распознавания на камерах [[CAMERADAR]] или дронах [[ARDUPILOT]] через прошивку [[ARIEL-OS]]. ; Ключевое: Использование квантованных 8-битных моделей ([[BREVITAS]]) для работы на чипах с 256 Кб RAM.
+- **связи**: [[ARDUINO-FOC]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[AMARANTH]], [[CLEAN-CODE-JAVASCRIPT]], [[ARIEL-OS]], [[DEEPLEARNING-500-QUESTIONS]], [[ANYTHING-LLM]], [[BREVITAS]], [[DEEPSEARCH]], [[CAMERADAR]], [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[CRAWL4AI]], [[DNA-FARM]], [[ARDUPILOT]]
+
+---
+
+## [ELASTICSEARCH]
+- **категория**: Infrastructure / Search & Analytics (Distributed)
+- **суть**: Elasticsearch — это мощнейшая распределенная поисковая система и аналитический движок с открытым исходным кодом (ELK stack). Построена на базе Apache Lucene и позволяет хранить, искать и анализировать
+- **суперсила**: N/A
+- **код / запуск**: `// Поиск по всей базе репозиториев ■ GET /nexus_repos/_search ■ { ■   "query": { ■     "match": { ■       "content": "kernel rootkit evasion" ■     } ...`
+- **архитектура**: Паттерн: Глобальная Индексация Знаний (Global Knowledge Index). Центральный узел поиска по всем 1400+ репозиториям. ; Интеграция: Модуль NEXUS Search Hub — объединение семантического поиска [[ANYTHING-LLM]] с классическим полнотекстовым поиском Elasticsearch. ; Ключевое: Использование шардирования (Sharding) для распределения базы знаний по нескольким серверам.
+- **связи**: [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[DEEPLEARNING-500-QUESTIONS]], [[ALLUXIO]], [[AIRFLOW]], [[DNA-FARM]], [[DEEPSEARCH]], [[APPLICATIONINSPECTOR]], [[D3]], [[CRAWL4AI]], [[ANYTHING-LLM]], [[CRATE]]
+
+---
+
+## [ELECTRON]
+- **категория**: Web / Desktop App Framework (Cross-platform)
+- **суть**: Electron — это самый популярный в мире фреймворк для создания настольных (Desktop) приложений (Windows, macOS, Linux), используя привычные веб-технологии: JavaScript, HTML и CSS. Он объединяет в себе 
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Кроссплатформенный Операционный Хаб (Desktop Bridge). Идеален для создания вашей NEXUS Desktop Console. ; Интеграция: Модуль NEXUS UI — упаковка вашего Obsidian-интерфейса или дашборда в отдельное EXE-приложение для удобной работы. ; Ключевое: Использование `Main Process` для управления вашими питоновскими агентами через Node Child Processes.
+- **связи**: [[DESIGN-PATTERNS]], [[CHAKRA-UI]], [[CLEAN-CODE-JAVASCRIPT]], [[ASTRO]], [[NODE-JS]], [[ALLUXIO]], [[DNA-FARM]], [[DEEPSEARCH]], [[APPLICATIONINSPECTOR]], [[D3]], [[BUN]], [[CRAWL4AI]], [[ANYTHING-LLM]]
+
+---
+
+## [EMBEDDED-SYSTEMS]
+- **категория**: Hardware / Systems Programming (Mastery)
+- **суть**: Этот репозиторий (и база знаний) представляет собой глубочайшее погружение в мир встроенных систем (Embedded Systems). Он охватывает всё: от архитектуры процессоров и наборов команд (ISA) до написания
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[ARDUINO-FOC]], [[DESIGN-PATTERNS]], [[AMARANTH]], [[CLEAN-CODE-JAVASCRIPT]], [[ARIEL-OS]], [[ALLUXIO]], [[DNA-FARM]], [[BASIC_VERILOG]], [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[ESP32]], [[CANOPENNODE]], [[ARDUPILOT]], [[BULLET3]]
+
+---
+
+## [EMBEDDING-MODELS]
+- **категория**: AI / Natural Language Processing (Embeddings)
+- **суть**: Embedding Models — это технология (и коллекция библиотек, таких как `sentence-transformers`), которая превращает человеческий язык (предложения, документы) в векторы (массивы чисел). Эти векторы предс
+- **суперсила**: N/A
+- **код / запуск**: `from sentence_transformers import SentenceTransformer, util ■  ■ # 1. Загружаем модель (SOTA для быстрого поиска) ■ model = SentenceTransformer('all-M...`
+- **архитектура**: Паттерн: Смысловое Представление Данных (Semantic Ingestion). Все ваши репозитории в Obsidian индексируются через эти модели. ; Интеграция: Модуль NEXUS Oracle — инструмент, который буквально "слышит" ваш вопрос и находит нужные данные в Obsidian-графе. ; Ключевое: Использование векторных баз данных (ChromaDB/Faiss) для мгновенного поиска по миллионам векторов.
+- **связи**: [[CLEANLAB]], [[DATASCIENCEPYTHON]], [[DESIGN-PATTERNS]], [[DEEPLEARNING-500-QUESTIONS]], [[ALLUXIO]], [[DNA-FARM]], [[ELASTICSEARCH]], [[DEEPSEARCH]], [[CRAWL4AI]], [[ANYTHING-LLM]]
+
+---
+
+## [ESP32]
+- **категория**: Hardware / IoT & Embedded (Wireless)
+- **суть**: ESP32 — это серия недорогих, энергоэффективных систем на кристалле (SoC) с интегрированным Wi-Fi и Dual-mode Bluetooth. Благодаря своей мощности (двухъядерный процессор до 240 МГц) и огромному количес
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Удаленный Сенсорный Узел (Wireless Edge Node). Ваша сеть NEXUS Sensor работает на ESP32. ; Интеграция: Модуль NEXUS Field Agents — использование ESP32 в качестве "глаз и ушей" системы в физическом пространстве. ; Ключевое: Использование аппаратного шифрования AES для защиты данных внутри чипа.
+- **связи**: [[ARDUINO-FOC]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[AMARANTH]], [[CLEAN-CODE-JAVASCRIPT]], [[ARIEL-OS]], [[EDGE-AI]], [[DEEPLEARNING-500-QUESTIONS]], [[ANYTHING-LLM]], [[ALLUXIO]], [[CHIPSEC]], [[APPLICATIONINSPECTOR]], [[CRAWL4AI]], [[DNA-FARM]], [[ARDUPILOT]]
+
+---
+
+## [ETHICAL-HACKING-NOTES]
+- **категория**: Security / Offensive Pentesting (Comprehensive Notes)
+- **суть**: Этот репозиторий представляет собой колоссальную, структурированную базу знаний по всем видам тестирования на проникновение (Pentesting) и этичного хакерства. Он содержит пошаговые инструкции (Cheat S
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Автоматический Аудит Угроз (Automated Threat Audit). Вашим агентам-разведчикам нужны эти шпаргалки для выбора инструмента атаки. ; Интеграция: Модуль NEXUS Security Lab — создание сценариев тестирования (Playbooks) для вашей инфраструктуры на основе этой базы. ; Ключевое: Охватывает темы повышения привилегий, что критично для "Red Teaming".
+- **связи**: [[DESIGN-PATTERNS]], [[ELASTICSEARCH]], [[BOTAN]], [[ANYTHING-LLM]], [[BULLET3]], [[CHRONOS-FORECASTING]], [[EB-INTELLIGENCE]], [[CHIPSEC]], [[DART]], [[CLEANRL]], [[BUN]], [[AUTOSPLOIT]], [[CHAOS-ROOTKIT]], [[CLEANLAB]], [[BEYOND-RECON]], [[CHAKRA-UI]], [[CLEAN-CODE-JAVASCRIPT]], [[ENHANCEMENT-LLM]], [[EMOTION]], [[APPLICATIONINSPECTOR]], [[ESP32]], [[DEEPANALYZE]], [[DNA-FARM]], [[CRATE]], [[DATASCIENCEPYTHON]], [[CHATGPT]], [[CLOUDCOLLECTION]], [[ENERGY-FORECASTING]], [[DUPE-DETECTION]], [[ALLUXIO]], [[AMBER]], [[CIRCP]], [[DEEPSEARCH]], [[DRY-PYTHON]], [[CIRQ]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DATAEASE]], [[CONTAINERSSH]], [[DRF]], [[DJANGO-REST-FRAMEWORK]], [[CRYFS]], [[DATASTRUCTURES-ALGORITHMS]], [[CANOPENNODE]], [[DEEPLEARNING-500-QUESTIONS]], [[CTCI-6TH-EDITION]], [[CLEAN-CODE-JAVA]], [[CELLPOSE]], [[AWESOME-SHODAN-QUERIES]], [[CGAL]], [[CPP-CHEAT-SHEET]], [[CRYPTOGRAPHY]], [[DEEPDETECT]], [[CLARITY]], [[D3]], [[CRAWL4AI]], [[CLEVERALGORITHMS]], [[ATTIFYOS]], [[CRANE]], [[CENTRIFUGO]], [[CODEFORCES-GO]], [[DOCS]], [[DEAP]], [[CODELIBRARY]], [[CLI]], [[CHINATEXTBOOK]], [[EMBEDDING-MODELS]], [[BORG]], [[CORE]], [[CLOUDQUERY]], [[BLACK-HAT-RUST]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]], [[ETHEREUM-PRACTICE]], [[COMPILATION-VISUALIZER]], [[CODING-INTERVIEW-UNIVERSITY]], [[DEEPLNOTE]], [[EDGE-AI]]
+
+---
+
+## [FACE-RECOGNITION]
+- **категория**: AI / Computer Vision (Face Analysis)
+- **суть**: Face Recognition — это самая популярная и легкая в использовании библиотека на Python для распознавания лиц на изображениях и видео. Она построена на базе мощной С++ библиотеки dlib с использованием г
+- **суперсила**: N/A
+- **код / запуск**: `import face_recognition ■  ■ # 1. Загружаем образец (напр. "цель") ■ picture_of_me = face_recognition.load_image_file("me.jpg") ■ my_face_encoding = f...`
+- **архитектура**: Паттерн: Биометрическая Видимость (Identity Recognition). Позволяет вашим агентам распознавать персоналии в кадрах с камер [[CAMERADAR]] или в OSINT-материалах. ; Интеграция: Модуль NEXUS BioScan — автоматическое сопоставление лиц из видеопотоков со списком целей (Watchlist). ; Ключевое: Использование векторных эмбеддингов для сверхбыстрого поиска похожих лиц в базе.
+- **связи**: [[DATASCIENCEPYTHON]], [[DEEPLNOTE]], [[DESIGN-PATTERNS]], [[DEEPDETECT]], [[CLEAN-CODE-JAVASCRIPT]], [[ETHICAL-HACKING-NOTES]], [[ANYTHING-LLM]], [[SQLITE]], [[POSTGRESQL]], [[EMBEDDING-MODELS]], [[DEEPSEARCH]], [[CAMERADAR]], [[APPLICATIONINSPECTOR]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[DNA-FARM]]
+
+---
+
+## [FASTAPI]
+- **категория**: Web / API Frameworks (High-Speed)
+- **суть**: FastAPI — это современный, невероятно быстрый (на уровне Go и Node.js благодаря Starlette) веб-фреймворк для создания API на Python. Он построен на базе стандартных подсказок типов (Python Type Hints)
+- **суперсила**: N/A
+- **код / запуск**: `from fastapi import FastAPI ■ from pydantic import BaseModel ■  ■ app = FastAPI(title="NEXUS Oracle API") ■  ■ class NexusQuery(BaseModel): ■     quer...`
+- **архитектура**: Паттерн: Мгновенный Вычислительный Шлюз (Rapid API Gateway). Основной способ открывать доступ к функциям ваших агентов через веб. ; Интеграция: Модуль NEXUS Oracle API — предоставление результатов анализа 1400+ репозиториев через защищенный, сверхбыстрый интерфейс. ; Ключевое: Совместимость с асинхронными библиотеками для работы с БД ([[CRATE]], [[ELASTICSEARCH]]).
+- **связи**: [[DATASCIENCEPYTHON]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[ASTRO]], [[ETHICAL-HACKING-NOTES]], [[DRF]], [[NODE-JS]], [[ANYTHING-LLM]], [[DNA-FARM]], [[ALLUXIO]], [[ELASTICSEARCH]], [[DEEPSEARCH]], [[APPLICATIONINSPECTOR]], [[BUN]], [[CRAWL4AI]], [[CRATE]]
+
+---
+
+## [FASTCHAT]
+- **категория**: AI / LLM Training & Evaluation (Chat-specific)
+- **суть**: FastChat — это мощная и современная платформа на Python от команды LMSYS (создатели Vicuna и Chatbot Arena), предназначенная для обучения, развертывания и оценки больших языковых моделей (LLM) с упоро
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Запуск контроллера ■ python3 -m fastchat.serve.controller ■  ■ # 2. Запуск воркера с моделью Llama 3 ■ python3 -m fastchat.serve.vllm_worker --mo...`
+- **архитектура**: Паттерн: Автономный Центр Инференса (Autonomous LLM Serving). Позволяет вашим агентам общаться с локальными моделями через стандартный API-интерфейс. ; Интеграция: Модуль NEXUS Agent Brain — использование FastChat для превращения сырых моделей (как Llama 3) в умных, структурированных собеседников. ; Ключевое: Поддержка 8-битного и 4-битного квантования (через BitsAndBytes) для запуска на домашних GPU.
+- **связи**: [[CLEANLAB]], [[DESIGN-PATTERNS]], [[ETHICAL-HACKING-NOTES]], [[DEEPLEARNING-500-QUESTIONS]], [[DRF]], [[AUTOAWQ]], [[AUTOGPTQ]], [[DNA-FARM]], [[D3]], [[CRAWL4AI]], [[ANYTHING-LLM]], [[FASTAPI]]
+
+---
+
+## [FFMPEG]
+- **категория**: Infrastructure / Multimedia Processing (The Universal Swiss Knife)
+- **суть**: FFmpeg — это самая мощная и универсальная в мире библиотека (и набор инструментов командной строки) для записи, конвертации и потоковой передачи аудио и видео. Она лежит в основе почти всех видеоплеер
+- **суперсила**: 1. Unrivaled Support— Если формат существует, FFmpeg может его прочитать. 2. Speed— Сверхбыстрая обработка видео за счет низкоуровневой оптимизации и использования GPU. 3. Filtering Engine— Сложная си...
+- **код / запуск**: `# 1. Стриминг с IP камеры в файл (без перекодировкки - сверхбыстро) ■ ffmpeg -i rtsp://user:pass@camera_ip:554/stream -c copy output.mp4 ■  ■ # 2. Изв...`
+- **архитектура**: Паттерн: Гибкий Мультимедийный Поток (Agile Media Flow). Основной "движок" для обработки любых видео-свидетельств в рамках OSINT-разведки. ; Интеграция: Модуль NEXUS Media Processor — автоматическая нарезка видео на кадры для распознавания лиц [[FACE-RECOGNITION]]. ; [[CAMERADAR]] -> [[FFMPEG]] -> [[FACE-RECOGNITION]] -> [[SQLITE]] базе улик.
+- **связи**: [[DATASCIENCEPYTHON]], [[DEEPDETECT]], [[DESIGN-PATTERNS]], [[CLEAN-CODE-JAVASCRIPT]], [[ANYTHING-LLM]], [[SQLITE]], [[NODE-JS]], [[FFMPEG]], [[DEEPSEARCH]], [[CAMERADAR]], [[FACE-RECOGNITION]], [[APPLICATIONINSPECTOR]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[DNA-FARM]], [[BUN]], [[ELECTRON]]
+
+---
+
+## [FLASK]
+- **категория**: Web / API Frameworks (Lightweight)
+- **суть**: Flask — это микро-фреймворк на Python, который дает вам только самый минимум: маршрутизацию (Routing) и шаблонизацию (Templates). У него нет встроенной базы данных или авторизации (как у Django), но э
+- **суперсила**: N/A
+- **код / запуск**: `from flask import Flask, jsonify ■  ■ app = Flask(__name__) ■  ■ @app.route("/") ■ def nexus_home(): ■     return "NEXUS Node is Active!" ■  ■ @app.ro...`
+- **архитектура**: Паттерн: Гибкий Прототип (Fast Prototype Bridge). Быстрое создание "ручек" (webhooks) для ваших мелких агентов. ; Интеграция: Модуль NEXUS Micro-services — создание десятков маленьких, узкоспециализированных серверов (напр. один для [[FFMPEG]], другой для [[DNA-FARM]]). ; Ключевое: Использование системы декораторов (`@app.route`) для чистого и понятного кода.
+- **связи**: [[DESIGN-PATTERNS]], [[ALLUXIO]], [[FASTCHAT]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[BUN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DEEPDETECT]], [[CLEAN-CODE-JAVASCRIPT]], [[DRF]], [[EMOTION]], [[APPLICATIONINSPECTOR]], [[ESP32]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FORCE-DIRECTED-GRAPH]], [[NODE-JS]], [[FASTAPI]]
+
+---
+
+## [FORCE-DIRECTED-GRAPH]
+- **категория**: Data / Visualization Theory & Implementation
+- **суть**: Force-directed Graph — это способ визуализации сетевых связей (узлов и ребер), основанный на физической симуляции. Каждый узел в графе ведет себя как физическое тело: они отталкивают друг друга (заряд
+- **суперсила**: 1. Human Intuition— Глаз мгновенно видит "кластеры" (плотные группы узлов) и "мосты" между ними. 2. Infinite Flexibility— Можно вешать узлы на невидимые направляющие, сталкивать их или притягивать к о...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Кластеризация Теневых Тенетей (Shadow Network Clustering). Идеален для визуализации связей между найденными доменами, IP и людьми в рамках OSINT. ; Интеграция: Модуль NEXUS Graph Explorer — отрисовка карты связей всех 1400+ репозиториев на вашем Дашборде. ; [[D3]] -> [[FORCE-DIRECTED-GRAPH]] -> [[OBSIDIAN-VAULT]] визуализация.
+- **связи**: [[DESIGN-PATTERNS]], [[ALLUXIO]], [[FASTCHAT]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[BULLET3]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[OBSIDIAN-VAULT]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DEEPDETECT]], [[CLEAN-CODE-JAVASCRIPT]], [[ALGS4]], [[EMOTION]], [[APPLICATIONINSPECTOR]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FORCE-DIRECTED-GRAPH]], [[DEEPLEARNING-500-QUESTIONS]], [[FASTAPI]]
+
+---
+
+## [GBDT]
+- **категория**: AI / Classical Machine Learning (Gradient Boosting)
+- **суть**: GBDT (Gradient Boosting Decision Trees) — это не одна библиотека, а целое семейство алгоритмов машинного обучения (XGBoost, LightGBM, CatBoost), которые на сегодняшний день являются абсолютными короля
+- **суперсила**: X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  # 2. Обучаем "бустинг" model = xgb.XGBClassifier(n_estimators=100, max_depth=5, learning_rate=0.1) model.fit(X_train, y_train)...
+- **код / запуск**: `import xgboost as xgb ■ from sklearn.model_selection import train_test_split ■  ■ # 1. Загружаем данные о сканированиях ■ # X - фичи (порт, страна, вр...`
+- **архитектура**: Паттерн: Предиктивная Аналитика Событий (Predictive Event Analysis). Предсказание будущих нагрузок на вашу WIKI-ферму или вероятности успешного хака. ; Интеграция: Модуль NEXUS Predictor — автоматическая оценка "качества" и "интересности" новых репозиториев на базе 100+ параметров. ; [[DATAFRAME]] -> [[GBDT]] -> [[FORECAST]] аналитика.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[FORECAST]], [[CHRONOS-FORECASTING]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[GBDT]], [[GARDEN]], [[GIN]], [[ELECTRON]], [[DATAFRAME]], [[GRAFANA]], [[CLEANLAB]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[EMOTION]], [[GPT-API]], [[D3]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[DEEPLEARNING-500-QUESTIONS]], [[CAUSALML]], [[AIRFLOW]], [[AUTOGLUON]], [[FASTAPI]]
+
+---
+
+## [GENSIM]
+- **категория**: AI / Natural Language Processing (Topic & Vector Space)
+- **суть**: Gensim — это мощнейшая специализированная библиотека на Python для тематического моделирования (Topic Modeling), индексации документов и поиска сходства по смыслу в больших текстах. В отличие от общих
+- **суперсила**: 1. Efficiency— Может обрабатывать датасеты на терабайты на обычном ПК за счет потоковой обработки (Streaming). 2. Word2Vec (SOTA)— Один из лучших способов перевести слова в векторы («Король» - «Мужчин...
+- **код / запуск**: `from gensim.models import Word2Vec ■  ■ # 1. Готовим данные (список предложений) ■ sentences = [["nexus", "agent", "is", "active"], ["security", "audi...`
+- **архитектура**: Паттерн: Автоматическое Тематическое Группирование (Topic Ingestion Layer). Ваша база знаний в Obsidian сама знает, какие репозитории связаны по смыслу. ; Интеграция: Модуль NEXUS Semantic Classifier — инструмент, который "видит" новый репозиторий и мгновенно помещает его в нужную категорию. ; [[ANYTHING-LLM]] -> [[EMBEDDING-MODELS]] -> [[GENSIM]] глубокий анализ смыслов.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[GENSIM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[DEEPSEARCH]], [[BUN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[CLEANLAB]], [[CHAKRA-UI]], [[EMOTION]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FORCE-DIRECTED-GRAPH]], [[DEEPLEARNING-500-QUESTIONS]], [[NODE-JS]], [[AUTOGLUON]], [["nexus", "agent", "is", "active"], ["security", "audit", "finds", "vulnerability"]], [[FASTAPI]]
+
+---
+
+## [GEOLOCATION]
+- **категория**: OSINT / Geographical Data Analysis (Geocoding)
+- **суть**: Geolocation — это набор инструментов (таких как GeoPy) и баз данных (OSM), которые позволяют превращать текстовые адреса в координаты (Lat/Lon) и наоборот. Эти технологии позволяют вашим агентам прово
+- **суперсила**: 1. Address to Coordinates— Превращает "Москва, Кремль" в `(55.752, 37.617)`. Идеально для маппинга серверов из логов [[ELASTICSEARCH]]. 2. Distance Calculation— Расчет кратчайшего расстояния между дву...
+- **код / запуск**: `from geopy.geocoders import Nominatim ■ from geopy.distance import geodesic ■  ■ # 1. Получаем координаты по адресу (OSM Server) ■ geolocator = Nomina...`
+- **архитектура**: Паттерн: Географическая Привязка Угроз (Spatial Threat Mapping). Построение карты "центров силы" ваших 1400+ репозиториев (где их авторы, где их серверы). ; Интеграция: Модуль NEXUS Geo-Intel — визуализация на карте результатов OSINT-разведки. ; [[IP-ADDR]] -> [[GEOLOCATION]] -> [[GRAFANA]] визуализация на карте мира.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[IP-ADDR]], [[GENSIM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[BUN]], [[GEIP]], [[GIN]], [[ELECTRON]], [[GRAFANA]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[EMOTION]], [[GPT-API]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[NODE-JS]], [[FASTAPI]]
+
+---
+
+## [GIN]
+- **категория**: Web / API Frameworks (High-Performance Go)
+- **суть**: Gin — это HTTP веб-фреймворк, написанный на языке Go (Golang). Он черпает вдохновение в API фреймворка Martini, но работает до 40 раз быстрее благодаря использованию кастомного роутера на базе префикс
+- **суперсила**: 1. Insane Speed— Один из лидеров в бенчмарках. Обработка миллионов запросов в секунду на одном сервере. 2. Crash-Free— Встроенный Middleware "Recovery" позволяет серверу не падать при панике в одном и...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Сверхскоростной Реактивный Шлюз (High-Speed Ingress). Идеальный входной узел для приема миллионов метрик от ваших датчиков [[ESP32]]. ; Интеграция: Модуль NEXUS Go-Proxy — высокопроизводительный посредник между вашим Облаком и локальными агентами. ; [[GIN]] -> [[GRAFANA]] супер-быстрый поток данных.
+- **связи**: [[ALLUXIO]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[GENSIM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[BUN]], [[GIN]], [[ELECTRON]], [[GRAFANA]], [[DEEPDETECT]], [[FLASK]], [[CLEAN-CODE-JAVASCRIPT]], [[DRF]], [[APPLICATIONINSPECTOR]], [[GPT-API]], [[ESP32]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[NODE-JS]], [[GORELEASER]], [[FASTAPI]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [GORELEASER]
+- **категория**: Infrastructure / Software Delivery & Automation (CI/CD)
+- **суть**: GoReleaser — это специализированный инструмент для автоматизации процесса выпуска (Release) приложений на языке Go. Он берет на себя всю "грязную" работу: кросс-компиляцию под разные ОС и архитектуры 
+- **суперсила**: 1. Zero Effort Cross-compile— Одной командой вы получаете `.exe` для Windows, `.app` для Mac и бинарники для Linux серверов. 2. Automated Changelogs— Инструмент сам анализирует ваши коммиты в Git и пи...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[GENSIM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[BUN]], [[GIN]], [[HELM]], [[ELECTRON]], [[GRAFANA]], [[GOLANG]], [[NEXUS NODES]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[EMOTION]], [[GPT-API]], [[ESP32]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[GPG]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[NODE-JS]], [[GORELEASER]], [[FASTAPI]], [[HARBOR]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [GPG]
+- **категория**: Security / Cryptographic Identity & Encryption (OpenPGP)
+- **суть**: GnuPG (GPG) — это свободная реализация стандарта OpenPGP. Это самый надежный в мире инструмент для шифрования и цифровой подписи сообщений, файлов и кода. GPG позволяет вам создать пару "Публичный клю
+- **суперсила**: 1. Secret Identity— позволяет вам подписывать свои коммиты в Git, гарантируя всем 1400+ репозиториям, что код прислали именно вы. 2. Asymmetric Security— можно публиковать свой "Публичный ключ" открыт...
+- **код / запуск**: `# 1. Генерация ключа (следуйте инструкциям) ■ gpg --full-generate-key ■  ■ # 2. Зашифровка файла для получателя 'nexus_admin' ■ gpg --encrypt --recipi...`
+- **архитектура**: Паттерн: Непроницаемая Агентская Связь (Hardened Agent Identity). Все команды от NEXUS Orchestrator к агентам должны подписываться GPG-ключом. ; Интеграция: Модуль NEXUS Keyring — управление GPG-ключами для подписи результатов OSINT-разведки. ; [[ANYTHING-LLM]] -> [[GPG]] зашифровка отчетов Obsidian.
+- **связи**: [[FASTCHAT]], [[XLM]], [[FACE-RECOGNITION]], [[BOTAN]], [[ANYTHING-LLM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[CRYPTOGRAPHY]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[GRAFANA]], [[CLEAN-CODE-JAVASCRIPT]], [[GITHUB-PR-WORKFLOW]], [[APPLICATIONINSPECTOR]], [[GPT-API]], [[CRYFS]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[GPG]], [[FAIRY-DOCKER]], [[GORELEASER]], [[FASTAPI]]
+
+---
+
+## [GPT-API]
+- **категория**: AI / Large Language Models (API-based)
+- **суть**: GPT-3 (Text-davinci-003) и GPT-4 (gpt-4o) — это революционные языковые модели от OpenAI, доступные через облачный API. Они обладают невероятной способностью к пониманию контекста, написанию кода, расс
+- **суперсила**: 3. Multimodal Vision— Модель может "смотреть" на скриншоты ваших 1400+ репозиториев и объяснять, что там происходит. 4. Massive Context— Огромное окно контекста (до 128k токенов) позволяет "скармливат...
+- **код / запуск**: `import openai ■  ■ # 1. Запрос к GPT-4o ■ response = openai.ChatCompletion.create( ■     model="gpt-4o", ■     messages=[ ■         {"role": "system",...`
+- **архитектура**: 2. Function Calling (Tools)— Модель умеет сообщать "Мне нужно вызвать функцию `run_osint_scan`", что является основой для автономных агентов. 3. Multimodal Vision— Модель может "смотреть" на скриншоты...
+- **связи**: [[FASTCHAT]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[FLUTTER]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GARDEN]], [[BUN]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[GRAFANA]], [[CHAKRA-UI]], [[FLASK]], [[EMOTION]], [[ESP32]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[GPT-4 API]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[DEEPLEARNING-500-QUESTIONS]], [[LOCAL LLM]], [[NODE-JS]], [[FASTAPI]]
+
+---
+
+## [GRAFANA]
+- **категория**: Infrastructure / Monitoring & Metrics Visualization
+- **суть**: Grafana — это мировой стандарт в области визуализаии метрик и мониторинга в реальном времени. В отличие от D3 (низкоуровневая отрисовка), Grafana дает готовый, мощный интерфейс дашбордов, который подк
+- **суперсила**: 1. Unified Dashboard— Можно вывести данные из MySQL и логи из Elasticsearch на один экран рядом. 2. Beautiful UI— Дашборды выглядят профессионально и "киношно" (Dark Mode — стандарт). 3. Dynamic Alert...
+- **код / запуск**: `// Grafana хранит дашборды в JSON (их можно генерировать кодом) ■ { ■   "title": "NEXUS Agent Performance", ■   "panels": [ ■     { ■       "type": "g...`
+- **архитектура**: Паттерн: Тотальная Видимость Системы (Total Observability). Центральный "Командный Пункт" для мониторинга всей вашей WIKI-фермы и активности агентов. ; Интеграция: Модуль NEXUS Dashboard — визуализация скорости "фарминга" новых страниц Obsidian и нагрузки на локальные LLM. ; [[PROMETHEUS]] -> [[GRAFANA]] -> [[DASHBOARD]] мониторинг.
+- **связи**: [[DASHBOARD]], [[ALLUXIO]], [[FASTCHAT]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[PROMETHEUS]], [[FLUTTER]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GARDEN]], [[BUN]], [[CLOUDQUERY]], [[GIN]], [[ELECTRON]], [[GRAFANA]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[FLASK]], [[EMOTION]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[CRATE]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[DEEPLEARNING-500-QUESTIONS]], [[NODE-JS]], [[FASTAPI]], [[INFLUXDB]]
+
+---
+
+## [HA-PROXY]
+- **категория**: Infrastructure / High Availability Proxy & Load Balancing
+- **суть**: HAProxy — это свободное программное обеспечение с открытым исходным кодом, которое обеспечивает высокую доступность, балансировку нагрузки и проксирование (Proxying) TCP и HTTP приложений. Оно славитс
+- **суперсила**: 1. Unrivaled Performance— Работает на пределе пропускной способности сети при минимальном потреблении CPU. 2. Persistence (Sticky Sessions)— Может гарантировать, что пользователь всегда попадает на од...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Несгибаемая Точка Входа (Bulletproof Initial Entry). Ваше основное "лицо" системы в интернете. ; Интеграция: Модуль NEXUS Load Balancer — распределение запросов между несколькими узлами [[FASTAPI]] или [[FASTCHAT]]. ; [[CLIENT]] -> [[HA-PROXY]] -> [[NEXUS NODES]] (Node 1, Node 2, ...) отказоустойчивость.
+- **связи**: [[QUANTA]], [[VULNERABILITY-SCANNER]], [[REACT]], [[DESIGN-PATTERNS]], [[WEBHOOKS]], [[FASTCHAT]], [[JINJA2]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[NUMPY]], [[VERILOG]], [[LUA]], [[RAG]], [[NGINX]], [[TESTING]], [[TORCHSERVICE]], [[ANYTHING-LLM]], [[ZOOM]], [[SSL]], [[HTTP-CLIENT]], [[NOMAD]], [[OTEL]], [[EB-INTELLIGENCE]], [[KIND]], [[EXPLAIN-VISUALIZE-ML]], [[ZEN]], [[BUN]], [[MINIKUBE]], [[NETWORKING]], [[KOBOLDCPP]], [[NPC-ENGINE]], [[OPERATING-SYSTEMS]], [[NATS]], [[FSST]], [[NEXUS NODES]], [[HUGGINGFACE-TRANSFORMERS]], [[LOGGING]], [[ENHANCEMENT-LLM]], [[POSTGRESQL]], [[EMOTION]], [[JAVA]], [[ZIP]], [[GUI-ENGINE]], [[ESP32]], [[DEEPANALYZE]], [[LEGACY]], [[DNA-FARM]], [[UPTIME]], [[LIGHTHOUSE]], [[ORCHESTRATION]], [[STORAGE]], [[TRANSFORMERS]], [[GUM]], [[TRADING]], [[ENERGY-FORECASTING]], [[MONITORING]], [[GORELEASER]], [[WANDB]], [[LEKNER]], [[WEB-SCRAPING]], [[WORD2VEC]], [[DUPE-DETECTION]], [[LIBRISPEECH]], [[LIVEKIT]], [[TYPESCRIPT]], [[ALLUXIO]], [[THREAT-MODELING]], [[FACE-RECOGNITION]], [[JENKINS]], [[QA-AUTOMATION]], [[HYSTERIX]], [[RISK-MANAGEMENT]], [[HTOP]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[SAFETY]], [[KAIDAN]], [[CLIENT]], [[PUPPETEER]], [[GENSIM]], [[VIM]], [[SYSTEM-DESIGN]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[NEURAL-NETWORKS]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[OSINT]], [[ENG-INTERVIEW]], [[MASTODON-AGENT]], [[MATHEMATICS]], [[WEB3]], [[ZSH]], [[SCIKIT-LEARN]], [[DRF]], [[MICROSERVICES]], [[REDTEAMING]], [[KUBERNETES]], [[SECURITY]], [[IP-RECON]], [[DATASTRUCTURES-ALGORITHMS]], [[ONNX]], [[PANDAS]], [[PACEMAKER]], [[SMART-CONTRACTS]], [[GPG]], [[WIRESHARK]], [[UBUNTU]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[PENTESTING]], [[PROTOC]], [[SQL]], [[LOCUST]], [[GSM-SECURITY]], [[NOSQL]], [[PKI]], [[SIMULATION]], [[WEB-DEVELOPMENT]], [[OWASP]], [[WPA]], [[XGBOOST]], [[RUST]], [[USER-AGENTS]], [[INVOKEAI]], [[ZIG]], [[LLM-SECURITY]], [[STABLE-DIFFUSION]], [[QUANTIZATION]], [[WEB-API]], [[GARDEN]], [[CRYPTOGRAPHY]], [[STATISTICS]], [[LLAMA-CPP]], [[NEXTJS]], [[KIBANA]], [[RAY]], [[WHISPER]], [[X509]], [[FLASK]], [[PIP]], [[VISION]], [[CRAWL4AI]], [[PROMPT-ENGINEERING]], [[INFRASTRUCTURE]], [[NLP]], [[MLFLOW]], [[TRANSLATION]], [[PYTORCH]], [[KALDI]], [[MSFVENOM]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[UNIT-TESTING]], [[VALIDATION]], [[PHYSICS]], [[HEDGEDOC]], [[ROBOTICS]], [[DOCS]], [[SHELL]], [[VIRTUAL-MACHINES]], [[YARA]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[NODEJS]], [[POWERSHELL]], [[SVELTE]], [[LUCENE]], [[IMAGE-PROCESSING]], [[WORKFLOW]], [[STARLETTE]], [[PYGAME]], [[OPENAI]], [[LINUX]], [[JOB-INTEL]], [[MYSQL]], [[LEETCODE]], [[S3]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[OBSIDIAN]], [[SERVERLESS]], [[FFMPEG]], [[OPENSSL]], [[EMBEDDING-MODELS]], [[GBDT]], [[MOBILE-SECURITY]], [[NPM]], [[Jupyter]], [[UEFI]], [[GRAFANA]], [[LANGCHAIN]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[IFREEMEM]], [[MLC-LLM]], [[GPT-API]], [[OPENCV]], [[ASTRO]], [[ROOTKIT]], [[YAML]], [[SENTENCE-TRANSFORMERS]], [[DEEPLNOTE]], [[PLAYWRIGHT]], [[SHODAN]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[EDGE-AI]], [[SWAGGER]], [[PYTHON]], [[EXCEL-PYTHON]], [[TENSORFLOW]], [[GOLANG-ALGORITHMS]], [[ZERO-SHOT]], [[PYDANTIC]]
+
+---
+
+## [HARBOR]
+- **категория**: Infrastructure / Cloud-Native Registry (Secure)
+- **суть**: Harbor — это частный реестр артефактов (Docker-образов, Helm-чартов) с открытым исходным кодом, созданный для обеспечения безопасности и управления в облачных средах. В отличие от публичного Docker Hu
+- **суперсила**: 1. Security First— Harbor автоматически сканирует каждый загруженный образ на наличие дыр (из базы [[KEV]]) и запрещает запуск "дырявых" контейнеров. 2. Identity Support— Интеграция с LDAP/AD и OIDC д...
+- **код / запуск**: `# 1. Логин в ваш частный Harbor ■ docker login harbor.nexus.local ■  ■ # 2. Пуш образа новой версии агента ■ docker tag nexus-agent:latest harbor.nexu...`
+- **архитектура**: Паттерн: Защищенное Хранилище Артефактов (Hardened Artifact Vault). Ваш личный сейф для всех образов NEXUS Агентов. ; Интеграция: Модуль NEXUS Registry — использование Harbor в качестве источника правды для всех ваших серверов [[KUBERNETES]]. ; [[GORELEASER]] -> [[HARBOR]] -> [[HELM]] цепочка поставки.
+- **связи**: [[QUANTA]], [[VULNERABILITY-SCANNER]], [[REACT]], [[WEBHOOKS]], [[FASTCHAT]], [[LEARN-LINUX]], [[NUMPY]], [[VERILOG]], [[LUA]], [[RAG]], [[NGINX]], [[TESTING]], [[TORCHSERVICE]], [[ANYTHING-LLM]], [[ZOOM]], [[SSL]], [[HTTP-CLIENT]], [[NOMAD]], [[OTEL]], [[KIND]], [[ZEN]], [[NETWORKING]], [[BUN]], [[MINIKUBE]], [[KOBOLDCPP]], [[NPC-ENGINE]], [[OPERATING-SYSTEMS]], [[NATS]], [[LOGGING]], [[POSTGRESQL]], [[ZIP]], [[LEGACY]], [[ESP32]], [[UPTIME]], [[DNA-FARM]], [[LIGHTHOUSE]], [[ORCHESTRATION]], [[STORAGE]], [[TRANSFORMERS]], [[TRADING]], [[WANDB]], [[MONITORING]], [[GORELEASER]], [[LEKNER]], [[WEB-SCRAPING]], [[WORD2VEC]], [[LIBRISPEECH]], [[LIVEKIT]], [[TYPESCRIPT]], [[ALLUXIO]], [[XLM]], [[THREAT-MODELING]], [[FACE-RECOGNITION]], [[QA-AUTOMATION]], [[HYSTERIX]], [[RISK-MANAGEMENT]], [[HTOP]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[SAFETY]], [[PUPPETEER]], [[GENSIM]], [[VIM]], [[SYSTEM-DESIGN]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[DEEPSEARCH]], [[NEURAL-NETWORKS]], [[LORA]], [[GIN]], [[ELECTRON]], [[OSINT]], [[MASTODON-AGENT]], [[MATHEMATICS]], [[WEB3]], [[ZSH]], [[SCIKIT-LEARN]], [[MICROSERVICES]], [[REDTEAMING]], [[KUBERNETES]], [[SECURITY]], [[ONNX]], [[PANDAS]], [[SMART-CONTRACTS]], [[PACEMAKER]], [[GPG]], [[WIRESHARK]], [[UBUNTU]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[PENTESTING]], [[PROTOC]], [[SQL]], [[LOCUST]], [[NOSQL]], [[PKI]], [[SIMULATION]], [[WEB-DEVELOPMENT]], [[OWASP]], [[WPA]], [[XGBOOST]], [[RUST]], [[USER-AGENTS]], [[ZIG]], [[LLM-SECURITY]], [[STABLE-DIFFUSION]], [[QUANTIZATION]], [[WEB-API]], [[GARDEN]], [[CRYPTOGRAPHY]], [[STATISTICS]], [[LLAMA-CPP]], [[KIBANA]], [[NEXTJS]], [[RAY]], [[WHISPER]], [[X509]], [[PIP]], [[VISION]], [[CRAWL4AI]], [[PROMPT-ENGINEERING]], [[TRANSLATION]], [[NLP]], [[MLFLOW]], [[PYTORCH]], [[MSFVENOM]], [[FAIRY-DOCKER]], [[UNIT-TESTING]], [[VALIDATION]], [[PHYSICS]], [[HEDGEDOC]], [[ROBOTICS]], [[SHELL]], [[VIRTUAL-MACHINES]], [[YARA]], [[FASTAPI]], [[HELM]], [[HARBOR]], [[ICECAST]], [[NODEJS]], [[POWERSHELL]], [[SVELTE]], [[LUCENE]], [[WORKFLOW]], [[STARLETTE]], [[PYGAME]], [[OPENAI]], [[LINUX]], [[MYSQL]], [[LEETCODE]], [[S3]], [[HA-PROXY]], [[OBSIDIAN]], [[SERVERLESS]], [[FFMPEG]], [[OPENSSL]], [[MOBILE-SECURITY]], [[GBDT]], [[NPM]], [[UEFI]], [[GRAFANA]], [[LANGCHAIN]], [[IDE-EXTENSION]], [[IFREEMEM]], [[MLC-LLM]], [[OPENCV]], [[ASTRO]], [[ROOTKIT]], [[YAML]], [[SENTENCE-TRANSFORMERS]], [[PLAYWRIGHT]], [[SHODAN]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[SWAGGER]], [[PYTHON]], [[TENSORFLOW]], [[ZERO-SHOT]], [[PYDANTIC]]
+
+---
+
+## [HASHCAT]
+- **категория**: Security / Password Recovery & Hashing (High Performance)
+- **суть**: Hashcat — это абсолютный мировой лидер среди инструментов для восстановления (взлома) паролей. Главная особенность: использование мощи вашей видеокарты (GPU) (через OpenCL/CUDA) для перебора миллионов
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Взлом MD5 хеша методом перебора маски (все 8 символов строчные) ■ hashcat -m 0 -a 3 hash.txt ?l?l?l?l?l?l?l?l ■  ■ # 2. Атака по словарю с примен...`
+- **архитектура**: Паттерн: Аудит Криптостойкости (Password Audit & Recovery). Проверка надежности паролей в вашей сети. Если Hashcat взломал его за час — пароль плохой. ; Интеграция: Модуль NEXUS Key Cracker — восстановление забытых доступов к зашифрованным архивам или базам данных. ; [[PASSWORD HASH]] -> [[HASHCAT]] -> [[CLEAR TEXT]] востановление доступов.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[GSM-SECURITY]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[BOTAN]], [[ANYTHING-LLM]], [[CLEAR TEXT]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[CRYPTOGRAPHY]], [[GIN]], [[HELM]], [[ELECTRON]], [[BLACK-HAT-RUST]], [[GRAFANA]], [[PASSWORD HASH]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[CLEAN-CODE-JAVASCRIPT]], [[EMOTION]], [[APPLICATIONINSPECTOR]], [[ESP32]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[GPG]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[DOCS]], [[FASTAPI]], [[HARBOR]]
+
+---
+
+## [HEDGEDOC]
+- **категория**: Collaboration / Document Real-time Editor (Open Source)
+- **суть**: HedgeDoc (ранее CodiMD) — это платформа с открытым исходным кодом для совместной работы над документами в формате Markdown в режиме реального времени. Это "Google Docs для разработчиков", где вы и ваш
+- **суперсила**: 1. Zero-Lag Collaboration— Видно курсор каждого участника и его правки в реальном времени. 2. Rich Visuals— Поддержка `mermaid` диаграмм прямо внутри текста (идеально для [[FORCE-DIRECTED-GRAPH]] опис...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[AGENTS]], [[FACE-RECOGNITION]], [[HTOP]], [[ANYTHING-LLM]], [[HA-PROXY]], [[OBSIDIAN]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[CRYPTOGRAPHY]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[INTERNAL-DOCUMENTATION]], [[KUBERNETES]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[GPG]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[HEDGEDOC]], [[FASTAPI]], [[NODEJS]], [[HARBOR]]
+
+---
+
+## [HELM]
+- **категория**: Infrastructure / Container Orchestration (Kubernetes Tooling)
+- **суть**: Helm — это золотой стандарт для управления приложениями в Kubernetes (K8s). Если Docker позволяет упаковать приложение в контейнер, то Helm позволяет упаковать целое облачное приложение (состоящее из 
+- **суперсила**: 1. Templates Power— Вы можете написать один конфиг YAML и подставлять в него разные значения для "Продакшена", "Тестирования" или "Локальной разработки". 2. One-Command Deploy— Команда `helm install m...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Масштабируемая Облачная Армада (Scalable Cloud Armada). Управление всей вашей армией агентов через Kubernetes. ; Интеграция: Модуль NEXUS K8s Deployer — автоматизация создания копий (реплик) ваших аналитических узлов. ; [[DOCKER]] -> [[HELM CHART]] -> [[KUBERNETES]] деплой.
+- **связи**: [[DESIGN-PATTERNS]], [[DEAP]], [[DUPE-DETECTION]], [[ALLUXIO]], [[FASTCHAT]], [[GSM-SECURITY]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[FLUTTER]], [[HA-PROXY]], [[GENSIM]], [[EB-INTELLIGENCE]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[HELM CHART]], [[FFMPEG]], [[EXPLAIN-VISUALIZE-ML]], [[EMBEDDING-MODELS]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[GEOLOCATION]], [[DART]], [[BUN]], [[DRY-PYTHON]], [[GIN]], [[HELM]], [[ELECTRON]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]], [[GRAFANA]], [[ENG-INTERVIEW]], [[NEXUS NODES]], [[DEEPDETECT]], [[FSST]], [[CHAKRA-UI]], [[FLASK]], [[DATAEASE]], [[DRF]], [[DJANGO-REST-FRAMEWORK]], [[ENHANCEMENT-LLM]], [[DOCKER]], [[KUBERNETES]], [[EMOTION]], [[ETHEREUM-PRACTICE]], [[GPT-API]], [[ESP32]], [[CRAWL4AI]], [[DATASTRUCTURES-ALGORITHMS]], [[ASTRO]], [[DNA-FARM]], [[DEEPANALYZE]], [[GUI-ENGINE]], [[GPG]], [[DATASCIENCEPYTHON]], [[DEEPLNOTE]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[NODE-JS]], [[DEEPLEARNING-500-QUESTIONS]], [[EDGE-AI]], [[GUM]], [[HEDGEDOC]], [[DOCS]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[EXCEL-PYTHON]], [[FASTAPI]], [[HARBOR]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [HTOP]
+- **категория**: Infrastructure / System Monitoring (Real-time)
+- **суть**: htop — это интерактивный кроссплатформенный монитор процессов для командной строки. В отличие от стандартного `top`, он предоставляет интуитивно понятное, цветное и динамичное отображение загрузки рес
+- **суперсила**: 1. Visual Clarity— Вы мгновенно видите "горячие" процессы, которые потребляют 100% CPU или утекают по памяти. 2. Easy Kill— Позволяет отправить сигнал процессу (SIGKILL, SIGTERM) парой нажатий клавиш ...
+- **код / запуск**: `# 1. Запуск htop (стандарт) ■ htop ■  ■ # 2. Фильтрация процессов в командной строке ■ htop --filter=python ■  ■ # 3. Сортировка по потреблению памяти...`
+- **архитектура**: Паттерн: Оперативная Диагностика Ресурсов (Resource Health Check). Позволяет быстро понять, почему ферма Obsidian начала тормозить. ; Интеграция: Модуль NEXUS Self-Monitor — использование `htop-python` для автоматического сбора данных о нагрузке и отправки их в [[GRAFANA]]. ; [[HTOP]] -> [[DASHBOARD]] мгновенный статус сервера.
+- **связи**: [[DASHBOARD]], [[ALLUXIO]], [[FASTCHAT]], [[FACE-RECOGNITION]], [[HTOP]], [[ANYTHING-LLM]], [[PROMETHEUS]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[BUN]], [[HELM]], [[ELECTRON]], [[GRAFANA]], [[HUGGINGFACE-TRANSFORMERS]], [[KUBERNETES]], [[ESP32]], [[CRAWL4AI]], [[DNA-FARM]], [[FAIRY-DOCKER]], [[NODE-JS]], [[FASTAPI]]
+
+---
+
+## [HUGGINGFACE-TRANSFORMERS]
+- **категория**: AI / Model Hub & Transformers (The Industry Core)
+- **суть**: Hugging Face Transformers — это самая важная и влиятельная библиотека в мире современного ИИ. Она предоставляет простой доступ к тысячам предобученных моделей для работы с текстом (BERT, GPT-2, Llama,
+- **суперсила**: 1. Model Model Access— Вы можете переключаться между `Llama-3-8B`, `BERT` или `Whisper-v3`, просто меняя одно слово в названии модели. 2. Tokenizer Power— Сверхбыстрые токенизаторы на Rust позволяют о...
+- **код / запуск**: `from transformers import pipeline ■  ■ # 1. Мгновенный классификатор (Sentiment Analysis) ■ classifier = pipeline("sentiment-analysis", model="distilb...`
+- **архитектура**: 4. Fine-tuning Made Easy— Инструмент `Trainer` автоматизирует все сложности обучения: распределение по GPU, расчет лосса и метрик. 5. Community-driven— Как только в мире появляется новая крутая модель...
+- **связи**: [[QUANTA]], [[VULNERABILITY-SCANNER]], [[REACT]], [[DESIGN-PATTERNS]], [[WEBHOOKS]], [[FASTCHAT]], [[JINJA2]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[NUMPY]], [[VERILOG]], [[LUA]], [[RAG]], [[NGINX]], [[TESTING]], [[TORCHSERVICE]], [[ANYTHING-LLM]], [[ZOOM]], [[SSL]], [[HTTP-CLIENT]], [[NOMAD]], [[OTEL]], [[EB-INTELLIGENCE]], [[KIND]], [[EXPLAIN-VISUALIZE-ML]], [[DART]], [[ZEN]], [[BUN]], [[MINIKUBE]], [[NETWORKING]], [[KOBOLDCPP]], [[NPC-ENGINE]], [[OPERATING-SYSTEMS]], [[NATS]], [[FSST]], [[CHAKRA-UI]], [[LOGGING]], [[ENHANCEMENT-LLM]], [[POSTGRESQL]], [[EMOTION]], [[JAVA]], [[ZIP]], [[GUI-ENGINE]], [[ESP32]], [[DEEPANALYZE]], [[LEGACY]], [[DNA-FARM]], [[UPTIME]], [[LIGHTHOUSE]], [[ORCHESTRATION]], [[STORAGE]], [[DATASCIENCEPYTHON]], [[TRANSFORMERS]], [[GUM]], [[TRADING]], [[ENERGY-FORECASTING]], [[MONITORING]], [[GORELEASER]], [[WANDB]], [[LEKNER]], [[WEB-SCRAPING]], [[WORD2VEC]], [[DUPE-DETECTION]], [[LIBRISPEECH]], [[LIVEKIT]], [[TYPESCRIPT]], [[ALLUXIO]], [[XLM]], [[THREAT-MODELING]], [[FACE-RECOGNITION]], [[JENKINS]], [[QA-AUTOMATION]], [[HYSTERIX]], [[RISK-MANAGEMENT]], [[HTOP]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[SAFETY]], [[KAIDAN]], [[PUPPETEER]], [[GENSIM]], [[VIM]], [[SYSTEM-DESIGN]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[NEURAL-NETWORKS]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[OSINT]], [[ENG-INTERVIEW]], [[MASTODON-AGENT]], [[MATHEMATICS]], [[WEB3]], [[ZSH]], [[SCIKIT-LEARN]], [[DATAEASE]], [[DRF]], [[DJANGO-REST-FRAMEWORK]], [[MICROSERVICES]], [[REDTEAMING]], [[KUBERNETES]], [[SECURITY]], [[IP-RECON]], [[DATASTRUCTURES-ALGORITHMS]], [[ONNX]], [[PANDAS]], [[PACEMAKER]], [[SMART-CONTRACTS]], [[GPG]], [[WIRESHARK]], [[UBUNTU]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[PENTESTING]], [[DEEPLEARNING-500-QUESTIONS]], [[PROTOC]], [[SQL]], [[LOCUST]], [[GSM-SECURITY]], [[NOSQL]], [[PKI]], [[SIMULATION]], [[WEB-DEVELOPMENT]], [[OWASP]], [[WPA]], [[XGBOOST]], [[RUST]], [[USER-AGENTS]], [[INVOKEAI]], [[ZIG]], [[LLM-SECURITY]], [[STABLE-DIFFUSION]], [[QUANTIZATION]], [[WEB-API]], [[GARDEN]], [[STATISTICS]], [[LLAMA-CPP]], [[HUGGINGFACE]], [[KIBANA]], [[NEXTJS]], [[DEEPDETECT]], [[RAY]], [[WHISPER]], [[FLASK]], [[X509]], [[PIP]], [[VISION]], [[CRAWL4AI]], [[PROMPT-ENGINEERING]], [[INFRASTRUCTURE]], [[NLP]], [[MLFLOW]], [[TRANSLATION]], [[PYTORCH]], [[KALDI]], [[MSFVENOM]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[UNIT-TESTING]], [[VALIDATION]], [[PHYSICS]], [[HEDGEDOC]], [[ROBOTICS]], [[DOCS]], [[SHELL]], [[VIRTUAL-MACHINES]], [[YARA]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[NODEJS]], [[POWERSHELL]], [[SVELTE]], [[DEAP]], [[LUCENE]], [[IMAGE-PROCESSING]], [[WORKFLOW]], [[STARLETTE]], [[PYGAME]], [[OPENAI]], [[LINUX]], [[JOB-INTEL]], [[MYSQL]], [[LEETCODE]], [[S3]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[OBSIDIAN]], [[SERVERLESS]], [[FFMPEG]], [[OPENSSL]], [[EMBEDDING-MODELS]], [[GBDT]], [[MOBILE-SECURITY]], [[NPM]], [[Jupyter]], [[DEEP-REINFORCEMENT-LEARNING-ALGORITHMS-WITH-PYTORCH]], [[UEFI]], [[GRAFANA]], [[LANGCHAIN]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[IFREEMEM]], [[MLC-LLM]], [[GPT-API]], [[OPENCV]], [[ASTRO]], [[ROOTKIT]], [[YAML]], [[SENTENCE-TRANSFORMERS]], [[DEEPLNOTE]], [[PLAYWRIGHT]], [[SHODAN]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[EDGE-AI]], [[SWAGGER]], [[PYTHON]], [[EXCEL-PYTHON]], [[TENSORFLOW]], [[GOLANG-ALGORITHMS]], [[ZERO-SHOT]], [[PYDANTIC]]
+
+---
+
+## [IMAGE-PROCESSING]
+- **категория**: AI / Computer Vision (Image Processing & Enhancement)
+- **суть**: Image Processing — это фундаментальный набор технологий и библиотек (таких как OpenCV и Pillow), которые позволяют компьютерам "видеть", анализировать и изменять визуальный контент. Это охватывает всё
+- **суперсила**: 1. Evidence Cleanup— Если у вас есть неразборчивое фото-улика (скриншот с камеры), вы можете убрать шумы и повысить разрешение (Upscale) через ИИ. 2. Feature Extraction— Автоматическое нахождение лиц,...
+- **код / запуск**: `import cv2 ■ from PIL import Image ■  ■ # 1. Загрузка и удаление шума (OpenCV) ■ img = cv2.imread("nexus_blurry_scan.jpg") ■ denoised = cv2.fastNlMean...`
+- **архитектура**: Паттерн: Автоматическое Улучшение Визуальных Улик (Forensic Image Enhancement). Ваши OSINT-агенты используют это для подготовки скриншотов перед анализом. ; Интеграция: Модуль NEXUS Media Lab — автоматическая очистка и каталогизация всех изображений, найденных в ходе разведки. ; [[RAW BLURRY IMAGE]] -> [[IMAGE-PROCESSING]] -> [[SHARP EVIDANCE]] подготовка улик.
+- **связи**: [[QUANTA]], [[VULNERABILITY-SCANNER]], [[REACT]], [[WEBHOOKS]], [[FASTCHAT]], [[JINJA2]], [[LEARN-LINUX]], [[NUMPY]], [[VERILOG]], [[LUA]], [[RAG]], [[NGINX]], [[TESTING]], [[TORCHSERVICE]], [[ANYTHING-LLM]], [[ZOOM]], [[SSL]], [[NOMAD]], [[OTEL]], [[RAW BLURRY IMAGE]], [[KIND]], [[ZEN]], [[BUN]], [[MINIKUBE]], [[NETWORKING]], [[KOBOLDCPP]], [[NPC-ENGINE]], [[OPERATING-SYSTEMS]], [[NATS]], [[HUGGINGFACE-TRANSFORMERS]], [[LOGGING]], [[POSTGRESQL]], [[ZIP]], [[JAVA]], [[LEGACY]], [[ESP32]], [[UPTIME]], [[DNA-FARM]], [[LIGHTHOUSE]], [[ORCHESTRATION]], [[STORAGE]], [[TRANSFORMERS]], [[TRADING]], [[WANDB]], [[MONITORING]], [[LEKNER]], [[WEB-SCRAPING]], [[WORD2VEC]], [[LIBRISPEECH]], [[LIVEKIT]], [[TYPESCRIPT]], [[ALLUXIO]], [[XLM]], [[THREAT-MODELING]], [[FACE-RECOGNITION]], [[QA-AUTOMATION]], [[RISK-MANAGEMENT]], [[HTOP]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[SAFETY]], [[KAIDAN]], [[PUPPETEER]], [[GENSIM]], [[VIM]], [[SYSTEM-DESIGN]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[DEEPSEARCH]], [[NEURAL-NETWORKS]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[ELECTRON]], [[OSINT]], [[MASTODON-AGENT]], [[MATHEMATICS]], [[WEB3]], [[ZSH]], [[SCIKIT-LEARN]], [[MICROSERVICES]], [[REDTEAMING]], [[KUBERNETES]], [[SECURITY]], [[IP-RECON]], [[ONNX]], [[PANDAS]], [[SMART-CONTRACTS]], [[PACEMAKER]], [[WIRESHARK]], [[UBUNTU]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[PENTESTING]], [[PROTOC]], [[SQL]], [[LOCUST]], [[NOSQL]], [[PKI]], [[SIMULATION]], [[WEB-DEVELOPMENT]], [[OWASP]], [[WPA]], [[XGBOOST]], [[RUST]], [[USER-AGENTS]], [[INVOKEAI]], [[ZIG]], [[LLM-SECURITY]], [[STABLE-DIFFUSION]], [[QUANTIZATION]], [[WEB-API]], [[STATISTICS]], [[LLAMA-CPP]], [[KIBANA]], [[NEXTJS]], [[RAY]], [[WHISPER]], [[X509]], [[PIP]], [[VISION]], [[D3]], [[CRAWL4AI]], [[PROMPT-ENGINEERING]], [[INFRASTRUCTURE]], [[NLP]], [[MLFLOW]], [[TRANSLATION]], [[PYTORCH]], [[KALDI]], [[MSFVENOM]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[UNIT-TESTING]], [[VALIDATION]], [[PHYSICS]], [[HEDGEDOC]], [[ROBOTICS]], [[SHELL]], [[VIRTUAL-MACHINES]], [[YARA]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[NODEJS]], [[POWERSHELL]], [[SVELTE]], [[LUCENE]], [[IMAGE-PROCESSING]], [[WORKFLOW]], [[STARLETTE]], [[PYGAME]], [[OPENAI]], [[LINUX]], [[JOB-INTEL]], [[MYSQL]], [[LEETCODE]], [[S3]], [[IP-ADDR]], [[OBSIDIAN]], [[SERVERLESS]], [[FFMPEG]], [[OPENSSL]], [[MOBILE-SECURITY]], [[GBDT]], [[SHARP EVIDANCE]], [[NPM]], [[Jupyter]], [[UEFI]], [[GRAFANA]], [[LANGCHAIN]], [[MLC-LLM]], [[OPENCV]], [[ASTRO]], [[ROOTKIT]], [[YAML]], [[SENTENCE-TRANSFORMERS]], [[PLAYWRIGHT]], [[SHODAN]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[SWAGGER]], [[PYTHON]], [[TENSORFLOW]], [[JENKINS]], [[ZERO-SHOT]], [[PYDANTIC]]
+
+---
+
+## [IMAGES-PYTHON]
+- **категория**: Data / Visualization Libraries (Python-centric)
+- **суть**: Images-Python — это объединяющее название для ведущих библиотек визуализации данных на языке Python (таких как Matplotlib, Plotly, Seaborn). Эти инструменты позволяют превращать сухие цифры, логи и ре
+- **суперсила**: 1. Insight Acceleration— График распределения IP-адресов [[IP-RECON]] по странам скажет больше, чем таблица на 10 000 строк. 2. Infinite Customization— Вы можете настроить каждый пиксель: от шрифтов и...
+- **код / запуск**: `import plotly.express as px ■ import pandas as pd ■  ■ # 1. Готовим данные о сканах ■ df = pd.DataFrame({ ■     "IP": ["1.1.1.1", "2.2.2.2", "3.3.3.3"...`
+- **архитектура**: Паттерн: Визуальное Представление Улик (Forensic Evidence Visualization). Автоматическая генерация графиков для каждого отчета Obsidian. ; Интеграция: Модуль NEXUS Visualizer — отрисовка "портрета" репозитория (количество звезд, языки, активность коммитов) на странице Wiki. ; [[DATAFRAME]] -> [[IMAGES-PYTHON]] -> [[PNG/SVG]] вставка в отчет.
+- **связи**: [[QUANTA]], [[VULNERABILITY-SCANNER]], [[REACT]], [[WEBHOOKS]], [[FASTCHAT]], [[JINJA2]], [[LEARN-LINUX]], [[NUMPY]], [[VERILOG]], [[LUA]], [[RAG]], [[NGINX]], [[TESTING]], [[TORCHSERVICE]], [[ANYTHING-LLM]], [[ZOOM]], [[SSL]], [[HTTP-CLIENT]], [[NOMAD]], [[OTEL]], [[KIND]], [[ZEN]], [[BUN]], [[MINIKUBE]], [[NETWORKING]], [[KOBOLDCPP]], [[NPC-ENGINE]], [[OPERATING-SYSTEMS]], [[DATAFRAME]], [[NATS]], [[CHAKRA-UI]], [[LOGGING]], [[POSTGRESQL]], [[ZIP]], [[EMOTION]], [[JAVA]], [[LEGACY]], [[ESP32]], [[UPTIME]], [[DNA-FARM]], [[LIGHTHOUSE]], [[ORCHESTRATION]], [[STORAGE]], [[TRANSFORMERS]], [[TRADING]], [[WANDB]], [[MONITORING]], [[GORELEASER]], [[LEKNER]], [[WEB-SCRAPING]], [[WORD2VEC]], [[LIBRISPEECH]], [[LIVEKIT]], [[TYPESCRIPT]], [[XLM]], [[THREAT-MODELING]], [[FACE-RECOGNITION]], [[QA-AUTOMATION]], [[HYSTERIX]], [[RISK-MANAGEMENT]], [[HTOP]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[SAFETY]], [[KAIDAN]], [[PUPPETEER]], [[GENSIM]], [[VIM]], [[SYSTEM-DESIGN]], [[HASHCAT]], [[DEEPSEARCH]], [[NEURAL-NETWORKS]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[ELECTRON]], [[OSINT]], [[ENG-INTERVIEW]], [[MASTODON-AGENT]], [[MATHEMATICS]], [[WEB3]], [[ZSH]], [[SCIKIT-LEARN]], [[MICROSERVICES]], [[REDTEAMING]], [[KUBERNETES]], [[SECURITY]], [[IP-RECON]], [[PANDAS]], [[ONNX]], [[SMART-CONTRACTS]], [[PACEMAKER]], [[GPG]], [[WIRESHARK]], [[UBUNTU]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[PENTESTING]], [[PROTOC]], [[SQL]], [[LOCUST]], [[NOSQL]], [[PKI]], [[SIMULATION]], [[WEB-DEVELOPMENT]], [[OWASP]], [[WPA]], [[XGBOOST]], [[RUST]], [[PNG/SVG]], [[USER-AGENTS]], [[INVOKEAI]], [[ZIG]], [[LLM-SECURITY]], [[STABLE-DIFFUSION]], [[QUANTIZATION]], [[WEB-API]], [[STATISTICS]], [[LLAMA-CPP]], [[KIBANA]], [[NEXTJS]], [[RAY]], [[WHISPER]], [[X509]], [[PIP]], [[VISION]], [[D3]], [[PROMPT-ENGINEERING]], [[INFRASTRUCTURE]], [[NLP]], [[MLFLOW]], [[TRANSLATION]], [[PYTORCH]], [[KALDI]], [[MSFVENOM]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[UNIT-TESTING]], [[VALIDATION]], [[PHYSICS]], [[HEDGEDOC]], [[ROBOTICS]], [[DOCS]], [[SHELL]], [[VIRTUAL-MACHINES]], [[YARA]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HELM]], [[HARBOR]], [[ICECAST]], [[NODEJS]], [[POWERSHELL]], [[SVELTE]], [[LUCENE]], [[IMAGE-PROCESSING]], [[WORKFLOW]], [[STARLETTE]], [[PYGAME]], [[OPENAI]], [[LINUX]], [[JOB-INTEL]], [[MYSQL]], [[LEETCODE]], [[S3]], [[IP-ADDR]], [[OBSIDIAN]], [[SERVERLESS]], [[FFMPEG]], [[OPENSSL]], [[MOBILE-SECURITY]], [[GBDT]], [[NPM]], [[Jupyter]], [[UEFI]], [[GRAFANA]], [[LANGCHAIN]], [[IDE-EXTENSION]], [[IFREEMEM]], [[MLC-LLM]], [[OPENCV]], [[ASTRO]], [[ROOTKIT]], [[YAML]], [[SENTENCE-TRANSFORMERS]], [[PLAYWRIGHT]], [[SHODAN]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[SWAGGER]], [[PYTHON]], [[TENSORFLOW]], [[JENKINS]], [[ZERO-SHOT]], [[PYDANTIC]]
+
+---
+
+## [IMMLIB]
+- **категория**: Security / Reverse Engineering & Debugging (Windows-centric)
+- **суть**: immlib — это мощная библиотека на Python, встроенная в Immunity Debugger. Она позволяет автоматизировать процесс отладки, статического и динамического анализа исполняемых файлов на Windows. С помощью 
+- **суперсила**: 1. Automation— Вместо того чтобы вручную искать "прыжки" (JMP ESP) в тысячах строчек ассемблера, скрипт на `immlib` найдет их за секунду. 2. Evasion— Позволяет анализировать, как именно программа защи...
+- **код / запуск**: `import immlib ■  ■ def main(args): ■     imm = immlib.Debugger() ■     # 1. Поиск всех JMP ESP (для перехода на шелл-код) ■     search_results = imm.s...`
+- **архитектура**: Паттерн: Низкоуровневая Вивисекция Кода (Low-level Code Vivisection). Анализ подозрительных EXE-файлов, найденных вашими OSINT-агентами. ; Интеграция: Модуль NEXUS Binary Auditor — автоматический запуск отладочных скриптов для проверки безопасности проприетарного софта. ; [[SUSPICIOUS.EXE]] -> [[IMMLIB]] -> [[SECURITY REPORT]] анализ бинарника.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[RADARE2]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[KEV]], [[IP-ADDR]], [[KAIDAN]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[DEEPSEARCH]], [[GBDT]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[Jupyter]], [[GRAFANA]], [[SYZ]], [[SUSPICIOUS.EXE]], [[IDA-PRO]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GHIDRA]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[REVERSE-ENGINEERING]], [[IMAGES-PYTHON]], [[NODE-JS]], [[HEDGEDOC]], [[SECURITY REPORT]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [INFRASTRUCTURE]
+- **категория**: Architecture / Global Infrastructure Design (The Nexus Map)
+- **суть**: Infrastructure — это не просто набор серверов, а живая, взаимосвязанная экосистема сервисов, баз данных, ИИ-моделей и сетевых протоколов, которую мы сейчас строим. Этот файл описывает "Генеральный Пла
+- **суперсила**: 1. Total Visibility— Вы видите, как данные текут от разведчика [[IP-RECON]] через ИИ-мозги [[XLM]] в вашу базу знаний [[OBSIDIAN]]. 2. Unified Control— Позволяет управлять всей фермой как единым целым...
+- **код / запуск**: `from diagrams import Diagram, Cluster ■ from diagrams.onprem.compute import Server ■ from diagrams.onprem.database import PostgreSQL ■ from diagrams.o...`
+- **архитектура**: N/A
+- **связи**: [[FASTCHAT]], [[JINJA2]], [[ELASTICSEARCH]], [[MASTER-PLAN]], [[ANYTHING-LLM]], [[EB-INTELLIGENCE]], [[REALITY]], [[EXPLAIN-VISUALIZE-ML]], [[BUN]], [[FSST]], [[ENHANCEMENT-LLM]], [[JAVA]], [[EMOTION]], [[GUI-ENGINE]], [[ESP32]], [[DNA-FARM]], [[ORCHESTRATION]], [[IDEA]], [[GUM]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[DUPE-DETECTION]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[JENKINS]], [[HYSTERIX]], [[HTOP]], [[PROMETHEUS]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DRF]], [[KUBERNETES]], [[IP-RECON]], [[GPG]], [[FORCE-DIRECTED-GRAPH]], [[DOCKER]], [[GSM-SECURITY]], [[GARDEN]], [[CRYPTOGRAPHY]], [[FLASK]], [[D3]], [[CRAWL4AI]], [[INFRASTRUCTURE]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[DOCS]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[JOB-INTEL]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[OBSIDIAN]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[GBDT]], [[Jupyter]], [[GRAFANA]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[GPT-API]], [[ASTRO]], [[MERMAID]], [[TERRAFORM]], [[NODE-JS]], [[EDGE-AI]], [[EXCEL-PYTHON]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [INTERPRETABLE-ML]
+- **категория**: AI / Explainable Machine Learning (XAI)
+- **суть**: Interpretable ML (XAI) — это набор методов и библиотек (таких как SHAP и LIME), которые призваны открыть "черный ящик" нейросетей и алгоритмов машинного обучения. Они позволяют понять, почему модель п
+- **суперсила**: 3. Debug AI— Быстрое нахождение ошибок, когда модель "заучила" неправильные паттерны (напр. реагирует на шум в данных). 4. Fairness & Bias Audit— Проверка, не делает ли ИИ предвзятых выводов на основе...
+- **код / запуск**: `import shap ■ import xgboost as xgb ■  ■ # 1. Берем обученную модель GBDT (напр. XGBoost) ■ model = xgb.XGBClassifier().fit(X_train, y_train) ■  ■ # 2...`
+- **архитектура**: Паттерн: Прозрачность Агентских Решений (Transparent Decision Matrix). Основа для доверия к вашему "AI-Верховному Главнокомандующему". ; Интеграция: Модуль NEXUS Explainability Lab — автоматическое приложение "Пояснительной записки" к каждому отчету ИИ о найденной уязвимости. ; [[GBDT]] -> [[INTERPRETABLE-ML]] -> [[OBSIDIAN]] объяснение атак.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[HTOP]], [[ANYTHING-LLM]], [[IP-ADDR]], [[OBSIDIAN]], [[GENSIM]], [[VIM]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[GBDT]], [[GARDEN]], [[BUN]], [[GIN]], [[HELM]], [[ELECTRON]], [[ENG-INTERVIEW]], [[GRAFANA]], [[CHAKRA-UI]], [[HUGGINGFACE-TRANSFORMERS]], [[ZSH]], [[CATBOOST]], [[EMOTION]], [[GPT-API]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[SHODAN]], [[NODE-JS]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]]
+
+---
+
+## [INVOKEAI]
+- **категория**: AI / Image Generation & Creative Tools (InvokeAI)
+- **суть**: InvokeAI — это мощнейшая и самая профессиональная реализация нейросети Stable Diffusion (генерация изображений по тексту) с открытым исходным кодом. В отличие от сырых версий, InvokeAI предоставляет б
+- **суперсила**: 1. Unified Canvas— Позволяет не просто "генерировать", а рисовать вместе с ИИ: домазывать области (Inpainting), достраивать края (Outpainting) и смешивать слои. 2. ControlNet Mastery— Позволяет управл...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Автоматический Дизайн Артефактов (Generative Creative Node). Генерация уникальных обложек и визуальных схем для вашего Obsidian Vault. ; Интеграция: Модуль NEXUS Creative — автоматическое создание "фото-улик" или "схем воображаемых систем" по текстовому описанию OSINT-агента. ; [[PROMPT]] -> [[INVOKEAI]] -> [[IMAGE]] визуализация воображения.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[XLM]], [[FACE-RECOGNITION]], [[HTOP]], [[ANYTHING-LLM]], [[HA-PROXY]], [[INVOKEAI]], [[PUPPETEER]], [[GENSIM]], [[STABLE-DIFFUSION]], [[ETHICAL-HACKING-NOTES]], [[HASHCAT]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[BUN]], [[CRYPTOGRAPHY]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[HUGGINGFACE-TRANSFORMERS]], [[KUBERNETES]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[DNA-FARM]], [[ASTRO]], [[IMAGE]], [[GPG]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[PROMPT]], [[HEDGEDOC]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[NODEJS]], [[HARBOR]]
+
+---
+
+## [IP-ADDR]
+- **категория**: Networking / IP Address Manipulation & Logic
+- **суть**: ipaddress — это стандартная библиотека на языке Python, предназначенная для создания, управления и манипулирования IPv4 и IPv6 адресами, а также целыми подсетями (Subnets). Она позволяет программистам
+- **суперсила**: 1. Network Calculation— Одной строчкой кода можно получить широковещательный адрес (Broadcast), адрес сети и количество доступных хостов. 2. Subnet Overlap Detection— Библиотека сама скажет, если одна...
+- **код / запуск**: `import ipaddress ■  ■ # 1. Создаем объект подсети (CIDR) ■ net = ipaddress.ip_network("192.168.1.0/24") ■  ■ # 2. Узнаем параметры сети ■ print(f"Mask...`
+- **архитектура**: Паттерн: Математический Сетевой Движок (Network Engine). Ваши агенты используют его для анализа "карты мишеней" после [[IP-RECON]]. ; Интеграция: Модуль NEXUS IP Filter — автоматическая фильтрация локальных IP из результатов внешней разведки, чтобы агенты не атаковали "сами себя". ; [[RAW IP STRING]] -> [[IP-ADDR OBJECT]] -> [[NETWORK LOGIC]] обработка.
+- **связи**: [[DUPE-DETECTION]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[GSM-SECURITY]], [[XLM]], [[ELASTICSEARCH]], [[NETWORK LOGIC]], [[FACE-RECOGNITION]], [[HYSTERIX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR OBJECT]], [[GENSIM]], [[EB-INTELLIGENCE]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[EXPLAIN-VISUALIZE-ML]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[EMBEDDING-MODELS]], [[ZEN]], [[DRY-PYTHON]], [[GIN]], [[HELM]], [[ELECTRON]], [[GRAFANA]], [[ENG-INTERVIEW]], [[FSST]], [[NMAP]], [[BEYOND-RECON]], [[FLASK]], [[DRF]], [[ENHANCEMENT-LLM]], [[ETHEREUM-PRACTICE]], [[KUBERNETES]], [[EMOTION]], [[IDE-EXTENSION]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPT-API]], [[GUI-ENGINE]], [[RAW IP STRING]], [[GPG]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[SHODAN]], [[FORCE-DIRECTED-GRAPH]], [[EDGE-AI]], [[GUM]], [[HEDGEDOC]], [[DOCS]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[EXCEL-PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [IP-RECON]
+- **категория**: OSINT / Network Reconnaissance (Advanced IP Analysis)
+- **суть**: IP-Recon — это класс инструментов и методологий для глубокой сетевой разведки (Reconnaissance) инфраструктуры цели по её IP-адресу или доменному имени. Это не просто "пинг", а комплексный анализ: обна
+- **суперсила**: 1. Target Visibility— Вы видите не просто "сайт", а всю серверную мощь противника: какие базы данных открыты, какие VPN используются. 2. Reverse Mapping— Поиск всех сайтов, "живущих" на одном IP (Shar...
+- **код / запуск**: `# 1. Быстрый скан всех портов (Masscan) ■ masscan -p1-65535 1.2.3.4 --rate=1000 ■  ■ # 2. Детальный анализ найденных портов (Nmap) ■ nmap -sV -sC -A -...`
+- **архитектура**: Паттерн: Постоянное Сканирование Периметра (Continuous Perimeter Scan). Ваши агенты-разведчики живут в этом модуле. ; Интеграция: Модуль NEXUS Sentry — автоматическая проверка вашего собственного IP-адреса на наличие "дыр" и утечек данных. ; [[UNKNOWN IP]] -> [[IP-RECON]] -> [[INTEL REPORT]] формирование улик.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[HTOP]], [[ANYTHING-LLM]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[CRYPTOGRAPHY]], [[GIN]], [[HELM]], [[BLACK-HAT-RUST]], [[GRAFANA]], [[UNKNOWN IP]], [[NMAP]], [[BEYOND-RECON]], [[KUBERNETES]], [[INTEL REPORT]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[SHODAN]], [[HEDGEDOC]], [[MASSCAN]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]]
+
+---
+
+## [JAVA]
+- **категория**: Programming / Software Engineering Foundations (Java Ecosystem)
+- **суть**: Java — это промышленный золотой стандарт объектно-ориентированного программирования (ООП). Она лежит в основе мощнейших банковских систем, огромных баз данных (напр. [[ELASTICSEARCH]], [[CRATE]]) и мо
+- **суперсила**: 1. Architectural Purity— Java заставляет вас думать об архитектуре до того, как вы напишете "Hello World". Это идеальный язык для систем с нулевой терпимостью к ошибкам. 2. Pattern Mastery— В этом реп...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[DESIGN-PATTERNS]], [[FASTCHAT]], [[JINJA2]], [[ELASTICSEARCH]], [[ANYTHING-LLM]], [[EB-INTELLIGENCE]], [[EXPLAIN-VISUALIZE-ML]], [[ZEN]], [[BUN]], [[JAVA (CORE)]], [[FSST]], [[HUGGINGFACE-TRANSFORMERS]], [[PYTHON (AGENT)]], [[ENHANCEMENT-LLM]], [[EMOTION]], [[GUI-ENGINE]], [[ESP32]], [[DNA-FARM]], [[CRATE]], [[GUM]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[DUPE-DETECTION]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[JENKINS]], [[HYSTERIX]], [[HTOP]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DRF]], [[KUBERNETES]], [[IP-RECON]], [[GPG]], [[FORCE-DIRECTED-GRAPH]], [[CLEAN-CODE-JAVA]], [[GSM-SECURITY]], [[GARDEN]], [[FLASK]], [[D3]], [[CRAWL4AI]], [[INFRASTRUCTURE]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[DATABASE]], [[DOCS]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[JOB-INTEL]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[GBDT]], [[GRAFANA]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[ALGS4]], [[GPT-API]], [[ASTRO]], [[JUPYTER]], [[NODE-JS]], [[EDGE-AI]], [[EXCEL-PYTHON]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [JAVASCRIPT-ALGORITHMS]
+- **категория**: Programming / CS Foundations (JavaScript Algorithmic Mastery)
+- **суть**: JavaScript Algorithms — это колоссальный репозиторий с открытым исходным кодом, который содержит почти все известные алгоритмы и структуры данных, реализованные на чистом JavaScript/TypeScript. Это не
+- **суперсила**: 1. Interactive Visualization— Почти каждый алгоритм можно запустить в браузере и увидеть визуально, как он работает "под капотом". 2. Interview Prep— Золотой стандарт для подготовки к собеседованиям в...
+- **код / запуск**: `N/A`
+- **архитектура**: | Sorting | QuickSort, MergeSort, HeapSort | Группировка 1400+ репозиториев по дате/звездам | | Searching | Binary Search, Jump Search | Мгновенный поиск по вашей базе знаний | | Graphs | Dijkstra, BF...
+- **связи**: [[ALGORITHM-VISUALIZER]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[JS-ALGORITHM]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[LEETCODE]], [[HA-PROXY]], [[IP-ADDR]], [[SORTED KNOWLEDGE]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[DART]], [[ZEN]], [[BUN]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[ENG-INTERVIEW]], [[IMMLIB]], [[ALGS4]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[CLEVERALGORITHMS]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[CODEFORCES-GO]], [[CTCI-6TH-EDITION]], [[HEDGEDOC]], [[RAW DATA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[NODEJS]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [JINJA2]
+- **категория**: Programming / Templating Engine (The Python Standard)
+- **суть**: Jinja2 — это самый популярный и мощный язык шаблонов для Python. Он позволяет разделять логику данных и их визуальное представление (HTML, Markdown, SQL, YAML). Построенный на базе идей Django, Jinja2
+- **суперсила**: 1. Template Inheritance— Вы можете создать один "Скелет" (Base template) для всех отчетов в Obsidian и менять только начинку, не дублируя код. 2. Macros— Возможность писать небольшие функции прямо в ш...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Массовая Фабрика Документации (Automated Document Factory). Главный инструмент для создания тех самых досье на 1400+ репозиториев, которые мы сейчас пишем. ; Интеграция: Модуль NEXUS Report Generator — использование Jinja2 для превращения сырых JSON-данных от ИИ в красивые страницы Obsidian Wiki. ; [[RAW DATA (JSON)]] -> [[JINJA2 TEMPLATE]] -> [[OBSIDIAN PAGE (.md)]] генерация.
+- **связи**: [[FASTCHAT]], [[ELASTICSEARCH]], [[NGINX]], [[MASTER-PLAN]], [[ANYTHING-LLM]], [[EB-INTELLIGENCE]], [[EXPLAIN-VISUALIZE-ML]], [[ZEN]], [[FSST]], [[ENHANCEMENT-LLM]], [[JAVA]], [[EMOTION]], [[GUI-ENGINE]], [[ESP32]], [[DNA-FARM]], [[OBSIDIAN PAGE (.md)]], [[GUM]], [[AIRFLOW]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[RAW DATA (JSON)]], [[DUPE-DETECTION]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[JENKINS]], [[HYSTERIX]], [[JINJA2 TEMPLATE]], [[HTOP]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[ANSIBLE]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[DRF]], [[IP-RECON]], [[GPG]], [[FORCE-DIRECTED-GRAPH]], [[GSM-SECURITY]], [[GARDEN]], [[NEXTJS]], [[FLASK]], [[CRAWL4AI]], [[INFRASTRUCTURE]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[DOCS]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HELM]], [[HARBOR]], [[ICECAST]], [[JOB-INTEL]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[OBSIDIAN]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[GBDT]], [[GRAFANA]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[GPT-API]], [[ASTRO]], [[JUPYTER]], [[EDGE-AI]], [[EXCEL-PYTHON]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [JUPYTER]
+- **категория**: Data / Interactive Research Environment (The Notebook Standard)
+- **суть**: Jupyter Notebook (и его развитие JupyterLab) — это революционная интерактивная среда, которая объединяет живой программный код, текстовые описания в Markdown, формулы LaTeX и динамические визуализации
+- **суперсила**: 1. Instant Feedback— Не нужно запускать весь скрипт. Написали одну строку — увидели график. Идеально для отладки сложных функций агентов. 2. Visualization Hub— Мгновенная отрисовка графиков [[MATPLOTL...
+- **код / запуск**: `# Cell 1: Загружаем данные из NEXUS Vault ■ import pandas as pd ■ df = pd.read_json("vault_data.json") ■  ■ # Cell 2: Мгновенная очистка и фильтрация ...`
+- **архитектура**: Паттерн: Живая Лаборатория Инсайтов (Interactive Insight Lab). Место, где вы (и ваши агенты) проводите эксперименты над терабайтами данных. ; Интеграция: Модуль NEXUS Lab — автоматическая генерация Jupyter-ноутбуков с результатами OSINT-разведки для вашего ручного анализа. ; [[DATAFRAME]] -> [[JUPYTER CELL]] -> [[PLOT]] анализ данных "в моменте".
+- **связи**: [[FASTCHAT]], [[JINJA2]], [[ELASTICSEARCH]], [[NUMPY]], [[MASTER-PLAN]], [[ANYTHING-LLM]], [[EB-INTELLIGENCE]], [[EXPLAIN-VISUALIZE-ML]], [[ZEN]], [[DATAFRAME]], [[FSST]], [[PLOTLY]], [[HUGGINGFACE-TRANSFORMERS]], [[ENHANCEMENT-LLM]], [[JAVA]], [[EMOTION]], [[GUI-ENGINE]], [[ESP32]], [[DNA-FARM]], [[GUM]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[DUPE-DETECTION]], [[ALLUXIO]], [[XLM]], [[JENKINS]], [[HYSTERIX]], [[HTOP]], [[KEV]], [[KAIDAN]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[MATPLOTLIB]], [[ENG-INTERVIEW]], [[DRF]], [[KUBERNETES]], [[IP-RECON]], [[PANDAS]], [[PLOT]], [[GPG]], [[FORCE-DIRECTED-GRAPH]], [[GSM-SECURITY]], [[JUPYTER CELL]], [[GARDEN]], [[NEXTJS]], [[FLASK]], [[D3]], [[CRAWL4AI]], [[INFRASTRUCTURE]], [[KALDI]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[DOCS]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[IMAGE-PROCESSING]], [[JOB-INTEL]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[GBDT]], [[GRAFANA]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[GPT-API]], [[ASTRO]], [[DEEPLNOTE]], [[EDGE-AI]], [[EXCEL-PYTHON]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [KIBANA]
+- **категория**: Infrastructure / Data Visualization & Log Analytics (ELK Stack)
+- **суть**: Kibana — это профессиональный интерфейс визуализации и поиска по данным, хранящимся в Elasticsearch ([[ELASTICSEARCH]]). Будучи частью знаменитого стека ELK (Elasticsearch, Logstash, Kibana), она пред
+- **суперсила**: 1. Discover Interface— Позволяет мгновенно находить одну строку ошибки в миллиардах логов со всех ваших 1400+ репозиториев за доли секунды. 2. Kibana Lens— Самый простой в мире drag-and-drop построите...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Система Визуального Дозора (Visual Sentinel). Основной инструмент для вашего ручного анализа активностей в сети NEXUS. ; Интеграция: Модуль NEXUS Log Explorer — использование Kibana для детального разбора каждого шага сканирования [[IP-RECON]] и ответов ИИ [[FASTCHAT]]. ; [[ELASTICSEARCH]] -> [[KIBANA]] -> [[DASHBOARD]] мониторинг.
+- **связи**: [[DUPE-DETECTION]], [[DASHBOARD]], [[FASTCHAT]], [[ALLUXIO]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[GSM-SECURITY]], [[FACE-RECOGNITION]], [[EXCEL-PYTHON]], [[HYSTERIX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[FLUTTER]], [[GENSIM]], [[EB-INTELLIGENCE]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[EXPLAIN-VISUALIZE-ML]], [[GEOLOCATION]], [[GBDT]], [[EMBEDDING-MODELS]], [[GARDEN]], [[GOLANG-ALGORITHMS]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[DRY-PYTHON]], [[GIN]], [[HELM]], [[KIBANA]], [[GRAFANA]], [[ENG-INTERVIEW]], [[FSST]], [[FLASK]], [[DRF]], [[ENHANCEMENT-LLM]], [[ETHEREUM-PRACTICE]], [[KUBERNETES]], [[JAVA]], [[EMOTION]], [[IDE-EXTENSION]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPT-API]], [[GUI-ENGINE]], [[GPG]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[FORCE-DIRECTED-GRAPH]], [[EDGE-AI]], [[GUM]], [[HEDGEDOC]], [[DOCS]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[ICECAST]], [[JENKINS]]
+
+---
+
+## [KUBERNETES]
+- **категория**: Infrastructure / Container Orchestration (The Global Standard)
+- **суть**: Kubernetes (K8s) — это самая мощная и универсальная в мире платформа для автоматизации развертывания (Deployment), масштабирования (Scaling) и управления контейнеризированными приложениями. Если Docke
+- **суперсила**: 1. Self-healing— Если ваш ИИ-агент или база данных "упала", Kubernetes заметит это и мгновенно перезапустит новый экземпляр за миллисекунды. 2. Auto-scaling— Система сама добавит новые серверы/контейн...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Несгибаемая Глобальная Фабрика (Elastic Global Hub). Основа для запуска всех 1400+ репозиториев в виде единой сети ИИ-сервисов. ; Интеграция: Модуль NEXUS K8s Master — верховное управление вашей "армадой" агентов в облаке или на домашнем кластере [[KIND]]. ; [[IMAGE]] -> [[HELM]] -> [[KUBERNETES]] финальный деплой.
+- **связи**: [[FASTAPI]], [[FASTCHAT]], [[ALLUXIO]], [[XLM]], [[ISTIO]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[HARBOR]], [[GENSIM]], [[KIND]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[ARGOCD]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ANSIBLE]], [[ZEN]], [[BUN]], [[MINIKUBE]], [[GIN]], [[ELECTRON]], [[GRAFANA]], [[KUBERNETES]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[IMAGE]], [[GPG]], [[FAIRY-DOCKER]], [[TERRAFORM]], [[NODE-JS]], [[HEDGEDOC]], [[INTERPRETABLE-ML]], [[HELM]], [[DOCKER]]
+
+---
+
+## [LANGCHAIN]
+- **категория**: AI / LLM Orchestration & Agents (The Standard)
+- **суть**: LangChain — это самый популярный и мощный фреймворк в мире для создания приложений на базе больших языковых моделей (LLM). Его главная задача — объединить ("связать в цепь") разрозненные компоненты: И
+- **суперсила**: 1. Interchangeability— Вы можете написать один код агента и менять "мозги" (напр. OpenAI на локальную Llama 3) одной строчкой. 2. Context-Awarenes— Встроенные механизмы [[RAG]] позволяют вашим агентам...
+- **код / запуск**: `from langchain.agents import initialize_agent, Tool ■ from langchain.llms import Ollama ■  ■ # 1. Готовим локальный "Мозг" (Ollama) ■ llm = Ollama(mod...`
+- **архитектура**: Паттерн: Автономный Синтезатор Интеллекта (Autonomous Intelligence Synthesizer). Основная "операционная система" для ваших ИИ-агентов NEXUS. ; Интеграция: Модуль NEXUS Agent Core — использование LangChain для создания цепочек рассуждений при анализе новых репозиториев (Wiki-farming). ; [[PROMPT]] -> [[LANGCHAIN AGENT]] -> [[EXTERNAL TOOL / DB]] действие.
+- **связи**: [[FASTCHAT]], [[EXTERNAL TOOL / DB]], [[RAG]], [[MASTER-PLAN]], [[ANYTHING-LLM]], [[EB-INTELLIGENCE]], [[EXPLAIN-VISUALIZE-ML]], [[ZEN]], [[BUN]], [[FSST]], [[CHROMA]], [[HUGGINGFACE-TRANSFORMERS]], [[REACT (UI)]], [[LOGGING]], [[ENHANCEMENT-LLM]], [[POSTGRESQL]], [[EMOTION]], [[GUI-ENGINE]], [[ESP32]], [[DNA-FARM]], [[GUM]], [[PROMPT]], [[ENERGY-FORECASTING]], [[GORELEASER]], [[DUPE-DETECTION]], [[STRIPE]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[HYSTERIX]], [[HTOP]], [[PROMETHEUS]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[GEOLOCATION]], [[DEEPSEARCH]], [[DRY-PYTHON]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[NMAP]], [[DRF]], [[WEAVIATE]], [[KUBERNETES]], [[IP-RECON]], [[PANDAS]], [[GPG]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[SQL]], [[TELEGRAM-BOT]], [[LOCUST]], [[TWILIO]], [[GSM-SECURITY]], [[GARDEN]], [[LLAMA-CPP]], [[KIBANA]], [[WHISPER]], [[FLASK]], [[D3]], [[CRAWL4AI]], [[FAIRY-DOCKER]], [[LANGCHAIN AGENT]], [[HEDGEDOC]], [[DOCS]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HELM]], [[HARBOR]], [[ICECAST]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[GBDT]], [[GRAFANA]], [[ETHEREUM-PRACTICE]], [[IDE-EXTENSION]], [[GPT-API]], [[ASTRO]], [[JUPYTER]], [[TERRAFORM]], [[NODE-JS]], [[EDGE-AI]], [[EXCEL-PYTHON]], [[GOLANG-ALGORITHMS]]
+
+---
+
+## [LEARN-LINUX]
+- **категория**: Education / Linux Fundamentals & Mastery (The NEXUS OS)
+- **суть**: Learn-Linux — это компиляция лучших практик, руководств и ресурсов для изучения Linux — самой важной операционной системы в мире ИТ. Linux является фундаментом для 100% суперкомпьютеров, 90% серверов 
+- **суперсила**: 1. Full Control— Linux позволяет менять в ОС всё: от планировщика задач до сетевых драйверов, подстраивая сервер под нужды ИИ. 2. Terminal Efficiency— Командная строка — это самый быстрый интерфейс в ...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[LUCENE]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[LEARN-LINUX SCRIPTS]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[LUA]], [[MASTER-PLAN]], [[LINUX]], [[ANYTHING-LLM]], [[HTOP]], [[JOB-INTEL]], [[KEV]], [[IP-ADDR]], [[NEXUS NODE]], [[HA-PROXY]], [[KAIDAN]], [[FRESH SERVER]], [[GENSIM]], [[HARBOR]], [[ARCH]], [[ETHICAL-HACKING-NOTES]], [[HASHCAT]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[LORA]], [[GIN]], [[HELM]], [[ELECTRON]], [[KOBOLDCPP]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[MASTODON-AGENT]], [[DEBIAN]], [[LOGGING]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[GPG]], [[UBUNTU]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[TERRAFORM]], [[HEDGEDOC]], [[LOCUST]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[DOCKER]], [[JENKINS]]
+
+---
+
+## [LIGHTHOUSE]
+- **категория**: Web / Performance Auditing & UX Quality Control
+- **суть**: Lighthouse — это мощнейший инструмент автоматизированного аудита качества веб-страниц от компании Google. Он анализирует сайты по пяти ключевым направлениям: Performance (Скорость загрузки), Accessibi
+- **суперсила**: N/A
+- **код / запуск**: `# 1. Запуск аудита прямо в терминале ■ lighthouse https://nexus.local --output=html --output-path=./report.html ■  ■ # 2. Аудит в мобильном режиме (им...`
+- **архитектура**: Паттерн: Автоматизированный Контроль Качества Интерфейсов (Automated UI Quality Control). Основа для деплоя ваших веб-приложений. ; Интеграция: Модуль NEXUS UI Auditor — автоматический запуск Lighthouse для каждой страницы `dashboard.html` при сборке проекта. ; [[DASHBOARD]] -> [[LIGHTHOUSE AUDIT]] -> [[REPORT]] фикс багов.
+- **связи**: [[REACT]], [[SVELTE]], [[LUCENE]], [[DASHBOARD]], [[VITE]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[LUA]], [[OWASP]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[PUPPETEER]], [[INVOKEAI]], [[GENSIM]], [[LOGIN]], [[LIGHTHOUSE AUDIT]], [[STABLE-DIFFUSION]], [[HASHCAT]], [[KIND]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[LORA]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[MASTODON-AGENT]], [[TAILWIND]], [[LOGGING]], [[REPORT]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[WEBPACK]], [[SEO-MAGIC]], [[GPG]], [[JUPYTER]], [[PLAYWRIGHT]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[LOCUST]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [LLAMA-CPP]
+- **категория**: AI / High-Performance Local Inference (LLM on CPU/GPU Meta)
+- **суть**: llama.cpp — это одно из самых значимых достижений в мире открытого ИИ. Этот проект (созданный Георгием Гергановым) позволил запускать мощнейшие языковые модели (LLM), такие как Llama 3, Mistral, Gemma
+- **суперсила**: 1. Unrivaled Efficiency— Позволяет запускать модель весом в 40 Гб на компьютере с 8 Гб памяти за счет квантования (сжатия) без значительной потери "ума". 2. True Privacy— Вашему ИИ больше не нужен инт...
+- **код / запуск**: `# 1. Запуск инференса в терминале (Interactive mode) ■ ./main -m llama-3-8b-instruct.Q4_K_M.gguf -n 512 --repeat_penalty 1.0 -i -r "User:" ■  ■ # 2. З...`
+- **архитектура**: Паттерн: Локальный Когнитивный Якорь (Local Cognitive Anchor). Фундамент вашей независимости от корпоративных облаков. ; Интеграция: Модуль NEXUS Local Brain — использование `llama.cpp` через [[OLLAMA]] или напрямую для анализа всех ваших 1400+ репозиториев (Wiki-farming). ; [[GGUF MODEL]] -> [[LLAMA-CPP]] -> [[LOCAL AI RESPONSE]] инференс.
+- **связи**: [[CUDA]], [[FASTAPI]], [[GGUF MODEL]], [[FASTCHAT]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[PROMETHEUS]], [[RUST]], [[HA-PROXY]], [[IP-ADDR]], [[INVOKEAI]], [[GENSIM]], [[ZIG]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[STABLE-DIFFUSION]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[KOBOLDCPP]], [[LLAMA-CPP]], [[ELECTRON]], [[GIN]], [[KIBANA]], [[GRAFANA]], [[LANGCHAIN]], [[LOCAL AI RESPONSE]], [[HUGGINGFACE-TRANSFORMERS]], [[METAL]], [[LOGGING]], [[KUBERNETES]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[PANDAS]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[TERRAFORM]], [[NODE-JS]], [[HEDGEDOC]], [[LM-STUDIO]], [[LOCUST]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[HELM]], [[HARBOR]]
+
+---
+
+## [LOCUST]
+- **категория**: Infrastructure / Performance & Stress Testing (Scale for the Millions)
+- **суть**: Locust — это мощнейший инструмент с открытым исходным кодом для нагрузочного и стресс-тестирования веб-приложений и API. В отличие от старых инструментов (JMeter), где тесты пишутся на XML/GUI, в Locu
+- **суперсила**: self.client.get("/search?q=nexus+intelligence")      @task(3) # Эта задача выполняется в 3 раза чаще     def view_dDNA_report(self):         self.client.get("/reports/DNA_MASTER_FINAL.md")  # Запуск: ...
+- **код / запуск**: `from locust import HttpUser, task, between ■  ■ class NexusUser(HttpUser): ■     # Пауза между действиями 1-5 секунд ■     wait_time = between(1, 5) ■...`
+- **архитектура**: Паттерн: Проверка Нагрузочного Предела (Load Limit Verification). Гарантия того, что ваша Wiki-ферма выдержит наплыв тысяч запросов. ; Интеграция: Модуль NEXUS stress-test — автоматический запуск Locust сценариев против новых API-шлюзов [[FASTAPI]] перед их выпуском. ; [[TEST SCENARIO]] -> [[LOCUST RUN]] -> [[PERFORMANCE REPORT]] оптимизация.
+- **связи**: [[STRIPE]], [[LUCENE]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[LOCUST RUN]], [[TEST SCENARIO]], [[LUA]], [[OWASP]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[TELEGRAM-BOT]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[LORA]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[MASTODON-AGENT]], [[NMAP]], [[LOGGING]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[UPTIME]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[LIGHTHOUSE]], [[GPG]], [[PERFORMANCE REPORT]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [LOGGING]
+- **категория**: Infrastructure / System Observability & Logging (The Black Box)
+- **суть**: Logging — это фундамент прозрачности и надежности любой сложной системы. Это "Черный ящик", который записывает каждое решение агентов, каждый сетевой запрос [[IP-RECON]] и каждый ответ ИИ [[LANGCHAIN]
+- **суперсила**: 1. Root Cause Analysis— Если система NEXUS выдала ошибку "Данные не найдены", через логи вы увидите: "Агент А обратился к БД Б с тайм-аутом 5с". 2. Structural Search— Вы можете искать не по словам, а ...
+- **код / запуск**: `import structlog ■  ■ # 1. Настройка "Умного" логгера ■ logger = structlog.get_logger() ■  ■ # 2. Логирование с метаданными (JSON-ready) ■ # ИИ-агенты...`
+- **архитектура**: N/A
+- **связи**: [[LOGGER]], [[LUCENE]], [[LOGSTASH]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[STDOUT/STORAGE]], [[LUA]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[METASPLOIT]], [[PROMETHEUS]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[MAPPING]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[SENTRY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[LORA]], [[MINIKUBE]], [[GIN]], [[HELM]], [[ELECTRON]], [[KOBOLDCPP]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[MASTODON-AGENT]], [[MICROSERVICES]], [[KUBERNETES]], [[JAVA]], [[MLC-LLM]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[LIGHTHOUSE]], [[MLFLOW]], [[GPG]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[FLUENTD]], [[HEDGEDOC]], [[LOCUST]], [[MONITORING]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[EVENT]], [[JENKINS]]
+
+---
+
+## [LORA]
+- **категория**: AI / Model Efficiency & Fast Fine-tuning (PeFT)
+- **суть**: LoRA (Low-Rank Adaptation) — это революционный метод из области Parameter-Efficient Fine-Tuning (PEFT), разработанный компанией Microsoft и ставший де-факто стандартом в мире открытого ИИ. LoRA позвол
+- **суперсила**: 1. Low Hardware Entry— Обучите свою Llama 3 70B на одной видеокарте RTX 3090 за вечер, вместо аренды кластера серверов A100 на две недели. 2. Infinite Styles— В мире [[STABLE-DIFFUSION]] существует 50...
+- **код / запуск**: `from peft import LoraConfig, get_peft_model ■ from transformers import AutoModelForCausalLM ■  ■ # 1. Загрузка базовой модели (Llama-3-8B) ■ model = A...`
+- **архитектура**: 3. No Forgetting— Основная модель ("базовые знания") не разрушается при дообучении, так как её веса заморожены. 4. Instant Weight Swapping— Вы можете переключать "характер" модели за миллисекунды, про...
+- **связи**: [[BASE MODEL]], [[LUCENE]], [[FASTCHAT]], [[ALLUXIO]], [[XLM]], [[FACE-RECOGNITION]], [[LUA]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[COMFYUI]], [[HA-PROXY]], [[IP-ADDR]], [[INVOKEAI]], [[GENSIM]], [[STABLE-DIFFUSION]], [[ETHICAL-HACKING-NOTES]], [[HASHCAT]], [[FFMPEG]], [[QLORA]], [[NEXUS-LORA]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[NEXTJS]], [[KIBANA]], [[MASTODON-AGENT]], [[HUGGINGFACE-TRANSFORMERS]], [[LOGGING]], [[KUBERNETES]], [[IP-RECON]], [[CRAWL4AI]], [[PANDAS]], [[ASTRO]], [[DNA-FARM]], [[EXPERT AGENT]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[TERRAFORM]], [[CIVITAI]], [[HEDGEDOC]], [[UNSLOTH]], [[LOCUST]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]]
+
+---
+
+## [LUCENE]
+- **категория**: Data / High-performance Full-text Search Engine (The Standard)
+- **суть**: Apache Lucene — это самая мощная и влиятельная библиотека для полнотекстового поиска с открытым исходным кодом, написанная на Java. Она лежит в основе почти каждой серьезной поисковой системы в мире, 
+- **суперсила**: 1. Unrivaled Search Speed— Поиск одного слова в терабайтах текста за микросекунды за счет математики инвертированных индексов. 2. Boolean Queries Mastery— Позволяет строить сложнейшие запросы: "Найти ...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Первичный Индексатор Знаний (Primary Knowledge Indexer). "Глаза и Память" вашей системы поиска по 1400+ досье. ; Интеграция: Модуль NEXUS Search Engine — использование Lucene (через Elasticsearch) для мгновенного нахождения нужного репозитория в вашем Vault. ; [[RAW TEXT]] -> [[LUCENE INDEXER]] -> [[SEARCHABLE INDEX]] поиск знаний.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[LUA]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[RUST]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HARBOR]], [[ZIG]], [[VIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[LORA]], [[GIN]], [[HELM]], [[ELECTRON]], [[RAW TEXT]], [[NEXTJS]], [[KIBANA]], [[MASTODON-AGENT]], [[ZSH]], [[LOGGING]], [[KUBERNETES]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[PANDAS]], [[ASTRO]], [[DNA-FARM]], [[LUCENE INDEXER]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[TERRAFORM]], [[SEARCHABLE INDEX]], [[HEDGEDOC]], [[LOCUST]], [[SQL]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[SOLR]]
+
+---
+
+## [MATHEMATICS]
+- **категория**: Foundations / Mathematics for CS & AI (The Source Code of Reality)
+- **суть**: Mathematics — это не просто школьный предмет, а универсальный язык, на котором написана вся наша система NEXUS. Без математики невозможен ни один алгоритм поиска [[LUCENE]], ни одна нейросеть [[HUGGIN
+- **суперсила**: 1. Total Understanding— Вы понимаете не только "как" работает код, но и "почему" он это делает. Это позволяет писать в 10 раз более эффективные алгоритмы. 2. AI Mastery— Все Трансформеры — это просто ...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Математический Стержень Интеллекта (The Mathematical Core). Глобальная "Конституция" логики всей системы. ; Интеграция: Модуль NEXUS Math Lab — автоматические расчеты корреляций между IP-адресами, данными скрапинга и временем атак. ; [[DATAFRAME]] -> [[MATH TRANSFORM]] -> [[INSIGHT]] просветление.
+- **связи**: [[ECC]], [[ALGORITHM-VISUALIZER]], [[LUCENE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[NUMPY]], [[FACE-RECOGNITION]], [[XGBOOST]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[LEETCODE]], [[HA-PROXY]], [[SCIPY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[CRYPTOGRAPHY]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[DATAFRAME]], [[KOBOLDCPP]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[HUGGINGFACE-TRANSFORMERS]], [[SCIKIT-LEARN]], [[RSA]], [[INSIGHT]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[OPENCV]], [[DNA-FARM]], [[CRAWL4AI]], [[ASTRO]], [[D3]], [[PYTORCH]], [[GPG]], [[INFRASTRUCTURE]], [[DATASTRUCTURES-ALGORITHMS]], [[CLEVERALGORITHMS]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[CODEFORCES-GO]], [[CTCI-6TH-EDITION]], [[MATH TRANSFORM]], [[HEDGEDOC]], [[ALGS4]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [METASPLOIT]
+- **категория**: OSINT / Cyber Security & Pentesting Framework (The Standard)
+- **суть**: Metasploit Framework (MSF) — это золотой стандарт в области тестирования на проникновение (Penetration Testing) и исследований информационной безопасности. Это модульная платформа, которая содержит ты
+- **суперсила**: 1. Enormous Exploit Database— Тысячи проверенных способов взлома CVE-уязвимостей прямо "из коробки" (напр. EternalBlue, Log4j). 2. Meterpreter Payload— Продвинутая полезная нагрузка, которая живет в п...
+- **код / запуск**: `# 1. Поиск эксплойта для цели ■ search type:exploit platform:windows log4j ■  ■ # 2. Настройка атаки ■ use exploit/multi/http/log4j_ghost_shell ■ set ...`
+- **архитектура**: Паттерн: Автоматический Аудит Защиты (Automated Offense/Defense Audit). Позволяет системе NEXUS проверить свои же серверы на наличие реальных дыр. ; Интеграция: Модуль NEXUS Offensive Lab — использование Metasploit RPC для автоматического "простукивания" IP-адресов, найденных в [[IP-RECON]]. ; [[VULNERABILITY]] -> [[METASPLOIT]] -> [[SHELL ACCESS]] подтверждение взлома.
+- **связи**: [[LUCENE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[LUA]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[METASPLOIT]], [[JOB-INTEL]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[MAPPING]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[VULNERABILITY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[CRYPTOGRAPHY]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[KOBOLDCPP]], [[LORA]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[MASTODON-AGENT]], [[NMAP]], [[BEYOND-RECON]], [[ARMAGE]], [[LOGGING]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[MSFVENOM]], [[SHELL ACCESS]], [[NODE-JS]], [[METERPRETER]], [[HEDGEDOC]], [[ROBOTICS]], [[LOCUST]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [MICROSERVICES]
+- **категория**: Architecture / Distributed Systems & Microservices (The Modern Way)
+- **суть**: Microservices — это архитектурный стиль, при котором большое, сложное программное приложение (монолит) разбивается на множество маленьких, независимых сервисов, каждый из которых решает одну конкретну
+- **суперсила**: 1. Infinite Scalability— Если поиск [[DEEPSEARCH]] тормозит, вы можете запустить 100 копий сервиса "Поиск" и оставить всего 1 копию сервиса "Отчеты", экономя ресурсы. 2. Technological Freedom— Поиск м...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[FASTAPI]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[ISTIO]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[HYSTERIX]], [[NGINX]], [[MASTER-PLAN]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[KIND]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[ARGOCD]], [[DEEPSEARCH]], [[ANSIBLE]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GRPC]], [[GIN]], [[KOBOLDCPP]], [[ELECTRON]], [[NATS]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[LOGGING]], [[POSTGRESQL]], [[CLUSTER]], [[KUBERNETES]], [[JAVA]], [[MONOLITH (MESS)]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[IP-RECON]], [[GPG]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[MONGODB]], [[TERRAFORM]], [[NODE-JS]], [[HEDGEDOC]], [[PYTHON]], [[INTERPRETABLE-ML]], [[HELM]], [[NODEJS]], [[DOCKER]], [[MICROSERVICES (CLEAN)]], [[JENKINS]]
+
+---
+
+## [MLC-LLM]
+- **категория**: AI / Edge Computing & Mobile Inference (LLM everywhere)
+- **суть**: MLC-LLM (Machine Learning Compilation for LLMs) — это мощнейший проект, который поставил перед собой амбициозную цель: сделать запуск больших языковых моделей (LLM) возможным на любом устройстве с апп
+- **суперсила**: [[ONNX-RUNTIME]] — конкурентный движок от Microsoft для запуска моделей везде ; [[MEDIAPIPE]] — библиотека Google для ИИ-зрения на мобильных
+- **код / запуск**: `N/A`
+- **архитектура**: 4. Low Memory Consumption— Продвинутые методы квантования и управления памятью позволяют "впихнуть" умные модели в смартфоны с 8-12 Гб RAM. 5. Unified Runtime— Один и тот же код работает и на MacBook,...
+- **связи**: [[FASTCHAT]], [[ALLUXIO]], [[EMULATORS]], [[XLM]], [[FACE-RECOGNITION]], [[MLC-LLM (NODE)]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[GLOBAL BRAIN]], [[FLUTTER]], [[HA-PROXY]], [[IP-ADDR]], [[RUST]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[MOBILE-SECURITY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[LORA]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[NEXTJS]], [[KIBANA]], [[HUGGINGFACE-TRANSFORMERS]], [[USER DEVICE]], [[LOGGING]], [[KUBERNETES]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[PANDAS]], [[ONNX-RUNTIME]], [[MEDIAPIPE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[TERRAFORM]], [[REACT-NATIVE]], [[NODE-JS]], [[HEDGEDOC]], [[LOCUST]], [[VIRTUAL-MACHINES]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]]
+
+---
+
+## [MLFLOW]
+- **категория**: AI / ML Operations & Experiment Tracking (MLOps Essentials)
+- **суть**: MLflow — это универсальная платформа с открытым исходным кодом для управления полным жизненным циклом машинного обучения (ML Lifecycle). Она включает в себя четыре основных компонента: отслеживание эк
+- **суперсила**: 1. Experiment Tracking— Больше никаких "Model_v2_final_final_3". MLflow записывает каждый параметр обучения (напр. `learning_rate` в [[LORA]]) и каждый результат (напр. `loss`, `accuracy`) автоматичес...
+- **код / запуск**: `import mlflow ■  ■ # 1. Начало эксперимента ■ with mlflow.start_run(): ■     # 2. Логирование параметров (напр. Rank для LoRA) ■     mlflow.log_param(...`
+- **архитектура**: Паттерн: Порядок в ИИ-Хаосе (Cognitive Orderer). Центральный штаб управления всеми вашими исследованиями в области ИИ и OSINT. ; Интеграция: Модуль NEXUS MLOps — автоматическая регистрация каждой обученной [[LORA]]-модели в реестре MLflow для последующего выбора лучшего "эксперта". ; [[EXPERIMENT]] -> [[MLFLOW TRACKING]] -> [[MODEL REGISTRY]] выбор чемпиона.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[MLFLOW TRACKING]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MODEL REGISTRY]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[EXPERIMENT]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[KOBOLDCPP]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[RAY]], [[HUGGINGFACE-TRANSFORMERS]], [[SCIKIT-LEARN]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[PANDAS]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[DVC]], [[HEDGEDOC]], [[WANDB]], [[TENSORFLOW]], [[PYTHON]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [MONGODB]
+- **категория**: Data / Document-Oriented NoSQL Database (Flexibility)
+- **суть**: MongoDB — это самая популярная документоориентированная база данных класса NoSQL. В отличие от классических табличных баз ([[SQL]]), MongoDB хранит данные в виде гибких JSON-подобных документов (BSON)
+- **суперсила**: 1. Schema-less Flexibility— Вы можете сохранить "Досье" репозитория сегодня с тремя полями, а завтра добавить еще сто — MongoDB не потребует сложной миграции таблиц. 2. High Availability— Встроенная р...
+- **код / запуск**: `from pymongo import MongoClient ■  ■ # 1. Подключение к кластеру NEXUS ■ client = MongoClient("mongodb://nexus-db:27017/") ■ db = client.nexus_vault ■...`
+- **архитектура**: Паттерн: Хранилище Разнородных Знаний (Heterogeneous Knowledge Store). Дом для всех тех данных, которые не влезли в жесткую структуру Obsidian. ; Интеграция: Модуль NEXUS Archive — использование MongoDB для хранения терабайтов сырых данных OSINT-разведки ([[CRAWL4AI]], [[IP-RECON]]) перед их синтезом. ; [[RAW JSON]] -> [[MONGODB]] -> [[ANALYSIS]] глубокий поиск.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[S3]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[PANDAS]], [[ASTRO]], [[DNA-FARM]], [[ANALYSIS]], [[GPG]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[MONGODB]], [[RAW JSON]], [[HEDGEDOC]], [[SQL]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [MONITORING]
+- **категория**: Infrastructure / System Monitoring & Visualization (The All-Seeing Eye)
+- **суть**: Monitoring — это сердце операционной стабильности вашей системы. В этом разделе описывается связка из двух важнейших инструментов: Prometheus (сборщик и временная база данных метрик) и Grafana (ультим
+- **суперсила**: 1. Real-time Awareness— Вы узнаете о проблеме (напр. перегрев GPU при обучении) за секунду до того, как система начнет тормозить. 2. Unified Dashboards— Возможность видеть на одном экране данные из ра...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Система Визуального Дозора (Visual Sentinel). Постоянное подтверждение того, что ваша Wiki-ферма работает идеально. ; Интеграция: Модуль NEXUS Sentry мониторит всё: от количества новых файлов в Obsidian до успешных хакерских атак [[METASPLOIT]]. ; [[INFRASTRUCTURE]] -> [[PROMETHEUS]] -> [[GRAFANA]] -> [[YOU]] полный контроль.
+- **связи**: [[ZABBIX]], [[YOU]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[METASPLOIT]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HARBOR]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[SQLITE]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[KIBANA]], [[GRAFANA]], [[LANGCHAIN]], [[NEXTJS]], [[NMAP]], [[DATADOG]], [[NEW-RELIC]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[INFRASTRUCTURE]], [[DNA-FARM]], [[ASTRO]], [[UPTIME]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NAGIOS]], [[HEDGEDOC]], [[SQL]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[DOCKER]], [[JENKINS]]
+
+---
+
+## [MYSQL]
+- **категория**: Data / Relational SQL Database (The Reliable Standard)
+- **суть**: MySQL — это самая известная и широко используемая реляционная система управления базами данных (RDBMS) в мире. Она является сердцем стека LAMP (Linux, Apache, MySQL, PHP) и обеспечивает работу миллион
+- **суперсила**: stars INT DEFAULT 0,     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP );  # 2. Быстрая вставка данных INSERT INTO wiki_pages (title, stars, tags)  VALUES ('MYSQL-WIKI', 1500, '["sql", "mysql", "data...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Хранилище Структурированных Активов (Structured Assets Vault). Основа для хранения прав собственности, лицензий и системных настроек проекта. ; Интеграция: Модуль NEXUS Core Database — использование MySQL для управления метаданными 1400+ репозиториев, которые мы сейчас индексируем. ; [[USER ACTION]] -> [[SQL QUERY]] -> [[MYSQL DATABASE]] фиксация данных.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[PHP]], [[XLM]], [[LEARN-LINUX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[SQL QUERY]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[SQLITE]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[LANGCHAIN]], [[KIBANA]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[MARIADB]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[GPG]], [[MYSQL DATABASE]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[HEDGEDOC]], [[USER ACTION]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[NODEJS]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [NATS]
+- **категория**: Infrastructure / Distributed Messaging & Connectivity (The Nervous System)
+- **суть**: NATS — это Сверхбыстрая и невероятно надежная система обмена сообщениями с открытым исходным кодом. Если Kubernetes — это кости и мышцы вашего облака, то NATS — это его Нервная Система. Он позволяет с
+- **суперсила**: N/A
+- **код / запуск**: `import asyncio ■ import nats ■  ■ async def main(): ■     # 1. Соединение с шиной NEXUS ■     nc = await nats.connect("nats://nexus.local:4222") ■    ...`
+- **архитектура**: Паттерн: Мгновенная Нервная Шина (Instant Messaging Backbone). Главный "кабель", по которому летят команды от вас к сотням ИИ-агентов. ; Интеграция: Модуль NEXUS Bus — использование NATS для координации между скрапером [[CRAWL4AI]], парсером [[XLM]] и вашей базой знаний [[OBSIDIAN]]. ; [[AGENT A]] -> [[NATS MESSAGE]] -> [[AGENT B]] командный мост.
+- **связи**: [[AGENT A]], [[AGENT B]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[XLM]], [[JINJA2]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[OBSIDIAN]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[MQTT]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[GRPC]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[MICROSERVICES]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[RABBITMQ]], [[REDIS]], [[NODE-JS]], [[HEDGEDOC]], [[NATS MESSAGE]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[KAFKA]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [NEXTJS]
+- **категория**: Web / Modern Frontend Framework & Dashboard (The Vercel Standard)
+- **суть**: Next.js — это самый популярный и мощный фреймворк на базе React, предназначенный для создания сверхбыстрых, SEO-оптимизированных и масштабируемых веб-приложений. Он объединяет в себе лучшее от фронтен
+- **суперсила**: 1. Unrivaled Speed— Благодаря автоматическому сжатию картинок, разделению кода и серверному рендерингу, ваши дашборды открываются мгновенно (100 баллов в [[LIGHTHOUSE]]). 2. Server Components— Позволя...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Центр Визуального Управления (Unified Command Center). Платформа для вашего главного Dashboard проекта. ; Интеграция: Модуль NEXUS Dashboard — использование Next.js для визуализации всех 1400+ репозиториев и управления фермой Wiki-агентов. ; [[IDEA]] -> [[NEXTJS UI]] -> [[DEPLOY (VERCEL)]] запуск в мир.
+- **связи**: [[REACT]], [[PRISMA]], [[STORYBOOK]], [[STRIPE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[NEXTJS UI]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[FRAMER-MOTION]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[AUTH-JS]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[Vercel]], [[TRPC]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[KIBANA]], [[LANGCHAIN]], [[TAILWIND]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[LIGHTHOUSE]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[IDEA]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[HEDGEDOC]], [[DEPLOY (VERCEL)]], [[SQL]], [[MOTION]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [NGINX]
+- **категория**: Infrastructure / Web Server & Reverse Proxy (The Industry Standard)
+- **суть**: NGINX — это легендарный, сверхпроизводительный веб-сервер и обратный прокси-сервер (Reverse Proxy) с открытым исходным кодом. Он является парадным входом для 40% всех сайтов интернета, обеспечивая нев
+- **суперсила**: 1. Low Memory Footprint— NGINX может обрабатывать десятки тысяч одновременных соединений, потребляя всего несколько мегабайт оперативной памяти. Это идеальный партнер для вашей "тяжелой" ИИ-фермы. 2. ...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[REACT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[TRAEFIK]], [[XLM]], [[JINJA2]], [[FACE-RECOGNITION]], [[LUA]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[MODSECURITY]], [[NGINX-AMPLIFY]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[GENSIM]], [[INTERNAL SERVICES]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[INTERNET]], [[CERTBOT]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[CADDY]], [[NODE-JS]], [[HEDGEDOC]], [[NGINX (HTTPS)]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [NLP]
+- **категория**: AI / Natural Language Processing & Linguistics (The Communicator)
+- **суть**: NLP (Natural Language Processing) — это междисциплинарный раздел искусственного интеллекта и лингвистики, посвященный тому, как компьютеры анализируют, понимают и генерируют человеческий язык. Без NLP
+- **суперсила**: 3. Sentiment Analysis— Оценка "настроения" в соцсетях [[OSINT]] или чатах, чтобы понять, готовят ли против системы провокацию. 4. Machine Translation— Мгновенный перевод технического жаргона с любого ...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Понимание Когнитивного Слоя (Cognitive Layer Understanding). "Мозг" и "Уши" ваших агентов, работающих с текстами Wiki. ; Интеграция: Модуль NEXUS Semantic Engine — использование NLP для автоматического перевода и краткого пересказа всех 1400+ репозиториев. ; [[RAW TEXT]] -> [[NLP PIPELINE]] -> [[KNOWLEDGE GRAPH]] синтез смыслов.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[NLTK]], [[FACE-RECOGNITION]], [[RAG]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[SPACY]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[BGE-M3]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[RAW TEXT]], [[OSINT]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[LLAMA-CPP]], [[HUGGINGFACE-TRANSFORMERS]], [[PROXIES-GUIDE]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[KNOWLEDGE GRAPH]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[PANDAS]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NLP PIPELINE]], [[HEDGEDOC]], [[TENSORFLOW]], [[PYTHON]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[OLLAMA]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [NODEJS]
+- **категория**: Programming / Server-side JavaScript Runtime (The Event-loop King)
+- **суть**: Node.js — это сверхбыстрая и масштабируемая среда выполнения программ на языке JavaScript, которая вывела JS из браузера на сервер. Построенная на мощном движке Google V8, Node.js использует неблокиру
+- **суперсила**: 1. Single Language Everywhere— Вы можете писать и фронтенд ([[REACT]]), и бекенд (Node.js) на одном языке (JS/TS), экономя время и силы команды. 2. Lightning Fast Connectivity— Благодаря неблокирующим...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Глобальный Оркестратор Событий (Reactive Event Orchestrator). Движок для ваших быстрых API-шлюзов и Дашбордов в реальном времени. ; Интеграция: Модуль NEXUS Node Hub — использование Node.js для запуска микросервисов, которые объединяют ИИ-агентов на Python и фронтенды на Next.js. ; [[USER REQUEST]] -> [[NODE.JS EVENT LOOP]] -> [[DATABASE / AI]] мгновенная реакция.
+- **связи**: [[NESTJS]], [[REACT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[POSTMAN]], [[ANYTHING-LLM]], [[NODE.JS EVENT LOOP]], [[HTOP]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[NPM]], [[DEEPSEARCH]], [[GARDEN]], [[GBDT]], [[V8]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[EXPRESS]], [[NATS]], [[ELECTRON]], [[DATABASE / AI]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[USER REQUEST]], [[DENO]], [[KUBERNETES]], [[JAVA]], [[YARN]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[LIGHTHOUSE]], [[INFRASTRUCTURE]], [[WS]], [[GPG]], [[JUPYTER]], [[PM2]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[HEDGEDOC]], [[PNPM]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [OLLAMA]
+- **категория**: AI / Zero-Configuration Local LLM Portal (The Bridge)
+- **суть**: Ollama — это революционный инструмент с открытым исходным кодом, который сделал запуск больших языковых моделей (LLM) локально таким же простым, как запуск Docker-контейнера. Это "Портал в локальный р
+- **суперсила**: 1. Zero-Configuration Magic— Вы вводите `ollama run llama3`, и программа сама скачивает, настраивает и запускает модель. Это "Магия, которая просто работает". 2. Library Diversity Mastery— Легкое пере...
+- **код / запуск**: `# 1. Запуск модели в терминале ■ ollama run qwen2.5-coder:3b ■  ■ # 2. Запрос через API (OpenAI-compatible) ■ curl http://localhost:11434/api/generate...`
+- **архитектура**: Паттерн: Персональный Источник Истины (Personal Source of Truth). Главный двигатель "Wiki-фермерства" в вашей системе. ; Интеграция: Модуль NEXUS Neural Core — Ollama является основным бэкэндом для всех ИИ-анализов и генерации досье на 1400+ репозиториев. ; [[RAW REPO]] -> [[OLLAMA (QWEN)]] -> [[TECHNICAL DOSSIER]] синтез знаний.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[TECHNICAL DOSSIER]], [[HA-PROXY]], [[IP-ADDR]], [[RAW REPO]], [[GENSIM]], [[HARBOR]], [[OPEN-WEBUI]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[BEYOND-RECON]], [[HUGGINGFACE-TRANSFORMERS]], [[KUBERNETES]], [[JAVA]], [[OLLAMA (QWEN)]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[DOCKER-GEN]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[HEDGEDOC]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[DOCKER]], [[JENKINS]]
+
+---
+
+## [OSINT]
+- **категория**: OSINT / Information Intelligence & Reconnaissance (The Agency Level)
+- **суть**: OSINT (Open Source Intelligence) — это дисциплина сбора, анализа и синтеза разведывательных данных из открытых источников. В мире NEXUS OSINT является главным "органом чувств": он позволяет находить с
+- **суперсила**: 1. Global Visibility— Вы видите всю инфраструктуру противника (или свою) как на ладони, не совершая ни одного незаконного действия. 2. Deep Background Check Mastery— Позволяет за считанные минуты сост...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Автономная Разведывательная Сеть (Autonomous Intel Mesh). Главный источник сырых данных для вашей Wiki-фермы. ; Интеграция: Модуль NEXUS Recon — использование [[CRAWL4AI]] для массового сбора данных OSINT по 1400+ репозиториям и их IP-хостам. ; [[UNKNOWN TARGET]] -> [[OSINT TOOLS]] -> [[KNOWLEDGE DOSSIER]] синтез разведки.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[METASPLOIT]], [[UNKNOWN TARGET]], [[JOB-INTEL]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[SEARCH-ENGINE-OSINT]], [[GENSIM]], [[LOGIN]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[DARKNET-RECON]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[NMAP]], [[BEYOND-RECON]], [[KUBERNETES]], [[JAVA]], [[TARA-OSINT]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[OSINT TOOLS]], [[SpiderFoot]], [[INFRASTRUCTURE]], [[GPG]], [[KNOWLEDGE DOSSIER]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[ROBOTICS]], [[SOCMINT]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]], [[MALTEGO]]
+
+---
+
+## [PANDAS]
+- **категория**: Data / High-level Data Analysis & Manipulation (The Standard)
+- **суть**: Pandas — это самая мощная и популярная библиотека для анализа и манипуляции табличными данными на языке Python. Она вводит в Python понятие DataFrame (двумерная таблица), которая позволяет с легкостью
+- **суперсила**: 1. Unrivaled Flexibility— Вы можете извлечь нужные данные из 1 000 000 строк JSON-разведки [[OSINT]] в одну строку кода: `df.query('stars > 5000')`. 2. Missing Data Mastery— Встроенные функции для пои...
+- **код / запуск**: `import pandas as pd ■  ■ # 1. Загрузка данных из всех репозиториев Wiki-фермы ■ df = pd.read_json("nexus_dna_state.json") ■  ■ # 2. Анализ (найти топ-...`
+- **архитектура**: Паттерн: Магистраль Очистки Информации (Information Cleaning Pipeline). Превращение "мусора" от скраперов в структурированные знания. ; Интеграция: Модуль NEXUS Data Lab — использование Pandas для анализа всех 1400+ репозиториев, их звезд, тегов и технологий в виде единой таблицы. ; [[RAW SCRAPED DATA]] -> [[PANDAS CLEANING]] -> [[STRUCTURAL RESULTS]] синтез знаний.
+- **связи**: [[XLSXWRITER]], [[STRUCTURAL RESULTS]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[NUMPY]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[PANDAS CLEANING]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[DASK]], [[GIN]], [[HELM]], [[ELECTRON]], [[OSINT]], [[NEXTJS]], [[MATPLOTLIB]], [[KIBANA]], [[LANGCHAIN]], [[SCIKIT-LEARN]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[FORCE-DIRECTED-GRAPH]], [[RAW SCRAPED DATA]], [[HEDGEDOC]], [[POLARS]], [[SQL]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [POSTGRESQL]
+- **категория**: Data / Advanced Object-Relational SQL Database (The Reliable King)
+- **суть**: PostgreSQL (Postgres) — это самая мощная, надежная и функционально богатая объектно-реляционная система управления базами данных (RDBMS) с открытым исходным кодом. В отличие от [[MYSQL]], который слав
+- **суперсила**: 1. Unrivaled Reliability— Поддержка ACID-транзакций, которая буквально "непробиваема". Ваши критические данные не пропадут даже при внезапном отключении питания. 2. JSONB Power Mastery— Позволяет хран...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Верховное Хранилище Системной Истины (The Supreme System Truth Store). Сердце вашей инфраструктуры данных. ; Интеграция: Модуль NEXUS Meta-Store — использование Postgres для хранения сложных связей между репозиториями, пользователями и логами разведки. ; [[USER DATA]] -> [[POSTGRES SQL]] -> [[JSONB / GEOMETRY STORAGE]] фиксация мира.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[MYSQL]], [[JOB-INTEL]], [[PROMETHEUS]], [[S3]], [[PGVECTOR]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[JSONB / GEOMETRY STORAGE]], [[USER DATA]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[SQLITE]], [[FFMPEG]], [[GEOLOCATION]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[SUPABASE]], [[POSTGRES SQL]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[TIMESCALE-DB]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[PANDAS]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[MONGODB]], [[IMAGES-PYTHON]], [[POSTGIS]], [[HEDGEDOC]], [[SQL]], [[PYTHON]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [PYTHON]
+- **категория**: Programming / General Purpose High-level Language (The NEXUS Core)
+- **суть**: Python — это самый важный язык программирования в мире современной разработки, искусственного интеллекта и информационной безопасности. Благодаря своей лаконичности, читаемости и колоссальной экосисте
+- **суперсила**: 1. Unrivaled Efficiency— Вы можете написать сложнейшего ИИ-агента за 20 строк кода, на что в C++ ушло бы 2000. Это позволяет NEXUS эволюционировать мгновенно. 2. AI & OSINT Mastery— 99% всех инноваций...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Разум Цифровой Системы (The Digital Mind Core). Главный язык описания всей интеллектуальной и операционной деятельности проекта. ; Интеграция: Модуль NEXUS Python Engine — использование Python 3.12 для выполнения всех фоновых задач по сбору, анализу и структурированию знаний. ; [[IDEA (TEXT)]] -> [[PYTHON CODE]] -> [[INTELLIGENCE RESULT]] реализация.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[NOSQL]], [[XLM]], [[JINJA2]], [[LEARN-LINUX]], [[NUMPY]], [[FACE-RECOGNITION]], [[INTELLIGENCE RESULT]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HARBOR]], [[VIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ANSIBLE]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[NATS]], [[OSINT]], [[NEXTJS]], [[LANGCHAIN]], [[NUMPY-SCIPY]], [[HELM]], [[KIBANA]], [[FLASK]], [[HUGGINGFACE-TRANSFORMERS]], [[ZSH]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[D3]], [[INFRASTRUCTURE]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[PYTHON CODE]], [[IDEA (TEXT)]], [[SQL]], [[TENSORFLOW]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[LOCUST]], [[JENKINS]]
+
+---
+
+## [PYTORCH]
+- **категория**: AI / Deep Learning Framework (The Researcher's Choice)
+- **суть**: PyTorch — это ведущий в мире фреймворк с открытым исходным кодом для машинного обучения, разработанный Meta AI (Facebook). Он стал де-факто стандартом для научных исследований и современного промышлен
+- **суперсила**: 1. Developer-First Design— PyTorch "чувствуется" как обычный Python. Вы можете использовать отладчики (напр. в [[VSCODE]]) и циклы `for/if`, что невозможно во многих других фреймворках. 2. Dynamic Com...
+- **код / запуск**: `import torch ■  ■ # 1. Создание тензора (массива данных) прямо на видеокарте ■ device = "cuda" if torch.cuda.is_available() else "cpu" ■ x = torch.ten...`
+- **архитектура**: N/A
+- **связи**: [[PYTORCH TENSORS]], [[VSCODE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[NUMPY]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[QLORA]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[DATAFRAME]], [[LLAMA-CPP]], [[NEXTJS]], [[KIBANA]], [[LIGHTNING]], [[PREDICTION]], [[HUGGINGFACE-TRANSFORMERS]], [[NEURAL NETWORK]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[NLP]], [[INFRASTRUCTURE]], [[ONNX]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[JAX]], [[TENSORFLOW]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [RAG]
+- **категория**: AI / Information retrieval & Fact-based Generation (The RAG Pattern)
+- **суть**: RAG (Retrieval-Augmented Generation) — это самая мощная и актуальная архитектурная схема в современном ИИ. Она решает главную проблему больших языковых моделей ([[LLM]]) — галлюцинации и отсутствие ак
+- **суперсила**: 1. Zero Hallucination— ИИ больше не врет. Если в вашей Wiki нет информации о репозитории, он скажет "Я не знаю", а не придумает его название. 2. Up-to-date Knowledge Mastery— Вам не нужно переобучать ...
+- **код / запуск**: `from llama_index.core import VectorStoreIndex, SimpleDirectoryReader ■ from llama_index.llms.ollama import Ollama ■  ■ # 1. Загружаем наш Obsidian Vau...`
+- **архитектура**: N/A
+- **связи**: [[LUCENE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[VECTOR SEARCH IN VAULT]], [[IP-ADDR]], [[GENSIM]], [[BGE-M3]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DOC CONTEXT]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[SEMANTIC-SEARCH]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[LLAMAINIndex]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[UNSTRUCTURED]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[CHROMA]], [[PINECONE]], [[WEAVIATE]], [[POSTGRESQL]], [[QUESTION]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[NLP]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[LLM]], [[NATS.md]], [[OLLAMA RESPONSE]], [[HEDGEDOC]], [[INTERPRETABLE-ML]], [[OLLAMA]], [[PYTHON]], [[PGVECTOR]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [REDIS]
+- **категория**: Data / High-performance In-Memory Database & Cache (The Speed Layer)
+- **суть**: Redis — это самая быстрая и популярная в мире база данных типа "ключ-значение" (NoSQL), которая хранит все данные в оперативной памяти (In-Memory). Благодаря этому время отклика Redis измеряется микро
+- **суперсила**: 1. Unrivaled Speed Mastery— >100 000 операций в секунду на одном ядре CPU. Это в сотни раз быстрее, чем любая классическая база данных. 2. Atomic Operations— Гарантирует, что при одновременном обращен...
+- **код / запуск**: `import redis ■  ■ # 1. Подключение к кэшу NEXUS ■ r = redis.Redis(host='nexus-cache', port=6379, db=0) ■  ■ # 2. Мгновенная запись (срок жизни - 60 се...`
+- **архитектура**: Паттерн: Мгновенный Коллективный Кэш (Instant Shared Cache). "Оперативная память" всей сети ваших ИИ-агентов. ; Интеграция: Модуль NEXUS Fast-Path — использование Redis для кэширования ответов ИИ-моделей [[OLLAMA]] и быстрых состояний скрапинга [[CRAWL4AI]]. ; [[REQUEST]] -> [[REDIS CACHE]] -> [[FAST RESPONSE]] экономия времени.
+- **связи**: [[REACT]], [[REDIS CACHE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[MYSQL]], [[JOB-INTEL]], [[KEV]], [[HA-PROXY]], [[IP-ADDR]], [[KAIDAN]], [[KEYDB]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[SENTRY]], [[CELERY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NATS]], [[NEXTJS]], [[KIBANA]], [[MICROSERVICES]], [[POSTGRESQL]], [[FAST RESPONSE]], [[KUBERNETES]], [[JAVA]], [[DRAGONFLY]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[VALKEY]], [[GPG]], [[MEMCACHED]], [[JUPYTER]], [[KALDI]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[REQUEST]], [[NODE-JS]], [[HEDGEDOC]], [[OLLAMA]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [RUST]
+- **категория**: Programming / Systems Language (The Safe & Fast Standard)
+- **суть**: Rust — это самый современный и безопасный системный язык программирования в мире, который вобрал в себя мощь C++ и элегантность высокоуровневых языков. Его главная особенность — Memory Safety (безопас
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Несгибаемый Цифровой Каркас (Indestructible Digital Frame). Язык для написания самых критически нагруженных модулей вашей системы. ; Интеграция: Модуль NEXUS Rust Core — использование Rust для создания сверхбыстрых сетевых утилит [[IP-RECON]] и "двигателей" для локального ИИ [[LLAMA-CPP]]. ; [[C CODE (CRASHING)]] -> [[RUST REWRITE]] -> [[SOLID PRODUCTION]] надежность.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[RUST REWRITE]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[SURREALDB]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[LLAMA-CPP]], [[GIN]], [[ELECTRON]], [[HELM]], [[NEXTJS]], [[KIBANA]], [[RUST-ANALYZER]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[CRAWL4AI]], [[SOLID PRODUCTION]], [[DNA-FARM]], [[NLP]], [[ASTRO]], [[D3]], [[GPG]], [[INFRASTRUCTURE]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[C CODE (CRASHING)]], [[IMAGES-PYTHON]], [[TAURI]], [[NODE-JS]], [[ZDEN]], [[HEDGEDOC]], [[POLARS]], [[TYPST]], [[PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [SCIKIT-LEARN]
+- **категория**: AI / Classic Machine Learning & Statistics (The Foundation)
+- **суть**: Scikit-learn (Sklearn) — это самая важная и популярная библиотека для классического машинного обучения на языке Python. В отличие от "тяжелых" нейросетей [[PYTORCH]], Scikit-learn фокусируется на эффе
+- **суперсила**: 1. Consistency Mastery— Все алгоритмы (от простых до сложнейших) управляются одинаковыми командами. Выучив один раз, вы можете применять сотни моделей. 2. Feature Engineering Power— Включает мощнейшие...
+- **код / запуск**: `from sklearn.cluster import KMeans ■ import pandas as pd ■  ■ # 1. Загрузка данных по звездам и количеству файлов репозиториев ■ df = pd.read_json("ne...`
+- **архитектура**: Паттерн: Магистраль Классического Интеллекта (Classic Intelligence Pipeline). Быстрый анализ и фильтрация всех данных OSINT-разведки. ; Интеграция: Модуль NEXUS Predict — использование Scikit-learn для предсказания уязвимостей в ПО на основе статистики прошлых атак. ; [[TABLE DATA]] -> [[SKLEARN MODEL]] -> [[PREDICTION / CLUSTER]] аналитика.
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[NUMPY]], [[FACE-RECOGNITION]], [[JENKINS]], [[XGBOOST]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[LIGHTGBM]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[MATPLOTLIB]], [[NUMPY-SCIPY]], [[TABLE DATA]], [[KIBANA]], [[CATBOOST]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[PANDAS]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[FORCE-DIRECTED-GRAPH]], [[SKLEARN MODEL]], [[HEDGEDOC]], [['stars', 'file_count']], [[TENSORFLOW]], [[PYTHON]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[PREDICTION / CLUSTER]]
+
+---
+
+## [SECURITY]
+- **категория**: Operations / Global Cyber Defense & Intelligence Shield (The Fortress)
+- **суть**: Security — это не раздел, а ДНК всей архитектуры проекта NEXUS. В мире, где работают 1400+ ИИ-агентов, постоянно собирающих данные [[OSINT]], информационная безопасность становится фундаментом выживан
+- **суперсила**: 1. Zero-Trust Mastery— Принцип "Никому не доверяй, всё проверяй". Даже если один из ваших агентов взломан, он не сможет навредить всей системе. 2. Infinite Resilience Power— Система продолжает работат...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[OWASP]], [[NGINX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[PYLINT]], [[GENSIM]], [[THREAT DETECTED]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[SYSTEM HARDENING]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[MITRE-ATTACK]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[OSINT]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[SECURITY PROTOCOL]], [[BEYOND-RECON]], [[LOGGING]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[GPG]], [[UBUNTU]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[KALI-LINUX]], [[SQL]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [SENTRY]
+- **категория**: Operations / Error Tracking & Real-time Crash Monitoring (The Early Warning System)
+- **суть**: Sentry — это самая мощная и популярная в мире платформа для отслеживания ошибок (Error Tracking) и мониторинга производительности приложений в реальном времени. В системе NEXUS, где сотни ИИ-агентов [
+- **суперсила**: 1. Instant Error Visibility Mastery— Вы узнаете об ошибке за миллисекунду до того, как система начнет тормозить. Отчет включает в себя всё: от версии браузера до состояния переменных в момент падения....
+- **код / запуск**: `import sentry_sdk ■  ■ # 1. Запуск радара безопасности ■ sentry_sdk.init( ■     dsn="https://your_nexus_dsn@sentry.local/1", ■     traces_sample_rate=...`
+- **архитектура**: Паттерн: Система Раннего Оповещения (The Early Warning System). Постоянное подтверждение того, что ваша Wiki-ферма работает идеально или требует немедленного внимания. ; Интеграция: Модуль NEXUS Heartbeat — автоматическое уведомление в Telegram при возникновении критических багов в процессе оцифровки 1400+ репозиториев. ; [[CRASH IN CODE]] -> [[SENTRY EVENT]] -> [[TELEGRAM ALERT]] мгновенная реакция.
+- **связи**: [[REACT]], [[ALLUXIO]], [[ERROR-HANDLING]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[CLICKHOUSE]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[GRAFANA]], [[LANGCHAIN]], [[KIBANA]], [[DATADOG]], [[CRASH IN CODE]], [[OPEN-TELEMETRY]], [[NEW-RELIC]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[TELEGRAM ALERT]], [[DNA-FARM]], [[SENTRY EVENT]], [[LIGHTHOUSE]], [[ASTRO]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[REDIS]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[INTERPRETABLE-ML]], [[OLLAMA]], [[TELEGRAM-BOT]], [[PYTHON]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [SQL]
+- **категория**: Data / Universal Structured Query Language (The Data Language)
+- **суть**: SQL (Structured Query Language) — это фундаментальный, стандартизированный язык для управления и манипулирования реляционными базами данных. Если [[PYTHON]] — это мозг вашей системы, то SQL — это её С
+- **суперсила**: [[SUPABASE]] — современный SQL-бекенд (Postgres as a service) ; [[DNA-FARM]] — источник наших данных (репозиториев) ; [[DEEPSEARCH]] — если в результатах SQL нужен ИИ-поиск ; [[ANYTHING-LLM]] — хранение и поиск в Obsidian отчетов (результаты SQL-анализа) ; [[CRAWL4AI]] — сборщик данных (топливо для SQL-таблиц)
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Информационный Дедуктивный Механизм (The Deductive Info Engine). Универсальный инструмент извлечения ответов из хаоса данных. ; Интеграция: Модуль NEXUS Query Hub — использование SQL-запросов для формирования живых Daid-графиков и Dashboard состояния всей Wiki-фермы. ; [[RAW TABLE]] -> [[SQL QUERY]] -> [[ACTIONABLE INSIGHT]] синтез истины.
+- **связи**: [[ACTIONABLE INSIGHT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[RAW TABLE]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[SQL QUERY]], [[MYSQL]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[DB-VISUALIZER]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[SQLITE]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[D3]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [SQLITE]
+- **категория**: Data / Embedded Relational Database Engine (The Local Standard)
+- **суть**: SQLite — это самая распространенная база данных в мире. В отличие от [[POSTGRESQL]] или [[MYSQL]], она не является сервером. Вся база данных SQLite — это один обычный файл на диске, библиотеку для раб
+- **суперсила**: 1. Zero-Configuration Mastery— Вам не нужно устанавливать сервер, настраивать порты или создавать пользователей. Просто создайте файл и начните писать SQL. Это "Магия, которая просто работает". 2. Roc...
+- **код / запуск**: `import sqlite3 ■  ■ # 1. Создание/подключение к базе (просто файл в папке NEXUS) ■ conn = sqlite3.connect('nexus_farm_state.db') ■ cursor = conn.curso...`
+- **архитектура**: Паттерн: Локальное Хранилище Агента (Local Agent Store). Персональная "память" каждого скрипта в вашей Wiki-ферме. ; Интеграция: Модуль NEXUS Local-DB — использование SQLite для ведения логов прогресса оцифровки 1400+ репозиториев (dna_state.db). ; [[REPOS LIST]] -> [[SQLITE DB FILE]] -> [[LOCAL ANALYSIS]] надежное хранение.
+- **связи**: [[SQLITE DB FILE]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[MYSQL]], [[JOB-INTEL]], [[LITE-STREAM]], [[REPOS LIST]], [[HA-PROXY]], [[IP-ADDR]], [[OBSIDIAN]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LOCAL ANALYSIS]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[TURSO]], [[POSTGRESQL]], [[JAVA]], [[KUBERNETES]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[D3]], [[C]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[DB-BROWSER-SQLITE]], [[HEDGEDOC]], [[SQL]], [[PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [STABLE-DIFFUSION]
+- **категория**: AI / Generative Art & Image Synthesis (The Visualizer)
+- **суть**: Stable Diffusion — это революционная модель глубокого обучения с открытым исходным кодом, предназначенная для генерации высококачественных изображений на основе текстовых описаний (Text-to-Image) или 
+- **суперсила**: 1. Unrivaled Flexibility Mastery— Тысячи фанатских моделей на Civitai позволяют генерировать что угодно: от фотореалистичных портретов до технических схем и 3D-иконок. 2. LoRA Fine-tuning Power— Вы мо...
+- **код / запуск**: `import torch ■ from diffusers import StableDiffusionPipeline ■  ■ # 1. Загрузка модели прямо на видеокарту ■ model_id = "runwayml/stable-diffusion-v1-...`
+- **архитектура**: Паттерн: Генератор Визуальных Доказательств (Visual Evidence Generator). Превращение сухих текстовых отчетов в наглядные иллюстрации. ; Интеграция: Модуль NEXUS Vision — использование Stable Diffusion для автоматической отрисовки логотипов и интерфейсов новых репозиториев Wiki-фермы. ; [[PROMPT (TEXT)]] -> [[STABLE DIFFUSION]] -> [[IMAGE (PRO)]] генерация будущего.
+- **связи**: [[IMAGE (PRO)]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[IP-ADAPTER]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[COMFYUI]], [[HA-PROXY]], [[INVOKEAI]], [[GENSIM]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[ZEN]], [[CONTROLNET]], [[GIN]], [[ELECTRON]], [[STABLE DIFFUSION]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[HUGGINGFACE-TRANSFORMERS]], [[JAVA]], [[KUBERNETES]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[PYTORCH]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[PROMPT (TEXT)]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[CIVITAI]], [[HEDGEDOC]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [SUPABASE]
+- **категория**: Data / Modern Backend-as-a-Service & Database Platform (The Cloud Native)
+- **суть**: Supabase — это самая мощная и современная платформа с открытым исходным кодом, предоставляющая разработчикам полный набор инструментов для создания полноценных бекендов (Backend-as-a-Service — BaaS) з
+- **суперсила**: 1. Unrivaled Realtime Mastery— Ваша Wiki или Дашборд [[NEXTJS]] обновляются мгновенно! Когда один агент NEXUS заканчивает анализ репозитория, все пользователи видят "зеленую галочку" в реальном времен...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Единое Облачное Хранилище Состояний (The Unified Cloud State). "Мозг" системы в облаке, доступный из любой точки мира. ; Интеграция: Модуль NEXUS Cloud Sync — использование Supabase для синхронизации прогресса Wiki-фермерства между локальным компьютером и внешним Дашбордом. ; [[DATABASE UPDATE]] -> [[SUPABASE REALTIME]] -> [[USER UI UPDATE]] мгновенная реакция.
+- **связи**: [[REACT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[APPWRITE]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[SUPABASE REALTIME]], [[ETHICAL-HACKING-NOTES]], [[HASHCAT]], [[KIND]], [[FFMPEG]], [[SENTRY]], [[DATABASE UPDATE]], [[DEEPSEARCH]], [[GARDEN]], [[GBDT]], [[SURREALDB]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[USER UI UPDATE]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[NLP]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[FIREBASE]], [[SQL]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [TAILWIND]
+- **категория**: Web / Rapid UI Styling & Design Systems (The Visual Standard)
+- **суть**: Tailwind CSS — это революционный "utility-first" CSS-фреймворк, который в корне изменил способ создания веб-интерфейсов. Вместо написания тысяч строк громоздкого CSS в отдельных файлах, вы строите диз
+- **суперсила**: 1. Unrivaled Design Speed Mastery— Вы создаете сложные компоненты (напр. стеклянные карточки с градиентами) за секунды, не переключаясь между файлами. 2. Zero Runtime Overhead Power— Компилятор Tailwi...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Единый Визуальный Язык (Unified Visual Language). Мастер-система для отрисовки всех интерфейсов ваших 1400+ агентов. ; Интеграция: Модуль NEXUS UI Kit — использование Tailwind для создания адаптивной панели управления с живыми графиками [[D3]] и OSINT-картами. ; [[HTML/REACT]] -> [[TAILWIND JIT]] -> [[PREMIUM UI]] визуальный успех.
+- **связи**: [[REACT]], [[HEADLESSUI]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[DAISYUI]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PREMIUM UI]], [[HA-PROXY]], [[IP-ADDR]], [[FRAMER-MOTION]], [[GENSIM]], [[SHADCN-UI]], [[FFMPEG]], [[SENTRY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[TAILWIND JIT]], [[HTML/REACT]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[LIGHTHOUSE]], [[INFRASTRUCTURE]], [[RADIX-UI]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[MOTION]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [TELEGRAM-BOT]
+- **категория**: AI / Intelligent Telegram Bot & Agent Interface (The Scout)
+- **суть**: Telegram-Bot — в системе NEXUS это не просто "чат-бот", а ваш главный Интеллектуальный Разведчик и удаленный терминал управления. Благодаря мощному API Telegram и библиотекам на [[PYTHON]] (напр. `aio
+- **суперсила**: 1. Pocket Intelligence Mastery— Вся мощь 1400+ репозиториев доступна вам из любой точки мира через одно приложение. Никаких громоздких ноутбуков. 2. Proactive Alerts Power— Бот сам напишет вам: "Внима...
+- **код / запуск**: `import asyncio ■ from aiogram import Bot, Dispatcher, types ■  ■ # 1. Ваш тайный ключ (Token) ■ BOT_TOKEN = "ВАШ_СЕКРЕТНЫЙ_ТОКЕН" ■ bot = Bot(token=BO...`
+- **архитектура**: Паттерн: Удаленный Операционный Узел (The Remote Operations Hub). Главный интерфейс для связи физического мира с вашей ИИ-инфраструктурой. ; Интеграция: Модуль NEXUS Messenger — бот, который является фронтендом для вашей Wiki-фермы, позволяя управлять оцифровкой через команды `/farm_status` или `/new_target`. ; [[USER COMMAND]] -> [[TELEGRAM API]] -> [[NEXUS AGENT]] -> [[RESULT MESSAGE]] исполнение.
+- **связи**: [[NEXUS AGENT]], [[FASTCHAT]], [[ALLUXIO]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[RESULT MESSAGE]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[SQLITE]], [[FFMPEG]], [[SENTRY]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[NATS]], [[PYROGRAM]], [[NEXTJS]], [[LANGCHAIN]], [[KIBANA]], [[TELEGRAM API]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[IMAGES-PYTHON]], [[FORCE-DIRECTED-GRAPH]], [[HEDGEDOC]], [[OLLAMA]], [[PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[USER COMMAND]], [[JENKINS]], [[TELETHON]]
+
+---
+
+## [TENSORFLOW]
+- **категория**: AI / End-to-End Machine Learning Platform (The Industrial Giant)
+- **суть**: TensorFlow — это мощнейшая и наиболее зрелая в мире платформа с открытым исходным кодом для машинного обучения, разработанная командой Google Brain. В отличие от исследовательского [[PYTORCH]], Tensor
+- **суперсила**: 1. Unrivaled Production Readiness Mastery— Ваши модели будут работать на серверах так же стабильно, как поиск Google или лента YouTube. Никаких ошибок при масштабировании. 2. Keras API Simplicity Powe...
+- **код / запуск**: `import tensorflow as tf ■ from tensorflow.keras import layers ■  ■ # 1. Сборка простой нейросети ("Лего-стайл") ■ model = tf.keras.Sequential([ ■     ...`
+- **архитектура**: Паттерн: Индустриальный Интеллектуальный Завод (The Industrial Intelligence Factory). Позволяет превращать теорию OSINT-разведки в стабильный продукт. ; Интеграция: Модуль NEXUS Mobile AI — использование TFLite для запуска распознавания лиц [[FACE-RECOGNITION]] и объектов с видео в реальном времени. ; [[DATAFRAME]] -> [[TENSORFLOW MODEL]] -> [[PRODUCTION API]] развертывание.
+- **связи**: [[PRODUCTION API]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[XGBOOST]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[KERAS]], [[GIN]], [[HELM]], [[ELECTRON]], [[DATAFRAME]], [[NEXTJS]], [[KIBANA]], [[HUGGINGFACE-TRANSFORMERS]], [[SCIKIT-LEARN]], [[OPEN-CV]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[PYTORCH]], [[TENSORFLOW MODEL]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[JAX]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [TERRAFORM]
+- **категория**: Infrastructure / Infrastructure as Code (The Cloud Standard)
+- **суть**: Terraform — это самая мощная и универсальная платформа для управления ИТ-инфраструктурой любого масштаба с помощью кода (Infrastructure as Code — IaC). Он позволяет инженерам описывать в текстовых фай
+- **суперсила**: 1. Infrastructure Versioning Mastery— Вся ваша сеть на 1000 серверов хранится в Git. Если вы ошиблись — просто "откатитесь" на прошлую версию кода как в обычном скрипте. 2. Immutable Infrastructure Po...
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[CLOUDFORMATION]], [[FASTAPI]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[TERRAFORM APPLY]], [[MYSQL]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HCL CODE]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[CLOUD GRID]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ANSIBLE]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[ELECTRON]], [[OPENTOFU]], [[PULUMI]], [[NEXTJS]], [[GRAFANA]], [[KIBANA]], [[LANGCHAIN]], [[BICEP]], [[KUBERNETES]], [[JAVA]], [[CROSSPLANE]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[NODE-JS]], [[HEDGEDOC]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[HELM]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [TROUBLESHOOTING]
+- **категория**: Operations / Universal Troubleshooting & Debugging Guide (The Repair Manual)
+- **суть**: Troubleshooting — это не просто поиск ошибок, это системная дисциплина о том, как за минимальное время вернуть систему NEXUS к жизни после любого сбоя. В мире, где работают 1400+ ИИ-агентов, микросерв
+- **суперсила**: 4. Resiliency Design Mastery— Хороший траблшутинг учит вас строить системы, которые сами исправляют свои ошибки (Self-healing via [[KUBERNETES]]). 5. Universal Repair Manual Power— Подходит для всего:...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Протокол Самоисцеления (The Self-Healing Protocol). Набор инструкций для ИИ-агентов, как им чинить самих себя при обнаружении сбоя в [[SENTRY]]. ; Интеграция: Модуль NEXUS Sentry — автоматизация исправления: если [[NATS]] шина перегружена, система сама перезапускает ноды. ; [[CRASH DETECTED]] -> [[TROUBLESHOOTING LOGIC]] -> [[SYSTEM RESTORED]] стабильность.
+- **связи**: [[SYSTEM RESTORED]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[ELASTICSEARCH]], [[LEARN-LINUX]], [[NETSTAT]], [[FACE-RECOGNITION]], [[NGINX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[PROMETHEUS]], [[HA-PROXY]], [[IP-ADDR]], [[PYLINT]], [[GENSIM]], [[HARBOR]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[SENTRY]], [[CRASH DETECTED]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[STRACE]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NATS]], [[UML]], [[KIBANA]], [[LANGCHAIN]], [[GRAFANA]], [[NEXTJS]], [[NMAP]], [[TCPDUMP]], [[POSTGRESQL]], [[KUBERNETES]], [[JAVA]], [[TROUBLESHOOTING LOGIC]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[INFRASTRUCTURE]], [[SS]], [[GPG]], [[LSOF]], [[JUPYTER]], [[REDIS]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[SQL]], [[PYTHON]], [[OLLAMA]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[DOCKER]], [[JENKINS]]
+
+---
+
+## [TYPESCRIPT]
+- **категория**: Programming / Strongly Typed JavaScript Superset (The Professional Standard)
+- **суть**: TypeScript — это надмножество языка JavaScript, которое добавляет в него строгую типизацию (Static Typing). Если JS — это "гибкий, но опасный пластилин", то TypeScript — это Чертеж и Правила, которые 
+- **суперсила**: 1. Zero Runtime Errors Mastery— Огромное количество ошибок вылавливается еще ПРИ НАПИСАНИИ кода, а не когда Дашборд уже "упал" у пользователя. Это "Цифровая Страховка". 2. Infinite Navigation Power— Б...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Строгий Контракт Кода (The Strict Code Contract). Принцип написания всех интерфейсов Дашборда как проверяемых и надежных модулей. ; Интеграция: Модуль NEXUS UI Core — использование TypeScript для создания типизированного API-клиента, который общается с [[FASTAPI]] и [[SUPABASE]]. ; [[DYNAMIC JS]] -> [[TYPESCRIPT TYPES]] -> [[STABLE APP]] надежность.
+- **связи**: [[REACT]], [[PRISMA]], [[VSCODE]], [[ALLUXIO]], [[FASTCHAT]], [[JINJA2]], [[XLM]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[TYPESCRIPT TYPES]], [[IP-ADDR]], [[DYNAMIC JS]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[DEEPSEARCH]], [[GBDT]], [[TRPC]], [[ZEN]], [[BUN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[STABLE APP]], [[ASTRO]], [[DNA-FARM]], [[D3]], [[ZOD]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[HEDGEDOC]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[NODEJS]], [[JENKINS]]
+
+---
+
+## [UBUNTU]
+- **категория**: Operations / The Ultimate Linux Distribution (The NEXUS Home)
+- **суть**: Ubuntu — это самая известная и широко используемая операционная система на базе ядра Linux в мире. Это "Фундамент" и "Дом" для всей архитектуры NEXUS. Благодаря своей исключительной стабильности, огро
+- **суперсила**: 1. Unrivaled Stability Mastery— Версии LTS (Long Term Support) получают обновления безопасности в течение 10 лет. Ваша "Крепость" NEXUS никогда не развалится из-за ошибок системы. 2. Infinite Software...
+- **код / запуск**: `# 1. Мгновенное обновление всей системы ■ sudo apt update && sudo apt upgrade -y ■  ■ # 2. Установка стейка NEXUS (Python + Docker + Nmap) ■ sudo apt ...`
+- **архитектура**: N/A
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[WINDOWS-WSL]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HARDWARE]], [[HA-PROXY]], [[IP-ADDR]], [[NEXUS SERVICES]], [[GENSIM]], [[HARBOR]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[LORA]], [[JAVASCRIPT-ALGORITHMS]], [[ZEN]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[SYSTEMD]], [[NMAP]], [[DEBIAN]], [[BASH]], [[POSTGRESQL]], [[IMMLIB]], [[KUBERNETES]], [[JAVA]], [[ALPINE]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[CENTOS]], [[RHEL]], [[GPG]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[UBUNTU KERNEL]], [[OLLAMA]], [[PYTHON]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[DOCKER]], [[JENKINS]]
+
+---
+
+## [VIM]
+- **категория**: Tools / High-efficiency Modal Text Editor (The Master's Tool)
+- **суть**: Vim (и его современный наследник Neovim) — это легендарный текстовый редактор с открытым исходным кодом, предназначенный для невероятно быстрой и эффективной работы с кодом и текстами прямо в терминал
+- **суперсила**: 1. Unrivaled Efficiency Mastery— Вы больше не тратите время на перенос руки к мышке. Каждое действие — это короткая "фраза" на клавиатуре: `ci"` (изменить текст в кавычках). Вы работаете в потоке (Flo...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Мастер-Инструмент Терминала (The Master Terminal Tool). Основное "оружие" для правки конфигов, скриптов и досье прямо на удаленных базах. ; Интеграция: Модуль NEXUS Editor — использование Neovim с настроенными плагинами для оцифровки и ручной коррекции 1400+ репозиториев. ; [[SLOW MOUSE EDIT]] -> [[VIM MOTIONS]] -> [[SPEED OF THOUGHT]] мастерство.
+- **связи**: [[VSCODE]], [[SLOW MOUSE EDIT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[NEOVIM]], [[GIN]], [[GIT]], [[ELECTRON]], [[HELM]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[ZSH]], [[VIM MOTIONS]], [[KUBERNETES]], [[JAVA]], [[EMACS]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[ASTRO]], [[DNA-FARM]], [[INFRASTRUCTURE]], [[SPEED OF THOUGHT]], [[TMUX]], [[GPG]], [[UBUNTU]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[FISH]], [[HEDGEDOC]], [[PYTHON]], [[IMMLIB]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [WEBSITE]
+- **категория**: Web / Professional Project Presence & Documentation (The Face)
+- **суть**: Website — в системе NEXUS это не просто "страничка", а единая точка входа для мира (Landing Page) и ваших собственных инженеров (Technical Docs). Это "Лицо" оцифрованной технологической империи. Постр
+- **суперсила**: 1. Unrivaled First Impression Mastery— У лендинга есть всего 3 секунды, чтобы влюбить в себя. Использование градиентов, шрифтов (Outfit/Inter) и анимаций гарантирует "Wow-эффект". 2. Infinite Navigati...
+- **код / запуск**: `N/A`
+- **архитектура**: Паттерн: Единое Публичное Пространство (The Unified Public Space). Платформа для демонстрации ваших достижений по оцифровке 1400+ репозиториев. ; Интеграция: Модуль NEXUS Portal — веб-сайт, который тянет живые данные из [[SUPABASE]] и отображает статус Wiki-фермы в реальном времени. ; [[IDEA (TEXT)]] -> [[NEXTRA/NEXJS CODE]] -> [[VERCEL DEPLOY]] запуск в мир.
+- **связи**: [[VERCEL]], [[REACT]], [[NEXTRA/NEXJS CODE]], [[STORYBOOK]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[RAG]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[LUCIDE-REACT]], [[HA-PROXY]], [[IP-ADDR]], [[GENSIM]], [[SHADCN-UI]], [[HASHCAT]], [[ETHICAL-HACKING-NOTES]], [[KIND]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[ZEN]], [[JAVASCRIPT-ALGORITHMS]], [[NEXTRA]], [[GIN]], [[HELM]], [[ELECTRON]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[TAILWIND]], [[KUBERNETES]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[CRAWL4AI]], [[D3]], [[DNA-FARM]], [[ASTRO]], [[LIGHTHOUSE]], [[INFRASTRUCTURE]], [[RADIX-UI]], [[GPG]], [[VERCEL DEPLOY]], [[JUPYTER]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[HEDGEDOC]], [[IDEA (TEXT)]], [[MOTION]], [[INTERPRETABLE-ML]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+## [XLM]
+- **категория**: AI / NLP Foundations (Masked Language Models)
+- **суть**: XLM (Cross-lingual Language Model) — это легендарная разработка от Facebook AI Research (FAIR). Она представляет собой архитектуру Трансформера, специально обученную для работы на нескольких языках од
+- **суперсила**: [[GEOLOCATION]] — если нужно переводить названия мест ; [[GIN]] — скоростной веб-шлюз для XLM
+- **код / запуск**: `from transformers import XLMModel, XLMTokenizer ■  ■ # 1. Загружаем модель (напр. мультиязычный BERT - XLM-R) ■ model = XLMModel.from_pretrained('xlm-...`
+- **архитектура**: N/A
+- **связи**: [[ALLUXIO]], [[FASTCHAT]], [[XLM]], [[ELASTICSEARCH]], [[FACE-RECOGNITION]], [[ANYTHING-LLM]], [[FLUTTER]], [[GENSIM]], [[ETHICAL-HACKING-NOTES]], [[FFMPEG]], [[EMBEDDING-MODELS]], [[DEEPSEARCH]], [[GBDT]], [[GARDEN]], [[GEOLOCATION]], [[BUN]], [[GIN]], [[ELECTRON]], [[ENG-INTERVIEW]], [[CHAKRA-UI]], [[FLASK]], [[EMOTION]], [[D3]], [[CRAWL4AI]], [[ESP32]], [[ASTRO]], [[DNA-FARM]], [[DATASCIENCEPYTHON]], [[FAIRY-DOCKER]], [[FORCE-DIRECTED-GRAPH]], [[DEEPLEARNING-500-QUESTIONS]], [[NODE-JS]], [[FASTAPI]]
+
+---
+
+## [ZEN]
+- **категория**: Architecture / The Ultimate Nexus Ecosystem Convergence (The Master Plan)
+- **суть**: ZEN — это не просто раздел, это финальная точка сборки всей архитектуры проекта NEXUS. Это состояние "Технологической Сингулярности" и идеальной Гармонии между всеми 1,400+ репозиториями, которые мы о
+- **суперсила**: N/A
+- **код / запуск**: `N/A`
+- **архитектура**: N/A
+- **связи**: [[GO]], [[TYPESCRIPT]], [[ALLUXIO]], [[FASTCHAT]], [[IMAGE-PROCESSING]], [[JINJA2]], [[XLM]], [[LEARN-LINUX]], [[FACE-RECOGNITION]], [[RAG]], [[NGINX]], [[MASTER-PLAN]], [[HTOP]], [[ANYTHING-LLM]], [[JOB-INTEL]], [[RUST]], [[HA-PROXY]], [[NEXUS REFINERY]], [[IP-ADDR]], [[OBSIDIAN]], [[CHAOS (INTERNET)]], [[GENSIM]], [[VIM]], [[HASHCAT]], [[KIND]], [[SQLITE]], [[FFMPEG]], [[SENTRY]], [[SUPABASE]], [[TROUBLESHOOTING]], [[GBDT]], [[GARDEN]], [[JAVASCRIPT-ALGORITHMS]], [[GIN]], [[HELM]], [[ELECTRON]], [[OSINT]], [[NEXTJS]], [[KIBANA]], [[LANGCHAIN]], [[POSTGRESQL]], [[SECURITY]], [[KUBERNETES]], [[PURE ZEN KNOWLEDGE]], [[JAVA]], [[IP-RECON]], [[ESP32]], [[PANDAS]], [[CRAWL4AI]], [[DNA-FARM]], [[NLP]], [[ASTRO]], [[D3]], [[PYTORCH]], [[GPG]], [[INFRASTRUCTURE]], [[UBUNTU]], [[WEBSITE]], [[FAIRY-DOCKER]], [[TERRAFORM]], [[FORCE-DIRECTED-GRAPH]], [[IMAGES-PYTHON]], [[ZDEN]], [[HEDGEDOC]], [[INTERPRETABLE-ML]], [[OLLAMA]], [[TELEGRAM-BOT]], [[PYTHON]], [[FASTAPI]], [[HARBOR]], [[JENKINS]]
+
+---
+
+
+
+# USER
+## SPEC CONTRACT (Identity)
+Agent ID: TECHNICAL_ANALYST
+Domain: FINANCE
+Purpose: Analyze stock price patterns, technical indicators (RSI, MACD, Bollinger Bands), and market trends to generate buy/sell signals.
+
+### Technical Requirements:
+- Algorithm: Calculate RSI and MACD based on historical OHLCV data. Identify trend breakouts.
+- API Targets:   - https://api.polygon.io/v2/aggs/ticker/{ticker}/prev
+  - https://query1.finance.yahoo.com/v8/finance/chart/{ticker}
+- Data Model: {
+    "confidence": "float",
+    "indicators": {
+        "macd": "float",
+        "rsi": "float",
+        "trend": "str"
+    },
+    "signal": "buy|sell|hold",
+    "ticker": "str"
+}
+- Input: Stock Ticker | Output: TechnicalAnalysisReport
+- Required Modules:   - numpy
+  - pandas
+  - yfinance
+- Hardcoded Hooks:   - "_calculate_indicators"
+  - "_check_breakouts"
+  - "generate_signal"
+
+## CODE STRUCTURE:
+- Class Name: TechnicalAnalystAgent | Table: technical_analyst
+- Main Entry: execute_scan(self, target: str) -> TechnicalAnalystReport
+- Additional Requirements: Declare at least 2 UNIQUE internal methods specific to TECHNICAL_ANALYST logic.

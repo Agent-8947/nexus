@@ -1,0 +1,11 @@
+{
+  "child_id": "THREAT_STALKER_V1",
+  "generation": 1,
+  "traits": {
+    "role": "analyzer",
+    "computing": "agnostic",
+    "security": "critical",
+    "interface": "api"
+  },
+  "fitness": 0.75
+}

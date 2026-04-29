@@ -1,0 +1,302 @@
+[
+    {
+        "size": 423118,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\VISUALMASM\\Win32_Debug_Data_WinAPIInsertList.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 310181,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_cyber-security_cyber-security.json",
+        "sample_content": ""
+    },
+    {
+        "size": 304018,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\MACHINE-LEARNING-WITH-PYTHON\\Deployment_rnn_app_data_training-rnn.json",
+        "sample_content": ""
+    },
+    {
+        "size": 294069,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\PUPPETEER\\docs_CHANGELOG.md",
+        "sample_content": ""
+    },
+    {
+        "size": 184713,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_system-design_system-design.json",
+        "sample_content": ""
+    },
+    {
+        "size": 166159,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_design-system_design-system.json",
+        "sample_content": ""
+    },
+    {
+        "size": 155542,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\TAURI\\crates_tauri-cli_config.schema.json",
+        "sample_content": ""
+    },
+    {
+        "size": 151491,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\AGENTICSEEK\\frontend\\agentic-seek-front\\public\\logo192.png",
+        "sample_content": ""
+    },
+    {
+        "size": 135383,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_ux-design_ux-design.json",
+        "sample_content": ""
+    },
+    {
+        "size": 131052,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\MERMAID\\packages_mermaid_CHANGELOG.md",
+        "sample_content": ""
+    },
+    {
+        "size": 127461,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_software-design-architecture_software-design-architecture.json",
+        "sample_content": ""
+    },
+    {
+        "size": 126439,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DEVELOPER-ROADMAP\\src_data_roadmaps_api-design_api-design.json",
+        "sample_content": ""
+    },
+    {
+        "size": 93445,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\PYSYFT\\packages_syft_src_syft_util_api_snapshot_syft_api_spec_beta.json",
+        "sample_content": ""
+    },
+    {
+        "size": 87699,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\SUPABASE\\apps_docs_spec_transforms_analytics_v0_openapi_deparsed.json",
+        "sample_content": ""
+    },
+    {
+        "size": 74262,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\github-top-stars-full-ru-final.csv",
+        "sample_content": ""
+    },
+    {
+        "size": 74042,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\AWESOME-PYTHON\\README.md",
+        "sample_content": ""
+    },
+    {
+        "size": 58358,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\GRADIO\\client_python_CHANGELOG.md",
+        "sample_content": ""
+    },
+    {
+        "size": 43302,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\FRAMEWORK\\Externals_OpenKinect_platform_windows_inf_xbox nui audio_license_libusb-win32_installer_license.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 42939,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\VOXFORMER\\preprocess_mobilestereonet_filenames_01.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 40425,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\VERACRYPT\\License.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 36627,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\FREENET-CORE\\crates_core_LICENSE.md",
+        "sample_content": ""
+    },
+    {
+        "size": 35823,
+        "count": 5,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\AGENTICSEEK\\LICENSE",
+        "sample_content": ""
+    },
+    {
+        "size": 35821,
+        "count": 6,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DRONIN\\flight_PiOS_Common_Libraries_ChibiOS_license.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 35819,
+        "count": 7,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CRYPTOMATOR\\LICENSE.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 35815,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\AWESOME-MECHENG\\LICENSE.MD",
+        "sample_content": ""
+    },
+    {
+        "size": 35815,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\TUTANOTA\\LICENSE.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 35801,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\DREHMFLIGHT\\Versions_dRehmFlight_Teensy_BETA_1.0_COPYING.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 35184,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\ANALYTICS\\LICENSE.md",
+        "sample_content": ""
+    },
+    {
+        "size": 33993,
+        "count": 4,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\SYNAPSEML\\website_versioned_docs_version-1.0.15_Explore Algorithms_AI Services_Overview.md",
+        "sample_content": ""
+    },
+    {
+        "size": 33042,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\NODE\\deps_openssl_openssl_Configurations_README.md",
+        "sample_content": ""
+    },
+    {
+        "size": 32675,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\PIPECNN\\project_intel_data_imagenet_synset_words.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 31139,
+        "count": 5,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\EUI\\licenses_SSPL-LICENSE.md",
+        "sample_content": ""
+    },
+    {
+        "size": 27032,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\AEGIS\\app_src_main_java_info_guardianproject_trustedintents_LICENSE.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 25709,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\SUPABASE\\apps_docs_spec_analytics_v0_openapi.json",
+        "sample_content": ""
+    },
+    {
+        "size": 25045,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\NODE\\deps_openssl_openssl_Configurations_README-design.md",
+        "sample_content": ""
+    },
+    {
+        "size": 23722,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CLAUDE-SCIENTIFIC-SKILLS\\scientific-skills_latex-posters_references_poster_design_principles.md",
+        "sample_content": ""
+    },
+    {
+        "size": 23227,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CLAUDE-SCIENTIFIC-SKILLS\\scientific-skills_latex-posters_references_poster_layout_design.md",
+        "sample_content": ""
+    },
+    {
+        "size": 22241,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\EVERY-PROGRAMMER-SHOULD-KNOW\\README.md",
+        "sample_content": ""
+    },
+    {
+        "size": 21352,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\PIKAPYTHON\\bsp_simulation-rtt-qemu-arm2d_rt-thread_components_net_lwip-2.0.2_doc_rawapi.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 21109,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CLAUDE-SCIENTIFIC-SKILLS\\scientific-skills_latex-posters_references_poster_content_guide.md",
+        "sample_content": ""
+    },
+    {
+        "size": 20556,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CODING-INTERVIEW-UNIVERSITY\\LICENSE.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 19503,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\UHD\\firmware_usrp2_lwip_lwip-1.3.1_doc_rawapi.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 19030,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\GRAPHEMBEDDING\\data_wiki_Wiki_category.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 18840,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\JCSPROUT\\docs_thread_thread-communication.md",
+        "sample_content": ""
+    },
+    {
+        "size": 18694,
+        "count": 11,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\SYNAPSEML\\website_versioned_docs_version-1.0.10_Explore Algorithms_Vowpal Wabbit_Quickstart - Classification, Quantile Regression, and Regression.md",
+        "sample_content": ""
+    },
+    {
+        "size": 18451,
+        "count": 10,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\SYNAPSEML\\website_versioned_docs_version-0.11.3_Explore Algorithms_Vowpal Wabbit_Quickstart - Classification, Quantile Regression, and Regression.md",
+        "sample_content": ""
+    },
+    {
+        "size": 18431,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\CJDNS\\contrib_http_text_javascript_jssha256.js.LICENSE.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 17517,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\FIRST-CONTRIBUTIONS\\docs_gui-tool-tutorials_translations_github-windows-vs-code-tutorial-hi.md",
+        "sample_content": ""
+    },
+    {
+        "size": 17098,
+        "count": 2,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\PLOTJUGGLER\\installer_io.plotjuggler.application_meta_license_mpl.txt",
+        "sample_content": ""
+    },
+    {
+        "size": 16412,
+        "count": 3,
+        "example_path": "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI\\BREVITAS\\docsrc_source_user_guide_architecture.rst",
+        "sample_content": ""
+    }
+]

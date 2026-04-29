@@ -1,5 +1,5 @@
 """
-NEXUS Agent 13 — WIKI_MARKETER V5.0
+NEXUS Agent 13  WIKI_MARKETER V5.0
 ================================
 Специализация: Брендинг и маркетинговая упаковка готовых билдов.
 Стиль: Строгая типографика, сетка, контраст, три языка (EN/UA/RU).
@@ -17,8 +17,8 @@ WIKI_PROJECT_DIR = PROJECT_ROOT / "PROJECT" / "WIKI-PROJECT"
 
 def banner():
     print("\n" + "=" * 60)
-    print("  NEXUS AGENT 13 — MARKETER V5.0")
-    print("  Mission: Package • Brand • Present • Launch")
+    print("  NEXUS AGENT 13  MARKETER V5.0")
+    print("  Mission: Package  Brand  Present  Launch")
     print("=" * 60 + "\n")
 
 def find_latest_build():
@@ -41,7 +41,7 @@ def extract_product_info(build_path):
         m = re.search(r"#\s+.+?:\s+(.+)", content)
         if m: name = m.group(1).strip()
     
-    # Discovery — Scan src folder instead of blindly grabbing README stubs
+    # Discovery  Scan src folder instead of blindly grabbing README stubs
     src_dir = build_path / "src"
     modules = []
     if src_dir.exists():
@@ -142,33 +142,118 @@ def rename_build(build_path, slug):
         print(f"  [!] Rename skipped (file lock).")
         return build_path
 
+def get_actual_github_url(slug):
+    """Deterministic URL: GitHub Owner + Build Slug."""
+    return f"https://github.com/Agent-8947/{slug}"
+
 def generate_logo(build_path, short_name):
     try:
         from PIL import Image, ImageDraw, ImageFont
-        # Vignelli-style: black square, bold white text, one accent stripe
         W, H = 600, 600
         img = Image.new("RGB", (W, H), color=(8, 8, 8))
         draw = ImageDraw.Draw(img)
-        # Red accent stripe (top)
+        
+        # Red accent stripe (top) & bottom
         draw.rectangle([0, 0, W, 12], fill=(220, 30, 30))
-        # Initials
-        abbr = "".join([w[0] for w in short_name.split() if w])[:2].upper()
-        try:
-            font = ImageFont.truetype("arialbd.ttf", 240)
-            font_sub = ImageFont.truetype("arial.ttf", 36)
-        except:
-            font = ImageFont.load_default(); font_sub = font
-        bb = draw.textbbox((0,0), abbr, font=font)
-        tw, th = bb[2]-bb[0], bb[3]-bb[1]
-        draw.text(((W-tw)//2, (H-th)//2 - 40), abbr, fill=(255,255,255), font=font)
-        # Bottom label
-        label = "NEXUS INTELLIGENCE"
-        bb2 = draw.textbbox((0,0), label, font=font_sub)
-        draw.text(((W - (bb2[2]-bb2[0]))//2, H-80), label, fill=(150,150,150), font=font_sub)
         draw.rectangle([0, H-12, W, H], fill=(220, 30, 30))
+        
+        # --- SYMBOL GENERATION: Cyber-Eye / Tech Node ---
+        cx, cy = W // 2, H // 2 - 40
+        
+        # 1. Outer Tech Diamond
+        eye_w, eye_h = 240, 120
+        pts = [
+            (cx - eye_w//2, cy),
+            (cx, cy - eye_h//2),
+            (cx + eye_w//2, cy),
+            (cx, cy + eye_h//2)
+        ]
+        draw.polygon(pts, outline=(255, 255, 255), width=10)
+        
+        # 2. Inner Red Iris
+        r_iris = 42
+        draw.ellipse([cx - r_iris, cy - r_iris, cx + r_iris, cy + r_iris], outline=(220, 30, 30), width=8)
+        
+        # 3. Core Node / Pupil
+        r_core = 16
+        draw.ellipse([cx - r_core, cy - r_core, cx + r_core, cy + r_core], fill=(220, 30, 30))
+        
+        # 4. Reticles / Radars (Intersecting lines)
+        rl = 60 # line length outside
+        draw.line([cx - eye_w//2 - rl, cy, cx - eye_w//2 + 10, cy], fill=(255, 255, 255), width=3)
+        draw.line([cx + eye_w//2 - 10, cy, cx + eye_w//2 + rl, cy], fill=(255, 255, 255), width=3)
+        draw.line([cx, cy - eye_h//2 - rl, cx, cy - eye_h//2 + 10], fill=(220, 30, 30), width=3)
+        draw.line([cx, cy + eye_h//2 - 10, cx, cy + eye_h//2 + rl], fill=(220, 30, 30), width=3)
+
+        # --- TEXT GENERATION ---
+        try:
+            font_main = ImageFont.truetype("arialbd.ttf", 46)
+            font_sub = ImageFont.truetype("arial.ttf", 22)
+        except:
+            font_main = ImageFont.load_default(); font_sub = font_main
+
+        name_str = short_name.upper()
+        if hasattr(draw, "textbbox"):
+            bb1 = draw.textbbox((0,0), name_str, font=font_main)
+            tw1, th1 = bb1[2]-bb1[0], bb1[3]-bb1[1]
+            draw.text(((W - tw1)//2, cy + 120), name_str, fill=(255,255,255), font=font_main)
+            
+            label = "NEXUS INTELLIGENCE FACTORY"
+            bb2 = draw.textbbox((0,0), label, font=font_sub)
+            tw2 = bb2[2]-bb2[0]
+            draw.text(((W - tw2)//2, cy + 120 + th1 + 15), label, fill=(150,150,150), font=font_sub)
+        else:
+            # Fallback for older PIL
+            draw.text((60, cy + 120), name_str, fill=(255,255,255), font=font_main)
+
         img.save(build_path / "logo.png")
-        print("  [+] Logo generated.")
-    except ImportError: pass
+        print("  [+] Symbolic logo generated.")
+    except Exception as e:
+        print(f"  [!] Logo generation error: {e}")
+
+def generate_og_image(build_path, short_name):
+    """Generate 1200x630 banner for Social Media previews."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+        W, H = 1200, 630
+        img = Image.new("RGB", (W, H), color=(8, 8, 8))
+        draw = ImageDraw.Draw(img)
+        
+        # Red accents
+        draw.rectangle([0, 0, W, 12], fill=(220, 30, 30))
+        draw.rectangle([0, H-12, W, H], fill=(220, 30, 30))
+        
+        # Tech Symbol (Eye)
+        cx, cy = W // 2, H // 2 - 40
+        eye_w, eye_h = 400, 200
+        pts = [(cx - eye_w//2, cy), (cx, cy - eye_h//2), (cx + eye_w//2, cy), (cx, cy + eye_h//2)]
+        draw.polygon(pts, outline=(255, 255, 255), width=15)
+        draw.ellipse([cx-70, cy-70, cx+70, cy+70], outline=(220, 30, 30), width=10)
+        draw.ellipse([cx-25, cy-25, cx+25, cy+25], fill=(220, 30, 30))
+        
+        # Text
+        try:
+            f_main = ImageFont.truetype("arialbd.ttf", 80)
+            f_sub = ImageFont.truetype("arial.ttf", 30)
+        except:
+            f_main = ImageFont.load_default(); f_sub = f_main
+
+        name_str = short_name.upper()
+        if hasattr(draw, "textbbox"):
+            bb = draw.textbbox((0,0), name_str, font=f_main)
+            tw = bb[2]-bb[0]
+            draw.text(((W-tw)//2, cy + 150), name_str, fill=(255,255,255), font=f_main)
+            
+            label = "NEXUS INTELLIGENCE FACTORY // OSINT PIPELINE"
+            bb2 = draw.textbbox((0,0), label, font=f_sub)
+            tw2 = bb2[2]-bb2[0]
+            draw.text(((W-tw2)//2, cy + 150 + 90), label, fill=(150,150,150), font=f_sub)
+        
+        img.save(build_path / "og-image.png")
+        img.save(build_path / "landing" / "og-image.png")
+        print("  [+] Wide OG-image generated (1200x630).")
+    except Exception as e:
+        print(f"  [!] OG-Image error: {e}")
 
 def generate_pdf(build_path, short_name, slogan, vision):
     try:
@@ -270,7 +355,7 @@ def generate_pdf(build_path, short_name, slogan, vision):
     except Exception as e:
         print(f"  [!] PDF error: {e}")
 
-def generate_landing(build_path, short_name, slogan, pitch, vision, modules):
+def generate_landing(build_path, short_name, slogan, pitch, vision, modules, github_url):
     landing_dir = build_path / "landing"
     landing_dir.mkdir(exist_ok=True)
 
@@ -373,42 +458,67 @@ def generate_landing(build_path, short_name, slogan, pitch, vision, modules):
 </div>\n"""
 
 
-    html = f"""<!DOCTYPE html>
+    # Meta pitch (for OG tags) - prioritize a human-friendly story
+    og_pitch = pitch
+    if brand and "human_story" in brand:
+        og_pitch = brand["human_story"].get("what_it_is", {}).get("en", pitch)
+
+    # Build build_slug for meta tags
+    build_slug = build_path.name.lower().replace('_', '-')
+    v_url = f"https://{build_slug}.vercel.app"
+
+    html = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{short_name} | NEXUS</title>
+<meta name="description" content="{og_pitch}">
+
+<!-- Open Graph / Meta -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{v_url}">
+<meta property="og:title" content="{short_name} | NEXUS Intelligence">
+<meta property="og:description" content="{og_pitch}">
+<meta property="og:image" content="{v_url}/og-image.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{v_url}">
+<meta property="twitter:title" content="{short_name} | NEXUS Intelligence">
+<meta property="twitter:description" content="{og_pitch}">
+<meta property="twitter:image" content="{v_url}/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{{margin:0;padding:0;box-sizing:border-box;}}
+*{margin:0;padding:0;box-sizing:border-box;}
 :root {{
   --red: #DC1E1E;
   --black: #080808;
   --white: #F5F5F0;
   --grey: #999;
   --line: #222;
-}}
-html {{scroll-behavior:smooth;}}
-body {{background:var(--black);color:var(--white);font-family:'Space Grotesk','Noto Sans',sans-serif;line-height:1.5;overflow-x:hidden;}}
+}
+html {scroll-behavior:smooth;}
+body {background:var(--black);color:var(--white);font-family:'Space Grotesk','Noto Sans',sans-serif;line-height:1.5;overflow-x:hidden;}
 
 /* NAV */
 nav {{
   padding:30px 6%;display:flex;justify-content:space-between;
   align-items:center;border-bottom:1px solid var(--line);
-}}
-.n-logo {{font-weight:700;font-size:.85rem;letter-spacing:4px;color:var(--white);}}
-.n-right {{ display:flex; gap:20px; align-items:center; }}
-.n-gh {{ color:var(--white); transition:.2s; display:flex; align-items:center; }}
-.n-gh:hover {{ color:var(--red); }}
-.n-lang {{display:flex;gap:0;border:1px solid var(--line);}}
+}
+.n-logo {{font-weight:700;font-size:.85rem;letter-spacing:4px;color:var(--white);}
+.n-right {{ display:flex; gap:20px; align-items:center; }
+.n-gh {{ color:var(--white); transition:.2s; display:flex; align-items:center; }
+.n-gh:hover {{ color:var(--red); }
+.n-lang {{display:flex;gap:0;border:1px solid var(--line);}
 .l-btn {{
   background:none;border:none;color:var(--grey);
   padding:8px 14px;cursor:pointer;font-family:inherit;
   font-size:.75rem;letter-spacing:2px;transition:.2s;
-}}
-.l-btn.on,.l-btn:hover{{background:var(--red);color:var(--white);}}
+}
+.l-btn.on,.l-btn:hover{{background:var(--red);color:var(--white);}
 
 /* HERO */
 .hero {{
@@ -416,147 +526,147 @@ nav {{
   grid-template-rows:1fr auto;
   padding:120px 6% 60px;
   border-bottom:1px solid var(--line);
-}}
-.hero-top {{display:flex;flex-direction:column;justify-content:flex-end;}}
-.h-tag {{font-size:.7rem;letter-spacing:4px;color:var(--red);font-weight:500;margin-bottom:24px;font-family:'Space Mono',monospace;}}
+}
+.hero-top {{display:flex;flex-direction:column;justify-content:flex-end;}
+.h-tag {{font-size:.7rem;letter-spacing:4px;color:var(--red);font-weight:500;margin-bottom:24px;font-family:'Space Mono',monospace;}
 .h-title {{
   font-size:clamp(4rem,12vw,10rem);font-weight:700;
   line-height:1;margin-bottom:20px;letter-spacing:-2px;
-}}
-.hero-bottom {{display:flex;justify-content:space-between;align-items:flex-end;}}
-.h-slogan {{font-size:1.1rem;color:var(--grey);max-width:400px;line-height:1.6;}}
+}
+.hero-bottom {{display:flex;justify-content:space-between;align-items:flex-end;}
+.h-slogan {{font-size:1.1rem;color:var(--grey);max-width:400px;line-height:1.6;}
 .h-scroll {{
   font-family:'Space Mono',monospace;font-size:.7rem;
   letter-spacing:3px;color:var(--white);text-transform:uppercase;
-}}
+}
 
 /* SECTION */
-.section {{padding:120px 6%;border-bottom:1px solid var(--line);}}
+.section {{padding:120px 6%;border-bottom:1px solid var(--line);}
 .s-label {{
   font-family:'Space Mono',monospace;font-size:.7rem;
   letter-spacing:3px;color:var(--red);margin-bottom:60px;
   text-transform:uppercase;
-}}
+}
 
 /* STORY */
-.st-grid {{ display:grid;grid-template-columns:1fr 1fr;gap:0; }}
+.st-grid {{ display:grid;grid-template-columns:1fr 1fr;gap:0; }
 .st-card {{
   padding:50px 40px;border:1px solid var(--line);
   transition:.3s;
-}}
-.st-card:hover{{border-color:var(--red);background:rgba(220,30,30,.04);}}
+}
+.st-card:hover{{border-color:var(--red);background:rgba(220,30,30,.04);}
 .st-title {{
   font-family:'Space Mono',monospace;font-size:.7rem;
   letter-spacing:3px;color:var(--red);text-transform:uppercase;
   margin-bottom:20px;
-}}
-.st-body {{font-size:1.05rem;color:var(--grey);line-height:1.7;}}
+}
+.st-body {{font-size:1.05rem;color:var(--grey);line-height:1.7;}
 
-/* PROVIDE — What to give the system */
+/* PROVIDE  What to give the system */
 .provide-box {{
   display:grid;grid-template-columns:1fr 1fr;gap:0;
   border:1px solid var(--red);
-}}
+}
 .provide-left {{
   padding:50px 40px;
   border-right:1px solid var(--red);
-}}
-.provide-right {{ padding:50px 40px; }}
+}
+.provide-right {{ padding:50px 40px; }
 .p-heading {{
   font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;
   line-height:1.1;margin-bottom:8px;
-}}
+}
 .p-sub {{
   font-size:.85rem;color:var(--grey);margin-bottom:40px;
-}}
-.p-list {{ list-style:none;display:flex;flex-direction:column;gap:16px; }}
+}
+.p-list {{ list-style:none;display:flex;flex-direction:column;gap:16px; }
 .p-item {{
   display:flex;align-items:flex-start;gap:16px;
   font-size:1rem;color:var(--white);line-height:1.5;
-}}
+}
 .p-item::before {{
-  content:'→';color:var(--red);font-family:'Space Mono',monospace;
+  content:'';color:var(--red);font-family:'Space Mono',monospace;
   font-size:.9rem;flex-shrink:0;margin-top:2px;
-}}
+}
 .p-note {{
   margin-top:30px;padding:20px;border:1px solid var(--line);
   font-size:.85rem;color:var(--grey);font-style:italic;
-}}
+}
 
 /* DEPLOYMENT & TECH STACK */
-.d-box {{ border:1px solid var(--line); padding:40px; }}
-.d-where {{ font-size:1.1rem; color:var(--white); margin-bottom:20px; line-height:1.6; border-left:3px solid var(--red); padding-left:20px; }}
-.d-reqs {{ list-style:none; display:flex; gap:12px; flex-wrap:wrap; }}
-.d-req {{ background:rgba(255,255,255,0.03); padding:8px 16px; font-size:.85rem; border:1px solid var(--line); color:var(--grey); }}
+.d-box {{ border:1px solid var(--line); padding:40px; }
+.d-where {{ font-size:1.1rem; color:var(--white); margin-bottom:20px; line-height:1.6; border-left:3px solid var(--red); padding-left:20px; }
+.d-reqs {{ list-style:none; display:flex; gap:12px; flex-wrap:wrap; }
+.d-req {{ background:rgba(255,255,255,0.03); padding:8px 16px; font-size:.85rem; border:1px solid var(--line); color:var(--grey); }
 
-.repo-grid {{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px; }}
-.repo-card {{ border:1px solid var(--line); padding:30px; transition:0.3s; }}
-.repo-card:hover {{ border-color:var(--red); background:rgba(220,30,30,0.03); }}
-.repo-name {{ font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:8px; }}
-.repo-url {{ font-family:'Space Mono',monospace; font-size:.75rem; color:var(--red); margin-bottom:12px; }}
-.repo-desc {{ font-size:.95rem; color:var(--grey); line-height:1.5; }}
+.repo-grid {{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px; }
+.repo-card {{ border:1px solid var(--line); padding:30px; transition:0.3s; }
+.repo-card:hover {{ border-color:var(--red); background:rgba(220,30,30,0.03); }
+.repo-name {{ font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:8px; }
+.repo-url {{ font-family:'Space Mono',monospace; font-size:.75rem; color:var(--red); margin-bottom:12px; }
+.repo-desc {{ font-size:.95rem; color:var(--grey); line-height:1.5; }
 
 /* MODULES */
 .m-grid {{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:0;
-}}
+}
 .m-card {{
   padding:40px 30px;border:1px solid var(--line);
   position:relative;transition:.3s;cursor:default;
-}}
-.m-card:hover{{background:rgba(220,30,30,.06);border-color:var(--red);}}
+}
+.m-card:hover{{background:rgba(220,30,30,.06);border-color:var(--red);}
 .m-num {{
   font-family:'Space Mono',monospace;font-size:.65rem;
   color:var(--red);letter-spacing:2px;display:block;margin-bottom:12px;
-}}
-.m-txt {{font-size:.95rem;color:var(--grey);}}
+}
+.m-txt {{font-size:.95rem;color:var(--grey);}
 
 /* WORKFLOW */
-.steps {{display:flex;gap:0;flex-wrap:wrap;}}
+.steps {{display:flex;gap:0;flex-wrap:wrap;}
 .step {{
   flex:1;min-width:200px;padding:40px 30px;border:1px solid var(--line);
   position:relative;transition:.3s;
-}}
-.step:hover{{border-color:var(--red);background:rgba(255,255,255,.02);}}
+}
+.step:hover{{border-color:var(--red);background:rgba(255,255,255,.02);}
 .step-n {{
   font-family:'Space Mono',monospace;font-size:2.5rem;
   font-weight:700;color:var(--line);display:block;margin-bottom:16px;
-}}
-.step-t {{font-size:1rem;color:var(--grey);}}
+}
+.step-t {{font-size:1rem;color:var(--grey);}
 
 /* PDF CTA */
 .cta-bar {{
   display:flex;justify-content:space-between;align-items:center;
   padding:60px 6%;border-bottom:1px solid var(--line);
   flex-wrap:wrap;gap:30px;
-}}
-.cta-text {{font-size:clamp(1.5rem,4vw,3rem);font-weight:700;}}
+}
+.cta-text {{font-size:clamp(1.5rem,4vw,3rem);font-weight:700;}
 .cta-btn {{
   display:inline-block;padding:18px 48px;
   background:var(--red);color:var(--white);
   text-decoration:none;font-weight:700;
   letter-spacing:2px;font-size:.85rem;
   border:1px solid var(--red);transition:.3s;
-}}
-.cta-btn:hover{{background:transparent;color:var(--red);}}
+}
+.cta-btn:hover{{background:transparent;color:var(--red);}
 
 /* FOOTER */
 footer {{
   padding:40px 6%;display:flex;
   justify-content:space-between;align-items:center;
   flex-wrap:wrap;gap:10px;
-}}
-.f-left {{font-size:.7rem;letter-spacing:2px;color:var(--grey);font-family:'Space Mono',monospace;}}
-.f-right {{font-size:.7rem;color:var(--line);}}
+}
+.f-left {{font-size:.7rem;letter-spacing:2px;color:var(--grey);font-family:'Space Mono',monospace;}
+.f-right {{font-size:.7rem;color:var(--line);}
 
 /* red stripe */
-.stripe {{height:4px;background:var(--red);}}
+.stripe {{height:4px;background:var(--red);}
 
 @media(max-width:768px){{
-  .about-grid{{grid-template-columns:1fr;gap:40px;}}
-  .m-grid{{grid-template-columns:1fr;}}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .m-grid{grid-template-columns:1fr;}
 }}
 </style>
 </head>
@@ -566,7 +676,7 @@ footer {{
 <nav>
   <div class="n-logo">NEXUS / 13</div>
   <div class="n-right">
-    <a href="https://github.com/Antigravity-NEXUS/{build_path.name}" target="_blank" class="n-gh" title="View Source on GitHub">
+    <a href="{github_url}" target="_blank" class="n-gh" title="View Source on GitHub">
       <svg height="24" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="24" fill="currentColor">
         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
       </svg>
@@ -583,17 +693,17 @@ footer {{
 <section class="hero">
   <div class="hero-top">
     <div class="h-tag" id="tag" data-en="NEXUS INTELLIGENCE SYSTEM" data-ua="NEXUS СИСТЕМА РОЗВІДКИ" data-ru="NEXUS СИСТЕМА РАЗВЕДКИ">NEXUS INTELLIGENCE SYSTEM</div>
-    <h1 class="h-title">{short_name.upper()}</h1>
+    <h1 class="h-title">{short_name}</h1>
   </div>
   <div class="hero-bottom">
     <p class="h-slogan" id="slogan" data-en="{slogan}" data-ua="Автономна фабрика розвідки. Збирає. Аналізує. Доставляє." data-ru="Автономная фабрика разведки. Собирает. Анализирует. Доставляет.">{slogan}</p>
-    <span class="h-scroll">SCROLL ↓</span>
+    <span class="h-scroll">SCROLL </span>
   </div>
 </section>
 
 <!-- STORY: Simple explanation (by Agent 14) -->
 <section class="section" id="story">
-  <div class="s-label">00 — IN SIMPLE TERMS</div>
+  <div class="s-label">00  IN SIMPLE TERMS</div>
   <div class="st-grid">
     {story_html}
   </div>
@@ -602,10 +712,10 @@ footer {{
 <!-- PROVIDE: What to give the system (by Agent 14) -->
 <section class="section" id="provide">
   <div class="s-label" id="provide-label"
-       data-en="START HERE — WHAT YOU NEED TO PROVIDE"
-       data-ua="З ЧОГО ПОЧАТИ — ЩО ПОТРІБНО НАДАТИ"
-       data-ru="С ЧЕГО НАЧАТЬ — ЧТО НУЖНО ПЕРЕДАТЬ">
-    START HERE — WHAT YOU NEED TO PROVIDE
+       data-en="START HERE  WHAT YOU NEED TO PROVIDE"
+       data-ua="З ЧОГО ПОЧАТИ  ЩО ПОТРІБНО НАДАТИ"
+       data-ru="С ЧЕГО НАЧАТЬ  ЧТО НУЖНО ПЕРЕДАТЬ">
+    START HERE  WHAT YOU NEED TO PROVIDE
   </div>
   <div class="provide-box">
     <div class="provide-left">
@@ -628,7 +738,7 @@ footer {{
 
 <!-- ABOUT -->
 <section class="section" id="about">
-  <div class="s-label">01 — ABOUT THE SYSTEM</div>
+  <div class="s-label">01  ABOUT THE SYSTEM</div>
   <div class="about-grid">
     <div>
       <h2 class="a-title" id="atitle" data-en="What is it?" data-ua="Що це таке?" data-ru="Что это такое?">What is it?</h2>
@@ -645,7 +755,7 @@ footer {{
 
 <!-- ARCHITECTURE -->
 <section class="section" id="arch">
-  <div class="s-label">02 — ARCHITECTURE</div>
+  <div class="s-label">02  ARCHITECTURE</div>
   <div class="about-grid">
     <div>
       <h2 class="a-title" id="archtitle" data-en="How it works" data-ua="Як це працює" data-ru="Как это работает">How it works</h2>
@@ -653,15 +763,15 @@ footer {{
     <div>
       <p class="a-body" id="archbody"
          data-en="{arch_en}"
-         data-ua="Модульна архітектура мікроагентів з асинхронними конвейерами: Ingestion → Classification → Output."
-         data-ru="Модульная архитектура микроагентов с асинхронными конвейерами: Ingestion → Classification → Output.">{arch_en}</p>
+         data-ua="Модульна архітектура мікроагентів з асинхронними конвейерами: Ingestion  Classification  Output."
+         data-ru="Модульная архитектура микроагентов с асинхронными конвейерами: Ingestion  Classification  Output.">{arch_en}</p>
     </div>
   </div>
 </section>
 
 <!-- WORKFLOW -->
 <section class="section" id="workflow">
-  <div class="s-label">03 — IMPLEMENTATION PHASES</div>
+  <div class="s-label">03  IMPLEMENTATION PHASES</div>
   <div class="steps">
     {steps_html}
   </div>
@@ -669,7 +779,7 @@ footer {{
 
 <!-- MODULES -->
 <section class="section" id="modules">
-  <div class="s-label">04 — SYSTEM MODULES</div>
+  <div class="s-label">04  SYSTEM MODULES</div>
   <div class="m-grid">
     {modules_html}
   </div>
@@ -677,7 +787,7 @@ footer {{
 
 <!-- DEPLOYMENT -->
 <section class="section" id="deploy">
-  <div class="s-label">05 — DEPLOYMENT & REQUIREMENTS</div>
+  <div class="s-label">05  DEPLOYMENT & REQUIREMENTS</div>
   <div class="d-box">
     <div class="d-where" data-en="{dep_where_en}" data-ua="{dep_where_ua}" data-ru="{dep_where_ru}">{dep_where_en}</div>
     <ul class="d-reqs">
@@ -688,14 +798,14 @@ footer {{
 
 <!-- TECH STACK -->
 <section class="section" id="stack">
-  <div class="s-label" data-en="06 — {tech_label_en}" data-ua="06 — {tech_label_ua}" data-ru="06 — {tech_label_ru}">06 — {tech_label_en}</div>
+  <div class="s-label" data-en="06  {tech_label_en}" data-ua="06  {tech_label_ua}" data-ru="06  {tech_label_ru}">06  {tech_label_en}</div>
   <div class="repo-grid">
     {repos_html}
   </div>
 </section>
 
 <footer>
-  <span class="f-left">NEXUS INTELLIGENCE FACTORY / AGENT 13 V5.0 / {datetime.now().strftime('%Y')}</span>
+  <span class="f-left">NEXUS INTELLIGENCE FACTORY / AGENT 13 V5.0 / {cur_year}</span>
   <span class="f-right">Co-authored by Agent 09 & Agent 14</span>
 </footer>
 
@@ -707,11 +817,35 @@ function setL(l, btn) {{
   btn.classList.add('on');
   document.querySelectorAll('[data-'+l+']').forEach(el=>{{
     el.textContent = el.getAttribute('data-'+l);
-  }});
-}}
+  }} );
+}
 </script>
 </body>
 </html>"""
+
+    build_slug = build_path.name.lower().replace('_', '-')
+    v_url = f"https://{build_slug}.vercel.app"
+    logo_abs_url = f"{v_url}/logo.png"
+
+    # Inject dynamic content via safe .replace() to avoid CSS brace collisions
+    placeholders = {
+        "short_name": short_name, "slogan": slogan, "pitch": pitch, "og_pitch": og_pitch,
+        "github_url": github_url, "v_url": v_url, "logo_url": logo_abs_url,
+        "summary_en": summary_en, "arch_en": arch_en,
+        "steps_html": steps_html, "modules_html": modules_html, "repos_html": repos_html,
+        "reqs_html": reqs_html, "story_html": story_html,
+        "dep_where_en": dep_where_en, "dep_where_ua": dep_where_ua, "dep_where_ru": dep_where_ru,
+        "tech_label_en": tech_label_en, "tech_label_ua": tech_label_ua, "tech_label_ru": tech_label_ru,
+        "provide_title_en": provide_title_en, "provide_title_ua": provide_title_ua, "provide_title_ru": provide_title_ru,
+        "provide_note_en": provide_note_en, "provide_note_ua": provide_note_ua, "provide_note_ru": provide_note_ru,
+        "provide_items_html": provide_items_html,
+        "cur_year": datetime.now().strftime('%Y')
+    }
+    for key, val in placeholders.items():
+        html = html.replace("{" + key + "}", str(val))
+
+    # Fix CSS syntax from legacy format() artifacts
+    html = html.replace("{{", "{").replace("}}", "}")
 
     (landing_dir / "index.html").write_text(html, encoding="utf-8")
     print("  [+] Landing generated. (EN/UA/RU)")
@@ -727,8 +861,11 @@ def main():
     short_name, slug, slogan, pitch = get_names(build_path.name, brand)
 
     build_path = rename_build(build_path, slug)
+    github_url = get_actual_github_url(build_path.name)
     generate_logo(build_path, short_name)
-    generate_landing(build_path, short_name, slogan, pitch, vision, modules)
+    generate_og_image(build_path, short_name)
+    generate_pdf(build_path, short_name, slogan, vision)
+    generate_landing(build_path, short_name, slogan, pitch, vision, modules, github_url)
     print(f"\n[DONE] {build_path.name}")
     print("   logo.png | presentation.pdf | landing/index.html (EN/UA/RU)")
 

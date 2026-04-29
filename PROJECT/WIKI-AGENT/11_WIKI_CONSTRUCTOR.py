@@ -9,7 +9,7 @@ from datetime import datetime
 # ==========================================
 PROJECT_ROOT = Path(r"e:\Downloads\--ANTIGRAVITY store\IDE-NEXUS")
 WIKI_PROJECT_DIR = PROJECT_ROOT / "PROJECT" / "WIKI-PROJECT"
-BUILD_DIR = WIKI_PROJECT_DIR / "BUILD_OUTPUT"
+BUILD_DIR = WIKI_PROJECT_DIR / "LEGAL" / "BUILD"
 AGENT_NAME = "11_WIKI_CONSTRUCTOR"
 
 
@@ -17,7 +17,7 @@ class NexusConstructorAgent:
     """
     Agent 11: Builder.
     Transforms blueprint specs into verified codebases with REAL code.
-    Zero stub tolerance — every module must execute.
+    Zero stub tolerance  every module must execute.
     """
 
     def __init__(self):
@@ -27,13 +27,13 @@ class NexusConstructorAgent:
     @staticmethod
     def _banner():
         print("\n" + "=" * 60)
-        print("  NEXUS AGENT 11 — PROJECT CONSTRUCTOR v2.0")
+        print("  NEXUS AGENT 11  PROJECT CONSTRUCTOR v2.0")
         print("  Mission: Real Code Only. Zero Stubs. Zero pass.")
         print("=" * 60 + "\n")
 
-    # ──────────────────────────────────────────────────────────────────────────
+    # 
     # CODE SYNTHESIZER
-    # ──────────────────────────────────────────────────────────────────────────
+    # 
 
     @staticmethod
     def _synthesize_code(comp_name: str, spec: dict = None) -> str:
@@ -54,16 +54,17 @@ class NexusConstructorAgent:
         if api_urls:
             meta_comments += f"# Observed API patterns: {', '.join(api_urls[:3])}\n"
 
-        # ── RECON / SUBDOMAIN DISCOVERY ──────────────────────────────────────
+        #  RECON / SUBDOMAIN DISCOVERY 
         if any(k in n for k in ["recon", "subdomain", "crt", "cert-discover"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — Subdomain discovery via crt.sh CT logs."""
+"""NEXUS Module: {comp_name}  Subdomain discovery via crt.sh CT logs."""
 {meta_comments}
 import json, urllib.request, urllib.parse
 from datetime import datetime, timezone
 
 def run(domain: str, limit: int = 200) -> dict:
-    domain = domain.replace("https://", "").replace("http://", "").split("/")[0]
+    if not domain: return {{"error": "empty target"}}
+    domain = domain.replace("https://", "").replace("http://", "").split("/")[0].split("@")[-1]
     url = f"https://crt.sh/?q=%25.{{urllib.parse.quote(domain)}}&output=json"
     req = urllib.request.Request(url, headers={{"User-Agent": "nexus-recon/1.0", "Accept": "application/json"}})
     try:
@@ -94,10 +95,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-        # ── SSL / TLS ─────────────────────────────────────────────────────────
+        #  SSL / TLS 
         elif any(k in n for k in ["ssl", "tls", "cert-check", "certificate"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — SSL/TLS certificate inspection."""
+"""NEXUS Module: {comp_name}  SSL/TLS certificate inspection."""
 {meta_comments}
 import ssl, socket, json
 from datetime import datetime, timezone
@@ -149,10 +150,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-        # ── WHOIS ─────────────────────────────────────────────────────────────
+        #  WHOIS 
         elif any(k in n for k in ["whois", "registr", "domain-info"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — WHOIS domain registration lookup via raw TCP."""
+"""NEXUS Module: {comp_name}  WHOIS domain registration lookup via raw TCP."""
 import socket, re, json
 from datetime import datetime, timezone
 
@@ -162,13 +163,16 @@ WHOIS_SERVERS = {{
     "ua": "whois.ua", "uk": "whois.nic.uk", "de": "whois.denic.de",
     "ai": "whois.nic.ai", "dev": "whois.nic.google", "app": "whois.nic.google",
     "info": "whois.afilias.net", "me": "whois.nic.me", "co": "whois.nic.co",
+    "gov": "whois.dotgov.gov", "edu": "whois.educause.edu",
+    "xyz": "whois.nic.xyz", "pro": "whois.nic.pro", "biz": "whois.biz",
 }}
 
 def run(domain: str) -> dict:
+    if not domain: return {{"error": "empty target"}}
+    domain = domain.replace("https://", "").replace("http://", "").split("/")[0].split("@")[-1]
+    if "." not in domain: return {{"error": "invalid domain format"}}
     parts = domain.split(".")
-    server = WHOIS_SERVERS.get(".".join(parts[-2:])) or WHOIS_SERVERS.get(parts[-1])
-    if not server:
-        return {{"error": f"No WHOIS server for .{{parts[-1]}}", "domain": domain}}
+    server = WHOIS_SERVERS.get(".".join(parts[-2:])) or WHOIS_SERVERS.get(parts[-1]) or f"whois.nic.{{parts[-1]}}"
     try:
         with socket.create_connection((server, 43), timeout=10) as s:
             s.sendall((domain + "\\r\\n").encode())
@@ -199,10 +203,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-        # ── DNS ───────────────────────────────────────────────────────────────
+        #  DNS 
         elif any(k in n for k in ["dns", "resolver", "nameserver"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — DNS records via system DNS + Google DoH."""
+"""NEXUS Module: {comp_name}  DNS records via system DNS + Google DoH."""
 import socket, json, urllib.request, urllib.parse
 
 def run(domain: str, types: list = None) -> dict:
@@ -230,10 +234,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-        # ── PORT SCANNER ──────────────────────────────────────────────────────
+        #  PORT SCANNER 
         elif any(k in n for k in ["port", "scanner", "scan", "nmap"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — Concurrent TCP port scanner (stdlib only)."""
+"""NEXUS Module: {comp_name}  Concurrent TCP port scanner (stdlib only)."""
 import socket, json, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -263,10 +267,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-        # ── BREACH / HIBP ─────────────────────────────────────────────────────
+        #  BREACH / HIBP 
         elif any(k in n for k in ["breach", "leak", "hibp", "pwned", "breach-finder"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — Breach detection via HIBP k-anonymity API."""
+"""NEXUS Module: {comp_name}  Breach detection via HIBP k-anonymity API."""
 import hashlib, urllib.request, urllib.parse, os, json
 
 def check_password(password: str) -> dict:
@@ -298,6 +302,7 @@ def check_email(email: str) -> dict:
         return {{"email": email, "pwned": False, "count": 0}} if e.code == 404 else {{"error": str(e)}}
 
 def run(target: str) -> dict:
+    if not target: return {{"error": "empty target"}}
     return check_email(target) if "@" in target else check_password(target)
 
 if __name__ == "__main__":
@@ -305,10 +310,10 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "password123"), indent=2))
 '''
 
-        # ── SOCIAL / USERNAME ─────────────────────────────────────────────────
+        #  SOCIAL / USERNAME 
         elif any(k in n for k in ["social", "username", "profiler", "profile", "sherlock"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — Username presence across 15 platforms."""
+"""NEXUS Module: {comp_name}  Username presence across 15 platforms."""
 import urllib.request, json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -334,9 +339,12 @@ def _check(platform, url_tpl, username, timeout=5.0):
     return {{"platform": platform, "url": url, "found": found}}
 
 def run(username: str) -> dict:
-    # Cleanup input (if a domain or URL was passed by mistake)
+    if not username: return {{"error": "empty target"}}
     username = username.replace("https://", "").replace("http://", "").strip("/").split("/")[-1]
+    if "@" in username: username = username.split("@")[0]
     if "." in username: username = username.split(".")[0]
+    username = username.strip().replace(" ", "").lower()
+    if not username: return {{"error": "empty target after cleanup"}}
     results = []
     with ThreadPoolExecutor(max_workers=10) as ex:
         for f in as_completed({{ex.submit(_check, p, u, username): p for p, u in PLATFORMS.items()}}):
@@ -350,10 +358,36 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "johndoe"), indent=2))
 '''
 
-        # ── MONITOR / CRAWLER / STEALTH / HUB (fallback for agent-ish names) ─
-        elif any(k in n for k in ["monitor", "crawler", "spider", "stealth", "hub", "agent"]):
+        #  CRAWLER / SPIDER 
+        elif any(k in n for k in ["crawler", "spider"]):
             return f'''#!/usr/bin/env python3
-"""NEXUS Module: {comp_name} — HTTP endpoint monitor with concurrent probing."""
+"""NEXUS Module: {comp_name}  Basic Web Crawler (Extracts Title & Links)."""
+import urllib.request, re, json
+from urllib.parse import urljoin
+
+def run(url: str) -> dict:
+    if not url: return {{"error": "empty target"}}
+    if not url.startswith("http"): url = "https://" + url.split("@")[-1]
+    try:
+        req = urllib.request.Request(url, headers={{"User-Agent": "nexus-crawler/1.0"}})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            html = r.read().decode("utf-8", errors="ignore")
+            title = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE)
+            links = re.findall(r'href="(http[s]?://.*?)"', html) + re.findall(r"href='(http[s]?://.*?)'", html)
+            return {{"url": url, "title": title.group(1) if title else "No title",
+                    "links_found": len(links), "unique_links": list(set(links))[:20]}}
+    except Exception as e:
+        return {{"error": str(e), "url": url}}
+
+if __name__ == "__main__":
+    import sys
+    print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
+'''
+
+        #  MONITOR / STEALTH / HUB (fallback for agent-ish names) 
+        elif any(k in n for k in ["monitor", "stealth", "hub", "agent"]):
+            return f'''#!/usr/bin/env python3
+"""NEXUS Module: {comp_name}  HTTP endpoint monitor with concurrent probing."""
 import urllib.request, urllib.error, json, time
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -373,9 +407,9 @@ def _probe(url: str, timeout: float = 10.0) -> dict:
         return {{"url": url, "status": None, "ok": False, "latency_ms": None, "error": str(e)}}
 
 def run(targets) -> dict:
+    if not targets: return {{"error": "empty target"}}
     if isinstance(targets, str): targets = [targets]
-    # Normalize targets to proper URLs
-    targets = [t if t.startswith("http") else "https://" + t for t in targets]
+    targets = [t if t.startswith("http") else "https://" + t.split("@")[-1] for t in targets]
     results = []
     with ThreadPoolExecutor(max_workers=min(len(targets), 20)) as ex:
         for f in as_completed({{ex.submit(_probe, u): u for u in targets}}):
@@ -389,13 +423,13 @@ if __name__ == "__main__":
     print(json.dumps(run(targets), indent=2))
 '''
 
-        # ── GENERIC OSINT ANALYZER (universal fallback) ───────────────────────
+        #  GENERIC OSINT ANALYZER (universal fallback) 
         else:
             slug = comp_name.replace("-", "_").replace(".", "_").replace(" ", "_").upper()
             return f'''#!/usr/bin/env python3
 """
 NEXUS Module: {comp_name}
-Passive OSINT analyzer — IP resolution, HTTPS check, HTTP security headers audit.
+Passive OSINT analyzer  IP resolution, HTTPS check, HTTP security headers audit.
 stdlib only. Outputs structured JSON.
 """
 import json, socket, ssl, urllib.request
@@ -429,8 +463,10 @@ SECURITY_HEADERS = {{
 }}
 
 def run(target: str) -> dict:
-    target = target.replace("https://", "").replace("http://", "").split("/")[0]  # Sockets need raw hostname
+    if not target: return {{"error": "empty target"}}
+    target = target.replace("https://", "").replace("http://", "").split("/")[0].split("@")[-1]
     headers = _http_headers(target)
+    if not headers: return {{"error": "Network unreachable or host offline", "target": target}}
     sec = {{label: (header in headers) for header, label in SECURITY_HEADERS.items()}}
     return {{
         "target": target, "module": "{comp_name}",
@@ -448,15 +484,15 @@ if __name__ == "__main__":
     print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
 '''
 
-    # ──────────────────────────────────────────────────────────────────────────
+    # 
     # BUILD PIPELINE
-    # ──────────────────────────────────────────────────────────────────────────
+    # 
 
     def _synthesize_cli(self) -> str:
         """Generates dynamic CLI orchestrator that loads all spawned OSINT modules via importlib."""
         return '''#!/usr/bin/env python3
 """
-NEXUS SHADOW SIGHT — Ultimate OSINT Engine
+NEXUS SHADOW SIGHT  Ultimate OSINT Engine
 Dynamically loads and coordinates all specialized OSINT modules.
 """
 
@@ -489,7 +525,7 @@ class ShadowSightCLI:
                 
                 if hasattr(mod, "run"):
                     doc = mod.__doc__ or "No description provided."
-                    title = doc.split("—")[-1].strip() if "—" in doc else mod_name.replace("_", " ").title()
+                    title = doc.split("")[-1].strip() if "" in doc else mod_name.replace("_", " ").title()
                     self.modules[mod_name] = {
                         "module": mod,
                         "title": title
@@ -597,7 +633,7 @@ if __name__ == "__main__":
         cli_path = target / "src" / "shadow_cli.py"
         cli_code = self._synthesize_cli()
         cli_path.write_text(cli_code, encoding="utf-8")
-        print(f"  [+] shadow_cli.py ({len(cli_code.splitlines())} lines) — Master Orchestrator")
+        print(f"  [+] shadow_cli.py ({len(cli_code.splitlines())} lines)  Master Orchestrator")
 
         if self.verify_build(target):
             return self.finalize_delivery(target)
@@ -631,7 +667,7 @@ if __name__ == "__main__":
             file_path = target / "src" / f"{module_name}.py"
             file_path.write_text(code, encoding="utf-8")
             lines = len(code.splitlines())
-            print(f"  [+] {module_name}.py ({lines} lines) — {spec.get('title', 'unknown')}")
+            print(f"  [+] {module_name}.py ({lines} lines)  {spec.get('title', 'unknown')}")
 
         # Also copy domain_intel.py if it exists (the real working code)
         existing_intel = Path(r"e:\Downloads\--ANTIGRAVITY store\IDE-NEXUS\PROJECT\WIKI-PROJECT\LEGAL\BUILD\B001_SHADOW-SIGHT\src\domain_intel.py")
@@ -640,13 +676,17 @@ if __name__ == "__main__":
             dest = target / "src" / "domain_intel.py"
             if not dest.exists():
                 shutil.copy2(existing_intel, dest)
-                print(f"  [+] domain_intel.py (copied, {existing_intel.stat().st_size} bytes)")
+                # Patch it to always have the latest run() at the end (last one wins)
+                content = dest.read_text(encoding="utf-8")
+                patch = "\ndef run(domain: str) -> dict:\n    if not domain: return {\"error\": \"empty target\"}\n    domain = domain.replace(\"https://\", \"\").replace(\"http://\", \"\").split(\"/\")[0].split(\"@\")[-1]\n    return bulk_check([domain], [\"ssl\", \"whois\", \"dns\", \"subdomains\"])\n"
+                dest.write_text(content + patch, encoding="utf-8")
+                print(f"  [+] domain_intel.py (copied and force-patched)")
 
         # Generate CLI Orchestrator
         cli_path = target / "src" / "shadow_cli.py"
         cli_code = self._synthesize_cli()
         cli_path.write_text(cli_code, encoding="utf-8")
-        print(f"  [+] shadow_cli.py ({len(cli_code.splitlines())} lines) — Master Orchestrator")
+        print(f"  [+] shadow_cli.py ({len(cli_code.splitlines())} lines)  Master Orchestrator")
 
         if self.verify_build(target):
             return self.finalize_delivery(target)
@@ -659,7 +699,7 @@ if __name__ == "__main__":
     agent = NexusConstructorAgent()
 
     if len(sys.argv) > 1 and sys.argv[1] == "--specs":
-        # Spec-driven mode (Agent 06 → Agent 11 pipeline)
+        # Spec-driven mode (Agent 06  Agent 11 pipeline)
         specs_dir = Path(r"e:\Downloads\--ANTIGRAVITY store\IDE-NEXUS\PROJECT\INVENTIONS\SPECS")
         project_name = sys.argv[2] if len(sys.argv) > 2 else "Shadow-Sight"
         agent.build_from_specs(specs_dir, project_name)

@@ -1,0 +1,102 @@
+{
+  "child_id": "INFRASTRUCTURE__X__HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING",
+  "parent_a": {
+    "node_id": "INFRASTRUCTURE",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "analyzer",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "medium",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.059,
+        0.021,
+        0.031,
+        0.013,
+        0.009,
+        0.047,
+        0.0,
+        0.053,
+        0.0,
+        0.805
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.2,
+        "completeness": 0.33,
+        "overall": 0.44
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_WEB_DEV_FOR_BEGINNERS_x_PCL_LEARNING",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.242,
+        0.0,
+        0.0,
+        0.0,
+        0.205,
+        0.144,
+        0.0,
+        0.577,
+        0.255
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.69
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.432,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "WEB_DEV_FOR_BEGINNERS",
+          "PCL_LEARNING"
+        ],
+        "generation": 1,
+        "compat_score": 0.693,
+        "synthesized_at": "2026-04-09T18:51:02.858892"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T19:34:37.326629"
+}

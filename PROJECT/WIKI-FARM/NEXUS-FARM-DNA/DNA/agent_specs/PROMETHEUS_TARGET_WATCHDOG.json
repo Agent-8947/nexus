@@ -1,0 +1,31 @@
+{
+  "agent_id": "PROMETHEUS_TARGET_WATCHDOG",
+  "domain": "INFRA",
+  "purpose": "Verify all Prometheus scrape targets are UP and responding within thresholds",
+  "api_endpoints": [
+    "{prometheus_url}/api/v1/targets"
+  ],
+  "data_model": {
+    "instance": "TEXT",
+    "job": "TEXT",
+    "health": "TEXT",
+    "last_scrape": "TEXT",
+    "last_error": "TEXT"
+  },
+  "core_algorithm": "Prometheus Targets API response parsing and unhealthy target alerting",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "json"
+  ],
+  "logic_markers": [
+    "api/v1/targets",
+    "up",
+    "health",
+    "lastError",
+    "scrapeUrl"
+  ]
+}

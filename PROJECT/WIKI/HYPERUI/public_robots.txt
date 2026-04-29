@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /component.js
+Disallow: /component.css
+Disallow: /examples/
+
+Allow: /
+
+Sitemap: https://hyperui.dev/sitemap-index.xml

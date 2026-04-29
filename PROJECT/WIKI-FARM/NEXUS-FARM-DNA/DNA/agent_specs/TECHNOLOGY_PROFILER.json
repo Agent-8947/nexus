@@ -1,0 +1,33 @@
+{
+  "agent_id": "TECHNOLOGY_PROFILER",
+  "domain": "OSINT",
+  "purpose": "Detect web technologies, frameworks, and CMS used by a target website",
+  "api_endpoints": [
+    "https://api.wappalyzer.com/v2/lookup/?urls={url}"
+  ],
+  "data_model": {
+    "target_url": "TEXT",
+    "technology": "TEXT",
+    "category": "TEXT",
+    "version": "TEXT",
+    "confidence": "INTEGER"
+  },
+  "core_algorithm": "HTTP header + HTML meta + script fingerprinting",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "re",
+    "json"
+  ],
+  "logic_markers": [
+    "X-Powered-By",
+    "generator",
+    "technology",
+    "category"
+  ],
+  "spec_hash": "7b36088d1412a0ea"
+}

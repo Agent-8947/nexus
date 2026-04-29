@@ -1,0 +1,28 @@
+{
+  "agent_id": "REDIS_REPLICATION_HEALTH",
+  "domain": "INFRA",
+  "purpose": "Monitor Redis replication lag and master/slave sync status",
+  "api_endpoints": [],
+  "data_model": {
+    "host": "TEXT",
+    "role": "TEXT",
+    "master_link_status": "TEXT",
+    "master_last_io_seconds_ago": "INTEGER",
+    "is_syncing": "INTEGER"
+  },
+  "core_algorithm": "Redis INFO replication command parsing",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "socket",
+    "logging",
+    "re",
+    "time"
+  ],
+  "logic_markers": [
+    "INFO replication",
+    "master_link_status",
+    "connected_slaves",
+    "master_sync_in_progress"
+  ]
+}

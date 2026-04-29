@@ -1,0 +1,97 @@
+{
+  "child_id": "PYTHON__X__MACHINE_LEARNING_WITH_PYTHON",
+  "parent_a": {
+    "node_id": "PYTHON",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "analyzer",
+        "computing": "gpu",
+        "latency": "none",
+        "security_level": "medium",
+        "autonomy": "scripted",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.025,
+        0.029,
+        0.0,
+        0.006,
+        0.009,
+        0.032,
+        0.0,
+        0.017,
+        0.007,
+        0.281
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.14,
+        "completeness": 0.67,
+        "overall": 0.46
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "MACHINE_LEARNING_WITH_PYTHON",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.046,
+        0.007,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.055
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.28,
+        "completeness": 0.33,
+        "overall": 0.6
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an AI model monitoring and anomaly detection system",
+  "ts": "2026-04-09T18:51:15.862052"
+}

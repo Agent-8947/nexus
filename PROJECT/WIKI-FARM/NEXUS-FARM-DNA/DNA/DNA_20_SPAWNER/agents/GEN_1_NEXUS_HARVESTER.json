@@ -1,0 +1,11 @@
+{
+  "child_id": "NEXUS_HARVESTER",
+  "generation": 1,
+  "traits": {
+    "role": "etl_daemon",
+    "computing": "agnostic",
+    "security": "high",
+    "interface": "cli"
+  },
+  "fitness": 0.0
+}

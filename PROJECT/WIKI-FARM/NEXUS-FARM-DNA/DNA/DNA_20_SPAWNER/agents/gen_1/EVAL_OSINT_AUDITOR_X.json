@@ -1,0 +1,12 @@
+{
+  "child_id": "OSINT_AUDITOR_X",
+  "generation": 1,
+  "scores": {
+    "syntax_valid": 0.0
+  },
+  "failures": [
+    "Syntax Error: unterminated string literal (detected at line 58) (<unknown>, line 58)"
+  ],
+  "improvements": [],
+  "overall_fitness": 0.0
+}

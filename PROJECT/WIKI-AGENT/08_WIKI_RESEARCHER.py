@@ -45,10 +45,10 @@ class NexusResearcherLoop:
             items = results.get('files', [])
             if items:
                 self.file_id = items[0]['id']
-                print(f"✅ Google Doc найден: {self.file_id}")
+                print(f" Google Doc найден: {self.file_id}")
             return service
         except Exception as e:
-            print(f"❌ Ошибка авторизации Drive: {e}")
+            print(f" Ошибка авторизации Drive: {e}")
             return None
 
     def _evaluate(self, tool_name, desc, tech_stack):
@@ -91,7 +91,7 @@ class NexusResearcherLoop:
             for row in reader:
                 tool_id = f"{row['Дата']} - {row['Имя Инструмента']}"
                 
-                # Защита от дублей: если уже проходили аудит — пропускаем
+                # Защита от дублей: если уже проходили аудит  пропускаем
                 if tool_id in self.audited_tools:
                     continue
                 
@@ -113,7 +113,7 @@ class NexusResearcherLoop:
                     doc.write(f"АУДИТ РИСКОВ (ADVERSARIAL REVIEW):\n{risk}\n")
                     doc.write(f"==================================================\n\n")
                     
-                print(f"  🔍 Проведен аудит нового инструмента: {row['Имя Инструмента']}")
+                print(f"   Проведен аудит нового инструмента: {row['Имя Инструмента']}")
                 
         return new_found
 
@@ -127,10 +127,10 @@ class NexusResearcherLoop:
                 file_metadata = {'name': DOC_NAME, 'mimeType': 'application/vnd.google-apps.document'}
                 file = self.service.files().create(body=file_metadata, media_body=media, fields='id, webViewLink').execute()
                 self.file_id = file.get('id')
-                print(f"  🔗 Ссылка на Документ: {file.get('webViewLink')}")
-            print(f"  ☁️ Drive Sync: Отчет синхронизирован с Google Docs.")
+                print(f"   Ссылка на Документ: {file.get('webViewLink')}")
+            print(f"   Drive Sync: Отчет синхронизирован с Google Docs.")
         except Exception as e:
-            print(f"  ❌ Ошибка загрузки: {e}")
+            print(f"   Ошибка загрузки: {e}")
 
     def loop_agent(self):
         cycle = 1
@@ -139,7 +139,7 @@ class NexusResearcherLoop:
             if self._process_new_blueprints():
                 self._upload_drive()
             else:
-                print("  📭 Новых архитектурных чертежей не поступило. Жду Инженера...")
+                print("   Новых архитектурных чертежей не поступило. Жду Инженера...")
                 
             cycle += 1
             # Исследователь проверяет работу инженера каждые 30 секунд
@@ -189,7 +189,7 @@ class NexusResearcherLoop:
         if found_csv or found_meta:
             self._upload_drive()
         else:
-            print("  📭 Новых чертежей (CSV/Meta) не обнаружено.")
+            print("   Новых чертежей (CSV/Meta) не обнаружено.")
 
 if __name__ == "__main__":
     from datetime import datetime

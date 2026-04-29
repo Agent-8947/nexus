@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@theme-ui/core",
+    "noEmit": true,
+    "module": "ES2022",
+    "isolatedModules": true,
+    "target": "ES2023",
+    // @types/reactcss required by @types/react-color is broken
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "packages/*/dist",
+    "packages/*/node_modules"
+  ]
+}

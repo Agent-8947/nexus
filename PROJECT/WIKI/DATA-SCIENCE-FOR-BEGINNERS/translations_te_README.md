@@ -1,0 +1,263 @@
+# కొత్తవారికి డేటా సైన్స్ - ఒక పాఠ్యక్రమం
+
+[![GitHub Codespacesలో తెరవండి](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=344191198)
+
+[![GitHub లైసెన్స్](https://img.shields.io/github/license/microsoft/Data-Science-For-Beginners.svg)](https://github.com/microsoft/Data-Science-For-Beginners/blob/master/LICENSE)
+[![GitHub సహకారులు](https://img.shields.io/github/contributors/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/graphs/contributors/)
+[![GitHub ఇష్యూస్](https://img.shields.io/github/issues/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/issues/)
+[![GitHub పుల్-రిక్వెస్టులు](https://img.shields.io/github/issues-pr/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/pulls/)
+[![పుల్-రిక్వెస్టులు స్వాగతం](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+[![GitHub వాచర్స్](https://img.shields.io/github/watchers/microsoft/Data-Science-For-Beginners.svg?style=social&label=Watch)](https://GitHub.com/microsoft/Data-Science-For-Beginners/watchers/)
+[![GitHub ఫోర్క్స్](https://img.shields.io/github/forks/microsoft/Data-Science-For-Beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/Data-Science-For-Beginners/network/)
+[![GitHub స్టార్స్](https://img.shields.io/github/stars/microsoft/Data-Science-For-Beginners.svg?style=social&label=Star)](https://GitHub.com/microsoft/Data-Science-For-Beginners/stargazers/)
+
+
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+మైక్రోసాఫ్ట్‌లో Azure క్లౌడ్ అడ్వోకేట్స్ డాటా సైన్స్ గురించి 10 వారాల, 20 పాఠాల పూర్తి పాఠ్యక్రమాన్ని అందించడంలో సంతోషిస్తున్నాము. ప్రతి పాఠం ముందు మరియు తర్వాత క్విజ్‌లు, పాఠం పూర్తి చేయడానికి రాత సూచనలు, ఒక సమాధానం మరియు అసైన్మెంట్‌ను కలిగి ఉంటుంది. మా ప్రాజెక్ట్-ఆధారిత విద్యా విధానం మీరు నేర్చుకోవడానికి తోడ్పడుతుంది, అది కొత్త నైపుణ్యాలు 'జరిగే' పద్ధతి.
+
+**మా రచయితలకు హృదయపూర్వక కృతజ్ఞతలు:** [Jasmine Greenaway](https://www.twitter.com/paladique), [Dmitry Soshnikov](http://soshnikov.com), [Nitya Narasimhan](https://twitter.com/nitya), [Jalen McGee](https://twitter.com/JalenMcG), [Jen Looper](https://twitter.com/jenlooper), [Maud Levy](https://twitter.com/maudstweets), [Tiffany Souterre](https://twitter.com/TiffanySouterre), [Christopher Harrison](https://www.twitter.com/geektrainer).
+
+**🙏 మన [Microsoft Student Ambassador](https://studentambassadors.microsoft.com/) రచయితలు, సమీక్షకులు మరియు కంటెంట్ సహకారులకు ప్రత్యేక ధన్యవాదాలు 🙏,** ముఖ్యంగా Aaryan Arora, [Aditya Garg](https://github.com/AdityaGarg00), [Alondra Sanchez](https://www.linkedin.com/in/alondra-sanchez-molina/), [Ankita Singh](https://www.linkedin.com/in/ankitasingh007), [Anupam Mishra](https://www.linkedin.com/in/anupam--mishra/), [Arpita Das](https://www.linkedin.com/in/arpitadas01/), ChhailBihari Dubey, [Dibri Nsofor](https://www.linkedin.com/in/dibrinsofor), [Dishita Bhasin](https://www.linkedin.com/in/dishita-bhasin-7065281bb), [Majd Safi](https://www.linkedin.com/in/majd-s/), [Max Blum](https://www.linkedin.com/in/max-blum-6036a1186/), [Miguel Correa](https://www.linkedin.com/in/miguelmque/), [Mohamma Iftekher (Iftu) Ebne Jalal](https://twitter.com/iftu119), [Nawrin Tabassum](https://www.linkedin.com/in/nawrin-tabassum), [Raymond Wangsa Putra](https://www.linkedin.com/in/raymond-wp/), [Rohit Yadav](https://www.linkedin.com/in/rty2423), Samridhi Sharma, [Sanya Sinha](https://www.linkedin.com/mwlite/in/sanya-sinha-13aab1200),
+[Sheena Narula](https://www.linkedin.com/in/sheena-narua-n/), [Tauqeer Ahmad](https://www.linkedin.com/in/tauqeerahmad5201/), Yogendrasingh Pawar , [Vidushi Gupta](https://www.linkedin.com/in/vidushi-gupta07/), [Jasleen Sondhi](https://www.linkedin.com/in/jasleen-sondhi/)
+
+|![@sketchthedocs గీయడం https://sketchthedocs.dev](../../translated_images/te/00-Title.8af36cd35da1ac55.webp)|
+|:---:|
+| కొత్తవారికి డేటా సైన్స్ - _గీయడం [@nitya](https://twitter.com/nitya) ద్వారా_ |
+
+### 🌐 బహుళ భాషా మద్ధతు
+
+#### GitHub చర్య ద్వారా మద్దతు (ఆటోమేటెడ్ & ఎప్పుడూ నవీకరించబడిన)
+
+<!-- CO-OP TRANSLATOR LANGUAGES TABLE START -->
+[Arabic](../ar/README.md) | [Bengali](../bn/README.md) | [Bulgarian](../bg/README.md) | [Burmese (Myanmar)](../my/README.md) | [Chinese (Simplified)](../zh-CN/README.md) | [Chinese (Traditional, Hong Kong)](../zh-HK/README.md) | [Chinese (Traditional, Macau)](../zh-MO/README.md) | [Chinese (Traditional, Taiwan)](../zh-TW/README.md) | [Croatian](../hr/README.md) | [Czech](../cs/README.md) | [Danish](../da/README.md) | [Dutch](../nl/README.md) | [Estonian](../et/README.md) | [Finnish](../fi/README.md) | [French](../fr/README.md) | [German](../de/README.md) | [Greek](../el/README.md) | [Hebrew](../he/README.md) | [Hindi](../hi/README.md) | [Hungarian](../hu/README.md) | [Indonesian](../id/README.md) | [Italian](../it/README.md) | [Japanese](../ja/README.md) | [Kannada](../kn/README.md) | [Korean](../ko/README.md) | [Lithuanian](../lt/README.md) | [Malay](../ms/README.md) | [Malayalam](../ml/README.md) | [Marathi](../mr/README.md) | [Nepali](../ne/README.md) | [Nigerian Pidgin](../pcm/README.md) | [Norwegian](../no/README.md) | [Persian (Farsi)](../fa/README.md) | [Polish](../pl/README.md) | [Portuguese (Brazil)](../pt-BR/README.md) | [Portuguese (Portugal)](../pt-PT/README.md) | [Punjabi (Gurmukhi)](../pa/README.md) | [Romanian](../ro/README.md) | [Russian](../ru/README.md) | [Serbian (Cyrillic)](../sr/README.md) | [Slovak](../sk/README.md) | [Slovenian](../sl/README.md) | [Spanish](../es/README.md) | [Swahili](../sw/README.md) | [Swedish](../sv/README.md) | [Tagalog (Filipino)](../tl/README.md) | [Tamil](../ta/README.md) | [Telugu](./README.md) | [Thai](../th/README.md) | [Turkish](../tr/README.md) | [Ukrainian](../uk/README.md) | [Urdu](../ur/README.md) | [Vietnamese](../vi/README.md)
+
+> **స్థానికంగా క్లోన్ చేయాలని ఇష్టపడుతున్నారా?**
+>
+> ఈ రెపోజిటరీలో 50+ భాషా అనువాదాలు ఉన్నాయి, ఇవి డౌన్లోడ్ పరిమాణాన్ని గణనీయంగా పెంచుతాయి. అనువాదాలు లేకుండా క్లోన్ చేయడానికి sparse checkout ఉపయోగించండి:
+>
+> **Bash / macOS / Linux:**
+> ```bash
+> git clone --filter=blob:none --sparse https://github.com/microsoft/Data-Science-For-Beginners.git
+> cd Data-Science-For-Beginners
+> git sparse-checkout set --no-cone '/*' '!translations' '!translated_images'
+> ```
+>
+> **CMD (Windows):**
+> ```cmd
+> git clone --filter=blob:none --sparse https://github.com/microsoft/Data-Science-For-Beginners.git
+> cd Data-Science-For-Beginners
+> git sparse-checkout set --no-cone "/*" "!translations" "!translated_images"
+> ```
+>
+> కోర్సు పూర్తి చేయడానికి మీకు కావలసిన మొత్తం ఇది, మరి వేగంగా డౌన్లోడ్ అవుతుంది.
+<!-- CO-OP TRANSLATOR LANGUAGES TABLE END -->
+
+**మీకు అదనపు అనువాద భాషల మద్దతు కావాలంటే వాటిని ఇక్కడ చూడండి [ఇక్కడ](https://github.com/Azure/co-op-translator/blob/main/getting_started/supported-languages.md)**
+
+#### మన సంఘంలో చేరండి
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+మనం Discordలో AI తో నేర్చుకునే సిరీస్ నిర్వహిస్తున్నాము, మరింత తెలుసుకోండి మరియు 2025 సెప్టెంబర్ 18 - 30 తేదీల మధ్య [Learn with AI Series](https://aka.ms/learnwithai/discord) లో చేరండి. మీరు GitHub Copilot ను డేటా సైన్స్ కోసం ఉపయోగించే చిట్కాలు మరియు టిప్స్ పొందగలుగుతారు.
+
+![Learn with AI series](../../translated_images/te/1.2b28cdc6205e26fe.webp)
+
+# మీరు విద్యార్థి కాబోయేరు?
+
+క్రింది వనరులతో ప్రారంభించండి:
+
+- [Student Hub పేజీ](https://docs.microsoft.com/en-gb/learn/student-hub?WT.mc_id=academic-77958-bethanycheum) ఈ పేజీలో మీరు ప్రాథమిక వనరులు, విద్యార్థి ప్యాక్స్ మరియు ఫ్రీ సర్టిఫికెట్ వౌచర్ పొందడానికి మార్గాలను కనుగొంటారు. ఇది ఒక పేజీ మీరు బుక్‌మార్క్ చేసి తరచుగా చెక్ చేసుకోవాలి ఎందుకంటే మనం కంటెంట్ మాసానికి కనీసం ఒకసారి మార్చుతూ ఉంటాము.
+- [Microsoft Learn Student Ambassadors](https://studentambassadors.microsoft.com?WT.mc_id=academic-77958-bethanycheum) ఒక గ్లోబల్ విద్యార్థి అంబాసిడార్ సంఘంలో చేరండి, ఇది మీకు మైక్రోసాఫ్ట్‌లో అడుగు పెట్టే మార్గం కావచ్చు.
+
+# ప్రారంభించడమే
+
+## 📚 డాక్యుమెంటేషన్
+
+- **[ఇన్‌స్టాలేషన్ గైడ్](INSTALLATION.md)** - కొత్తవారికి దశలవారీ సెటప్ సూచనలు
+- **[వినియోగ గైడ్](USAGE.md)** - ఉదాహరణలూ సాధారణ వర్క్‌ఫ్లోలు
+- **[పరిష్కార మార్గాలు](TROUBLESHOOTING.md)** - సాధారణ సమస్యలకు పరిష్కారాలు
+- **[కాంట్రిబ్యూటింగ్ గైడ్](CONTRIBUTING.md)** - ఈ ప్రాజెక్టుకు ఎలా సహకరించాలి
+- **[ఉపాధ్యాయులకు](for-teachers.md)** - బోధన మార్గదర్శకాలు మరియు క్లాస్‌రిం వనరులు
+
+## 👨‍🎓 విద్యార్థులకు
+> **కలుపు గల కొత్తవారికి**: డేటా సైన్స్‌లో కొత్తవారా? మన [అరలి అనుకూల ఉదాహరణలు](examples/README.md) తో ప్రారంభించండి! ఈ సులభ గమనించే ఉదాహరణలు మీరు పాఠ్యక్రమం మొత్తం లోతుగా చేరడానికి ముందే మూలాంశాలను అర్థం చేసుకోవడంలో సహాయపడతాయి.
+> **[విద్యార్థులు](https://aka.ms/student-page)**: ఈ పాఠ్యక్రమాన్ని స్వయంగా ఉపయోగించేందుకు, మొత్తం రెపోజిటరీని ఫోర్క్ చేసుకుని వ్యాయామాలు పూర్తిచేయండి, ప్రీ-లెక్చర్ క్విజ్ తో ప్రారంభించి తరువాత పాఠాలు చదివి మిగిలిన కార్యకలాపాలను పూర్తిచేయండి. పరిష్కార కోడ్‌ను కాపీ చేయడం కంటే పాఠాలను అర్థం చేసుకోవడమే ప్రాజెక్టులను సృష్టించడానికి ప్రయత్నించండి; ఆ కోడ్ ప్రాజెక్ట్-కేంద్రిత పాఠాల్లో /solutions ఫోల్డర్లలో అందుబాటులో ఉంటుంది. మరో ఆలోచన మీరు స్నేహితులతో అధ్యయన గ్రూప్ ఏర్పాటు చేసి కంటెంట్ కలిసి చూడడం. మరింత అధ్యయనానికి [Microsoft Learn](https://docs.microsoft.com/en-us/users/jenlooper-2911/collections/qprpajyoy3x0g7?WT.mc_id=academic-77958-bethanycheum) ని మనస్పూర్తిగా సిఫార్సు చేస్తున్నాము.
+
+**తక్షణ ప్రారంభం:**
+1. మీ పరిసర వాతావరణాన్ని సెటప్ చేసేందుకు [ఇన్‌స్టాలేషన్ గైడ్](INSTALLATION.md) ని చూడండి
+2. పాఠ్యక్రమంతో ఎలా పని చేయాలో తెలుసుకోవడానికి [వినియోగ గైడ్](USAGE.md) ని సమీక్షించండి
+3. పాఠం 1 తో మొదలుపెట్టి వరుసగా పూర్తి చేయండి
+4. మద్ధతు కోసం మన [Discord కమ్యూనిటీ](https://aka.ms/ds4beginners/discord) లో చేరండి
+
+## 👩‍🏫 ఉపాధ్యాయులకు
+> **ఉపాధ్యాయులు**: ఈ పాఠ్యాంశాన్ని ఎలా ఉపయోగించాలో కొన్ని సూచనలను మేము [జోడించాము](for-teachers.md). మీ అభిప్రాయాలను [మా చర్చా మંચంలో](https://github.com/microsoft/Data-Science-For-Beginners/discussions) తెలపండి!
+
+## టీమ్‌ను కలుసుకోండి
+
+[![ప్రచార వీడియో](../../ds-for-beginners.gif)](https://youtu.be/8mzavjQSMM4 "ప్రచార వీడియో")
+
+**గిఫ్ చేసిన వ్యక్తి** [మోహిత్ జైసల్](https://www.linkedin.com/in/mohitjaisal)
+
+> 🎥 ప్రాజెక్ట్ గురించి మరియు దాన్ని సృష్టించిన వారిని గురించి వీడియో కోసం పై చిత్రాన్ని క్లిక్ చేయండి!
+
+## పాఠ్యశాస్త్ర నిబంధనలు
+
+ఈ పాఠ్యాంశాన్ని రూపొందించడం వలన మేము రెండు పాఠ్యశాస్త్ర సిద్ధాంతాలను ఎంచుకున్నాము: అది ప్రాజెక్ట్ ఆధారితంగా ఉండాలని మరియు తరచూ క్విజ్‌లను కలిగించడం. ఈ సిరీస్ ముగింపులో, విద్యార్థులు డేటా సైన్స్ యొక్క ప్రాథమిక సూత్రాలను తెలుసుకుంటారు, వాటిలో నైతిక అంశాలు, డేటా ప్రిపరేషన్, డేటాతో పని చేసే వివిధ మార్గాలు, డేటా విజువలైజేషన్, డేటా విశ్లేషణ, డేటా సైన్స్ యొక్క నిజజీవిత ఉపయోగాలు మరియు మరిన్ని ఉన్నాయి.
+
+అదనంగా, తరగతి ముందు తక్కువ పెట్టుబడి ఉన్న క్విజ్ విద్యార్థి నేర్చుకోవడంపై పట్టుదల సృష్టిస్తుంది, తరగతి తర్వాత రెండవ క్విజ్ జ్ఞాపకాన్ని మరింత పెంచుతుంది. ఈ పాఠ్యాంశం సడలింపు మరియు సరదాగా ఉండే విధంగా రూపొందించింది మరియు మొత్తంగా లేదా భాగంగా తీసుకోవచ్చు. ప్రాజెక్టులు చిన్నగా ప్రారంభమయ్యి 10 వారాల చక్రం ముగింపు వ‌ర‌కు సుదీర్ఘంగా క్లిష్టమవుతాయి.
+
+> మా [ఆచరణా నియమాలు](CODE_OF_CONDUCT.md), [కాంట్రిబ్యూటింగ్](CONTRIBUTING.md), [অনువাদ](TRANSLATIONS.md) మార్గదర్శకాలను చూడండి. మీ నిర్మాణాత్మక అభిప్రాయాలను స్వాగతిస్తున్నాము!
+
+## ప్రతి పాఠం లో ఉంటుంది:
+
+- ఐచ్ఛిక స్కెచ్‌నోట్
+- ఐచ్ఛిక అదనపు వీడియో
+- పాఠం ముందు వార్మప్ క్విజ్
+- వ్రాత పాఠం
+- ప్రాజెక్ట్ ఆధారిత పాఠాల కోసం, ప్రాజెక్టును నిర్మించేందుకు దశల వారీ మార్గదర్శకాలు
+- జ్ఞాన తనిఖీలు
+- ఒక సవాలు
+- అదనపు రీడింగ్
+- అసైన్‌మెంట్
+- [పాఠం తర్వాత క్విజ్](https://ff-quizzes.netlify.app/en/)
+
+> **క్విజ్‌ల గురించి ఒక నోటు**: మొత్తం 40 క్విజ్‌లు, ఒక్కో క్విజ్ మూడు ప్రశ్నలతో, Quiz-App ఫోల్డర్లో ఉన్నాయి. ఈ క్విజ్‌లు పాఠాల నుండి లింక్ చేయబడ్డాయి, కానీ క్విజ్ యాప్‌ను స్థానికంగా నడపవచ్చు లేదా Azureలో నిర్వ‌హించవచ్చు; `quiz-app` ఫోల్డర్లో సూచనలను అనుసరించండి. అవి నెమ్మదిగా స్థానికీకృతమవుతున్నాయి.
+
+## 🎓 ప్రారంభ కారులకు స్నేహపూర్వక ఉదాహరణలు
+
+**డేటా సైన్స్ కొత్తవారా?** మేము ప్రారంభించడానికి సహాయపడే సరళమైన, బాగా వ్యాఖ్యానించిన కోడ్ కలిగిన ప్రత్యేక [ఉదాహరణల డైరెక్టరీ](examples/README.md)ను సృష్టించాము:
+
+- 🌟 **హలో వరల్డ్** - మీ మొదటి డేటా సైన్స్ ప్రోగ్రాం
+- 📂 **డేటా లోడింగ్** - డేటాసెట్‌లను చదివి అన్వేషించడం నేర్చుకోండి
+- 📊 **సాధారణ విశ్లేషణ** - గణాంకాలు లెక్కించండి మరియు నమూనాలను కనుగొనండి
+- 📈 **ప్రాథమిక విజువలైజేషన్** - చార్ట్లు మరియు గ్రాఫ్‌లు సృష్టించండి
+- 🔬 **నిజమైన ప్రపంచ ప్రాజెక్టు** - ప్రారంభం నుండి పూర్తిఅవ్వడం వరకు వర్క్‌ఫ్లో
+
+ప్రతి ఉదాహరణలో ప్రతి దశను వివరిస్తున్న విపులమైన వ్యాఖ్యలు ఉంటాయి, అది పూర్తిగా కొత్తవారికి అనువుగా ఉంటుంది!
+
+👉 **[ఉదాహరణలతో ప్రారంభించండి](examples/README.md)** 👈
+
+## పాఠాలు
+
+
+|![sketchnote by @sketchthedocs https://sketchthedocs.dev](../../translated_images/te/00-Roadmap.4905d6567dff4753.webp)|
+|:---:|
+| డేటా సైన్స్ ఫర్ బిగినర్స్: రోడ్‌మాప్ - _స్కెచ్నోట్ చేసిన వారు [@nitya](https://twitter.com/nitya)_ |
+
+
+| పాఠం సంఖ్య | విషయం | పాఠం గుంపు | నేర్చుకోవాల్సిన లక్ష్యాలు | లింక్ చేయబడిన పాఠం | రచయిత |
+| :-----------: | :----------------------------------------: | :--------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------: | :----: |
+| 01 | డేటా సైన్స్ నిర్వచనం | [పరిచయము](1-Introduction/README.md) | డేటా సైన్స్ తాత్వికాలు మరియు అది ఆర్టిఫిషియల్ ఇంటెలిజెన్స్, మెషిన్ లెర్నింగ్, మరియు పెద్ద డేటాతో ఎలా సంబంధించి ఉండొచ్చో నేర్చుకోండి. | [పాఠం](1-Introduction/01-defining-data-science/README.md) [వీడియో](https://youtu.be/beZ7Mb_oz9I) | [ద్మిత్రి](http://soshnikov.com) |
+| 02 | డేటా సైన్స్ నైతికత | [పరిచయము](1-Introduction/README.md) | డేటా నైతికత భావనలు, సవాళ్లు & ఫ్రేమ్‌వర్క్‌లు. | [పాఠం](1-Introduction/02-ethics/README.md) | [నిత్య](https://twitter.com/nitya) |
+| 03 | డేటా నిర్వచనం | [పరిచయము](1-Introduction/README.md) | డేటాను ఎలా వర్గీకరిస్తారు మరియు దాని సాధారణ మూలాలు. | [పాఠం](1-Introduction/03-defining-data/README.md) | [జాస్మిన్](https://www.twitter.com/paladique) |
+| 04 | గణితం & సంభావ్యత పరిచయం | [పరిచయము](1-Introduction/README.md) | డేటా అర్థం చేసుకోవడానికి సంభావ్యత మరియు గణాంకాల గణిత సాంకేతికతలు. | [పాఠం](1-Introduction/04-stats-and-probability/README.md) [వీడియో](https://youtu.be/Z5Zy85g4Yjw) | [ద్మిత్రి](http://soshnikov.com) |
+| 05 | రిలేషనల్ డేటాతో పని | [డేటాతో పని](2-Working-With-Data/README.md) | రిలేషనల్ డేటాకు పరిచయం మరియు SQL (‘‘సీ-క్వెల్’’ గా ఉచ్చరించబడుతుంది) తో రిలేషనల్ డేటాను అన్వేషించడం మరియు విశ్లేషించడం. | [పాఠం](2-Working-With-Data/05-relational-databases/README.md) | [క్రిస్టఫర్](https://www.twitter.com/geektrainer) | | |
+| 06 | నాన్-SQL డేటాతో పని | [డేటాతో పని](2-Working-With-Data/README.md) | నాన్-రిలేషనల్ డేటాకు పరిచయం, దాని వివిధ రకాలు మరియు డాక్యుమెంట్ డేటాబేస్‌లను అన్వేషించడం మరియు విశ్లేషించడం. | [పాఠం](2-Working-With-Data/06-non-relational/README.md) | [జాస్మిన్](https://twitter.com/paladique)|
+| 07 | పైథాన్‌తో పని | [డేటాతో పని](2-Working-With-Data/README.md) | పాండాస్ వంటి లైబ్రరీలతో డేటా అన్వేషణకు పైథాన్‌ను ఉపయోగించడం యొక్క ప్రాథమికాలు. పైథాన్ ప్రోగ్రామింగ్ పునాది అవగాహన సిఫార్సు చేయబడింది. | [పాఠం](2-Working-With-Data/07-python/README.md) [వీడియో](https://youtu.be/dZjWOGbsN4Y) | [ద్మిత్రి](http://soshnikov.com) |
+| 08 | డేటా ప్రిపరేషన్ | [డేటాతో పని](2-Working-With-Data/README.md) | డేటాను శుభ్రపరచడం మరియు మార్చడం కోసం సాంకేతిక పాఠాలు, లేపి, తప్పు, లేదా అసంపూర్ణ డేటా యొక్క సవాళ్లను ఎదుర్కోవడం. | [పాఠం](2-Working-With-Data/08-data-preparation/README.md) | [జాస్మిన్](https://www.twitter.com/paladique) |
+| 09 | పరిమాణాల దృశ్యీకరణ | [డేటా విజువలైజేషన్](3-Data-Visualization/README.md) | మ్యాట్ప్లాట్‌లిబ్ ఉపయోగించి పైజనుల డేటా విజువలైజ్ చేయడం నేర్చుకోండి 🦆 | [పాఠం](3-Data-Visualization/09-visualization-quantities/README.md) | [జెన్](https://twitter.com/jenlooper) |
+| 10 | డేటా పంపిణీల దృశ్యీకరణ | [డేటా విజువలైజేషన్](3-Data-Visualization/README.md) | మధ్యాంతరంలో పర్యవేక్షణలు మరియు ధోరణులను దర్శించడం. | [పాఠం](3-Data-Visualization/10-visualization-distributions/README.md) | [జెన్](https://twitter.com/jenlooper) |
+| 11 | అనుపాతాల దృశ్యీకరణ | [డేటా విజువలైజేషన్](3-Data-Visualization/README.md) | విడినిమయ మరియు సమూహీకృత శాతం విజువలైజ్ చేయడం. | [పాఠం](3-Data-Visualization/11-visualization-proportions/README.md) | [జెన్](https://twitter.com/jenlooper) |
+| 12 | సంబంధాల దృశ్యీకరణ | [డేటా విజువలైజేషన్](3-Data-Visualization/README.md) | డేటా సెట్‌లు మరియు వాటి చరాల మధ్య సంబంధాలు మరియు సహసంబంధాలను చూపించడం. | [పాఠం](3-Data-Visualization/12-visualization-relationships/README.md) | [జెన్](https://twitter.com/jenlooper) |
+| 13 | అర్థవంతమైన విజువలైజేషన్స్ | [డేటా విజువలైజేషన్](3-Data-Visualization/README.md) | మీ విజువలైజేషన్స్‌ను సమర్థవంతమైన సమస్య పరిష్కారం మరియు అవగాహన కోసం విలువైనవిగా చేయడానికి సాంకేతికతలు మరియు మార్గనిర్దేశం. | [పాఠం](3-Data-Visualization/13-meaningful-visualizations/README.md) | [జెన్](https://twitter.com/jenlooper) |
+| 14 | డేటా సైన్స్ జీవనచక్ర పరిచయము | [జీవనచక్రం](4-Data-Science-Lifecycle/README.md) | డేటా సైన్స్ జీవనచక్రం పరిచయం మరియు డేటాను సేకరించి వెలికి తీయడం మొదటి దశ. | [పాఠం](4-Data-Science-Lifecycle/14-Introduction/README.md) | [జాస్మిన్](https://twitter.com/paladique) |
+| 15 | విశ్లేషణ | [జీవనచక్రం](4-Data-Science-Lifecycle/README.md) | డేటాను విశ్లేషించడానికి ఈ దశలో సాంకేతికతలకు దృష్టి. | [పాఠం](4-Data-Science-Lifecycle/15-analyzing/README.md) | [జాస్మిన్](https://twitter.com/paladique) | | |
+| 16 | కమ్యూనికేషన్ | [జీవనచక్రం](4-Data-Science-Lifecycle/README.md) | డేటా వెనుక ఉన్న అవగాహనలను తీసుకుని నిర్ణయాలు తీసుకునేవారికి అర్థమయ్యే రీతిలో ప్రవృత్తి చేసే దశ. | [పాఠం](4-Data-Science-Lifecycle/16-communication/README.md) | [జాలెన్](https://twitter.com/JalenMcG) | | |
+| 17 | క్లౌడ్‌లో డేటా సైన్స్ | [క్లౌడ్ డేటా](5-Data-Science-In-Cloud/README.md) | క్లౌడ్‌లో డేటా సైన్స్ పరిచయం మరియు దాని ప్రయోజనాలు. | [పాఠం](5-Data-Science-In-Cloud/17-Introduction/README.md) | [టిఫాని](https://twitter.com/TiffanySouterre) మరియు [మాడ్](https://twitter.com/maudstweets) |
+| 18 | క్లౌడ్‌లో డేటా సైన్స్ | [క్లౌడ్ డేటా](5-Data-Science-In-Cloud/README.md) | లో కోడ్ టూల్స్ ఉపయోగించి ట్రైనింగ్ మోడల్స్. |[పాఠం](5-Data-Science-In-Cloud/18-Low-Code/README.md) | [టిఫాని](https://twitter.com/TiffanySouterre) మరియు [మాడ్](https://twitter.com/maudstweets) |
+| 19 | క్లౌడ్‌లో డేటా సైన్స్ | [క్లౌడ్ డేటా](5-Data-Science-In-Cloud/README.md) | Azure Machine Learning స్టూడియోతో మోడల్స్ క్రియేట్ చేయడం. | [పాఠం](5-Data-Science-In-Cloud/19-Azure/README.md)| [టిఫాని](https://twitter.com/TiffanySouterre) మరియు [మాడ్](https://twitter.com/maudstweets) |
+| 20 | వనంలో డేటా సైన్స్ | [వనంలో](6-Data-Science-In-Wild/README.md) | నిజమైన ప్రపంచంలో డేటా సైన్స్ ఆధారిత ప్రాజెక్టులు. | [పాఠం](6-Data-Science-In-Wild/20-Real-World-Examples/README.md) | [నిత్య](https://twitter.com/nitya) |
+
+## GitHub కోడ్స్‌పేసెస్
+
+ఈ నమూనాను కోడ్స్‌పేస్‌లో ఓపెన్ చేయడానికి ఈ దశలను అనుసరించండి:
+1. కోడ్ డ్రాప్-డౌన్ మెనును క్లిక్ చేసి Open with Codespaces ఎంపికను ఎంచుకోండి.
+2. ప్యానెల్ దిగువన + New codespace ఎంచుకోండి.
+మరిన్ని వివరాలకు, [GitHub డొక్యుమెంటేషన్](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace) చూడండి.
+
+## VSCode రిమోట్ - కంటేనర్లు
+మీ స్థానిక యంత్రం మరియు VSCode ఉపయోగించి VS Code Remote - Containers విస్తరణతో ఈ రెపోను కంటైనర్‌లో ఓపెన్ చేయడానికి ఈ దశలను అనుసరించండి:
+
+1. మీరు మొదటిసారి డెవలప్‌మెంట్ కంటైనర్ ఉపయోగించేటప్పుడు, మీ సిస్టమ్ ప్రీ-రకల నిబంధనలను (అంటే Docker ఇన్‌స్టాల్ చేసినట్లు) [Getting Started డాక్యుమెంటేషన్](https://code.visualstudio.com/docs/devcontainers/containers#_getting-started)లో చూసుకోండి.
+
+ఈ రెపోను ఉపయోగించడానికి, మీరు రిపాజిటరీని వేరుచేసిన Docker వాల్యూమ్‌లో ఓపెన్ చేయవచ్చు:
+
+**గమనిక**: ఇది Remote-Containers: **Clone Repository in Container Volume...** కమాండ్ ఉపయోగించి స్థానిక ఫైల్ సిస్టమ్ బదులుగా Docker వాల్యూమ్‌లో సోర్స్ కోడ్‌ను క్లోన్ చేస్తుంది. [Volumes](https://docs.docker.com/storage/volumes/) కంటైనర్ డేటాను నిల్వ చేయడానికి అత్యంత ప్రాధాన్యత కలిగిన మెకానిజం.
+
+లేదా స్థానికంగా క్లోన్ చెయ్యబడిన లేదా డౌన్లోడ్ చేసిన రెపోను ఓపెన్ చేయండి:
+
+- ఈ రెపోను మీ స్థానిక ఫైల్ సిస్టమ్‌కి క్లోన్ చేయండి.
+- F1 నొక్కి **Remote-Containers: Open Folder in Container...** కమాండ్ ఎంచుకోండి.
+- ఈ ఫోల్డర్ యొక్క క్లోన్ చేసిన ప్రతిని ఎంచుకుని, కంటైనర్ ప్రారంభమయ్యేవరకు వేచి ఉండండి, మరియు ప్రయత్నించండి.
+
+## ఆఫ్‌లైన్ యాక్సెస్
+
+మీరు ఈ డాక్యుమెంటేషన్‌ను ఆఫ్‌లైన్‌లో [Docsify](https://docsify.js.org/#/) ఉపయోగించి నడపవచ్చు. ఈ రెపోను ఫార్క్ చేసి, మీ స్థానిక యంత్రంపై [Docsify ఇన్‌స్టాల్](https://docsify.js.org/#/quickstart)చేసి, ఈ రెపో యొక్క రూట్ ఫోల్డర్‌లో `docsify serve` టైప్ చేయండి. వెబ్‌సైట్ స్థానికహోస్ట్ 3000 పోర్టులో అందుబాటులో ఉంటుంది: `localhost:3000`.
+
+> గమనిక, నోట్‌బుక్స్ Docsify ద్వారా రేండర్ అవవు, కాబట్టి మీరు నోట్‌బుక్ నడపవలసినప్పుడు, దాన్ని వేరుగా VS Codeలో పైథాన్ కర్నల్ నడుపుతూ చేయండి.
+
+## ఇతర పాఠ్యాంశాలు
+
+మన టీమ్ ఇతర పాఠ్యాంశాలను తయారుచేస్తుంది! చూడండి:
+
+<!-- CO-OP TRANSLATOR OTHER COURSES START -->
+### LangChain
+[![LangChain4j for Beginners](https://img.shields.io/badge/LangChain4j%20for%20Beginners-22C55E?style=for-the-badge&&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchain4j-for-beginners)
+[![LangChain.js for Beginners](https://img.shields.io/badge/LangChain.js%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchainjs-for-beginners?WT.mc_id=m365-94501-dwahlin)
+[![LangChain for Beginners](https://img.shields.io/badge/LangChain%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://github.com/microsoft/langchain-for-beginners?WT.mc_id=m365-94501-dwahlin)
+---
+
+### ఆజ్యూర్ / ఎజ్ / MCP / ఏజెంట్లు
+[![AZD for Beginners](https://img.shields.io/badge/AZD%20for%20Beginners-0078D4?style=for-the-badge&labelColor=E5E7EB&color=0078D4)](https://github.com/microsoft/AZD-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![Edge AI for Beginners](https://img.shields.io/badge/Edge%20AI%20for%20Beginners-00B8E4?style=for-the-badge&labelColor=E5E7EB&color=00B8E4)](https://github.com/microsoft/edgeai-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![MCP for Beginners](https://img.shields.io/badge/MCP%20for%20Beginners-009688?style=for-the-badge&labelColor=E5E7EB&color=009688)](https://github.com/microsoft/mcp-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![AI Agents for Beginners](https://img.shields.io/badge/AI%20Agents%20for%20Beginners-00C49A?style=for-the-badge&labelColor=E5E7EB&color=00C49A)](https://github.com/microsoft/ai-agents-for-beginners?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### జనరేటివ్ AI సిరీస్
+[![Generative AI for Beginners](https://img.shields.io/badge/Generative%20AI%20for%20Beginners-8B5CF6?style=for-the-badge&labelColor=E5E7EB&color=8B5CF6)](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (.NET)](https://img.shields.io/badge/Generative%20AI%20(.NET)-9333EA?style=for-the-badge&labelColor=E5E7EB&color=9333EA)](https://github.com/microsoft/Generative-AI-for-beginners-dotnet?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (Java)](https://img.shields.io/badge/Generative%20AI%20(Java)-C084FC?style=for-the-badge&labelColor=E5E7EB&color=C084FC)](https://github.com/microsoft/generative-ai-for-beginners-java?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (JavaScript)](https://img.shields.io/badge/Generative%20AI%20(JavaScript)-E879F9?style=for-the-badge&labelColor=E5E7EB&color=E879F9)](https://github.com/microsoft/generative-ai-with-javascript?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### కోర్ లెర్నింగ్
+[![ML for Beginners](https://img.shields.io/badge/ML%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=22C55E)](https://aka.ms/ml-beginners?WT.mc_id=academic-105485-koreyst)
+[![Data Science for Beginners](https://img.shields.io/badge/Data%20Science%20for%20Beginners-84CC16?style=for-the-badge&labelColor=E5E7EB&color=84CC16)](https://aka.ms/datascience-beginners?WT.mc_id=academic-105485-koreyst)
+[![AI for Beginners](https://img.shields.io/badge/AI%20for%20Beginners-A3E635?style=for-the-badge&labelColor=E5E7EB&color=A3E635)](https://aka.ms/ai-beginners?WT.mc_id=academic-105485-koreyst)
+[![Cybersecurity for Beginners](https://img.shields.io/badge/Cybersecurity%20for%20Beginners-F97316?style=for-the-badge&labelColor=E5E7EB&color=F97316)](https://github.com/microsoft/Security-101?WT.mc_id=academic-96948-sayoung)
+[![Web Dev for Beginners](https://img.shields.io/badge/Web%20Dev%20for%20Beginners-EC4899?style=for-the-badge&labelColor=E5E7EB&color=EC4899)](https://aka.ms/webdev-beginners?WT.mc_id=academic-105485-koreyst)
+[![IoT for Beginners](https://img.shields.io/badge/IoT%20for%20Beginners-14B8A6?style=for-the-badge&labelColor=E5E7EB&color=14B8A6)](https://aka.ms/iot-beginners?WT.mc_id=academic-105485-koreyst)
+[![XR Development for Beginners](https://img.shields.io/badge/XR%20Development%20for%20Beginners-38BDF8?style=for-the-badge&labelColor=E5E7EB&color=38BDF8)](https://github.com/microsoft/xr-development-for-beginners?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### కోపిలట్ సిరీస్
+[![Copilot for AI Paired Programming](https://img.shields.io/badge/Copilot%20for%20AI%20Paired%20Programming-FACC15?style=for-the-badge&labelColor=E5E7EB&color=FACC15)](https://aka.ms/GitHubCopilotAI?WT.mc_id=academic-105485-koreyst)
+[![Copilot for C#/.NET](https://img.shields.io/badge/Copilot%20for%20C%23/.NET-FBBF24?style=for-the-badge&labelColor=E5E7EB&color=FBBF24)](https://github.com/microsoft/mastering-github-copilot-for-dotnet-csharp-developers?WT.mc_id=academic-105485-koreyst)
+[![Copilot Adventure](https://img.shields.io/badge/Copilot%20Adventure-FDE68A?style=for-the-badge&labelColor=E5E7EB&color=FDE68A)](https://github.com/microsoft/CopilotAdventures?WT.mc_id=academic-105485-koreyst)
+<!-- CO-OP TRANSLATOR OTHER COURSES END -->
+
+## సహాయం పొందుట
+
+**సమస్యలు ఎదుర్కొంటున్నారా?** సాధారణ సమస్యలకు పరిష్కారాల కోసం మా [ట్రబ్బుల్షూటింగ్ గైడ్](TROUBLESHOOTING.md) ను తనిఖీ చేయండి.
+
+మీరు అడ్డుకుపోవడం లేదా AI యాప్‌ల నిర్మాణంపై ఏదైనా ప్రశ్నలు ఉన్నట్లయితే, ఇతర పాఠకులు మరియు అనుభవజ్ఞులైన డెవలపర్లతో MCP గురించి చర్చలకు చేరండి. ఇది ప్రశ్నలు అడగడానికి మరియు జ్ఞానం ఉచితంగా పంచుకోవడానికి ఒక మద్దతు సమాజం.
+
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+మీకు ఉత్పత్తి అభిప్రాయాలు లేదా నిర్మాణ సమయంలో లోపాలు ఉంటే సందర్శించండి:
+
+[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**అస్పృశ్యం**:  
+ఈ డాక్యుమెంట్ AI అనువాద సేవ [Co-op Translator](https://github.com/Azure/co-op-translator) ఉపయోగించి అనువదించబడింది. మనం ఖచ్చితత్వం కోసం ప్రయత్నిస్తున్నప్పటికీ, ఆటోమేటెడ్ అనువాదాలలో తప్పులూ లేదా లోపాలూ ఉండవచ్చు. స్వదేశ భాషలో ఉన్న మూల డాక్యుమెంట్‌ను అధికారిక మూలంగా పరిగణించడం మంచిది. కీలక సమాచారానికి, వృత్తిపరమైన మానవ అనువాదం అర్హత సాధించేది. ఈ అనువాదం వాడుక వల్ల సంభవించే ఏయే అపార్థాలు లేదా తప్పుగా అర్థం చేసుకోవడాలు ఆ జవాబుదారీత మనది కాదు.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

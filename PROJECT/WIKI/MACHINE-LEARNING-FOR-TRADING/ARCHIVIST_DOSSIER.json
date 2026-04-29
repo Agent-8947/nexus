@@ -1,0 +1,13 @@
+{
+    "name": "MACHINE-LEARNING-FOR-TRADING",
+    "indexed_at": "2026-04-05 14:51:37",
+    "domains": [
+        "CRYPTO",
+        "FORECASTING",
+        "MACHINE_LEARNING",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: CRYPTO + FORECASTING + MACHINE_LEARNING + INFRASTRUCTURE",
+    "legal_devops_perspective": "Анализ защищенных данных, аудит смарт-контрактов, деанонимизация блокчейн-транзакций. | Построение математических моделей для предсказания корпоративных и финансовых рисков. | Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

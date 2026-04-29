@@ -1,0 +1,28 @@
+{
+  "agent_id": "PII_REDACTOR_ML_PIPELINE",
+  "domain": "AI_ML",
+  "purpose": "Automatically detect and redact PII from training data before model ingestion",
+  "api_endpoints": [],
+  "data_model": {
+    "input_text": "TEXT",
+    "redacted_text": "TEXT",
+    "entities_found": "TEXT",
+    "confidence": "REAL"
+  },
+  "core_algorithm": "Regex + Spacy-like NER pattern matching for PII (emails, SSNs, names)",
+  "input_type": "keyword",
+  "output_format": "sqlite",
+  "required_imports": [
+    "re",
+    "logging",
+    "sqlite3",
+    "json"
+  ],
+  "logic_markers": [
+    "redact",
+    "PII",
+    "entity",
+    "sensitive",
+    "filter"
+  ]
+}

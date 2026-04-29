@@ -1,0 +1,30 @@
+{
+  "agent_id": "SSL_CERT_EXPIRY_WATCHER",
+  "domain": "INFRA",
+  "purpose": "Monitor SSL/TLS certificate expiry dates across a list of production domains",
+  "api_endpoints": [],
+  "data_model": {
+    "domain": "TEXT",
+    "expiry_date": "TEXT",
+    "days_remaining": "INTEGER",
+    "issuer": "TEXT",
+    "is_expired": "INTEGER"
+  },
+  "core_algorithm": "TCP/SSL handshake and X.509 certificate parsing",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "ssl",
+    "socket",
+    "logging",
+    "sqlite3",
+    "datetime"
+  ],
+  "logic_markers": [
+    "getpeercert",
+    "notAfter",
+    "SSLContext",
+    "expiry",
+    "certificate"
+  ]
+}

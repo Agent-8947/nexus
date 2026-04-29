@@ -1,0 +1,1 @@
+本题思路与 [3342. 到达最后一个房间的最少时间 II](https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-ii/) 一样，把 [题解](https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-ii/solutions/2975554/dijkstra-zui-duan-lu-pythonjavacgo-by-en-alms/) 中的 $\textit{time}$ 改成 $1$。 

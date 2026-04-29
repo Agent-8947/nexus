@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "noEmit": true,
+        "downlevelIteration": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "allowJs": true, // 改造期间暂时允许导入 js 文件
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": false,
+        "baseUrl": ".",
+        "paths": {
+            "@alifd/next": ["./components/index.ts"],
+            "@alifd/next/es/*": ["./components/*"],
+            "@alifd/next/lib/*": ["./components/*"],
+            "@alifd/next/types/*": ["./components/*"]
+        }
+    },
+    "include": ["*.ts", "cypress/**/*.ts", "./components/**/*.ts", "./components/**/*.tsx", "tools"]
+}

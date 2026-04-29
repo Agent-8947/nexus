@@ -1,0 +1,121 @@
+{
+  "lineage": [
+    {
+      "child_id": "OSINT_AUDITOR_X",
+      "generation": 0,
+      "failures": [
+        "Syntax Error: unterminated string literal (detected at line 4) (<unknown>, line 4)"
+      ],
+      "improvements": [],
+      "fitness_delta": -0.5,
+      "overall_fitness": 0.0
+    },
+    {
+      "child_id": "OSINT_AUDITOR_X",
+      "generation": 1,
+      "failures": [
+        "Syntax Error: unterminated string literal (detected at line 58) (<unknown>, line 58)"
+      ],
+      "improvements": [],
+      "fitness_delta": 0.0,
+      "overall_fitness": 0.0
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 0,
+      "failures": [
+        "Missing try/except blocks"
+      ],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented"
+      ],
+      "fitness_delta": 0.25,
+      "overall_fitness": 0.75
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 0,
+      "failures": [
+        "Missing try/except blocks"
+      ],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented"
+      ],
+      "fitness_delta": 0.25,
+      "overall_fitness": 0.75
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 0,
+      "failures": [
+        "Missing try/except blocks"
+      ],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented"
+      ],
+      "fitness_delta": 0.25,
+      "overall_fitness": 0.75
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 1,
+      "failures": [],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented",
+        "Error handling present"
+      ],
+      "fitness_delta": 0.222,
+      "overall_fitness": 0.972
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 0,
+      "failures": [
+        "Missing try/except blocks"
+      ],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented"
+      ],
+      "fitness_delta": 0.25,
+      "overall_fitness": 0.75
+    },
+    {
+      "child_id": "THREAT_STALKER_V1",
+      "generation": 1,
+      "failures": [],
+      "improvements": [
+        "Zero mock logic detected",
+        "Real I/O implemented",
+        "Error handling present"
+      ],
+      "fitness_delta": 0.222,
+      "overall_fitness": 0.972
+    },
+    {
+      "child_id": "NEXUS_HARVESTER",
+      "generation": 0,
+      "failures": [
+        "Exit Code 1 | OSError: [WinError 10106] \u041d\u0435 \u0443\u0434\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u043b\u0438 \u0438\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0443\u0436\u043d\u043e\u0433\u043e \u043f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a\u0430 \u0443\u0441\u043b\u0443\u0433"
+      ],
+      "improvements": [],
+      "fitness_delta": -1.0,
+      "overall_fitness": 0.0,
+      "source": "synthesis_guard"
+    },
+    {
+      "child_id": "NEXUS_HARVESTER",
+      "generation": 0,
+      "failures": [
+        "Exit Code 1 | OSError: [WinError 10106] \u041d\u0435 \u0443\u0434\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u043b\u0438 \u0438\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0443\u0436\u043d\u043e\u0433\u043e \u043f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a\u0430 \u0443\u0441\u043b\u0443\u0433"
+      ],
+      "improvements": [],
+      "fitness_delta": -0.5,
+      "overall_fitness": 0.0
+    }
+  ]
+}

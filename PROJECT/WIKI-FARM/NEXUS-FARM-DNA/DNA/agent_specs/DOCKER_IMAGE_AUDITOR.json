@@ -1,0 +1,29 @@
+{
+  "agent_id": "DOCKER_IMAGE_AUDITOR",
+  "domain": "SECURITY_ADV",
+  "purpose": "Scan Docker images for hardcoded secrets, insecure instructions, and root users",
+  "api_endpoints": [],
+  "data_model": {
+    "image_name": "TEXT",
+    "instruction": "TEXT",
+    "severity": "TEXT",
+    "finding": "TEXT",
+    "file_path": "TEXT"
+  },
+  "core_algorithm": "Dockerfile/Image-layer regex analysis for credential patterns",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "re",
+    "logging",
+    "sqlite3",
+    "json",
+    "os"
+  ],
+  "logic_markers": [
+    "USER root",
+    "ENV password",
+    "ADD ",
+    "FROM "
+  ]
+}

@@ -1,5 +1,5 @@
 """
-NEXUS Agent 14 — WIKI_COPYWRITER V2
+NEXUS Agent 14  WIKI_COPYWRITER V2
 =====================================
 Специализация: Нейминг + Продающие тексты + Объяснение простым языком.
 
@@ -21,7 +21,7 @@ class NexusCopywriterAgent:
 
     def __init__(self):
         print("\n" + "=" * 60)
-        print("  NEXUS AGENT 14 — THE CREATIVE COPYWRITER V2")
+        print("  NEXUS AGENT 14  THE CREATIVE COPYWRITER V2")
         print("  Mission: Name | Explain | Persuade | Convert")
         print("=" * 60 + "\n")
 
@@ -68,10 +68,10 @@ class NexusCopywriterAgent:
 
         print(f"  [+] Brand: '{identity['creative_name']}'")
         print(f"  [+] Slogan: {identity['slogan']}")
-        print(f"  [+] Sections: story (4) + what_to_provide — EN/UA/RU")
+        print(f"  [+] Sections: story (4) + what_to_provide  EN/UA/RU")
         return identity
 
-    # ─────────────────── OSINT ───────────────────
+    #  OSINT 
     def _build_osint_identity(self):
         return {
             "creative_name": "Shadow Sight",
@@ -79,14 +79,14 @@ class NexusCopywriterAgent:
             "sales_pitch": "Total informational dominance through 4-layer autonomous reconnaissance.",
             "human_story": {
                 "what_it_is": {
-                    "en": "Imagine a private investigator who works 24/7, knows exactly where to look on the internet, and delivers a full dossier — without you lifting a finger.",
-                    "ua": "Уявіть детектива, що працює 24/7, знає де шукати і передає повне досьє — без вашої участі.",
-                    "ru": "Представьте детектива, который работает 24/7, знает где искать и передаёт полное досье — без вашего участия."
+                    "en": "Imagine a private investigator who works 24/7, knows exactly where to look on the internet, and delivers a full dossier  without you lifting a finger.",
+                    "ua": "Уявіть детектива, що працює 24/7, знає де шукати і передає повне досьє  без вашої участі.",
+                    "ru": "Представьте детектива, который работает 24/7, знает где искать и передаёт полное досье  без вашего участия."
                 },
                 "who_needs_it": {
-                    "en": "Legal professionals, journalists, due-diligence analysts — anyone who needs the full picture on a person, company, or domain before making a decision.",
-                    "ua": "Юристи, журналісти, аналітики — всім, кому потрібна повна картина перед прийняттям рішення.",
-                    "ru": "Юристы, журналисты, аналитики — всем, кому нужна полная картина перед принятием решения."
+                    "en": "Legal professionals, journalists, due-diligence analysts  anyone who needs the full picture on a person, company, or domain before making a decision.",
+                    "ua": "Юристи, журналісти, аналітики  всім, кому потрібна повна картина перед прийняттям рішення.",
+                    "ru": "Юристы, журналисты, аналитики  всем, кому нужна полная картина перед принятием решения."
                 },
                 "how_it_works": {
                     "en": "You give it a name, domain, or email. It searches 4 intelligence layers: technical footprint, social media, leaked databases, and official registries. Everything is packaged into one clean report.",
@@ -94,9 +94,9 @@ class NexusCopywriterAgent:
                     "ru": "Вы даёте имя или домен. Система ищет по 4 слоям: технический след, соцсети, утечки, реестры. Всё в одном отчёте."
                 },
                 "what_you_get": {
-                    "en": "A structured intelligence report that would take a human investigator several days to compile — delivered automatically in minutes.",
-                    "ua": "Структурований звіт, який слідчий збирав би кілька днів — автоматично за хвилини.",
-                    "ru": "Структурированный отчёт, который следователь собирал бы несколько дней — автоматически за минуты."
+                    "en": "A structured intelligence report that would take a human investigator several days to compile  delivered automatically in minutes.",
+                    "ua": "Структурований звіт, який слідчий збирав би кілька днів  автоматично за хвилини.",
+                    "ru": "Структурированный отчёт, который следователь собирал бы несколько дней  автоматически за минуты."
                 }
             },
             "what_to_provide": {
@@ -129,16 +129,16 @@ class NexusCopywriterAgent:
                     ]
                 },
                 "note": {
-                    "en": "The more data you provide — the deeper and more precise the report.",
-                    "ua": "Чим більше даних надаєте — тим глибший і точніший звіт.",
-                    "ru": "Чем больше данных — тем глубже и точнее отчёт."
+                    "en": "The more data you provide  the deeper and more precise the report.",
+                    "ua": "Чим більше даних надаєте  тим глибший і точніший звіт.",
+                    "ru": "Чем больше данных  тем глубже и точнее отчёт."
                 }
             },
             "deployment": {
                 "where": {
-                    "en": "Runs locally on your machine — no cloud, no subscriptions, no data leaves your computer.",
-                    "ua": "Запускається локально на вашому комп'ютері — жодних хмар, дані не залишають вашу машину.",
-                    "ru": "Запускается локально на вашем компьютере — никаких облаков, данные не покидают машину."
+                    "en": "Runs locally on your machine  no cloud, no subscriptions, no data leaves your computer.",
+                    "ua": "Запускається локально на вашому комп'ютері  жодних хмар, дані не залишають вашу машину.",
+                    "ru": "Запускается локально на вашем компьютере  никаких облаков, данные не покидают машину."
                 },
                 "requirements": [
                     "Python 3.10+",
@@ -164,7 +164,7 @@ class NexusCopywriterAgent:
             }
         }
 
-    # ─────────────────── AUDIT ───────────────────
+    #  AUDIT 
     def _build_audit_identity(self):
         return {
             "creative_name": "Aegis Audit",
@@ -187,9 +187,9 @@ class NexusCopywriterAgent:
                     "ru": "Автоматически сканирует инфраструктуру, находит угрозы раньше злоумышленников и формирует отчёт."
                 },
                 "what_you_get": {
-                    "en": "A clear security picture — without hiring a security team or spending weeks on manual audits.",
-                    "ua": "Чітка картина безпеки — без найму команди і ручних перевірок.",
-                    "ru": "Чёткая картина безопасности — без найма команды и ручных проверок."
+                    "en": "A clear security picture  without hiring a security team or spending weeks on manual audits.",
+                    "ua": "Чітка картина безпеки  без найму команди і ручних перевірок.",
+                    "ru": "Чёткая картина безопасности  без найма команды и ручных проверок."
                 }
             },
             "what_to_provide": {
@@ -219,9 +219,9 @@ class NexusCopywriterAgent:
                     ]
                 },
                 "note": {
-                    "en": "No technical knowledge required — just the domain name is enough to start.",
-                    "ua": "Технічні знання не потрібні — достатньо лише доменного імені.",
-                    "ru": "Технические знания не нужны — достаточно только доменного имени."
+                    "en": "No technical knowledge required  just the domain name is enough to start.",
+                    "ua": "Технічні знання не потрібні  достатньо лише доменного імені.",
+                    "ru": "Технические знания не нужны  достаточно только доменного имени."
                 }
             },
             "deployment": {
@@ -251,7 +251,7 @@ class NexusCopywriterAgent:
             }
         }
 
-    # ─────────────────── CORE ────────────────────
+    #  CORE 
     def _build_core_identity(self):
         return {
             "creative_name": "Nexus Core",
@@ -264,7 +264,7 @@ class NexusCopywriterAgent:
                     "ru": "Центральный командный пункт, который собирает все источники и автоматически показывает важное."
                 },
                 "who_needs_it": {
-                    "en": "Anyone managing complex information flows who wants clear, actionable insights — without drowning in raw data.",
+                    "en": "Anyone managing complex information flows who wants clear, actionable insights  without drowning in raw data.",
                     "ua": "Для тих, хто управляє складними інформаційними потоками і хоче чіткі висновки без хаосу.",
                     "ru": "Для тех, кто управляет сложными потоками данных и хочет чёткие выводы без хаоса."
                 },
@@ -306,9 +306,9 @@ class NexusCopywriterAgent:
                     ]
                 },
                 "note": {
-                    "en": "Start with just a topic or domain — the system handles the rest.",
-                    "ua": "Достатньо теми або домену — система зробить усе інше.",
-                    "ru": "Достаточно темы или домена — система сделает всё остальное."
+                    "en": "Start with just a topic or domain  the system handles the rest.",
+                    "ua": "Достатньо теми або домену  система зробить усе інше.",
+                    "ru": "Достаточно темы или домена  система сделает всё остальное."
                 }
             },
             "deployment": {

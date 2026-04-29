@@ -1,0 +1,30 @@
+{
+  "agent_id": "NGINX_LOG_ANOMALY_DETECTOR",
+  "domain": "INFRA",
+  "purpose": "Analyze Nginx access logs for 4xx/5xx spikes and potential scrapers",
+  "api_endpoints": [],
+  "data_model": {
+    "ip": "TEXT",
+    "status_4xx_count": "INTEGER",
+    "status_5xx_count": "INTEGER",
+    "is_malicious": "INTEGER",
+    "avg_latency": "REAL"
+  },
+  "core_algorithm": "Log line regex parsing and sliding window frequency analysis",
+  "input_type": "file",
+  "output_format": "sqlite",
+  "required_imports": [
+    "re",
+    "logging",
+    "sqlite3",
+    "json",
+    "time"
+  ],
+  "logic_markers": [
+    "access.log",
+    "404",
+    "500",
+    "remote_addr",
+    "request_time"
+  ]
+}

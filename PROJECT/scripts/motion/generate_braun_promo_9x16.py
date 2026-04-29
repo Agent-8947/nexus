@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 def generate_braun_cinematic():
-    print("🎬 NEXUS Design Engine: Dieter Rams / Functionalism [9:16]...")
+    print("NEXUS Design Engine: Dieter Rams / Functionalism [9:16]...")
     
     project_root = Path("e:/Downloads/--ANTIGRAVITY store/IDE-optimus")
     output_path = project_root / "PROJECT" / "outputs" / "Cinematic_Braun_9x16.html"
@@ -295,7 +295,7 @@ def generate_braun_cinematic():
     os.makedirs(output_path.parent, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_content)
-    print(f"✅ Braun / Functionalism 18s Promo (9x16) generated: {output_path}")
+    print(f"Braun / Functionalism 18s Promo (9x16) generated: {output_path}")
 
 if __name__ == "__main__":
     generate_braun_cinematic()

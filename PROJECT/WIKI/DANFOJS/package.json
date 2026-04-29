@@ -1,0 +1,21 @@
+{
+    "name": "danfo",
+    "version": "1.2.0",
+    "private": true,
+    "workspaces": [
+        "danfojs-node/**",
+        "danfojs-browser/**"
+    ],
+    "scripts": {
+        "install": "cd src/danfojs-base && yarn && cd ../danfojs-browser && yarn && cd ../danfojs-node && yarn",
+        "build": "yarn build:browser && yarn build:node",
+        "build:browser": "cd src/danfojs-browser && yarn build:clean",
+        "build:node": "cd src/danfojs-node && yarn build:clean",
+        "pretest": "cd src/danfojs-base && yarn",
+        "test": "yarn test:browser && yarn test:node",
+        "pretest:browser": "yarn pretest",
+        "test:browser": "cd src/danfojs-browser && yarn && yarn test:clean",
+        "pretest:node": "yarn pretest",
+        "test:node": "cd src/danfojs-node && yarn && yarn test:clean"
+    }
+}

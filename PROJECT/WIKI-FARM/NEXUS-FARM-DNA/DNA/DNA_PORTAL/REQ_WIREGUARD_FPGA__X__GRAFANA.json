@@ -1,0 +1,97 @@
+{
+  "child_id": "WIREGUARD_FPGA__X__GRAFANA",
+  "parent_a": {
+    "node_id": "WIREGUARD_FPGA",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "hardware",
+        "role": "collector",
+        "computing": "fpga",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.007,
+        0.024,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.008
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.31,
+        "completeness": 0.33,
+        "overall": 0.61
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "GRAFANA",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "presentation",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.021,
+        0.02,
+        0.014,
+        0.006,
+        0.0,
+        0.0,
+        0.0,
+        0.112,
+        0.0,
+        0.227
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.19,
+        "completeness": 0.67,
+        "overall": 0.48
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an IoT device reconnaissance and firmware analysis tool",
+  "ts": "2026-04-09T18:51:42.853708"
+}

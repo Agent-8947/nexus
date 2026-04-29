@@ -1,0 +1,32 @@
+{
+  "agent_id": "SEO_SITEMAP_CRAWLER",
+  "domain": "WEB",
+  "purpose": "Crawl website sitemaps and audit for broken links (404) and missing meta tags",
+  "api_endpoints": [
+    "{domain}/sitemap.xml"
+  ],
+  "data_model": {
+    "url": "TEXT",
+    "status_code": "INTEGER",
+    "title": "TEXT",
+    "meta_desc": "TEXT",
+    "is_broken": "INTEGER"
+  },
+  "core_algorithm": "XML sitemap parsing and concurrent link status checking",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "re",
+    "xml.etree.ElementTree"
+  ],
+  "logic_markers": [
+    "sitemap",
+    "loc",
+    "urlset",
+    "meta name=\"description\"",
+    "title"
+  ]
+}

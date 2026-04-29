@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | HARDENED WIKI v5.1</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --text-main: #f8fafc;
+            --text-dim: #64748b;
+            --accent: #10b981; /* Hardened Green */
+            --danger: #ef4444;
+            --glass: rgba(15, 15, 15, 0.9);
+            --border: rgba(255, 255, 255, 0.05);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px; }
+        .masthead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+        .masthead-logo { font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; }
+        .masthead-meta { font-size: 10px; text-transform: uppercase; color: var(--text-dim); letter-spacing: 2px; }
+
+        .system-map {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+        }
+        .section-label {
+            grid-column: span 3;
+            border-top: 1px solid var(--text-main);
+            padding-top: 10px;
+        }
+        .section-label-num { font-size: 10px; display: block; margin-bottom: 10px; }
+        .section-label-title { font-size: 18px; font-weight: 700; line-height: 1.1; text-transform: uppercase; }
+
+        .section-body { grid-column: span 9; padding-bottom: 60px; }
+        .block-title { font-size: 11px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; letter-spacing: 1px; }
+        .block-text { font-size: 14px; margin-bottom: 30px; max-width: 600px; }
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .card:hover { border-color: var(--text-dim); }
+        .card-num { font-size: 9px; color: var(--text-dim); margin-bottom: 15px; display: block; }
+        .card-title { font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 5px; }
+        .card-tag { font-size: 9px; text-transform: uppercase; color: var(--accent); letter-spacing: 1px; }
+
+        .noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05; pointer-events: none; z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="container zoom-in">
+        <header class="masthead">
+        <span class="masthead-logo">NEXUS / WIKI</span>
+        <span class="masthead-meta">NEXUS PRIME тАФ v5.6 [QUALITY-RECON] тАФ 2026-04-04</span>
+    </header>
+
+        <main class="system-map">
+            <!-- SECTION 1: ARCHITECTURE -->
+            <div class="section-label">
+                <span class="section-label-num">01</span>
+                <span class="section-label-title">Core<br>Architecture</span>
+            </div>
+            <div class="section-body">
+                <p class="block-title">Modular Intelligence Hub</p>
+                <p class="block-text">Project NEXUS is a unified research and security ecosystem. It bridges local reconnaissance engines with elite external knowledge repositories.</p>
+                
+                <div class="grid-3">
+                    <div class="card">
+                        <span class="card-num">01.01</span>
+                        <div class="card-title">Cognitive Memory</div>
+                        <span class="card-tag">Hot/Cold/State</span>
+                    </div>
+                    <div class="card">
+                        <span class="card-num">01.02</span>
+                        <div class="card-title">Recon Gate v3</div>
+                        <span class="card-tag">Identity/Vessel/Domain</span>
+                    </div>
+                    <div class="card">
+                        <span class="card-num">01.03</span>
+                        <div class="card-title">Intel-Sight</div>
+                        <span class="card-tag">Advanced OSINT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: SYSTEM INTEGRITY -->
+            <div class="section-label">
+                <span class="section-label-num">02</span>
+                <span class="section-label-title">System<br>Excellence [v5.6]</span>
+            </div>
+            <div class="section-body">
+                <p class="block-title">Nexus Core v5.6 [QUALITY-DRIVEN RECON]</p>
+                <p class="block-text">QA Integration: Awesome-Testing library synchronized. Orchestrating high-fidelity recon with automated verify loops.</p>
+                <p class="block-title">Status: <span class="status-dot"></span> OPTIMIZED / LIVE</p>
+                <p class="block-text">All 42 nodes operational. Multi-threaded audit suite (v5.4) and Airflow Orchestrator (v5.5) fully integrated.</p>
+            </div>
+
+            <!-- SECTION 3: KNOWLEDGE NODES -->
+            <div class="section-label">
+                <span class="section-label-num">03</span>
+                <span class="section-label-title">Elite<br>Knowledge Hubs</span>
+            </div>
+            <div class="section-body">
+                <p class="block-title">Integrated Repositories (42 Nodes)</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <span class="card-num">03.01</span>
+                        <div class="card-title">QA & Testing Hub</div>
+                        <span class="card-tag">Awesome-Testing / TheJambo</span>
+                    </div>
+                    <div class="card">
+                        <span class="card-num">03.02</span>
+                        <div class="card-title">Workflow Studio</div>
+                        <span class="card-tag">Apache Airflow / DAGs</span>
+                    </div>
+                    <div class="card">
+                        <span class="card-num">03.03</span>
+                        <div class="card-title">Security Guard</div>
+                        <span class="card-tag">Gitleaks/Trivy/Semgrep</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="masthead" style="margin-top: 100px; border-bottom: none; border-top: 1px solid var(--border); padding-top: 20px;">
+            <span class="masthead-meta">NEXUS PRIME OS тАФ FOR INTERNAL OPERATIONS ONLY</span>
+            <span class="masthead-meta">V5.1.0_BUILD_0404</span>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "name": "CV-ARXIV-DAILY",
+    "indexed_at": "2026-04-05 17:42:05",
+    "domains": [
+        "UNCATEGORIZED_TOOL"
+    ],
+    "core_identity": "Инструмент на стыке: UNCATEGORIZED_TOOL",
+    "legal_devops_perspective": "Интеграция в общую логику исполнения.",
+    "readiness": "LOCAL_AVAILABLE"
+}

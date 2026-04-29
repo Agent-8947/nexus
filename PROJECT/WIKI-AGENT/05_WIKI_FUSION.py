@@ -135,7 +135,7 @@ class FusionEngine:
                 # Нормализуем: чем больше ключевых слов совпало, тем выше очки
                 scores[domain] = min(1.0, hits / 3.0)
 
-        # Если ни один домен не найден — fallback на INFRASTRUCTURE
+        # Если ни один домен не найден  fallback на INFRASTRUCTURE
         if not scores:
             scores["INFRASTRUCTURE"] = 0.3
 
@@ -330,7 +330,7 @@ class FusionEngine:
             f.write(f"|--------|-----------|\n")
             for domain, score in sorted(domain_scores.items(),
                                         key=lambda x: -x[1]):
-                bar = "█" * int(score * 10) + "░" * (10 - int(score * 10))
+                bar = "" * int(score * 10) + "" * (10 - int(score * 10))
                 f.write(f"| {domain} | {bar} {score:.1f} |\n")
             f.write(f"\n")
 
@@ -362,7 +362,7 @@ class FusionEngine:
             # Adversarial Review
             f.write(f"\n## Adversarial Review\n\n")
             for risk in risks:
-                prefix = "⚠" if "WARNING" in risk else ("🔴" if "CRITICAL" in risk else "✓")
+                prefix = "" if "WARNING" in risk else ("" if "CRITICAL" in risk else "")
                 f.write(f"- {prefix} {risk}\n")
 
             f.write(f"\n---\n")

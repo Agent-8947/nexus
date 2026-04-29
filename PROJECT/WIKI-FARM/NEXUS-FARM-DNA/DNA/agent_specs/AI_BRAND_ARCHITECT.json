@@ -1,0 +1,26 @@
+[
+  {
+    "agent_id": "AI_BRAND_ARCHITECT",
+    "domain": "WEB_DESIGN",
+    "purpose": "Analyze existing website branding via URL and synthesize a comprehensive AI-aligned brandbook (visual tokens, typography, tone of voice, motion patterns).",
+    "api_endpoints": [
+      "https://api.firecrawl.dev/scrape",
+      "https://api.openai.com/v1/chat/completions"
+    ],
+    "data_model": {
+      "brand_identity": {
+        "primary_colors": "list[str]",
+        "typography": "dict",
+        "vision_statement": "str",
+        "tone_of_voice": "str",
+        "motion_directives": "list[str]"
+      },
+      "source_url": "str"
+    },
+    "core_algorithm": "1. Scrape target URL via Firecrawl. 2. Extract visual CSS tokens and semantic intent. 3. Synthesize brandbook structure using LLM.",
+    "input_type": "Target URL",
+    "output_format": "AI_Brandbook_Document",
+    "required_imports": ["requests", "json", "bs4", "dotenv"],
+    "logic_markers": ["_scrape_visuals", "_extract_semantic_intent", "generate_brandbook"]
+  }
+]

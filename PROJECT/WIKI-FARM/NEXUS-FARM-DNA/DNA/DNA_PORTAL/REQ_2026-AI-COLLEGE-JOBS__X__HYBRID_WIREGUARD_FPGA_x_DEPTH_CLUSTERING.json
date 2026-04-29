@@ -1,0 +1,102 @@
+{
+  "child_id": "2026-AI-COLLEGE-JOBS__X__HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING",
+  "parent_a": {
+    "node_id": "2026-AI-COLLEGE-JOBS",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "storage",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.005,
+        0.026,
+        0.014,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.008,
+        0.0,
+        0.075
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.27,
+        "completeness": 0.67,
+        "overall": 0.64
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_WIREGUARD_FPGA_x_DEPTH_CLUSTERING",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "hardware",
+        "role": "collector",
+        "computing": "fpga",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.004,
+        0.0,
+        0.01,
+        0.244,
+        0.0,
+        0.027,
+        0.226,
+        0.209,
+        0.159,
+        0.384
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.88
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.55,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "WIREGUARD_FPGA",
+          "DEPTH_CLUSTERING"
+        ],
+        "generation": 1,
+        "compat_score": 0.878,
+        "synthesized_at": "2026-04-09T18:51:55.873590"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T19:17:48.539414"
+}

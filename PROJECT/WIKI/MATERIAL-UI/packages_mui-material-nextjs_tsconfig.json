@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["react", "vitest/globals", "node", "next"]
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,36 @@
+{
+  "agent_id": "ASN_OWNERSHIP_MAPPER",
+  "domain": "OSINT",
+  "purpose": "Map organizational ownership of IP ranges via RIPE Stat and PeeringDB",
+  "api_endpoints": [
+    "https://stat.ripe.net/data/as-overview/data.json?resource={asn}",
+    "https://www.peeringdb.com/api/net?asn={asn}"
+  ],
+  "data_model": {
+    "asn": "INTEGER",
+    "org_name": "TEXT",
+    "holder": "TEXT",
+    "country": "TEXT",
+    "prefix_count": "INTEGER",
+    "peering_policy": "TEXT",
+    "ix_count": "INTEGER"
+  },
+  "core_algorithm": "Cross-referencing RIPE Stat AS overview with PeeringDB network records",
+  "input_type": "asn",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json",
+    "dataclasses"
+  ],
+  "logic_markers": [
+    "stat.ripe.net",
+    "peeringdb.com",
+    "peering_policy",
+    "ix_count"
+  ],
+  "spec_hash": "be9aefd7625085d9"
+}

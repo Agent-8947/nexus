@@ -1,0 +1,16 @@
+{
+  //
+  // You obviously need to change these paths to something that is valid on your machine.
+  // As you can see the paths contain wildcards (*) so these settings should be good enought
+  // out of the gate.
+  //
+  "DotNetCoreDirPathNet3":    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\3.*",
+  "DotNetCoreDirPathNet5":    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\5.*",
+  "DotNetCoreDirPathNet6":    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\6.*",
+  "DotNetCoreDirPathNet7":    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\7.*",
+  "DotNetCoreDirPathDefault": "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\6.*",
+  "FSharpCompilerPath":       "C:\\Program Files\\dotnet\\sdk\\6.*\\FSharp\\fsc.dll",
+  "GOCompilerPath":           "C:\\Program Files\\Go\\bin",
+  "RustCompilerPath":         "C:\\Users\\badam\\.cargo\\bin",
+  "CppCompilerPath":          "C:\\Program Files\\LLVM\\bin" 
+}

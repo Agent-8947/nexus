@@ -1,0 +1,31 @@
+{
+  "agent_id": "SQL_INJECTION_FUZZER",
+  "domain": "SECURITY_ADV",
+  "purpose": "Identify potential SQL injection points via error-based and boolean-based fuzzing",
+  "api_endpoints": [
+    "{target_url}"
+  ],
+  "data_model": {
+    "url": "TEXT",
+    "parameter": "TEXT",
+    "payload": "TEXT",
+    "response_diff": "REAL",
+    "is_vulnerable": "INTEGER"
+  },
+  "core_algorithm": "Differential response analysis using time/boolean payloads",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "time",
+    "random"
+  ],
+  "logic_markers": [
+    "OR 1=1",
+    "sleep(",
+    "UNION SELECT",
+    "syntax error"
+  ]
+}

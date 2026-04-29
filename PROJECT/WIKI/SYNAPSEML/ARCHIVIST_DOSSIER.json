@@ -1,0 +1,11 @@
+{
+    "name": "SYNAPSEML",
+    "indexed_at": "2026-04-05 15:31:47",
+    "domains": [
+        "MACHINE_LEARNING",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: MACHINE_LEARNING + INFRASTRUCTURE",
+    "legal_devops_perspective": "Ядро для обучения локальных нейросетей-аудиторов (Zero-Leak). | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

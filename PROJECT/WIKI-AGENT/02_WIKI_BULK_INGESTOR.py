@@ -25,7 +25,7 @@ class WikiBulkIngestor:
             with open(QUEUE_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"❌ Failed to load queue: {e}")
+            print(f" Failed to load queue: {e}")
             return []
 
     def run_minimal_clone(self, repo_url, target_folder):
@@ -36,7 +36,7 @@ class WikiBulkIngestor:
                            check=True, capture_output=True, timeout=120)
             return True
         except Exception as e:
-            print(f"  ❌ Clone failed/timed out: {e}")
+            print(f"   Clone failed/timed out: {e}")
             return False
 
     def ingest_knowledge(self, repo_path, repo_name):
@@ -60,7 +60,7 @@ class WikiBulkIngestor:
         progress = int((current_idx / total) * 100)
         bar_len = 10
         filled = int(bar_len * current_idx / total)
-        bar = "█" * filled + "░" * (bar_len - filled)
+        bar = "" * filled + "" * (bar_len - filled)
         
         content = f"""[ {bar} ] {current_idx}/{total} ({progress}%)
 Текущая цель: {current_repo}
@@ -92,11 +92,11 @@ class WikiBulkIngestor:
                 files_found = self.ingest_knowledge(tmp_path, repo_name)
                 latest_success = repo_name
                 self.history.append(repo_name)
-                print(f"  ✅ Extracted {files_found} knowledge nodes.")
+                print(f"   Extracted {files_found} knowledge nodes.")
                 shutil.rmtree(tmp_path, ignore_errors=True)
                 time.sleep(2)
             else:
-                print(f"  ⚠️ Skipping {repo_name} due to failure.")
+                print(f"   Skipping {repo_name} due to failure.")
                 
         # Final update
         self.update_status_file(total, total, "DONE", latest_success)

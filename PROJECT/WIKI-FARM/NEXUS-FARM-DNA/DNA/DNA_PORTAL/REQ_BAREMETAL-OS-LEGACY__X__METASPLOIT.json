@@ -1,0 +1,97 @@
+{
+  "child_id": "BAREMETAL-OS-LEGACY__X__METASPLOIT",
+  "parent_a": {
+    "node_id": "BAREMETAL-OS-LEGACY",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "infra",
+        "role": "library",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "manual",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.059,
+        0.609
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.08,
+        "completeness": 0.33,
+        "overall": 0.52
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "METASPLOIT",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "security",
+        "role": "payload",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "critical",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.066,
+        0.013,
+        0.015,
+        0.013,
+        0.016,
+        0.016,
+        0.0,
+        0.023,
+        0.0,
+        0.032
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.3,
+        "completeness": 0.67,
+        "overall": 0.62
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:02:26.025403"
+}

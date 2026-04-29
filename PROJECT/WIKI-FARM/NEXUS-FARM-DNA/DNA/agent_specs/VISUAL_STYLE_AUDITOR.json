@@ -1,0 +1,31 @@
+{
+  "agent_id": "VISUAL_STYLE_AUDITOR",
+  "domain": "COMPUTER_VISION",
+  "purpose": "Analyze images to extract stylistic tokens, color palettes, composition data, and technical visual descriptors.",
+  "api_endpoints": [
+    "https://api.openai.com/v1/chat/completions"
+  ],
+  "data_model": {
+    "image_hash": "TEXT",
+    "style_category": "TEXT",
+    "color_palette": "TEXT",
+    "composition_score": "REAL",
+    "technical_tokens": "TEXT"
+  },
+  "core_algorithm": "Multi-stage visual analysis: 1. Feature extraction (simulated) 2. Stylistic classification 3. Token synthesis.",
+  "input_type": "image_url",
+  "output_format": "json_style_report",
+  "required_imports": [
+    "requests",
+    "json",
+    "logging",
+    "hashlib",
+    "sqlite3"
+  ],
+  "logic_markers": [
+    "stylistic_classification",
+    "color_palette_extraction",
+    "compositional_analysis",
+    "visual_tokens"
+  ]
+}

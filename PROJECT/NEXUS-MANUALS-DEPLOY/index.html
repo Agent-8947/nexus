@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Руководства Audley</title>
+    <meta name="description" content="Премиальные цифровые руководства для оборудования Audley ADL07 (E06/K10). Оцифровано NEXUS.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexus-manuals-adl07.vercel.app/">
+    <meta property="og:title" content="NEXUS - Цифровые руководства Audley">
+    <meta property="og:description" content="Интерактивные руководства для гладильных машин E06 и встряхивателей K10. Оптимизировано для инженеров.">
+    <meta property="og:image" content="https://nexus-manuals-adl07.vercel.app/k10/images/img_p1_26.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nexus-manuals-adl07.vercel.app/">
+    <meta property="twitter:title" content="NEXUS - Цифровые руководства Audley">
+    <meta property="twitter:description" content="Интерактивные руководства для гладильных машин E06 и встряхивателей K10. Оптимизировано для инженеров.">
+    <meta property="twitter:image" content="https://nexus-manuals-adl07.vercel.app/k10/images/img_p1_26.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0C10;
+            --surface: #12151D;
+            --primary: #3B82F6;
+            --accent: #E84545;
+            --accent-e06: #1A73E8;
+            --text: #F8FAFC;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .bg-glow { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, rgba(0,0,0,0) 70%); z-index: -1; animation: pulse 10s infinite alternate; }
+        @keyframes pulse { from { opacity: 0.5; } to { opacity: 1; } }
+
+        header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 10px; background: linear-gradient(to right, #fff, rgba(255,255,255,0.4)); -webkit-background-clip: text; color: transparent; }
+        p { color: rgba(255,255,255,0.5); font-size: 1.1rem; }
+
+        .cards { display: flex; gap: 30px; }
+        .card { background: var(--surface); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; width: 320px; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); opacity: 0.7; }
+        .card.e06::before { background: var(--accent-e06); }
+        .card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(255,255,255,0.2); box-shadow: 0 40px 60px -20px rgba(0,0,0,0.8); }
+        
+        .tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+        .e06 .tag { color: var(--accent-e06); }
+        .model { font-size: 2rem; font-weight: 600; margin-bottom: 10px; }
+        .desc { font-size: 14px; opacity: 0.5; line-height: 1.6; }
+
+        .btn { margin-top: 30px; display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid; padding-bottom: 4px; transition: 0.3s; }
+        .card:hover .btn { transform: translateX(5px); }
+
+        footer { position: fixed; bottom: 30px; font-size: 10px; color: rgba(255,255,255,0.2); letter-spacing: 2px; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            body { display: block; overflow-y: auto; padding: 40px 20px; text-align: center; }
+            header { margin-bottom: 40px; }
+            h1 { font-size: 2.2rem; }
+            .cards { flex-direction: column; align-items: center; gap: 20px; }
+            .card { width: 100%; max-width: 380px; padding: 30px; }
+            footer { position: relative; bottom: auto; padding-top: 40px; padding-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <header>
+        <h1>NEXUS TRANSLATE</h1>
+        <p>Premium Digital Documentation Hub</p>
+    </header>
+
+    <div class="cards">
+        <a href="k10/" class="card k10">
+            <span class="tag">Shaking Machine</span>
+            <div class="model">ADL07 K10</div>
+            <p class="desc">Полное руководство по установке и обслуживанию встряхивателя порошка.</p>
+            <div class="btn" style="border-color: var(--accent)">Открыть мануал</div>
+        </a>
+
+        <a href="e06/" class="card e06">
+            <span class="tag">Ironing Machine</span>
+            <div class="model">ADL07 E06</div>
+            <p class="desc">Комплексная инструкция по гладильной установке и программному обеспечению.</p>
+            <div class="btn" style="border-color: var(--accent-e06)">Открыть мануал</div>
+        </a>
+    </div>
+
+    <footer>Henan Audley Digital · © 2026 NEXUS Automation</footer>
+</body>
+</html>

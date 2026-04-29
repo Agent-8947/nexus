@@ -1,0 +1,78 @@
+{
+  "module_name": "network_recon",
+  "title": "Network Reconnaissance",
+  "description": "TCP/UDP port scanning, DNS resolution, SSL certificate inspection, subdomain discovery via CT logs",
+  "inputs": [
+    "target: str (domain or IP)",
+    "ports: list[int] (optional)",
+    "timeout: float"
+  ],
+  "outputs": [
+    "PortScanResult",
+    "DNSRecords",
+    "SSLCertInfo",
+    "SubdomainList"
+  ],
+  "stdlib_deps": [
+    "socket",
+    "ssl",
+    "urllib.request",
+    "json",
+    "concurrent.futures"
+  ],
+  "api_endpoints": [
+    "https://crt.sh/?q=%25.{domain}&output=json",
+    "https://dns.google/resolve?name={domain}&type={qtype}"
+  ],
+  "reference_pattern": "ThreadPoolExecutor for concurrent port probing + socket.create_connection for TCP checks",
+  "domain": "network_recon",
+  "evidence_repos": [
+    {
+      "repo": "AWESOME-BUGBOUNTY-TOOLS",
+      "score": 13,
+      "evidence": [
+        "tech: ssl",
+        "keywords: subdomain, port, scan, dns",
+        "dossier: osint, crypto, infrastructure"
+      ]
+    },
+    {
+      "repo": "MODLISHKA",
+      "score": 13,
+      "evidence": [
+        "keywords: port, scan, dns, certificate, tls",
+        "dossier: osint, crypto, legal, infrastructure"
+      ]
+    },
+    {
+      "repo": "NETTACKER",
+      "score": 13,
+      "evidence": [
+        "tech: socket, ssl",
+        "keywords: subdomain, port, scan",
+        "dossier: osint, legal, infrastructure"
+      ]
+    },
+    {
+      "repo": "SCAN4ALL",
+      "score": 13,
+      "evidence": [
+        "tech: socket, ssl",
+        "keywords: subdomain, port, scan",
+        "dossier: osint, infrastructure"
+      ]
+    },
+    {
+      "repo": "WOLFSSL",
+      "score": 13,
+      "evidence": [
+        "tech: socket, ssl",
+        "keywords: port, certificate, tls",
+        "dossier: machine_learning, crypto, osint, infrastructure, legal"
+      ]
+    }
+  ],
+  "observed_imports": [],
+  "observed_api_urls": [],
+  "generated_at": "2026-04-06T03:46:43.054292"
+}

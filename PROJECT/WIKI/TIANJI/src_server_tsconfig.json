@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    // "rootDirs": ["./", "../../"],
+    // "types": ["@auth/core", "@auth/express"],
+    // "typeRoots": ["./types/", "./node_modules/@types/", "./node_modules", "../../node_modules/@types/"]
+  },
+  "include": ["./**/*.ts", "../types/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,107 @@
+{
+  "traits_taxonomy": {
+    "domain":         ["osint", "security", "ai", "infra", "hardware", "data", "web", "finance"],
+    "role":           ["collector", "processor", "analyzer", "orchestrator", "storage", "presentation", "actuator"],
+    "computing":      ["agnostic", "cpu", "gpu", "fpga", "quantum", "edge"],
+    "latency":        ["none", "real-time", "batch", "streaming", "event-driven"],
+    "security_level": ["none", "low", "medium", "high", "critical", "air-gapped"],
+    "autonomy":       ["manual", "semi", "full", "hive"],
+    "interface":      ["cli", "api", "gui", "library", "daemon"],
+    "data_volume":    ["tiny", "small", "medium", "large", "huge", "petabyte"]
+  },
+  "renderer_map": [
+    {
+      "id": "osint_collector_cli",
+      "condition": {
+        "domain":    "osint",
+        "role":      "collector",
+        "interface": "cli"
+      },
+      "template":   "templates/osint_collector.py.j2",
+      "frameworks": ["aiohttp", "asyncio", "argparse", "logging"]
+    },
+    {
+      "id": "ai_gpu_analyzer",
+      "condition": {
+        "domain":    "ai",
+        "role":      "analyzer",
+        "computing": "gpu"
+      },
+      "template":   "templates/ai_tensor_analyzer.py.j2",
+      "frameworks": ["torch", "transformers", "logging", "argparse"]
+    },
+    {
+      "id": "security_analyzer_cli",
+      "condition": {
+        "domain":    "security",
+        "role":      "analyzer",
+        "interface": "cli"
+      },
+      "template":   "templates/security_analyzer.py.j2",
+      "frameworks": ["hashlib", "logging", "argparse"]
+    },
+    {
+      "id": "daemon_security_high",
+      "condition": {
+        "domain":         "security",
+        "interface":      "daemon",
+        "security_level": "high"
+      },
+      "template":   "templates/secure_daemon.rs.j2",
+      "frameworks": ["logging", "argparse"]
+    },
+    {
+      "id": "api_gateway_infra",
+      "condition": {
+        "domain":    "infra",
+        "interface": "api",
+        "role":      "orchestrator"
+      },
+      "template":   "templates/fastapi_microservice.py.j2",
+      "frameworks": ["fastapi", "uvicorn", "pydantic", "logging"]
+    },
+    {
+      "id": "security_orchestrator_api",
+      "condition": {
+        "domain":    "security",
+        "role":      "orchestrator",
+        "interface": "api"
+      },
+      "template":   "templates/security_orchestrator.py.j2",
+      "frameworks": ["fastapi", "uvicorn", "logging", "argparse"]
+    },
+    {
+      "id": "data_processor_batch",
+      "condition": {
+        "domain":   "data",
+        "role":     "processor",
+        "latency":  "batch"
+      },
+      "template":   "templates/data_processor.py.j2",
+      "frameworks": ["pandas", "logging", "argparse"]
+    }
+  ],
+  "mission_profiles": {
+    "scan_rtsp_cameras": {
+      "description":      "Massive scanning of vulnerable RTSP IoT cameras",
+      "required_traits":  ["domain:osint", "role:collector", "interface:cli"],
+      "forbidden_traits": ["computing:gpu", "latency:batch"],
+      "preferred_traits": ["security_level:high", "autonomy:full"],
+      "min_fitness_overall": 0.70
+    },
+    "legal_data_processor": {
+      "description":      "Batch processing of legal case files continuously",
+      "required_traits":  ["domain:data", "role:processor", "data_volume:large"],
+      "forbidden_traits": ["computing:quantum"],
+      "preferred_traits": ["latency:batch", "computing:cpu"],
+      "min_fitness_overall": 0.80
+    },
+    "infra_monitor": {
+      "description":      "Infrastructure monitoring and anomaly detection",
+      "required_traits":  ["domain:infra", "role:orchestrator"],
+      "forbidden_traits": [],
+      "preferred_traits": ["latency:real-time", "autonomy:full"],
+      "min_fitness_overall": 0.75
+    }
+  }
+}

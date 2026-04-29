@@ -1,0 +1,12 @@
+{
+    "name": "GO-ETHEREUM",
+    "indexed_at": "2026-04-05 14:21:24",
+    "domains": [
+        "OSINT",
+        "CRYPTO",
+        "INFRASTRUCTURE"
+    ],
+    "core_identity": "Инструмент на стыке: OSINT + CRYPTO + INFRASTRUCTURE",
+    "legal_devops_perspective": "Извлечение цифровых следов и разведка по закрытым/открытым базам для сбора улик. | Анализ защищенных данных, аудит смарт-контрактов, деанонимизация блокчейн-транзакций. | Высоконагруженный фундамент для запуска других модулей.",
+    "readiness": "LOCAL_AVAILABLE"
+}

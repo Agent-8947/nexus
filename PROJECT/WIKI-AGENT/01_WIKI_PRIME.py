@@ -1,8 +1,8 @@
 """
 NEXUS Wiki Autonomous Prime Agent v6.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 Mission: Ingest ALL 381 repositories from the GitHub Intelligence Database.
-Strategy: Adaptive — full clone for small repos, README-only for giants.
+Strategy: Adaptive  full clone for small repos, README-only for giants.
 Memory: UNRESTRICTED. CPU throttle only at 95%.
 """
 
@@ -63,16 +63,16 @@ class NexusWikiPrimeV6:
         self.targets  = self._load_targets()
         self.report   = {"started": datetime.now().isoformat(), "processed": [], "skipped": [], "failed": []}
 
-    # ── UI ──────────────────────────────────────────
+    #  UI 
     @staticmethod
     def _banner():
         print("\n" + "=" * 58)
-        print("  NEXUS WIKI PRIME v6.0 — FULL SPECTRUM INGESTION")
+        print("  NEXUS WIKI PRIME v6.0  FULL SPECTRUM INGESTION")
         print("  RAM: UNRESTRICTED | CPU Throttle: 95%")
         print("  Strategy: Adaptive (Full / DNA-only)")
         print("=" * 58 + "\n")
 
-    # ── Data Loading ────────────────────────────────
+    #  Data Loading 
     def _scan_existing(self):
         """Return set of upper-cased folder names already in WIKI."""
         return {f.name for f in WIKI_DIR.iterdir() if f.is_dir() and f.name != "__pycache__"}
@@ -96,7 +96,7 @@ class NexusWikiPrimeV6:
         print(f"[SCAN] {len(self.existing)} already ingested, {len(targets)} remaining.\n")
         return targets
 
-    # ── System Guard ────────────────────────────────
+    #  System Guard 
     @staticmethod
     def _wait_for_cpu():
         """Block until CPU drops below threshold."""
@@ -104,10 +104,10 @@ class NexusWikiPrimeV6:
             cpu = psutil.cpu_percent(interval=0.5)
             if cpu < MAX_CPU_LOAD:
                 return
-            print(f"  ⏳ CPU {cpu:.0f}% — cooling down…")
+            print(f"   CPU {cpu:.0f}%  cooling down")
             time.sleep(5)
 
-    # ── Clone ───────────────────────────────────────
+    #  Clone 
     def _clone(self, url: str, dest: Path) -> bool:
         """Shallow-clone a repo. Returns True on success."""
         if dest.exists():
@@ -123,14 +123,14 @@ class NexusWikiPrimeV6:
             )
             return True
         except subprocess.TimeoutExpired:
-            print(f"  ⏰ Clone timed out after {CLONE_TIMEOUT}s")
+            print(f"   Clone timed out after {CLONE_TIMEOUT}s")
             return False
         except subprocess.CalledProcessError as e:
             stderr = e.stderr.decode(errors="ignore")[:200] if e.stderr else ""
-            print(f"  ❌ Clone error: {stderr}")
+            print(f"   Clone error: {stderr}")
             return False
 
-    # ── Knowledge Extraction ────────────────────────
+    #  Knowledge Extraction 
     def _count_files(self, root: Path) -> int:
         """Fast file count ignoring skip dirs."""
         total = 0
@@ -138,7 +138,7 @@ class NexusWikiPrimeV6:
             dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
             total += len(files)
             if total > BIG_REPO_CUTOFF:
-                return total  # early exit — we know it's big
+                return total  # early exit  we know it's big
         return total
 
     def _is_wisdom_file(self, filename: str) -> bool:
@@ -157,9 +157,9 @@ class NexusWikiPrimeV6:
         is_big = file_count > BIG_REPO_CUTOFF
 
         if is_big:
-            print(f"  📦 BIG REPO ({file_count}+ files) → DNA-only extraction")
+            print(f"   BIG REPO ({file_count}+ files)  DNA-only extraction")
         else:
-            print(f"  📂 Standard repo ({file_count} files) → full knowledge extraction")
+            print(f"   Standard repo ({file_count} files)  full knowledge extraction")
 
         extracted = 0
         for root, dirs, files in os.walk(clone_path):
@@ -204,18 +204,18 @@ class NexusWikiPrimeV6:
 
         return extracted
 
-    # ── Status File ─────────────────────────────────
+    #  Status File 
     def _update_status(self, idx: int, total: int, name: str, stats: dict):
         progress = int(idx / total * 100) if total else 0
         bar_len = 30
         filled = int(bar_len * progress / 100)
-        bar = "█" * filled + "░" * (bar_len - filled)
+        bar = "" * filled + "" * (bar_len - filled)
 
         ok = stats.get("ok", 0)
         fail = stats.get("fail", 0)
         skip = stats.get("skip", 0)
 
-        txt = f"""# NEXUS Wiki Ingestion — Prime v6.0
+        txt = f"""# NEXUS Wiki Ingestion  Prime v6.0
 [ {bar} ] {idx}/{total} ({progress}%)
 
 **Текущий узел**: `{name}`
@@ -225,11 +225,11 @@ class NexusWikiPrimeV6:
 """
         STATUS_FILE.write_text(txt, encoding="utf-8")
 
-    # ── Main Loop ───────────────────────────────────
+    #  Main Loop 
     def run(self):
         total = len(self.targets)
         if total == 0:
-            print("✅ All 381 repositories are already ingested. Nothing to do.")
+            print(" All 381 repositories are already ingested. Nothing to do.")
             return
 
         stats = {"ok": len(self.existing), "fail": 0, "skip": len(self.existing)}
@@ -243,27 +243,27 @@ class NexusWikiPrimeV6:
             self._update_status(idx, total, name, stats)
             self._wait_for_cpu()
 
-            print(f"[{idx}/{total}] {name}  ⭐{t['stars']:,}")
+            print(f"[{idx}/{total}] {name}  {t['stars']:,}")
 
             clone_dest = TMP_DIR / f"repo_{idx}"
             ok = self._clone(url, clone_dest)
 
             if ok:
                 nodes = self._extract(clone_dest, dest)
-                print(f"  ✅ {nodes} knowledge segments extracted.")
+                print(f"   {nodes} knowledge segments extracted.")
                 stats["ok"] += 1
                 self.report["processed"].append({"name": name, "nodes": nodes})
             else:
                 stats["fail"] += 1
                 self.report["failed"].append({"name": name, "url": url})
-                print(f"  ⚠️ Skipped (clone failed). Continuing…")
+                print(f"   Skipped (clone failed). Continuing")
 
             # Always clean up tmp
             shutil.rmtree(clone_dest, ignore_errors=True)
             time.sleep(COOLDOWN_SEC)
 
         # Final status
-        self._update_status(total, total, "DONE ✅", stats)
+        self._update_status(total, total, "DONE ", stats)
         self.report["finished"] = datetime.now().isoformat()
         self.report["stats"] = stats
         REPORT_FILE.write_text(json.dumps(self.report, indent=2, ensure_ascii=False), encoding="utf-8")

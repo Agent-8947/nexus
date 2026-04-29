@@ -1,0 +1,152 @@
+{
+  "agent": "HYBRID_CHRONOS-FORECASTING_x_CHIPSEC",
+  "version": "2.0",
+  "mission": "security_audit",
+  "timestamp": "2026-04-09T05:05:04.204643",
+  "target": "E:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS\\PROJECT\\WIKI-FARM\\NEXUS-FARM-DNA\\DNA",
+  "stats": {
+    "manifests_scanned": 0,
+    "deps_checked": 0,
+    "vulns_found": 0,
+    "configs_scanned": 86,
+    "config_risks": 15,
+    "total_findings": 15
+  },
+  "findings": [
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "DNA_22_Functional_Tester.py",
+      "line": 128,
+      "match": "DEBUG = True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "DNA_12_AST_RENDER\\HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+      "line": 99,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "DNA_12_AST_RENDER\\HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+      "line": 111,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "DNA_12_AST_RENDER\\HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+      "line": 112,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "DNA_12_AST_RENDER\\HYBRID_AWESOME-SECURITY-HARDENING_x_CPP-CHEAT-SHEET_synthesized_agent.py",
+      "line": 157,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\1_collector_report.json",
+      "line": 60,
+      "match": "DEBUG = True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\2_analysis_report.json",
+      "line": 550,
+      "match": "DEBUG = True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\hardening_report.json",
+      "line": 58,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\hardening_report.json",
+      "line": 61,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\vulnscan_report.json",
+      "line": 22,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\vulnscan_report.json",
+      "line": 31,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\vulnscan_report.json",
+      "line": 40,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\vulnscan_report.json",
+      "line": 49,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\sealed\\SEALED_hardening_report.json",
+      "line": 77,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    },
+    {
+      "type": "config_risk",
+      "rule_id": "debug_enabled",
+      "severity": "HIGH",
+      "file": "osint_output\\sealed\\SEALED_hardening_report.json",
+      "line": 80,
+      "match": "DEBUG=True",
+      "remediation": "Disable DEBUG in production."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "agent_id": "AWS_S3_BUCKET_SCANNER",
+  "domain": "SECURITY_ADV",
+  "purpose": "Bruteforce and scan potentially misconfigured public S3 buckets",
+  "api_endpoints": [
+    "https://{bucket_name}.s3.amazonaws.com"
+  ],
+  "data_model": {
+    "bucket_name": "TEXT",
+    "is_public": "INTEGER",
+    "list_enabled": "INTEGER",
+    "file_count": "INTEGER",
+    "owner_id": "TEXT"
+  },
+  "core_algorithm": "HTTP XML-response parsing for ListBucketPermission results",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "xml.etree.ElementTree"
+  ],
+  "logic_markers": [
+    "s3.amazonaws.com",
+    "ListBucketResult",
+    "AccessDenied"
+  ]
+}

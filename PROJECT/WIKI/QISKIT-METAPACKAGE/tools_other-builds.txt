@@ -1,0 +1,14 @@
+/locale/**
+/metal/**
+/optimization/**
+/machine-learning/**
+/partners/**
+/nature/**
+/finance/**
+/experiments/**
+/retworkx/**
+/rustworkx/**
+/stable/**
+/dynamics/**
+/neko/**
+/aer/**

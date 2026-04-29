@@ -1,0 +1,30 @@
+{
+  "agent_id": "META_PROMPT_ARCHITECT",
+  "domain": "AI_ML",
+  "purpose": "Engineer complex meta-prompts, system instructions, and chain-of-thought templates for advanced LLM orchestration.",
+  "api_endpoints": [
+    "https://api.openai.com/v1/chat/completions"
+  ],
+  "data_model": {
+    "prompt_id": "TEXT",
+    "system_instruction": "TEXT",
+    "few_shot_examples": "TEXT",
+    "constraint_set": "TEXT",
+    "dynamic_placeholders": "TEXT"
+  },
+  "core_algorithm": "Prompt decomposition and iterative refinement based on performance constraints and model-specific behavior modeling.",
+  "input_type": "task_description",
+  "output_format": "prompt_template",
+  "required_imports": [
+    "requests",
+    "json",
+    "logging",
+    "sqlite3"
+  ],
+  "logic_markers": [
+    "chain_of_thought",
+    "meta_instruction",
+    "constraint_parsing",
+    "dynamic_injection"
+  ]
+}

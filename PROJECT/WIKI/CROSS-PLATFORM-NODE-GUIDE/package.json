@@ -1,0 +1,42 @@
+{
+  "name": "cross-platform-node-guide",
+  "version": "1.5.3",
+  "type": "module",
+  "files": [
+    "docs/**/*.md"
+  ],
+  "description": "🕮 How to write cross-platform Node.js code",
+  "keywords": [
+    "node",
+    "windows",
+    "unix",
+    "linux",
+    "macos",
+    "macosx",
+    "portable",
+    "portability",
+    "guide",
+    "guidelines",
+    "cross-platform",
+    "os",
+    "operating-system"
+  ],
+  "license": "CC-BY-4.0",
+  "homepage": "https://www.github.com/ehmicky/cross-platform-node-guide",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehmicky/cross-platform-node-guide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ehmicky/cross-platform-node-guide/issues"
+  },
+  "author": "ehmicky <ehmicky@gmail.com> (https://github.com/ehmicky)",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "@ehmicky/dev-tasks": "^3.0.34",
+    "@ehmicky/eslint-config": "^20.0.32",
+    "@ehmicky/prettier-config": "^1.0.6"
+  }
+}

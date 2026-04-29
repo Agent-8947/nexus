@@ -1,0 +1,102 @@
+{
+  "child_id": "KERAS__X__HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT",
+  "parent_a": {
+    "node_id": "KERAS",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "gpu",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "api"
+      },
+      "dna_signature": [
+        0.025,
+        0.068,
+        0.011,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.011,
+        0.0,
+        0.293
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "low"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.14,
+        "completeness": 0.33,
+        "overall": 0.54
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_BAREMETAL-OS-LEGACY_x_METASPLOIT",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "security",
+        "role": "payload",
+        "computing": "agnostic",
+        "latency": "real-time",
+        "security_level": "critical",
+        "autonomy": "agentic",
+        "interface": "gui"
+      },
+      "dna_signature": [
+        0.45,
+        0.076,
+        0.008,
+        0.0,
+        0.337,
+        0.166,
+        0.255,
+        0.363,
+        0.056,
+        0.24
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 1.0
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.232,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "BAREMETAL-OS-LEGACY",
+          "METASPLOIT"
+        ],
+        "generation": 1,
+        "compat_score": 1.0,
+        "synthesized_at": "2026-04-09T19:37:22.134280"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:00:33.885587"
+}

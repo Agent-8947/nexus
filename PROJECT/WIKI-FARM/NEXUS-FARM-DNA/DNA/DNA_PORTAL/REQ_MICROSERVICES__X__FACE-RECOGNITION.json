@@ -1,0 +1,89 @@
+{
+  "child_id": "MICROSERVICES__X__FACE-RECOGNITION",
+  "parent_a": {
+    "node_id": "MICROSERVICES",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "medium",
+        "autonomy": "agentic",
+        "interface": "api"
+      },
+      "dna_signature": [
+        1.0,
+        0.6,
+        0.8,
+        0.2,
+        0.0,
+        1.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.5,
+        "novelty": 0.85,
+        "completeness": 0.33,
+        "overall": 0.69
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "FACE-RECOGNITION",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "osint",
+        "role": "collector",
+        "computing": "gpu",
+        "latency": "real-time",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.2,
+        1.0,
+        0.2,
+        0.2,
+        0.0,
+        0.0
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "high"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.8
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 1.0,
+        "novelty": 0.45,
+        "completeness": 0.67,
+        "overall": 0.7
+      },
+      "lineage": {
+        "parents": [],
+        "generation": 0
+      }
+    }
+  },
+  "mission": "Build an OSINT intelligence gathering and analysis pipeline",
+  "ts": "2026-04-08T17:20:56.816661"
+}

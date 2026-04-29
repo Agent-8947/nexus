@@ -1,0 +1,31 @@
+{
+  "agent_id": "XSS_POLYGLOT_TESTER",
+  "domain": "SECURITY_ADV",
+  "purpose": "Test web inputs for Cross-Site Scripting (XSS) using advanced polyglot payloads",
+  "api_endpoints": [
+    "{target_url}"
+  ],
+  "data_model": {
+    "url": "TEXT",
+    "payload": "TEXT",
+    "reflection_context": "TEXT",
+    "bypass_type": "TEXT",
+    "confirmed": "INTEGER"
+  },
+  "core_algorithm": "Context-aware payload injection and DOM reflection tracking",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "re",
+    "html"
+  ],
+  "logic_markers": [
+    "<script>",
+    "onerror=",
+    "javascript:",
+    "polyglot"
+  ]
+}

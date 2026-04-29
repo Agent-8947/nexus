@@ -1,0 +1,31 @@
+{
+  "agent_id": "PASTEBIN_INTEL_MONITOR",
+  "domain": "OSINT",
+  "purpose": "Monitor public paste services for leaked data mentioning target keywords",
+  "api_endpoints": [
+    "https://psbdmp.ws/api/v3/search/{query}"
+  ],
+  "data_model": {
+    "keyword": "TEXT",
+    "paste_id": "TEXT",
+    "paste_url": "TEXT",
+    "content_preview": "TEXT",
+    "source": "TEXT"
+  },
+  "core_algorithm": "PSBDMP paste dump search with keyword correlation",
+  "input_type": "keyword",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "json"
+  ],
+  "logic_markers": [
+    "psbdmp.ws",
+    "paste_id",
+    "content_preview"
+  ],
+  "spec_hash": "ac36e2e4e6d73962"
+}

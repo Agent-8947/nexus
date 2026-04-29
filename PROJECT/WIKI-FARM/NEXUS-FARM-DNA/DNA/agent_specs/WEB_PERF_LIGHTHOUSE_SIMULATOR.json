@@ -1,0 +1,31 @@
+{
+  "agent_id": "WEB_PERF_LIGHTHOUSE_SIMULATOR",
+  "domain": "WEB",
+  "purpose": "Simulate basic Lighthouse performance metrics (LCP, CLS estimation) via Navigation Timing API",
+  "api_endpoints": [
+    "{domain}"
+  ],
+  "data_model": {
+    "url": "TEXT",
+    "load_time_ms": "INTEGER",
+    "dom_interactive_ms": "INTEGER",
+    "page_size_kb": "INTEGER",
+    "score": "REAL"
+  },
+  "core_algorithm": "HTTP response analysis and DOM-size-based performance heuristic",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "time",
+    "re"
+  ],
+  "logic_markers": [
+    "domInteractive",
+    "loadEventEnd",
+    "performance",
+    "timing",
+    "bytes"
+  ]
+}

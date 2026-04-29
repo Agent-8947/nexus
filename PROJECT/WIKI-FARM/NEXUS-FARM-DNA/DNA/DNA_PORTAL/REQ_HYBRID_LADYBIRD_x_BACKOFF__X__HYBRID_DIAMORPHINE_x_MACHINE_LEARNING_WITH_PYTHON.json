@@ -1,0 +1,107 @@
+{
+  "child_id": "HYBRID_LADYBIRD_x_BACKOFF__X__HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON",
+  "parent_a": {
+    "node_id": "HYBRID_LADYBIRD_x_BACKOFF",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "security",
+        "role": "library",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "agentic",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.24,
+        0.446,
+        0.268,
+        0.007,
+        0.164,
+        0.188,
+        0.0,
+        0.066,
+        0.183,
+        0.745
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.81
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.32,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "LADYBIRD",
+          "BACKOFF"
+        ],
+        "generation": 1,
+        "compat_score": 0.808,
+        "synthesized_at": "2026-04-09T18:50:33.784451"
+      }
+    }
+  },
+  "parent_b": {
+    "node_id": "HYBRID_DIAMORPHINE_x_MACHINE_LEARNING_WITH_PYTHON",
+    "evolution_matrix": {
+      "traits_fixed": {
+        "domain": "ai",
+        "role": "collector",
+        "computing": "agnostic",
+        "latency": "none",
+        "security_level": "none",
+        "autonomy": "scripted",
+        "interface": "cli"
+      },
+      "dna_signature": [
+        0.0,
+        0.0,
+        0.419,
+        0.24,
+        0.29,
+        0.0,
+        0.0,
+        0.0,
+        0.028,
+        0.235
+      ],
+      "resources": {
+        "compute_cost": "high",
+        "memory_cost": "medium"
+      },
+      "mutation_hotspots": {
+        "can_add_capabilities": true,
+        "can_change_interface": true,
+        "mutation_rate": 0.83
+      },
+      "fitness_score": {
+        "performance": 0.8,
+        "security": 0.9,
+        "novelty": 0.36,
+        "completeness": 1.0,
+        "overall": 1.0
+      },
+      "lineage": {
+        "parents": [
+          "DIAMORPHINE",
+          "MACHINE_LEARNING_WITH_PYTHON"
+        ],
+        "generation": 1,
+        "compat_score": 0.826,
+        "synthesized_at": "2026-04-09T18:51:11.603877"
+      }
+    }
+  },
+  "mission": "Build a security audit and vulnerability detection tool",
+  "ts": "2026-04-09T20:11:47.688582"
+}

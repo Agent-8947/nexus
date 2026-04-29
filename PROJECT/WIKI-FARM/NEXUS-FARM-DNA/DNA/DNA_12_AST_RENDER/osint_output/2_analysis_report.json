@@ -1,0 +1,40 @@
+{
+  "agent": "HYBRID_AUTOGLUON_x_ALLUXIO",
+  "version": "2.0",
+  "timestamp": "2026-04-09T05:07:27.120543",
+  "source": "HYBRID_TROUBLESHOOTING_x_CRATE",
+  "analysis": {
+    "total_findings": 1,
+    "top_risk_score": 0.3,
+    "mean_risk_score": 0.3,
+    "by_priority": {
+      "P2-REVIEW": 1
+    },
+    "by_category": {
+      "credential": 1
+    },
+    "risk_verdict": "MEDIUM"
+  },
+  "enriched_findings": [
+    {
+      "rule_id": "generic_secret",
+      "severity": "HIGH",
+      "category": "credential",
+      "file": "test_file.py",
+      "line": 2,
+      "match": "password****",
+      "context": "password = \"secret123\"",
+      "checksum": "167d67c7d968",
+      "risk_score": 0.3,
+      "priority": "P2-REVIEW",
+      "remediation": "Move secret to environment variable or vault (HashiCorp Vault / AWS SSM).",
+      "model": "autogluon_composite_v2",
+      "dimensions": {
+        "base_severity": 0.75,
+        "category_weight": 1.0,
+        "context_mult": 1.0,
+        "path_mult": 0.4
+      }
+    }
+  ]
+}

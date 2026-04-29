@@ -1,0 +1,32 @@
+{
+  "agent_id": "TECHNICAL_ANALYST",
+  "domain": "FINANCE",
+  "purpose": "Analyze stock price patterns, technical indicators (RSI, MACD, Bollinger Bands), and market trends to generate buy/sell signals.",
+  "api_endpoints": [
+    "https://query1.finance.yahoo.com/v8/finance/chart/{ticker}",
+    "https://api.polygon.io/v2/aggs/ticker/{ticker}/prev"
+  ],
+  "data_model": {
+    "ticker": "str",
+    "signal": "buy|sell|hold",
+    "confidence": "float",
+    "indicators": {
+      "rsi": "float",
+      "macd": "float",
+      "trend": "str"
+    }
+  },
+  "core_algorithm": "Calculate RSI and MACD based on historical OHLCV data. Identify trend breakouts.",
+  "input_type": "Stock Ticker",
+  "output_format": "TechnicalAnalysisReport",
+  "required_imports": [
+    "pandas",
+    "numpy",
+    "yfinance"
+  ],
+  "logic_markers": [
+    "_calculate_indicators",
+    "_check_breakouts",
+    "generate_signal"
+  ]
+}

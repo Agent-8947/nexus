@@ -5,7 +5,7 @@ import logging
 from pathlib import Path
 from collections import Counter
 
-logging.basicConfig(level=logging.INFO, format='📚 [ARCHIVIST] %(message)s')
+logging.basicConfig(level=logging.INFO, format=' [ARCHIVIST] %(message)s')
 
 # ==========================================
 # КОНФИГУРАЦИЯ NEXUS ARCHIVIST
@@ -91,7 +91,7 @@ class NexusArchivist:
         return detected_domains
 
     def run_indexing_loop(self):
-        logging.info("👁️ Архивариус просыпается. Начинаю аудит WIKI-библиотеки...")
+        logging.info(" Архивариус просыпается. Начинаю аудит WIKI-библиотеки...")
         
         scanned_count = 0
         new_count = 0
@@ -107,16 +107,59 @@ class NexusArchivist:
             scanned_count += 1
             if rm_dir.name not in self.global_brain:
                 domains = self.index_repository(rm_dir)
-                logging.info(f"➕ Изучен узел: {rm_dir.name} -> Домены: {domains}")
+                logging.info(f" Изучен узел: {rm_dir.name} -> Домены: {domains}")
                 new_count += 1
                 
         # Сохранение Глобального Мозга
         BRAIN_INDEX_FILE.write_text(json.dumps(self.global_brain, indent=4, ensure_ascii=False), encoding="utf-8")
-        logging.info(f"🧠 Аудит завершен. Всего в Мозге: {len(self.global_brain)} узлов. Новых знаний: {new_count}")
+        logging.info(f" Аудит завершен. Всего в Мозге: {len(self.global_brain)} узлов. Новых знаний: {new_count}")
+
+    def pick_next_target(self, domain_filter="OSINT"):
+        """Strategically selects the next best target from the global brain."""
+        print(f" [ARCHIVIST] Strategic selection for domain: {domain_filter}")
+        
+        # Filter junk: lists, awesome collections, books, etc.
+        BLACKLIST = ["aima", "awesome", "list", "book", "course", "paper", "cheat", "interview"]
+        
+        # We also scan for the build directory to check what is already assembled
+        build_dir = PROJECT_ROOT / "PROJECT" / "WIKI-PROJECT" / "LEGAL" / "BUILD"
+        existing_builds = [d.name.split("_")[-1].lower() for d in build_dir.iterdir() if d.is_dir()] if build_dir.exists() else []
+
+        candidates = []
+        for name, dossier in self.global_brain.items():
+            name_low = name.lower()
+            # 1. Check Blacklist
+            if any(b in name_low for b in BLACKLIST):
+                continue
+                
+            # 2. Check Domain & Built status
+            if domain_filter in dossier.get("domains", []):
+                if name_low not in existing_builds:
+                    candidates.append(name)
+
+        if candidates:
+            # Pick first available high-value candidate
+            target = candidates[0]
+            print(f" [ARCHIVIST] Target Selected: {target}")
+            return target
+
+        print(" [ARCHIVIST] No unbuilt targets found in current knowledge base.")
+        return "NEXUS-Golden-OSINT"
 
 if __name__ == "__main__":
-    while True:
-        Archivist = NexusArchivist()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--pick-next", action="store_true")
+    parser.add_argument("--domain", type=str, default="OSINT")
+    parser.add_argument("--index", action="store_true", default=True)
+    args = parser.parse_args()
+
+    Archivist = NexusArchivist()
+    if args.pick_next:
+        target = Archivist.pick_next_target(domain_filter=args.domain)
+        # Print for Orchestrator (Agent 03)
+        print(f"Target Selected: {target}")
+    elif args.index:
         Archivist.run_indexing_loop()
-        logging.info("💤 Архивариус переваривает знания. Следующий обход через 10 минут...")
-        time.sleep(600)
+    else:
+        Archivist.run_indexing_loop()

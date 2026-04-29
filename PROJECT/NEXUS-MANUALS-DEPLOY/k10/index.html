@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADL07K10 — Машина для встряхивания порошка</title>
+<meta name="description" content="Полное руководство пользователя для встряхивателя порошка Audley ADL07K10.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nexus-manuals-adl07.vercel.app/k10/">
+<meta property="og:title" content="ADL07K10 — Руководство по эксплуатации">
+<meta property="og:description" content="Интерактивная инструкция: установка, настройка, обслуживание встряхивателя порошка K10.">
+<meta property="og:image" content="https://nexus-manuals-adl07.vercel.app/k10/images/img_p1_26.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="ADL07K10 — Руководство по эксплуатации">
+<meta property="twitter:description" content="Интерактивная инструкция: установка, настройка, обслуживание встряхивателя порошка K10.">
+<meta property="twitter:image" content="https://nexus-manuals-adl07.vercel.app/k10/images/img_p1_26.png">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root {
+  --accent: #E84545;
+  --accent-light: #E8454518;
+  --bg: #FFFFFF;
+  --sidebar: #111317;
+  --black: #18191C;
+  --gray-text: #555;
+  --gray-border: #E8E9EC;
+  --gray-bg: #F7F8FA;
+  --danger-bg: #FFF4F4;
+  --danger-border: #E74C3C;
+  --warn-bg: #FFFBF0;
+  --warn-border: #F39C12;
+  --note-bg: #F0F7FF;
+  --note-border: #3498DB;
+  --font: 'Inter', system-ui, sans-serif;
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--gray-bg); color: var(--black); display: flex; }
+
+aside {
+  width: 260px; min-width: 260px; height: 100vh; position: sticky; top: 0;
+  background: var(--sidebar); overflow-y: auto; display: flex; flex-direction: column; flex-shrink: 0;
+}
+.sb-brand { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sb-brand .sb-tag { color: var(--accent); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: var(--font-head); margin-bottom: 6px; }
+.sb-brand .sb-model { color: #fff; font-family: var(--font-head); font-size: 20px; font-weight: 700; line-height: 1.2; }
+nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+nav a { display: block; padding: 10px 24px; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.15s; }
+nav a:hover, nav a.on { color: #fff; border-left-color: var(--accent); background: rgba(255,255,255,0.05); }
+.nav-section-label { padding: 20px 24px 6px; color: rgba(255,255,255,0.25); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+.sb-foot { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.2); font-size: 10px; line-height: 1.6; }
+
+main { flex: 1; overflow-x: hidden; }
+
+.cover { background: var(--sidebar); min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+.cover-stripe { height: 6px; background: var(--accent); }
+.cover-body { flex: 1; padding: 80px 64px; display: flex; flex-direction: column; justify-content: flex-end; }
+.cover-kicker { font-family: var(--font-head); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.cover-h1 { font-family: var(--font-head); font-size: clamp(48px, 8vw, 80px); font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 24px; }
+.cover-desc { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 440px; line-height: 1.7; }
+.cover-chips { padding: 40px 64px; display: flex; gap: 40px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
+.chip .chip-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.chip .chip-val { font-family: var(--font-head); font-size: 16px; font-weight: 600; color: #fff; }
+
+.content-block { background: var(--bg); margin: 24px 32px; border-radius: 16px; border: 1px solid var(--gray-border); box-shadow: var(--shadow); overflow: hidden; }
+.block-header { padding: 28px 36px 20px; border-bottom: 1px solid var(--gray-border); display: flex; align-items: center; gap: 12px; }
+.block-num { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 4px 10px; border-radius: 20px; }
+.block-title { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--black); }
+.block-body { padding: 28px 36px; }
+
+.t-body { font-size: 15px; color: var(--gray-text); line-height: 1.8; margin-bottom: 14px; }
+h3.t-sub { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--black); margin: 28px 0 12px; padding-left: 12px; border-left: 3px solid var(--accent); }
+
+.t-list { list-style: none; margin: 8px 0 16px; }
+.t-list li { font-size: 14px; color: var(--gray-text); padding: 9px 0 9px 20px; position: relative; border-bottom: 1px solid var(--gray-border); }
+.t-list li:last-child { border-bottom: none; }
+.t-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-size: 18px; line-height: 1; top: 8px; }
+
+.alert { background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 5px solid var(--warn-border); border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; display: flex; gap: 14px; align-items: flex-start; }
+.alert.danger { background: var(--danger-bg); border-color: var(--danger-border); border-left-color: var(--danger-border); }
+.alert.note { background: var(--note-bg); border-color: var(--note-border); border-left-color: var(--note-border); }
+.alert-icon { font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+.alert-text .alert-head { font-family: var(--font-head); font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.alert.danger .alert-head { color: var(--danger-border); }
+.alert.note .alert-head { color: var(--note-border); }
+.alert-text p { font-size: 14px; color: var(--gray-text); margin: 0; }
+
+.img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+.img-card { border: 1px solid var(--gray-border); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.img-card img { width: 100%; display: block; cursor: zoom-in; transition: transform 0.3s; }
+.img-card img:hover { transform: scale(1.02); }
+.img-card .img-cap { padding: 8px 12px; font-size: 11px; color: rgba(0,0,0,0.35); letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid var(--gray-border); }
+
+.spec-card { background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: var(--radius); padding: 16px 20px; margin: 8px 0; }
+.spec-card .sc-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(0,0,0,0.35); margin-bottom: 6px; }
+.spec-card .sc-value { font-family: var(--font-head); font-size: 18px; font-weight: 600; color: var(--black); }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+
+.fault-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+.fault-table th { background: var(--black); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--font-head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.fault-table th:first-child { background: var(--accent); color: #fff; width: 220px; }
+.fault-table td { padding: 14px 16px; vertical-align: top; border-bottom: 1px solid var(--gray-border); }
+.fault-table td:first-child { font-family: var(--font-head); font-weight: 600; color: var(--accent); }
+.fault-table ol { padding-left: 18px; }
+.fault-table li { margin-bottom: 6px; color: var(--gray-text); }
+
+#lb { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); justify-content: center; align-items: center; cursor: zoom-out; }
+#lb.show { display: flex; }
+#lb img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  aside { width: 100%; height: auto; position: relative; }
+  .cover-body { padding: 40px 24px; }
+  .cover-chips { padding: 24px; gap: 20px; }
+  .content-block { margin: 12px; }
+  .block-body { padding: 20px; }
+  .img-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  aside { display: none; }
+  .cover { page-break-after: always; }
+  .content-block { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  #lb { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div id="lb"><img id="lb-img" src="" alt=""></div>
+
+<aside>
+<div class="sb-brand">
+  <div class="sb-tag">Audley · Руководство</div>
+  <div class="sb-model">ADL07K10</div>
+</div>
+<nav>
+  <div class="nav-section-label">Навигация</div>
+  <a href="#cover" data-id="cover">Обложка</a>
+  <a href="#ch-safety" data-id="ch-safety">Безопасность</a>
+  <a href="#ch-params" data-id="ch-params">Глава 1 · Параметры</a>
+  <a href="#ch-interface" data-id="ch-interface">Глава 2 · Интерфейс</a>
+  <a href="#ch-debug" data-id="ch-debug">Отладочный режим</a>
+  <a href="#ch-temp" data-id="ch-temp">Настройка температуры</a>
+  <a href="#ch-sensors" data-id="ch-sensors">Датчики и переключатели</a>
+  <a href="#ch-winding" data-id="ch-winding">Протяжка плёнки</a>
+  <a href="#ch-probe" data-id="ch-probe">Управление датчиками</a>
+  <a href="#ch-powder" data-id="ch-powder">Регулировка порошка</a>
+  <a href="#ch-purifier" data-id="ch-purifier">Очиститель воздуха</a>
+  <a href="#ch-film" data-id="ch-film">Схема заправки плёнки</a>
+  <a href="#ch-maint" data-id="ch-maint">Глава 3 · Обслуживание</a>
+  <a href="#ch-trouble" data-id="ch-trouble">Поиск неисправностей</a>
+  <a href="#ch-wiring" data-id="ch-wiring">Электрическая схема</a>
+<a href="#ch-gallery" data-id="ch-gallery">Иллюстрации</a>
+</nav>
+<div class="sb-foot">Henan Audley Digital Co., Ltd.<br>© NEXUS Translation Engine</div>
+</aside>
+
+<main>
+
+<!-- ═══════════ ОБЛОЖКА ═══════════ -->
+<section class="cover" id="cover" data-block="cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-body">
+    <div class="cover-kicker">Руководство по эксплуатации</div>
+    <h1 class="cover-h1">Машина для встряхивания порошка</h1>
+    <p class="cover-desc">Полное руководство по установке, эксплуатации и обслуживанию оборудования ADL07K10.</p>
+  </div>
+  <div class="cover-chips">
+    <div class="chip"><div class="chip-label">Модель</div><div class="chip-val">ADL07K10</div></div>
+    <div class="chip"><div class="chip-label">Страниц</div><div class="chip-val">16</div></div>
+    <div class="chip"><div class="chip-label">Производитель</div><div class="chip-val">AUDLEY DIGITAL</div></div>
+  </div>
+</section>
+
+<!-- ═══════════ БЕЗОПАСНОСТЬ ═══════════ -->
+<div class="content-block" id="ch-safety" data-block="ch-safety">
+<div class="block-header">
+  <span class="block-num">Важно</span>
+  <span class="block-title">Инструкция по безопасности</span>
+</div>
+<div class="block-body">
+
+<p class="t-body">☞ Пожалуйста, внимательно прочтите данное руководство перед началом работы и сохраните его для дальнейшего использования.</p>
+
+<div class="img-grid">
+<div class="img-card">
+  <img src="images/img_p1_26.png" loading="lazy" onclick="zoom(this.src)" alt="Общий вид машины">
+  <div class="img-cap">Общий вид ADL07K10</div>
+</div>
+</div>
+
+<h3 class="t-sub">Предисловие</h3>
+<p class="t-body">Благодарим вас за выбор нашего оборудования. Для полного понимания характеристик данного продукта и его безопасного использования, обязательно внимательно прочтите настоящее руководство.</p>
+<p class="t-body">Содержание данного руководства и параметры продукта могут быть изменены без предварительного уведомления. При возникновении вопросов обращайтесь к квалифицированному техническому персоналу.</p>
+<p class="t-body">Храните руководство в надёжном месте. Не допускайте детей и неквалифицированный персонал к оборудованию.</p>
+
+<h3 class="t-sub">Условные обозначения</h3>
+<div class="alert danger">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Игнорирование данного знака может привести к серьёзной травме оператора.</p></div>
+</div>
+<div class="alert">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ОСТОРОЖНО</div><p>Игнорирование данного знака может привести к травме оператора или повреждению оборудования.</p></div>
+</div>
+
+<h3 class="t-sub">Требования к установке</h3>
+<div class="alert danger">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Запрещается устанавливать оборудование вблизи летучих растворителей (спирт, разбавители). Запрещается размещать посторонние предметы на корпусе машины.</p></div>
+</div>
+<div class="alert">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ОСТОРОЖНО</div><p>Не устанавливайте машину в наклонном положении или в месте с вибрацией — это может привести к опрокидыванию или повреждению устройства.</p></div>
+</div>
+
+<p class="t-body">Избегайте использования машины в следующих условиях:</p>
+<ul class="t-list">
+  <li>Чрезмерно влажные или сухие помещения</li>
+  <li>Прямые солнечные лучи</li>
+  <li>Высокая температура окружающей среды</li>
+  <li>Вблизи открытого огня или источников влаги</li>
+</ul>
+<div class="spec-card">
+  <div class="sc-label">Рекомендуемые условия эксплуатации</div>
+  <div class="sc-value">Температура 18–30 ℃ · Влажность 40–60%</div>
+</div>
+
+<h3 class="t-sub">Электробезопасность</h3>
+<div class="alert danger">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>При повреждении кабеля питания немедленно отключите его от сети. Через повреждённые участки возможна утечка тока, что может привести к пожару или короткому замыканию.</p></div>
+</div>
+<ul class="t-list">
+  <li>Не касайтесь выключателей мокрыми руками — опасность поражения электрическим током.</li>
+  <li>Не подключайте несколько устройств к одной розетке — возможно короткое замыкание или пожар.</li>
+  <li>Не скручивайте и не перегибайте кабель питания.</li>
+</ul>
+
+<div class="alert note">
+  <span class="alert-icon">💡</span>
+  <div class="alert-text"><div class="alert-head">ЗАЗЕМЛЕНИЕ</div><p>Обязательно подключите провод заземления к клемме электропитания или заземляющему контуру. Запрещается подключать заземление к водопроводным, газовым трубам, телефонным линиям или молниеотводам.</p></div>
+</div>
+
+<h3 class="t-sub">Безопасность при эксплуатации</h3>
+<ul class="t-list">
+  <li>Не разбирайте и не ремонтируйте устройство самостоятельно.</li>
+  <li>При появлении шума, дыма, пламени или неприятного запаха — немедленно отключите питание и обратитесь к производителю.</li>
+  <li>Не используйте легковоспламеняющиеся предметы вблизи оборудования.</li>
+  <li>Перед перемещением устройства отключите его от электросети.</li>
+  <li>При транспортировке убедитесь, что печатающая головка находится в начальной позиции.</li>
+</ul>
+
+<h3 class="t-sub">Техническое обслуживание</h3>
+<div class="alert danger">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Перед чисткой обязательно выключите питание и отсоедините кабель от сети. Протирайте машину тканью, смоченной чистящим раствором. Не используйте летучие растворители (спирт и т.п.).</p></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ГЛАВА 1: ПАРАМЕТРЫ ═══════════ -->
+<div class="content-block" id="ch-params" data-block="ch-params">
+<div class="block-header">
+  <span class="block-num">Глава 1</span>
+  <span class="block-title">Параметры оборудования</span>
+</div>
+<div class="block-body">
+
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Модель</div><div class="sc-value">ADL07K10</div></div>
+  <div class="spec-card"><div class="sc-label">Допустимая ширина плёнки</div><div class="sc-value">≤ 600 мм</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость работы</div><div class="sc-value">5–30 м²/ч</div></div>
+  <div class="spec-card"><div class="sc-label">Температура платформы (рекоменд.)</div><div class="sc-value">75 ℃</div></div>
+  <div class="spec-card"><div class="sc-label">Температура сушки (рекоменд.)</div><div class="sc-value">100–150 ℃</div></div>
+  <div class="spec-card"><div class="sc-label">Тип носителя</div><div class="sc-value">ПЭТ термотрансферная плёнка</div></div>
+  <div class="spec-card"><div class="sc-label">Система подачи</div><div class="sc-value">Сетчатая лента и устройство подачи</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость встряхивания</div><div class="sc-value">Регулируемая</div></div>
+  <div class="spec-card"><div class="sc-label">Подача порошка</div><div class="sc-value">Автоматическая, рекоменд. 40%+</div></div>
+  <div class="spec-card"><div class="sc-label">Питание</div><div class="sc-value">AC 220В, 50–60 Гц</div></div>
+  <div class="spec-card"><div class="sc-label">Полная мощность</div><div class="sc-value">4000 Вт (рабочая: 2200–3000 Вт)</div></div>
+  <div class="spec-card"><div class="sc-label">Рабочая среда</div><div class="sc-value">18–30 ℃ / 40–60% влажность</div></div>
+  <div class="spec-card"><div class="sc-label">Вес нетто / с упаковкой</div><div class="sc-value">310 кг / 375 кг</div></div>
+  <div class="spec-card"><div class="sc-label">Габариты (Д×Ш×В)</div><div class="sc-value">2226 × 940 × 945 мм</div></div>
+  <div class="spec-card"><div class="sc-label">Размер упаковки</div><div class="sc-value">2310 × 1084 × 1130 мм</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ГЛАВА 2: ИНТЕРФЕЙС ═══════════ -->
+<div class="content-block" id="ch-interface" data-block="ch-interface">
+<div class="block-header">
+  <span class="block-num">Глава 2</span>
+  <span class="block-title">Руководство по эксплуатации</span>
+</div>
+<div class="block-body">
+
+<h3 class="t-sub">Главный интерфейс</h3>
+<p class="t-body">Главный интерфейс используется для переключения рабочего режима между ручным и автоматическим, а также для управления намоткой, сетчатой лентой, всасыванием, подсыпкой и встряхиванием порошка.</p>
+
+<p class="t-body">При переключении с ручного на автоматический режим все функции включаются по умолчанию. В автоматическом режиме ряд функций управляется датчиком обнаружения плёнки: намотка, сетчатая лента и встряхивание порошка автоматически включаются и выключаются в зависимости от наличия плёнки. Всасывание не отключается автоматически. Подсыпка порошка регулируется по весу порошка.</p>
+
+<h3 class="t-sub">Панель нагрева</h3>
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Передняя направляющая</div><div class="sc-value">Отображает заданную и фактическую температуру передней направляющей пластины</div></div>
+  <div class="spec-card"><div class="sc-label">Зона сушки 1</div><div class="sc-value">Заданная и фактическая температура зоны сушки 1</div></div>
+  <div class="spec-card"><div class="sc-label">Зона сушки 2</div><div class="sc-value">Заданная и фактическая температура зоны сушки 2</div></div>
+  <div class="spec-card"><div class="sc-label">Зона сушки 3</div><div class="sc-value">Заданная и фактическая температура зоны сушки 3</div></div>
+</div>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p6_55.png" loading="lazy" onclick="zoom(this.src)" alt="Главный интерфейс"><div class="img-cap">Главный интерфейс</div></div>
+<div class="img-card"><img src="images/img_p6_56.png" loading="lazy" onclick="zoom(this.src)" alt="Панель температуры"><div class="img-cap">Панель температуры</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ОТЛАДОЧНЫЙ РЕЖИМ ═══════════ -->
+<div class="content-block" id="ch-debug" data-block="ch-debug">
+<div class="block-header">
+  <span class="block-num">Раздел 2.1</span>
+  <span class="block-title">Отладочный режим</span>
+</div>
+<div class="block-body">
+
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Скорость намотки</div><div class="sc-value">0–100%. По умолчанию 30–60%</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость сетчатой ленты</div><div class="sc-value">0–100%. Рекомендуется на 10% выше скорости плёнки</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость встряхивания</div><div class="sc-value">0–100%. По умолчанию 30–50%</div></div>
+  <div class="spec-card"><div class="sc-label">Скорость распределения порошка</div><div class="sc-value">0–100%. По умолчанию 40–60%</div></div>
+</div>
+
+<p class="t-body"><strong>Возврат порошка:</strong> Переключатель автоматического возврата порошка. После отключения автоматический возврат не работает.</p>
+<p class="t-body"><strong>Направление ленты:</strong> Управление направлением вращения сетчатой ленты (вперёд/назад). По умолчанию — вперёд.</p>
+<p class="t-body"><strong>Подсыпка порошка:</strong> Управление направлением вращения вала порошка (прямое/обратное). Используется для устранения посторонних предметов. По умолчанию — прямое вращение.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p7_59.png" loading="lazy" onclick="zoom(this.src)" alt="Отладочный интерфейс"><div class="img-cap">Отладочный интерфейс</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ НАСТРОЙКА ТЕМПЕРАТУРЫ ═══════════ -->
+<div class="content-block" id="ch-temp" data-block="ch-temp">
+<div class="block-header">
+  <span class="block-num">Раздел 2.2</span>
+  <span class="block-title">Настройка температуры</span>
+</div>
+<div class="block-body">
+
+<p class="t-body">Настройка температуры используется для регулировки параметров нагрева передней направляющей и зон сушки 1, 2, 3. Зона сушки 1 недоступна для двухголовочной машины.</p>
+
+<table class="fault-table">
+  <tr><th>Зона</th><th>2 головки</th><th>4 головки</th><th>6 головок</th></tr>
+  <tr><td>Передняя направляющая</td><td>50 ℃</td><td>60 ℃</td><td>60–80 ℃</td></tr>
+  <tr><td>Зона сушки 1</td><td>60 ℃</td><td>70–80 ℃</td><td>80–100 ℃</td></tr>
+  <tr><td>Зона сушки 2</td><td>90 ℃</td><td>90–120 ℃</td><td>120–140 ℃</td></tr>
+  <tr><td>Зона сушки 3</td><td>90 ℃</td><td>90–120 ℃</td><td>120–140 ℃</td></tr>
+</table>
+
+<p class="t-body">Температуру можно увеличивать или уменьшать в зависимости от фактических условий работы.</p>
+
+<h3 class="t-sub">Информационный интерфейс</h3>
+<p class="t-body"><strong>Перегрузка мотора / Перегрузка вентилятора / Тайм-аут подачи порошка:</strong> В нормальном режиме индикатор горит тёмно-зелёным. При ошибке индикатор становится красным. Для сброса сигнала нажмите кнопку восстановления.</p>
+<p class="t-body"><strong>Информация о плате управления и сенсорном экране:</strong> Отображает версию прошивки и дату сборки для идентификации версии.</p>
+
+</div>
+</div>
+
+<!-- ═══════════ ДАТЧИКИ И ПЕРЕКЛЮЧАТЕЛИ ═══════════ -->
+<div class="content-block" id="ch-sensors" data-block="ch-sensors">
+<div class="block-header">
+  <span class="block-num">Раздел 2.3</span>
+  <span class="block-title">Датчики и переключатели</span>
+</div>
+<div class="block-body">
+
+<h3 class="t-sub">Статус датчиков</h3>
+<ul class="t-list">
+  <li><strong>IN1 — Защитный кожух:</strong> Отображается автоматически, ручная настройка невозможна.</li>
+  <li><strong>IN2 — Фотоэлемент перемотки:</strong> Отображается автоматически, ручная настройка невозможна.</li>
+  <li><strong>IN3 — Датчик плёнки:</strong> Отображается автоматически, ручная настройка невозможна.</li>
+  <li><strong>IN4 — Датчик приближения:</strong> Отображается автоматически, ручная настройка невозможна.</li>
+  <li><strong>IN5 — Переключатель сушки:</strong> Отображается автоматически, ручная настройка невозможна.</li>
+</ul>
+
+<h3 class="t-sub">Передняя направляющая</h3>
+<p class="t-body">После распаковки машины необходимо открыть левую и правую дверцы корпуса и отрегулировать фиксированное положение передней направляющей. Регулировка одинакова с обеих сторон машины.</p>
+
+<h3 class="t-sub">Переключатели</h3>
+<ul class="t-list">
+  <li><strong>Главный выключатель:</strong> Управляет контактором питания для включения и выключения всей цепи.</li>
+  <li><strong>Кнопка аварийной остановки:</strong> Мгновенно отключает питание всей машины в экстренной ситуации.</li>
+</ul>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p8_62.png" loading="lazy" onclick="zoom(this.src)" alt="Переключатели"><div class="img-cap">Панель переключателей</div></div>
+<div class="img-card"><img src="images/img_p8_63.png" loading="lazy" onclick="zoom(this.src)" alt="Датчики"><div class="img-cap">Расположение датчиков</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ПРОТЯЖКА ПЛЁНКИ ═══════════ -->
+<div class="content-block" id="ch-winding" data-block="ch-winding">
+<div class="block-header">
+  <span class="block-num">Раздел 2.4</span>
+  <span class="block-title">Система протяжки плёнки</span>
+</div>
+<div class="block-body">
+
+<ul class="t-list">
+  <li>В средней зоне с LED-подсветкой расположены три направляющих вала из нержавеющей стали для проведения термотрансферной плёнки. Схему заправки см. в разделе «Схема заправки плёнки».</li>
+  <li>Переключатель LED-подсветки (зелёный круг справа) — используется для наблюдения за качеством печати и загрузки/выгрузки материалов.</li>
+  <li>Вентиляторы охлаждения — расположены за защитными сетками, охлаждают внутреннюю часть корпуса и термотрансферную плёнку.</li>
+  <li>Жёлтый рулон — используется для намотки отпечатанной термотрансферной плёнки. Переключатель направления перемотки расположен под зелёным индикатором справа.</li>
+</ul>
+
+<h3 class="t-sub">Защита дверец</h3>
+<ul class="t-list">
+  <li><strong>Дверца зоны встряхивания:</strong> При открытии дверцы мотор встряхивания автоматически останавливается. Работа возобновляется только после закрытия дверцы.</li>
+  <li><strong>Защита лотка подачи порошка:</strong> При открытии верхней крышки мотор распределения порошка автоматически останавливается. Работа возобновляется только после закрытия заслонки.</li>
+</ul>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p9_66.png" loading="lazy" onclick="zoom(this.src)" alt="Протяжка"><div class="img-cap">Система протяжки</div></div>
+<div class="img-card"><img src="images/img_p9_67.png" loading="lazy" onclick="zoom(this.src)" alt="LED подсветка"><div class="img-cap">LED-подсветка</div></div>
+<div class="img-card"><img src="images/img_p9_68.png" loading="lazy" onclick="zoom(this.src)" alt="Вентиляторы"><div class="img-cap">Вентиляторы охлаждения</div></div>
+<div class="img-card"><img src="images/img_p9_69.png" loading="lazy" onclick="zoom(this.src)" alt="Рулон"><div class="img-cap">Рулон намотки</div></div>
+<div class="img-card"><img src="images/img_p9_70.png" loading="lazy" onclick="zoom(this.src)" alt="Дверцы"><div class="img-cap">Система защиты дверец</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ УПРАВЛЕНИЕ ДАТЧИКАМИ ═══════════ -->
+<div class="content-block" id="ch-probe" data-block="ch-probe">
+<div class="block-header">
+  <span class="block-num">Раздел 2.5</span>
+  <span class="block-title">Управление датчиками</span>
+</div>
+<div class="block-body">
+
+<h3 class="t-sub">Фотоэлектрический датчик</h3>
+<p class="t-body">Определяет наличие термотрансферной плёнки. Управляет мотором встряхивания, сетчатой лентой, очистителем и нагревом печи.</p>
+
+<ul class="t-list">
+  <li><strong>Мотор встряхивания:</strong> Если датчик не обнаруживает плёнку в течение 10 секунд, мотор встряхивания останавливается.</li>
+  <li><strong>Сетчатая лента:</strong> При отсутствии плёнки лента останавливается немедленно. При обнаружении плёнки лента и мотор встряхивания запускаются с задержкой 1 секунда.</li>
+  <li><strong>Нагрев печи:</strong> Если плёнка не обнаружена, нагрев и очиститель отключаются через 5 минут.</li>
+</ul>
+
+<h3 class="t-sub">Датчик приближения</h3>
+<p class="t-body">Используется для контроля количества порошка.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p10_73.png" loading="lazy" onclick="zoom(this.src)" alt="Датчик приближения"><div class="img-cap">Датчик приближения</div></div>
+<div class="img-card"><img src="images/img_p10_74.png" loading="lazy" onclick="zoom(this.src)" alt="Фотоэлектрический датчик"><div class="img-cap">Фотоэлектрический датчик</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ РЕГУЛИРОВКА ПОРОШКА ═══════════ -->
+<div class="content-block" id="ch-powder" data-block="ch-powder">
+<div class="block-header">
+  <span class="block-num">Раздел 2.6</span>
+  <span class="block-title">Регулировка количества порошка</span>
+</div>
+<div class="block-body">
+
+<p class="t-body">Если позиция металлического указателя сдвинута на одно деление выше или ниже отметки 5, количество порошка существенно не изменяется. При позиции 5 на плёнку попадает примерно 500–600 грамм порошка.</p>
+
+<div class="alert danger">
+  <span class="alert-icon">⚠️</span>
+  <div class="alert-text"><div class="alert-head">ПРЕДУПРЕЖДЕНИЕ</div><p>Если указатель установлен слишком низко, порошок будет подаваться непрерывно без остановки, и загорится красный индикатор аварии (срабатывает каждые 5 минут). Время индикации можно настроить в параметрах. Не рекомендуется устанавливать более 5 минут.</p></div>
+</div>
+
+<div class="alert note">
+  <span class="alert-icon">💡</span>
+  <div class="alert-text"><div class="alert-head">ВАЖНО</div><p>Позиция указателя не должна быть ниже 3. Если значение меньше 3, количество порошка будет недостаточным, и на некоторых участках изображения порошок может отсутствовать.</p></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ОЧИСТИТЕЛЬ ═══════════ -->
+<div class="content-block" id="ch-purifier" data-block="ch-purifier">
+<div class="block-header">
+  <span class="block-num">Раздел 2.7</span>
+  <span class="block-title">Регулировка и очиститель воздуха</span>
+</div>
+<div class="block-body">
+
+<h3 class="t-sub">Регулировка заслонки порошка</h3>
+<p class="t-body">Крепления плёнки (синий квадрат) — это конструкция для термотрансферной плёнки и порошка, регулировка не требуется. Стрелки в красном кружке позволяют регулировать заслонку порошка. После отпускания заслонка автоматически фиксируется.</p>
+
+<h3 class="t-sub">Очиститель воздуха</h3>
+<p class="t-body">Очиститель использует электростатическое разделение, металлическую сетку, активированный уголь и HEPA-фильтр для четырёхступенчатой очистки воздуха. Срок службы угольного и HEPA-фильтров зависит от условий эксплуатации. Регулярно очищайте фильтры и заменяйте расходные материалы по мере необходимости. При наличии вытяжки на улицу частота замены снижается.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p11_77.png" loading="lazy" onclick="zoom(this.src)" alt="Регулировка"><div class="img-cap">Регулировка заслонки</div></div>
+<div class="img-card"><img src="images/img_p11_78.png" loading="lazy" onclick="zoom(this.src)" alt="Очиститель"><div class="img-cap">Очиститель воздуха</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ СХЕМА ЗАПРАВКИ ПЛЁНКИ ═══════════ -->
+<div class="content-block" id="ch-film" data-block="ch-film">
+<div class="block-header">
+  <span class="block-num">Раздел 2.8</span>
+  <span class="block-title">Схема заправки плёнки</span>
+</div>
+<div class="block-body">
+
+<p class="t-body">Ниже представлена схема заправки термотрансферной плёнки через направляющие валы машины. Следуйте указанному порядку при установке нового рулона.</p>
+
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p11_79.png" loading="lazy" onclick="zoom(this.src)" alt="Схема заправки"><div class="img-cap">Схема заправки плёнки</div></div>
+<div class="img-card"><img src="images/img_p11_80.png" loading="lazy" onclick="zoom(this.src)" alt="Направление плёнки"><div class="img-cap">Направление движения плёнки</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ ГЛАВА 3: ОБСЛУЖИВАНИЕ ═══════════ -->
+<div class="content-block" id="ch-maint" data-block="ch-maint">
+<div class="block-header">
+  <span class="block-num">Глава 3</span>
+  <span class="block-title">Обслуживание оборудования</span>
+</div>
+<div class="block-body">
+
+<h3 class="t-sub">Ежедневное обслуживание</h3>
+<ul class="t-list">
+  <li>Регулярно очищайте поверхность машины от пыли и остатков порошка.</li>
+  <li>Проверяйте и очищайте фильтры очистителя воздуха.</li>
+  <li>Проверяйте натяжение сетчатой ленты и состояние направляющих валов.</li>
+  <li>Контролируйте уровень порошка в лотке подачи.</li>
+</ul>
+
+<h3 class="t-sub">Периодическое обслуживание</h3>
+<ul class="t-list">
+  <li>Заменяйте активированный уголь и HEPA-фильтр по мере снижения эффективности очистки.</li>
+  <li>Проверяйте состояние кабелей питания и соединений.</li>
+  <li>Смазывайте подвижные части (направляющие, валы) согласно графику.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- ═══════════ ПОИСК НЕИСПРАВНОСТЕЙ ═══════════ -->
+<div class="content-block" id="ch-trouble" data-block="ch-trouble">
+<div class="block-header">
+  <span class="block-num">Раздел 3.1</span>
+  <span class="block-title">Поиск неисправностей</span>
+</div>
+<div class="block-body">
+
+<table class="fault-table">
+  <tr><th>Неисправность</th><th>Возможная причина и решение</th></tr>
+  <tr><td>Порошок не прилипает к плёнке</td><td>1. Проверьте температуру передней направляющей и зон сушки.<br>2. Убедитесь, что гибкость порошка соответствует типу плёнки.<br>3. Проверьте качество печати — достаточно ли чернил на плёнке.</td></tr>
+  <tr><td>Порошок сыпется непрерывно</td><td>1. Проверьте позицию указателя датчика приближения (должна быть не ниже 3).<br>2. Проверьте работоспособность датчика приближения.<br>3. Убедитесь, что заслонка порошка правильно закрыта.</td></tr>
+  <tr><td>Сетчатая лента не движется</td><td>1. Проверьте, обнаруживает ли фотоэлектрический датчик плёнку.<br>2. Проверьте подключение мотора сетчатой ленты.<br>3. Убедитесь, что машина находится в автоматическом режиме.</td></tr>
+  <tr><td>Машина не включается</td><td>1. Проверьте подключение кабеля питания и напряжение сети.<br>2. Убедитесь, что кнопка аварийной остановки не нажата.<br>3. Проверьте главный выключатель питания.</td></tr>
+  <tr><td>Перегрев оборудования</td><td>1. Проверьте работу вентиляторов охлаждения.<br>2. Убедитесь, что заданные температуры не превышают рекомендуемые значения.<br>3. Проверьте, не заблокированы ли вентиляционные отверстия.</td></tr>
+  <tr><td>Горит красный индикатор</td><td>1. Проверьте, не возникла ли перегрузка мотора.<br>2. Проверьте тайм-аут подачи порошка.<br>3. Нажмите кнопку сброса для устранения сигнала тревоги.</td></tr>
+</table>
+
+</div>
+</div>
+
+<!-- ═══════════ ЭЛЕКТРИЧЕСКАЯ СХЕМА ═══════════ -->
+<div class="content-block" id="ch-wiring" data-block="ch-wiring">
+<div class="block-header">
+  <span class="block-num">Раздел 3.2</span>
+  <span class="block-title">Электрическая схема и PT100</span>
+</div>
+<div class="block-body">
+
+<p class="t-body">Система контроля температуры использует датчики PT100 для точного измерения температуры в каждой зоне нагрева. Датчик PT100 работает по принципу изменения сопротивления платины при изменении температуры.</p>
+
+<h3 class="t-sub">Сервисная информация</h3>
+<div class="spec-grid">
+  <div class="spec-card"><div class="sc-label">Производитель</div><div class="sc-value">Henan Audley Digital Co., Ltd.</div></div>
+  <div class="spec-card"><div class="sc-label">Техническая поддержка</div><div class="sc-value">Обратитесь к дилеру, у которого приобретено оборудование</div></div>
+</div>
+
+</div>
+</div>
+
+<!-- ═════ ГАЛЕРЕЯ ═════ -->
+<div class="content-block" id="ch-gallery" data-block="ch-gallery">
+<div class="block-header"><span class="block-num">Галерея</span><span class="block-title">Дополнительные иллюстрации</span></div>
+<div class="block-body">
+<div class="img-grid">
+<div class="img-card"><img src="images/img_p12_83.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p12_83</div></div>
+<div class="img-card"><img src="images/img_p14_93.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p14_93</div></div>
+<div class="img-card"><img src="images/img_p15_96.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p15_96</div></div>
+<div class="img-card"><img src="images/img_p15_97.png" loading="lazy" onclick="zoom(this.src)" alt="">
+<div class="img-cap">Иллюстрация p15_97</div></div>
+</div>
+</div></div>
+</main>
+
+<script>
+const links = document.querySelectorAll('nav a[data-id]');
+const blocks = document.querySelectorAll('[data-block]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('on', l.dataset.id === e.target.dataset.block));
+    }
+  });
+}, {threshold: 0.1, rootMargin: '-20% 0px -70% 0px'});
+blocks.forEach(b => observer.observe(b));
+
+function zoom(src) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').classList.add('show');
+}
+document.getElementById('lb').addEventListener('click', () => document.getElementById('lb').classList.remove('show'));
+</script>
+</body>
+</html>

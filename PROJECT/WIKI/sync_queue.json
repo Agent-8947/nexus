@@ -1,0 +1,1562 @@
+[
+  {
+    "name": "build-your-own-x",
+    "url": "https://github.com/codecrafters-io/build-your-own-x"
+  },
+  {
+    "name": "awesome",
+    "url": "https://github.com/sindresorhus/awesome"
+  },
+  {
+    "name": "freeCodeCamp",
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+  },
+  {
+    "name": "public-apis",
+    "url": "https://github.com/public-apis/public-apis"
+  },
+  {
+    "name": "free-programming-books",
+    "url": "https://github.com/EbookFoundation/free-programming-books"
+  },
+  {
+    "name": "developer-roadmap",
+    "url": "https://github.com/kamranahmedse/developer-roadmap"
+  },
+  {
+    "name": "openclaw",
+    "url": "https://github.com/openclaw/openclaw"
+  },
+  {
+    "name": "system-design-primer",
+    "url": "https://github.com/donnemartin/system-design-primer"
+  },
+  {
+    "name": "coding-interview-university",
+    "url": "https://github.com/jwasham/coding-interview-university"
+  },
+  {
+    "name": "awesome-python",
+    "url": "https://github.com/vinta/awesome-python"
+  },
+  {
+    "name": "awesome-selfhosted",
+    "url": "https://github.com/awesome-selfhosted/awesome-selfhosted"
+  },
+  {
+    "name": "996.ICU",
+    "url": "https://github.com/996icu/996.ICU"
+  },
+  {
+    "name": "project-based-learning",
+    "url": "https://github.com/practical-tutorials/project-based-learning"
+  },
+  {
+    "name": "react",
+    "url": "https://github.com/facebook/react"
+  },
+  {
+    "name": "linux",
+    "url": "https://github.com/torvalds/linux"
+  },
+  {
+    "name": "Python",
+    "url": "https://github.com/TheAlgorithms/Python"
+  },
+  {
+    "name": "the-book-of-secret-knowledge",
+    "url": "https://github.com/trimstray/the-book-of-secret-knowledge"
+  },
+  {
+    "name": "vue",
+    "url": "https://github.com/vuejs/vue"
+  },
+  {
+    "name": "computer-science",
+    "url": "https://github.com/ossu/computer-science"
+  },
+  {
+    "name": "javascript-algorithms",
+    "url": "https://github.com/trekhleb/javascript-algorithms"
+  },
+  {
+    "name": "tensorflow",
+    "url": "https://github.com/tensorflow/tensorflow"
+  },
+  {
+    "name": "ohmyzsh",
+    "url": "https://github.com/ohmyzsh/ohmyzsh"
+  },
+  {
+    "name": "You-Dont-Know-JS",
+    "url": "https://github.com/getify/You-Dont-Know-JS"
+  },
+  {
+    "name": "CS-Notes",
+    "url": "https://github.com/CyC2018/CS-Notes"
+  },
+  {
+    "name": "vscode",
+    "url": "https://github.com/microsoft/vscode"
+  },
+  {
+    "name": "AutoGPT",
+    "url": "https://github.com/Significant-Gravitas/AutoGPT"
+  },
+  {
+    "name": "n8n",
+    "url": "https://github.com/n8n-io/n8n"
+  },
+  {
+    "name": "Python-100-Days",
+    "url": "https://github.com/jackfrued/Python-100-Days"
+  },
+  {
+    "name": "flutter",
+    "url": "https://github.com/flutter/flutter"
+  },
+  {
+    "name": "bootstrap",
+    "url": "https://github.com/twbs/bootstrap"
+  },
+  {
+    "name": "gitignore",
+    "url": "https://github.com/github/gitignore"
+  },
+  {
+    "name": "Microsoft-Activation-Scripts",
+    "url": "https://github.com/massgravel/Microsoft-Activation-Scripts"
+  },
+  {
+    "name": "awesome-go",
+    "url": "https://github.com/avelino/awesome-go"
+  },
+  {
+    "name": "ollama",
+    "url": "https://github.com/ollama/ollama"
+  },
+  {
+    "name": "claw-code",
+    "url": "https://github.com/ultraworkers/claw-code"
+  },
+  {
+    "name": "stable-diffusion-webui",
+    "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+  },
+  {
+    "name": "the-art-of-command-line",
+    "url": "https://github.com/jlevy/the-art-of-command-line"
+  },
+  {
+    "name": "transformers",
+    "url": "https://github.com/huggingface/transformers"
+  },
+  {
+    "name": "prompts.chat",
+    "url": "https://github.com/f/prompts.chat"
+  },
+  {
+    "name": "FreeDomain",
+    "url": "https://github.com/DigitalPlatDev/FreeDomain"
+  },
+  {
+    "name": "yt-dlp",
+    "url": "https://github.com/yt-dlp/yt-dlp"
+  },
+  {
+    "name": "JavaGuide",
+    "url": "https://github.com/Snailclimb/JavaGuide"
+  },
+  {
+    "name": "HelloGitHub",
+    "url": "https://github.com/521xueweihan/HelloGitHub"
+  },
+  {
+    "name": "javascript",
+    "url": "https://github.com/airbnb/javascript"
+  },
+  {
+    "name": "langflow",
+    "url": "https://github.com/langflow-ai/langflow"
+  },
+  {
+    "name": "youtube-dl",
+    "url": "https://github.com/ytdl-org/youtube-dl"
+  },
+  {
+    "name": "next.js",
+    "url": "https://github.com/vercel/next.js"
+  },
+  {
+    "name": "tech-interview-handbook",
+    "url": "https://github.com/yangshun/tech-interview-handbook"
+  },
+  {
+    "name": "scrcpy",
+    "url": "https://github.com/Genymobile/scrcpy"
+  },
+  {
+    "name": "everything-claude-code",
+    "url": "https://github.com/affaan-m/everything-claude-code"
+  },
+  {
+    "name": "opencode",
+    "url": "https://github.com/anomalyco/opencode"
+  },
+  {
+    "name": "dify",
+    "url": "https://github.com/langgenius/dify"
+  },
+  {
+    "name": "superpowers",
+    "url": "https://github.com/obra/superpowers"
+  },
+  {
+    "name": "system-prompts-and-models-of-ai-tools",
+    "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools"
+  },
+  {
+    "name": "go",
+    "url": "https://github.com/golang/go"
+  },
+  {
+    "name": "fucking-algorithm",
+    "url": "https://github.com/labuladong/fucking-algorithm"
+  },
+  {
+    "name": "langchain",
+    "url": "https://github.com/langchain-ai/langchain"
+  },
+  {
+    "name": "PowerToys",
+    "url": "https://github.com/microsoft/PowerToys"
+  },
+  {
+    "name": "open-webui",
+    "url": "https://github.com/open-webui/open-webui"
+  },
+  {
+    "name": "30-seconds-of-code",
+    "url": "https://github.com/Chalarangelo/30-seconds-of-code"
+  },
+  {
+    "name": "react-native",
+    "url": "https://github.com/facebook/react-native"
+  },
+  {
+    "name": "hello-algo",
+    "url": "https://github.com/krahets/hello-algo"
+  },
+  {
+    "name": "kubernetes",
+    "url": "https://github.com/kubernetes/kubernetes"
+  },
+  {
+    "name": "electron",
+    "url": "https://github.com/electron/electron"
+  },
+  {
+    "name": "free-for-dev",
+    "url": "https://github.com/ripienaar/free-for-dev"
+  },
+  {
+    "name": "excalidraw",
+    "url": "https://github.com/excalidraw/excalidraw"
+  },
+  {
+    "name": "node",
+    "url": "https://github.com/nodejs/node"
+  },
+  {
+    "name": "free-programming-books-zh\\_CN",
+    "url": "https://github.com/justjavac/free-programming-books-zh\\_CN"
+  },
+  {
+    "name": "iptv",
+    "url": "https://github.com/iptv-org/iptv"
+  },
+  {
+    "name": "d3",
+    "url": "https://github.com/d3/d3"
+  },
+  {
+    "name": "three.js",
+    "url": "https://github.com/mrdoob/three.js"
+  },
+  {
+    "name": "rust",
+    "url": "https://github.com/rust-lang/rust"
+  },
+  {
+    "name": "ui",
+    "url": "https://github.com/shadcn-ui/ui"
+  },
+  {
+    "name": "rustdesk",
+    "url": "https://github.com/rustdesk/rustdesk"
+  },
+  {
+    "name": "skills",
+    "url": "https://github.com/anthropics/skills"
+  },
+  {
+    "name": "Awesome-Hacking",
+    "url": "https://github.com/Hack-with-Github/Awesome-Hacking"
+  },
+  {
+    "name": "axios",
+    "url": "https://github.com/axios/axios"
+  },
+  {
+    "name": "godot",
+    "url": "https://github.com/godotengine/godot"
+  },
+  {
+    "name": "generative-ai-for-beginners",
+    "url": "https://github.com/microsoft/generative-ai-for-beginners"
+  },
+  {
+    "name": "claude-code",
+    "url": "https://github.com/anthropics/claude-code"
+  },
+  {
+    "name": "TypeScript",
+    "url": "https://github.com/microsoft/TypeScript"
+  },
+  {
+    "name": "ComfyUI",
+    "url": "https://github.com/Comfy-Org/ComfyUI"
+  },
+  {
+    "name": "clash-verge-rev",
+    "url": "https://github.com/clash-verge-rev/clash-verge-rev"
+  },
+  {
+    "name": "GitHub-Chinese-Top-Charts",
+    "url": "https://github.com/GrowingGit/GitHub-Chinese-Top-Charts"
+  },
+  {
+    "name": "deno",
+    "url": "https://github.com/denoland/deno"
+  },
+  {
+    "name": "frp",
+    "url": "https://github.com/fatedier/frp"
+  },
+  {
+    "name": "nodebestpractices",
+    "url": "https://github.com/goldbergyoni/nodebestpractices"
+  },
+  {
+    "name": "tauri",
+    "url": "https://github.com/tauri-apps/tauri"
+  },
+  {
+    "name": "papers-we-love",
+    "url": "https://github.com/papers-we-love/papers-we-love"
+  },
+  {
+    "name": "awesome-llm-apps",
+    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps"
+  },
+  {
+    "name": "firecrawl",
+    "url": "https://github.com/firecrawl/firecrawl"
+  },
+  {
+    "name": "create-react-app",
+    "url": "https://github.com/facebook/create-react-app"
+  },
+  {
+    "name": "terminal",
+    "url": "https://github.com/microsoft/terminal"
+  },
+  {
+    "name": "DeepSeek-V3",
+    "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+  },
+  {
+    "name": "awesome-mac",
+    "url": "https://github.com/jaywcjlove/awesome-mac"
+  },
+  {
+    "name": "llama.cpp",
+    "url": "https://github.com/ggml-org/llama.cpp"
+  },
+  {
+    "name": "v2rayN",
+    "url": "https://github.com/2dust/v2rayN"
+  },
+  {
+    "name": "supabase",
+    "url": "https://github.com/supabase/supabase"
+  },
+  {
+    "name": "gemini-cli",
+    "url": "https://github.com/google-gemini/gemini-cli"
+  },
+  {
+    "name": "angular",
+    "url": "https://github.com/angular/angular"
+  },
+  {
+    "name": "HowToCook",
+    "url": "https://github.com/Anduin2017/HowToCook"
+  },
+  {
+    "name": "pytorch",
+    "url": "https://github.com/pytorch/pytorch"
+  },
+  {
+    "name": "every-programmer-should-know",
+    "url": "https://github.com/mtdvio/every-programmer-should-know"
+  },
+  {
+    "name": "neovim",
+    "url": "https://github.com/neovim/neovim"
+  },
+  {
+    "name": "material-ui",
+    "url": "https://github.com/mui/material-ui"
+  },
+  {
+    "name": "ant-design",
+    "url": "https://github.com/ant-design/ant-design"
+  },
+  {
+    "name": "whisper",
+    "url": "https://github.com/openai/whisper"
+  },
+  {
+    "name": "fastapi",
+    "url": "https://github.com/fastapi/fastapi"
+  },
+  {
+    "name": "immich",
+    "url": "https://github.com/immich-app/immich"
+  },
+  {
+    "name": "thefuck",
+    "url": "https://github.com/nvbn/thefuck"
+  },
+  {
+    "name": "Web-Dev-For-Beginners",
+    "url": "https://github.com/microsoft/Web-Dev-For-Beginners"
+  },
+  {
+    "name": "tailwindcss",
+    "url": "https://github.com/tailwindlabs/tailwindcss"
+  },
+  {
+    "name": "clean-code-javascript",
+    "url": "https://github.com/ryanmcdermott/clean-code-javascript"
+  },
+  {
+    "name": "puppeteer",
+    "url": "https://github.com/puppeteer/puppeteer"
+  },
+  {
+    "name": "java-design-patterns",
+    "url": "https://github.com/iluwatar/java-design-patterns"
+  },
+  {
+    "name": "markitdown",
+    "url": "https://github.com/microsoft/markitdown"
+  },
+  {
+    "name": "nvm",
+    "url": "https://github.com/nvm-sh/nvm"
+  },
+  {
+    "name": "app-ideas",
+    "url": "https://github.com/florinpop17/app-ideas"
+  },
+  {
+    "name": "DeepSeek-R1",
+    "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  {
+    "name": "vue-element-admin",
+    "url": "https://github.com/PanJiaChen/vue-element-admin"
+  },
+  {
+    "name": "LLMs-from-scratch",
+    "url": "https://github.com/rasbt/LLMs-from-scratch"
+  },
+  {
+    "name": "storybook",
+    "url": "https://github.com/storybookjs/storybook"
+  },
+  {
+    "name": "bun",
+    "url": "https://github.com/oven-sh/bun"
+  },
+  {
+    "name": "bitcoin",
+    "url": "https://github.com/bitcoin/bitcoin"
+  },
+  {
+    "name": "Deep-Live-Cam",
+    "url": "https://github.com/hacksider/Deep-Live-Cam"
+  },
+  {
+    "name": "gin",
+    "url": "https://github.com/gin-gonic/gin"
+  },
+  {
+    "name": "NextChat",
+    "url": "https://github.com/ChatGPTNextWeb/NextChat"
+  },
+  {
+    "name": "hugo",
+    "url": "https://github.com/gohugoio/hugo"
+  },
+  {
+    "name": "weekly",
+    "url": "https://github.com/ruanyf/weekly"
+  },
+  {
+    "name": "django",
+    "url": "https://github.com/django/django"
+  },
+  {
+    "name": "mermaid",
+    "url": "https://github.com/mermaid-js/mermaid"
+  },
+  {
+    "name": "opencv",
+    "url": "https://github.com/opencv/opencv"
+  },
+  {
+    "name": "svelte",
+    "url": "https://github.com/sveltejs/svelte"
+  },
+  {
+    "name": "browser-use",
+    "url": "https://github.com/browser-use/browser-use"
+  },
+  {
+    "name": "core",
+    "url": "https://github.com/home-assistant/core"
+  },
+  {
+    "name": "manim",
+    "url": "https://github.com/3b1b/manim"
+  },
+  {
+    "name": "playwright",
+    "url": "https://github.com/microsoft/playwright"
+  },
+  {
+    "name": "spec-kit",
+    "url": "https://github.com/github/spec-kit"
+  },
+  {
+    "name": "ML-For-Beginners",
+    "url": "https://github.com/microsoft/ML-For-Beginners"
+  },
+  {
+    "name": "uptime-kuma",
+    "url": "https://github.com/louislam/uptime-kuma"
+  },
+  {
+    "name": "awesome-mcp-servers",
+    "url": "https://github.com/punkpeye/awesome-mcp-servers"
+  },
+  {
+    "name": "awesome-for-beginners",
+    "url": "https://github.com/MunGell/awesome-for-beginners"
+  },
+  {
+    "name": "laravel",
+    "url": "https://github.com/laravel/laravel"
+  },
+  {
+    "name": "mall",
+    "url": "https://github.com/macrozheng/mall"
+  },
+  {
+    "name": "realworld",
+    "url": "https://github.com/realworld-apps/realworld"
+  },
+  {
+    "name": "servers",
+    "url": "https://github.com/modelcontextprotocol/servers"
+  },
+  {
+    "name": "animate.css",
+    "url": "https://github.com/animate-css/animate.css"
+  },
+  {
+    "name": "uv",
+    "url": "https://github.com/astral-sh/uv"
+  },
+  {
+    "name": "devops-exercises",
+    "url": "https://github.com/bregman-arie/devops-exercises"
+  },
+  {
+    "name": "awesome-interview-questions",
+    "url": "https://github.com/DopplerHQ/awesome-interview-questions"
+  },
+  {
+    "name": "system-design-101",
+    "url": "https://github.com/ByteByteGoHq/system-design-101"
+  },
+  {
+    "name": "syncthing",
+    "url": "https://github.com/syncthing/syncthing"
+  },
+  {
+    "name": "FiraCode",
+    "url": "https://github.com/tonsky/FiraCode"
+  },
+  {
+    "name": "spring-boot",
+    "url": "https://github.com/spring-projects/spring-boot"
+  },
+  {
+    "name": "funNLP",
+    "url": "https://github.com/fighting41love/funNLP"
+  },
+  {
+    "name": "vite",
+    "url": "https://github.com/vitejs/vite"
+  },
+  {
+    "name": "cs-video-courses",
+    "url": "https://github.com/Developer-Y/cs-video-courses"
+  },
+  {
+    "name": "sherlock",
+    "url": "https://github.com/sherlock-project/sherlock"
+  },
+  {
+    "name": "fzf",
+    "url": "https://github.com/junegunn/fzf"
+  },
+  {
+    "name": "github-readme-stats",
+    "url": "https://github.com/anuraghazra/github-readme-stats"
+  },
+  {
+    "name": "advanced-java",
+    "url": "https://github.com/doocs/advanced-java"
+  },
+  {
+    "name": "hoppscotch",
+    "url": "https://github.com/hoppscotch/hoppscotch"
+  },
+  {
+    "name": "zed",
+    "url": "https://github.com/zed-industries/zed"
+  },
+  {
+    "name": "netdata",
+    "url": "https://github.com/netdata/netdata"
+  },
+  {
+    "name": "llm-course",
+    "url": "https://github.com/mlabonne/llm-course"
+  },
+  {
+    "name": "models",
+    "url": "https://github.com/tensorflow/models"
+  },
+  {
+    "name": "localsend",
+    "url": "https://github.com/localsend/localsend"
+  },
+  {
+    "name": "gpt4all",
+    "url": "https://github.com/nomic-ai/gpt4all"
+  },
+  {
+    "name": "ragflow",
+    "url": "https://github.com/infiniflow/ragflow"
+  },
+  {
+    "name": "code-server",
+    "url": "https://github.com/coder/code-server"
+  },
+  {
+    "name": "d2l-zh",
+    "url": "https://github.com/d2l-ai/d2l-zh"
+  },
+  {
+    "name": "LeetCodeAnimation",
+    "url": "https://github.com/MisterBooo/LeetCodeAnimation"
+  },
+  {
+    "name": "PayloadsAllTheThings",
+    "url": "https://github.com/swisskyrepo/PayloadsAllTheThings"
+  },
+  {
+    "name": "Font-Awesome",
+    "url": "https://github.com/FortAwesome/Font-Awesome"
+  },
+  {
+    "name": "elasticsearch",
+    "url": "https://github.com/elastic/elasticsearch"
+  },
+  {
+    "name": "Stirling-PDF",
+    "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+  },
+  {
+    "name": "Best-websites-a-programmer-should-visit",
+    "url": "https://github.com/sdmg15/Best-websites-a-programmer-should-visit"
+  },
+  {
+    "name": "json-server",
+    "url": "https://github.com/typicode/json-server"
+  },
+  {
+    "name": "lazygit",
+    "url": "https://github.com/jesseduffield/lazygit"
+  },
+  {
+    "name": "Ventoy",
+    "url": "https://github.com/ventoy/Ventoy"
+  },
+  {
+    "name": "vllm",
+    "url": "https://github.com/vllm-project/vllm"
+  },
+  {
+    "name": "nest",
+    "url": "https://github.com/nestjs/nest"
+  },
+  {
+    "name": "PaddleOCR",
+    "url": "https://github.com/PaddlePaddle/PaddleOCR"
+  },
+  {
+    "name": "lobehub",
+    "url": "https://github.com/lobehub/lobehub"
+  },
+  {
+    "name": "union",
+    "url": "https://github.com/unionlabs/union"
+  },
+  {
+    "name": "awesome-public-datasets",
+    "url": "https://github.com/awesomedata/awesome-public-datasets"
+  },
+  {
+    "name": "redis",
+    "url": "https://github.com/redis/redis"
+  },
+  {
+    "name": "awesome-vue",
+    "url": "https://github.com/vuejs/awesome-vue"
+  },
+  {
+    "name": "tesseract",
+    "url": "https://github.com/tesseract-ocr/tesseract"
+  },
+  {
+    "name": "codex",
+    "url": "https://github.com/openai/codex"
+  },
+  {
+    "name": "grafana",
+    "url": "https://github.com/grafana/grafana"
+  },
+  {
+    "name": "the-algorithm",
+    "url": "https://github.com/twitter/the-algorithm"
+  },
+  {
+    "name": "stable-diffusion",
+    "url": "https://github.com/CompVis/stable-diffusion"
+  },
+  {
+    "name": "Prompt-Engineering-Guide",
+    "url": "https://github.com/dair-ai/Prompt-Engineering-Guide"
+  },
+  {
+    "name": "awesome-react",
+    "url": "https://github.com/enaqx/awesome-react"
+  },
+  {
+    "name": "openai-cookbook",
+    "url": "https://github.com/openai/openai-cookbook"
+  },
+  {
+    "name": "Front-End-Checklist",
+    "url": "https://github.com/thedaviddias/Front-End-Checklist"
+  },
+  {
+    "name": "imgui",
+    "url": "https://github.com/ocornut/imgui"
+  },
+  {
+    "name": "superset",
+    "url": "https://github.com/apache/superset"
+  },
+  {
+    "name": "cpython",
+    "url": "https://github.com/python/cpython"
+  },
+  {
+    "name": "awesome-machine-learning",
+    "url": "https://github.com/josephmisiti/awesome-machine-learning"
+  },
+  {
+    "name": "screenshot-to-code",
+    "url": "https://github.com/abi/screenshot-to-code"
+  },
+  {
+    "name": "cs-self-learning",
+    "url": "https://github.com/PKUFlyingPig/cs-self-learning"
+  },
+  {
+    "name": "strapi",
+    "url": "https://github.com/strapi/strapi"
+  },
+  {
+    "name": "moby",
+    "url": "https://github.com/moby/moby"
+  },
+  {
+    "name": "obs-studio",
+    "url": "https://github.com/obsproject/obs-studio"
+  },
+  {
+    "name": "flask",
+    "url": "https://github.com/pallets/flask"
+  },
+  {
+    "name": "daytona",
+    "url": "https://github.com/daytonaio/daytona"
+  },
+  {
+    "name": "caddy",
+    "url": "https://github.com/caddyserver/caddy"
+  },
+  {
+    "name": "agency-agents",
+    "url": "https://github.com/msitarzewski/agency-agents"
+  },
+  {
+    "name": "protobuf",
+    "url": "https://github.com/protocolbuffers/protobuf"
+  },
+  {
+    "name": "reveal.js",
+    "url": "https://github.com/hakimel/reveal.js"
+  },
+  {
+    "name": "awesome-cpp",
+    "url": "https://github.com/fffaraz/awesome-cpp"
+  },
+  {
+    "name": "OpenHands",
+    "url": "https://github.com/OpenHands/OpenHands"
+  },
+  {
+    "name": "gpt\\_academic",
+    "url": "https://github.com/binary-husky/gpt\\_academic"
+  },
+  {
+    "name": "awesome-scalability",
+    "url": "https://github.com/binhnguyennus/awesome-scalability"
+  },
+  {
+    "name": "tabby",
+    "url": "https://github.com/Eugeny/tabby"
+  },
+  {
+    "name": "SecLists",
+    "url": "https://github.com/danielmiessler/SecLists"
+  },
+  {
+    "name": "swift",
+    "url": "https://github.com/swiftlang/swift"
+  },
+  {
+    "name": "act",
+    "url": "https://github.com/nektos/act"
+  },
+  {
+    "name": "LlamaFactory",
+    "url": "https://github.com/hiyouga/LlamaFactory"
+  },
+  {
+    "name": "AppFlowy",
+    "url": "https://github.com/AppFlowy-IO/AppFlowy"
+  },
+  {
+    "name": "express",
+    "url": "https://github.com/expressjs/express"
+  },
+  {
+    "name": "node",
+    "url": "https://github.com/base/node"
+  },
+  {
+    "name": "ansible",
+    "url": "https://github.com/ansible/ansible"
+  },
+  {
+    "name": "awesome-courses",
+    "url": "https://github.com/prakhar1989/awesome-courses"
+  },
+  {
+    "name": "Chart.js",
+    "url": "https://github.com/chartjs/Chart.js"
+  },
+  {
+    "name": "anime",
+    "url": "https://github.com/juliangarnier/anime"
+  },
+  {
+    "name": "AFFiNE",
+    "url": "https://github.com/toeverything/AFFiNE"
+  },
+  {
+    "name": "ChinaTextbook",
+    "url": "https://github.com/TapXWorld/ChinaTextbook"
+  },
+  {
+    "name": "MetaGPT",
+    "url": "https://github.com/FoundationAgents/MetaGPT"
+  },
+  {
+    "name": "ghidra",
+    "url": "https://github.com/NationalSecurityAgency/ghidra"
+  },
+  {
+    "name": "33-js-concepts",
+    "url": "https://github.com/leonardomso/33-js-concepts"
+  },
+  {
+    "name": "annotated\\_deep\\_learning\\_paper\\_implementations",
+    "url": "https://github.com/labmlai/annotated\\_deep\\_learning\\_paper\\_implementations"
+  },
+  {
+    "name": "echarts",
+    "url": "https://github.com/apache/echarts"
+  },
+  {
+    "name": "gpt4free",
+    "url": "https://github.com/xtekky/gpt4free"
+  },
+  {
+    "name": "webpack",
+    "url": "https://github.com/webpack/webpack"
+  },
+  {
+    "name": "scikit-learn",
+    "url": "https://github.com/scikit-learn/scikit-learn"
+  },
+  {
+    "name": "autoresearch",
+    "url": "https://github.com/karpathy/autoresearch"
+  },
+  {
+    "name": "awesome-nodejs",
+    "url": "https://github.com/sindresorhus/awesome-nodejs"
+  },
+  {
+    "name": "OpenBB",
+    "url": "https://github.com/OpenBB-finance/OpenBB"
+  },
+  {
+    "name": "Java",
+    "url": "https://github.com/TheAlgorithms/Java"
+  },
+  {
+    "name": "javascript-questions",
+    "url": "https://github.com/lydiahallie/javascript-questions"
+  },
+  {
+    "name": "design-resources-for-developers",
+    "url": "https://github.com/bradtraversy/design-resources-for-developers"
+  },
+  {
+    "name": "nocode",
+    "url": "https://github.com/kelseyhightower/nocode"
+  },
+  {
+    "name": "interviews",
+    "url": "https://github.com/kdn251/interviews"
+  },
+  {
+    "name": "localstack",
+    "url": "https://github.com/localstack/localstack"
+  },
+  {
+    "name": "Apollo-11",
+    "url": "https://github.com/chrislgarry/Apollo-11"
+  },
+  {
+    "name": "docusaurus",
+    "url": "https://github.com/facebook/docusaurus"
+  },
+  {
+    "name": "gstack",
+    "url": "https://github.com/garrytan/gstack"
+  },
+  {
+    "name": "keras",
+    "url": "https://github.com/keras-team/keras"
+  },
+  {
+    "name": "prometheus",
+    "url": "https://github.com/prometheus/prometheus"
+  },
+  {
+    "name": "crawl4ai",
+    "url": "https://github.com/unclecode/crawl4ai"
+  },
+  {
+    "name": "pathway",
+    "url": "https://github.com/pathwaycom/pathway"
+  },
+  {
+    "name": "alacritty",
+    "url": "https://github.com/alacritty/alacritty"
+  },
+  {
+    "name": "socket.io",
+    "url": "https://github.com/socketio/socket.io"
+  },
+  {
+    "name": "open-interpreter",
+    "url": "https://github.com/openinterpreter/open-interpreter"
+  },
+  {
+    "name": "resume.github.com",
+    "url": "https://github.com/resume/resume.github.com"
+  },
+  {
+    "name": "nocodb",
+    "url": "https://github.com/nocodb/nocodb"
+  },
+  {
+    "name": "uBlock",
+    "url": "https://github.com/gorhill/uBlock"
+  },
+  {
+    "name": "traefik",
+    "url": "https://github.com/traefik/traefik"
+  },
+  {
+    "name": "rustlings",
+    "url": "https://github.com/rust-lang/rustlings"
+  },
+  {
+    "name": "nerd-fonts",
+    "url": "https://github.com/ryanoasis/nerd-fonts"
+  },
+  {
+    "name": "ladybird",
+    "url": "https://github.com/LadybirdBrowser/ladybird"
+  },
+  {
+    "name": "tldr",
+    "url": "https://github.com/tldr-pages/tldr"
+  },
+  {
+    "name": "ripgrep",
+    "url": "https://github.com/BurntSushi/ripgrep"
+  },
+  {
+    "name": "sway",
+    "url": "https://github.com/FuelLabs/sway"
+  },
+  {
+    "name": "lodash",
+    "url": "https://github.com/lodash/lodash"
+  },
+  {
+    "name": "redux",
+    "url": "https://github.com/reduxjs/redux"
+  },
+  {
+    "name": "scrapy",
+    "url": "https://github.com/scrapy/scrapy"
+  },
+  {
+    "name": "leetcode-master",
+    "url": "https://github.com/youngyangyang04/leetcode-master"
+  },
+  {
+    "name": "atom",
+    "url": "https://github.com/atom/atom"
+  },
+  {
+    "name": "architect-awesome",
+    "url": "https://github.com/xingshaocheng/architect-awesome"
+  },
+  {
+    "name": "Front-end-Developer-Interview-Questions",
+    "url": "https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+  },
+  {
+    "name": "minio",
+    "url": "https://github.com/minio/minio"
+  },
+  {
+    "name": "30-Days-Of-Python",
+    "url": "https://github.com/Asabeneh/30-Days-Of-Python"
+  },
+  {
+    "name": "openpilot",
+    "url": "https://github.com/commaai/openpilot"
+  },
+  {
+    "name": "drawio-desktop",
+    "url": "https://github.com/jgraph/drawio-desktop"
+  },
+  {
+    "name": "markdown-here",
+    "url": "https://github.com/adam-p/markdown-here"
+  },
+  {
+    "name": "git",
+    "url": "https://github.com/git/git"
+  },
+  {
+    "name": "nuxt",
+    "url": "https://github.com/nuxt/nuxt"
+  },
+  {
+    "name": "llm-app",
+    "url": "https://github.com/pathwaycom/llm-app"
+  },
+  {
+    "name": "cline",
+    "url": "https://github.com/cline/cline"
+  },
+  {
+    "name": "jquery",
+    "url": "https://github.com/jquery/jquery"
+  },
+  {
+    "name": "spring-framework",
+    "url": "https://github.com/spring-projects/spring-framework"
+  },
+  {
+    "name": "Magisk",
+    "url": "https://github.com/topjohnwu/Magisk"
+  },
+  {
+    "name": "Real-Time-Voice-Cloning",
+    "url": "https://github.com/CorentinJ/Real-Time-Voice-Cloning"
+  },
+  {
+    "name": "awesome-flutter",
+    "url": "https://github.com/Solido/awesome-flutter"
+  },
+  {
+    "name": "unsloth",
+    "url": "https://github.com/unslothai/unsloth"
+  },
+  {
+    "name": "llama",
+    "url": "https://github.com/meta-llama/llama"
+  },
+  {
+    "name": "shadowsocks-windows",
+    "url": "https://github.com/shadowsocks/shadowsocks-windows"
+  },
+  {
+    "name": "awesome-chatgpt-prompts-zh",
+    "url": "https://github.com/PlexPt/awesome-chatgpt-prompts-zh"
+  },
+  {
+    "name": "angular.js",
+    "url": "https://github.com/angular/angular.js"
+  },
+  {
+    "name": "FFmpeg",
+    "url": "https://github.com/FFmpeg/FFmpeg"
+  },
+  {
+    "name": "memos",
+    "url": "https://github.com/usememos/memos"
+  },
+  {
+    "name": "mkcert",
+    "url": "https://github.com/FiloSottile/mkcert"
+  },
+  {
+    "name": "ui-ux-pro-max-skill",
+    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+  },
+  {
+    "name": "rails",
+    "url": "https://github.com/rails/rails"
+  },
+  {
+    "name": "astro",
+    "url": "https://github.com/withastro/astro"
+  },
+  {
+    "name": "MinerU",
+    "url": "https://github.com/opendatalab/MinerU"
+  },
+  {
+    "name": "bat",
+    "url": "https://github.com/sharkdp/bat"
+  },
+  {
+    "name": "vaultwarden",
+    "url": "https://github.com/dani-garcia/vaultwarden"
+  },
+  {
+    "name": "deer-flow",
+    "url": "https://github.com/bytedance/deer-flow"
+  },
+  {
+    "name": "hackingtool",
+    "url": "https://github.com/Z4nzu/hackingtool"
+  },
+  {
+    "name": "anything-llm",
+    "url": "https://github.com/Mintplex-Labs/anything-llm"
+  },
+  {
+    "name": "zustand",
+    "url": "https://github.com/pmndrs/zustand"
+  },
+  {
+    "name": "html5-boilerplate",
+    "url": "https://github.com/h5bp/html5-boilerplate"
+  },
+  {
+    "name": "pocketbase",
+    "url": "https://github.com/pocketbase/pocketbase"
+  },
+  {
+    "name": "DeepLearning-500-questions",
+    "url": "https://github.com/scutan90/DeepLearning-500-questions"
+  },
+  {
+    "name": "fuel-core",
+    "url": "https://github.com/FuelLabs/fuel-core"
+  },
+  {
+    "name": "private-gpt",
+    "url": "https://github.com/zylon-ai/private-gpt"
+  },
+  {
+    "name": "yolov5",
+    "url": "https://github.com/ultralytics/yolov5"
+  },
+  {
+    "name": "docling",
+    "url": "https://github.com/docling-project/docling"
+  },
+  {
+    "name": "meilisearch",
+    "url": "https://github.com/meilisearch/meilisearch"
+  },
+  {
+    "name": "you-get",
+    "url": "https://github.com/soimort/you-get"
+  },
+  {
+    "name": "autogen",
+    "url": "https://github.com/microsoft/autogen"
+  },
+  {
+    "name": "awesome-rust",
+    "url": "https://github.com/rust-unofficial/awesome-rust"
+  },
+  {
+    "name": "rclone",
+    "url": "https://github.com/rclone/rclone"
+  },
+  {
+    "name": "pi-hole",
+    "url": "https://github.com/pi-hole/pi-hole"
+  },
+  {
+    "name": "GPT-SoVITS",
+    "url": "https://github.com/RVC-Boss/GPT-SoVITS"
+  },
+  {
+    "name": "react-router",
+    "url": "https://github.com/remix-run/react-router"
+  },
+  {
+    "name": "face\\_recognition",
+    "url": "https://github.com/ageitgey/face\\_recognition"
+  },
+  {
+    "name": "nanoGPT",
+    "url": "https://github.com/karpathy/nanoGPT"
+  },
+  {
+    "name": "github-cheat-sheet",
+    "url": "https://github.com/tiimgreen/github-cheat-sheet"
+  },
+  {
+    "name": "rich",
+    "url": "https://github.com/Textualize/rich"
+  },
+  {
+    "name": "gatsby",
+    "url": "https://github.com/gatsbyjs/gatsby"
+  },
+  {
+    "name": "ai-agents-for-beginners",
+    "url": "https://github.com/microsoft/ai-agents-for-beginners"
+  },
+  {
+    "name": "starship",
+    "url": "https://github.com/starship/starship"
+  },
+  {
+    "name": "awesome-android-ui",
+    "url": "https://github.com/wasabeef/awesome-android-ui"
+  },
+  {
+    "name": "leetcode",
+    "url": "https://github.com/azl397985856/leetcode"
+  },
+  {
+    "name": "project-layout",
+    "url": "https://github.com/golang-standards/project-layout"
+  },
+  {
+    "name": "OpenManus",
+    "url": "https://github.com/FoundationAgents/OpenManus"
+  },
+  {
+    "name": "appwrite",
+    "url": "https://github.com/appwrite/appwrite"
+  },
+  {
+    "name": "ultralytics",
+    "url": "https://github.com/ultralytics/ultralytics"
+  },
+  {
+    "name": "gpt-engineer",
+    "url": "https://github.com/AntonOsika/gpt-engineer"
+  },
+  {
+    "name": "faceswap",
+    "url": "https://github.com/deepfakes/faceswap"
+  },
+  {
+    "name": "MoneyPrinterTurbo",
+    "url": "https://github.com/harry0703/MoneyPrinterTurbo"
+  },
+  {
+    "name": "marktext",
+    "url": "https://github.com/marktext/marktext"
+  },
+  {
+    "name": "gitea",
+    "url": "https://github.com/go-gitea/gitea"
+  },
+  {
+    "name": "ChatGPT",
+    "url": "https://github.com/lencx/ChatGPT"
+  },
+  {
+    "name": "joplin",
+    "url": "https://github.com/laurent22/joplin"
+  },
+  {
+    "name": "element",
+    "url": "https://github.com/ElemeFE/element"
+  },
+  {
+    "name": "maybe",
+    "url": "https://github.com/maybe-finance/maybe"
+  },
+  {
+    "name": "requests",
+    "url": "https://github.com/psf/requests"
+  },
+  {
+    "name": "segment-anything",
+    "url": "https://github.com/facebookresearch/segment-anything"
+  },
+  {
+    "name": "normalize.css",
+    "url": "https://github.com/necolas/normalize.css"
+  },
+  {
+    "name": "dive",
+    "url": "https://github.com/wagoodman/dive"
+  },
+  {
+    "name": "Free-Certifications",
+    "url": "https://github.com/cloudcommunity/Free-Certifications"
+  },
+  {
+    "name": "powerlevel10k",
+    "url": "https://github.com/romkatv/powerlevel10k"
+  },
+  {
+    "name": "n8n-workflows",
+    "url": "https://github.com/Zie619/n8n-workflows"
+  },
+  {
+    "name": "trackerslist",
+    "url": "https://github.com/ngosang/trackerslist"
+  },
+  {
+    "name": "core",
+    "url": "https://github.com/vuejs/core"
+  },
+  {
+    "name": "first-contributions",
+    "url": "https://github.com/firstcontributions/first-contributions"
+  },
+  {
+    "name": "v2rayNG",
+    "url": "https://github.com/2dust/v2rayNG"
+  },
+  {
+    "name": "pdf.js",
+    "url": "https://github.com/mozilla/pdf.js"
+  },
+  {
+    "name": "ImHex",
+    "url": "https://github.com/WerWolv/ImHex"
+  },
+  {
+    "name": "material-design-icons",
+    "url": "https://github.com/google/material-design-icons"
+  },
+  {
+    "name": "termux-app",
+    "url": "https://github.com/termux/termux-app"
+  },
+  {
+    "name": "coolify",
+    "url": "https://github.com/coollabsio/coolify"
+  },
+  {
+    "name": "kotlin",
+    "url": "https://github.com/JetBrains/kotlin"
+  },
+  {
+    "name": "typst",
+    "url": "https://github.com/typst/typst"
+  },
+  {
+    "name": "ionic-framework",
+    "url": "https://github.com/ionic-team/ionic-framework"
+  },
+  {
+    "name": "Docker-OSX",
+    "url": "https://github.com/sickcodes/Docker-OSX"
+  },
+  {
+    "name": "Ghost",
+    "url": "https://github.com/TryGhost/Ghost"
+  },
+  {
+    "name": "PowerShell",
+    "url": "https://github.com/PowerShell/PowerShell"
+  },
+  {
+    "name": "mem0",
+    "url": "https://github.com/mem0ai/mem0"
+  },
+  {
+    "name": "prettier",
+    "url": "https://github.com/prettier/prettier"
+  },
+  {
+    "name": "awesome-ios",
+    "url": "https://github.com/vsouza/awesome-ios"
+  },
+  {
+    "name": "etcd",
+    "url": "https://github.com/etcd-io/etcd"
+  },
+  {
+    "name": "context7",
+    "url": "https://github.com/upstash/context7"
+  },
+  {
+    "name": "Flowise",
+    "url": "https://github.com/FlowiseAI/Flowise"
+  },
+  {
+    "name": "grok-1",
+    "url": "https://github.com/xai-org/grok-1"
+  },
+  {
+    "name": "guava",
+    "url": "https://github.com/google/guava"
+  },
+  {
+    "name": "jekyll",
+    "url": "https://github.com/jekyll/jekyll"
+  },
+  {
+    "name": "Motrix",
+    "url": "https://github.com/agalwood/Motrix"
+  },
+  {
+    "name": "chinese-poetry",
+    "url": "https://github.com/chinese-poetry/chinese-poetry"
+  },
+  {
+    "name": "DefinitelyTyped",
+    "url": "https://github.com/DefinitelyTyped/DefinitelyTyped"
+  },
+  {
+    "name": "Semantic-UI",
+    "url": "https://github.com/Semantic-Org/Semantic-UI"
+  },
+  {
+    "name": "awesome-claude-skills",
+    "url": "https://github.com/ComposioHQ/awesome-claude-skills"
+  },
+  {
+    "name": "nanochat",
+    "url": "https://github.com/karpathy/nanochat"
+  },
+  {
+    "name": "go-ethereum",
+    "url": "https://github.com/ethereum/go-ethereum"
+  },
+  {
+    "name": "winutil",
+    "url": "https://github.com/ChrisTitusTech/winutil"
+  },
+  {
+    "name": "TrendRadar",
+    "url": "https://github.com/sansan0/TrendRadar"
+  },
+  {
+    "name": "windows",
+    "url": "https://github.com/dockur/windows"
+  },
+  {
+    "name": "professional-programming",
+    "url": "https://github.com/charlax/professional-programming"
+  },
+  {
+    "name": "awesome-wechat-weapp",
+    "url": "https://github.com/justjavac/awesome-wechat-weapp"
+  },
+  {
+    "name": "hiring-without-whiteboards",
+    "url": "https://github.com/poteto/hiring-without-whiteboards"
+  },
+  {
+    "name": "lazydocker",
+    "url": "https://github.com/jesseduffield/lazydocker"
+  },
+  {
+    "name": "100-Days-Of-ML-Code",
+    "url": "https://github.com/Avik-Jain/100-Days-Of-ML-Code"
+  },
+  {
+    "name": "bulma",
+    "url": "https://github.com/jgthms/bulma"
+  }
+]

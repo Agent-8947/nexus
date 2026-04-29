@@ -1,0 +1,34 @@
+{
+  "agent_id": "FAVICON_HASH_HUNTER",
+  "domain": "OSINT",
+  "purpose": "Calculate favicon hashes (MurmurHash3) for correlation across Shodan/Censys",
+  "api_endpoints": [
+    "https://{domain}/favicon.ico"
+  ],
+  "data_model": {
+    "domain": "TEXT",
+    "favicon_url": "TEXT",
+    "mmh3_hash": "INTEGER",
+    "md5": "TEXT",
+    "file_size": "INTEGER",
+    "shodan_query": "TEXT"
+  },
+  "core_algorithm": "MurmurHash3 favicon fingerprinting for infrastructure correlation",
+  "input_type": "domain",
+  "output_format": "json_report",
+  "required_imports": [
+    "requests",
+    "logging",
+    "sqlite3",
+    "hashlib",
+    "base64",
+    "struct"
+  ],
+  "logic_markers": [
+    "favicon.ico",
+    "mmh3",
+    "murmur",
+    "http.favicon.hash"
+  ],
+  "spec_hash": "6550857247f6185f"
+}

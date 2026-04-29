@@ -1,0 +1,263 @@
+# วิทยาศาสตร์ข้อมูลสำหรับผู้เริ่มต้น - หลักสูตร
+
+[![เปิดใน GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=344191198)
+
+[![GitHub license](https://img.shields.io/github/license/microsoft/Data-Science-For-Beginners.svg)](https://github.com/microsoft/Data-Science-For-Beginners/blob/master/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/graphs/contributors/)
+[![GitHub issues](https://img.shields.io/github/issues/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/microsoft/Data-Science-For-Beginners.svg)](https://GitHub.com/microsoft/Data-Science-For-Beginners/pulls/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+[![GitHub watchers](https://img.shields.io/github/watchers/microsoft/Data-Science-For-Beginners.svg?style=social&label=Watch)](https://GitHub.com/microsoft/Data-Science-For-Beginners/watchers/)
+[![GitHub forks](https://img.shields.io/github/forks/microsoft/Data-Science-For-Beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/Data-Science-For-Beginners/network/)
+[![GitHub stars](https://img.shields.io/github/stars/microsoft/Data-Science-For-Beginners.svg?style=social&label=Star)](https://GitHub.com/microsoft/Data-Science-For-Beginners/stargazers/)
+
+
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+ทีมสนับสนุน Azure Cloud Advocates ที่ Microsoft ยินดีนำเสนอหลักสูตร 10 สัปดาห์ 20 บทเรียนทั้งหมดเกี่ยวกับวิทยาศาสตร์ข้อมูล แต่ละบทเรียนจะมีแบบทดสอบก่อนและหลังบทเรียน คำแนะนำเป็นลายลักษณ์อักษรสำหรับการทำบทเรียนให้เสร็จสมบูรณ์ โซลูชัน และแบบฝึกหัด วิธีการเรียนรู้แบบโครงการของเราช่วยให้คุณเรียนรู้ไปพร้อมกับการสร้าง ซึ่งเป็นวิธีที่พิสูจน์แล้วว่าส่งผลให้ทักษะใหม่ 'ฝังแน่น'
+
+**ขอขอบคุณเป็นอย่างสูงต่อผู้เขียนของเรา:** [Jasmine Greenaway](https://www.twitter.com/paladique), [Dmitry Soshnikov](http://soshnikov.com), [Nitya Narasimhan](https://twitter.com/nitya), [Jalen McGee](https://twitter.com/JalenMcG), [Jen Looper](https://twitter.com/jenlooper), [Maud Levy](https://twitter.com/maudstweets), [Tiffany Souterre](https://twitter.com/TiffanySouterre), [Christopher Harrison](https://www.twitter.com/geektrainer).
+
+**🙏 ขอบคุณเป็นพิเศษ 🙏 แก่ [Microsoft Student Ambassador](https://studentambassadors.microsoft.com/) ผู้เขียน ผู้ตรวจทาน และผู้ที่มีส่วนร่วมในเนื้อหา** โดยเฉพาะอย่างยิ่ง Aaryan Arora, [Aditya Garg](https://github.com/AdityaGarg00), [Alondra Sanchez](https://www.linkedin.com/in/alondra-sanchez-molina/), [Ankita Singh](https://www.linkedin.com/in/ankitasingh007), [Anupam Mishra](https://www.linkedin.com/in/anupam--mishra/), [Arpita Das](https://www.linkedin.com/in/arpitadas01/), ChhailBihari Dubey, [Dibri Nsofor](https://www.linkedin.com/in/dibrinsofor), [Dishita Bhasin](https://www.linkedin.com/in/dishita-bhasin-7065281bb), [Majd Safi](https://www.linkedin.com/in/majd-s/), [Max Blum](https://www.linkedin.com/in/max-blum-6036a1186/), [Miguel Correa](https://www.linkedin.com/in/miguelmque/), [Mohamma Iftekher (Iftu) Ebne Jalal](https://twitter.com/iftu119), [Nawrin Tabassum](https://www.linkedin.com/in/nawrin-tabassum), [Raymond Wangsa Putra](https://www.linkedin.com/in/raymond-wp/), [Rohit Yadav](https://www.linkedin.com/in/rty2423), Samridhi Sharma, [Sanya Sinha](https://www.linkedin.com/mwlite/in/sanya-sinha-13aab1200),
+[Sheena Narula](https://www.linkedin.com/in/sheena-narua-n/), [Tauqeer Ahmad](https://www.linkedin.com/in/tauqeerahmad5201/), Yogendrasingh Pawar , [Vidushi Gupta](https://www.linkedin.com/in/vidushi-gupta07/), [Jasleen Sondhi](https://www.linkedin.com/in/jasleen-sondhi/)
+
+|![สเก็ตช์โน้ตโดย @sketchthedocs https://sketchthedocs.dev](../../translated_images/th/00-Title.8af36cd35da1ac55.webp)|
+|:---:|
+| วิทยาศาสตร์ข้อมูลสำหรับผู้เริ่มต้น - _สเก็ตช์โน้ตโดย [@nitya](https://twitter.com/nitya)_ |
+
+### 🌐 การสนับสนุนหลายภาษา
+
+#### สนับสนุนผ่าน GitHub Action (อัตโนมัติ & อัปเดตเสมอ)
+
+<!-- CO-OP TRANSLATOR LANGUAGES TABLE START -->
+[Arabic](../ar/README.md) | [Bengali](../bn/README.md) | [Bulgarian](../bg/README.md) | [Burmese (Myanmar)](../my/README.md) | [Chinese (Simplified)](../zh-CN/README.md) | [Chinese (Traditional, Hong Kong)](../zh-HK/README.md) | [Chinese (Traditional, Macau)](../zh-MO/README.md) | [Chinese (Traditional, Taiwan)](../zh-TW/README.md) | [Croatian](../hr/README.md) | [Czech](../cs/README.md) | [Danish](../da/README.md) | [Dutch](../nl/README.md) | [Estonian](../et/README.md) | [Finnish](../fi/README.md) | [French](../fr/README.md) | [German](../de/README.md) | [Greek](../el/README.md) | [Hebrew](../he/README.md) | [Hindi](../hi/README.md) | [Hungarian](../hu/README.md) | [Indonesian](../id/README.md) | [Italian](../it/README.md) | [Japanese](../ja/README.md) | [Kannada](../kn/README.md) | [Korean](../ko/README.md) | [Lithuanian](../lt/README.md) | [Malay](../ms/README.md) | [Malayalam](../ml/README.md) | [Marathi](../mr/README.md) | [Nepali](../ne/README.md) | [Nigerian Pidgin](../pcm/README.md) | [Norwegian](../no/README.md) | [Persian (Farsi)](../fa/README.md) | [Polish](../pl/README.md) | [Portuguese (Brazil)](../pt-BR/README.md) | [Portuguese (Portugal)](../pt-PT/README.md) | [Punjabi (Gurmukhi)](../pa/README.md) | [Romanian](../ro/README.md) | [Russian](../ru/README.md) | [Serbian (Cyrillic)](../sr/README.md) | [Slovak](../sk/README.md) | [Slovenian](../sl/README.md) | [Spanish](../es/README.md) | [Swahili](../sw/README.md) | [Swedish](../sv/README.md) | [Tagalog (Filipino)](../tl/README.md) | [Tamil](../ta/README.md) | [Telugu](../te/README.md) | [Thai](./README.md) | [Turkish](../tr/README.md) | [Ukrainian](../uk/README.md) | [Urdu](../ur/README.md) | [Vietnamese](../vi/README.md)
+
+> **ต้องการโคลนแบบติดตั้งในเครื่องไหม?**
+>
+> ที่เก็บนี้มีการแปลภาษาเกิน 50 ภาษา ซึ่งจะเพิ่มขนาดการดาวน์โหลดอย่างมาก ถ้าต้องการโคลนโดยไม่รวมการแปล ให้ใช้ sparse checkout:
+>
+> **Bash / macOS / Linux:**
+> ```bash
+> git clone --filter=blob:none --sparse https://github.com/microsoft/Data-Science-For-Beginners.git
+> cd Data-Science-For-Beginners
+> git sparse-checkout set --no-cone '/*' '!translations' '!translated_images'
+> ```
+>
+> **CMD (Windows):**
+> ```cmd
+> git clone --filter=blob:none --sparse https://github.com/microsoft/Data-Science-For-Beginners.git
+> cd Data-Science-For-Beginners
+> git sparse-checkout set --no-cone "/*" "!translations" "!translated_images"
+> ```
+>
+> นี้จะมอบทุกอย่างที่คุณต้องการเพื่อทำหลักสูตรให้เสร็จได้อย่างรวดเร็วขึ้นมาก
+<!-- CO-OP TRANSLATOR LANGUAGES TABLE END -->
+
+**หากคุณต้องการให้สนับสนุนภาษาการแปลเพิ่มเติม รายการภาษาที่สนับสนุนอยู่ [ที่นี่](https://github.com/Azure/co-op-translator/blob/main/getting_started/supported-languages.md)**
+
+#### เข้าร่วมชุมชนของเรา
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+เรามีซีรีส์ Discord เรียนรู้กับ AI ที่กำลังดำเนินอยู่ เรียนรู้เพิ่มเติมและเข้าร่วมกับเราได้ที่ [Learn with AI Series](https://aka.ms/learnwithai/discord) ตั้งแต่ 18 - 30 กันยายน 2025 คุณจะได้รับเคล็ดลับและเทคนิคในการใช้ GitHub Copilot สำหรับวิทยาศาสตร์ข้อมูล
+
+![Learn with AI series](../../translated_images/th/1.2b28cdc6205e26fe.webp)
+
+# คุณเป็นนักเรียนหรือไม่?
+
+เริ่มต้นด้วยทรัพยากรดังต่อไปนี้:
+
+- [หน้าศูนย์นักเรียน](https://docs.microsoft.com/en-gb/learn/student-hub?WT.mc_id=academic-77958-bethanycheum) ในหน้านี้คุณจะพบทรัพยากรสำหรับผู้เริ่มต้น ชุดนักเรียน และแม้แต่ช่องทางในการรับบัตรรับรองฟรี นี่คือหน้าที่คุณควรบันทึกไว้และตรวจสอบเป็นระยะๆ เนื่องจากเราจะสลับเปลี่ยนเนื้อหาอย่างน้อยเดือนละครั้ง
+- [Microsoft Learn Student Ambassadors](https://studentambassadors.microsoft.com?WT.mc_id=academic-77958-bethanycheum) เข้าร่วมชุมชนนักเรียนทั่วโลก นี่อาจเป็นช่องทางของคุณเข้าสู่ Microsoft
+
+# เริ่มต้นใช้งาน
+
+## 📚 เอกสาร
+
+- **[คู่มือการติดตั้ง](INSTALLATION.md)** - คำแนะนำทีละขั้นตอนสำหรับผู้เริ่มต้น
+- **[คู่มือการใช้งาน](USAGE.md)** - ตัวอย่างและกระบวนการทำงานทั่วไป
+- **[การแก้ไขปัญหา](TROUBLESHOOTING.md)** - วิธีแก้ไขปัญหาที่พบบ่อย
+- **[คู่มือการมีส่วนร่วม](CONTRIBUTING.md)** - วิธีการมีส่วนร่วมในโครงการนี้
+- **[สำหรับครูผู้สอน](for-teachers.md)** - แนวทางการสอนและทรัพยากรในชั้นเรียน
+
+## 👨‍🎓 สำหรับนักเรียน
+> **ผู้เริ่มต้นอย่างสมบูรณ์**: ใหม่กับวิทยาศาสตร์ข้อมูลหรือไม่? เริ่มต้นด้วย [ตัวอย่างที่เหมาะสำหรับผู้เริ่มต้น](examples/README.md)! ตัวอย่างง่าย ๆ ที่มีคำอธิบายดีจะช่วยให้คุณเข้าใจพื้นฐานก่อนเจาะลึกหลักสูตรทั้งหมด
+> **[นักเรียน](https://aka.ms/student-page)**: เพื่อใช้หลักสูตรนี้ด้วยตัวเอง ให้ fork รีโปทั้งหมดและทำแบบฝึกหัดด้วยตัวเอง เริ่มจากแบบทดสอบก่อนบรรยาย จากนั้นอ่านบรรยายและทำกิจกรรมที่เหลือให้ครบ พยายามสร้างโครงการโดยเข้าใจบทเรียนแทนการก็อปปี้โค้ดโซลูชัน อย่างไรก็ตาม โค้ดเหล่านั้นพร้อมใช้งานในโฟลเดอร์ /solutions ในแต่ละบทเรียนที่เน้นโครงการ อีกวิธีหนึ่งคือสร้างกลุ่มศึกษาเรียนรู้กับเพื่อนและเรียนรู้เนื้อหาร่วมกัน สำหรับการศึกษาต่อ เราแนะนำ [Microsoft Learn](https://docs.microsoft.com/en-us/users/jenlooper-2911/collections/qprpajyoy3x0g7?WT.mc_id=academic-77958-bethanycheum)
+
+**เริ่มต้นอย่างรวดเร็ว:**
+1. ตรวจสอบ [คู่มือการติดตั้ง](INSTALLATION.md) เพื่อตั้งค่าสภาพแวดล้อมของคุณ
+2. ทบทวน [คู่มือการใช้งาน](USAGE.md) เพื่อเรียนรู้วิธีทำงานกับหลักสูตร
+3. เริ่มที่บทเรียนที่ 1 และทำตามลำดับ
+4. เข้าร่วม [ชุมชน Discord ของเรา](https://aka.ms/ds4beginners/discord) เพื่อขอความช่วยเหลือ
+
+## 👩‍🏫 สำหรับครูผู้สอน
+> **ครูผู้สอน**: เราได้ [รวมคำแนะนำบางส่วน](for-teachers.md) เกี่ยวกับวิธีการใช้หลักสูตรนี้ไว้แล้ว เรายินดีรับฟังข้อเสนอแนะของคุณ [ในฟอรัมสนทนาของเรา](https://github.com/microsoft/Data-Science-For-Beginners/discussions)!
+
+## ทำความรู้จักทีมงาน
+
+[![วิดีโอโฆษณา](../../ds-for-beginners.gif)](https://youtu.be/8mzavjQSMM4 "วิดีโอโฆษณา")
+
+**Gif โดย** [Mohit Jaisal](https://www.linkedin.com/in/mohitjaisal)
+
+> 🎥 คลิกที่ภาพด้านบนเพื่อชมวิดีโอเกี่ยวกับโครงการและทีมที่สร้างสรรค์มัน!
+
+## หลักการสอน
+
+เราได้เลือกระเบียบวิธีการสอนสองข้อในการสร้างหลักสูตรนี้: รับรองว่ามันเป็นโครงการที่เน้นการปฏิบัติจริงและรวมถึงแบบทดสอบบ่อยครั้ง เมื่อจบซีรีส์นี้ นักเรียนจะได้เรียนรู้หลักการพื้นฐานของวิทยาศาสตร์ข้อมูล รวมถึงแนวคิดด้านจริยธรรม การเตรียมข้อมูล วิธีการต่าง ๆ ในการทำงานกับข้อมูล การสร้างภาพข้อมูล การวิเคราะห์ข้อมูล กรณีศึกษาในโลกจริงของวิทยาศาสตร์ข้อมูล และอื่น ๆ
+
+นอกจากนี้ แบบทดสอบที่ไม่เคร่งครัดก่อนเข้าเรียน ตั้งเจตนารมณ์ให้นักเรียนมีความตั้งใจเรียนหัวข้อนั้น ขณะที่แบบทดสอบที่สองหลังเรียนช่วยให้จดจำเนื้อหาได้ดียิ่งขึ้น หลักสูตรนี้ถูกออกแบบให้ยืดหยุ่นและสนุกสนาน สามารถเรียนทั้งหมดหรือบางส่วนได้ โครงการเริ่มต้นด้วยขนาดเล็กและซับซ้อนขึ้นเรื่อย ๆ จนจบในรอบ 10 สัปดาห์
+
+> ค้นหา [จรรยาบรรณ](CODE_OF_CONDUCT.md), [การมีส่วนร่วม](CONTRIBUTING.md), และ [แนวทางการแปล](TRANSLATIONS.md) ของเรา เรายินดีรับฟังข้อเสนอแนะในเชิงสร้างสรรค์จากคุณ!
+
+## แต่ละบทเรียนประกอบด้วย:
+
+- สเก็ตช์โน้ตเลือกทำ
+- วิดีโอเพิ่มเติมเลือกชม
+- แบบทดสอบอบอุ่นก่อนบทเรียน
+- บทเรียนที่เขียนไว้
+- สำหรับบทเรียนที่เป็นโครงการ มีคำแนะนำทีละขั้นตอนในการสร้างโครงการ
+- ตรวจสอบความรู้
+- ความท้าทาย
+- การอ่านเสริม
+- การบ้าน
+- [แบบทดสอบหลังบทเรียน](https://ff-quizzes.netlify.app/en/)
+
+> **หมายเหตุเกี่ยวกับแบบทดสอบ**: แบบทดสอบทั้งหมดเก็บไว้ในโฟลเดอร์ Quiz-App รวมทั้งหมด 40 แบบทดสอบ มีคำถามละ 3 ข้อ ลิงก์เชื่อมโยงภายในบทเรียน แต่แอปแบบทดสอบนี้สามารถรันแบบโลคอลหรือดีพลอยใน Azure ได้; ให้ทำตามคำแนะนำในโฟลเดอร์ `quiz-app` กำลังทยอยแปลอย่างต่อเนื่อง
+
+## 🎓 ตัวอย่างสำหรับผู้เริ่มต้น
+
+**ใหม่กับวิทยาศาสตร์ข้อมูลหรือไม่?** เราได้สร้าง [ไดเรกทอรีตัวอย่าง](examples/README.md) โดยเฉพาะที่มีรหัสง่าย ๆ พร้อมคอมเมนต์ละเอียด เพื่อช่วยให้คุณเริ่มต้นได้:
+
+- 🌟 **สวัสดีโลก** - โปรแกรมวิทยาศาสตร์ข้อมูลแรกของคุณ
+- 📂 **การโหลดข้อมูล** - เรียนรู้การอ่านและสำรวจชุดข้อมูล
+- 📊 **วิเคราะห์ง่าย ๆ** - คำนวณสถิติและค้นหารูปแบบ
+- 📈 **การสร้างภาพพื้นฐาน** - สร้างแผนภูมิและกราฟ
+- 🔬 **โครงการโลกจริง** - กระบวนการงานเต็มรูปแบบตั้งแต่เริ่มจนเสร็จ
+
+แต่ละตัวอย่างมีคำอธิบายรายละเอียดทุกขั้นตอน เหมาะอย่างยิ่งสำหรับผู้เริ่มต้นอย่างแท้จริง!
+
+👉 **[เริ่มต้นด้วยตัวอย่าง](examples/README.md)** 👈
+
+## บทเรียน
+
+
+|![ สเก็ตช์โน้ตโดย @sketchthedocs https://sketchthedocs.dev](../../translated_images/th/00-Roadmap.4905d6567dff4753.webp)|
+|:---:|
+| วิทยาศาสตร์ข้อมูลสำหรับผู้เริ่มต้น: แผนที่เส้นทาง - _สเก็ตช์โน้ตโดย [@nitya](https://twitter.com/nitya)_ |
+
+
+| หมายเลขบทเรียน | หัวข้อ | กลุ่มบทเรียน | วัตถุประสงค์การเรียนรู้ | ลิงก์บทเรียน | ผู้แต่ง |
+| :-----------: | :----------------------------------------: | :--------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------: | :----: |
+| 01 | การนิยามวิทยาศาสตร์ข้อมูล | [บทนำ](1-Introduction/README.md) | เรียนรู้แนวคิดพื้นฐานเบื้องหลังวิทยาศาสตร์ข้อมูลและความสัมพันธ์กับปัญญาประดิษฐ์ การเรียนรู้ของเครื่อง และบิ๊กดาต้า | [บทเรียน](1-Introduction/01-defining-data-science/README.md) [วิดีโอ](https://youtu.be/beZ7Mb_oz9I) | [Dmitry](http://soshnikov.com) |
+| 02 | จริยธรรมวิทยาศาสตร์ข้อมูล | [บทนำ](1-Introduction/README.md) | แนวคิดจริยธรรมข้อมูล ปัญหา และกรอบงาน | [บทเรียน](1-Introduction/02-ethics/README.md) | [Nitya](https://twitter.com/nitya) |
+| 03 | การนิยามข้อมูล | [บทนำ](1-Introduction/README.md) | วิธีการจัดประเภทข้อมูลและแหล่งข้อมูลทั่วไป | [บทเรียน](1-Introduction/03-defining-data/README.md) | [Jasmine](https://www.twitter.com/paladique) |
+| 04 | แนะนำสถิติและความน่าจะเป็น | [บทนำ](1-Introduction/README.md) | เทคนิคคณิตศาสตร์เกี่ยวกับความน่าจะเป็นและสถิติเพื่อทำความเข้าใจข้อมูล | [บทเรียน](1-Introduction/04-stats-and-probability/README.md) [วิดีโอ](https://youtu.be/Z5Zy85g4Yjw) | [Dmitry](http://soshnikov.com) |
+| 05 | การทำงานกับข้อมูลแบบเชิงสัมพันธ์ | [การทำงานกับข้อมูล](2-Working-With-Data/README.md) | แนะนำข้อมูลแบบเชิงสัมพันธ์ และพื้นฐานการสำรวจและวิเคราะห์ข้อมูลเชิงสัมพันธ์ด้วยภาษา Structured Query Language หรือ SQL (อ่านว่า "ซี-เควล") | [บทเรียน](2-Working-With-Data/05-relational-databases/README.md) | [Christopher](https://www.twitter.com/geektrainer) | | |
+| 06 | การทำงานกับข้อมูล NoSQL | [การทำงานกับข้อมูล](2-Working-With-Data/README.md) | แนะนำข้อมูลแบบไม่เชิงสัมพันธ์ ประเภทต่าง ๆ และพื้นฐานการสำรวจและวิเคราะห์ฐานข้อมูลเอกสาร | [บทเรียน](2-Working-With-Data/06-non-relational/README.md) | [Jasmine](https://twitter.com/paladique)|
+| 07 | การทำงานกับ Python | [การทำงานกับข้อมูล](2-Working-With-Data/README.md) | พื้นฐานการใช้ Python เพื่อสำรวจข้อมูลด้วยไลบรารีอย่าง Pandas แนะนำให้มีความเข้าใจพื้นฐานโปรแกรมมิ่ง Python | [บทเรียน](2-Working-With-Data/07-python/README.md) [วิดีโอ](https://youtu.be/dZjWOGbsN4Y) | [Dmitry](http://soshnikov.com) |
+| 08 | การเตรียมข้อมูล | [การทำงานกับข้อมูล](2-Working-With-Data/README.md) | หัวข้อเทคนิคล้างและแปลงข้อมูลเพื่อจัดการกับความท้าทายของข้อมูลที่หายไป ไม่ถูกต้อง หรือไม่ครบถ้วน | [บทเรียน](2-Working-With-Data/08-data-preparation/README.md) | [Jasmine](https://www.twitter.com/paladique) |
+| 09 | การสร้างภาพปริมาณ | [การสร้างภาพข้อมูล](3-Data-Visualization/README.md) | เรียนรู้วิธีใช้ Matplotlib เพื่อสร้างภาพข้อมูลนก 🦆 | [บทเรียน](3-Data-Visualization/09-visualization-quantities/README.md) | [Jen](https://twitter.com/jenlooper) |
+| 10 | การสร้างภาพการแจกแจงของข้อมูล | [การสร้างภาพข้อมูล](3-Data-Visualization/README.md) | การสร้างภาพสังเกตการณ์และแนวโน้มภายในช่วงค่า | [บทเรียน](3-Data-Visualization/10-visualization-distributions/README.md) | [Jen](https://twitter.com/jenlooper) |
+| 11 | การสร้างภาพสัดส่วน | [การสร้างภาพข้อมูล](3-Data-Visualization/README.md) | การสร้างภาพเปอร์เซ็นต์แบบแยกส่วนและแบ่งกลุ่ม | [บทเรียน](3-Data-Visualization/11-visualization-proportions/README.md) | [Jen](https://twitter.com/jenlooper) |
+| 12 | การสร้างภาพความสัมพันธ์ | [การสร้างภาพข้อมูล](3-Data-Visualization/README.md) | การสร้างภาพการเชื่อมโยงและความสัมพันธ์ระหว่างชุดข้อมูลและตัวแปรของมัน | [บทเรียน](3-Data-Visualization/12-visualization-relationships/README.md) | [Jen](https://twitter.com/jenlooper) |
+| 13 | การสร้างภาพที่มีความหมาย | [การสร้างภาพข้อมูล](3-Data-Visualization/README.md) | เทคนิคและคำแนะนำในการทำให้ภาพข้อมูลมีคุณค่าสำหรับการแก้ปัญหาและสร้างความเข้าใจ | [บทเรียน](3-Data-Visualization/13-meaningful-visualizations/README.md) | [Jen](https://twitter.com/jenlooper) |
+| 14 | แนะนำวงจรชีวิตวิทยาศาสตร์ข้อมูล | [วงจรชีวิต](4-Data-Science-Lifecycle/README.md) | แนะนำวงจรชีวิตของวิทยาศาสตร์ข้อมูลและขั้นตอนแรกของการได้มาและแยกข้อมูล | [บทเรียน](4-Data-Science-Lifecycle/14-Introduction/README.md) | [Jasmine](https://twitter.com/paladique) |
+| 15 | การวิเคราะห์ | [วงจรชีวิต](4-Data-Science-Lifecycle/README.md) | เฟสนี้ของวงจรชีวิตวิทยาศาสตร์ข้อมูลเน้นไปที่เทคนิคการวิเคราะห์ข้อมูล | [บทเรียน](4-Data-Science-Lifecycle/15-analyzing/README.md) | [Jasmine](https://twitter.com/paladique) | | |
+| 16 | การสื่อสาร | [วงจรชีวิต](4-Data-Science-Lifecycle/README.md) | เฟสนี้ของวงจรชีวิตวิทยาศาสตร์ข้อมูลเน้นการนำเสนอข้อมูลเชิงลึกจากข้อมูลในรูปแบบที่ช่วยให้ง่ายต่อการเข้าใจของผู้ตัดสินใจ | [บทเรียน](4-Data-Science-Lifecycle/16-communication/README.md) | [Jalen](https://twitter.com/JalenMcG) | | |
+| 17 | วิทยาศาสตร์ข้อมูลบนคลาวด์ | [ข้อมูลบนคลาวด์](5-Data-Science-In-Cloud/README.md) | ซีรีส์บทเรียนนี้แนะนำวิทยาศาสตร์ข้อมูลบนคลาวด์และประโยชน์ของมัน | [บทเรียน](5-Data-Science-In-Cloud/17-Introduction/README.md) | [Tiffany](https://twitter.com/TiffanySouterre) และ [Maud](https://twitter.com/maudstweets) |
+| 18 | วิทยาศาสตร์ข้อมูลบนคลาวด์ | [ข้อมูลบนคลาวด์](5-Data-Science-In-Cloud/README.md) | การฝึกอบรมโมเดลโดยใช้เครื่องมือ Low Code |[บทเรียน](5-Data-Science-In-Cloud/18-Low-Code/README.md) | [Tiffany](https://twitter.com/TiffanySouterre) และ [Maud](https://twitter.com/maudstweets) |
+| 19 | วิทยาศาสตร์ข้อมูลบนคลาวด์ | [ข้อมูลบนคลาวด์](5-Data-Science-In-Cloud/README.md) | การดีพลอยโมเดลด้วย Azure Machine Learning Studio | [บทเรียน](5-Data-Science-In-Cloud/19-Azure/README.md)| [Tiffany](https://twitter.com/TiffanySouterre) และ [Maud](https://twitter.com/maudstweets) |
+| 20 | วิทยาศาสตร์ข้อมูลในสภาพแวดล้อมจริง | [In the Wild](6-Data-Science-In-Wild/README.md) | โครงการที่ขับเคลื่อนด้วยวิทยาศาสตร์ข้อมูลในโลกจริง | [บทเรียน](6-Data-Science-In-Wild/20-Real-World-Examples/README.md) | [Nitya](https://twitter.com/nitya) |
+
+## GitHub Codespaces
+
+ทำตามขั้นตอนเหล่านี้เพื่อเปิดตัวอย่างนี้ใน Codespace:
+1. คลิกเมนูแบบเลื่อนลง Code และเลือกตัวเลือก Open with Codespaces
+2. เลือก + New codespace ที่ด้านล่างของแผง
+ดูข้อมูลเพิ่มเติมได้ที่ [เอกสาร GitHub](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace)
+
+## VSCode Remote - Containers
+ทำตามขั้นตอนเหล่านี้เพื่อเปิดรีโปนี้ในคอนเทนเนอร์โดยใช้เครื่องของคุณและ VSCode ผ่านส่วนขยาย VS Code Remote - Containers:
+
+1. หากเป็นครั้งแรกที่ใช้ container สำหรับพัฒนา กรุณาตรวจสอบว่าเครื่องคุณตรงตามข้อกำหนดล่วงหน้า (เช่น ติดตั้ง Docker แล้ว) ใน [เอกสารการเริ่มต้นใช้งาน](https://code.visualstudio.com/docs/devcontainers/containers#_getting-started)
+
+เพื่อใช้งานรีโปนี้ คุณสามารถเปิดใน Docker volume แยกต่างหาก:
+
+**หมายเหตุ**: งานเบื้องหลังนี้จะใช้คำสั่ง Remote-Containers: **Clone Repository in Container Volume...** เพื่อโคลนซอร์สโค้ดลงใน Docker volume แทนไฟล์ระบบในเครื่อง [Volumes](https://docs.docker.com/storage/volumes/) คือวิธีที่แนะนำสำหรับเก็บข้อมูลของคอนเทนเนอร์อย่างถาวร
+
+หรือเปิดรีโปที่โคลนหรือดาวน์โหลดมาในเครื่อง:
+
+- โคลนรีโปนี้ลงในเครื่องคุณ
+- กด F1 และเลือกคำสั่ง **Remote-Containers: Open Folder in Container...**
+- เลือกโฟลเดอร์ที่โคลนมา รอให้คอนเทนเนอร์เริ่มต้น แล้วทดลองใช้งาน
+
+## การเข้าถึงแบบออฟไลน์
+
+คุณสามารถเรียกดูเอกสารนี้แบบออฟไลน์ด้วย [Docsify](https://docsify.js.org/#/) สร้างสาขาใหม่ของรีโปนี้ [ติดตั้ง Docsify](https://docsify.js.org/#/quickstart) ในเครื่องของคุณ แล้วในโฟลเดอร์ root ของรีโปนี้ พิมพ์ `docsify serve` เว็บไซต์จะถูกให้บริการผ่านพอร์ต 3000 บน localhost: `localhost:3000`
+
+> หมายเหตุ โน้ตบุ๊กจะไม่ถูกแสดงผลผ่าน Docsify ดังนั้นเมื่อคุณต้องการรันโน้ตบุ๊ก ให้รันแยกต่างหากใน VS Code ด้วยเคอร์เนล Python
+
+## หลักสูตรอื่น ๆ
+
+ทีมของเราผลิตหลักสูตรอื่น ๆ ด้วย! ลองดู:
+
+<!-- CO-OP TRANSLATOR OTHER COURSES START -->
+### LangChain
+[![LangChain4j สำหรับผู้เริ่มต้น](https://img.shields.io/badge/LangChain4j%20for%20Beginners-22C55E?style=for-the-badge&&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchain4j-for-beginners)
+[![LangChain.js for Beginners](https://img.shields.io/badge/LangChain.js%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchainjs-for-beginners?WT.mc_id=m365-94501-dwahlin)
+[![LangChain for Beginners](https://img.shields.io/badge/LangChain%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://github.com/microsoft/langchain-for-beginners?WT.mc_id=m365-94501-dwahlin)
+---
+
+### Azure / Edge / MCP / Agents
+[![AZD for Beginners](https://img.shields.io/badge/AZD%20for%20Beginners-0078D4?style=for-the-badge&labelColor=E5E7EB&color=0078D4)](https://github.com/microsoft/AZD-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![Edge AI for Beginners](https://img.shields.io/badge/Edge%20AI%20for%20Beginners-00B8E4?style=for-the-badge&labelColor=E5E7EB&color=00B8E4)](https://github.com/microsoft/edgeai-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![MCP for Beginners](https://img.shields.io/badge/MCP%20for%20Beginners-009688?style=for-the-badge&labelColor=E5E7EB&color=009688)](https://github.com/microsoft/mcp-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![AI Agents for Beginners](https://img.shields.io/badge/AI%20Agents%20for%20Beginners-00C49A?style=for-the-badge&labelColor=E5E7EB&color=00C49A)](https://github.com/microsoft/ai-agents-for-beginners?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### Generative AI Series
+[![Generative AI for Beginners](https://img.shields.io/badge/Generative%20AI%20for%20Beginners-8B5CF6?style=for-the-badge&labelColor=E5E7EB&color=8B5CF6)](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (.NET)](https://img.shields.io/badge/Generative%20AI%20(.NET)-9333EA?style=for-the-badge&labelColor=E5E7EB&color=9333EA)](https://github.com/microsoft/Generative-AI-for-beginners-dotnet?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (Java)](https://img.shields.io/badge/Generative%20AI%20(Java)-C084FC?style=for-the-badge&labelColor=E5E7EB&color=C084FC)](https://github.com/microsoft/generative-ai-for-beginners-java?WT.mc_id=academic-105485-koreyst)
+[![Generative AI (JavaScript)](https://img.shields.io/badge/Generative%20AI%20(JavaScript)-E879F9?style=for-the-badge&labelColor=E5E7EB&color=E879F9)](https://github.com/microsoft/generative-ai-with-javascript?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### Core Learning
+[![ML for Beginners](https://img.shields.io/badge/ML%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=22C55E)](https://aka.ms/ml-beginners?WT.mc_id=academic-105485-koreyst)
+[![Data Science for Beginners](https://img.shields.io/badge/Data%20Science%20for%20Beginners-84CC16?style=for-the-badge&labelColor=E5E7EB&color=84CC16)](https://aka.ms/datascience-beginners?WT.mc_id=academic-105485-koreyst)
+[![AI for Beginners](https://img.shields.io/badge/AI%20for%20Beginners-A3E635?style=for-the-badge&labelColor=E5E7EB&color=A3E635)](https://aka.ms/ai-beginners?WT.mc_id=academic-105485-koreyst)
+[![Cybersecurity for Beginners](https://img.shields.io/badge/Cybersecurity%20for%20Beginners-F97316?style=for-the-badge&labelColor=E5E7EB&color=F97316)](https://github.com/microsoft/Security-101?WT.mc_id=academic-96948-sayoung)
+[![Web Dev for Beginners](https://img.shields.io/badge/Web%20Dev%20for%20Beginners-EC4899?style=for-the-badge&labelColor=E5E7EB&color=EC4899)](https://aka.ms/webdev-beginners?WT.mc_id=academic-105485-koreyst)
+[![IoT for Beginners](https://img.shields.io/badge/IoT%20for%20Beginners-14B8A6?style=for-the-badge&labelColor=E5E7EB&color=14B8A6)](https://aka.ms/iot-beginners?WT.mc_id=academic-105485-koreyst)
+[![XR Development for Beginners](https://img.shields.io/badge/XR%20Development%20for%20Beginners-38BDF8?style=for-the-badge&labelColor=E5E7EB&color=38BDF8)](https://github.com/microsoft/xr-development-for-beginners?WT.mc_id=academic-105485-koreyst)
+
+---
+ 
+### Copilot Series
+[![Copilot for AI Paired Programming](https://img.shields.io/badge/Copilot%20for%20AI%20Paired%20Programming-FACC15?style=for-the-badge&labelColor=E5E7EB&color=FACC15)](https://aka.ms/GitHubCopilotAI?WT.mc_id=academic-105485-koreyst)
+[![Copilot for C#/.NET](https://img.shields.io/badge/Copilot%20for%20C%23/.NET-FBBF24?style=for-the-badge&labelColor=E5E7EB&color=FBBF24)](https://github.com/microsoft/mastering-github-copilot-for-dotnet-csharp-developers?WT.mc_id=academic-105485-koreyst)
+[![Copilot Adventure](https://img.shields.io/badge/Copilot%20Adventure-FDE68A?style=for-the-badge&labelColor=E5E7EB&color=FDE68A)](https://github.com/microsoft/CopilotAdventures?WT.mc_id=academic-105485-koreyst)
+<!-- CO-OP TRANSLATOR OTHER COURSES END -->
+
+## การขอความช่วยเหลือ
+
+**พบปัญหาใช่ไหม?** ตรวจสอบ [คู่มือแก้ปัญหา](TROUBLESHOOTING.md) สำหรับวิธีแก้ไขปัญหาทั่วไป
+
+หากคุณติดขัดหรือต้องการคำถามใด ๆ เกี่ยวกับการสร้างแอป AI เข้าร่วมกับผู้เรียนและนักพัฒนาที่มีประสบการณ์เพื่อหารือเกี่ยวกับ MCP ชุมชนที่ส่งเสริมการถามคำถามและแบ่งปันความรู้กันอย่างเสรี
+
+[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
+
+หากคุณมีข้อเสนอแนะเกี่ยวกับผลิตภัณฑ์หรือพบข้อผิดพลาดในขณะสร้าง โปรดเยี่ยมชม:
+
+[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**ข้อจำกัดความรับผิดชอบ**:  
+เอกสารนี้ได้รับการแปลโดยใช้บริการแปลภาษาอัตโนมัติ [Co-op Translator](https://github.com/Azure/co-op-translator) แม้ว่าเราจะพยายามให้มีความถูกต้อง แต่โปรดทราบว่าการแปลโดยอัตโนมัติอาจมีข้อผิดพลาดหรือความไม่ถูกต้อง เอกสารต้นฉบับในภาษาต้นทางควรถูกพิจารณาว่าเป็นแหล่งข้อมูลที่เชื่อถือได้ สำหรับข้อมูลที่สำคัญ แนะนำให้ใช้บริการแปลโดยมนุษย์มืออาชีพ เราไม่รับผิดชอบต่อความเข้าใจผิดหรือการตีความผิดที่เกิดจากการใช้การแปลนี้
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

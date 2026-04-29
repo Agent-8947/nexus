@@ -1,0 +1,48 @@
+{
+  "name": "lago",
+  "version": "0.0.2",
+  "description": "Data structures and algorithms library for JavaScript.",
+  "author": "Yangshun Tay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yangshun/lago/issues"
+  },
+  "homepage": "https://github.com/yangshun/lago#readme",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "check-all": "yarn prettier && yarn lint && yarn tsc && yarn test",
+    "check-all:ci": "yarn prettier && yarn lint && yarn tsc && yarn run test:ci",
+    "prettier": "prettier --write {src,test}/**/*.ts",
+    "prettier:diff": "prettier --list-different {src,test}/**/*.ts",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --coverage",
+    "test:ci": "tsdx test --coverage --runInBand",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "module": "dist/mylib.esm.js",
+  "devDependencies": {
+    "@types/lodash": "^4.14.157",
+    "husky": "^4.2.5",
+    "lodash": "^4.17.19",
+    "prettier": "^2.4.1",
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.6"
+  }
+}

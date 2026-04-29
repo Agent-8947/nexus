@@ -1,0 +1,13 @@
+4.3.32 - Specified set
+
+1- Create a new graph G' containing all the edges in S.
+2- Sort all edges of the original graph G by weight.
+3- Iterate through the sorted edges and for each edge:
+   3.1- If it is already part of G', do nothing and continue the iteration.
+   3.2- If adding it to G' will generate a cycle, do nothing and continue the iteration.
+   3.3- If all the above is false and it does not generate a cycle, add it to G'.
+4- Repeat the above iteration until G' has V - 1 edges (where V is the number of vertices in G).
+5- G' is now the minimum-weight spanning tree of G containing all the edges in S. Return it.
+
+Thanks to YRFT (https://github.com/YRFT) for reporting that the previous solution was incorrect.
+https://github.com/reneargento/algorithms-sedgewick-wayne/issues/293

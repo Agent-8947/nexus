@@ -1,0 +1,30 @@
+{
+  "agent_id": "SSL_TLS_CIPHER_AUDITOR",
+  "domain": "SECURITY_ADV",
+  "purpose": "Audit server SSL/TLS configurations for weak ciphers and protocols (SSLv3, TLS 1.0)",
+  "api_endpoints": [],
+  "data_model": {
+    "host": "TEXT",
+    "port": "INTEGER",
+    "protocol": "TEXT",
+    "cipher": "TEXT",
+    "strength": "TEXT",
+    "is_weak": "INTEGER"
+  },
+  "core_algorithm": "TCP handshake socket-level cipher negotiation scan",
+  "input_type": "domain",
+  "output_format": "sqlite",
+  "required_imports": [
+    "ssl",
+    "socket",
+    "logging",
+    "sqlite3",
+    "datetime"
+  ],
+  "logic_markers": [
+    "SSLContext",
+    "PROTOCOL_TLS",
+    "weak_ciphers",
+    "handshake"
+  ]
+}

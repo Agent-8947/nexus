@@ -1,0 +1,35 @@
+{
+  "name": "NEXUS-WIKI-DASHBOARD",
+  "version": "1.0.0",
+  "status": "DEPLOYED",
+  "deployment_url": "https://nexus-wiki-dashboard.vercel.app/",
+  "visual_protocol": "NEXUS Prime / Karpathy-style (Red/Dark/Glassmorphism)",
+  "arch_type": "Hybrid Cognition Engine v1.0 (Zero-Dependency)",
+  "last_update": "2026-04-21",
+  "features": [
+    "Multilingual support (EN, UA, RU)",
+    "PDF Presentation export (html2pdf.js)",
+    "GSAP Motion Engine (Smooth scroll, parallax, stag reveals)",
+    "Hardened Inventory (1491 Knowledge Nodes, 32 Agents, 34 Skills, 45 Scripts)",
+    "Continuous Vercel deployment"
+  ],
+  "metrics": {
+    "articles": "1491",
+    "backlinks": "14000",
+    "commands": "30",
+    "categories": "34",
+    "compound_ratio": "0.95"
+  },
+  "filesystem_audit": {
+    "subprojects_count": 15,
+    "external_libs_count": 1491,
+    "skills_count": 34,
+    "scripts_count": 45,
+    "core_docs_count": 12
+  },
+  "constraints": [
+    "Strictly follow NEXUS CSS class system (.cd, .cb, .stag, .stit, .wg, .wi, .mb, .mt, .ab, .sf)",
+    "Maintain zero-dependency for PDF generation",
+    "Source all data from PROJECT/ filesystem to ensure factual accuracy"
+  ]
+}
