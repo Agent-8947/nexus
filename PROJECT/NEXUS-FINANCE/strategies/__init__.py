@@ -1,0 +1,3 @@
+"""
+NEXUS-FINANCE :: Strategies Package
+"""

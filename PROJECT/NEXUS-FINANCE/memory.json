@@ -1,0 +1,30 @@
+{
+  "project_name": "NEXUS-FINANCE",
+  "version": "1.0.0",
+  "status": "operational",
+  "archetype": "Autonomous Paper Trading System",
+  "trade_mode": "PAPER",
+  "safety_features": [
+    "LIVE trading architecturally blocked",
+    "Risk Manager gate on every trade",
+    "Hardcoded position size ceiling ($500)",
+    "Hardcoded drawdown ceiling (10%)",
+    "Mandatory stop-loss on every position",
+    "Max 3 concurrent positions",
+    "All trades logged to SQLite ledger",
+    "No API keys in code — env vars only"
+  ],
+  "modules": {
+    "config/settings.py": "Configuration with safety validation",
+    "core/agent.py": "Main autonomous trading agent",
+    "core/data_feed.py": "Market data via yfinance (free)",
+    "core/portfolio.py": "Paper trading portfolio with risk integration",
+    "core/risk_manager.py": "Hard risk gate — no bypasses",
+    "core/strategy.py": "Strategy base class",
+    "strategies/sma_crossover.py": "SMA crossover strategy",
+    "db/database.py": "SQLite database layer (WAL mode)"
+  },
+  "agents": [],
+  "connections": [],
+  "strategies": ["SMA_Crossover(10/30)"]
+}
