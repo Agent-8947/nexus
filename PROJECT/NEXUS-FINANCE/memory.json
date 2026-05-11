@@ -2,6 +2,8 @@
   "project_name": "NEXUS-FINANCE",
   "version": "1.0.0",
   "status": "operational",
+  "github_sync": "synced",
+  "github_repo": "https://github.com/Agent-8947/nexus",
   "archetype": "Autonomous Paper Trading System",
   "trade_mode": "PAPER",
   "safety_features": [
