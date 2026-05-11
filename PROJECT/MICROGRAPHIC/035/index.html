@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>035 // APHEX PLEXUS (ABSURD IDM)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #020202; overflow: hidden; }
+        canvas { display: block; filter: contrast(2) brightness(0.9) invert(0); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: monospace; font-size: 16px; color: #0f0; letter-spacing: 5px; }
+        #os { font-family: monospace; font-size: 10px; color: #666; }
+        #tc { position: absolute; top: 10px; left: 10px; font-family: monospace; font-size: 10px; color: #0f0; opacity: 0.5; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">035 // [AFX_PLEXUS]</div>
+    <div id="os">>> CLICK TO EXECUTE <<</div>
+</div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+let st;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); cx = cv.getContext('2d');
+    resize(); window.addEventListener('resize', resize);
+    
+    st = Date.now();
+    setInterval(() => {
+        if (!st) return;
+        const s = Math.floor((Date.now() - st) / 1000);
+        document.getElementById('tc').textContent = `00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+    }, 1000);
+    
+    initAudio();
+    animate();
+}
+
+function resize() { W = cv.width = innerWidth; H = cv.height = innerHeight; }
+
+// ── AUDIO ENGINE: IDM / APHEX TWIN STYLE ──
+function initAudio() {
+    Tone.Transport.bpm.value = 175; // Fast IDM tempo
+    
+    const reverb = new Tone.Reverb(0.5).toDestination();
+    const delay = new Tone.FeedbackDelay("16n", 0.4).connect(reverb);
+    
+    // Glitchy drums
+    const kick = new Tone.MembraneSynth().toDestination();
+    const snare = new Tone.NoiseSynth({
+        envelope: { decay: 0.05, sustain: 0 },
+        filterEnvelope: { frequency: 5000, decay: 0.01 }
+    }).connect(delay);
+    snare.volume.value = -10;
+    
+    // FM Synth for weird sounds
+    const fm = new Tone.FMSynth({
+        harmonicity: 3,
+        modulationIndex: 10,
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0 }
+    }).connect(delay);
+    fm.volume.value = -15;
+
+    // Fast random rhythm
+    const loop = new Tone.Loop(time => {
+        // Kick on downbeats but with random probability
+        if (Math.random() > 0.3) kick.triggerAttackRelease("C1", "16n", time);
+        
+        // Snare on 2 and 4, or random glitches
+        if (Math.random() > 0.7) snare.triggerAttack(time);
+        
+        // Weird FM blips
+        if (Math.random() > 0.6) {
+            const notes = ["C4", "Eb4", "Fs4", "A4", "B4"];
+            const note = notes[Math.floor(Math.random() * notes.length)];
+            fm.triggerAttackRelease(note, "32n", time);
+        }
+    }, "16n").start(0);
+
+    // Acid bassline
+    const bass = new Tone.MonoSynth({
+        oscillator: { type: "sawtooth" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0.1 },
+        filterEnvelope: { frequency: 100, decay: 0.1, octaves: 4 }
+    }).toDestination();
+    bass.volume.value = -12;
+
+    const bassLoop = new Tone.Loop(time => {
+        const notes = ["C2", "C3", "Eb2", "Fs2", "G2"];
+        if (Math.random() > 0.5) {
+            const note = notes[Math.floor(Math.random() * notes.length)];
+            bass.triggerAttackRelease(note, "16n", time);
+        }
+    }, "8n").start(0);
+
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: ABSURD PLEXUS ──
+const numPoints = 80;
+const points = [];
+for (let i = 0; i < numPoints; i++) {
+    points.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 4, vy: (Math.random() - 0.5) * 4,
+        id: i
+    });
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.016;
+    
+    // Slow fade with occasional complete clearing
+    cx.fillStyle = Math.random() > 0.98 ? 'rgba(2,2,2,1)' : 'rgba(2,2,2,0.1)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = Math.random() > 0.8 ? 'difference' : 'source-over';
+    
+    // Update points
+    for (let p of points) {
+        p.x += p.vx; p.y += p.vy;
+        
+        // Absurd teleportation
+        if (Math.random() > 0.995) {
+            p.x = Math.random() * W;
+            p.y = Math.random() * H;
+        }
+        
+        // Bounce
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        
+        // Draw points as squares or glitch symbols
+        cx.fillStyle = '#0f0';
+        if (Math.random() > 0.95) {
+            cx.font = '10px monospace';
+            cx.fillText(`[${p.id}]`, p.x, p.y);
+        } else {
+            cx.fillRect(p.x - 2, p.y - 2, 4, 4);
+        }
+    }
+    
+    // Draw connections (Absurd Plexus)
+    ctx.strokeStyle = '#0f0';
+    cx.lineWidth = 0.5;
+    
+    for (let i = 0; i < points.length; i++) {
+        const pi = points[i];
+        for (let j = i + 1; j < points.length; j++) {
+            const pj = points[j];
+            const dx = pi.x - pj.x;
+            const dy = pi.y - pj.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            // Connect if close, OR connect completely random points occasionally
+            if (dist < 100 || Math.random() > 0.9995) {
+                cx.beginPath();
+                cx.moveTo(pi.x, pi.y);
+                
+                // Draw broken or straight lines
+                if (Math.random() > 0.9) {
+                    cx.lineTo(pi.x, pj.y); // Right angle connection
+                } else {
+                    cx.lineTo(pj.x, pj.y);
+                }
+                cx.stroke();
+            }
+        }
+    }
+    
+    // Screen glitch effects
+    if (Math.random() > 0.95) {
+        cx.fillStyle = 'rgba(0, 255, 0, 0.2)';
+        cx.fillRect(0, Math.random() * H, W, Math.random() * 20);
+    }
+    
+    if (Math.random() > 0.98) {
+        cx.font = '24px monospace';
+        cx.fillStyle = '#fff';
+        cx.fillText("RICHARD D. JAMES", Math.random() * W, Math.random() * H);
+    }
+    
+    cx.globalCompositeOperation = 'source-over';
+}
+</script>
+</body>
+</html>

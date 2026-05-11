@@ -1,4 +1,0 @@
-- [heap](heap)
-    - [merge_sorted_k_lists](merge_sorted_k_lists.py)
-    - [skyline](skyline.py)
-    - [sliding_window_max](sliding_window_max.py)

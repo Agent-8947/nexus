@@ -1,0 +1,694 @@
+﻿{
+    "generated_at":  "2026-05-05T23:45:24+03:00",
+    "projects":  {
+                     "count":  35,
+                     "items":  [
+                                   {
+                                       "is_local_focus":  true,
+                                       "path":  "E:\\Downloads\\SolaraIMPACT",
+                                       "name":  "LOCAL_CONTEXT: ",
+                                       "has_docker":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "airflow",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "BRIEFINGS",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "DOCS",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  true,
+                                       "name":  "emailflare",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "EXTERNAL-LIBRARY",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "GOLDEN_ARCHIVE",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "HYPER-FORGE",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "IDEA",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "INVENTIONS",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "nexus",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-CyberThreat-Eval",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-DISCORD-INTEL",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-FMA-BRIDGE",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-MANUALS-DEPLOY",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-MARITIME-OSINT",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-OSINT-ADVANCED",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-OSINT-ARXIV-RESEARCH",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-PIPELINE-V3",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "NEXUS-RECON-API",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "outputs",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "PDF-NEXUS-TRANS",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "qualityscaler",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "scratch",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "scripts",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "skills",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "STANDARDS",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "templates",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  true,
+                                       "name":  "TG-FACTORY",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "WIKI",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "WIKI-AGENT",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "WIKI-DASHBOARD",
+                                       "is_local_focus":  false,
+                                       "has_memory":  true
+                                   },
+                                   {
+                                       "has_python":  true,
+                                       "has_docker":  false,
+                                       "name":  "WIKI-FARM",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "WIKI-MAP",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   },
+                                   {
+                                       "has_python":  false,
+                                       "has_docker":  false,
+                                       "name":  "WIKI-PROJECT",
+                                       "is_local_focus":  false,
+                                       "has_memory":  false
+                                   }
+                               ]
+                 },
+    "workflows":  {
+                      "count":  34,
+                      "items":  [
+                                    {
+                                        "command":  "/+",
+                                        "name":  "+",
+                                        "description":  "Р¤РёРєСЃР°С†РёСЏ РѕС€РёР±РєРё Р°РіРµРЅС‚Р° РІ СЂРµРµСЃС‚СЂ (Fault Registry)"
+                                    },
+                                    {
+                                        "command":  "/agnostic",
+                                        "name":  "agnostic",
+                                        "description":  "Р—Р°РїСѓСЃРє Agnostic Architecture Workflow вЂ” РіР»СѓР±РѕРєРёР№ СЃСЂР°РІРЅРёС‚РµР»СЊРЅС‹Р№ Р°РЅР°Р»РёР· С‚РµС…РЅРѕР»РѕРіРёР№ Р±РµР· РїСЂРёРІСЏР·РєРё Рє СЃС‚РµРєСѓ NEXUS."
+                                    },
+                                    {
+                                        "command":  "/audit",
+                                        "name":  "audit",
+                                        "description":  "РџРѕРёСЃРє СЃРµРєСЂРµС‚РѕРІ Рё РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… СѓСЏР·РІРёРјРѕСЃС‚РµР№ РІ РєРѕРґРµ"
+                                    },
+                                    {
+                                        "command":  "/clean-code",
+                                        "name":  "clean-code",
+                                        "description":  "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ Рё РѕС‡РёСЃС‚РєР° Python РєРѕРґР° РІРѕ РІСЃРµРј РїСЂРѕРµРєС‚Рµ"
+                                    },
+                                    {
+                                        "command":  "/clean-docs",
+                                        "name":  "clean-docs",
+                                        "description":  "РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ .md С„Р°Р№Р»РѕРІ РЅР° РґСѓР±Р»РёРєР°С‚С‹ Рё СѓСЃС‚Р°СЂРµРІС€РёР№ РєРѕРЅС‚РµРЅС‚"
+                                    },
+                                    {
+                                        "command":  "/deploy",
+                                        "name":  "deploy",
+                                        "description":  "Р”РµРїР»РѕР№ РїСЂРѕРµРєС‚Р° РёР· PROJECT/ РІ BotCommander (в†’ localhost:9999)"
+                                    },
+                                    {
+                                        "command":  "/doc",
+                                        "name":  "doc",
+                                        "description":  "Р“РµРЅРµСЂР°С†РёСЏ РіР»СѓР±РѕРєРѕР№ С‚РµС…РЅРёС‡РµСЃРєРѕР№ РґРѕРєСѓРјРµРЅС‚Р°С†РёРё РІ С‚РµРєСЃС‚РѕРІРѕРј С„РѕСЂРјР°С‚Рµ (.md) РїРѕ РїСЂРѕРµРєС‚Сѓ NEXUS."
+                                    },
+                                    {
+                                        "command":  "/doit",
+                                        "name":  "doit",
+                                        "description":  "Р—Р°РїСѓСЃРє NEXUS JustDoIt вЂ” РїР»Р°РЅРёСЂРѕРІР°РЅРёРµ Рё РёСЃРїРѕР»РЅРµРЅРёРµ Р·Р°РґР°С‡ СЃ С„РёРєСЃР°С†РёРµР№ РІ СЂРµРїРѕР·РёС‚РѕСЂРёРё"
+                                    },
+                                    {
+                                        "command":  "/email",
+                                        "name":  "email",
+                                        "description":  "РЈРїСЂР°РІР»РµРЅРёРµ СЂР°СЃСЃС‹Р»РєР°РјРё С‡РµСЂРµР· EmailFlare [NEXUS Edition]"
+                                    },
+                                    {
+                                        "command":  "/freeze-nexus",
+                                        "name":  "freeze-nexus",
+                                        "description":  "Freeze current project settings and workflows into the global Nexus Blueprint"
+                                    },
+                                    {
+                                        "command":  "/github",
+                                        "name":  "github",
+                                        "description":  "РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ РїСЂРѕРµРєС‚Р° СЃ GitHub СЂРµРїРѕР·РёС‚РѕСЂРёРµРј"
+                                    },
+                                    {
+                                        "command":  "/golden-standard",
+                                        "name":  "golden-standard",
+                                        "description":  "РџСЂРёРјРµРЅРµРЅРёРµ Р—РѕР»РѕС‚РѕРіРѕ РЎС‚Р°РЅРґР°СЂС‚Р° (Spec-Driven Zero-Stub Pipeline) РґР»СЏ СЃР±РѕСЂРєРё РёРЅС‚РµР»Р»РµРєС‚СѓР°Р»СЊРЅС‹С… РјРѕРґСѓР»РµР№"
+                                    },
+                                    {
+                                        "command":  "/idea",
+                                        "name":  "idea",
+                                        "description":  "Р¤РёРєСЃР°С†РёСЏ Рё СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРёРµ РёРґРµР№ РІ СЂРµРµСЃС‚СЂ PROJECT/IDEA/LOG.md"
+                                    },
+                                    {
+                                        "command":  "/jules",
+                                        "name":  "jules",
+                                        "description":  "РЈСЃС‚Р°РЅРѕРІРєР° Рё Р·Р°РїСѓСЃРє Р°СЃРёРЅС…СЂРѕРЅРЅРѕРіРѕ Р°РіРµРЅС‚Р° Jules"
+                                    },
+                                    {
+                                        "command":  "/menu",
+                                        "name":  "menu",
+                                        "description":  "РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ РґРѕСЃС‚СѓРїРЅС‹Рµ РєРѕРјР°РЅРґС‹ Рё РІРѕСЂРєС„Р»РѕСѓ"
+                                    },
+                                    {
+                                        "command":  "/monitor",
+                                        "name":  "monitor",
+                                        "description":  "Р—Р°РїСѓСЃРє РјРѕРЅРёС‚РѕСЂРёРЅРіР° СЂРµСЃСѓСЂСЃРѕРІ РІ СЂРµР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё"
+                                    },
+                                    {
+                                        "command":  "/motion",
+                                        "name":  "motion",
+                                        "description":  "Р—Р°РїСѓСЃРє NEXUS Motion Engine РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РїСЂРµРјРёР°Р»СЊРЅС‹С… РІРµР±-Р°РЅРёРјР°С†РёР№ Рё РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹С… Р±Р»РѕРєРѕРІ."
+                                    },
+                                    {
+                                        "command":  "/nexus",
+                                        "name":  "nexus",
+                                        "description":  "Р’С‹Р·РѕРІ NEXUS GOD вЂ” РІРµСЂС…РѕРІРЅРѕРіРѕ РѕСЂРєРµСЃС‚СЂР°С‚РѕСЂР°, Р·РЅР°СЋС‰РµРіРѕ РІСЃСЋ СЌРєРѕСЃРёСЃС‚РµРјСѓ"
+                                    },
+                                    {
+                                        "command":  "/nvidia-catalog",
+                                        "name":  "nvidia-catalog",
+                                        "description":  ""
+                                    },
+                                    {
+                                        "command":  "/pdf",
+                                        "name":  "pdf",
+                                        "description":  "Р“РµРЅРµСЂР°С†РёСЏ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ (PDF/DOCX) СЃ РїСЂРёРјРµРЅРµРЅРёРµРј Р°РіРµРЅС‚СЃРєРѕРіРѕ РјС‹С€Р»РµРЅРёСЏ V3.0 [NEXUS Edition]"
+                                    },
+                                    {
+                                        "command":  "/prime",
+                                        "name":  "prime",
+                                        "description":  "Р—Р°РїСѓСЃРє СЂРµР¶РёРјР° \"Nexus Prime\" вЂ” РІС‹С…РѕРґ Р·Р° СЂР°РјРєРё Gemini MD РґР»СЏ Р°РІС‚РѕРЅРѕРјРЅРѕРіРѕ СѓРїСЂР°РІР»РµРЅРёСЏ СЃРёСЃС‚РµРјРѕР№ Рё РїСЂРѕРµРєС‚РѕРј"
+                                    },
+                                    {
+                                        "command":  "/printivo",
+                                        "name":  "printivo",
+                                        "description":  ""
+                                    },
+                                    {
+                                        "command":  "/reflect",
+                                        "name":  "reflect",
+                                        "description":  "Р РµС‚СЂРѕСЃРїРµРєС‚РёРІР° СЃРµСЃСЃРёРё: РїР°С‚С‚РµСЂРЅС‹, РёРЅСЃР°Р№С‚С‹, СЂРµРєРѕРјРµРЅРґР°С†РёРё"
+                                    },
+                                    {
+                                        "command":  "/skills",
+                                        "name":  "skills",
+                                        "description":  "РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ Рё СѓРїСЂР°РІР»РµРЅРёРµ РЅР°РІС‹РєР°РјРё С‡РµСЂРµР· Autoskills"
+                                    },
+                                    {
+                                        "command":  "/snapshot",
+                                        "name":  "snapshot",
+                                        "description":  "РЎРѕР·РґР°РЅРёРµ СЂРµР·РµСЂРІРЅРѕР№ РєРѕРїРёРё РєСЂРёС‚РёС‡РµСЃРєРёС… С„Р°Р№Р»РѕРІ РїСЂРѕРµРєС‚Р°"
+                                    },
+                                    {
+                                        "command":  "/status",
+                                        "name":  "status",
+                                        "description":  "РџСЂРѕРІРµСЂРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РїСЂРѕРµРєС‚Р° Рё РѕРєСЂСѓР¶РµРЅРёСЏ"
+                                    },
+                                    {
+                                        "command":  "/synth",
+                                        "name":  "synth",
+                                        "description":  "\"РђРІС‚РѕРЅРѕРјРЅС‹Р№ СЃРёРЅС‚РµР· СѓРЅРёРєР°Р»СЊРЅС‹С… Р°РіРµРЅС‚РѕРІ DNA РёР· spec-РєРѕРЅС‚СЂР°РєС‚РѕРІ. РђРіРµРЅС‚ IDE РіРµРЅРµСЂРёСЂСѓРµС‚ РєРѕРґ, СЃРєСЂРёРїС‚ РІР°Р»РёРґРёСЂСѓРµС‚.\""
+                                    },
+                                    {
+                                        "command":  "/telegram",
+                                        "name":  "telegram",
+                                        "description":  "РћС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ РёР»Рё С„Р°Р№Р»РѕРІ РІ Telegram Р±РѕС‚"
+                                    },
+                                    {
+                                        "command":  "/test",
+                                        "name":  "test",
+                                        "description":  "Р—Р°РїСѓСЃРє С‚РµСЃС‚РѕРІ Рё РїСЂРѕРІРµСЂРєР° РєР°С‡РµСЃС‚РІР° РєРѕРґР°"
+                                    },
+                                    {
+                                        "command":  "/token",
+                                        "name":  "token",
+                                        "description":  "РђРЅР°Р»РёР· СЂР°СЃС…РѕРґР° С‚РѕРєРµРЅРѕРІ Рё СЂРµРєРѕРјРµРЅРґР°С†РёРё РїРѕ РѕРїС‚РёРјРёР·Р°С†РёРё"
+                                    },
+                                    {
+                                        "command":  "/turbo",
+                                        "name":  "turbo",
+                                        "description":  "РњРіРЅРѕРІРµРЅРЅР°СЏ РѕРїС‚РёРјРёР·Р°С†РёСЏ СЂРµСЃСѓСЂСЃРѕРІ (CPU, RAM, Junk)"
+                                    },
+                                    {
+                                        "command":  "/vercel",
+                                        "name":  "vercel",
+                                        "description":  "Р Р°Р·РІРµСЂС‚С‹РІР°РЅРёРµ С„СЂРѕРЅС‚РµРЅРґР° РёР»Рё РґР°С€Р±РѕСЂРґР° РЅР° Vercel"
+                                    },
+                                    {
+                                        "command":  "/video",
+                                        "name":  "video",
+                                        "description":  "Р—Р°РїРёСЃСЊ РІРёРґРµРѕ Р°РЅРёРјР°С†РёРё РІ РґРµСЃРєС‚РѕРїРЅРѕРј (1920x1080) Рё РјРѕР±РёР»СЊРЅРѕРј (1080x1920) С„РѕСЂРјР°С‚Р°С…"
+                                    },
+                                    {
+                                        "command":  "/wiki-agent",
+                                        "name":  "wiki-agent",
+                                        "description":  "Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РІСЃРµС… Р°РІС‚РѕРЅРѕРјРЅС‹С… Р°РіРµРЅС‚РѕРІ NEXUS Рё РёС… РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№"
+                                    }
+                                ]
+                  },
+    "skills":  {
+                   "count":  51,
+                   "items":  [
+                                 {
+                                     "description":  "Audit and improve web accessibility following WCAG 2.2 guidelines. Use when asked to \"improve accessibility\", \"a11y audit\", \"WCAG compliance\", \"screen reader support\", \"keyboard navigation\", or \"make accessible\".",
+                                     "name":  "accessibility",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"AI-powered research engine [NEXUS Hardened v5.0]. Implements the Deep Search loop: Search в†’ Verify в†’ Synthesize with mandatory source citations.\"",
+                                     "name":  "answering-engine",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Sentinel for REST and GraphQL API contract stability.",
+                                     "name":  "api-schema-enforcer",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "arxiv-research",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ РјРµРЅРµРґР¶РµСЂ РЅР°РІС‹РєРѕРІ РґР»СЏ AI-Р°РіРµРЅС‚РѕРІ. РЎРёРЅС…СЂРѕРЅРёР·РёСЂСѓРµС‚ РїСЂРѕРµРєС‚ СЃРѕ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё Рё Р»СѓС‡С€РёРјРё РїСЂР°РєС‚РёРєР°РјРё РєРѕРјРјСЊСЋРЅРёС‚Рё.",
+                                     "name":  "autoskills",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Smart contract safety scanner and zk-proof verifier.",
+                                     "name":  "blockchain-auditor",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "AI agent for autonomous cloud waste reduction and billing anomalies.",
+                                     "name":  "cloud-finops-optimizer",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "codebase-inspection",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: Context Manager",
+                                     "name":  "context-manager",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "OSINT and external cyber threat intelligence aggregation.",
+                                     "name":  "cyber-intel-analyst",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Automates data lifecycle, partitioning, and cold-storage offloading.",
+                                     "name":  "data-lake-governor",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Overseer of distributed database scaling and replication topologies.",
+                                     "name":  "database-shard-manager",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "domain-intel",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "РЈРїСЂР°РІР»РµРЅРёРµ СЃР»РѕРµРј СЂР°СЃСЃС‹Р»РѕРє С‡РµСЂРµР· Cloudflare. РџРѕР·РІРѕР»СЏРµС‚ Р°РіРµРЅС‚Р°Рј РѕС‚РїСЂР°РІР»СЏС‚СЊ РѕС‚С‡РµС‚С‹, СѓРІРµРґРѕРјР»РµРЅРёСЏ Рё РјР°СЂРєРµС‚РёРЅРіРѕРІС‹Рµ РїРёСЃСЊРјР°.",
+                                     "name":  "emailflare",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "GraphRAG-SDK Engine [NEXUS Edition]",
+                                     "name":  "falkor-graphrag",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "firecrawl",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\u003e-",
+                                     "name":  "fireworks-tech-graph",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+                                     "name":  "frontend-design",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: Frontend Orchestrator",
+                                     "name":  "frontend-orchestrator",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Framework-agnostic, git-native standard for defining AI agents. Based on Open-GitAgent specification.",
+                                     "name":  "git-native-agent",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "github-pr-workflow",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "GSAP animation reference for HyperFrames. Covers gsap.to(), from(), fromTo(), easing, stagger, defaults, timelines (gsap.timeline(), position parameter, labels, nesting, playback), and performance (transforms, will-change, quickTo). Use when writing GSAP animations in HyperFrames compositions.",
+                                     "name":  "gsap",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"Meta-skill for NEXUS that generates new brand-aligned design systems. Use when asked to \u0027create a design skill\u0027, \u0027generate design language\u0027, \u0027learn brand from URL/screenshot\u0027, or \u0027/hue\u0027. Integrates with Firecrawl and search_web for deep brand analysis.\"",
+                                     "name":  "hue",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "",
+                                     "name":  "hunchly-integrator",
+                                     "has_skill_md":  false
+                                 },
+                                 {
+                                     "description":  "Create video compositions, animations, title cards, overlays, captions, voiceovers, audio-reactive visuals, and scene transitions in HyperFrames HTML. Use when asked to build any HTML-based video content, add captions or subtitles synced to audio, generate text-to-speech narration, create audio-reactive animation (beat sync, glow, pulse driven by music), add animated text highlighting (marker sweeps, hand-drawn circles, burst lines, scribble, sketchout), or add transitions between scenes (crossfades, wipes, reveals, shader transitions). Covers composition authoring, timing, media, and the full video production workflow. For CLI commands (init, lint, preview, render, transcribe, tts) see the hyperframes-cli skill.",
+                                     "name":  "hyperframes",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "HyperFrames CLI tool вЂ” hyperframes init, lint, preview, render, transcribe, tts, doctor, browser, info, upgrade, compositions, docs, benchmark. Use when scaffolding a project, linting or validating compositions, previewing in the studio, rendering to video, transcribing audio, generating TTS, or troubleshooting the HyperFrames environment.",
+                                     "name":  "hyperframes-cli",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Install and wire registry blocks and components into HyperFrames compositions. Use when running hyperframes add, installing a block or component, wiring an installed item into index.html, or working with hyperframes.json. Covers the add command, install locations, block sub-composition wiring, component snippet merging, and registry discovery.",
+                                     "name":  "hyperframes-registry",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"Master execution-planning skill. [NEXUS Hardened v5.0] Implements the Understand-Act-Verify loop with built-in context management, pagination requirements, and zero-preamble directives.\"",
+                                     "name":  "justdoit",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: Knowledge Synthesizer",
+                                     "name":  "knowledge-synthesizer",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: Legal Compliance Expert",
+                                     "name":  "legal-compliance-expert",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: MathLib-Advisor",
+                                     "name":  "mathlib-advisor",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Premium web animations and interactive motion specialist (GSAP, Three.js, Framer)",
+                                     "name":  "motion-design-expert",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: Multi-Agent Orchestrator",
+                                     "name":  "multi-agent-orchestrator",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Autonomous hunter for internal compromised nodes and C2 traffic.",
+                                     "name":  "nexus-botnet-hunter",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Autonomous deployment orchestration and server configuration agent.",
+                                     "name":  "nexus-deployment-architect",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ",
+                                     "name":  "nexus-god",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Automated compliance checker for Legal DevOps workflows.",
+                                     "name":  "nexus-legal-notary",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"QA Lead Mode for NEXUS. [v5.0 Hardened] Automatically tests web applications using browser automation to find UI bugs and user flow breakages.\"",
+                                     "name":  "nexus-qa",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"CEO/Founders Mode for NEXUS. [v5.0 Hardened] Used to reframe tasks, challenge assumptions, and ensure product-market fit before architecture begins.\"",
+                                     "name":  "nexus-vision",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "\"Direct integration with NVIDIA API Catalog [NEXUS v5.1]. Provides access to 130+ models (Llama 3.1 405B, Nemotron, Gemma 3, etc.) with OpenAI-compatible interface.\"",
+                                     "name":  "nvidia-catalog",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "",
+                                     "name":  "open-design",
+                                     "has_skill_md":  false
+                                 },
+                                 {
+                                     "description":  "Skill: OSINT-Tactician (Methodology \u0026 Forensics)",
+                                     "name":  "osint-tactician",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: PowerShell UI Architect",
+                                     "name":  "powershell-ui-architect",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Autonomous adversarial simulation framework.",
+                                     "name":  "redteam-pentest-operator",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Advanced AI-powered security scanning and defense system for NEXUS projects. Based on Ship Safe v5.0.",
+                                     "name":  "security-audit",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Optimize for search engine visibility and ranking. Use when asked to \"improve SEO\", \"optimize for search\", \"fix meta tags\", \"add structured data\", \"sitemap optimization\", or \"search engine optimization\".",
+                                     "name":  "seo",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "SocratiCode вЂ” Codebase Context Engine [NEXUS Edition]",
+                                     "name":  "socraticode",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Autonomous system logic monitoring and zero-latency anomaly mitigation agent.",
+                                     "name":  "state-anomaly-detector",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Skill: UI/UX Designer",
+                                     "name":  "ui-ux-designer",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "|",
+                                     "name":  "website-to-hyperframes",
+                                     "has_skill_md":  true
+                                 },
+                                 {
+                                     "description":  "Real-time validator for distributed identity and access management.",
+                                     "name":  "zero-trust-identity-broker",
+                                     "has_skill_md":  true
+                                 }
+                             ]
+               },
+    "system":  {
+                   "docker_running":  false,
+                   "disk_free":  "16.8 GB",
+                   "workspace":  "e:\\Downloads\\--ANTIGRAVITY store\\IDE-NEXUS",
+                   "python_version":  "Python 3.13.9"
+               }
+}

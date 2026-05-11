@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>059 // CYBER LITURGY</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: serif; }
+        #overlay { position: absolute; width: 100%; height: 100%; background: #000; color: #FF0000; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 10; cursor: pointer; letter-spacing: 5px; }
+        .text { position: absolute; width: 100%; top: 40%; text-align: center; font-size: 8vw; font-weight: 900; color: #FFD700; text-shadow: 10px 0px 0px rgba(255,0,0,0.8), -10px 0px 0px rgba(0,0,255,0.8); pointer-events: none; mix-blend-mode: screen; opacity: 0; transition: opacity 0.1s; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">ENTER THE CATHEDRAL</div>
+<div class="text" id="chant">ГОСПОДИ ПОМИЛУЙ</div>
+<canvas id="c"></canvas>
+
+<script>
+let cx, W, H, arches = [];
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    const cv = document.getElementById('c'); cx = cv.getContext('2d');
+    W = cv.width = innerWidth; H = cv.height = innerHeight;
+    initArches(); initAudio(); animate();
+}
+
+function initArches() {
+    for(let i=0; i<20; i++) {
+        arches.push({ z: i * 50 });
+    }
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 100;
+    
+    // Cyberpunk Bass
+    const bass = new Tone.Synth({
+        oscillator: { type: "sawtooth" },
+        envelope: { attack: 0.1, decay: 0.2, sustain: 0.8, release: 1 }
+    }).toDestination();
+    bass.volume.value = 2;
+
+    const filter = new Tone.Filter(200, "lowpass").toDestination();
+    bass.connect(filter);
+    
+    // Formant-like Chant (mock vocal)
+    const chantSynth = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "pwm", modulationFrequency: 0.2 },
+        envelope: { attack: 0.5, decay: 0.1, sustain: 1, release: 0.5 }
+    }).toDestination();
+    chantSynth.volume.value = -5;
+
+    let step = 0;
+    new Tone.Loop(time => {
+        bass.triggerAttackRelease("D1", "8n", time);
+        filter.frequency.rampTo(step % 4 === 0 ? 1000 : 200, 0.1);
+        
+        if(step % 8 === 0) {
+            chantSynth.triggerAttackRelease(["D3", "A3", "F4"], "2n", time);
+            flashText();
+        }
+        step++;
+    }, "8n").start(0);
+
+    Tone.Transport.start();
+}
+
+function flashText() {
+    const el = document.getElementById('chant');
+    el.style.opacity = 1;
+    setTimeout(() => { el.style.opacity = 0; }, 300);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    cx.fillStyle = 'rgba(0,0,0,0.2)';
+    cx.fillRect(0,0,W,H);
+
+    cx.strokeStyle = '#FFD700';
+    cx.lineWidth = 2;
+
+    arches.forEach(a => {
+        a.z -= 2;
+        if(a.z < 1) a.z = 1000;
+
+        let scale = 1000 / a.z;
+        let x = W/2;
+        let y = H/2 + 200 * scale;
+        let w = 200 * scale;
+        let h = 300 * scale;
+
+        cx.beginPath();
+        // Draw arched door
+        cx.moveTo(x - w, y);
+        cx.lineTo(x - w, y - h);
+        cx.arc(x, y - h, w, Math.PI, 0, false);
+        cx.lineTo(x + w, y);
+        cx.stroke();
+        
+        // Draw cross inside arch occasionally
+        if (a.z > 500 && a.z < 550) {
+            cx.strokeStyle = '#FF0000';
+            cx.beginPath();
+            cx.moveTo(x, y - h*1.5); cx.lineTo(x, y - h/2); // vertical
+            cx.moveTo(x - w/2, y - h); cx.lineTo(x + w/2, y - h); // horizontal
+            cx.stroke();
+            cx.strokeStyle = '#FFD700';
+        }
+    });
+}
+</script>
+</body>
+</html>

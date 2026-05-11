@@ -1,3 +1,0 @@
-
-[tool.typos]
-default.extend-ignore-identifiers-re = ["inforce", "HashiCorp"]

@@ -1,0 +1,443 @@
+{
+  "meta": {
+    "source_url": "https://solaraimpact.ai/",
+    "domain": "solaraimpact",
+    "brand_id": 2,
+    "pages_scanned": [
+      "/",
+      "/solutions-hub/",
+      "/platform/",
+      "/technology/"
+    ],
+    "total_pages": 4,
+    "logo": {
+      "type": "svg",
+      "file": "logo.svg",
+      "w": 300,
+      "h": 61
+    }
+  },
+  "colors": {
+    "backgrounds": [
+      {
+        "value": "#FFFFFF",
+        "count": 231
+      },
+      {
+        "value": "#F5F5F0",
+        "count": 133
+      },
+      {
+        "value": "#F0FDF4",
+        "count": 21
+      },
+      {
+        "value": "#1A1A1A",
+        "count": 12
+      },
+      {
+        "value": "#C2410C",
+        "count": 10
+      },
+      {
+        "value": "#5046E5",
+        "count": 7
+      },
+      {
+        "value": "#1A1A1E",
+        "count": 7
+      },
+      {
+        "value": "#111110",
+        "count": 5
+      },
+      {
+        "value": "#FAFAF8",
+        "count": 4
+      },
+      {
+        "value": "#0D9668",
+        "count": 4
+      },
+      {
+        "value": "#E8E8E4",
+        "count": 2
+      },
+      {
+        "value": "#F0EFEC",
+        "count": 1
+      }
+    ],
+    "text": [
+      {
+        "value": "#1A1A1A",
+        "count": 833
+      },
+      {
+        "value": "#999999",
+        "count": 317
+      },
+      {
+        "value": "#6B6B6B",
+        "count": 229
+      },
+      {
+        "value": "#000000",
+        "count": 130
+      },
+      {
+        "value": "#C2410C",
+        "count": 101
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 83
+      },
+      {
+        "value": "#0D9668",
+        "count": 73
+      },
+      {
+        "value": "#F0F0EC",
+        "count": 63
+      },
+      {
+        "value": "#5046E5",
+        "count": 53
+      },
+      {
+        "value": "#A0A098",
+        "count": 52
+      },
+      {
+        "value": "#CCCCCC",
+        "count": 42
+      },
+      {
+        "value": "#E8E8E4",
+        "count": 14
+      },
+      {
+        "value": "#333333",
+        "count": 5
+      }
+    ],
+    "borders": [
+      {
+        "value": "#E8E8E4",
+        "count": 266
+      },
+      {
+        "value": "#1A1A1A",
+        "count": 72
+      },
+      {
+        "value": "#F0F0EC",
+        "count": 30
+      },
+      {
+        "value": "#6B6B6B",
+        "count": 16
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 13
+      },
+      {
+        "value": "#C2410C",
+        "count": 6
+      }
+    ]
+  },
+  "typography": {
+    "families": [
+      {
+        "value": "DM Sans",
+        "count": 1990
+      },
+      {
+        "value": "Times New Roman",
+        "count": 4
+      },
+      {
+        "value": "Instrument Serif",
+        "count": 1
+      }
+    ],
+    "sizes": [
+      {
+        "value": "18px",
+        "count": 629
+      },
+      {
+        "value": "11px",
+        "count": 213
+      },
+      {
+        "value": "15px",
+        "count": 203
+      },
+      {
+        "value": "14px",
+        "count": 200
+      },
+      {
+        "value": "13.3333px",
+        "count": 189
+      },
+      {
+        "value": "13px",
+        "count": 166
+      },
+      {
+        "value": "20px",
+        "count": 103
+      },
+      {
+        "value": "16px",
+        "count": 93
+      },
+      {
+        "value": "12px",
+        "count": 84
+      },
+      {
+        "value": "60px",
+        "count": 33
+      },
+      {
+        "value": "17px",
+        "count": 21
+      },
+      {
+        "value": "44px",
+        "count": 8
+      },
+      {
+        "value": "56px",
+        "count": 8
+      },
+      {
+        "value": "36px",
+        "count": 7
+      },
+      {
+        "value": "42px",
+        "count": 6
+      }
+    ],
+    "weights": [
+      {
+        "value": "400",
+        "count": 1359
+      },
+      {
+        "value": "600",
+        "count": 239
+      },
+      {
+        "value": "500",
+        "count": 229
+      },
+      {
+        "value": "700",
+        "count": 149
+      },
+      {
+        "value": "300",
+        "count": 19
+      }
+    ],
+    "line_heights": [
+      {
+        "value": "29.7px",
+        "count": 588
+      },
+      {
+        "value": "normal",
+        "count": 295
+      },
+      {
+        "value": "24.75px",
+        "count": 159
+      },
+      {
+        "value": "21.45px",
+        "count": 144
+      },
+      {
+        "value": "13.2px",
+        "count": 84
+      },
+      {
+        "value": "23.1px",
+        "count": 79
+      },
+      {
+        "value": "22.4px",
+        "count": 76
+      },
+      {
+        "value": "19.8px",
+        "count": 70
+      },
+      {
+        "value": "18.15px",
+        "count": 63
+      },
+      {
+        "value": "24px",
+        "count": 53
+      }
+    ],
+    "letter_spacings": [
+      {
+        "value": "0.99px",
+        "count": 84
+      },
+      {
+        "value": "0.88px",
+        "count": 63
+      },
+      {
+        "value": "0.44px",
+        "count": 42
+      },
+      {
+        "value": "-1.8px",
+        "count": 33
+      },
+      {
+        "value": "1.3px",
+        "count": 12
+      },
+      {
+        "value": "1.12px",
+        "count": 11
+      },
+      {
+        "value": "-0.64px",
+        "count": 11
+      },
+      {
+        "value": "0.48px",
+        "count": 4
+      },
+      {
+        "value": "-0.84px",
+        "count": 3
+      },
+      {
+        "value": "1.43px",
+        "count": 1
+      }
+    ]
+  },
+  "geometry": {
+    "border_radii": [
+      {
+        "value": "100px",
+        "count": 105
+      },
+      {
+        "value": "10px",
+        "count": 96
+      },
+      {
+        "value": "7px",
+        "count": 94
+      },
+      {
+        "value": "50%",
+        "count": 21
+      },
+      {
+        "value": "5px",
+        "count": 20
+      },
+      {
+        "value": "8px",
+        "count": 17
+      },
+      {
+        "value": "12px",
+        "count": 7
+      },
+      {
+        "value": "100%",
+        "count": 4
+      }
+    ],
+    "box_shadows": [
+      {
+        "value": "rgba(0, 0, 0, 0.06) 0px 2px 16px 0px",
+        "count": 3
+      }
+    ]
+  },
+  "spacing": {
+    "paddings": [
+      {
+        "value": "6px 13px",
+        "count": 104
+      },
+      {
+        "value": "16px 18px",
+        "count": 63
+      },
+      {
+        "value": "14px 20px",
+        "count": 63
+      },
+      {
+        "value": "28px 24px",
+        "count": 47
+      },
+      {
+        "value": "0px 40px",
+        "count": 40
+      },
+      {
+        "value": "11px 20px",
+        "count": 28
+      },
+      {
+        "value": "100px 0px",
+        "count": 27
+      },
+      {
+        "value": "20px 24px",
+        "count": 21
+      },
+      {
+        "value": "0px 24px 28px",
+        "count": 21
+      },
+      {
+        "value": "4px 11px",
+        "count": 20
+      },
+      {
+        "value": "28px 32px",
+        "count": 13
+      },
+      {
+        "value": "14px 30px",
+        "count": 13
+      },
+      {
+        "value": "18px 16px",
+        "count": 8
+      },
+      {
+        "value": "14px 0px 0px",
+        "count": 6
+      },
+      {
+        "value": "0px 0px 2px",
+        "count": 5
+      }
+    ]
+  },
+  "gradients": []
+}

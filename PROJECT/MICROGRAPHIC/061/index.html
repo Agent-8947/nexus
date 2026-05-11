@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>061 // GOLGOTHA NOISE (ШУМ ГОЛГОФЫ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #550000; font-family: serif; font-size: 24px; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ШУМ ГОЛГОФЫ ]</div>
+<canvas id="c"></canvas>
+
+<script>
+let scene, camera, renderer, terrain;
+let T = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    init3D(); initAudio(); animate();
+}
+
+function init3D() {
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x330000, 0.03); // Thick blood-red fog
+
+    camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 200);
+    camera.position.set(0, 5, 20);
+
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setClearColor(0x110000);
+
+    // Spiked Terrain
+    const geo = new THREE.PlaneGeometry(100, 100, 50, 50);
+    geo.rotateX(-Math.PI/2);
+    
+    const pos = geo.attributes.position;
+    for(let i=0; i<pos.count; i++) {
+        // Random sharp spikes
+        if(Math.random() > 0.8) {
+            pos.setY(i, Math.random() * 5);
+        } else {
+            pos.setY(i, Math.random() * 0.5);
+        }
+    }
+    geo.computeVertexNormals();
+
+    const mat = new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 1 });
+    terrain = new THREE.Mesh(geo, mat);
+    scene.add(terrain);
+
+    // Massive Brutalist Cross
+    const crossGroup = new THREE.Group();
+    const crossMat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 0.8, metalness: 0.5 });
+    
+    const vGeo = new THREE.BoxGeometry(2, 30, 2);
+    const hGeo = new THREE.BoxGeometry(15, 2, 2);
+    
+    const vMesh = new THREE.Mesh(vGeo, crossMat);
+    const hMesh = new THREE.Mesh(hGeo, crossMat);
+    hMesh.position.y = 5;
+    
+    crossGroup.add(vMesh);
+    crossGroup.add(hMesh);
+    crossGroup.position.set(0, 10, -20);
+    scene.add(crossGroup);
+
+    // Lighting
+    scene.add(new THREE.AmbientLight(0xff0000, 0.2));
+    const pl = new THREE.PointLight(0xff0000, 5, 50);
+    pl.position.set(0, 15, -15);
+    scene.add(pl);
+    
+    // Distant white light
+    const dl = new THREE.DirectionalLight(0xffffff, 0.5);
+    dl.position.set(0, 50, -50);
+    scene.add(dl);
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 50; // Sludge/Doom tempo
+
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.1, octaves: 8 }).toDestination();
+    const kickDist = new Tone.Distortion(1).toDestination();
+    kick.connect(kickDist);
+    kick.volume.value = 5;
+
+    const drone = new Tone.FMSynth({ harmonicity: 0.2, modulationIndex: 20 }).toDestination();
+    const droneDist = new Tone.Distortion(5).toDestination();
+    const droneRev = new Tone.Reverb(10).connect(droneDist);
+    drone.connect(droneRev);
+    drone.volume.value = -10;
+
+    const bell = new Tone.MetalSynth({ frequency: 150, resonance: 4000 }).toDestination();
+    bell.connect(new Tone.Reverb(8).toDestination());
+    bell.volume.value = -5;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C0", "2n", time);
+        drone.triggerAttackRelease("D1", "1m", time);
+    }, "2n").start(0);
+
+    new Tone.Loop(time => {
+        bell.triggerAttackRelease("1n", time);
+        // Camera rumble
+        camera.position.y = 5 + Math.random();
+    }, "1m").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.01;
+    
+    // Slow relentless forward movement
+    terrain.position.z += 0.05;
+    if(terrain.position.z > 2) terrain.position.z = 0;
+
+    // Slow camera pan
+    camera.position.x = Math.sin(T * 0.1) * 5;
+    camera.lookAt(0, 10, -20);
+
+    // Fade camera shake
+    camera.position.y += (5 - camera.position.y) * 0.1;
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

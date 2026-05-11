@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINETIC-FORGE // Autonomous Rendering</title>
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #888888;
+            --light-gray: #e0e0e0;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            font-family: var(--font-main);
+            line-height: 1.3;
+        }
+
+        /* Vignelli Grid System */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 2rem;
+            margin-bottom: 4rem;
+            align-items: end;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .sub-logo {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        /* Hero / Input Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            margin-bottom: 6rem;
+            gap: 2rem;
+        }
+
+        .hero-title {
+            grid-column: 2;
+            font-size: 6rem;
+            font-weight: 700;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-desc {
+            grid-column: 2;
+            font-size: 1.5rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin-bottom: 4rem;
+            color: var(--gray);
+        }
+
+        .input-wrapper {
+            grid-column: 2;
+            display: flex;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 0.5rem;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-family: var(--font-main);
+            font-size: 2rem;
+            background: transparent;
+            color: var(--black);
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--light-gray);
+        }
+
+        button {
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 2rem;
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: var(--gray);
+        }
+
+        /* Process Log */
+        .log-container {
+            grid-column: 2;
+            margin-top: 2rem;
+            display: none;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 1rem;
+        }
+
+        .log-container.active {
+            display: block;
+        }
+
+        .log-line {
+            font-size: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+        .log-line.success { color: var(--black); font-weight: bold; }
+
+        /* Sections Grid */
+        .section-header {
+            border-top: 2px solid var(--black);
+            padding-top: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        /* Proof Section */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .quote {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .author {
+            font-size: 1rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid var(--black);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="sub-logo">V1.0 ENGINE</div>
+        <div class="logo">KINETIC-FORGE</div>
+    </header>
+
+    <div class="hero">
+        <div></div>
+        <div style="grid-column: 2">
+            <h1 class="hero-title">Turn your brand<br>into motion.</h1>
+            <p class="hero-desc">Extract your visual DNA from any URL. Synthesize a cinematic pitch deck sequence in three broadcast-ready formats simultaneously.</p>
+            
+            <div class="input-wrapper">
+                <input type="text" id="target-url" placeholder="ENTER TARGET URL" autocomplete="off">
+                <button id="extract-btn">Initiate</button>
+            </div>
+            
+            <div class="log-container" id="terminal-output"></div>
+        </div>
+    </div>
+
+    <div class="section-header">Architecture</div>
+    <div class="grid-3">
+        <div class="card">
+            <h3>01 / DNA Extraction</h3>
+            <p>Paste your site URL. The engine scans the DOM, extracting CSS tokens and visual hierarchy to build a strict identity manifest.</p>
+        </div>
+        <div class="card">
+            <h3>02 / Scenario Synthesis</h3>
+            <p>An autonomous LLM decomposes the payload into semantic blocks (Problem, Solution, Traction) and maps them to a time-coded script.</p>
+        </div>
+        <div class="card">
+            <h3>03 / Tri-Format Render</h3>
+            <p>One core logic graph compiled into three cinematic exports simultaneously: 16:9, 4:5, and 9:16.</p>
+        </div>
+    </div>
+
+    <div class="section-header">Telemetry</div>
+    <div class="grid-2">
+        <div>
+            <div class="quote">"Brand fidelity is retained flawlessly through the extraction protocol."</div>
+            <div class="author">Log 0x8A4 / Agency Alpha</div>
+        </div>
+        <div>
+            <div class="quote">"The 9:16 autonomous compile saves 40 hours a week."</div>
+            <div class="author">Log 0x2B1 / Venture Sync</div>
+        </div>
+    </div>
+
+    <footer>
+        <div>Powered by NEXUS Core</div>
+        <div>All systems operational</div>
+    </footer>
+</div>
+
+<script>
+    const btn = document.getElementById('extract-btn');
+    const input = document.getElementById('target-url');
+    const terminal = document.getElementById('terminal-output');
+    
+    const logs = [
+        "Process started: Handshake established.",
+        "Parsing DOM. Extracting CSS tokens...",
+        "Identity mapped.",
+        "LLM generating semantic blocks (4/4)...",
+        "Mounting sequence timeline...",
+        "Rendering formats: 16:9, 4:5, 9:16.",
+        "Complete. Packages ready."
+    ];
+    
+    btn.addEventListener('click', () => {
+        if (!input.value) return;
+        terminal.innerHTML = '';
+        terminal.classList.add('active');
+        input.disabled = btn.disabled = true;
+        btn.innerText = 'PROCESSING...';
+        
+        let delay = 0;
+        logs.forEach((log, index) => {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = 'log-line';
+                if (log.includes('Complete')) {
+                    line.classList.add('success');
+                }
+                line.innerText = `> ${log}`;
+                terminal.appendChild(line);
+                
+                if (index === logs.length - 1) {
+                    input.disabled = btn.disabled = false;
+                    btn.innerText = 'INITIATE';
+                    input.value = '';
+                }
+            }, delay);
+            delay += 600;
+        });
+    });
+</script>
+
+</body>
+</html>

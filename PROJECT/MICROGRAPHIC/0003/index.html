@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0003 // SENSUAL FRACTAL</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #050002;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        
+        canvas { 
+            display: block; 
+            filter: contrast(1.2) saturate(1.8) drop-shadow(0 0 20px rgba(255, 0, 85, 0.2));
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 3s ease;
+            color: #ff3366;
+            font-size: 14px;
+            letter-spacing: 12px;
+            text-shadow: 0 0 15px #ff3366;
+            font-style: italic;
+        }
+        
+        .pulse-text {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        
+        @keyframes breathe { 
+            0% { opacity: 0.3; transform: scale(0.98); } 
+            50% { opacity: 1; transform: scale(1.02); } 
+            100% { opacity: 0.3; transform: scale(0.98); } 
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlay" onclick="initAudio()">
+    <div class="pulse-text">[ BREATHE IN ]</div>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Audio Setup - Warm, Sensual, Breathing Pad
+let audioCtx;
+let analyser;
+let dataArray;
+let heartbeatPulse = 0;
+
+function initAudio() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 3000);
+
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.9; // Very smooth data
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+
+    // Warm Detuned Pad
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+    const osc3 = audioCtx.createOscillator();
+    
+    osc1.type = 'sine';
+    osc2.type = 'sine';
+    osc3.type = 'triangle';
+    
+    osc1.frequency.value = 110; // A2
+    osc2.frequency.value = 111.5; // Slight detune for warmth/chorus
+    osc3.frequency.value = 55; // Sub bass
+    
+    const padGain = audioCtx.createGain();
+    padGain.gain.value = 0.2;
+    
+    // Lowpass filter for velvety sound
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 400;
+    filter.Q.value = 2;
+    
+    osc1.connect(filter);
+    osc2.connect(filter);
+    osc3.connect(filter);
+    filter.connect(padGain);
+    
+    // Slow breathing modulation for the pad volume
+    const breathLfo = audioCtx.createOscillator();
+    breathLfo.type = 'sine';
+    breathLfo.frequency.value = 0.125; // 8-second breath cycle
+    const breathGain = audioCtx.createGain();
+    breathGain.gain.value = 0.15;
+    
+    breathLfo.connect(breathGain);
+    breathGain.connect(padGain.gain);
+    
+    padGain.connect(analyser);
+    
+    // Deep, slow heartbeat pulse
+    function playHeartbeat() {
+        if (!audioCtx) return;
+        
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(60, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.6);
+        
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 0.1); // Soft attack
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8); // Long release
+        
+        osc.connect(gain);
+        gain.connect(analyser);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+        
+        heartbeatPulse = 1.0;
+        
+        // Double heartbeat pattern (lub-dub)
+        setTimeout(() => {
+            const oscDub = audioCtx.createOscillator();
+            const gainDub = audioCtx.createGain();
+            oscDub.type = 'sine';
+            oscDub.frequency.setValueAtTime(50, audioCtx.currentTime);
+            oscDub.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.8);
+            
+            gainDub.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainDub.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 0.1);
+            gainDub.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.0);
+            
+            oscDub.connect(gainDub);
+            gainDub.connect(analyser);
+            oscDub.start();
+            oscDub.stop(audioCtx.currentTime + 1.0);
+            
+            heartbeatPulse = 0.8;
+        }, 300); // 300ms after first beat
+        
+        setTimeout(playHeartbeat, 2500); // Slow resting heart rate
+    }
+
+    analyser.connect(audioCtx.destination);
+    
+    osc1.start();
+    osc2.start();
+    osc3.start();
+    breathLfo.start();
+    playHeartbeat();
+}
+
+// Visuals: Organic, Sensual, Flowing Silk
+const numParticles = 450; 
+const particles = [];
+
+for (let i = 0; i < numParticles; i++) {
+    particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0,
+        vy: 0,
+        radius: Math.random() * width * 0.4,
+        angle: Math.random() * Math.PI * 2,
+        speed: (Math.random() * 0.002 + 0.001), // Very slow, languid movement
+        size: Math.random() * 2 + 1,
+        phase: Math.random() * Math.PI * 2 // Individual breathing phase
+    });
+}
+
+let tick = 0;
+
+function loop() {
+    tick += 1;
+    heartbeatPulse *= 0.96; // Slow decay for smooth visuals
+
+    let audioIntensity = 0;
+    if (analyser) {
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < 20; i++) { // Focus on lower/mids for warmth
+            sum += dataArray[i];
+        }
+        audioIntensity = sum / 20;
+    }
+
+    const visualBreath = Math.sin(tick * 0.015); // Global visual breath
+
+    // SOFT FRACTAL ZOOM: Silky feedback loop
+    ctx.save();
+    ctx.globalAlpha = 0.97; // High persistence for silk effect
+    ctx.translate(width / 2, height / 2);
+    // Extremely slow rotation, gently swaying with the breath
+    ctx.rotate(0.0005 + visualBreath * 0.001);
+    // Soft, pulsing zoom that breathes in and out
+    const scale = 0.998 + visualBreath * 0.004 + heartbeatPulse * 0.002; 
+    ctx.scale(scale, scale);
+    ctx.translate(-width / 2, -height / 2);
+    ctx.drawImage(canvas, 0, 0);
+    ctx.restore();
+
+    // Deep velvet fade to prevent burnout
+    ctx.fillStyle = `rgba(5, 0, 2, 0.02)`;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.globalCompositeOperation = 'lighter'; // Additive blending for sensual glow
+
+    // Sensual Palette: Magenta, Rose, Gold, Deep Purple
+    const baseHue = 340 + Math.sin(tick * 0.005) * 40; // Slowly drifts between pink and orange
+
+    // Update organic particles
+    for (let p of particles) {
+        p.angle += p.speed * (0.5 + audioIntensity / 100);
+        
+        // Soft undulating drift
+        p.radius += Math.sin(tick * 0.01 + p.phase) * 1.5;
+
+        // Smooth fluid flow
+        const targetX = width / 2 + Math.cos(p.angle) * (p.radius + heartbeatPulse * 20);
+        const targetY = height / 2 + Math.sin(p.angle) * (p.radius + heartbeatPulse * 20);
+
+        // Very smooth interpolation
+        p.x += (targetX - p.x) * 0.05;
+        p.y += (targetY - p.y) * 0.05;
+    }
+
+    // Draw silk threads (Connections)
+    const maxDist = 80 + visualBreath * 20; // Connections stretch and contract
+    const maxDistSq = maxDist * maxDist;
+
+    for (let i = 0; i < numParticles; i++) {
+        const pi = particles[i];
+        
+        // Soft glowing nodes
+        const nodeAlpha = 0.1 + (Math.sin(tick * 0.05 + pi.phase) * 0.5 + 0.5) * 0.2;
+        ctx.fillStyle = `hsla(${baseHue}, 80%, 70%, ${nodeAlpha})`;
+        ctx.beginPath();
+        ctx.arc(pi.x, pi.y, pi.size + heartbeatPulse * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < numParticles; j++) {
+            const pj = particles[j];
+            const dx = pi.x - pj.x;
+            const dy = pi.y - pj.y;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < maxDistSq) {
+                // Non-linear alpha curve for softer, organic fade
+                const distRatio = Math.sqrt(distSq) / maxDist;
+                const alpha = Math.pow(1 - distRatio, 2) * 0.15; // Very soft, silky lines
+                
+                // Colors blend from deep magenta to hot gold
+                const lineHue = baseHue + distRatio * 30;
+                
+                ctx.strokeStyle = `hsla(${lineHue}, 90%, 65%, ${alpha})`;
+                ctx.lineWidth = 0.5 + heartbeatPulse * 0.5;
+                
+                ctx.beginPath();
+                // Quadratic curve for slight organic bending instead of rigid straight lines
+                ctx.moveTo(pi.x, pi.y);
+                const cx = (pi.x + pj.x) / 2 + Math.sin(tick * 0.02 + pi.phase) * 10;
+                const cy = (pi.y + pj.y) / 2 + Math.cos(tick * 0.02 + pj.phase) * 10;
+                ctx.quadraticCurveTo(cx, cy, pj.x, pj.y);
+                ctx.stroke();
+            }
+        }
+    }
+    
+    ctx.globalCompositeOperation = 'source-over';
+
+    requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>

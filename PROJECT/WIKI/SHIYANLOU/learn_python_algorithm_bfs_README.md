@@ -1,2 +1,0 @@
-    - [shortest_distance_from_all_buildings](bfs/shortest_distance_from_all_buildings.py)
-    - [word_ladder](bfs/word_ladder.py)

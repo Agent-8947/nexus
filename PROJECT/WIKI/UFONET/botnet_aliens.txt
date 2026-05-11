@@ -1,1 +1,0 @@
-https://isitdown.me/check_domain.php;$POST;domain

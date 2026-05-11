@@ -1,7 +1,0 @@
-dirs:
-  - ./
-aliveStatusCodes:
-  - 200
-ignorePatterns:
-  - pattern: '^https://stackoverflow.com/.*$'
-useGitIgnore: true

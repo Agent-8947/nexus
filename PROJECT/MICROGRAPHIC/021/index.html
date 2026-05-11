@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>021 // CELLULAR DIVISION VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#020000;overflow:hidden}
+canvas{display:block;filter:contrast(1.5) saturate(1.1) brightness(0.85)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 10%,rgba(0,0,0,0.98) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#050000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#a22;text-transform:uppercase;text-shadow:0 0 15px rgba(255,0,0,0.6)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:13%;right:3%;font-family:monospace;font-size:10px;color:rgba(255,50,50,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">021 // CELLULAR DIVISION</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: BINAURAL THROB & GRANULAR STUTTER ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Binaural Throb (Doom Drone)
+    const throb1=ax.createOscillator();throb1.type='sine';throb1.frequency.value=38;
+    const throb2=ax.createOscillator();throb2.type='sine';throb2.frequency.value=41;
+    const tg1=ax.createGain();tg1.gain.value=0.4;
+    const tg2=ax.createGain();tg2.gain.value=0.4;
+    
+    const pan1 = ax.createStereoPanner(); pan1.pan.value = -0.6;
+    const pan2 = ax.createStereoPanner(); pan2.pan.value = 0.6;
+    
+    throb1.connect(tg1);tg1.connect(pan1);pan1.connect(_m);throb1.start();
+    throb2.connect(tg2);tg2.connect(pan2);pan2.connect(_m);throb2.start();
+    
+    // Granular Stutter
+    let stutterCount = 0;
+    function granularBurst(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const bs=ax.sampleRate*0.04,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+        for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+        const n=ax.createBufferSource();n.buffer=b;
+        
+        const ng=ax.createGain();ng.gain.setValueAtTime(0.5,now);ng.gain.exponentialRampToValueAtTime(0.001,now+0.04);
+        const nf=ax.createBiquadFilter();nf.type='highpass';nf.frequency.value=5000 + Math.random()*3000;
+        
+        n.connect(nf);nf.connect(ng);ng.connect(_m);n.start(now);
+        
+        glitchIntensity = 1.0;
+        
+        stutterCount++;
+        let next = 40;
+        if(stutterCount > 8 + Math.random()*10){
+            stutterCount = 0;
+            next = 800 + Math.random()*2500;
+        }
+        
+        if(Math.random() > 0.8) invert = !invert;
+        else if(stutterCount === 0) invert = false;
+        
+        setTimeout(granularBurst, next);
+    }
+    setTimeout(granularBurst, 2000);
+
+    // Deep Impact
+    function heavyHit(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const k=ax.createOscillator();k.type='sine';
+        k.frequency.setValueAtTime(80,now);k.frequency.exponentialRampToValueAtTime(0.001,now+0.4);
+        const kg=ax.createGain();kg.gain.setValueAtTime(0.8,now);kg.gain.exponentialRampToValueAtTime(0.001,now+0.4);
+        k.connect(kg);kg.connect(_m);k.start(now);k.stop(now+0.4);
+        
+        setTimeout(heavyHit, 1500 + Math.random()*1500);
+    }
+    setTimeout(heavyHit, 1000);
+}
+
+// ── VJ ENGINE: CELLULAR DIVISION ──
+class Cell {
+    constructor(x, y, r) {
+        this.x = x; this.y = y; this.r = r;
+        this.vx = (Math.random()-0.5)*2;
+        this.vy = (Math.random()-0.5)*2;
+        this.pulse = Math.random()*Math.PI;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.pulse += 0.05;
+        
+        if(this.x < this.r || this.x > W - this.r) this.vx *= -1;
+        if(this.y < this.r || this.y > H - this.r) this.vy *= -1;
+        
+        this.currentR = this.r + Math.sin(this.pulse)*10;
+    }
+}
+
+let cells = [];
+function initCells() {
+    for(let i=0; i<12; i++) {
+        cells.push(new Cell(W/2 + (Math.random()-0.5)*200, H/2 + (Math.random()-0.5)*200, 30 + Math.random()*40));
+    }
+}
+
+function drawMetaballs() {
+    // We simulate metaballs by drawing overlapping blurred circles or using a threshold
+    // Here we use a simpler approach for performance: drawing smooth overlapping shapes with transparency
+    cx.fillStyle = '#ff0000';
+    cx.strokeStyle = '#550000';
+    
+    cells.forEach(cell => {
+        cx.beginPath();
+        const segments = 20;
+        for(let i=0; i<=segments; i++) {
+            const a = (i/segments) * Math.PI * 2;
+            const n = Math.sin(T*3 + i*0.5 + cell.pulse) * 10 * glitchIntensity;
+            const r = cell.currentR + n;
+            const px = cell.x + Math.cos(a)*r;
+            const py = cell.y + Math.sin(a)*r;
+            if(i===0) cx.moveTo(px, py);
+            else cx.lineTo(px, py);
+        }
+        cx.closePath();
+        cx.fill();
+        cx.stroke();
+    });
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    if(cells.length === 0 && W) initCells();
+    
+    glitchIntensity *= 0.88;
+    
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(200,200,200,0.15)' : 'rgba(3,1,1,0.2)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    const offset = Math.sin(T*8) * 12 * glitchIntensity + (glitchIntensity * 15);
+    
+    // Process cells
+    cells.forEach(c => c.update());
+    
+    // Draw with RGB Split
+    cx.save();
+    cx.lineWidth = 2;
+    
+    // RED
+    cx.save(); cx.translate(offset, 0); cx.fillStyle = '#ff1111'; cx.strokeStyle = '#660000';
+    drawMetaballs(); cx.restore();
+    
+    // GREEN
+    cx.save(); cx.translate(-offset/2, offset); cx.fillStyle = '#11ff11'; cx.strokeStyle = '#006600';
+    drawMetaballs(); cx.restore();
+    
+    // BLUE
+    cx.save(); cx.translate(-offset/2, -offset); cx.fillStyle = '#1111ff'; cx.strokeStyle = '#000066';
+    drawMetaballs(); cx.restore();
+    
+    cx.restore();
+    cx.globalCompositeOperation = 'source-over';
+    
+    // Glitch cuts
+    if(Math.random() > 0.96){
+        cx.fillStyle = invert ? '#fff' : '#000';
+        cx.fillRect(0, Math.random()*H, W, 10 + Math.random()*50);
+    }
+    
+    // Noise
+    cx.fillStyle = `rgba(255,50,50,${0.05 + glitchIntensity*0.2})`;
+    for(let i=0; i<150; i++){
+        cx.fillRect(Math.random()*W, Math.random()*H, 1 + Math.random()*2, 1 + Math.random()*2);
+    }
+}
+</script>
+</body>
+</html>

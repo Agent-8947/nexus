@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>023 // VOID GROWTH VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#030105;overflow:hidden}
+canvas{display:block;filter:contrast(1.7) saturate(0.8) brightness(0.75)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 0%,rgba(0,0,0,1) 90%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:15%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#020003;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#525;text-transform:uppercase;text-shadow:0 0 15px rgba(255,0,255,0.4)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:16%;right:3%;font-family:monospace;font-size:10px;color:rgba(200,50,200,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">023 // VOID GROWTH</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: HEAVY LOW DRONE & SCREECH ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.6;_m.connect(ax.destination);
+    
+    // Heavy Low Drone
+    const d1=ax.createOscillator();d1.type='sine';d1.frequency.value=30;
+    const d2=ax.createOscillator();d2.type='triangle';d2.frequency.value=31;
+    const g=ax.createGain();g.gain.value=0.5;
+    d1.connect(g);d2.connect(g);g.connect(_m);d1.start();d2.start();
+    
+    // Occasional Screech
+    function screech(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator();o.type='sawtooth';
+        o.frequency.setValueAtTime(100,now);
+        o.frequency.exponentialRampToValueAtTime(3000 + Math.random()*2000,now+0.5);
+        
+        const og=ax.createGain();og.gain.setValueAtTime(0.001,now);og.gain.linearRampToValueAtTime(0.3,now+0.1);og.gain.exponentialRampToValueAtTime(0.001,now+0.5);
+        
+        o.connect(og);og.connect(_m);o.start(now);o.stop(now+0.5);
+        
+        glitchIntensity = 1.2;
+        setTimeout(screech, 4000 + Math.random()*6000);
+    }
+    setTimeout(screech, 2000);
+}
+
+// ── VJ ENGINE: FRACTAL GROWTH ──
+let branches = [];
+class Branch {
+    constructor(x, y, angle, length, depth) {
+        this.x = x; this.y = y; this.angle = angle; this.length = length; this.depth = depth;
+        this.life = 1.0;
+    }
+    draw() {
+        const x2 = this.x + Math.cos(this.angle) * this.length;
+        const y2 = this.y + Math.sin(this.angle) * this.length;
+        cx.moveTo(this.x, this.y);
+        cx.lineTo(x2, y2);
+        return {x: x2, y: y2};
+    }
+}
+
+function initBranches() {
+    branches = [];
+    grow(W/2, H/2, 0, 50, 0);
+}
+
+function grow(x, y, angle, length, depth) {
+    if(depth > 8) return;
+    branches.push(new Branch(x, y, angle, length, depth));
+    
+    const numChildren = 2 + Math.floor(Math.random()*2);
+    for(let i=0; i<numChildren; i++) {
+        const nextAngle = angle + (Math.random()-0.5)*1.5;
+        const nextLength = length * (0.6 + Math.random()*0.3);
+        const end = {x: x + Math.cos(angle)*length, y: y + Math.sin(angle)*length};
+        grow(end.x, end.y, nextAngle, nextLength, depth + 1);
+    }
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    if(branches.length === 0 && W) initBranches();
+    
+    glitchIntensity *= 0.92;
+    
+    // Regrow occasionally
+    if(Math.random()>0.995) initBranches();
+    
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(230,200,230,0.1)' : 'rgba(5,1,10,0.2)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    const offset = Math.sin(T*15) * 20 * glitchIntensity;
+    
+    function drawStructure() {
+        cx.beginPath();
+        branches.forEach(b => {
+            const end = b.draw();
+            // Mutate slightly
+            b.angle += Math.sin(T + b.depth)*0.01;
+        });
+        cx.stroke();
+    }
+    
+    cx.save();
+    
+    // RED
+    cx.save(); cx.translate(offset, -offset); cx.strokeStyle = '#ff0055'; cx.lineWidth = 1;
+    drawStructure(); cx.restore();
+    
+    // GREEN
+    cx.save(); cx.translate(-offset, offset); cx.strokeStyle = '#00ff55'; cx.lineWidth = 0.5;
+    drawStructure(); cx.restore();
+    
+    // BLUE
+    cx.save(); cx.translate(0, offset*2); cx.strokeStyle = '#aa00ff'; cx.lineWidth = 2;
+    drawStructure(); cx.restore();
+    
+    cx.restore();
+    cx.globalCompositeOperation = 'source-over';
+    
+    // Vignette pulse
+    document.getElementById('vig').style.opacity = 0.5 + Math.sin(T*5)*0.5 * glitchIntensity;
+}
+</script>
+</body>
+</html>

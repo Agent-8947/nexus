@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>020 // BLACK LODGE VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#000;overflow:hidden;cursor:none}
+canvas{display:block;filter:contrast(1.4) saturate(1.2) brightness(0.8)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.9) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#050000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:16px;letter-spacing:15px;color:#a00;text-transform:uppercase;text-shadow: 0 0 10px #f00}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:6px;animation:pulse 3s infinite}
+@keyframes pulse{50%{opacity:0.1}}
+#tc{position:absolute;bottom:15%;left:5%;font-family:monospace;font-size:12px;color:rgba(255,255,255,0.3);z-index:30;letter-spacing:4px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">020 // WAITING ROOM</div>
+<div id="os">enter the lodge</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">REC_00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let strobeMode = false;
+let strobeTimer = 0;
+let dopplegangerOffset = 0;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`REC_${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: LYNCHIAN ROOM TONE & REVERSED SOUNDS ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.7;_m.connect(ax.destination);
+    
+    // The Room Tone (Deep, resonant hum)
+    const hum1=ax.createOscillator(); hum1.type='sine'; hum1.frequency.value=35;
+    const hum2=ax.createOscillator(); hum2.type='sawtooth'; hum2.frequency.value=37;
+    const humGain=ax.createGain(); humGain.gain.value=0.3;
+    
+    const humFilter = ax.createBiquadFilter(); humFilter.type='lowpass'; humFilter.frequency.value=80;
+    hum1.connect(humFilter); hum2.connect(humFilter); humFilter.connect(humGain); humGain.connect(_m);
+    hum1.start(); hum2.start();
+
+    // Electrical Crackle (Neon lights failing)
+    function crackle(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const bs=ax.sampleRate*0.1; const b=ax.createBuffer(1,bs,ax.sampleRate); const d=b.getChannelData(0);
+        for(let i=0;i<bs;i++) d[i] = Math.random()*2-1;
+        
+        const n=ax.createBufferSource(); n.buffer=b;
+        const nf=ax.createBiquadFilter(); nf.type='bandpass'; nf.frequency.value=2000 + Math.random()*3000; nf.Q.value=1;
+        const ng=ax.createGain(); ng.gain.setValueAtTime(0.5,now); ng.gain.exponentialRampToValueAtTime(0.001,now+0.1);
+        
+        n.connect(nf); nf.connect(ng); ng.connect(_m); n.start(now);
+        
+        if(Math.random() > 0.8) {
+            strobeMode = true;
+            strobeTimer = 10; // Trigger visual strobe
+        }
+        
+        setTimeout(crackle, Math.random() > 0.9 ? 50 : 2000 + Math.random()*5000);
+    }
+    setTimeout(crackle, 2000);
+
+    // Reversed Envelope (The "Backwards" Talk/Sound)
+    function reversedSound(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        const o=ax.createOscillator(); o.type='triangle';
+        o.frequency.setValueAtTime(200 + Math.random()*100, now);
+        o.frequency.linearRampToValueAtTime(300 + Math.random()*200, now+1.9); // Pitch bends up
+        
+        const g=ax.createGain(); g.gain.setValueAtTime(0.001, now);
+        g.gain.exponentialRampToValueAtTime(0.4, now + 1.9); // Slow fade IN (reversed)
+        g.gain.setValueAtTime(0, now + 1.95); // Instant cut OFF
+        
+        // Panner
+        const p = ax.createStereoPanner(); p.pan.value = (Math.random()-0.5)*1.5;
+        
+        o.connect(g); g.connect(p); p.connect(_m);
+        o.start(now); o.stop(now+2.0);
+        
+        // Visual stutter trigger
+        dopplegangerOffset = (Math.random()-0.5)*100;
+        
+        setTimeout(reversedSound, 4000 + Math.random()*6000);
+    }
+    setTimeout(reversedSound, 3000);
+}
+
+// ── VJ ENGINE: THE RED ROOM ──
+
+function drawCurtains(yOffset) {
+    const folds = 15;
+    const foldWidth = W / folds;
+    
+    for(let i=0; i<folds; i++) {
+        const x = i * foldWidth;
+        // Swaying motion
+        const sway = Math.sin(T*0.5 + i*0.5) * 20;
+        
+        // Create gradient for the fold to make it look like velvet
+        const grad = cx.createLinearGradient(x + sway, 0, x + foldWidth + sway, 0);
+        grad.addColorStop(0, '#200'); // dark shadow
+        grad.addColorStop(0.5, '#a00'); // bright red velvet
+        grad.addColorStop(1, '#100'); // dark shadow
+        
+        cx.fillStyle = grad;
+        cx.beginPath();
+        cx.moveTo(x + sway, 0);
+        cx.lineTo(x + foldWidth + sway, 0);
+        cx.lineTo(x + foldWidth + Math.sin(T*0.5 + (i+1)*0.5)*20, yOffset);
+        cx.lineTo(x + Math.sin(T*0.5 + i*0.5)*20, yOffset);
+        cx.fill();
+    }
+}
+
+function drawChevronFloor(yStart) {
+    cx.fillStyle = '#dfdcd3'; // Cream white
+    cx.fillRect(0, yStart, W, H-yStart);
+    
+    cx.fillStyle = '#111'; // Black stripes
+    cx.beginPath();
+    
+    // Abstract perspective chevron
+    // We draw converging lines from the horizon (yStart)
+    const horizonX = W/2;
+    const lines = 10;
+    
+    // Draw the zig-zag
+    for(let y=yStart; y<H; y+=20) {
+        // As Y goes down, the scale of the pattern increases to fake perspective
+        const depth = (y - yStart) / (H - yStart); // 0 to 1
+        const scale = 0.5 + depth * 3;
+        
+        cx.lineWidth = 10 * scale;
+        cx.strokeStyle = '#111';
+        
+        cx.beginPath();
+        for(let x=-W; x<W*2; x+=80*scale) {
+            // Zig zag logic
+            const yOffset = ((Math.round(x/(80*scale))) % 2 === 0) ? 40*scale : 0;
+            // Fake perspective x
+            const px = horizonX + (x - horizonX) * (0.5 + depth*2);
+            cx.lineTo(px, y + yOffset);
+        }
+        cx.stroke();
+    }
+}
+
+function drawDoppelganger() {
+    cx.save();
+    cx.translate(W/2 + dopplegangerOffset, H*0.6);
+    
+    // Smooth return to center
+    dopplegangerOffset *= 0.9;
+    
+    // Glitch scale
+    const s = 1.0 + (Math.random() > 0.95 ? (Math.random()-0.5)*0.5 : 0);
+    cx.scale(s, s);
+    
+    // Abstract dark silhouette (head and shoulders)
+    cx.fillStyle = 'rgba(0,0,0,0.9)';
+    cx.shadowColor = '#000';
+    cx.shadowBlur = 50;
+    
+    cx.beginPath();
+    // Shoulders
+    cx.moveTo(-150, 200);
+    cx.quadraticCurveTo(0, 0, 150, 200);
+    // Head
+    cx.arc(0, -50, 60, 0, Math.PI*2);
+    cx.fill();
+    
+    // Smear effect (motion blur/glitch)
+    if(Math.abs(dopplegangerOffset) > 10) {
+        cx.globalCompositeOperation = 'screen';
+        cx.fillStyle = 'rgba(255,0,0,0.2)';
+        cx.fill();
+    }
+    
+    cx.restore();
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    // Clear screen
+    cx.fillStyle = '#000';
+    cx.fillRect(0,0,W,H);
+    
+    const horizon = H * 0.55;
+    
+    // Floor
+    drawChevronFloor(horizon);
+    
+    // Curtains
+    drawCurtains(horizon);
+    
+    // Entity
+    drawDoppelganger();
+    
+    // Dust / Film Grain
+    cx.fillStyle = `rgba(255,255,255,${0.03 + Math.random()*0.02})`;
+    for(let i=0; i<100; i++){
+        cx.fillRect(Math.random()*W, Math.random()*H, 2, 2);
+    }
+    
+    // Strobe Logic
+    if(strobeTimer > 0) {
+        strobeTimer--;
+        if(strobeTimer % 2 === 0) {
+            cx.fillStyle = '#fff';
+            cx.globalAlpha = 0.8;
+            cx.fillRect(0,0,W,H);
+            cx.globalAlpha = 1.0;
+        }
+    } else {
+        strobeMode = false;
+    }
+    
+    // Random deep shadow vignette flicker
+    if(Math.random() > 0.95) {
+        cx.fillStyle = 'rgba(0,0,0,0.3)';
+        cx.fillRect(0,0,W,H);
+    }
+}
+</script>
+</body>
+</html>

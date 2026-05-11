@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>085 // БЛЭК-МЕТАЛ СУПРЕМАТИЗМ (BLACK METAL SUPREMATISM)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #ff0000; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ВЫЗОВ КВАДРАТА ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+    uniform float shake;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        vec3 col = vec3(0.8, 0.1, 0.1); // Red background
+
+        // Shake effect
+        vec2 p = uv + vec2(hash(vec2(t, 0.0)) - 0.5, hash(vec2(0.0, t)) - 0.5) * shake * 0.1;
+
+        // Black Square
+        float size = 0.4;
+        float square = step(abs(p.x), size) * step(abs(p.y), size);
+        
+        col = mix(col, vec3(0.0), square);
+
+        // Sparks/Glitch lines from the square
+        float line = step(0.98, hash(vec2(uv.y * 100.0, t)));
+        if (abs(uv.x) < 0.5 && line > 0.5) {
+            col += vec3(1.0, 1.0, 1.0) * shake;
+        }
+
+        // Vignette
+        col *= 1.0 - length(uv) * 0.3;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+let shakeVal = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { 
+        r: { value: new THREE.Vector2(innerWidth, innerHeight) }, 
+        t: { value: 0 },
+        shake: { value: 0 }
+    };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 240; // Extreme speed
+
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.001, octaves: 2 }).toDestination();
+    const noise = new Tone.NoiseSynth({ envelope: { attack: 0.001, decay: 0.02, sustain: 0 } }).toDestination();
+    noise.volume.value = -5;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "32n", time);
+        noise.triggerAttackRelease("32n", time);
+        Tone.Draw.schedule(() => {
+            shakeVal = 1.0;
+        }, time);
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    shakeVal *= 0.9; // Decay
+    uniforms.shake.value = shakeVal;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

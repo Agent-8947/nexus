@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0007 // CLINICAL JAZZ VOID (KUBRICK ATMOSPHERE)</title>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+        #hydra-canvas { 
+            width: 100%; height: 100%; 
+            display: block; 
+            /* Kubrick clinical look: high contrast, cold grading */
+            filter: contrast(1.5) grayscale(0.2) saturate(1.2); 
+        }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff; z-index: 9999; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            color: #000000; font-size: 14px; letter-spacing: 20px; 
+            text-transform: uppercase;
+            transition: opacity 2s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .breathe { animation: blink 2s steps(2, start) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="initKubrickJazz()">
+    <div class="breathe">INITIALIZE SEQUENCE</div>
+</div>
+<canvas id="hydra-canvas"></canvas>
+<script>
+let audioCtx, analyser, masterGain;
+
+function initKubrickJazz() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 2000);
+
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.5; // Fast response for frantic jazz
+
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.6;
+    masterGain.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // --- CRAZY JAZZ GENERATOR (PROCEDURAL AUDIO) ---
+
+    // 1. Walking Bass (Frantic, unpredictable)
+    const bassScale = [32.70, 36.71, 38.89, 43.65, 49.00, 55.00, 58.27, 65.41]; // C Minor Blues
+    function playBass() {
+        if(audioCtx.state === 'closed') return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        
+        let freq = bassScale[Math.floor(Math.random() * bassScale.length)];
+        if (Math.random() > 0.8) freq *= 2; // Octave jumps
+        
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+        
+        osc.connect(gain);
+        gain.connect(masterGain);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.25);
+        
+        setTimeout(playBass, 120 + Math.random() * 30); // Fast, uneven walking bass
+    }
+
+    // 2. Ride Cymbal (Syncopated, erratic swing)
+    let swingStep = 0;
+    function playRide() {
+        if(audioCtx.state === 'closed') return;
+        
+        const bufferSize = audioCtx.sampleRate * 0.3;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1; // White noise
+        
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.value = 6000; // Crisp cymbal sound
+        
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(masterGain);
+        
+        noise.start();
+        noise.stop(audioCtx.currentTime + 0.3);
+        
+        // Crazy swing pattern (tss... ts-tss...)
+        swingStep = (swingStep + 1) % 4;
+        let delay = (swingStep === 2) ? 80 : (160 + Math.random() * 40); 
+        setTimeout(playRide, delay);
+    }
+
+    // 3. Dissonant Horn Stabs (Random bursts)
+    function playHorns() {
+        if(audioCtx.state === 'closed') return;
+        
+        // Random intervals for maximum dissonance (Thelonious Monk on acid)
+        const freqs = [
+            150 + Math.random() * 400, 
+            200 + Math.random() * 500, 
+            250 + Math.random() * 600
+        ];
+        
+        const stabLength = 0.05 + Math.random() * 0.15; // Short stabs
+        
+        freqs.forEach(f => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sawtooth';
+            osc.frequency.value = f;
+            
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + stabLength);
+            
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc.start();
+            osc.stop(audioCtx.currentTime + stabLength);
+        });
+        
+        // Unpredictable gaps between horn blasts
+        setTimeout(playHorns, 200 + Math.random() * 1500);
+    }
+
+    // Start the jazz madness
+    playBass();
+    playRide();
+    playHorns();
+
+
+    // --- KUBRICK ATMOSPHERE (VISUALS) ---
+    // Cold, clinical, hyper-symmetrical, one-point perspective
+
+    const hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio: false });
+    
+    window.jazzVal = 0;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    
+    function updateAudio() {
+        analyser.getByteFrequencyData(dataArray);
+        // Map high frequencies for visual reactivity (cymbals & horns)
+        window.jazzVal = (dataArray[20] + dataArray[40]) / 512; 
+        requestAnimationFrame(updateAudio);
+    }
+    updateAudio();
+
+    // Hydra Patch: Clinical Infinite Corridor + HAL's Eye
+    // Uses stark white, void black, and deep blood red
+    shape(4, 0.01, 0.001) // Central monolithic point
+      .color(1, 0, 0) // Menacing red
+      .scale(() => 1 + window.jazzVal * 2) // Reacts to the crazy jazz
+      .add(
+          osc(10, 0, 1)
+          .color(1, 1, 1) // Clinical white lights
+          .kaleid(4) // Strict symmetry
+          .mask(shape(4, 0.8, 0)) // Confined to a sterile rectangular hall
+      )
+      .blend(src(o0).scale(1.02), 0.95) // Slow, clinical infinite zoom out (2001 Stargate style)
+      .modulateRotate(src(o0), 0.001) // Extremely slow, unsettling rotation
+      .modulate(noise(2, 0.1), () => window.jazzVal * 0.1) // Jazz injects chaos into the clinical order
+      .out();
+}
+</script>
+</body>
+</html>

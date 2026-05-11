@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>071 // SYMBIOSIS (СИМБИОЗ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ INITIATE FUSION ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    // Polynomial smooth min for metaball physics
+    float smin(float a, float b, float k) {
+        float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+        return mix(b, a, h) - k * h * (1.0 - h);
+    }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        
+        // The cycle is 10 seconds long
+        float cycle = mod(t, 10.0);
+        
+        // Tension Phase (0 -> 8 seconds): entities get closer and orbit faster
+        float dist = mix(0.8, 0.0, smoothstep(0.0, 8.0, cycle));
+        float speed = mix(1.0, 10.0, smoothstep(5.0, 8.0, cycle));
+        
+        // Tremor right before fusion
+        vec2 tremor = vec2(0.0);
+        if(cycle > 6.0 && cycle < 8.0) {
+            float intensity = (cycle - 6.0) * 0.02;
+            tremor = vec2(sin(t * 100.0), cos(t * 120.0)) * intensity;
+        }
+        
+        float angle = t * speed;
+        mat2 rot = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+        
+        vec2 p1 = rot * (vec2(-dist, 0.0) + tremor);
+        vec2 p2 = rot * (vec2(dist, 0.0) - tremor);
+        
+        float d1 = length(uv - p1) - 0.15;
+        float d2 = length(uv - p2) - 0.15;
+        
+        // Fusion / Metaball blending
+        float d = smin(d1, d2, 0.4); // High K value for gooey blending
+        
+        // Colors
+        vec3 col1 = vec3(1.0, 0.05, 0.3); // Aggressive Red
+        vec3 col2 = vec3(0.05, 0.5, 1.0); // Electric Blue
+        
+        float mixRatio = clamp((d1 - d2 + 0.5), 0.0, 1.0);
+        vec3 color = mix(col1, col2, mixRatio);
+        
+        // The Climax (8 -> 10 seconds): violent explosion into pure gold/white light
+        float flash = 0.0;
+        if(cycle >= 8.0) {
+            flash = smoothstep(10.0, 8.0, cycle); // Fades out slowly over 2s
+            d = length(uv) - (0.25 + flash * 0.1); // They are now ONE entity
+            color = mix(color, vec3(1.0, 0.9, 0.5), flash); // Turn gold/white
+        }
+        
+        // Draw the shape with anti-aliasing
+        float mask = smoothstep(0.01, 0.0, d);
+        vec3 finalCol = color * mask;
+        
+        // Add extreme outer glow
+        finalCol += color * (0.02 / max(d, 0.001));
+        
+        // Shockwave effect expanding outward after fusion
+        if(cycle >= 8.0) {
+            float waveRad = (cycle - 8.0) * 2.0;
+            float wave = abs(length(uv) - waveRad);
+            finalCol += vec3(1.0, 0.8, 0.5) * smoothstep(0.05, 0.0, wave) * flash * 2.0;
+        }
+        
+        // Chromatic aberration / RGB shift on the edges during high tension
+        if(cycle > 6.0 && cycle < 8.0 && d > 0.0) {
+            float shift = (cycle - 6.0) * 0.01 / d;
+            finalCol.r += smoothstep(0.02, 0.0, d - shift) * 0.5;
+            finalCol.b += smoothstep(0.02, 0.0, d + shift) * 0.5;
+        }
+
+        gl_FragColor = vec4(finalCol, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+let cycleTime = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    // Synth for the rising tension
+    const tensionSynth = new Tone.Synth({
+        oscillator: { type: "sawtooth" },
+        envelope: { attack: 0.1, decay: 0.1, sustain: 1, release: 0.1 }
+    }).toDestination();
+    
+    // The massive impact
+    const climaxKick = new Tone.MembraneSynth({
+        pitchDecay: 0.05, octaves: 10, oscillator: { type: "sine" },
+        envelope: { attack: 0.001, decay: 2, sustain: 0, release: 2 }
+    }).toDestination();
+    
+    const climaxVerb = new Tone.Reverb({ decay: 5, wet: 0.6 }).toDestination();
+    climaxKick.connect(climaxVerb);
+    
+    // Exhaustion Drone
+    const drone = new Tone.FMSynth({
+        harmonicity: 1, modulationIndex: 5,
+        oscillator: { type: "sine" }, envelope: { attack: 2, release: 2 }
+    }).toDestination();
+    drone.volume.value = -10;
+
+    let startTime = Tone.now();
+    
+    const loop = new Tone.Loop(time => {
+        // Calculate where we are in the 10-second cycle
+        let t = (time - startTime) % 10.0;
+        
+        // 0 to 8 seconds: Building tension
+        if (t < 8.0) {
+            // Exponentially increase frequency of notes
+            // Calculate interval based on time left to climax (8.0 - t)
+            let timeToClimax = 8.0 - t;
+            let noteInterval = Math.max(0.05, timeToClimax * 0.15); // gets faster
+            
+            // Only trigger note if it aligns roughly with our dynamic grid
+            if (Math.abs((time * 1000) % (noteInterval * 1000)) < 50) {
+                // Pitch rises as we get closer to 8.0
+                let freq = 100 + (8.0 - timeToClimax) * 100;
+                tensionSynth.triggerAttackRelease(freq, 0.05, time);
+            }
+        } 
+        // Exactly at 8.0 seconds: The Explosion / Fusion
+        else if (t >= 8.0 && t < 8.1) {
+            // Trigger massive kick once per cycle
+            // Use a simple guard to prevent multiple triggers in this small window
+            if (!climaxKick._lastTrigger || time - climaxKick._lastTrigger > 5.0) {
+                climaxKick.triggerAttackRelease("C0", "1n", time);
+                climaxKick._lastTrigger = time;
+                
+                // Blast of drone
+                drone.triggerAttackRelease("C2", "2n", time);
+            }
+        }
+    }, "64n").start(0); // Run loop very fast to catch the dynamic intervals
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    let tSec = time * 0.001;
+    uniforms.t.value = tSec;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0008 // 3D GEOMETRY + AMBIENT DRONE</title>
+    <!-- Three.js for 3D Geometry -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #050505;
+            overflow: hidden;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+        }
+        #webgl-canvas { 
+            width: 100%; height: 100%; 
+            display: block; 
+        }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #050505; z-index: 9999; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            color: #4a5568; font-size: 11px; letter-spacing: 12px; 
+            text-transform: uppercase;
+            transition: opacity 4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pulse { animation: pulse 4s infinite ease-in-out; }
+        @keyframes pulse { 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="initAmbientGeometry()">
+    <div class="pulse">ENTER AMBIENT SPACE</div>
+</div>
+<div id="webgl-canvas"></div>
+<script>
+let audioCtx, analyser;
+let scene, camera, renderer;
+let geometries = [];
+let audioDataArray;
+
+function initAmbientGeometry() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 4000);
+
+    initAudio();
+    init3D();
+    animate();
+}
+
+// --- AMBIENT AUDIO ENGINE (GENERATIVE) ---
+function initAudio() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.9;
+    audioDataArray = new Uint8Array(analyser.frequencyBinCount);
+
+    // Deep Reverb/Delay Network for Ambient Space
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.4;
+    
+    const delay1 = audioCtx.createDelay(5.0);
+    delay1.delayTime.value = 0.8;
+    const delay1Feedback = audioCtx.createGain();
+    delay1Feedback.gain.value = 0.6;
+    
+    const delay2 = audioCtx.createDelay(5.0);
+    delay2.delayTime.value = 1.2;
+    const delay2Feedback = audioCtx.createGain();
+    delay2Feedback.gain.value = 0.5;
+    
+    // Cross-feedback
+    delay1.connect(delay1Feedback);
+    delay1Feedback.connect(delay2);
+    delay2.connect(delay2Feedback);
+    delay2Feedback.connect(delay1);
+
+    masterGain.connect(delay1);
+    masterGain.connect(delay2);
+    delay1.connect(analyser);
+    delay2.connect(analyser);
+    masterGain.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // Deep Drones (C Maj 9 chord structure)
+    const baseFreqs = [65.41, 98.00, 130.81, 164.81]; // C2, G2, C3, E3
+    baseFreqs.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+        
+        // Slow LFO for frequency drifting
+        const lfo = audioCtx.createOscillator();
+        lfo.type = 'sine';
+        lfo.frequency.value = 0.05 + (Math.random() * 0.05);
+        const lfoGain = audioCtx.createGain();
+        lfoGain.gain.value = 1.5; // Slight detuning
+        lfo.connect(lfoGain);
+        lfoGain.connect(osc.frequency);
+        lfo.start();
+
+        const oscGain = audioCtx.createGain();
+        oscGain.gain.value = 0; // Start silent
+        // Slow fade in
+        oscGain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 10 + (i * 2));
+
+        osc.frequency.value = freq;
+        osc.connect(oscGain);
+        oscGain.connect(masterGain);
+        osc.start();
+    });
+
+    // Random Ethereal Swells
+    const highScale = [261.63, 329.63, 392.00, 493.88, 523.25, 659.25, 783.99]; // C4, E4, G4, B4, C5, E5, G5
+    function playSwell() {
+        if(audioCtx.state === 'closed') return;
+        
+        const osc = audioCtx.createOscillator();
+        osc.type = 'sine';
+        const freq = highScale[Math.floor(Math.random() * highScale.length)];
+        osc.frequency.value = freq;
+        
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = freq * 1.5;
+        
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        
+        // Attack: 5-10s, Decay: 10-15s
+        const attack = 5 + Math.random() * 5;
+        const decay = 10 + Math.random() * 5;
+        
+        gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + attack);
+        gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + attack + decay);
+        
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(masterGain);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + attack + decay + 1);
+        
+        // Next swell in 8-15 seconds
+        setTimeout(playSwell, (8 + Math.random() * 7) * 1000);
+    }
+    playSwell();
+}
+
+// --- 3D GEOMETRY ENGINE (THREE.JS) ---
+function init3D() {
+    const container = document.getElementById('webgl-canvas');
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x050505, 0.02);
+
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 40;
+
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    // Create complex interlocking geometries
+    const material = new THREE.MeshBasicMaterial({ 
+        color: 0x223344, 
+        wireframe: true, 
+        transparent: true, 
+        opacity: 0.3 
+    });
+
+    const highlightMaterial = new THREE.LineBasicMaterial({
+        color: 0x88bbff,
+        transparent: true,
+        opacity: 0.8
+    });
+
+    // 1. Central Icosahedron
+    const geo1 = new THREE.IcosahedronGeometry(10, 2);
+    const mesh1 = new THREE.Mesh(geo1, material);
+    
+    // Wireframe lines overlay
+    const edges1 = new THREE.EdgesGeometry(geo1);
+    const line1 = new THREE.LineSegments(edges1, highlightMaterial);
+    mesh1.add(line1);
+    
+    scene.add(mesh1);
+    geometries.push({ obj: mesh1, rx: 0.001, ry: 0.002, rz: 0.0005, scaleBase: 1 });
+
+    // 2. Outer Torus Knot
+    const geo2 = new THREE.TorusKnotGeometry(18, 1.5, 128, 16);
+    const mesh2 = new THREE.Mesh(geo2, material);
+    
+    const edges2 = new THREE.EdgesGeometry(geo2);
+    const line2 = new THREE.LineSegments(edges2, highlightMaterial);
+    mesh2.add(line2);
+    
+    scene.add(mesh2);
+    geometries.push({ obj: mesh2, rx: -0.0015, ry: 0.001, rz: -0.001, scaleBase: 1 });
+
+    // 3. Floating Octahedrons (Dust particles)
+    const geo3 = new THREE.OctahedronGeometry(0.5, 0);
+    const dustMaterial = new THREE.MeshBasicMaterial({ color: 0x446688, wireframe: true });
+    for(let i=0; i<150; i++) {
+        const dust = new THREE.Mesh(geo3, dustMaterial);
+        dust.position.set(
+            (Math.random() - 0.5) * 100,
+            (Math.random() - 0.5) * 100,
+            (Math.random() - 0.5) * 100
+        );
+        dust.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+        scene.add(dust);
+        geometries.push({ 
+            obj: dust, 
+            rx: Math.random() * 0.01, 
+            ry: Math.random() * 0.01, 
+            rz: 0,
+            orbitSpeed: (Math.random() - 0.5) * 0.002
+        });
+    }
+
+    window.addEventListener('resize', onWindowResize, false);
+}
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Audio reactivity
+    let audioVal = 0;
+    if (analyser && audioDataArray) {
+        analyser.getByteFrequencyData(audioDataArray);
+        // Average low frequencies for subtle geometry scaling
+        let sum = 0;
+        for(let i=0; i<10; i++) sum += audioDataArray[i];
+        audioVal = (sum / 10) / 255;
+    }
+
+    // Slow camera drift
+    const time = Date.now() * 0.0001;
+    camera.position.x = Math.sin(time) * 15;
+    camera.position.y = Math.cos(time * 0.8) * 10;
+    camera.lookAt(0, 0, 0);
+
+    // Rotate and scale geometries
+    geometries.forEach((g, index) => {
+        g.obj.rotation.x += g.rx;
+        g.obj.rotation.y += g.ry;
+        g.obj.rotation.z += g.rz;
+
+        if (g.orbitSpeed) {
+            // Orbit around center
+            g.obj.position.applyAxisAngle(new THREE.Vector3(0,1,0), g.orbitSpeed);
+        }
+
+        // Only scale the main center objects reactively
+        if (index < 2) {
+            const s = g.scaleBase + (audioVal * 0.15); // Very subtle breathe
+            // Smoothly interpolate scale for ambient feel
+            g.obj.scale.lerp(new THREE.Vector3(s, s, s), 0.05);
+        }
+    });
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="EU AI Act Compliant – Limited Risk">
+
+  <defs>
+    <!-- 5-pointed star, pointing up, outer radius 7, inner radius 2.8 -->
+    <polygon id="star" fill="#FFCC00" points="0,-7 1.647,-2.265 6.657,-2.163 2.663,0.865 4.116,5.663               0,2.8 -4.116,5.663 -2.663,0.865 -6.657,-2.163 -1.647,-2.265"/>
+  </defs>
+
+  <!-- Deep blue background -->
+  <circle cx="100" cy="100" r="99" fill="#003399"/>
+
+  <!-- Outer gold ring -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#FFCC00" stroke-width="2"/>
+
+  <!-- Inner subtle ring -->
+  <circle cx="100" cy="100" r="58" fill="none" stroke="#FFCC00" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- 12 Stars arranged in a circle (radius 72, all pointing upward, EU flag style) -->
+  <!-- θ=0°   → top    -->  <use href="#star" transform="translate(100,28)"/>
+  <!-- θ=30°  -->          <use href="#star" transform="translate(136,37.65)"/>
+  <!-- θ=60°  -->          <use href="#star" transform="translate(162.35,64)"/>
+  <!-- θ=90°  → right  -->  <use href="#star" transform="translate(172,100)"/>
+  <!-- θ=120° -->          <use href="#star" transform="translate(162.35,136)"/>
+  <!-- θ=150° -->          <use href="#star" transform="translate(136,162.35)"/>
+  <!-- θ=180° → bottom -->  <use href="#star" transform="translate(100,172)"/>
+  <!-- θ=210° -->          <use href="#star" transform="translate(64,162.35)"/>
+  <!-- θ=240° -->          <use href="#star" transform="translate(37.65,136)"/>
+  <!-- θ=270° → left   -->  <use href="#star" transform="translate(28,100)"/>
+  <!-- θ=300° -->          <use href="#star" transform="translate(37.65,64)"/>
+  <!-- θ=330° -->          <use href="#star" transform="translate(64,37.65)"/>
+
+  <!-- Decorative divider lines -->
+  <line x1="65" y1="80" x2="135" y2="80" stroke="#FFCC00" stroke-width="0.75" opacity="0.55"/>
+  <line x1="65" y1="128" x2="135" y2="128" stroke="#FFCC00" stroke-width="0.75" opacity="0.55"/>
+
+  <!-- "EU AI ACT" label -->
+  <text x="100" y="93" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-weight="bold" fill="#FFCC00" letter-spacing="2.5">EU AI ACT</text>
+
+  <!-- "COMPLIANT" main word -->
+  <text x="100" y="113" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15.5" font-weight="bold" fill="#FFFFFF" letter-spacing="1">COMPLIANT</text>
+
+  <!-- "LIMITED RISK" sub-label -->
+  <text x="100" y="124.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" fill="#FFCC00" letter-spacing="1.8">LIMITED RISK</text>
+
+</svg>

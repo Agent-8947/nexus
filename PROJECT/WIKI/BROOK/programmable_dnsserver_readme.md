@@ -1,2 +1,0 @@
-brook dnsserver, dohserver, dnsserveroverbrook
-

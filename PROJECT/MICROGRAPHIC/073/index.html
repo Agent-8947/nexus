@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>073 // HYPER-COLLIDER (ГИПЕР-КОЛЛАЙДЕР)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ IGNITE COLLIDER ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        vec3 col = vec3(0.0);
+        
+        // Fast 1-second cycle
+        float cycle = mod(t, 1.0);
+        
+        // Accelerator ring
+        float ring = abs(length(uv) - 0.7);
+        col += vec3(0.1) * (0.005 / max(ring, 0.001));
+        
+        // Particles orbit extremely fast
+        float angle1 = t * 20.0;
+        float angle2 = -t * 22.0; // opposite
+        
+        // Radius collapses exactly at cycle = 1.0
+        float radius = mix(0.7, 0.0, pow(cycle, 8.0));
+        
+        vec2 p1 = vec2(cos(angle1), sin(angle1)) * radius;
+        vec2 p2 = vec2(cos(angle2), sin(angle2)) * radius;
+        
+        float d1 = length(uv - p1);
+        float d2 = length(uv - p2);
+        
+        // Particle glow
+        col += vec3(1.0, 0.3, 0.0) * (0.01 / max(d1, 0.001));
+        col += vec3(0.0, 0.5, 1.0) * (0.01 / max(d2, 0.001));
+        
+        // Collision Impact
+        if(cycle > 0.95) {
+            float flash = smoothstep(1.0, 0.95, cycle);
+            
+            // Blinding center light
+            col += vec3(1.0) * (0.1 / max(length(uv), 0.001)) * flash;
+            
+            // Chromatic aberration shockwave
+            float waveRad = (cycle - 0.95) * 30.0;
+            float wave = abs(length(uv) - waveRad);
+            col.r += 0.05 / max(wave, 0.001) * flash;
+            col.b += 0.05 / max(wave - 0.05, 0.001) * flash;
+            
+            // Screen tear (horizontal bands)
+            float tear = step(0.98, fract(uv.y * 50.0 + t));
+            col += vec3(1.0) * tear * flash * 0.5;
+        }
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    // 240 BPM Hardstyle/Gabber
+    Tone.Transport.bpm.value = 240;
+
+    // Distorted Hard Kick
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.1, octaves: 6,
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0, release: 0.4 }
+    });
+    const dist = new Tone.Distortion(0.8).toDestination();
+    kick.connect(dist);
+
+    // Riser Synth (Pitch goes up constantly, resets on kick)
+    const riser = new Tone.Oscillator(100, "sawtooth").toDestination().start();
+    riser.volume.value = -15;
+
+    let startTime = Tone.now();
+
+    // Loop fires every beat (1 second cycle at 240BPM = 4 beats. Wait, 240BPM = 4 beats/sec. So 1 measure = 1 sec).
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "8n", time);
+        
+        // Reset riser frequency on the "1" (which is the collision point)
+        riser.frequency.setValueAtTime(100, time);
+        riser.frequency.rampTo(2000, 1.0, time); // Takes 1 second to reach peak
+        
+    }, "1m").start(0); // 1 measure loop = exactly 1 second at 240bpm (4 beats/sec)
+
+    // Add fast hi-hats for kinetic energy
+    const hat = new Tone.NoiseSynth({ envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }).toDestination();
+    hat.volume.value = -20;
+    
+    new Tone.Loop(time => {
+        hat.triggerAttackRelease("16n", time);
+    }, "8n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

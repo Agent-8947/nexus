@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>087 // НИГИЛИСТИЧЕСКАЯ СВЕЧА (NIHILIST CANDLE)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #050505; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: "Times New Roman", serif; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ВОЗЖЕЧЬ ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    // Noise function
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+
+    float noise(vec2 uv) {
+        vec2 i = floor(uv);
+        vec2 f = fract(uv);
+        f = f*f*(3.0-2.0*f);
+        return mix(mix(hash(i), hash(i+vec2(1.0,0.0)), f.x),
+                   mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), f.x), f.y);
+    }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        vec3 col = vec3(0.0);
+
+        // Candle flame shape
+        vec2 p = uv - vec2(0.0, -0.2);
+        
+        // Distortion based on noise
+        float n = noise(uv * 5.0 + t * 2.0);
+        p.x += (n - 0.5) * 0.1 * (uv.y + 0.2); // More distortion at the top
+
+        float d = length(p * vec2(2.0, 1.0)); // Elongated shape
+        float flame = smoothstep(0.2, 0.0, d);
+        
+        // Flame color
+        col = mix(vec3(1.0, 0.1, 0.0), vec3(1.0, 0.8, 0.0), flame);
+        col = mix(vec3(0.0), col, smoothstep(0.05, 0.2, flame));
+        
+        // Blue base
+        float blue = smoothstep(0.1, 0.0, length(p - vec2(0.0, -0.15)));
+        col += vec3(0.0, 0.2, 1.0) * blue;
+
+        // Ambient glow
+        col += vec3(1.0, 0.5, 0.2) * (0.05 / max(d, 0.01));
+
+        // Vignette
+        col *= 1.0 - length(uv) * 0.5;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 60;
+
+    const drone = new Tone.Oscillator(50, "sine").toDestination().start();
+    drone.volume.value = -10;
+
+    const feedback = new Tone.FeedbackDelay("8n", 0.5).toDestination();
+    const synth = new Tone.Synth({
+        oscillator: { type: "triangle" },
+        envelope: { attack: 0.1, decay: 0.1, sustain: 1, release: 1 }
+    }).connect(feedback);
+    synth.volume.value = -15;
+
+    new Tone.Loop(time => {
+        if (Math.random() > 0.5) {
+            synth.triggerAttackRelease("C4", "4n", time);
+        }
+    }, "2n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

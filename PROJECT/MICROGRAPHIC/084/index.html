@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>084 // ДАДАИСТСКАЯ ЛИТУРГИЯ (DADAIST LITURGY)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #c { width: 100%; height: 100%; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #000; font-family: "Impact", sans-serif; font-size: 36px; cursor: pointer;
+            letter-spacing: 5px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">ЦВЕТОК ПУСТОТЫ</div>
+<canvas id="c"></canvas>
+
+<script>
+let cx, W, H;
+const words = ["ЦВЕТОК", "ПУСТОТА", "ТОПОР", "КРЕСТ", "ГРЕХ", "ПЛОТЬ", "РЫБА", "КАМЕНЬ", "АБСУРД", "ХАОС"];
+let currentWord = "АБСУРД";
+let flash = false;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    const cv = document.getElementById('c');
+    cx = cv.getContext('2d');
+    W = cv.width = innerWidth;
+    H = cv.height = innerHeight;
+    
+    initAudio(); animate();
+    
+    window.addEventListener('resize', () => {
+        W = cv.width = innerWidth;
+        H = cv.height = innerHeight;
+    });
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 140;
+
+    const drum = new Tone.MembraneSynth().toDestination();
+    const noise = new Tone.NoiseSynth({ envelope: { attack: 0.001, decay: 0.1, sustain: 0 } }).toDestination();
+    noise.volume.value = -10;
+
+    new Tone.Loop(time => {
+        drum.triggerAttackRelease("C2", "8n", time);
+        Tone.Draw.schedule(() => {
+            currentWord = words[Math.floor(Math.random() * words.length)];
+            flash = !flash;
+        }, time);
+    }, "4n").start(0);
+
+    new Tone.Loop(time => {
+        if (Math.random() > 0.5) {
+            noise.triggerAttackRelease("16n", time);
+        }
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    cx.fillStyle = flash ? "#fff" : "#000";
+    cx.fillRect(0, 0, W, H);
+    
+    cx.fillStyle = flash ? "#000" : "#fff";
+    cx.font = `bold ${W * 0.15}px Impact`;
+    cx.textAlign = "center";
+    cx.textBaseline = "middle";
+    cx.fillText(currentWord, W / 2, H / 2);
+    
+    // Random lines
+    if (Math.random() > 0.8) {
+        cx.strokeStyle = flash ? "#000" : "#fff";
+        cx.lineWidth = Math.random() * 10;
+        cx.beginPath();
+        cx.moveTo(0, Math.random() * H);
+        cx.lineTo(W, Math.random() * H);
+        cx.stroke();
+    }
+}
+</script>
+</body>
+</html>

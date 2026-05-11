@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>049 // VHS MEAT</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #200; overflow: hidden; }
+        #overlay { position: absolute; width: 100%; height: 100%; background: #f00; color: #000; display: flex; align-items: center; justify-content: center; font-family: serif; z-index: 10; font-size: 30px; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">CONSUME</div>
+<canvas id="c"></canvas>
+<script>
+let cx, w, h, T=0;
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    const cv = document.getElementById('c');
+    cx = cv.getContext('2d');
+    w = cv.width = innerWidth; h = cv.height = innerHeight;
+    initAudio(); animate();
+}
+function initAudio() {
+    const dist = new Tone.Distortion(0.8).toDestination();
+    const noise = new Tone.Noise("pink").connect(dist).start();
+    noise.volume.value = -15;
+    const lfo = new Tone.LFO(2, -30, -10).start();
+    lfo.connect(noise.volume);
+}
+function animate() {
+    requestAnimationFrame(animate);
+    T+=0.1;
+    cx.fillStyle = 'rgba(50,0,0,0.1)';
+    cx.fillRect(0,0,w,h);
+    
+    // Draw meat blobs
+    cx.fillStyle = '#ff3333';
+    cx.beginPath();
+    for(let i=0; i<10; i++) {
+        cx.arc(w/2 + Math.sin(T+i)*200, h/2 + Math.cos(T*0.8+i)*200, 50+Math.sin(T*2)*20, 0, Math.PI*2);
+    }
+    cx.fill();
+
+    // VHS Tear
+    if(Math.random() > 0.5) {
+        const sy = Math.random()*h;
+        const sh = Math.random()*50;
+        const img = cx.getImageData(0, sy, w, sh);
+        cx.putImageData(img, (Math.random()-0.5)*100, sy);
+    }
+}
+</script>
+</body>
+</html>

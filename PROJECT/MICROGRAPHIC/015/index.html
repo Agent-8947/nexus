@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>015 // PSYCHO HORROR VJ SET — ABSURD EDITION</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#000;overflow:hidden}
+canvas{display:block;filter:contrast(1.6) saturate(0.6) brightness(0.85)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 10%,rgba(0,0,0,0.95) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#030000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:12px;letter-spacing:12px;color:#600;text-transform:uppercase}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:14px;color:#333;letter-spacing:3px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.3}}
+#tc{position:absolute;top:14%;right:2%;font-family:monospace;font-size:10px;color:rgba(255,0,0,0.2);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">015 // NULL POINTER</div>
+<div id="os">execute core dump</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let dread=0;
+let flashTimer=0;
+let sceneMode = 0; 
+let absurdScale = 1;
+
+const codes = [
+    "while(true){ suffer(); }",
+    "Segmentation fault (core dumped)",
+    "undefined is not a function",
+    "[object Object]",
+    "0x00000000",
+    "throw new Error('No escape');",
+    "panic: runtime error",
+    "kill -9 $$",
+    "Memory leak detected at 0x7f8",
+    "abort() called"
+];
+
+// 3D Cube Data
+const vertices = [
+    [-100, -100, -100], [100, -100, -100], [100, 100, -100], [-100, 100, -100],
+    [-100, -100, 100], [100, -100, 100], [100, 100, 100], [-100, 100, 100]
+];
+const edges = [
+    [0,1], [1,2], [2,3], [3,0],
+    [4,5], [5,6], [6,7], [7,4],
+    [0,4], [1,5], [2,6], [3,7]
+];
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// 3D Projection Functions
+function rotateX(x, y, z, angle) {
+    const rad = angle;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
+    return [x, y * cos - z * sin, y * sin + z * cos];
+}
+function rotateY(x, y, z, angle) {
+    const rad = angle;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
+    return [x * cos + z * sin, y, -x * sin + z * cos];
+}
+function project(x, y, z) {
+    const scale = 500 / (500 + z);
+    return {
+        x: W / 2 + x * scale * absurdScale,
+        y: H / 2 + y * scale,
+        scale: scale
+    };
+}
+
+// ── AUDIO: HARSH INDUSTRIAL / PSYCHO HORROR ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Harsh Drone
+    const drone=ax.createOscillator();drone.type='sawtooth';drone.frequency.value=35;
+    const df=ax.createBiquadFilter();df.type='lowpass';df.frequency.value=150;
+    const dg=ax.createGain();dg.gain.value=0.25;
+    drone.connect(df);df.connect(dg);dg.connect(_m);drone.start();
+    
+    // Modulated Screech (FM)
+    function screech(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator();o.type='sine';
+        const mod=ax.createOscillator();mod.type='sine';mod.frequency.value=70;
+        const modGain=ax.createGain();modGain.gain.value=1500;
+        
+        o.frequency.value=800 + Math.sin(now)*700;
+        mod.connect(modGain);modGain.connect(o.frequency);
+        
+        const g=ax.createGain();g.gain.setValueAtTime(0,now);
+        g.gain.linearRampToValueAtTime(0.12,now+0.05);
+        g.gain.exponentialRampToValueAtTime(0.001,now+0.4);
+        
+        o.connect(g);g.connect(_m);
+        o.start(now);mod.start(now);
+        o.stop(now+0.4);mod.stop(now+0.4);
+        
+        setTimeout(screech, 1500 + Math.random()*2000);
+    }
+    setTimeout(screech, 3000);
+
+    // Industrial Beat (130 BPM) with ABSURD STALLS
+    const interval = 60000 / 130;
+    let step = 0;
+    function beat(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        // Kick
+        if(step % 4 === 0){
+            const k=ax.createOscillator();k.type='sine';
+            k.frequency.setValueAtTime(120,now);k.frequency.exponentialRampToValueAtTime(0.001,now+0.25);
+            const kg=ax.createGain();kg.gain.setValueAtTime(0.9,now);kg.gain.exponentialRampToValueAtTime(0.001,now+0.25);
+            k.connect(kg);kg.connect(_m);k.start(now);k.stop(now+0.25);
+            
+            if(Math.random() > 0.6) sceneMode = (sceneMode + 1) % 2;
+        }
+        
+        // Snare/Noise
+        if(step % 4 === 2){
+            const bs=ax.sampleRate*0.12,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+            for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+            const n=ax.createBufferSource();n.buffer=b;
+            const ng=ax.createGain();ng.gain.setValueAtTime(0.35,now);ng.gain.exponentialRampToValueAtTime(0.001,now+0.15);
+            const nf=ax.createBiquadFilter();nf.type='bandpass';nf.frequency.value=800;
+            n.connect(nf);nf.connect(ng);ng.connect(_m);n.start(now);
+        }
+        
+        step++;
+        
+        // Absurdity: Randomly stall the beat or double it
+        let nextInterval = interval / 2;
+        if(Math.random() > 0.93) {
+            nextInterval = interval * 3; // Dramatic pause/stall
+            absurdScale = -1; // Invert visuals
+        } else if(Math.random() > 0.95) {
+            nextInterval = interval / 4; // Frantic rush
+            absurdScale = 3; // Explode visuals
+        } else {
+            absurdScale = 1;
+        }
+        
+        setTimeout(beat, nextInterval);
+    }
+    setTimeout(beat, 1000);
+}
+
+// ── VJ ENGINE: FEEDBACK, RORSCHACH & 3D ──
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    // 1. Feedback Effect (Zoom & Rotate)
+    cx.save();
+    cx.translate(W/2, H/2);
+    cx.scale(1.04, 1.04); // Aggressive zoom
+    cx.rotate(0.015 + Math.sin(T*0.7)*0.01);
+    cx.translate(-W/2, -H/2);
+    cx.drawImage(cv, 0, 0);
+    cx.restore();
+    
+    // Slow dark fade
+    cx.fillStyle = 'rgba(3, 0, 0, 0.06)';
+    cx.fillRect(0, 0, W, H);
+    
+    // 2. Draw Content
+    if(sceneMode === 0){
+        // ── SCENE 0: RORSCHACH ──
+        cx.save();
+        cx.translate(W/2, H/2);
+        
+        // Morphing Rorschach-like geometry in center
+        const points = 10;
+        cx.beginPath();
+        for(let i=0; i<points; i++){
+            const angle = (i / points) * Math.PI * 2;
+            const rad = 40 + Math.sin(T * 4 + i) * 40 + Math.cos(T * 6 - i) * 30;
+            const x = Math.cos(angle) * rad * absurdScale;
+            const y = Math.sin(angle) * rad;
+            if(i===0) cx.moveTo(x,y);
+            else cx.lineTo(x,y);
+        }
+        cx.closePath();
+        
+        cx.fillStyle = `rgba(${120 + Math.sin(T)*60}, 0, 0, 0.25)`;
+        cx.fill();
+        cx.strokeStyle = `rgba(255, 255, 255, ${0.1 + Math.random()*0.3})`;
+        cx.lineWidth = 0.5;
+        cx.stroke();
+        
+        // Tendrils
+        for(let i=0; i<6; i++){
+            cx.beginPath();
+            cx.moveTo(0,0);
+            let tx=0, ty=0;
+            for(let j=0; j<6; j++){
+                tx += Math.sin(T*3 + i + j)*25;
+                ty += Math.cos(T*2 - i + j)*25 + j*12;
+                cx.lineTo(tx, ty);
+            }
+            cx.strokeStyle = 'rgba(0,0,0,0.6)';
+            cx.lineWidth = 3;
+            cx.stroke();
+            cx.strokeStyle = 'rgba(200,0,0,0.8)';
+            cx.lineWidth = 0.5;
+            cx.stroke();
+        }
+        cx.restore();
+        
+        // Rorschach Symmetry (Mirror left to right)
+        cx.save();
+        cx.translate(W/2, 0);
+        cx.scale(-1, 1);
+        cx.drawImage(cv, W/2, 0, W/2, H, -W/2, 0, W/2, H);
+        cx.restore();
+        
+    } else {
+        // ── SCENE 1: 3D CUBE (ABSTRACTION) ──
+        cx.save();
+        cx.strokeStyle = `rgba(255, 255, 255, ${0.4 + Math.random()*0.6})`;
+        cx.lineWidth = 1.5;
+        
+        const rotatedVertices = vertices.map(v => {
+            let [x, y, z] = v;
+            [x, y, z] = rotateX(x, y, z, T * 3);
+            [x, y, z] = rotateY(x, y, z, T * 2);
+            return [x, y, z];
+        });
+        
+        edges.forEach(e => {
+            const p1 = project(...rotatedVertices[e[0]]);
+            const p2 = project(...rotatedVertices[e[1]]);
+            cx.beginPath();
+            cx.moveTo(p1.x, p1.y);
+            cx.lineTo(p2.x, p2.y);
+            cx.stroke();
+        });
+        cx.restore();
+    }
+    
+    // 3. Glitch & Code Fragments
+    if(Math.random() > 0.92){
+        const sy = Math.random()*H;
+        const sh = 5 + Math.random()*30;
+        const sx = (Math.random()-0.5)*100;
+        cx.drawImage(cv, 0, sy, W, sh, sx, sy, W, sh);
+    }
+    
+    // Random Code Snippets (Absurd & Depressive)
+    if(Math.random() > 0.94){
+        const code = codes[Math.floor(Math.random() * codes.length)];
+        cx.font = 'clamp(12px, 3vw, 24px) monospace';
+        cx.fillStyle = Math.random() > 0.7 ? '#ff0000' : 'rgba(255,255,255,0.7)';
+        cx.textAlign = 'left';
+        cx.fillText(code, Math.random()*W*0.5, Math.random()*H);
+    }
+    
+    // 4. Absurdity: Massive Black Blocks (Visual Collapse)
+    if(Math.random() > 0.97){
+        cx.fillStyle = '#000';
+        cx.fillRect(Math.random()*W, 0, Math.random()*W*0.3, H);
+    }
+    
+    // RGB Split effect
+    if(Math.random() > 0.85){
+        cx.save();
+        cx.globalCompositeOperation = 'screen';
+        cx.fillStyle = 'rgba(255,0,0,0.15)';
+        cx.fillRect(0,0,W,H);
+        cx.drawImage(cv, 8, 0);
+        cx.restore();
+    }
+    
+    // Random harsh flash
+    flashTimer++;
+    if(flashTimer > 100 && Math.random() > 0.96){
+        cx.fillStyle = Math.random() > 0.5 ? '#fff' : '#ff0000';
+        cx.globalAlpha = 0.9;
+        cx.fillRect(0,0,W,H);
+        cx.globalAlpha = 1.0;
+        flashTimer = 0;
+    }
+    
+    // Heavy noise
+    cx.fillStyle = `rgba(255,255,255,${Math.random()*0.07})`;
+    for(let i=0; i<150; i++){
+        cx.fillRect(Math.random()*W, Math.random()*H, 2, 2);
+    }
+}
+</script>
+</body>
+</html>

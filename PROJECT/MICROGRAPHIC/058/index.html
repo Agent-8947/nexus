@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>058 // SERAPHIM DRONE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; }
+        #overlay { position: absolute; width: 100%; height: 100%; background: #000; color: #FFD700; display: flex; align-items: center; justify-content: center; font-family: serif; font-size: 20px; z-index: 10; letter-spacing: 3px; cursor: pointer;}
+        #warning { position: absolute; bottom: 20px; width: 100%; text-align: center; color: #ff0000; font-family: monospace; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">BE NOT AFRAID</div>
+<div id="warning">MULTIPLE EYES DETECTED</div>
+<canvas id="c"></canvas>
+
+<script>
+let scene, camera, renderer, seraphim;
+let rings = [];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    init3D(); initAudio(); animate();
+}
+
+function init3D() {
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x050000, 0.05);
+    camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+    camera.position.z = 20;
+
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+
+    seraphim = new THREE.Group();
+    scene.add(seraphim);
+
+    const matGold = new THREE.MeshStandardMaterial({ color: 0xFFD700, metalness: 1, roughness: 0.2 });
+    const matEye = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+
+    for(let i=0; i<6; i++) {
+        const ring = new THREE.Group();
+        const torus = new THREE.Mesh(new THREE.TorusGeometry(8, 0.5, 16, 100), matGold);
+        ring.add(torus);
+        
+        // Add "eyes" to rings
+        for(let j=0; j<8; j++) {
+            const eye = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 16), matEye);
+            let theta = (j / 8) * Math.PI * 2;
+            eye.position.x = Math.cos(theta) * 8;
+            eye.position.y = Math.sin(theta) * 8;
+            ring.add(eye);
+        }
+
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        seraphim.add(ring);
+        rings.push({ mesh: ring, rx: (Math.random()-0.5)*0.05, ry: (Math.random()-0.5)*0.05 });
+    }
+
+    const light = new THREE.PointLight(0xffd700, 5, 100);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x220000));
+}
+
+function initAudio() {
+    const drone = new Tone.Oscillator(50, "sawtooth").toDestination().start();
+    drone.volume.value = -5;
+    const dist = new Tone.Distortion(0.8).toDestination();
+    drone.connect(dist);
+
+    const screech = new Tone.MetalSynth({ frequency: 200, envelope: {attack:0.1, decay:2, release:1} }).toDestination();
+    screech.volume.value = -10;
+
+    new Tone.Loop(time => {
+        if(Math.random() > 0.5) screech.triggerAttackRelease("2n", time);
+    }, "1n").start(0);
+
+    Tone.Transport.bpm.value = 60;
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    seraphim.rotation.y += 0.005;
+    seraphim.rotation.z += 0.002;
+    
+    rings.forEach(r => {
+        r.mesh.rotation.x += r.rx;
+        r.mesh.rotation.y += r.ry;
+    });
+
+    // Intense pulsating light
+    camera.position.z = 20 + Math.sin(Date.now()*0.005)*2;
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

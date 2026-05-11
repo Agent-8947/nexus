@@ -1,1 +1,0 @@
-本题和 [3315. 构造最小位运算数组 II](https://leetcode.cn/problems/construct-the-minimum-bitwise-array-ii/) 是一样的，请看 [我的题解](https://leetcode.cn/problems/construct-the-minimum-bitwise-array-ii/solutions/2948584/o1-ji-suan-mei-ge-shu-pythonjavacgo-by-e-6l9l/)。

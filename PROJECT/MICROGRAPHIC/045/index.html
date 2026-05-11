@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>045 // DESOLATE MONOLITHS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #020202; overflow: hidden; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020202; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: 'Helvetica Neue', sans-serif; font-size: 20px; color: #555; letter-spacing: 8px; font-weight: 300; text-transform: uppercase; }
+        #os { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; color: #333; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">Desolate Landscapes</div>
+    <div id="os">[ AWAKEN THE DRONE ]</div>
+</div>
+<canvas id="c"></canvas>
+
+<script>
+let scene, camera, renderer, terrain;
+let monoliths = [];
+let T = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    init3D();
+    initAudio();
+    animate();
+}
+
+function init3D() {
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0xaabbcc, 0.02);
+    
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.set(0, 5, 20);
+    
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0xaabbcc);
+
+    // Dynamic Terrain
+    const geoTerrain = new THREE.PlaneGeometry(200, 200, 100, 100);
+    geoTerrain.rotateX(-Math.PI / 2);
+    
+    const matTerrain = new THREE.MeshBasicMaterial({ 
+        color: 0x556677, 
+        wireframe: true,
+        transparent: true,
+        opacity: 0.5
+    });
+    
+    terrain = new THREE.Mesh(geoTerrain, matTerrain);
+    
+    // Displace terrain vertices randomly for a rugged look
+    const pos = terrain.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+        const x = pos.getX(i);
+        const z = pos.getZ(i);
+        // Simple procedural hills
+        const y = Math.sin(x * 0.1) * Math.cos(z * 0.1) * 3 + Math.sin(x * 0.05 + z * 0.05) * 5;
+        pos.setY(i, y);
+    }
+    terrain.geometry.computeVertexNormals();
+    scene.add(terrain);
+
+    // Massive Floating Monoliths
+    const geoMonolith = new THREE.BoxGeometry(4, 20, 4);
+    const matMonolith = new THREE.MeshStandardMaterial({ 
+        color: 0xddeeff, 
+        roughness: 0.5,
+        metalness: 0.1
+    });
+
+    for(let i=0; i<30; i++) {
+        const mesh = new THREE.Mesh(geoMonolith, matMonolith);
+        mesh.position.set(
+            (Math.random() - 0.5) * 150,
+            Math.random() * 20 + 5,
+            (Math.random() - 0.5) * 150
+        );
+        mesh.rotation.set(
+            Math.random() * 0.2,
+            Math.random() * Math.PI,
+            Math.random() * 0.2
+        );
+        
+        // Add subtle red glowing lights to some monoliths
+        if (Math.random() > 0.7) {
+            const light = new THREE.PointLight(0xff0033, 2, 20);
+            light.position.set(0, -10, 0);
+            mesh.add(light);
+            
+            // Highlight material for those with lights
+            mesh.material = new THREE.MeshStandardMaterial({ 
+                color: 0x111111,
+                emissive: 0xff0033,
+                emissiveIntensity: 0.1
+            });
+        }
+        
+        scene.add(mesh);
+        monoliths.push({
+            mesh: mesh,
+            speedY: (Math.random() * 0.02) + 0.01,
+            speedRot: (Math.random() - 0.5) * 0.005,
+            baseY: mesh.position.y
+        });
+    }
+
+    // Lighting
+    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambient);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+    directionalLight.position.set(10, 20, -10);
+    scene.add(directionalLight);
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+}
+
+// ── AUDIO ENGINE: EVOLVING CINEMATIC DRONE ──
+function initAudio() {
+    // Reverb is massive
+    const reverb = new Tone.Reverb({ decay: 20, wet: 0.7 }).toDestination();
+    const delay = new Tone.PingPongDelay("4n", 0.5).connect(reverb);
+
+    // Deep granular-like drone (FMSynth)
+    const drone = new Tone.FMSynth({
+        harmonicity: 0.5,
+        modulationIndex: 5,
+        oscillator: { type: "sawtooth" },
+        modulation: { type: "sine" },
+        envelope: { attack: 2, decay: 0, sustain: 1, release: 5 }
+    }).connect(delay);
+    drone.volume.value = -15;
+
+    // High pitched glass-like textures
+    const glass = new Tone.Synth({
+        oscillator: { type: "sine" },
+        envelope: { attack: 5, decay: 2, sustain: 0.5, release: 8 }
+    }).connect(reverb);
+    glass.volume.value = -25;
+
+    // Progression
+    const droneNotes = ["C1", "G1", "D1", "A0"];
+    const glassNotes = ["C5", "G5", "D6", "E5"];
+    let idx = 0;
+
+    const loop = new Tone.Loop(time => {
+        drone.triggerAttackRelease(droneNotes[idx], "2m", time);
+        
+        if (Math.random() > 0.4) {
+            glass.triggerAttackRelease(glassNotes[idx], "1m", time + 1);
+        }
+        
+        idx = (idx + 1) % droneNotes.length;
+    }, "2m").start(0);
+
+    Tone.Transport.bpm.value = 50; // Extremely slow
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.005;
+    
+    // Slow camera movement through the landscape
+    camera.position.z -= 0.05;
+    camera.position.x = Math.sin(T) * 10;
+    camera.lookAt(camera.position.x, 0, camera.position.z - 20);
+
+    // If camera goes too far, loop terrain effect
+    if (camera.position.z < -50) {
+        camera.position.z = 20;
+        // Shift monoliths forward to maintain illusion of infinite space
+        monoliths.forEach(m => {
+            m.mesh.position.z += 70;
+            if (m.mesh.position.z > 50) m.mesh.position.z -= 150;
+        });
+    }
+
+    // Animate terrain vertices like slow rolling waves
+    const pos = terrain.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+        const x = pos.getX(i);
+        const z = pos.getZ(i);
+        // Base terrain height
+        const baseY = Math.sin(x * 0.1) * Math.cos(z * 0.1) * 3;
+        // Animated ripple
+        const animatedY = baseY + Math.sin(x * 0.05 + z * 0.05 + T * 2) * 2;
+        pos.setY(i, animatedY);
+    }
+    terrain.geometry.attributes.position.needsUpdate = true;
+    terrain.geometry.computeVertexNormals();
+
+    // Animate monoliths (slow hovering)
+    monoliths.forEach((m, i) => {
+        m.mesh.position.y = m.baseY + Math.sin(T * 5 + i) * 2;
+        m.mesh.rotation.y += m.speedRot;
+    });
+    
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,6 +1,0 @@
-[severity]
-level = "medium"
-
-[k8s-admission-control]
-  dashboard = true
-  denied-severity = "high"

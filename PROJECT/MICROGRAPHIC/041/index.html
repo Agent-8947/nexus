@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>041 // VAN GOGH GLITCH</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #020b14; overflow: hidden; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020b14; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: serif; font-size: 32px; color: #FFD700; font-style: italic; letter-spacing: 2px; }
+        #os { font-family: monospace; font-size: 12px; color: #45B6D4; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">Starry_Glitch.exe</div>
+    <div id="os">CLICK TO INITIATE TURBULENCE</div>
+</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+let particles = [];
+
+const PALETTE = [
+    '#FFD700', // Gold/Yellow
+    '#FFA500', // Orange
+    '#45B6D4', // Light Cyan
+    '#2B4A9C', // Deep Blue
+    '#0A1D37', // Dark Blue
+    '#ffffff'  // White accent
+];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); 
+    cx = cv.getContext('2d', { willReadFrequently: true });
+    
+    resize(); 
+    window.addEventListener('resize', resize);
+    
+    initParticles();
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cx.fillStyle = '#020b14';
+    cx.fillRect(0, 0, W, H);
+}
+
+function initParticles() {
+    const count = window.innerWidth > 800 ? 1500 : 800;
+    for(let i=0; i<count; i++) {
+        particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: 0,
+            vy: 0,
+            color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+            size: Math.random() * 3 + 1,
+            life: Math.random() * 100
+        });
+    }
+}
+
+// ── AUDIO ENGINE: SWIRLING IMPRESSIONIST DRONE WITH GLITCHES ──
+function initAudio() {
+    // Swirling Chorus Pad
+    const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
+    const tremolo = new Tone.Tremolo(9, 0.75).connect(chorus).start();
+    
+    const synth = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "sine" },
+        envelope: { attack: 2, decay: 1, sustain: 1, release: 2 }
+    }).connect(tremolo);
+    synth.volume.value = -12;
+
+    // Glitch noise mechanism
+    const autoFilter = new Tone.AutoFilter("4n").toDestination().start();
+    const noise = new Tone.NoiseSynth({
+        noise: { type: "brown" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0 }
+    }).connect(autoFilter);
+    noise.volume.value = -15;
+
+    // Progression
+    const chords = [
+        ["D3", "F3", "A3", "C4"], // Dm7
+        ["E3", "G3", "B3", "D4"], // Em7
+        ["C3", "E3", "G3", "B3"], // CMaj7
+        ["A2", "C3", "E3", "G3"]  // Am7
+    ];
+    let chordIdx = 0;
+
+    const loop = new Tone.Loop(time => {
+        // Play chord
+        synth.triggerAttackRelease(chords[chordIdx], "1m", time);
+        chordIdx = (chordIdx + 1) % chords.length;
+        
+        // Random glitch stutter
+        if (Math.random() > 0.7) {
+            Tone.Transport.bpm.rampTo(Math.random() * 200 + 50, 0.1);
+            noise.triggerAttackRelease("16n", time);
+        } else {
+            Tone.Transport.bpm.rampTo(100, 1);
+        }
+    }, "1m").start(0);
+
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: VAN GOGH FLOW FIELD + DIGITAL GLITCH ──
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.005;
+    
+    // Fade out (trails)
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = 'rgba(2, 11, 20, 0.05)'; // Dark blue fade
+    cx.fillRect(0, 0, W, H);
+
+    // Flow field logic (brush strokes)
+    cx.globalCompositeOperation = 'lighter';
+    particles.forEach(p => {
+        // Abstract math field producing swirls
+        const angle = Math.sin(p.x * 0.005 + T) * Math.cos(p.y * 0.005 + T) * Math.PI * 2;
+        
+        p.vx += Math.cos(angle) * 0.2;
+        p.vy += Math.sin(angle) * 0.2;
+        
+        // Friction
+        p.vx *= 0.9;
+        p.vy *= 0.9;
+        
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        // Draw brush stroke
+        cx.fillStyle = p.color;
+        cx.beginPath();
+        cx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        cx.fill();
+        
+        p.life--;
+        
+        // Reset particle if offscreen or dead
+        if (p.x < 0 || p.x > W || p.y < 0 || p.y > H || p.life <= 0) {
+            p.x = Math.random() * W;
+            p.y = Math.random() * H;
+            p.vx = 0;
+            p.vy = 0;
+            p.life = Math.random() * 100 + 50;
+        }
+    });
+
+    // Digital Glitch Effects over the Impressionist painting
+    if (Math.random() > 0.92) {
+        cx.globalCompositeOperation = 'source-over';
+        // Horizontal slice displacement
+        const sliceY = Math.random() * H;
+        const sliceH = Math.random() * 50 + 5;
+        const shiftX = (Math.random() - 0.5) * 100;
+        
+        // RGB split simulation via difference
+        if (Math.random() > 0.5) {
+            cx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            cx.globalCompositeOperation = 'screen';
+            cx.fillRect(shiftX, sliceY, W, sliceH);
+        }
+        
+        cx.globalCompositeOperation = 'source-over';
+        cx.drawImage(cv, 0, sliceY, W, sliceH, shiftX, sliceY, W, sliceH);
+    }
+    
+    // Occasional full color inversion block
+    if (Math.random() > 0.98) {
+        cx.globalCompositeOperation = 'difference';
+        cx.fillStyle = '#fff';
+        cx.fillRect(Math.random()*W*0.5, Math.random()*H*0.5, W*Math.random(), H*Math.random());
+    }
+}
+</script>
+</body>
+</html>

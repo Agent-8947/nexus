@@ -9,6 +9,7 @@ import threading
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(r"e:\Downloads\--ANTIGRAVITY store\IDE-NEXUS")
 WIKI_ROOT   = PROJECT_ROOT / "PROJECT" / "WIKI"
+EXTERNAL_LIB = PROJECT_ROOT / "PROJECT" / "EXTERNAL-LIBRARY"
 STATE_FILE  = WIKI_ROOT / "nexus_farm_state.json"
 DASHBOARD_FILE = PROJECT_ROOT / "FARM_STATUS.html"
 PORT = 8844
@@ -21,7 +22,7 @@ def get_farming_data():
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
     processed = state.get("processed", [])
     
-    all_repos = [d for d in WIKI_ROOT.iterdir() if d.is_dir() and not d.name.startswith("__")]
+    all_repos = [d for d in EXTERNAL_LIB.iterdir() if d.is_dir() and not d.name.startswith("__")]
     total_count = len(all_repos)
     processed_count = len(processed)
     progress = round((processed_count / total_count) * 100, 1) if total_count > 0 else 0
@@ -29,7 +30,7 @@ def get_farming_data():
     analyses = []
     # Scan last 200 for details to keep response fast
     for repo_name in processed[-200:]:
-        analysis_path = WIKI_ROOT / repo_name / "NEXUS_ANALYSIS.md"
+        analysis_path = EXTERNAL_LIB / repo_name / "NEXUS_ANALYSIS.md"
         if analysis_path.exists():
             content = analysis_path.read_text(encoding="utf-8")
             domain = "OTHER"

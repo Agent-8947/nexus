@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MICROGRAPHIC // NEXUS VIEWER</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-base: #0a0a0a;
+            --surface: #141414;
+            --border: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #666666;
+            --accent: #ff3366;
+            --sidebar-width: 320px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100%;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin: 0.5rem 0 0 0;
+            letter-spacing: -0.02em;
+        }
+
+        .project-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-item {
+            padding: 0.75rem 1rem;
+            background: #1a1a1a;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .project-item:hover {
+            background: #222;
+            border-color: #333;
+        }
+
+        .project-item.active {
+            background: #2a2a2a;
+            border-color: var(--accent);
+        }
+
+        .project-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .project-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+        }
+
+        .top-bar {
+            height: 60px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .current-project-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .current-title {
+            font-weight: 600;
+        }
+
+        .current-path {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: #222;
+            border-color: #444;
+        }
+
+        .fullscreen-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .iframe-container {
+            flex-grow: 1;
+            width: 100%;
+            height: calc(100% - 60px);
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+
+        /* Custom Scrollbar for Sidebar */
+        .project-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .project-list::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+        .project-list::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        .project-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">MICROGRAPHIC // NEXUS</div>
+            <h1>Project Hub</h1>
+        </div>
+        <div class="project-list" id="projectList">
+            <!-- Dynamic list -->
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="current-project-info">
+                <span class="current-title" id="currentTitle">Select a project</span>
+                <span class="current-path" id="currentPath">./</span>
+            </div>
+            <div class="btn-group">
+                <button class="fullscreen-btn" id="mixBtn">AUTO MIX [OFF]</button>
+                <button class="fullscreen-btn" id="randomBtn">RANDOM</button>
+                <button class="fullscreen-btn" id="openBtn">OPEN IN NEW TAB ↗</button>
+            </div>
+        </div>
+        <div class="iframe-container">
+            <iframe id="viewer" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            { id: "0001", name: "Composition Alpha", desc: "Initial Micrographic Layout" },
+            { id: "0002", name: "Composition Beta", desc: "Grid System Exploration" },
+            { id: "0003", name: "Composition Gamma", desc: "Sensual Fractal (Silk)" },
+            { id: "0004", name: "Composition Delta", desc: "Audio Reactive Arrays" },
+            { id: "0005", name: "Composition Epsilon", desc: "Procedural Geometry" },
+            { id: "0006", name: "Composition Zeta", desc: "Fluid Transitions" },
+            { id: "0007", name: "Composition Eta", desc: "Psycho Horror VJ Set" },
+            { id: "0008", name: "Composition Theta", desc: "Premium 3D Paradigm" },
+            { id: "0009", name: "Composition Iota", desc: "Soft Suprematism" },
+            { id: "0010", name: "Composition Kappa", desc: "Brand Architecture" },
+            { id: "0011", name: "Composition Lambda", desc: "Hardcoded KPI Stats" },
+            { id: "0012", name: "Composition Mu", desc: "SVG Logo Animations" },
+            { id: "0013", name: "Composition Nu", desc: "Arthouse Narrative" },
+            { id: "0014", name: "Composition Xi", desc: "Solara IMPACT C014" },
+            { id: "015",  name: "Composition Omicron", desc: "Skewed Kinetic Slide" },
+            { id: "016",  name: "Composition Pi", desc: "Neural Prism aesthetic" },
+            { id: "017",  name: "Composition Rho", desc: "Glassmorphism UI" },
+            { id: "018",  name: "Composition Sigma", desc: "Vignelli Framework" },
+            { id: "019",  name: "Composition Tau", desc: "Live Coding Ecosystem" },
+            { id: "020",  name: "Composition Upsilon", desc: "Web Audio Synthesizer" },
+            { id: "021",  name: "Composition Phi", desc: "Cellular Division" },
+            { id: "022",  name: "Composition Chi", desc: "Neural Overload" },
+            { id: "023",  name: "Composition Psi", desc: "Void Growth" },
+            { id: "024",  name: "Composition Omega", desc: "Parasitic Infection" },
+            { id: "025",  name: "Composition Alpha-1", desc: "Necrotic Collapse" },
+            { id: "026",  name: "Composition Beta-1", desc: "Mutated DNA" },
+            { id: "027",  name: "Composition Gamma-1", desc: "Tone.js Algorithmic Melody" },
+            { id: "028",  name: "Composition Delta-1", desc: "Depressive Ambient Drone" },
+            { id: "029",  name: "Composition Epsilon-1", desc: "The Empty Station (Narrative)" },
+            { id: "030",  name: "Composition Zeta-1", desc: "Memory of Water (Narrative)" },
+            { id: "031",  name: "Composition Eta-1", desc: "Signal Loss (Narrative)" },
+            { id: "032",  name: "Composition Theta-1", desc: "Ethereal Web (Sensual)" },
+            { id: "033",  name: "Composition Iota-1", desc: "Quantum Fog (Sensual)" },
+            { id: "034",  name: "Composition Kappa-1", desc: "Plasma Flow (Sensual)" },
+            { id: "035",  name: "Composition Lambda-1", desc: "Aphex Plexus (Absurd IDM)" },
+            { id: "036",  name: "Composition Mu-1", desc: "Smeared Pixel (Insane)" },
+            { id: "037",  name: "Composition Nu-1", desc: "Absurd 3D Glitch (Three.js)" },
+            { id: "038",  name: "Composition Xi-1", desc: "Vignelli Constructivism" },
+            { id: "039",  name: "Composition Omicron-1", desc: "Psychedelic Vignelli" },
+            { id: "040",  name: "Composition Pi-1", desc: "Glitch Transformations" },
+            { id: "041",  name: "Composition Rho-1", desc: "Van Gogh Glitch" },
+            { id: "042",  name: "Composition Sigma-1", desc: "Rhythmic Van Gogh Blob" },
+            { id: "043",  name: "Composition Tau-1", desc: "GPU Shader Core (GLSL)" },
+            { id: "044",  name: "Composition Upsilon-1", desc: "Depressive Drone Ambient" },
+            { id: "045",  name: "Composition Phi-1", desc: "Desolate Monoliths" },
+            { id: "046",  name: "Composition Chi-1", desc: "Tsunami of Void" },
+            { id: "047",  name: "Composition Psi-1", desc: "Arthouse Absurdity" },
+            { id: "048",  name: "Composition Omega-1", desc: "Liminal Elevator" },
+            { id: "049",  name: "Composition Alpha-2", desc: "VHS Meat" },
+            { id: "050",  name: "Composition Beta-2", desc: "Cursor Swarm" },
+            { id: "051",  name: "Composition Gamma-2", desc: "Corporate Void" },
+            { id: "052",  name: "Composition Delta-2", desc: "Optic Migraine" },
+            { id: "053",  name: "Composition Epsilon-2", desc: "Phantom Plexus" },
+            { id: "054",  name: "Composition Zeta-2", desc: "Van Gogh's Madness" },
+            { id: "055",  name: "Composition Eta-2", desc: "Orthodox Punk" },
+            { id: "056",  name: "Composition Theta-2", desc: "Radiation Sickness" },
+            { id: "057",  name: "Composition Iota-2", desc: "Iconostasis Glitch" },
+            { id: "058",  name: "Composition Kappa-2", desc: "Seraphim Drone" },
+            { id: "059",  name: "Composition Lambda-2", desc: "Cyber Liturgy" },
+            { id: "060",  name: "Composition Mu-2", desc: "Baptism by Fire" },
+            { id: "061",  name: "Composition Nu-2", desc: "Golgotha Noise" },
+            { id: "062",  name: "Composition Xi-2", desc: "Anathema (Black Metal)" },
+            { id: "063",  name: "Composition Omicron-2", desc: "True Norwegian Orthodoxy" },
+            { id: "064",  name: "Composition Pi-2", desc: "Stigmata" },
+            { id: "065",  name: "Composition Rho-2", desc: "The Bells of Gehenna" },
+            { id: "066",  name: "Composition Sigma-2", desc: "The Heat Death (Abstract)" },
+            { id: "067",  name: "Composition Tau-2", desc: "Zero State (Abstract)" },
+            { id: "068",  name: "Composition Upsilon-2", desc: "Event Horizon (Abstract)" },
+            { id: "069",  name: "Composition Phi-2", desc: "Amoeba and Oil" },
+            { id: "070",  name: "Composition Chi-2", desc: "Carnal Geometry (Abstract)" },
+            { id: "071",  name: "Composition Psi-2", desc: "Symbiosis (Collision)" },
+            { id: "072",  name: "Composition Omega-2", desc: "Kinetic Swarm" },
+            { id: "073",  name: "Composition Alpha-3", desc: "Hyper-Collider" },
+            { id: "074",  name: "Composition Beta-3", desc: "Mitosis Overdrive" },
+            { id: "075",  name: "Composition Gamma-3", desc: "Origin Swarm (Biogenesis)" },
+            { id: "076",  name: "Composition Delta-3", desc: "Digital Homunculus (3D Human)" },
+            { id: "077",  name: "Composition Epsilon-3", desc: "Крест и Кулак (Orthodox Punk)" },
+            { id: "078",  name: "Composition Zeta-3", desc: "Херувим в Мегаполисе (Urban Angel)" },
+            { id: "079",  name: "Composition Eta-3", desc: "Иконостас Hardcore (200 BPM)" },
+            { id: "080",  name: "Composition Theta-3", desc: "Реквием Пустоты (Funeral Drone)" },
+            { id: "081",  name: "Composition Iota-3", desc: "Замерзшая Литургия (Coldwave)" },
+            { id: "082",  name: "Composition Kappa-3", desc: "Пепел к Пеплу (Noise Art)" },
+            { id: "083",  name: "Composition Lambda-3", desc: "Горящая Икона (Black Metal)" },
+            { id: "084",  name: "Composition Mu-3", desc: "Дадаистская Литургия (Absurd)" },
+            { id: "085",  name: "Composition Nu-3", desc: "Блэк-Метал Супрематизм" },
+            { id: "086",  name: "Composition Xi-3", desc: "Священный Глитч" },
+            { id: "087",  name: "Composition Omicron-3", desc: "Нигилистическая Свеча" },
+            { id: "088",  name: "Composition Pi-3", desc: "Объятия Пустоты" },
+        ];
+
+        const listContainer = document.getElementById('projectList');
+        const viewer = document.getElementById('viewer');
+        const currentTitle = document.getElementById('currentTitle');
+        const currentPath = document.getElementById('currentPath');
+        const openBtn = document.getElementById('openBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const mixBtn = document.getElementById('mixBtn');
+
+        let currentActive = null;
+        let mixInterval = null;
+
+        projects.forEach((p, index) => {
+            const item = document.createElement('div');
+            item.className = 'project-item';
+            item.innerHTML = `
+                <div class="project-id">NEXUS-${p.id}</div>
+                <div class="project-name">${p.name}</div>
+                <div class="project-desc">${p.desc}</div>
+            `;
+            
+            item.addEventListener('click', () => {
+                if (currentActive) currentActive.classList.remove('active');
+                item.classList.add('active');
+                currentActive = item;
+                
+                loadProject(p);
+                
+                // Stop auto mix on manual selection
+                if (mixInterval) toggleMix();
+            });
+            
+            listContainer.appendChild(item);
+        });
+
+        function loadProject(p) {
+            const path = `${p.id}/index.html`;
+            viewer.src = path;
+            currentTitle.textContent = p.name;
+            currentPath.textContent = `./${path}`;
+            openBtn.onclick = () => window.open(path, '_blank');
+        }
+
+        function playRandom() {
+            const randomIndex = Math.floor(Math.random() * projects.length);
+            const randomProject = projects[randomIndex];
+            const items = listContainer.getElementsByClassName('project-item');
+            
+            if (currentActive) currentActive.classList.remove('active');
+            items[randomIndex].classList.add('active');
+            currentActive = items[randomIndex];
+            
+            loadProject(randomProject);
+            
+            // Scroll into view
+            items[randomIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function toggleMix() {
+            if (mixInterval) {
+                clearInterval(mixInterval);
+                mixInterval = null;
+                mixBtn.textContent = "AUTO MIX [OFF]";
+                mixBtn.classList.remove('active');
+            } else {
+                playRandom();
+                mixInterval = setInterval(playRandom, 30000); // Switch every 30 seconds
+                mixBtn.textContent = "AUTO MIX [ON]";
+                mixBtn.classList.add('active');
+            }
+        }
+
+        randomBtn.addEventListener('click', () => {
+            playRandom();
+            if (mixInterval) toggleMix(); // Stop auto mix if playing manual random
+        });
+        
+        mixBtn.addEventListener('click', toggleMix);
+
+        // Load first project by default
+        if (projects.length > 0) {
+            const firstItem = listContainer.firstChild;
+            firstItem.classList.add('active');
+            currentActive = firstItem;
+            loadProject(projects[0]);
+        }
+
+        // Defensive GSAP animation
+        if (typeof gsap !== 'undefined') {
+            gsap.from(".sidebar", {
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+            gsap.from(".project-item", {
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.03,
+                ease: "power3.out",
+                delay: 0.3
+            });
+        }
+    </script>
+</body>
+</html>

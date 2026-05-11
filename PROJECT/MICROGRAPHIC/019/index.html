@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>019 // CLINICAL PSYCHIATRY VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#e0e5ec;overflow:hidden;cursor:none}
+canvas{display:block;filter:contrast(1.2) sepia(0.2) hue-rotate(180deg) saturate(0.5)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 30%,rgba(0,10,20,0.8) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:8%;background:#111;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#f0f5fa;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;letter-spacing:10px;color:#222;text-transform:uppercase;font-weight:300}
+#os{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#888;letter-spacing:2px;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:0.3}}
+#tc{position:absolute;bottom:10%;right:3%;font-family:monospace;font-size:14px;color:#0a3;z-index:30;letter-spacing:2px;pointer-events:none}
+#status{position:absolute;top:10%;left:3%;font-family:monospace;font-size:12px;color:#000;z-index:30;pointer-events:none;white-space:pre}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">019 // PSYCHIATRIC EVALUATION</div>
+<div id="os">subject is ready</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">BPM: 75</div>
+<div id="status">PATIENT: 404\nSTATUS: STABLE</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let isFlatline = false;
+let eegData = [];
+let maxEegPoints = 500;
+let beepOsc = null;
+let beepGain = null;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    animate();
+}
+
+function resize(){
+    W=cv.width=innerWidth;
+    H=cv.height=innerHeight;
+    maxEegPoints = Math.floor(W / 3); // 3 pixels per point
+    eegData = new Array(maxEegPoints).fill(0);
+}
+
+// ── AUDIO: HOSPITAL ENVIRONMENT ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Fluorescent Lights Hum (60Hz & 120Hz harmonics)
+    const hum1=ax.createOscillator(); hum1.type='sawtooth'; hum1.frequency.value=60;
+    const hum2=ax.createOscillator(); hum2.type='sine'; hum2.frequency.value=120;
+    const humGain=ax.createGain(); humGain.gain.value=0.1;
+    const humFilter = ax.createBiquadFilter(); humFilter.type='lowpass'; humFilter.frequency.value=200;
+    hum1.connect(humFilter); hum2.connect(humFilter); humFilter.connect(humGain); humGain.connect(_m);
+    hum1.start(); hum2.start();
+
+    // Muffled Intercom (Distant PA System)
+    function intercom(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator(); o.type='triangle';
+        o.frequency.value=300 + Math.random()*200;
+        
+        const g=ax.createGain(); g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.05, now+0.1);
+        g.gain.exponentialRampToValueAtTime(0.001, now+1.5);
+        
+        const filter = ax.createBiquadFilter(); filter.type='bandpass'; filter.frequency.value=800; filter.Q.value=5;
+        
+        o.connect(filter); filter.connect(g); g.connect(_m);
+        o.start(now); o.stop(now+1.5);
+        
+        setTimeout(intercom, 5000 + Math.random()*15000);
+    }
+    setTimeout(intercom, 3000);
+
+    // Heart Monitor (EKG)
+    beepGain = ax.createGain(); beepGain.gain.value = 0;
+    beepGain.connect(_m);
+    beepOsc = ax.createOscillator(); beepOsc.type='sine'; beepOsc.frequency.value=900;
+    beepOsc.connect(beepGain); beepOsc.start();
+
+    function ekgBeat(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        if(!isFlatline) {
+            // Normal Beep
+            beepGain.gain.setValueAtTime(0, now);
+            beepGain.gain.linearRampToValueAtTime(0.3, now+0.02);
+            beepGain.gain.exponentialRampToValueAtTime(0.001, now+0.1);
+            
+            // Generate visual spike
+            eegData[eegData.length-1] = -100; // Sharp up
+            eegData[eegData.length-2] = 50;   // Sharp down
+            
+            // Randomly trigger flatline state (panic)
+            if(Math.random() > 0.9) {
+                isFlatline = true;
+                document.getElementById('status').innerText = "PATIENT: 404\nSTATUS: CRITICAL FAILURE";
+                document.getElementById('status').style.color = "#f00";
+                document.getElementById('tc').innerText = "BPM: 00";
+                document.getElementById('tc').style.color = "#f00";
+            }
+            
+            setTimeout(ekgBeat, 800 + Math.random()*100); // ~75 BPM
+        } else {
+            // Flatline Tone
+            beepGain.gain.setValueAtTime(0, now);
+            beepGain.gain.linearRampToValueAtTime(0.2, now+0.1); // Solid drone
+            
+            // Generate visual flatline noise
+            for(let i=0; i<5; i++) eegData[eegData.length-1-i] = (Math.random()-0.5)*5; 
+            
+            // Recover from flatline
+            if(Math.random() > 0.95) {
+                isFlatline = false;
+                beepGain.gain.linearRampToValueAtTime(0, now+0.5); // Fade out flatline
+                document.getElementById('status').innerText = "PATIENT: 404\nSTATUS: STABLE";
+                document.getElementById('status').style.color = "#000";
+                document.getElementById('tc').innerText = "BPM: 75";
+                document.getElementById('tc').style.color = "#0a3";
+            }
+            setTimeout(ekgBeat, 100);
+        }
+    }
+    setTimeout(ekgBeat, 1000);
+}
+
+// ── VJ ENGINE: RORSCHACH & CLINICAL STERILITY ──
+
+function drawInkblot(cx) {
+    cx.beginPath();
+    cx.moveTo(0, 0); // start at center bottom
+    const pts = 80;
+    for(let i=0; i<=pts; i++) {
+        const angle = -Math.PI/2 + (i/pts)*Math.PI; // -90 to 90 degrees (right half)
+        
+        // Highly complex, slow moving perlin-like noise
+        const n1 = Math.sin(T*0.5 + i*0.1) * 100;
+        const n2 = Math.cos(T*0.3 - i*0.3) * 150;
+        const n3 = Math.sin(T*0.8 + i*0.5) * 50;
+        const n4 = Math.cos(T*0.1 + i*1.2) * 80;
+        
+        let r = 50 + n1 + n2 + n3 + n4;
+        if(r < 0) r = 0; // No negative radius
+        
+        const x = Math.abs(Math.cos(angle)*r);
+        const y = Math.sin(angle)*r;
+        cx.lineTo(x, y);
+    }
+    cx.lineTo(0, Math.sin(Math.PI/2)*500); // force close to center line
+    cx.closePath();
+    
+    // Deep ink look
+    cx.fillStyle = '#050505';
+    cx.fill();
+    // Edge bleeding
+    cx.strokeStyle = 'rgba(0,0,0,0.1)';
+    cx.lineWidth = 10;
+    cx.stroke();
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    // 1. Sterile Clear with Fluorescent Flicker
+    const flicker = Math.random() > 0.95 ? 0.8 : 1.0;
+    cx.globalAlpha = flicker;
+    cx.fillStyle = '#e5ecef'; // Hospital white/blue
+    cx.fillRect(0,0,W,H);
+    cx.globalAlpha = 1.0;
+    
+    // Add noise to EEG data
+    eegData.shift();
+    let noise = isFlatline ? (Math.random()-0.5)*3 : (Math.random()-0.5)*10;
+    eegData.push(noise);
+
+    // 2. Rorschach Test (Inkblot)
+    // Draw twice (scale X and -X)
+    cx.save();
+    cx.translate(W/2, H/2);
+    
+    // Subtle breathing scale
+    const breath = 1.0 + Math.sin(T)*0.02;
+    cx.scale(breath, breath);
+    
+    // Optional random ink splatter around it
+    if(Math.random() > 0.9) {
+        cx.fillStyle = 'rgba(0,0,0,0.5)';
+        cx.beginPath();
+        cx.arc((Math.random()-0.5)*400, (Math.random()-0.5)*400, Math.random()*10, 0, Math.PI*2);
+        cx.fill();
+    }
+    
+    drawInkblot(cx); // Right side
+    cx.scale(-1, 1);
+    drawInkblot(cx); // Left side
+    cx.restore();
+    
+    // 3. EKG / Medical Monitor Graph
+    cx.save();
+    cx.translate(0, H/2);
+    cx.strokeStyle = isFlatline ? 'rgba(255,0,0,0.7)' : 'rgba(0,200,50,0.6)';
+    cx.lineWidth = 2;
+    cx.beginPath();
+    for(let i=0; i<eegData.length; i++){
+        const x = (i / eegData.length) * W;
+        const y = eegData[i];
+        if(i===0) cx.moveTo(x, y);
+        else cx.lineTo(x, y);
+    }
+    cx.stroke();
+    
+    // Monitor Grid
+    cx.strokeStyle = 'rgba(0,100,50,0.1)';
+    cx.lineWidth = 1;
+    for(let i=0; i<W; i+=50) { cx.beginPath(); cx.moveTo(i,-H/2); cx.lineTo(i,H/2); cx.stroke(); }
+    for(let i=-H/2; i<H/2; i+=50) { cx.beginPath(); cx.moveTo(0,i); cx.lineTo(W,i); cx.stroke(); }
+    cx.restore();
+    
+    // 4. Clinical Glitch
+    if(Math.random() > 0.97){
+        const sy = Math.random()*H;
+        const sh = 5 + Math.random()*20;
+        cx.drawImage(cv, 0, sy, W, sh, (Math.random()-0.5)*20, sy, W, sh);
+    }
+}
+</script>
+</body>
+</html>

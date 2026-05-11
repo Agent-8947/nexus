@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>083 // ГОРЯЩАЯ ИКОНА (THE BURNING ICON)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0500; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #ff5500; font-family: "Times New Roman", serif; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase; text-shadow: 0 0 20px #ff5500;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ЗАЖЕЧЬ ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    // Noise function for fire
+    float snoise(vec2 p) {
+        return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+    }
+
+    float noise(vec2 uv) {
+        vec2 i = floor(uv);
+        vec2 f = fract(uv);
+        f = f*f*(3.0-2.0*f);
+        return mix(mix(snoise(i), snoise(i+vec2(1.0,0.0)), f.x),
+                   mix(snoise(i+vec2(0.0,1.0)), snoise(i+vec2(1.0,1.0)), f.x), f.y);
+    }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        vec3 col = vec3(0.0);
+
+        // Frame
+        float frame = step(abs(uv.x), 0.4) * step(abs(uv.y), 0.6);
+        float inner_frame = step(abs(uv.x), 0.35) * step(abs(uv.y), 0.55);
+        
+        if (frame > 0.5 && inner_frame < 0.5) {
+            col = vec3(0.8, 0.6, 0.2); // Gold frame
+        }
+
+        // Fire simulation inside
+        if (inner_frame > 0.5) {
+            vec2 fire_uv = uv * 2.0;
+            fire_uv.y -= t * 2.0; // Move up
+            
+            float n = noise(fire_uv * 3.0);
+            n += noise(fire_uv * 6.0) * 0.5;
+            
+            float gradient = (uv.y + 0.55) / 1.1; // 0 at bottom, 1 at top
+            float fire = n * (1.0 - gradient);
+            
+            col = mix(vec3(1.0, 0.1, 0.0), vec3(1.0, 0.8, 0.0), fire);
+            col = mix(vec3(0.1, 0.0, 0.0), col, smoothstep(0.1, 0.4, fire));
+        }
+
+        // Cross in center (burning)
+        float cross_v = smoothstep(0.02, 0.0, abs(uv.x));
+        float cross_h = smoothstep(0.02, 0.0, abs(uv.y - 0.1)) * step(abs(uv.x), 0.2);
+        
+        if (max(cross_v, cross_h) > 0.5 && inner_frame > 0.5) {
+            col = mix(col, vec3(0.0), 0.7); // Charred cross
+        }
+
+        // Vignette
+        col *= 1.0 - length(uv) * 0.5;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 220; // Fast Black Metal
+
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.01, octaves: 4 }).toDestination();
+    const snare = new Tone.NoiseSynth({ envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }).toDestination();
+    snare.volume.value = -10;
+
+    // Distorted guitar wall
+    const guitar = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.1, decay: 0.5, sustain: 0.5, release: 0.5 }
+    }).toDestination();
+    const filter = new Tone.Filter(2000, "lowpass").toDestination();
+    guitar.connect(filter);
+    guitar.volume.value = -15;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "16n", time);
+        snare.triggerAttackRelease("16n", time + 0.125);
+    }, "8n").start(0);
+
+    new Tone.Loop(time => {
+        guitar.triggerAttackRelease("2n", time);
+    }, "1n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Solara DNA Colors */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F5F0;
+    --text-main: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --accent-orange: #C2410C;   /* DNA confirmed: span-in-heading, score 50 */
+    --accent-green: #0D9668;
+    --border-light: #E8E8E4;
+
+    /* Geometry */
+    --radius-card: 10px;
+    --radius-pill: 100px;
+    
+    /* Typography */
+    --font-main: 'DM Sans', sans-serif;
+    --font-accent: 'Instrument Serif', serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utils */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.accent-text {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-orange);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.header-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 32px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-left: 32px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-btn {
+    background: var(--text-main);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+}
+
+/* Hero Section */
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-orange);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero h1 {
+    font-size: 64px;
+    max-width: 900px;
+    margin: 0 auto 24px;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: var(--text-main);
+    color: white;
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Features (Bento Grid) */
+.features {
+    padding: 80px 0;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    gap: 24px;
+}
+
+.bento-item {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--border-light);
+}
+
+.bento-item.large {
+    grid-column: span 2;
+}
+
+.bento-item h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.bento-item p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.bento-icon {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-light);
+}
+
+.bento-icon img {
+    width: 24px;
+}
+
+.metric {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--accent-orange);
+}
+
+/* Images Grid */
+.images-grid {
+    padding: 80px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.images-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+}
+
+/* CTA Block */
+.cta-block {
+    margin: 80px 0;
+    padding: 80px;
+    background: var(--text-main);
+    border-radius: 24px;
+    color: white;
+    text-align: center;
+}
+
+.cta-block h2 {
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.cta-block .btn-primary {
+    background: white;
+    color: var(--text-main);
+}
+
+/* Footer */
+footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+}

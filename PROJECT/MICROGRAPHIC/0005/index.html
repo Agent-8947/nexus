@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0005 // HYDRA + DYNAMIC TRANCE</title>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        
+        #hydra-canvas { 
+            width: 100%; height: 100%;
+            display: block; 
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 1s ease;
+            color: #00ffff;
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .blink {
+            animation: blinker 2s linear infinite;
+        }
+        
+        @keyframes blinker { 50% { opacity: 0.2; } }
+    </style>
+</head>
+<body>
+
+<div id="overlay" onclick="initAll()">
+    <div class="blink">[ INITIATE TRANCE PROTOCOL ]</div>
+</div>
+
+<canvas id="hydra-canvas"></canvas>
+
+<script>
+let hydra;
+let audioCtx;
+let analyser;
+
+function initAll() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 1000);
+
+    // 1. Initialize Audio Context
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.connect(audioCtx.destination);
+
+    // 2. Initialize Hydra
+    hydra = new Hydra({
+        canvas: document.getElementById("hydra-canvas"),
+        detectAudio: false // Disable mic, we use our own synth
+    });
+
+    // Custom audio reactivity variables
+    window.bassVal = 0;
+    window.midVal = 0;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+    function updateAudioData() {
+        analyser.getByteFrequencyData(dataArray);
+        window.bassVal = dataArray[1] / 255;
+        window.midVal = dataArray[15] / 255;
+        requestAnimationFrame(updateAudioData);
+    }
+    updateAudioData();
+
+    // 3. Start Procedural Trance Generator
+    startTrance();
+
+    // 4. Hydra Visual Patch (Hypnotic Trance Tunnel)
+    osc(30, 0.05, 1.2)
+      .modulate(noise(4), () => window.bassVal * 4) // Reacts to custom bass
+      .color(0.1, 0.8, 0.9)
+      .contrast(1.4)
+      .blend(o0, () => 0.8 + window.midVal * 0.2) // Dynamic feedback based on custom mids
+      .rotate(0.005, 0.05)
+      .modulateScale(osc(8).rotate(Math.PI/2))
+      .out();
+}
+
+function startTrance() {
+    const bpm = 140;
+    const beatLen = 60 / bpm; // ~0.428s
+    let nextBeatTime = audioCtx.currentTime + 0.1;
+
+    // Scheduler loop for rock-solid timing
+    function schedule() {
+        while (nextBeatTime < audioCtx.currentTime + 0.2) {
+            playKick(nextBeatTime);
+            playRollingBass(nextBeatTime);
+            playArp(nextBeatTime);
+            nextBeatTime += beatLen;
+        }
+        setTimeout(schedule, 50);
+    }
+
+    // 1. Trance Kick Drum
+    function playKick(time) {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(150, time);
+        osc.frequency.exponentialRampToValueAtTime(40, time + 0.15);
+        
+        gain.gain.setValueAtTime(1, time);
+        gain.gain.exponentialRampToValueAtTime(0.001, time + 0.25);
+        
+        osc.connect(gain);
+        gain.connect(analyser);
+        
+        osc.start(time);
+        osc.stop(time + 0.25);
+    }
+
+    // 2. Rolling Trance Bass (plays on 16th notes between kicks)
+    function playRollingBass(time) {
+        const step = beatLen / 4;
+        // Off-beats: steps 1, 2, 3 (skip 0 which is the kick)
+        for (let i = 1; i < 4; i++) {
+            const noteTime = time + i * step;
+            
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(55, noteTime); // A1
+            
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(200, noteTime);
+            filter.frequency.exponentialRampToValueAtTime(100, noteTime + step);
+            
+            gain.gain.setValueAtTime(0.3, noteTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, noteTime + step * 0.9);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(analyser);
+            
+            osc.start(noteTime);
+            osc.stop(noteTime + step);
+        }
+    }
+
+    // 3. Acid Arpeggiator
+    const scale = [110, 130.81, 146.83, 164.81, 196.00]; // A minor pentatonic
+    let stepCount = 0;
+
+    function playArp(time) {
+        const step = beatLen / 4;
+        for (let i = 0; i < 4; i++) {
+            const noteTime = time + i * step;
+            
+            // Play on 16th notes
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'square';
+            
+            // Procedural melody
+            const noteIndex = Math.floor(Math.sin(stepCount * 0.5) * 2.5 + 2.5);
+            osc.frequency.setValueAtTime(scale[noteIndex] * 2, noteTime); // Octave up
+            
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'peaking';
+            filter.frequency.setValueAtTime(1000, noteTime);
+            filter.frequency.exponentialRampToValueAtTime(2000, noteTime + 0.1);
+            
+            gain.gain.setValueAtTime(0.08, noteTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, noteTime + 0.1);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(analyser);
+            
+            osc.start(noteTime);
+            osc.stop(noteTime + 0.1);
+            
+            stepCount++;
+        }
+    }
+
+    schedule();
+}
+</script>
+</body>
+</html>

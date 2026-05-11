@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>016 // HARSH PSYCHO HORROR</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#050000;overflow:hidden}
+canvas{display:block;filter:contrast(1.8) saturate(0.5) brightness(0.8) hue-rotate(10deg)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 5%,rgba(0,0,0,0.95) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:14%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#0a0000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:15px;color:#a00;text-transform:uppercase;text-shadow:0 0 10px rgba(255,0,0,0.5)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#555;letter-spacing:4px;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:15%;right:3%;font-family:monospace;font-size:10px;color:rgba(255,0,0,0.4);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">016 // SYSTEM CORRUPTION</div>
+<div id="os">breach the void</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let flashTimer=0;
+let sceneMode = 0;
+let glitchArr = [];
+
+// 3D Sphere/Torus Grid Data
+const points = [];
+const lines = [];
+const detail = 12;
+for(let i=0; i<detail; i++) {
+    const lat = (i / detail) * Math.PI - Math.PI/2;
+    for(let j=0; j<detail; j++) {
+        const lon = (j / detail) * Math.PI * 2;
+        const x = Math.cos(lat) * Math.cos(lon) * 120;
+        const y = Math.cos(lat) * Math.sin(lon) * 120;
+        const z = Math.sin(lat) * 120;
+        points.push([x, y, z]);
+        
+        const idx = i * detail + j;
+        const nextIdx = i * detail + ((j + 1) % detail);
+        const belowIdx = ((i + 1) % detail) * detail + j;
+        lines.push([idx, nextIdx]);
+        lines.push([idx, belowIdx]);
+    }
+}
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// 3D Projection
+function rotateX(x, y, z, angle) {
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+    return [x, y * cos - z * sin, y * sin + z * cos];
+}
+function rotateY(x, y, z, angle) {
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+    return [x * cos + z * sin, y, -x * sin + z * cos];
+}
+function project(x, y, z) {
+    const scale = 600 / (600 + z);
+    return {
+        x: W / 2 + x * scale,
+        y: H / 2 + y * scale,
+        scale: scale
+    };
+}
+
+// ── AUDIO: ATMOSPHERIC DRONE & HARSH NOISE ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Deep Sub-Drone (18Hz)
+    const sub=ax.createOscillator();sub.type='sine';sub.frequency.value=18;
+    const subGain=ax.createGain();subGain.gain.value=0.6;
+    sub.connect(subGain);subGain.connect(_m);sub.start();
+    
+    // Mid Drone (Dissonant)
+    const o1=ax.createOscillator();o1.type='sawtooth';o1.frequency.value=55;
+    const o2=ax.createOscillator();o2.type='sawtooth';o2.frequency.value=57;
+    const f=ax.createBiquadFilter();f.type='lowpass';f.frequency.value=100;
+    const g=ax.createGain();g.gain.value=0.3;
+    o1.connect(f);o2.connect(f);f.connect(g);g.connect(_m);o1.start();o2.start();
+    
+    // Harsh Noise Generator (Screeches)
+    function screech(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator();o.type='square';
+        o.frequency.setValueAtTime(50 + Math.random()*2000, now);
+        o.frequency.exponentialRampToValueAtTime(10000, now+0.2);
+        
+        const g=ax.createGain();g.gain.setValueAtTime(0.15,now);
+        g.gain.exponentialRampToValueAtTime(0.001,now+0.3);
+        
+        const bpf=ax.createBiquadFilter();bpf.type='bandpass';bpf.frequency.value=3000;
+        
+        o.connect(bpf);bpf.connect(g);g.connect(_m);
+        o.start(now);o.stop(now+0.3);
+        
+        setTimeout(screech, 500 + Math.random()*2000);
+    }
+    setTimeout(screech, 2000);
+
+    // Irregular Industrial Beat
+    function beat(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        // Heavy Kick
+        const k=ax.createOscillator();k.type='sine';
+        k.frequency.setValueAtTime(200,now);k.frequency.exponentialRampToValueAtTime(0.001,now+0.3);
+        const kg=ax.createGain();kg.gain.setValueAtTime(0.9,now);kg.gain.exponentialRampToValueAtTime(0.001,now+0.3);
+        k.connect(kg);kg.connect(_m);k.start(now);k.stop(now+0.3);
+        
+        // Random visual glitch trigger
+        if(Math.random() > 0.5) sceneMode = (sceneMode + 1) % 3;
+        
+        // Irregular interval
+        const intervals = [200, 400, 100, 800, 300];
+        const next = intervals[Math.floor(Math.random()*intervals.length)];
+        setTimeout(beat, next);
+    }
+    setTimeout(beat, 1000);
+}
+
+// ── VJ ENGINE: DIRT, DEGRADATION & ABSURDITY ──
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    // 1. Feedback with Displacement (Smear/Dirt)
+    cx.save();
+    cx.translate(W/2, H/2);
+    cx.scale(1.05, 1.05);
+    cx.rotate(Math.sin(T)*0.02);
+    cx.translate(-W/2, -H/2);
+    cx.drawImage(cv, (Math.random()-0.5)*10, (Math.random()-0.5)*10); // Smear
+    cx.restore();
+    
+    // Slow dark bleed
+    cx.fillStyle = 'rgba(10, 0, 0, 0.08)';
+    cx.fillRect(0, 0, W, H);
+    
+    // 2. Draw Content
+    cx.save();
+    
+    if(sceneMode === 0 || sceneMode === 1){
+        // ── SCENE: DEFORMED 3D GRID ──
+        cx.strokeStyle = `rgba(255, ${Math.random()*50}, 0, 0.6)`;
+        cx.lineWidth = 1;
+        
+        const rotatedPoints = points.map(p => {
+            let [x, y, z] = p;
+            // Absurd deformation
+            const def = Math.sin(T*5 + z*0.01) * 50;
+            x += def;
+            y += def;
+            
+            [x, y, z] = rotateX(x, y, z, T * 1.5);
+            [x, y, z] = rotateY(x, y, z, T * 2);
+            return [x, y, z];
+        });
+        
+        lines.forEach(l => {
+            const p1 = project(...rotatedPoints[l[0]]);
+            const p2 = project(...rotatedPoints[l[1]]);
+            if(p1.scale > 0 && p2.scale > 0) {
+                cx.beginPath();
+                cx.moveTo(p1.x, p1.y);
+                cx.lineTo(p2.x, p2.y);
+                cx.stroke();
+            }
+        });
+    }
+    
+    if(sceneMode === 1 || sceneMode === 2){
+        // ── SCENE: RORSCHACH BLEED ──
+        cx.save();
+        cx.translate(W/2, H/2);
+        const pts = 12;
+        cx.beginPath();
+        for(let i=0; i<pts; i++){
+            const angle = (i / pts) * Math.PI * 2;
+            const rad = 60 + Math.sin(T * 6 + i) * 60;
+            cx.lineTo(Math.cos(angle)*rad, Math.sin(angle)*rad);
+        }
+        cx.closePath();
+        cx.fillStyle = 'rgba(150, 0, 0, 0.3)';
+        cx.fill();
+        cx.restore();
+        
+        // Mirror
+        cx.save();
+        cx.translate(W/2, 0);
+        cx.scale(-1, 1);
+        cx.drawImage(cv, W/2, 0, W/2, H, -W/2, 0, W/2, H);
+        cx.restore();
+    }
+    cx.restore();
+    
+    // 3. Dirt & Pixel Sorting Simulation (Horizontal Smears)
+    if(Math.random() > 0.85){
+        const sy = Math.random()*H;
+        const sh = 2 + Math.random()*10;
+        cx.fillStyle = 'rgba(255,255,255,0.2)';
+        cx.fillRect(0, sy, W, sh);
+        cx.drawImage(cv, 0, sy, W, sh, (Math.random()-0.5)*100, sy, W, sh);
+    }
+    
+    // Scanlines
+    cx.fillStyle = 'rgba(0,0,0,0.1)';
+    for(let i=0; i<H; i+=4){
+        cx.fillRect(0, i, W, 1);
+    }
+    
+    // 4. Harsh Flash & Noise
+    flashTimer++;
+    if(flashTimer > 80 && Math.random() > 0.95){
+        cx.fillStyle = '#ff0000';
+        cx.globalAlpha = 0.7;
+        cx.fillRect(0,0,W,H);
+        cx.globalAlpha = 1.0;
+        flashTimer = 0;
+    }
+    
+    // Heavy analog snow
+    cx.fillStyle = `rgba(255,255,255,${Math.random()*0.1})`;
+    for(let i=0; i<300; i++){
+        cx.fillRect(Math.random()*W, Math.random()*H, 1, 1);
+    }
+    // Dark clumps (dirt)
+    cx.fillStyle = `rgba(0,0,0,${Math.random()*0.2})`;
+    for(let i=0; i<50; i++){
+        cx.fillRect(Math.random()*W, Math.random()*H, 4, 4);
+    }
+}
+</script>
+</body>
+</html>

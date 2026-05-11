@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>031 // SIGNAL LOSS (ARTHOUSE NARRATIVE)</title>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            width: 100%; height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+        #hydra-canvas {
+            width: 100%; height: 100%;
+            display: block;
+            filter: grayscale(1) contrast(2) brightness(0.7);
+        }
+        .bar {
+            position: absolute; left: 0; width: 100%; background: #000; height: 12%; z-index: 20; pointer-events: none;
+        }
+        #bt { top: 0; } #bb { bottom: 0; }
+        #text-container {
+            position: absolute; bottom: 16%; left: 0; right: 0; text-align: center; z-index: 30; pointer-events: none; padding: 0 12%;
+        }
+        #scene-text {
+            font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: clamp(14px, 2.2vw, 22px);
+            color: #ffffff; letter-spacing: 0.05em; line-height: 1.6; opacity: 0; transition: opacity 1.8s ease;
+        }
+        #act-title {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Times New Roman', Times, serif; font-size: clamp(10px, 1.2vw, 14px);
+            letter-spacing: 0.4em; text-transform: uppercase; color: rgba(255,255,255,0.6); z-index: 30; opacity: 0; transition: opacity 2s ease; pointer-events: none;
+        }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: 'Times New Roman', serif; font-size: 11px; letter-spacing: 8px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+        #os { font-family: 'Times New Roman', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.2); letter-spacing: 2px; }
+        #timecode { position: absolute; top: 14%; left: 2%; font-family: monospace; font-size: 9px; color: rgba(255,255,255,0.15); z-index: 30; pointer-events: none; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">031 // SIGNAL LOSS</div>
+    <div id="os">press anywhere</div>
+</div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="timecode">00:00:00</div>
+<div id="text-container"><div id="scene-text"></div></div>
+<div id="act-title"></div>
+<canvas id="hydra-canvas"></canvas>
+
+<script>
+const screenplay = [
+    { t: 0,      type: "act",    text: "I. Transmission" },
+    { t: 3000,   type: "line",   text: "Can you hear me?" },
+    { t: 9000,   type: "line",   text: "There is too much static." },
+    { t: 15000,  type: "silence" },
+    { t: 22000,  type: "line",   text: "I am broadcasting from the dark." },
+    { t: 30000,  type: "line",   text: "But the dark is not listening." },
+    { t: 36000,  type: "silence" },
+    { t: 42000,  type: "act",    text: "II. Degradation" },
+    { t: 46000,  type: "line",   text: "The words are breaking apart." },
+    { t: 53000,  type: "line",   text: "I'm losing line by line." },
+    { t: 60000,  type: "silence" },
+    { t: 67000,  type: "line",   text: "We were never connected." },
+    { t: 75000,  type: "silence" },
+    { t: 82000,  type: "act",    text: "III. Silence" },
+    { t: 86000,  type: "line",   text: "The carrier wave is gone." },
+    { t: 93000,  type: "line",   text: "Now there is only the noise." },
+    { t: 100000, type: "silence" }
+];
+
+let audioCtx, hydra;
+let startTime = null;
+window.nx = { tension: 0.0, act: 1 };
+
+function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    initAudio();
+    initVisuals();
+    startTime = Date.now();
+    scheduleScreenplay();
+    startTimecode();
+}
+
+function startTimecode() {
+    const el = document.getElementById('timecode');
+    setInterval(() => {
+        if (!startTime) return;
+        const s = Math.floor((Date.now() - startTime) / 1000);
+        el.textContent = `00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+    }, 1000);
+}
+
+function scheduleScreenplay() {
+    screenplay.forEach(ev => { setTimeout(() => executeEvent(ev), ev.t); });
+}
+
+function executeEvent(ev) {
+    const textEl = document.getElementById('scene-text');
+    const actEl = document.getElementById('act-title');
+    switch(ev.type) {
+        case "line":
+            textEl.style.opacity = '0';
+            setTimeout(() => { textEl.textContent = ev.text; textEl.style.opacity = '1'; playTick(); }, 200);
+            setTimeout(() => { textEl.style.opacity = '0'; }, 5500);
+            break;
+        case "act":
+            window.nx.act++;
+            window.nx.tension = Math.min(window.nx.act * 0.3, 1.0);
+            actEl.textContent = ev.text; actEl.style.opacity = '1';
+            setTimeout(() => { actEl.style.opacity = '0'; }, 3000);
+            playSting();
+            break;
+    }
+}
+
+function initAudio() {
+    const m = audioCtx.createGain(); m.gain.value = 0.4; m.connect(audioCtx.destination);
+    window.nx.master = m;
+    
+    // Noise (constant static)
+    const buf = audioCtx.createBuffer(1, audioCtx.sampleRate, audioCtx.sampleRate);
+    for(let i=0; i<buf.length; i++) buf.getChannelData(0)[i] = (Math.random()*2-1)*0.05;
+    const src = audioCtx.createBufferSource(); src.buffer = buf; src.loop = true;
+    src.connect(m); src.start();
+}
+
+function playTick() {
+    const osc = audioCtx.createOscillator(); osc.type = 'square'; osc.frequency.value = 800;
+    const g = audioCtx.createGain(); g.gain.setValueAtTime(0.05, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+    osc.connect(g); g.connect(window.nx.master); osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+}
+
+function playSting() {
+    const osc = audioCtx.createOscillator(); osc.type = 'sine'; osc.frequency.value = 100;
+    const g = audioCtx.createGain(); g.gain.setValueAtTime(0.4, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+    osc.connect(g); g.connect(window.nx.master); osc.start(); osc.stop(audioCtx.currentTime + 1);
+}
+
+function initVisuals() {
+    hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio: false });
+    // Scanline/Glitch look
+    osc(50, 0.05, 0)
+      .thresh(0.5)
+      .modulate(noise(3, 0.1))
+      .diff(src(o0).scale(0.99))
+      .blend(src(o0), 0.85)
+      .out();
+}
+</script>
+</body>
+</html>

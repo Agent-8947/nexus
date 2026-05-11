@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>036 // INSANE SMEARED PIXEL</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #000; overflow: hidden; }
+        canvas { display: block; image-rendering: pixelated; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: 'Courier New', monospace; font-size: 20px; color: #f0f; font-weight: bold; }
+        #os { font-family: 'Courier New', monospace; font-size: 12px; color: #0ff; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">[ SYSTEM MELTDOWN ]</div>
+    <div id="os">CLICK TO CORRUPT</div>
+</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+let offcv, offcx;
+const RES_W = 160;
+const RES_H = 120;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); cx = cv.getContext('2d');
+    
+    // Offscreen low-res canvas for pixelation
+    offcv = document.createElement('canvas');
+    offcv.width = RES_W; offcv.height = RES_H;
+    offcx = offcv.getContext('2d');
+    
+    resize(); window.addEventListener('resize', resize);
+    
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cx.imageSmoothingEnabled = false;
+}
+
+// ── AUDIO ENGINE: CHAOTIC NOISE & BLEEPS ──
+function initAudio() {
+    const noise = new Tone.Noise("brown").start();
+    const filter = new Tone.AutoFilter({
+        frequency: 10,
+        type: "square",
+        depth: 0.8
+    }).connect(Tone.Destination);
+    
+    noise.connect(filter);
+    noise.volume.value = -20;
+    filter.start();
+    
+    // Random high pitch bleeps
+    const synth = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0, decay: 0.05, sustain: 0 }
+    }).toDestination();
+    synth.volume.value = -15;
+    
+    const loop = new Tone.Loop(time => {
+        if (Math.random() > 0.4) {
+            const freq = 1000 + Math.random() * 5000;
+            synth.triggerAttackRelease(freq, "32n", time);
+        }
+    }, "32n").start(0);
+    
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: INSANE SMEARED PIXEL ──
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.016;
+    
+    // 1. Draw crazy shapes on the LOW-RES canvas
+    offcx.fillStyle = 'rgba(0,0,0,0.1)';
+    offcx.fillRect(0, 0, RES_W, RES_H);
+    
+    offcx.globalCompositeOperation = Math.random() > 0.5 ? 'difference' : 'source-over';
+    
+    // Random lines and blocks
+    for(let i=0; i<3; i++) {
+        offcx.fillStyle = `hsl(${Math.random()*360}, 100%, 50%)`;
+        offcx.fillRect(Math.random()*RES_W, Math.random()*RES_H, Math.random()*20, Math.random()*20);
+    }
+    
+    if (Math.random() > 0.8) {
+        offcx.strokeStyle = '#fff';
+        offcx.beginPath();
+        offcx.moveTo(Math.random()*RES_W, Math.random()*RES_H);
+        offcx.lineTo(Math.random()*RES_W, Math.random()*RES_H);
+        offcx.stroke();
+    }
+    
+    // 2. Smear the MAIN canvas by drawing it onto itself with offset
+    cx.globalCompositeOperation = 'source-over';
+    cx.drawImage(cv, Math.sin(T*5)*5, Math.cos(T*7)*5, W, H);
+    
+    // 3. Draw the low-res canvas scaled up onto the main canvas
+    cx.globalCompositeOperation = Math.random() > 0.9 ? 'difference' : 'lighter';
+    cx.drawImage(offcv, 0, 0, RES_W, RES_H, 0, 0, W, H);
+    
+    // Occasional full frame corruption
+    if (Math.random() > 0.99) {
+        cx.fillStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.5)`;
+        cx.fillRect(0, 0, W, H);
+    }
+}
+</script>
+</body>
+</html>

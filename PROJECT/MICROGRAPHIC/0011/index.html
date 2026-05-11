@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0011 // IN THE WOMB (ORGANIC FLUID + HEARTBEAT)</title>
+    <!-- Hydra for Organic Visuals -->
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #0d0000;
+            overflow: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+        #hydra-canvas { 
+            width: 100%; height: 100%; 
+            display: block; 
+            /* Soft, blurred, submerged look */
+            filter: blur(2px) contrast(1.1) saturate(1.5);
+        }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #1a0000; z-index: 9999; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            color: #ff3333; font-size: 14px; letter-spacing: 20px; 
+            text-transform: uppercase;
+            transition: opacity 5s ease-in-out;
+        }
+        .breathe { animation: breathe 3s ease-in-out infinite; }
+        @keyframes breathe { 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="initWomb()">
+    <div class="breathe">G E S T A T E</div>
+</div>
+<canvas id="hydra-canvas"></canvas>
+<script>
+let audioCtx, analyser;
+let heartbeatEnergy = 0;
+
+function initWomb() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 5000);
+
+    initAudio();
+    initVisuals();
+}
+
+// --- SUBMERGED AUDIO ENGINE ---
+function initAudio() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.8;
+
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.8;
+    masterGain.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // 1. Deep Submerged Heartbeat (Lub-Dub)
+    function playHeartbeat() {
+        if(audioCtx.state === 'closed') return;
+
+        // "Lub"
+        playThud(audioCtx.currentTime, 40, 0.4);
+        // "Dub"
+        playThud(audioCtx.currentTime + 0.3, 50, 0.3);
+
+        // Visual trigger (fades out in requestAnimationFrame)
+        heartbeatEnergy = 1.0;
+
+        // Next beat (~60 BPM, slight natural variance)
+        setTimeout(playHeartbeat, 1000 + (Math.random() * 100 - 50));
+    }
+
+    function playThud(time, freq, decay) {
+        const osc = audioCtx.createOscillator();
+        osc.type = 'triangle';
+        
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 80; // Very muffled
+        filter.Q.value = 3;
+
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0, time);
+        gain.gain.linearRampToValueAtTime(1.0, time + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.01, time + decay);
+
+        // Pitch drop for the thud impact
+        osc.frequency.setValueAtTime(freq, time);
+        osc.frequency.exponentialRampToValueAtTime(20, time + decay);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(masterGain);
+
+        osc.start(time);
+        osc.stop(time + decay);
+    }
+    
+    // Start heartbeat
+    playHeartbeat();
+
+    // 2. Amniotic Fluid Rush (Filtered Noise + LFO)
+    const bufferSize = audioCtx.sampleRate * 5;
+    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1; // White noise
+    
+    const fluidNoise = audioCtx.createBufferSource();
+    fluidNoise.buffer = buffer;
+    fluidNoise.loop = true;
+
+    const fluidFilter = audioCtx.createBiquadFilter();
+    fluidFilter.type = 'lowpass';
+    fluidFilter.frequency.value = 200; // Deep rumble
+    fluidFilter.Q.value = 5;
+
+    const fluidGain = audioCtx.createGain();
+    fluidGain.gain.value = 0.5;
+
+    // LFO to modulate the filter (blood rushing in waves)
+    const lfo = audioCtx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.2; // Slow breathing rhythm
+    
+    const lfoGain = audioCtx.createGain();
+    lfoGain.gain.value = 150; // Filter sweep depth
+    
+    lfo.connect(lfoGain);
+    lfoGain.connect(fluidFilter.frequency);
+
+    fluidNoise.connect(fluidFilter);
+    fluidFilter.connect(fluidGain);
+    fluidGain.connect(masterGain);
+
+    fluidNoise.start();
+    lfo.start();
+}
+
+// --- ORGANIC VISUALS (HYDRA) ---
+function initVisuals() {
+    const hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio: false });
+    
+    // Provide heartbeat data to Hydra
+    window.hb = () => {
+        heartbeatEnergy *= 0.95; // Decay
+        return heartbeatEnergy;
+    };
+
+    // Organic Womb Patch
+    // Uses voronoi cells for cellular structure, deep reds, soft feedback
+    voronoi(6, 0.1, 0.5) // Cellular tissue
+      .color(0.8, 0.05, 0.1) // Flesh/blood red
+      .modulate(noise(2, 0.05), 0.2) // Organic displacement
+      .add(
+          osc(3, 0.05, 0.8) // Blood flow
+          .color(0.5, 0.0, 0.0)
+          .mult(osc(2, 0.1).sync(() => window.hb() * 0.5)) // Reacts to heartbeat
+      )
+      .modulateScale(osc(1, 0, 0), () => window.hb() * 0.15) // Whole screen pulses with heartbeat
+      .blend(
+          src(o0)
+          .scale(() => 1.01 + window.hb() * 0.02) // Expanding / contracting breath
+          .rotate(0.002)
+      , 0.85) // High feedback for blurred, submerged feeling
+      .out();
+}
+</script>
+</body>
+</html>

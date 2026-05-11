@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>081 // ЗАМЕРЗШАЯ ЛИТУРГИЯ (FROZEN LITURGY)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #aaccff; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 10px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ НАЧАТЬ ЛИТУРГИЮ ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        vec3 col = vec3(0.0);
+
+        // Cold blue/grey palette
+        vec3 base = vec3(0.1, 0.15, 0.2);
+        vec3 ice = vec3(0.6, 0.8, 1.0);
+
+        // Fracturing lines
+        float line = abs(uv.x);
+        float grid = step(0.95, fract(uv.y * 10.0 + sin(t) * 0.1));
+        
+        // Cross geometry
+        float cross_v = smoothstep(0.01, 0.0, abs(uv.x));
+        float cross_h = smoothstep(0.01, 0.0, abs(uv.y - 0.3)) * step(abs(uv.x), 0.4);
+        
+        float m = max(cross_v, cross_h);
+        
+        // Fracturing effect based on time
+        float noise = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+        if (m > 0.5 && noise > 0.5 + sin(t) * 0.2) {
+            col = ice;
+        } else if (m > 0.5) {
+            col = base;
+        }
+
+        // Add scanlines
+        col -= vec3(0.1) * step(0.5, fract(uv.y * 100.0));
+        
+        // Ambient glow
+        col += base * (1.0 - length(uv));
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 100; // Coldwave tempo
+
+    const drum = new Tone.MembraneSynth({
+        pitchDecay: 0.05,
+        octaves: 4,
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 0.4 }
+    }).toDestination();
+    drum.volume.value = -5;
+
+    const snare = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.2, sustain: 0, release: 0.2 }
+    }).toDestination();
+    snare.volume.value = -10;
+
+    const bass = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2 }
+    }).toDestination();
+    bass.volume.value = -15;
+
+    const poly = new Tone.PolySynth(Tone.Synth).toDestination();
+    poly.volume.value = -20;
+
+    new Tone.Loop(time => {
+        drum.triggerAttackRelease("C1", "8n", time);
+        drum.triggerAttackRelease("C1", "8n", time + 0.5);
+    }, "1n").start(0);
+
+    new Tone.Loop(time => {
+        snare.triggerAttackRelease("16n", time + 0.25);
+        snare.triggerAttackRelease("16n", time + 0.75);
+    }, "1n").start(0);
+
+    // Cold melody
+    new Tone.Loop(time => {
+        bass.triggerAttackRelease("A1", "8n", time);
+        bass.triggerAttackRelease("E1", "8n", time + 0.25);
+        bass.triggerAttackRelease("A1", "8n", time + 0.5);
+        bass.triggerAttackRelease("G1", "8n", time + 0.75);
+    }, "1n").start(0);
+
+    new Tone.Loop(time => {
+        poly.triggerAttackRelease(["A3", "C4", "E4"], "2n", time);
+    }, "2n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

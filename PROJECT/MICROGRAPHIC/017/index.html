@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>017 // ORGANIC HORROR VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#020000;overflow:hidden}
+canvas{display:block;filter:contrast(1.4) saturate(1.2) brightness(0.9)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 15%,rgba(0,0,0,0.95) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#050000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#800;text-transform:uppercase;text-shadow:0 0 15px rgba(255,0,0,0.6)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:13%;right:3%;font-family:monospace;font-size:10px;color:rgba(255,50,50,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">017 // BIOLOGICAL DECAY</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: BINAURAL THROB & GRANULAR STUTTER ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Binaural Throb (Doom Drone)
+    // 40Hz and 43Hz creates a 3Hz physical throbbing sensation
+    const throb1=ax.createOscillator();throb1.type='sine';throb1.frequency.value=40;
+    const throb2=ax.createOscillator();throb2.type='sine';throb2.frequency.value=43;
+    const tg1=ax.createGain();tg1.gain.value=0.4;
+    const tg2=ax.createGain();tg2.gain.value=0.4;
+    
+    // Pan slightly left and right for maximum disorientation
+    const pan1 = ax.createStereoPanner(); pan1.pan.value = -0.5;
+    const pan2 = ax.createStereoPanner(); pan2.pan.value = 0.5;
+    
+    throb1.connect(tg1);tg1.connect(pan1);pan1.connect(_m);throb1.start();
+    throb2.connect(tg2);tg2.connect(pan2);pan2.connect(_m);throb2.start();
+    
+    // High-Frequency Granular Stutter (Machine-Gun Panic)
+    let stutterCount = 0;
+    function granularBurst(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        // Bursts of white noise
+        const bs=ax.sampleRate*0.05,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+        for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+        const n=ax.createBufferSource();n.buffer=b;
+        
+        const ng=ax.createGain();ng.gain.setValueAtTime(0.6,now);ng.gain.exponentialRampToValueAtTime(0.001,now+0.05);
+        const nf=ax.createBiquadFilter();nf.type='highpass';nf.frequency.value=4000 + Math.random()*4000;
+        
+        n.connect(nf);nf.connect(ng);ng.connect(_m);n.start(now);
+        
+        glitchIntensity = 1.0; // Trigger visual glitch with every burst
+        
+        stutterCount++;
+        let next = 50; // 50ms rapid fire
+        if(stutterCount > 5 + Math.random()*15){
+            stutterCount = 0;
+            next = 1000 + Math.random()*3000; // Long pause before next burst
+        }
+        
+        // Randomly invert colors during bursts
+        if(Math.random() > 0.7) invert = !invert;
+        else if(stutterCount === 0) invert = false;
+        
+        setTimeout(granularBurst, next);
+    }
+    setTimeout(granularBurst, 3000);
+
+    // Deep Impact (Rhythm)
+    function heavyHit(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const k=ax.createOscillator();k.type='sine';
+        k.frequency.setValueAtTime(100,now);k.frequency.exponentialRampToValueAtTime(0.001,now+0.5);
+        const kg=ax.createGain();kg.gain.setValueAtTime(0.9,now);kg.gain.exponentialRampToValueAtTime(0.001,now+0.5);
+        k.connect(kg);kg.connect(_m);k.start(now);k.stop(now+0.5);
+        
+        setTimeout(heavyHit, 2000 + Math.random()*2000); // Unpredictable slow impacts
+    }
+    setTimeout(heavyHit, 1000);
+}
+
+// ── VJ ENGINE: ORGANIC HORROR & CHROMATIC ABERRATION ──
+function drawBlob(cx) {
+    cx.beginPath();
+    const points = 60;
+    for(let i=0; i<=points; i++) {
+        const a = (i/points) * Math.PI * 2;
+        // Complex organic noise math
+        const n1 = Math.sin(T*2 + i*0.2) * 40;
+        const n2 = Math.cos(T*1.5 - i*0.5) * 60;
+        const n3 = Math.sin(T*4 + i*1.3) * 20 * glitchIntensity;
+        
+        const r = 150 + n1 + n2 + n3;
+        const px = Math.cos(a)*r;
+        const py = Math.sin(a)*r;
+        
+        if(i===0) cx.moveTo(px, py);
+        else cx.lineTo(px, py);
+    }
+    cx.closePath();
+    cx.fill();
+    cx.stroke();
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    // Decay glitch intensity
+    glitchIntensity *= 0.85;
+    
+    // Screen clear with slow decay (creates trailing)
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(200,200,200,0.1)' : 'rgba(5,2,2,0.15)';
+    cx.fillRect(0, 0, W, H);
+    
+    // RGB SPLIT (TRUE CHROMATIC ABERRATION)
+    // We draw the same organic shape three times with 'screen' blending
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    const offset = Math.sin(T*10) * 15 * glitchIntensity + (glitchIntensity * 20);
+    const scale = 1.0 + Math.sin(T*0.5)*0.2;
+    
+    cx.save();
+    cx.translate(W/2, H/2);
+    cx.scale(scale, scale);
+    cx.lineWidth = 3;
+    
+    // RED CHANNEL
+    cx.save();
+    cx.translate(offset, 0);
+    cx.fillStyle = '#ff0000';
+    cx.strokeStyle = '#550000';
+    drawBlob(cx);
+    cx.restore();
+    
+    // GREEN CHANNEL
+    cx.save();
+    cx.translate(-offset/2, offset);
+    cx.fillStyle = '#00ff00';
+    cx.strokeStyle = '#005500';
+    drawBlob(cx);
+    cx.restore();
+    
+    // BLUE CHANNEL
+    cx.save();
+    cx.translate(-offset/2, -offset);
+    cx.fillStyle = '#0000ff';
+    cx.strokeStyle = '#000055';
+    drawBlob(cx);
+    cx.restore();
+    
+    cx.restore();
+    
+    // Reset blend mode
+    cx.globalCompositeOperation = 'source-over';
+    
+    // DIRT & ABSURD OVERLAYS
+    
+    // Random thick black horizontal cuts
+    if(Math.random() > 0.95){
+        cx.fillStyle = invert ? '#fff' : '#000';
+        const sy = Math.random()*H;
+        const sh = 20 + Math.random()*100;
+        cx.fillRect(0, sy, W, sh);
+    }
+    
+    // Biological noise (dots)
+    cx.fillStyle = invert ? 'rgba(0,0,0,0.3)' : `rgba(255,50,50,${0.1 + glitchIntensity*0.3})`;
+    for(let i=0; i<200; i++){
+        const nx = Math.random()*W;
+        const ny = Math.random()*H;
+        const ns = 1 + Math.random() * 3 * glitchIntensity;
+        cx.beginPath();
+        cx.arc(nx, ny, ns, 0, Math.PI*2);
+        cx.fill();
+    }
+    
+    // Extreme full screen flash on high glitch
+    if(glitchIntensity > 0.8 && Math.random() > 0.5){
+        cx.fillStyle = Math.random() > 0.5 ? '#fff' : '#f00';
+        cx.globalAlpha = 0.4;
+        cx.fillRect(0,0,W,H);
+        cx.globalAlpha = 1.0;
+    }
+}
+</script>
+</body>
+</html>

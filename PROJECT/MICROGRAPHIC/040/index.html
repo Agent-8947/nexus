@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>040 // GLITCH TRANSFORMATIONS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #000; overflow: hidden; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #111; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: monospace; font-size: 24px; color: #fff; text-transform: uppercase; letter-spacing: 10px; }
+        #os { font-family: monospace; font-size: 12px; color: #ff003c; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">TRANSFORM_GLITCH</div>
+    <div id="os">INIT SEQUENCE</div>
+</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); 
+    cx = cv.getContext('2d', { willReadFrequently: true });
+    
+    resize(); 
+    window.addEventListener('resize', resize);
+    
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cx.textAlign = "center";
+    cx.textBaseline = "middle";
+}
+
+// ── AUDIO ENGINE: HARSH INDUSTRIAL GLITCH ──
+function initAudio() {
+    Tone.Transport.bpm.value = 160;
+
+    // Distorted industrial kick
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.1,
+        octaves: 4,
+        oscillator: { type: "square" },
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4 }
+    });
+    const dist = new Tone.Distortion(0.8).toDestination();
+    kick.connect(dist);
+    kick.volume.value = -5;
+
+    // Random noise bursts
+    const noise = new Tone.NoiseSynth({
+        noise: { type: "pink" },
+        envelope: { attack: 0.001, decay: 0.1, sustain: 0 }
+    }).toDestination();
+    noise.volume.value = -10;
+
+    const loop = new Tone.Loop(time => {
+        if (Math.random() > 0.2) kick.triggerAttackRelease("C1", "8n", time);
+        if (Math.random() > 0.7) noise.triggerAttackRelease("16n", time);
+    }, "8n").start(0);
+
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: MATRIX GLITCH TRANSFORMATIONS ──
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.1;
+    
+    // Draw background with slight trail
+    cx.setTransform(1, 0, 0, 1, 0, 0);
+    cx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillRect(0, 0, W, H);
+
+    // Apply crazy transformations randomly
+    cx.save();
+    
+    // Center origin
+    cx.translate(W/2, H/2);
+    
+    // Random glitchy matrix: setTransform(a, b, c, d, e, f)
+    // a: scale X, b: skew Y, c: skew X, d: scale Y, e: trans X, f: trans Y
+    if (Math.random() > 0.8) {
+        const sx = 1 + (Math.random() - 0.5) * 2;
+        const sy = 1 + (Math.random() - 0.5) * 2;
+        const skx = (Math.random() - 0.5) * 1;
+        const sky = (Math.random() - 0.5) * 1;
+        cx.transform(sx, sky, skx, sy, (Math.random()-0.5)*100, (Math.random()-0.5)*100);
+    } else {
+        // Smooth rotation
+        cx.rotate(Math.sin(T) * 0.1);
+        cx.scale(1 + Math.sin(T*0.5)*0.1, 1 + Math.cos(T*0.3)*0.1);
+    }
+
+    // Draw typography
+    cx.globalCompositeOperation = Math.random() > 0.9 ? 'difference' : 'source-over';
+    cx.font = `900 ${W * 0.1}px monospace`;
+    
+    // RGB split effect
+    const shift = Math.random() * 20;
+    
+    cx.fillStyle = '#ff003c';
+    cx.fillText("TRANSFORM", -shift, -shift);
+    
+    cx.fillStyle = '#00f0ff';
+    cx.fillText("TRANSFORM", shift, shift);
+    
+    cx.fillStyle = '#ffffff';
+    cx.fillText("TRANSFORM", 0, 0);
+
+    // Draw random geometric glitch blocks
+    if (Math.random() > 0.5) {
+        cx.fillStyle = Math.random() > 0.5 ? '#fff' : '#000';
+        const bw = Math.random() * W * 0.5;
+        const bh = Math.random() * 50;
+        cx.fillRect((Math.random()-0.5)*W, (Math.random()-0.5)*H, bw, bh);
+    }
+
+    cx.restore();
+
+    // Screen slice glitch (taking a piece of the canvas and shifting it)
+    if (Math.random() > 0.85) {
+        cx.setTransform(1, 0, 0, 1, 0, 0);
+        const sliceY = Math.random() * H;
+        const sliceH = Math.random() * 100 + 10;
+        const sliceShift = (Math.random() - 0.5) * 200;
+        
+        cx.drawImage(cv, 0, sliceY, W, sliceH, sliceShift, sliceY, W, sliceH);
+    }
+}
+</script>
+</body>
+</html>

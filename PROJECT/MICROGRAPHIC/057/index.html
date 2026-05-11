@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>057 // ICONOSTASIS GLITCH</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #0a0000; overflow: hidden; font-family: serif; }
+        canvas { display: block; filter: contrast(1.4) saturate(1.2); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #FFD700; font-size: 30px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 5px; font-weight: bold;
+        }
+        .text-layer {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 15vw; color: #ff0000; mix-blend-mode: exclusion; pointer-events: none;
+            white-space: nowrap; font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ INITIATE ICONOSTASIS ]</div>
+<div class="text-layer" id="txt"></div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T=0;
+const slavonic = ['Ѱ', 'Ѯ', 'Ѥ', 'Ѧ', 'Ж', 'Ц', 'Ш', 'Щ', 'Ю', 'Я', 'Ф', 'Ѡ'];
+let grid = [];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    cv = document.getElementById('c'); cx = cv.getContext('2d');
+    W = cv.width = innerWidth; H = cv.height = innerHeight;
+    initGrid(); initAudio(); animate();
+}
+
+function initGrid() {
+    for(let x=0; x<10; x++) {
+        for(let y=0; y<6; y++) {
+            grid.push({ x: x*(W/10), y: y*(H/6), w: W/10, h: H/6, char: slavonic[Math.floor(Math.random()*slavonic.length)], active: false });
+        }
+    }
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 145;
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 6 }).toDestination();
+    const kickDist = new Tone.Distortion(1.5).toDestination();
+    kick.connect(kickDist);
+    kick.volume.value = 8;
+
+    const bass = new Tone.FMSynth({ harmonicity: 0.5, modulationIndex: 10 }).toDestination();
+    bass.volume.value = -5;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "16n", time);
+        grid.forEach(g => g.active = Math.random() > 0.8);
+        if(Math.random()>0.7) {
+            document.getElementById('txt').innerText = slavonic[Math.floor(Math.random()*slavonic.length)];
+            setTimeout(()=>document.getElementById('txt').innerText='', 50);
+        }
+    }, "4n").start(0);
+
+    new Tone.Loop(time => {
+        bass.triggerAttackRelease("C1", "16n", time);
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T++;
+    cx.fillStyle = 'rgba(10, 0, 0, 0.2)';
+    cx.fillRect(0,0,W,H);
+
+    grid.forEach((g, i) => {
+        if(g.active) {
+            cx.fillStyle = '#FFD700'; // Gold
+            cx.fillRect(g.x+5, g.y+5, g.w-10, g.h-10);
+            cx.fillStyle = '#ff0000';
+            cx.font = '50px serif';
+            cx.fillText(g.char, g.x + g.w/2 - 20, g.y + g.h/2 + 20);
+        } else {
+            cx.strokeStyle = '#330000';
+            cx.strokeRect(g.x, g.y, g.w, g.h);
+        }
+        
+        // Matrix rain effect
+        if(Math.random() > 0.99) g.char = slavonic[Math.floor(Math.random()*slavonic.length)];
+    });
+
+    // Glitch tear
+    if(Math.random() > 0.9) {
+        let sy = Math.random()*H, sh = Math.random()*100;
+        cx.putImageData(cx.getImageData(0, sy, W, sh), (Math.random()-0.5)*50, sy);
+    }
+}
+</script>
+</body>
+</html>

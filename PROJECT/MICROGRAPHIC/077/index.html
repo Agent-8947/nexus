@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>077 // КРЕСТ И КУЛАК (CROSS AND FIST)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; cursor: pointer;
+            gap: 20px;
+        }
+        #overlay h1 {
+            color: #ffd700; font-family: "Times New Roman", serif; font-size: 36px;
+            letter-spacing: 8px; text-shadow: 0 0 30px #ffd700; margin: 0;
+        }
+        #overlay p {
+            color: #ff2200; font-family: monospace; font-size: 14px; letter-spacing: 5px;
+        }
+        #label {
+            position: absolute; bottom: 30px; width: 100%; text-align: center;
+            font-family: monospace; font-size: 11px; color: #444; letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <h1>†  КРЕСТ И КУЛАК  †</h1>
+    <p>[ ТАП ДЛЯ АКТИВАЦИИ ]</p>
+</div>
+<canvas id="c"></canvas>
+<div id="label">ORTHODOX PUNK // 077</div>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+    uniform float beat;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / r.xy;
+        vec2 p = uv * 2.0 - 1.0;
+        p.x *= r.x / r.y;
+
+        vec3 col = vec3(0.0);
+
+        // CRT scanlines
+        col += vec3(0.02) * step(0.5, fract(uv.y * 200.0));
+
+        // VHS noise
+        float noise = hash(vec2(floor(uv.x * 80.0), floor(uv.y * 45.0 + t * 30.0)));
+        if(noise > 0.97) col += vec3(0.8, 0.6, 0.0) * noise;
+
+        // CROSS SDF — Huge, dominating gold cross
+        float cw = 0.08 + beat * 0.03; // Cross width pulses with beat
+        float cv = 0.06 + beat * 0.02;
+        float vert = max(abs(p.x) - cw, abs(p.y) - 0.8);
+        float horiz = max(abs(p.x) - 0.5, abs(p.y + 0.1) - cv);
+        float crossd = min(vert, horiz);
+
+        // Gold fill with crimson core
+        if(crossd < 0.0) {
+            float glow = -crossd;
+            col += vec3(1.0, 0.85, 0.1) * smoothstep(0.0, 0.04, glow);
+            col += vec3(1.0, 0.2, 0.0) * smoothstep(0.04, 0.0, glow) * 0.5;
+        }
+        // Outer glow on cross
+        col += vec3(1.0, 0.8, 0.1) * 0.03 / max(-crossd + 0.05, 0.001);
+
+        // Horizontal speed lines (punk energy)
+        float line = abs(fract(p.y * 20.0 + t * 5.0) - 0.5);
+        col += vec3(0.3, 0.0, 0.0) * smoothstep(0.48, 0.5, 1.0 - line) * (1.0 - abs(p.y));
+
+        // Beat flash
+        col += vec3(beat * 0.15, 0.0, 0.0);
+
+        // Vignette
+        col *= 1.0 - length(p) * 0.3;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let renderer, scene, camera, uniforms;
+let beatVal = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c') });
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+
+    uniforms = {
+        r: { value: new THREE.Vector2(innerWidth, innerHeight) },
+        t: { value: 0 },
+        beat: { value: 0 }
+    };
+
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2),
+        new THREE.ShaderMaterial({
+            uniforms,
+            vertexShader: document.getElementById('vs').textContent,
+            fragmentShader: document.getElementById('fs').textContent
+        })
+    ));
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 180;
+
+    // BRUTAL D-BEAT PUNK
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.04, octaves: 6 }).toDestination();
+    kick.volume.value = 4;
+
+    const snare = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.15, sustain: 0, release: 0.05 }
+    });
+    const snareDist = new Tone.Distortion(0.6).toDestination();
+    snare.connect(snareDist);
+    snare.volume.value = -2;
+
+    // POWER CHORD distorted guitar simulation
+    const guitar = new Tone.Synth({
+        oscillator: { type: "sawtooth" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0.6, release: 0.1 }
+    });
+    const guitarDist = new Tone.Distortion(0.9).toDestination();
+    const guitarFilter = new Tone.Filter(3000, "lowpass").toDestination();
+    guitar.connect(guitarDist);
+    guitarDist.connect(guitarFilter);
+    guitar.volume.value = -5;
+
+    // D-BEAT pattern: K-K-S-K-K-S
+    const kickPattern = [1,0,1,1,0,1,1,0, 1,0,1,1,0,1,1,0];
+    const snarePattern = [0,0,0,0,1,0,0,0, 0,0,0,0,1,0,0,0];
+    let step = 0;
+
+    new Tone.Loop(time => {
+        if(kickPattern[step % 16]) {
+            kick.triggerAttackRelease("C1", "16n", time);
+            Tone.Draw.schedule(() => { beatVal = 1.0; }, time);
+        }
+        if(snarePattern[step % 16]) {
+            snare.triggerAttackRelease("16n", time);
+        }
+        step++;
+    }, "16n").start(0);
+
+    // Power chord bursts — C5 + G5 (distorted drop)
+    const powerNotes = ["C2", "D2", "Bb1", "G1"];
+    let noteIdx = 0;
+    new Tone.Loop(time => {
+        guitar.triggerAttackRelease(powerNotes[noteIdx % 4], "8n", time);
+        noteIdx++;
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    beatVal *= 0.85;
+    uniforms.beat.value = beatVal;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

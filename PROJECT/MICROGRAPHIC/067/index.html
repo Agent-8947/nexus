@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>067 // ZERO STATE (НУЛЕВОЕ СОСТОЯНИЕ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: monospace; font-size: 14px; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ INITIATE ZERO STATE ]</div>
+<canvas id="c"></canvas>
+
+<script>
+let cx, W, H;
+let T = 0;
+let signalStrength = 1.0;
+let noiseBuffer = [];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    const cv = document.getElementById('c'); cx = cv.getContext('2d');
+    W = cv.width = innerWidth; H = cv.height = innerHeight;
+    
+    for(let i=0; i<W; i++) noiseBuffer.push(0);
+
+    initAudio(); animate();
+}
+
+function initAudio() {
+    const beep = new Tone.Oscillator(800, "sine").toDestination();
+    beep.volume.value = -10;
+    
+    // Flatline tone
+    const flatline = new Tone.Oscillator(800, "sine").toDestination();
+    flatline.volume.value = -100; // start silent
+    flatline.start();
+
+    let bpm = 120; // Starts fast
+    Tone.Transport.bpm.value = bpm;
+
+    let step = 0;
+    const loop = new Tone.Loop(time => {
+        if(signalStrength > 0.05) {
+            beep.start(time).stop(time + 0.1);
+            // Visual trigger
+            addSpike();
+        }
+
+        // Heart slows down
+        bpm *= 0.95; 
+        Tone.Transport.bpm.rampTo(bpm, 1);
+        signalStrength *= 0.95;
+
+        // If heart stops
+        if(signalStrength <= 0.05 && flatline.volume.value === -100) {
+            flatline.volume.rampTo(-10, 0.5);
+            // Eventually fade out flatline into death
+            flatline.volume.rampTo(-100, 10, Tone.now() + 5);
+        }
+
+        step++;
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+function addSpike() {
+    let center = Math.floor(W/2);
+    noiseBuffer[center] = -200 * signalStrength;
+    noiseBuffer[center+1] = 150 * signalStrength;
+    noiseBuffer[center+2] = -50 * signalStrength;
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    cx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+    cx.fillRect(0,0,W,H);
+
+    // Shift buffer left
+    noiseBuffer.shift();
+    
+    // Add small random noise based on signal strength
+    let noise = (Math.random()-0.5) * 10 * signalStrength;
+    noiseBuffer.push(noise);
+
+    cx.strokeStyle = '#fff';
+    cx.lineWidth = 1;
+    cx.beginPath();
+    
+    for(let x=0; x<W; x++) {
+        let y = H/2 + noiseBuffer[x];
+        if(x===0) cx.moveTo(x, y);
+        else cx.lineTo(x, y);
+    }
+    cx.stroke();
+    
+    // Draw the "scanner" head
+    cx.fillStyle = '#fff';
+    cx.fillRect(W-2, H/2 + noiseBuffer[W-1] - 2, 4, 4);
+}
+</script>
+</body>
+</html>

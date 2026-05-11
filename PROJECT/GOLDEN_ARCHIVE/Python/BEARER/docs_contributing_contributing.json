@@ -1,4 +1,0 @@
-{
-  "layout": "layouts/doc.njk",
-  "breadcrumbs": [{ "name": "Contributing", "path": "/contributing" }]
-}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>024 // PARASITIC INFECTION VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#050101;overflow:hidden}
+canvas{display:block;filter:contrast(1.8) saturate(1.4) brightness(0.7)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 0%,rgba(0,0,0,1) 85%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:10%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#0a0000;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#a00;text-transform:uppercase;text-shadow:0 0 15px rgba(255,0,0,0.8)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:12%;right:3%;font-family:monospace;font-size:10px;color:rgba(255,50,50,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">024 // PARASITIC INFECTION</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: SQUELCHING & LOW PULSE ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Low Pulse
+    const p1=ax.createOscillator();p1.type='sine';p1.frequency.value=35;
+    const g1=ax.createGain();g1.gain.value=0.6;
+    p1.connect(g1);g1.connect(_m);p1.start();
+    
+    // Squelch (Filter sweeps)
+    function squelch(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator();o.type='sawtooth';
+        o.frequency.setValueAtTime(50,now);
+        
+        const f=ax.createBiquadFilter();f.type='peaking';f.frequency.setValueAtTime(100,now);
+        f.frequency.exponentialRampToValueAtTime(2000,now+0.3);
+        f.Q.value = 10;
+        
+        const og=ax.createGain();og.gain.setValueAtTime(0.4,now);og.gain.exponentialRampToValueAtTime(0.001,now+0.3);
+        
+        o.connect(f);f.connect(og);og.connect(_m);o.start(now);o.stop(now+0.3);
+        
+        glitchIntensity = 1.0;
+        setTimeout(squelch, 500 + Math.random()*1500);
+    }
+    setTimeout(squelch, 1000);
+}
+
+// ── VJ ENGINE: PARASITIC GROW ──
+class Tendril {
+    constructor(x, y, angle) {
+        this.pts = [{x, y}];
+        this.angle = angle;
+        this.speed = 2 + Math.random()*2;
+        this.life = 1.0;
+    }
+    update() {
+        if(this.life <= 0) return;
+        const last = this.pts[this.pts.length-1];
+        this.angle += (Math.random()-0.5)*0.5;
+        const nx = last.x + Math.cos(this.angle)*this.speed;
+        const ny = last.y + Math.sin(this.angle)*this.speed;
+        this.pts.push({x: nx, y: ny});
+        this.life -= 0.005;
+        
+        if(nx<0||nx>W||ny<0||ny>H) this.life = 0;
+    }
+}
+
+let tendrils = [];
+function initTendrils() {
+    tendrils = [];
+    for(let i=0; i<8; i++) {
+        const edge = Math.floor(Math.random()*4);
+        let x, y, angle;
+        if(edge===0){x=Math.random()*W;y=0;angle=Math.PI/2;}
+        else if(edge===1){x=W;y=Math.random()*H;angle=Math.PI;}
+        else if(edge===2){x=Math.random()*W;y=H;angle=-Math.PI/2;}
+        else {x=0;y=Math.random()*H;angle=0;}
+        tendrils.push(new Tendril(x, y, angle));
+    }
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    if(tendrils.length === 0 && W) initTendrils();
+    if(Math.random()>0.99) initTendrils(); // spawn more
+    
+    glitchIntensity *= 0.9;
+    
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(220,200,200,0.1)' : 'rgba(5,1,1,0.15)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    const offset = Math.sin(T*10) * 15 * glitchIntensity;
+    
+    function drawTendrils() {
+        tendrils.forEach(t => {
+            t.update();
+            cx.beginPath();
+            cx.moveTo(t.pts[0].x, t.pts[0].y);
+            t.pts.forEach(p => cx.lineTo(p.x, p.y));
+            cx.stroke();
+        });
+    }
+    
+    cx.save();
+    cx.lineWidth = 3;
+    
+    // RED
+    cx.save(); cx.translate(offset, 0); cx.strokeStyle = '#ff1100'; drawTendrils(); cx.restore();
+    // GREEN
+    cx.save(); cx.translate(-offset, offset); cx.strokeStyle = '#00aa00'; drawTendrils(); cx.restore();
+    // BLUE
+    cx.save(); cx.translate(0, -offset); cx.strokeStyle = '#0000ff'; drawTendrils(); cx.restore();
+    
+    cx.restore();
+    cx.globalCompositeOperation = 'source-over';
+}
+</script>
+</body>
+</html>

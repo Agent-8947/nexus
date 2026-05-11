@@ -1,5 +1,0 @@
-[unstable]
-build-std = ["core", "alloc", "compiler_builtins"]
-
-[build]
-target = "../../targets/i686_32.json"

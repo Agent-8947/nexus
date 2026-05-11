@@ -1,3 +1,0 @@
-# Used by .github/workflows/release_all.yml
-githubToken: GITHUB_TOKEN_VALUE
-repoSearch: repo:cloudquery/cloudquery

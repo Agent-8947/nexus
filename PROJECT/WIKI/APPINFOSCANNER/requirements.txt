@@ -1,5 +1,0 @@
-requests
-click
-openpyxl
-frida-tools==11.0.0
-frida-dexdump

@@ -1,0 +1,1389 @@
+{
+  "meta": {
+    "source_url": "https://solaraimpact.ai/",
+    "domain": "solaraimpact",
+    "brand_id": 8,
+    "pages_scanned": [
+      "/",
+      "/platform/",
+      "/solutions-hub/",
+      "/technology/"
+    ],
+    "total_pages": 4,
+    "logo": {
+      "type": "svg",
+      "file": "logo.svg",
+      "w": 300,
+      "h": 61
+    },
+    "og_meta": {
+      "title": "SolaraIMPACT — Deep Thinking Platform for PR, Marketing & Creative Agencies",
+      "description": "The AI platform for agencies that already get AI. 30+ Solutions, premium data sources, enterprise security. Accurate. Secure. Data-driven. Empower your best people.",
+      "og:locale": "en_US",
+      "og:type": "website",
+      "og:title": "SolaraIMPACT — Deep Thinking Platform for PR, Marketing & Creative Agencies",
+      "og:description": "The AI platform for agencies that already get AI. 30+ Solutions, premium data sources, enterprise security. Accurate. Secure. Data-driven. Empower your best people.",
+      "og:url": "https://solaraimpact.ai/",
+      "og:site_name": "Solara IMPACT",
+      "og:image": "https://solaraimpact.ai/wp-content/uploads/2025/08/og-solaraimpact.webp",
+      "og:image:width": "300",
+      "og:image:height": "300",
+      "og:image:type": "image/png",
+      "twitter:card": "summary_large_image"
+    },
+    "favicons": [
+      "https://solaraimpact.ai/wp-content/uploads/2024/08/favicon-jpg.avif",
+      "https://solaraimpact.ai/wp-content/uploads/2024/08/favicon-jpg.avif",
+      "https://solaraimpact.ai/wp-content/uploads/2024/08/favicon-jpg.avif"
+    ]
+  },
+  "colors": {
+    "backgrounds": [
+      {
+        "value": "#FFFFFF",
+        "count": 231
+      },
+      {
+        "value": "#F5F5F0",
+        "count": 133
+      },
+      {
+        "value": "#F0FDF4",
+        "count": 21
+      },
+      {
+        "value": "#1A1A1A",
+        "count": 12
+      },
+      {
+        "value": "#C2410C",
+        "count": 10
+      },
+      {
+        "value": "#5046E5",
+        "count": 7
+      },
+      {
+        "value": "#1A1A1E",
+        "count": 7
+      },
+      {
+        "value": "#111110",
+        "count": 5
+      },
+      {
+        "value": "#FAFAF8",
+        "count": 4
+      },
+      {
+        "value": "#0D9668",
+        "count": 4
+      },
+      {
+        "value": "#E8E8E4",
+        "count": 2
+      },
+      {
+        "value": "#F0EFEC",
+        "count": 1
+      }
+    ],
+    "text": [
+      {
+        "value": "#1A1A1A",
+        "count": 833
+      },
+      {
+        "value": "#999999",
+        "count": 317
+      },
+      {
+        "value": "#6B6B6B",
+        "count": 229
+      },
+      {
+        "value": "#000000",
+        "count": 130
+      },
+      {
+        "value": "#C2410C",
+        "count": 101
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 83
+      },
+      {
+        "value": "#0D9668",
+        "count": 73
+      },
+      {
+        "value": "#F0F0EC",
+        "count": 63
+      },
+      {
+        "value": "#5046E5",
+        "count": 53
+      },
+      {
+        "value": "#A0A098",
+        "count": 52
+      },
+      {
+        "value": "#CCCCCC",
+        "count": 42
+      },
+      {
+        "value": "#E8E8E4",
+        "count": 14
+      },
+      {
+        "value": "#333333",
+        "count": 5
+      }
+    ],
+    "borders": [
+      {
+        "value": "#E8E8E4",
+        "count": 266
+      },
+      {
+        "value": "#1A1A1A",
+        "count": 72
+      },
+      {
+        "value": "#F0F0EC",
+        "count": 30
+      },
+      {
+        "value": "#6B6B6B",
+        "count": 16
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 13
+      },
+      {
+        "value": "#C2410C",
+        "count": 6
+      }
+    ]
+  },
+  "typography": {
+    "families": [
+      {
+        "value": "DM Sans",
+        "count": 1990
+      },
+      {
+        "value": "Times New Roman",
+        "count": 4
+      },
+      {
+        "value": "Instrument Serif",
+        "count": 1
+      }
+    ],
+    "sizes": [
+      {
+        "value": "18px",
+        "count": 629
+      },
+      {
+        "value": "11px",
+        "count": 213
+      },
+      {
+        "value": "15px",
+        "count": 203
+      },
+      {
+        "value": "14px",
+        "count": 200
+      },
+      {
+        "value": "13.3333px",
+        "count": 189
+      },
+      {
+        "value": "13px",
+        "count": 166
+      },
+      {
+        "value": "20px",
+        "count": 103
+      },
+      {
+        "value": "16px",
+        "count": 93
+      },
+      {
+        "value": "12px",
+        "count": 84
+      },
+      {
+        "value": "60px",
+        "count": 33
+      },
+      {
+        "value": "17px",
+        "count": 21
+      },
+      {
+        "value": "44px",
+        "count": 8
+      },
+      {
+        "value": "56px",
+        "count": 8
+      },
+      {
+        "value": "36px",
+        "count": 7
+      },
+      {
+        "value": "42px",
+        "count": 6
+      }
+    ],
+    "weights": [
+      {
+        "value": "400",
+        "count": 1359
+      },
+      {
+        "value": "600",
+        "count": 239
+      },
+      {
+        "value": "500",
+        "count": 229
+      },
+      {
+        "value": "700",
+        "count": 149
+      },
+      {
+        "value": "300",
+        "count": 19
+      }
+    ],
+    "line_heights": [
+      {
+        "value": "29.7px",
+        "count": 588
+      },
+      {
+        "value": "normal",
+        "count": 295
+      },
+      {
+        "value": "24.75px",
+        "count": 159
+      },
+      {
+        "value": "21.45px",
+        "count": 144
+      },
+      {
+        "value": "13.2px",
+        "count": 84
+      },
+      {
+        "value": "23.1px",
+        "count": 79
+      },
+      {
+        "value": "22.4px",
+        "count": 76
+      },
+      {
+        "value": "19.8px",
+        "count": 70
+      },
+      {
+        "value": "18.15px",
+        "count": 63
+      },
+      {
+        "value": "24px",
+        "count": 53
+      }
+    ],
+    "letter_spacings": [
+      {
+        "value": "0.99px",
+        "count": 84
+      },
+      {
+        "value": "0.88px",
+        "count": 63
+      },
+      {
+        "value": "0.44px",
+        "count": 42
+      },
+      {
+        "value": "-1.8px",
+        "count": 33
+      },
+      {
+        "value": "1.3px",
+        "count": 12
+      },
+      {
+        "value": "1.12px",
+        "count": 11
+      },
+      {
+        "value": "-0.64px",
+        "count": 11
+      },
+      {
+        "value": "0.48px",
+        "count": 4
+      },
+      {
+        "value": "-0.84px",
+        "count": 3
+      },
+      {
+        "value": "1.43px",
+        "count": 1
+      }
+    ]
+  },
+  "geometry": {
+    "border_radii": [
+      {
+        "value": "100px",
+        "count": 105
+      },
+      {
+        "value": "10px",
+        "count": 96
+      },
+      {
+        "value": "7px",
+        "count": 94
+      },
+      {
+        "value": "50%",
+        "count": 21
+      },
+      {
+        "value": "5px",
+        "count": 20
+      },
+      {
+        "value": "8px",
+        "count": 17
+      },
+      {
+        "value": "12px",
+        "count": 7
+      },
+      {
+        "value": "100%",
+        "count": 4
+      }
+    ],
+    "box_shadows": [
+      {
+        "value": "rgba(0, 0, 0, 0.06) 0px 2px 16px 0px",
+        "count": 3
+      }
+    ]
+  },
+  "spacing": {
+    "paddings": [
+      {
+        "value": "6px 13px",
+        "count": 104
+      },
+      {
+        "value": "16px 18px",
+        "count": 63
+      },
+      {
+        "value": "14px 20px",
+        "count": 63
+      },
+      {
+        "value": "28px 24px",
+        "count": 47
+      },
+      {
+        "value": "0px 40px",
+        "count": 40
+      },
+      {
+        "value": "11px 20px",
+        "count": 28
+      },
+      {
+        "value": "100px 0px",
+        "count": 27
+      },
+      {
+        "value": "20px 24px",
+        "count": 21
+      },
+      {
+        "value": "0px 24px 28px",
+        "count": 21
+      },
+      {
+        "value": "4px 11px",
+        "count": 20
+      },
+      {
+        "value": "28px 32px",
+        "count": 13
+      },
+      {
+        "value": "14px 30px",
+        "count": 13
+      },
+      {
+        "value": "18px 16px",
+        "count": 8
+      },
+      {
+        "value": "14px 0px 0px",
+        "count": 6
+      },
+      {
+        "value": "0px 0px 2px",
+        "count": 5
+      }
+    ]
+  },
+  "gradients": [],
+  "animations": {
+    "transitions": [
+      {
+        "value": "0.2s",
+        "count": 265
+      },
+      {
+        "value": "0.55s, 0.55s",
+        "count": 129
+      },
+      {
+        "value": "0.3s",
+        "count": 33
+      },
+      {
+        "value": "0.2s, 0.25s",
+        "count": 28
+      },
+      {
+        "value": "0.25s, 0.25s",
+        "count": 21
+      },
+      {
+        "value": "0.3s, 0.25s, 0.25s, 0.25s",
+        "count": 21
+      },
+      {
+        "value": "0.45s",
+        "count": 21
+      },
+      {
+        "value": "0.3s, 0.3s",
+        "count": 12
+      },
+      {
+        "value": "0.38s",
+        "count": 4
+      },
+      {
+        "value": "0.2s, 0.2s",
+        "count": 2
+      }
+    ],
+    "easings": [
+      {
+        "value": "ease, ease",
+        "count": 180
+      },
+      {
+        "value": "ease, ease, ease, ease",
+        "count": 21
+      },
+      {
+        "value": "cubic-bezier(0.4, 0, 0.2, 1), ease",
+        "count": 12
+      },
+      {
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "count": 12
+      }
+    ],
+    "animations": []
+  },
+  "buttons": [
+    {
+      "text": "Log In",
+      "bg": "#000000",
+      "color": "#6B6B6B",
+      "border": "0px none rgb(107, 107, 107)",
+      "radius": "7px",
+      "padding": "11px 16px",
+      "fontSize": "15px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Get a Walkthrough",
+      "bg": "#1A1A1A",
+      "color": "#FFFFFF",
+      "border": "0px none rgb(255, 255, 255)",
+      "radius": "7px",
+      "padding": "12px 24px",
+      "fontSize": "15px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "",
+      "bg": "#000000",
+      "color": "#000000",
+      "border": "0px none rgb(0, 0, 0)",
+      "radius": "8px",
+      "padding": "8px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Log In",
+      "bg": "#FFFFFF",
+      "color": "#1A1A1A",
+      "border": "1px solid rgb(232, 232, 228)",
+      "radius": "7px",
+      "padding": "12px 24px",
+      "fontSize": "15px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Explore the Platform",
+      "bg": "#1A1A1A",
+      "color": "#FFFFFF",
+      "border": "0px none rgb(255, 255, 255)",
+      "radius": "10px",
+      "padding": "14px 30px",
+      "fontSize": "16px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Get a Walkthrough →",
+      "bg": "#FFFFFF",
+      "color": "#1A1A1A",
+      "border": "1px solid rgb(232, 232, 228)",
+      "radius": "10px",
+      "padding": "14px 30px",
+      "fontSize": "16px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Learn More →",
+      "bg": "#000000",
+      "color": "#FFFFFF",
+      "border": "",
+      "radius": "0px",
+      "padding": "0px 0px 2px",
+      "fontSize": "14px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Prospect Discovery                      ",
+      "bg": "#FFFFFF",
+      "color": "#000000",
+      "border": "0px none rgb(0, 0, 0)",
+      "radius": "0px",
+      "padding": "20px 24px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Prospect Dossier                        ",
+      "bg": "#000000",
+      "color": "#000000",
+      "border": "0px none rgb(0, 0, 0)",
+      "radius": "0px",
+      "padding": "20px 24px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Explore All 21 Solutions →",
+      "bg": "#C2410C",
+      "color": "#FFFFFF",
+      "border": "0px none rgb(255, 255, 255)",
+      "radius": "10px",
+      "padding": "14px 30px",
+      "fontSize": "16px",
+      "fontWeight": "500"
+    }
+  ],
+  "layout": {
+    "max_widths": [
+      {
+        "value": "1140px",
+        "count": 40
+      },
+      {
+        "value": "680px",
+        "count": 6
+      }
+    ],
+    "gaps": [
+      {
+        "value": "4px",
+        "count": 63
+      },
+      {
+        "value": "6px",
+        "count": 46
+      },
+      {
+        "value": "10px",
+        "count": 32
+      },
+      {
+        "value": "20px",
+        "count": 29
+      },
+      {
+        "value": "12px",
+        "count": 13
+      },
+      {
+        "value": "14px",
+        "count": 12
+      },
+      {
+        "value": "16px",
+        "count": 10
+      },
+      {
+        "value": "24px",
+        "count": 4
+      },
+      {
+        "value": "40px",
+        "count": 4
+      },
+      {
+        "value": "8px",
+        "count": 3
+      }
+    ]
+  },
+  "copy_dna": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Deep Thinking for Agencies That Already Get AI"
+      },
+      {
+        "tag": "H2",
+        "text": "The best agencies aren't defined by size.They're defined by how well they know their clients' world."
+      },
+      {
+        "tag": "H2",
+        "text": "Why Every OutputFeels Like It Was Made for You."
+      },
+      {
+        "tag": "H2",
+        "text": "For Every Part ofthe Agency Week."
+      },
+      {
+        "tag": "H3",
+        "text": "Win More Business"
+      },
+      {
+        "tag": "H3",
+        "text": "Daily Execution"
+      },
+      {
+        "tag": "H3",
+        "text": "Strategic Edge"
+      },
+      {
+        "tag": "H2",
+        "text": "Your Team DoesBetter Work."
+      },
+      {
+        "tag": "H3",
+        "text": "Grounded in Real Data"
+      },
+      {
+        "tag": "H3",
+        "text": "At a Speed That Changes the Business"
+      },
+      {
+        "tag": "H3",
+        "text": "Deeper Than Anyone Expected"
+      },
+      {
+        "tag": "H3",
+        "text": "Consistent Across Every Account"
+      },
+      {
+        "tag": "H2",
+        "text": "The People Who DriveAgency Growth."
+      },
+      {
+        "tag": "H3",
+        "text": "General Strategists and CSOs"
+      },
+      {
+        "tag": "H3",
+        "text": "CEOs and Managing Directors"
+      },
+      {
+        "tag": "H3",
+        "text": "CMOs and Marketing VPs"
+      },
+      {
+        "tag": "H3",
+        "text": "Sales Leaders and New Business Directors"
+      },
+      {
+        "tag": "H3",
+        "text": "Account VPs and Practice Leads"
+      },
+      {
+        "tag": "H2",
+        "text": "Agencies Using IMPACT"
+      },
+      {
+        "tag": "H3",
+        "text": "How Clyde Agency Achieved 14.5x ROI"
+      },
+      {
+        "tag": "H2",
+        "text": "A Platform That GrowsWith Your Agency."
+      },
+      {
+        "tag": "H2",
+        "text": "Professionals. Impressed."
+      },
+      {
+        "tag": "H2",
+        "text": "See What Your AgencyLooks Like on SolaraIMPACT"
+      },
+      {
+        "tag": "H1",
+        "text": "21 Solutions. Three Verticals.Full Lifecycle."
+      },
+      {
+        "tag": "H2",
+        "text": "From Brief to Deliverable. Every Time."
+      },
+      {
+        "tag": "H3",
+        "text": "Choose a Solution"
+      },
+      {
+        "tag": "H3",
+        "text": "Add Your Context"
+      },
+      {
+        "tag": "H3",
+        "text": "Get Structured Output"
+      },
+      {
+        "tag": "H2",
+        "text": "Win More Business"
+      },
+      {
+        "tag": "H2",
+        "text": "Daily Execution"
+      },
+      {
+        "tag": "H2",
+        "text": "Strategic Edge"
+      },
+      {
+        "tag": "H2",
+        "text": "Every Role. Amplified."
+      },
+      {
+        "tag": "H3",
+        "text": "New Business"
+      },
+      {
+        "tag": "H3",
+        "text": "Strategy"
+      },
+      {
+        "tag": "H3",
+        "text": "Creative and Content"
+      },
+      {
+        "tag": "H3",
+        "text": "PR and Comms"
+      },
+      {
+        "tag": "H3",
+        "text": "Account Management"
+      },
+      {
+        "tag": "H3",
+        "text": "Planning and Analytics"
+      },
+      {
+        "tag": "H3",
+        "text": "Research"
+      },
+      {
+        "tag": "H3",
+        "text": "Leadership"
+      },
+      {
+        "tag": "H2",
+        "text": "See Any Solution In Action"
+      },
+      {
+        "tag": "H1",
+        "text": "The Operating System forAgency Intelligence"
+      },
+      {
+        "tag": "H2",
+        "text": "Solutions"
+      },
+      {
+        "tag": "H3",
+        "text": "The Core of Everything IMPACT Does"
+      },
+      {
+        "tag": "H2",
+        "text": "Compass"
+      },
+      {
+        "tag": "H3",
+        "text": "Your Strategic Thinking Partner"
+      },
+      {
+        "tag": "H3",
+        "text": "Intent Recognition"
+      },
+      {
+        "tag": "H3",
+        "text": "Solution Recommendation"
+      },
+      {
+        "tag": "H3",
+        "text": "Workflow Planning"
+      },
+      {
+        "tag": "H3",
+        "text": "Results Engagement"
+      },
+      {
+        "tag": "H3",
+        "text": "Persistent Context"
+      },
+      {
+        "tag": "H2",
+        "text": "Projects and Profiles"
+      },
+      {
+        "tag": "H3",
+        "text": "Every Output Knows Who You Are and Who Your Client Is"
+      },
+      {
+        "tag": "H3",
+        "text": "Agency Profile"
+      },
+      {
+        "tag": "H3",
+        "text": "Client Profiles"
+      },
+      {
+        "tag": "H3",
+        "text": "Projects"
+      },
+      {
+        "tag": "H2",
+        "text": "Vault"
+      },
+      {
+        "tag": "H3",
+        "text": "The Agency Knowledge Store"
+      },
+      {
+        "tag": "H2",
+        "text": "Sentinel Coming Soon"
+      },
+      {
+        "tag": "H3",
+        "text": "Always-On Reputation Intelligence"
+      },
+      {
+        "tag": "H3",
+        "text": "Multiple-Source Monitoring"
+      },
+      {
+        "tag": "H3",
+        "text": "AI-Powered Analysis"
+      },
+      {
+        "tag": "H3",
+        "text": "Connected Intelligence"
+      },
+      {
+        "tag": "H2",
+        "text": "Cortex Coming Soon"
+      },
+      {
+        "tag": "H3",
+        "text": "The Longer You Use It, The Smarter It Gets"
+      },
+      {
+        "tag": "H3",
+        "text": "Temporal Intelligence"
+      },
+      {
+        "tag": "H3",
+        "text": "Cross-Workflow Synthesis"
+      },
+      {
+        "tag": "H3",
+        "text": "Predictive Context"
+      },
+      {
+        "tag": "H2",
+        "text": "Built Different. On Purpose."
+      },
+      {
+        "tag": "H2",
+        "text": "See the Platform In Action"
+      },
+      {
+        "tag": "H1",
+        "text": "The Foundation ofDeep Thinking"
+      },
+      {
+        "tag": "H2",
+        "text": "Not One AI. An Orchestra."
+      },
+      {
+        "tag": "H2",
+        "text": "Premium Data Integration"
+      },
+      {
+        "tag": "H3",
+        "text": "Media Intelligence"
+      },
+      {
+        "tag": "H3",
+        "text": "Search and Competitive Data"
+      },
+      {
+        "tag": "H3",
+        "text": "Web and Traffic Analytics"
+      },
+      {
+        "tag": "H3",
+        "text": "Demographic and Market Data"
+      },
+      {
+        "tag": "H3",
+        "text": "Social and Consumer Conversation"
+      },
+      {
+        "tag": "H3",
+        "text": "Live Web Intelligence"
+      },
+      {
+        "tag": "H3",
+        "text": "Three-Layer Citation System"
+      },
+      {
+        "tag": "H3",
+        "text": "Real-Time Source Citations"
+      },
+      {
+        "tag": "H3",
+        "text": "Native Intelligence Citations"
+      },
+      {
+        "tag": "H3",
+        "text": "Knowledge-Base Citations"
+      },
+      {
+        "tag": "H2",
+        "text": "Marketing-Trained Agent Network"
+      },
+      {
+        "tag": "H3",
+        "text": "Research Agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Analysis Agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Strategy Agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Production Agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Quality Agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Adaptive Workflows"
+      },
+      {
+        "tag": "H2",
+        "text": "Security and Compliance"
+      },
+      {
+        "tag": "H2",
+        "text": "Built for What's Next"
+      }
+    ],
+    "ctas": [
+      "Learn More →",
+      "Explore the Platform",
+      "Explore Solutions",
+      "Log In",
+      "Get a Walkthrough",
+      "Get a Walkthrough →",
+      "Explore All 21 Solutions →",
+      "Visit Trust Center →",
+      "Full Compliance Details →"
+    ],
+    "paragraphs": [
+      "Your team does the strategic work. SolaraIMPACT gives them the data, the depth, and the speed to do it at a scale that wasn’t possible before.",
+      "Competitive landscape. Audience behavior. Industry signals. Campaign performance. The agencies that win pitches, hold retainers, and grow accounts are the ones who walk into every room already knowing more than the client expected.",
+      "SolaraIMPACT is built so that level of intelligence isn't the exception. It's the baseline.",
+      "Most AI tools know nothing about your agency. SolaraIMPACT knows everything — because you tell it once, and it remembers across every project, every client, every output.",
+      "From Monday’s pitch prep to Thursday’s strategy session to the quarterly report that’s due Friday — there’s a Solution built for exactly that moment.",
+      "Prospect research, competitive analysis, pitch narratives, RFP responses, and strategic presentations — everything your team needs to walk into a room prepared and walk out with the client.",
+      "Meeting prep, content briefs, campaign planning, PR and crisis communications, client reports — the work that fills every day, done faster and with more consistency than your team can manage manually.",
+      "Go-to-market strategy, brand positioning, audience mapping, market research, journey architecture, and budget modeling — the deep work that defines how your agency thinks and what your clients pay a premium for.",
+      "SolaraIMPACT doesn’t change how your team works — it changes what’s possible within the same day. The same people, with dramatically more to show for their time.",
+      "Your analyst used to spend half the day pulling data before the actual analysis could begin. Now the data is already there — live, sourced, and structured — and the thinking can start immediately. Every recommendation your team makes is backed by current market intelligence, not gut feel.",
+      "A pitch that took 40 hours now takes 4. A market research brief that took a week now takes a morning. That’s not just efficiency — it means your agency can say yes to more opportunities, serve clients better, and move faster than competitors who are still doing it the old way.",
+      "The platform applies your agency’s methodology, your client’s context, and industry-standard frameworks to every output — automatically. What your best strategist produces on their best day becomes the baseline for the whole team, every day.",
+      "In a 50 to 500-person agency, quality varies. Senior people produce differently from junior ones. Busy weeks produce differently from quiet ones. SolaraIMPACT closes that gap — every client gets the standard your agency is known for, regardless of who ran the brief or when.",
+      "SolaraIMPACT is built around the roles that carry the most strategic weight in a modern agency. If your work shapes clients, pitches, or the direction of the business — this platform was designed with you in mind.",
+      "You spend your days synthesizing markets, audiences, and competitive landscapes. SolaraIMPACT gives you structured research and strategic frameworks in the time it used to take just to gather the data.",
+      "You need clarity, not more input. SolaraIMPACT delivers executive-ready output — structured, sourced, and at the right level of detail to inform your decisions and client conversations.",
+      "You own the brand, the positioning, and the growth agenda. SolaraIMPACT aligns every output to your client’s audience, market context, and campaign objectives — so nothing leaves the agency half-baked.",
+      "You know what it takes to win a room. SolaraIMPACT takes the 40-hour pitch prep cycle and compresses it — without cutting corners on the depth and specificity that actually moves clients.",
+      "You hold the relationship and the standard across every account. SolaraIMPACT makes sure every client brief, report, and strategic recommendation reflects the same level of quality — regardless of who on the team runs it.",
+      "A DC-based PR agency cuts research time by 80% and multiplies client value.",
+      "Your agency will look different in three years. The clients will be different, the work will be different, the team will be different. SolaraIMPACT is built to grow with you — new solutions, new data sources, new capabilities added continuously.",
+      "15 minutes. Your brief. Your client. The real platform.",
+      "Deep Thinking for AI-aware Agencies.The platform for PR, marketing and creative operations.",
+      "Each Solution is a structured business process — defined inputs, multiple-model processing, and professional deliverables. Not prompts. Infrastructure.",
+      "Each Solution follows the same structured process — no prompt engineering required.",
+      "Pick from 21 purpose-built modules across three verticals. Each Solution knows what data it needs and what it will produce.",
+      "View your client data, agency profile and training documents already connected. Add the brief – the platform handles the rest.",
+      "Produce defined artifacts with every Solution — strategies, decks, analyses, content. Ready for your team to review, refine, and deliver.",
+      "Everything for winning and closing new clients — from initial research to the final presentation.",
+      "Reference company, criteria, market scope",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Ranked prospect list, company profiles, outreach angles",
+      "Target company, your offering, research focus, competitors",
+      "6-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Executive-grade company dossier with strategic angles",
+      "Company name, call purpose, attendees, your objectives",
+      "3-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Call brief with talking points and objection handling",
+      "Client brief, your capabilities, competition, budget range",
+      "5-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Complete pitch narrative with slide content",
+      "RFP document, company capabilities, past wins",
+      "7-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Bid assessment and complete draft response",
+      "Day-to-day agency work — content, campaigns, PR, client servicing, communications.",
+      "Brief, brand voice, channels, audience, key messages",
+      "5-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Objective, audience, budget, timeline, channels",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Complete campaign brief with channel strategy",
+      "Brand, objective, audience, constraints, inspiration",
+      "3-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "10 scored creative concepts with rationale",
+      "Topic, platform, audience, brand voice, trending context",
+      "3-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Platform-optimized social content with hooks",
+      "Product/service description, values, audience, competitors",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Ranked name candidates with availability checks",
+      "News angle, target outlets, spokesperson, assets",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Media pitch package with distribution plan",
+      "The strategic layer — long-term planning, research, positioning, competitive architecture.",
+      "Business objectives, market context, budget, timeline",
+      "6-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Full marketing strategy with execution roadmap",
+      "Product, market, audience, competitive landscape, pricing",
+      "7-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Complete GTM plan with launch timeline",
+      "Company, industry, competitors, strategic question",
+      "3-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Actionable SWOT with strategic recommendations",
+      "Your company, 3-5 competitors, comparison dimensions",
+      "5-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Competitive intelligence report with positioning gaps",
+      "Campaign parameters, historical data, budget scenarios",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "ROI projections with scenario modeling",
+      "Audience definition, product context, purchase journey",
+      "5-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Deep audience intelligence with psychographic profiles",
+      "Audience segments, product, market, data sources",
+      "4-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Research-grade personas with behavioral data",
+      "Research question, audience, methodologies, depth level",
+      "8-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Multi-methodology research report",
+      "Discussion guide, participant profiles, stimuli",
+      "5-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Focus group simulation with verbatim-style insights",
+      "Current strategy, constraints, ambition level, industry",
+      "3-step multiple-agent workflow with real-time data integration, strategic analysis, and quality validation.",
+      "Unconventional strategic alternatives with rationale",
+      "SolaraIMPACT is not a tool for one department — it is infrastructure for the entire agency.",
+      "Prospect research, pitch decks, RFP responses, call preparation. Win more with less effort.",
+      "Market analysis, SWOT, competitive benchmarking, GTM plans, audience research. Think deeper.",
+      "Multi-channel content, naming, concepts, social hooks, campaign briefs. Produce at scale.",
+      "Media pitches, press angles, audience insights, campaign amplification. Secure coverage.",
+      "Client intelligence, brand context, work history. Every account team member starts informed.",
+      "Impact simulation, ROI forecasts, competitive data. Ground every recommendation in evidence.",
+      "Personas, focus groups, human insights, audience DNA. Primary-quality research without the timeline.",
+      "Platform-wide visibility, team utilization, client portfolio intelligence. Run the agency smarter.",
+      "Pick a Solution, bring your brief. 15 minutes.",
+      "Deep Thinking for AI-aware Agencies.The platform for PR, marketing and creative operations.",
+      "Every brief deserves more than a blank prompt. SolaraIMPACT is where your agency's knowledge, your client context, and the best AI available come together — and every project makes the next one sharper.",
+      "A Solution is not a prompt. It is the full workflow your senior team would run manually — except it runs in minutes, not days. Structured inputs, live data, multiple AI agents working in sequence, quality verification, and professional deliverables. 21 Solutions live today, from a roadmap of over 100.",
+      "You do not need to know which Solution to run. Describe what you are trying to achieve — for which client, for what goal, by when. Compass understands the context, picks the right Solutions, sequences the work, and builds a plan you can review before anything runs. Every conversation carries the full history of your agency, your client, and every project you have worked on together.",
+      "Understands marketing objectives, not just keywords. A complex request automatically triggers competitive analysis, audience research, and market intelligence — scoped and sequenced.",
+      "Maps your objective to the right combination of IMPACT's 21 specialized solutions, in the right order, with the right inputs.",
+      "Constructs multiple-step execution plans that you can review, adjust, and approve before a single token is spent.",
+      "Interact with completed outputs conversationally. Ask follow-up questions, request refinements, drill into specific sections, or pivot the analysis without re-running the entire workflow.",
+      "Every conversation exists within a project. Every project carries client and agency context. Nothing is lost and nothing needs re-explaining.",
+      "Two agencies. Same solution. Same client brief. Completely different outputs — because the platform already knows your methodology, your voice, and your client's full history before the first word is written.",
+      "All your company identity — positioning, specializations, methodologies, tone, and quality standards — encoded into the platform. Two agencies running the same solution on the same client receive fundamentally different outputs, because their strategic lens is different.",
+      "Complete, structured intelligence on every client — company intelligence and market position, brand architecture and messaging frameworks, audience segments and behavioral data, competitive landscape and key threats, and complete work history across all projects. Client context flows automatically into every solution execution.",
+      "An organized, dedicated workspace for each engagement, campaign, or initiative — containing full conversation and execution history, solution outputs with version tracking, team access with role-based permissions, and cross-project intelligence sharing within client accounts.",
+      "Agencies accumulate institutional knowledge over years — methodologies, case studies, pricing frameworks, compliance documentation, and team credentials. Vault captures it once and makes it available everywhere.",
+      "Upload your documents once. Vault indexes, structures, and encrypts them. When any solution executes, relevant knowledge is automatically surfaced and woven into the output — your case studies cited in proposals, your methodology reflected in strategic recommendations, your credentials presented in pitch materials. No manual copy-paste. No re-entering the same information across different workflows.",
+      "Methodologies and proprietary frameworks",
+      "Pricing structures and proposals",
+      "Company overview and positioning",
+      "Client references and testimonials",
+      "All documents remain encrypted, tenant-isolated, and under your complete control.",
+      "Marketing does not stop between campaigns. Neither does IMPACT. Sentinel continuously monitors your clients' public perception across news, social media, review platforms, industry publications, and competitive landscapes — delivering real-time intelligence without anyone asking for it.",
+      "News and broadcast media, social platform sentiment, review sites, industry publications, competitor activity, and regulatory intelligence — all tracked continuously.",
+      "Sentiment intelligence beyond positive and negative. Narrative detection, anomaly alerting, impact scoring weighted by source credibility, and continuous competitive benchmarking.",
+      "Sentinel intelligence flows directly into Compass conversations, workflow planning, and solution execution. A detected reputation shift can trigger a strategic response workflow automatically.",
+      "Every project completed, every workflow executed, every client interaction processed — IMPACT accumulates and structures this intelligence at the account level. Over time, the platform develops deep understanding of each client's market dynamics, competitive pressures, audience evolution, and strategic trajectory.",
+      "How a client's market position, sentiment, and competitive landscape have evolved over time.",
+      "Patterns and insights that emerge across different types of work — a competitive shift detected in benchmarking that informs content strategy, audience behavior changes that reshape campaign planning.",
+      "The more history the platform accumulates, the more precisely it can anticipate what a client needs next.",
+      "Your agency, your brief, your context. 15 minutes.",
+      "Deep Thinking for AI-aware Agencies.The platform for PR, marketing and creative operations.",
+      "Multiple-model orchestration. Fractal architecture. Persistent intelligence. Built from first principles for professional work that compounds over time.",
+      "Most platforms pick a model and build around its limitations. We built an orchestration layer that treats AI models as specialized instruments — each selected for what it does best, composed into workflows that no single model could execute alone.",
+      "IMPACT does not rely on training data alone. Every relevant workflow pulls from live, structured data sources — all sourced from premium providers, structured for analytical use, and cited in every output.",
+      "Real-time monitoring across news, broadcast, and digital media.",
+      "Organic and paid search landscapes, keyword intelligence, and competitive positioning.",
+      "Digital footprint analysis, audience behavior, and traffic patterns.",
+      "Census-grade demographic intelligence for audience strategy.",
+      "Sentiment, trending narratives, and community signals across social platforms.",
+      "Real-time trend detection and emerging topic identification.",
+      "Every claim, every data point, every strategic recommendation traces back to its source through a three-layer citation architecture. No black boxes. Full transparency on where every insight originates.",
+      "Live data retrieved during execution, linked to origin.",
+      "Structured data from integrated premium providers.",
+      "References from uploaded agency and client materials.",
+      "Not generic assistants. IMPACT deploys specialized AI agents configured with deep marketing domain knowledge. Each agent operates within a defined role, collaborating within workflows and passing structured context between stages.",
+      "Data gathering, source verification, and competitive scanning.",
+      "Pattern recognition, insight extraction, and strategic synthesis.",
+      "Recommendation generation, framework application, and scenario modeling.",
+      "Content generation, creative development, and deliverable formatting.",
+      "Output validation, consistency checking, and citation verification.",
+      "Workflows adapt to input complexity — a simple brief produces focused output; a detailed brief triggers deeper research, broader analysis, and richer strategic layers.",
+      "Enterprise-grade by design, not by afterthought.",
+      "The architecture was designed for capabilities that may not exist in any platform today. Persistent account intelligence that learns from every engagement. Background monitoring that detects market shifts before they surface. Cross-workflow memory that compounds institutional knowledge over time.",
+      "The foundation is already in place. The platform grows deeper with every interaction.",
+      "Deep Thinking for AI-aware Agencies.The platform for PR, marketing and creative operations."
+    ],
+    "tagline": "Your team does the strategic work. SolaraIMPACT gives them the data, the depth, and the speed to do it at a scale that wasn’t possible before."
+  },
+  "accent_palette": {
+    "primary_font": "DM Sans",
+    "accent_rules": [
+      {
+        "font_family": "DM Sans",
+        "font_style": "italic",
+        "font_weight": "500",
+        "color": "#C2410C",
+        "letter_spacing": "-1.8px",
+        "line_height": "66px",
+        "text_transform": "none",
+        "parent_font_size": "60px",
+        "differs_from_parent": {
+          "font": false,
+          "color": true,
+          "style": true,
+          "weight": false,
+          "tracking": false
+        },
+        "score": 50,
+        "samples": [
+          "Deep Thinking",
+          "They're defined by how well they know their client",
+          "Feels Like It Was Made for You.",
+          "the Agency Week.",
+          "Better Work."
+        ],
+        "context": "heading_inline"
+      },
+      {
+        "font_family": "Times New Roman",
+        "font_style": "normal",
+        "font_weight": "400",
+        "color": "#000000",
+        "differs_from_parent": {
+          "font": true,
+          "color": false,
+          "style": false,
+          "weight": false
+        },
+        "score": 49,
+        "samples": [],
+        "context": "standalone"
+      },
+      {
+        "font_family": "Arial",
+        "font_style": "normal",
+        "font_weight": "400",
+        "color": "#000000",
+        "differs_from_parent": {
+          "font": true,
+          "color": false,
+          "style": false,
+          "weight": false
+        },
+        "score": 7,
+        "samples": [],
+        "context": "standalone"
+      }
+    ],
+    "button_styles": [
+      {
+        "background": "#000000",
+        "color": "#6B6B6B",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "15px",
+        "letter_spacing": "normal",
+        "line_height": "24.75px",
+        "text_transform": "none",
+        "border_radius": "7px",
+        "padding": "11px 16px",
+        "text": "Log In"
+      },
+      {
+        "background": "#1A1A1A",
+        "color": "#FFFFFF",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "15px",
+        "letter_spacing": "normal",
+        "line_height": "24.75px",
+        "text_transform": "none",
+        "border_radius": "7px",
+        "padding": "12px 24px",
+        "text": "Get a Walkthrough"
+      },
+      {
+        "background": "#000000",
+        "color": "#000000",
+        "font_family": "Arial",
+        "font_weight": "400",
+        "font_size": "13.3333px",
+        "letter_spacing": "normal",
+        "line_height": "normal",
+        "text_transform": "none",
+        "border_radius": "8px",
+        "padding": "8px",
+        "text": ""
+      },
+      {
+        "background": "#FFFFFF",
+        "color": "#1A1A1A",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "15px",
+        "letter_spacing": "normal",
+        "line_height": "24.75px",
+        "text_transform": "none",
+        "border_radius": "7px",
+        "padding": "12px 24px",
+        "text": "Log In"
+      },
+      {
+        "background": "#1A1A1A",
+        "color": "#FFFFFF",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "16px",
+        "letter_spacing": "normal",
+        "line_height": "26.4px",
+        "text_transform": "none",
+        "border_radius": "10px",
+        "padding": "14px 30px",
+        "text": "Explore the Platform"
+      },
+      {
+        "background": "#FFFFFF",
+        "color": "#1A1A1A",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "16px",
+        "letter_spacing": "normal",
+        "line_height": "26.4px",
+        "text_transform": "none",
+        "border_radius": "10px",
+        "padding": "14px 30px",
+        "text": "Get a Walkthrough →"
+      },
+      {
+        "background": "#000000",
+        "color": "#FFFFFF",
+        "font_family": "DM Sans",
+        "font_weight": "500",
+        "font_size": "14px",
+        "letter_spacing": "normal",
+        "line_height": "23.1px",
+        "text_transform": "none",
+        "border_radius": "0px",
+        "padding": "0px 0px 2px",
+        "text": "Learn More →"
+      }
+    ],
+    "badge_styles": [
+      {
+        "background": "#F5F5F0",
+        "color": "#1A1A1A",
+        "font_size": "13px",
+        "font_weight": "500",
+        "border_radius": "100px",
+        "text": "Platform for AI-aware Agencies"
+      }
+    ]
+  }
+}

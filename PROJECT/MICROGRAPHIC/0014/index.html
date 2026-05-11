@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>0014 // ISOLATION — VJ CINEMA</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#000;overflow:hidden}
+canvas{display:block;filter:contrast(1.3) sepia(0.2) saturate(0.5) brightness(0.85)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 35%,rgba(0,0,0,0.9) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#tw{position:absolute;bottom:14%;left:0;right:0;text-align:center;z-index:30;padding:0 15%;pointer-events:none}
+#st{font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:clamp(16px,2.5vw,26px);color:#f5f5eb;line-height:1.4;text-shadow:2px 2px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,0 4px 10px rgba(0,0,0,0.8);opacity:0;transition:opacity 1.5s ease}
+#aw{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:30;pointer-events:none;opacity:0;transition:opacity 3s ease}
+#an{font-family:'Times New Roman',serif;font-size:10px;letter-spacing:6px;color:rgba(120,130,140,0.5);margin-bottom:8px;text-transform:uppercase}
+#at{font-family:'Times New Roman',serif;font-style:italic;font-size:clamp(14px,2vw,22px);color:rgba(120,130,140,0.75)}
+#sub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Times New Roman',serif;font-size:clamp(40px,8vw,90px);color:#fff;z-index:50;opacity:0;pointer-events:none;text-shadow:0 0 40px rgba(255,255,255,0.4);letter-spacing:-2px}
+#flash{position:absolute;top:0;left:0;width:100%;height:100%;z-index:60;opacity:0;background:#fff;pointer-events:none}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#030303;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:10px;letter-spacing:10px;color:rgba(150,150,150,0.4);text-transform:uppercase}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:rgba(100,100,100,0.3);letter-spacing:3px;animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:13%;right:2%;font-family:monospace;font-size:8px;color:rgba(255,255,255,0.2);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">0014 &nbsp;/&nbsp; isolation</div>
+<div id="os">click to begin</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="flash"></div>
+<div id="sub"></div>
+<div id="aw"><div id="an"></div><div id="at"></div></div>
+<div id="tw"><div id="st"></div></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+<script>
+// ── SCREENPLAY ──
+const SP=[
+{t:0,type:"act",num:"I",text:"Isolation",scene:0},
+{t:4000,type:"line",text:"There is no one left to call."},
+{t:12000,type:"line",text:"Just the hum of the refrigerator."},
+{t:20000,type:"line",text:"And the weight of the air."},
+{t:32000,type:"silence"},
+{t:40000,type:"line",text:"It's getting harder to breathe."},
+{t:52000,type:"cut"},
+{t:53000,type:"act",num:"II",text:"The Shape of Grief",scene:1},
+{t:58000,type:"line",text:"It takes the form of something familiar."},
+{t:68000,type:"line",text:"A shadow leaning against the far wall."},
+{t:80000,type:"sub",text:"EMPTINESS"},
+{t:83000,type:"line",text:"If you don't look at it, it doesn't move."},
+{t:95000,type:"line",text:"But you are so tired."},
+{t:106000,type:"sub",text:"GIVE IN"},
+{t:118000,type:"cut"},
+{t:119000,type:"act",num:"III",text:"Erosion",scene:2},
+{t:125000,type:"line",text:"The days have blurred into a single, gray line."},
+{t:136000,type:"line",text:"You've forgotten the sound of your own voice."},
+{t:148000,type:"line",text:"The shadow is closer now. It feels like an old friend."},
+{t:162000,type:"sub",text:"HOPELESS"},
+{t:175000,type:"cut"},
+{t:176000,type:"act",num:"IV",text:"Acceptance",scene:3},
+{t:182000,type:"line",text:"There is no escape from what is already inside."},
+{t:192000,type:"line",text:"Let the quiet take over."},
+{t:202000,type:"line",text:"Close your eyes."},
+{t:214000,type:"line",text:"It is finally over."},
+{t:228000,type:"silence"},
+{t:238000,type:"line",text:"..."},
+{t:248000,type:"line",text:"..."},
+{t:260000,type:"sub",text:"NOTHING"},
+];
+
+let ax,st,cv,cx,W,H,T=0,dread=0,curScene=0,targetScene=0,sceneBlend=1;
+// Rain drops
+let rain=[];
+// City buildings
+let buildings=[];
+// Stars
+let stars=[];
+// Forest trees
+let trees=[];
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initWorld();initAudio();
+    st=Date.now();
+    SP.forEach(e=>setTimeout(()=>doEvent(e),e.t));
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;initWorld();}
+
+function initWorld(){
+    rain=[];for(let i=0;i<300;i++)rain.push({x:Math.random()*W,y:Math.random()*H,s:2+Math.random()*6,v:4+Math.random()*8});
+    buildings=[];for(let i=0;i<20;i++){const bw=30+Math.random()*80;buildings.push({x:i*(W/20),w:bw,h:100+Math.random()*300});}
+    stars=[];for(let i=0;i<200;i++)stars.push({x:Math.random()*W,y:Math.random()*H*0.6,r:Math.random()*2,b:Math.random()});
+    trees=[];for(let i=0;i<40;i++)trees.push({x:Math.random()*W,h:80+Math.random()*200,w:20+Math.random()*40});
+}
+
+function doEvent(ev){
+    const s=document.getElementById('st'),aw=document.getElementById('aw'),fl=document.getElementById('flash'),sb=document.getElementById('sub');
+    if(ev.type==='line'){s.style.opacity='0';setTimeout(()=>{s.textContent=ev.text;s.style.opacity='1';playTone();},300);setTimeout(()=>{s.style.opacity='0';},6500);}
+    if(ev.type==='act'){dread=Math.min(dread+0.22,0.95);document.getElementById('an').textContent=ev.num;document.getElementById('at').textContent=ev.text;aw.style.opacity='1';playDrone();setTimeout(()=>{aw.style.opacity='0';},4000);if(ev.scene!==undefined){targetScene=ev.scene;sceneBlend=0;}}
+    if(ev.type==='sub'){sb.textContent=ev.text;sb.style.opacity='0.9';playHit();setTimeout(()=>{sb.style.opacity='0';},120);}
+    if(ev.type==='cut'){fl.style.opacity='1';playBoom();setTimeout(()=>{fl.style.transition='opacity 1.2s';fl.style.opacity='0';setTimeout(()=>fl.style.transition='',1300);},80);}
+}
+
+// ── AUDIO ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    const sub=ax.createOscillator();sub.type='sine';sub.frequency.value=18;
+    const sg=ax.createGain();sg.gain.value=0.4;sub.connect(sg);sg.connect(_m);sub.start();
+    const o1=ax.createOscillator();o1.type='sine';o1.frequency.value=45;
+    const o2=ax.createOscillator();o2.type='sine';o2.frequency.value=47;
+    const f1=ax.createBiquadFilter();f1.type='lowpass';f1.frequency.value=200;
+    const g1=ax.createGain();g1.gain.value=0.12;
+    o1.connect(f1);o2.connect(f1);f1.connect(g1);g1.connect(_m);o1.start();o2.start();
+    const bs=ax.sampleRate*2,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+    for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+    const n=ax.createBufferSource();n.buffer=b;n.loop=true;
+    const nf=ax.createBiquadFilter();nf.type='highpass';nf.frequency.value=5000;
+    const ng=ax.createGain();ng.gain.value=0.015;
+    n.connect(nf);nf.connect(ng);ng.connect(_m);n.start();
+    let bpm=35;
+    function heart(){if(!ax||ax.state==='closed')return;const now=ax.currentTime;const o=ax.createOscillator();o.type='triangle';o.frequency.setValueAtTime(45,now);o.frequency.exponentialRampToValueAtTime(15,now+0.15);const g=ax.createGain();g.gain.setValueAtTime(0.5,now);g.gain.exponentialRampToValueAtTime(0.001,now+0.3);o.connect(g);g.connect(_m);o.start(now);o.stop(now+0.4);bpm=Math.max(20,35-dread*10);setTimeout(heart,60000/bpm);}
+    setTimeout(heart,1000);
+}
+function playTone(){const n=ax.currentTime;const o=ax.createOscillator();o.type='sine';o.frequency.value=80+Math.random()*20;const g=ax.createGain();g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(0.06,n+1.5);g.gain.exponentialRampToValueAtTime(0.001,n+5);o.connect(g);g.connect(_m);o.start(n);o.stop(n+5.1);}
+function playHit(){const n=ax.currentTime;const o=ax.createOscillator();o.type='sine';o.frequency.setValueAtTime(30,n);const g=ax.createGain();g.gain.setValueAtTime(0.7,n);g.gain.exponentialRampToValueAtTime(0.001,n+0.5);o.connect(g);g.connect(_m);o.start(n);o.stop(n+0.6);}
+function playBoom(){const n=ax.currentTime;const o=ax.createOscillator();o.type='triangle';o.frequency.setValueAtTime(40,n);o.frequency.exponentialRampToValueAtTime(10,n+2);const g=ax.createGain();g.gain.setValueAtTime(0.8,n);g.gain.exponentialRampToValueAtTime(0.001,n+2.5);o.connect(g);g.connect(_m);o.start(n);o.stop(n+2.6);}
+function playDrone(){const n=ax.currentTime;const o=ax.createOscillator();o.type='sine';o.frequency.value=40;const f=ax.createBiquadFilter();f.type='lowpass';f.frequency.value=100;const g=ax.createGain();g.gain.setValueAtTime(0.4,n);g.gain.exponentialRampToValueAtTime(0.001,n+5);o.connect(f);f.connect(g);g.connect(_m);o.start(n);o.stop(n+5.1);}
+
+// ── VJ SCENES ──
+
+// Scene 0: Empty Room with Window (Isolation)
+function drawRoom(alpha){
+    cx.save();cx.globalAlpha=alpha;
+    const horizon=H*0.5;
+    // Floor
+    cx.fillStyle='#0a0a0c';cx.fillRect(0,horizon,W,H);
+    // Walls
+    const grad=cx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'#080810');grad.addColorStop(1,'#0c0c14');
+    cx.fillStyle=grad;cx.fillRect(0,0,W,horizon);
+    // Window (pale light source)
+    const wx=W*0.5,wy=H*0.25,ww=W*0.15,wh=H*0.25;
+    const wGrad=cx.createRadialGradient(wx,wy+wh/2,10,wx,wy+wh/2,ww*1.5);
+    wGrad.addColorStop(0,'rgba(60,70,90,0.3)');wGrad.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle=wGrad;cx.fillRect(0,0,W,H);
+    // Window frame
+    cx.strokeStyle='rgba(80,90,110,0.5)';cx.lineWidth=2;
+    cx.strokeRect(wx-ww/2,wy,ww,wh);
+    cx.beginPath();cx.moveTo(wx,wy);cx.lineTo(wx,wy+wh);cx.stroke();
+    cx.beginPath();cx.moveTo(wx-ww/2,wy+wh/2);cx.lineTo(wx+ww/2,wy+wh/2);cx.stroke();
+    // Pale moonlight through window
+    cx.fillStyle='rgba(40,50,70,0.08)';
+    cx.beginPath();cx.moveTo(wx-ww/2,wy+wh);cx.lineTo(wx+ww/2,wy+wh);
+    cx.lineTo(wx+ww*1.5,H);cx.lineTo(wx-ww*1.5,H);cx.closePath();cx.fill();
+    // Chair silhouette
+    const chx=W*0.35,chy=H*0.65;
+    cx.fillStyle='#060608';
+    cx.fillRect(chx-15,chy,30,40);cx.fillRect(chx-20,chy+40,40,5);
+    cx.fillRect(chx-18,chy+45,4,20);cx.fillRect(chx+14,chy+45,4,20);
+    cx.fillRect(chx-15,chy-30,30,5);
+    // Dust particles
+    cx.fillStyle='rgba(100,110,130,0.15)';
+    for(let i=0;i<30;i++){
+        const px=wx-ww+Math.sin(T*0.3+i)*ww*2;
+        const py=wy+Math.sin(T*0.2+i*0.7)*wh*2;
+        cx.beginPath();cx.arc(px,py,1+Math.sin(T+i)*0.5,0,Math.PI*2);cx.fill();
+    }
+    cx.restore();
+}
+
+// Scene 1: City Skyline in Rain (Grief)
+function drawCity(alpha){
+    cx.save();cx.globalAlpha=alpha;
+    const horizon=H*0.55;
+    // Sky gradient
+    const sg=cx.createLinearGradient(0,0,0,horizon);
+    sg.addColorStop(0,'#050508');sg.addColorStop(1,'#101018');
+    cx.fillStyle=sg;cx.fillRect(0,0,W,horizon);
+    // Ground reflection
+    cx.fillStyle='#060609';cx.fillRect(0,horizon,W,H-horizon);
+    // Buildings
+    for(let i=0;i<buildings.length;i++){
+        const b=buildings[i];
+        const by=horizon-b.h;
+        // Building body
+        cx.fillStyle=`rgba(15,15,25,${0.8+Math.sin(i)*0.2})`;
+        cx.fillRect(b.x,by,b.w,b.h);
+        // Windows (tiny yellow dots)
+        for(let wy=by+10;wy<horizon-10;wy+=15){
+            for(let wx=b.x+5;wx<b.x+b.w-5;wx+=12){
+                const on=Math.sin(wx*0.1+wy*0.2+T*0.5+i)>0.3;
+                cx.fillStyle=on?'rgba(180,160,80,0.3)':'rgba(20,20,30,0.5)';
+                cx.fillRect(wx,wy,5,8);
+            }
+        }
+        // Reflection
+        cx.globalAlpha=alpha*0.15;
+        cx.fillStyle='#0a0a15';
+        cx.fillRect(b.x,horizon,b.w,b.h*0.3);
+        cx.globalAlpha=alpha;
+    }
+    // Rain
+    cx.strokeStyle='rgba(120,130,160,0.25)';cx.lineWidth=1;
+    for(let i=0;i<rain.length;i++){
+        const r=rain[i];
+        cx.beginPath();cx.moveTo(r.x,r.y);cx.lineTo(r.x-1,r.y+r.s);cx.stroke();
+        r.y+=r.v;if(r.y>H){r.y=-10;r.x=Math.random()*W;}
+    }
+    // Puddle reflections
+    for(let i=0;i<8;i++){
+        cx.fillStyle=`rgba(60,70,100,${0.03+Math.sin(T*2+i)*0.02})`;
+        cx.beginPath();cx.ellipse(W*0.1+i*W*0.1,H*0.85+Math.sin(i)*20,40+Math.sin(T+i)*10,5,0,0,Math.PI*2);cx.fill();
+    }
+    cx.restore();
+}
+
+// Scene 2: Desolate Forest / Dead Trees (Erosion)
+function drawForest(alpha){
+    cx.save();cx.globalAlpha=alpha;
+    const horizon=H*0.65;
+    // Sky
+    const sg=cx.createLinearGradient(0,0,0,horizon);
+    sg.addColorStop(0,'#080808');sg.addColorStop(1,'#0d0d10');
+    cx.fillStyle=sg;cx.fillRect(0,0,W,horizon);
+    // Fog layer
+    for(let y=horizon-100;y<horizon+50;y+=3){
+        cx.fillStyle=`rgba(30,32,38,${0.02+Math.sin(T*0.5+y*0.01)*0.01})`;
+        cx.fillRect(0,y,W,3);
+    }
+    // Ground
+    cx.fillStyle='#060608';cx.fillRect(0,horizon,W,H-horizon);
+    // Dead trees
+    for(let i=0;i<trees.length;i++){
+        const tr=trees[i];
+        const depth=i/trees.length;
+        const a=0.3+depth*0.5;
+        cx.strokeStyle=`rgba(20,22,28,${a})`;
+        cx.lineWidth=2+depth*3;
+        // Trunk
+        cx.beginPath();cx.moveTo(tr.x,horizon);cx.lineTo(tr.x+(Math.sin(i)*5),horizon-tr.h);cx.stroke();
+        // Branches (bare, dead)
+        const bh=horizon-tr.h;
+        cx.lineWidth=1+depth;
+        for(let j=0;j<4;j++){
+            const by=bh+j*tr.h*0.15;
+            const dir=j%2===0?1:-1;
+            const blen=tr.w*(1-j*0.2);
+            cx.beginPath();cx.moveTo(tr.x,by);
+            cx.lineTo(tr.x+dir*blen,by-20-Math.random()*15);cx.stroke();
+            // Sub-branches
+            cx.lineWidth=0.5;
+            cx.beginPath();cx.moveTo(tr.x+dir*blen*0.6,by-10);
+            cx.lineTo(tr.x+dir*blen*0.8,by-30);cx.stroke();
+            cx.lineWidth=1+depth;
+        }
+    }
+    // Falling leaves / ash
+    cx.fillStyle='rgba(60,55,45,0.2)';
+    for(let i=0;i<20;i++){
+        const lx=Math.sin(T*0.5+i*3.7)*W*0.5+W*0.5;
+        const ly=(T*30+i*80)%H;
+        cx.beginPath();cx.ellipse(lx,ly,3,1.5,T+i,0,Math.PI*2);cx.fill();
+    }
+    cx.restore();
+}
+
+// Scene 3: Void / Abstract Descent (Acceptance)
+function drawVoid(alpha){
+    cx.save();cx.globalAlpha=alpha;
+    // Deep void
+    cx.fillStyle='#020204';cx.fillRect(0,0,W,H);
+    // Concentric fading circles (tunnel to nothing)
+    for(let i=20;i>0;i--){
+        const r=i*Math.max(W,H)*0.05+Math.sin(T*0.3)*20;
+        const a=0.02+i*0.003;
+        cx.strokeStyle=`rgba(40,45,55,${a})`;
+        cx.lineWidth=1;
+        cx.beginPath();cx.arc(W/2,H/2,r,0,Math.PI*2);cx.stroke();
+    }
+    // Slow rotating geometry
+    cx.save();cx.translate(W/2,H/2);cx.rotate(T*0.1);
+    cx.strokeStyle='rgba(50,55,70,0.15)';cx.lineWidth=0.5;
+    for(let i=0;i<6;i++){
+        const a=i*Math.PI/3+T*0.05;
+        const r1=100+Math.sin(T*0.3+i)*30;
+        const r2=200+Math.cos(T*0.2+i)*50;
+        cx.beginPath();cx.moveTo(Math.cos(a)*r1,Math.sin(a)*r1);
+        cx.lineTo(Math.cos(a+0.3)*r2,Math.sin(a+0.3)*r2);cx.stroke();
+    }
+    cx.restore();
+    // Figure in center (small, hunched, dissolving)
+    const figA=0.3+Math.sin(T*0.5)*0.1;
+    cx.fillStyle=`rgba(10,10,15,${figA})`;
+    cx.beginPath();
+    cx.arc(W/2,H*0.48,12,0,Math.PI*2);cx.fill();
+    cx.fillRect(W/2-8,H*0.48+8,16,30);
+    // Particles drifting upward (soul leaving)
+    cx.fillStyle='rgba(80,85,100,0.15)';
+    for(let i=0;i<40;i++){
+        const px=W/2+Math.sin(T*0.7+i*2)*100;
+        const py=H*0.48-((T*15+i*20)%200);
+        const ps=1+Math.sin(T+i)*0.5;
+        cx.beginPath();cx.arc(px,py,ps,0,Math.PI*2);cx.fill();
+    }
+    cx.restore();
+}
+
+// ── MAIN RENDER ──
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    // Scene blend transition
+    if(curScene!==targetScene){sceneBlend+=0.008;if(sceneBlend>=1){curScene=targetScene;sceneBlend=1;}}
+    // Camera shake
+    const sx=Math.sin(T*2.3)*2+Math.cos(T*5.1)*1.5;
+    const sy=Math.cos(T*1.7)*3+Math.sin(T*4.4)*1;
+    // Clear
+    cx.fillStyle='rgba(0,0,0,0.15)';cx.fillRect(0,0,W,H);
+    cx.save();cx.translate(sx,sy);
+    // Draw current scene
+    if(curScene===targetScene){
+        switch(curScene){
+            case 0:drawRoom(1);break;
+            case 1:drawCity(1);break;
+            case 2:drawForest(1);break;
+            case 3:drawVoid(1);break;
+        }
+    } else {
+        // Crossfade between scenes
+        switch(curScene){
+            case 0:drawRoom(1-sceneBlend);break;
+            case 1:drawCity(1-sceneBlend);break;
+            case 2:drawForest(1-sceneBlend);break;
+            case 3:drawVoid(1-sceneBlend);break;
+        }
+        switch(targetScene){
+            case 0:drawRoom(sceneBlend);break;
+            case 1:drawCity(sceneBlend);break;
+            case 2:drawForest(sceneBlend);break;
+            case 3:drawVoid(sceneBlend);break;
+        }
+    }
+    // Film grain
+    cx.fillStyle=`rgba(200,200,200,${Math.random()*0.025})`;
+    for(let i=0;i<300;i++){cx.fillRect(Math.random()*W,Math.random()*H,Math.random()*2,Math.random()*2);}
+    cx.restore();
+    // Film scratches
+    if(Math.random()>0.7){cx.fillStyle=`rgba(255,255,255,${Math.random()*0.03})`;cx.fillRect(Math.random()*W,0,1,H);}
+}
+</script>
+</body>
+</html>

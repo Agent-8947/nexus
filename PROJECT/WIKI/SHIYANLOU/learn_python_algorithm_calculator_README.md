@@ -1,2 +1,0 @@
-- [calculator](calculator)
-    - [math_parser](math_parser.py)

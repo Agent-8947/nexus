@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>078 // ХЕРУВИМ В МЕГАПОЛИСЕ (CHERUB IN THE CITY)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; cursor: pointer; gap: 16px;
+        }
+        #overlay h1 { color: #00aaff; font-family: monospace; font-size: 28px; letter-spacing: 6px; margin: 0; }
+        #overlay p { color: #666; font-family: monospace; font-size: 12px; letter-spacing: 4px; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <h1>ХЕРУВИМ В МЕГАПОЛИСЕ</h1>
+    <p>[ CLICK TO DESCEND ]</p>
+</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+    uniform float beat;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / r.xy;
+        vec2 p = uv * 2.0 - 1.0;
+        p.x *= r.x / r.y;
+
+        vec3 col = vec3(0.0);
+
+        // ═══ CITY GRID (URBAN GEOMETRY) ═══
+        // Vertical neon strips — city buildings
+        float bldg = step(0.93, fract(p.x * 6.0 + 0.05));
+        float bldgH = hash(vec2(floor(p.x * 6.0), 0.0));
+        float skyline = step(p.y, -0.3 + bldgH * 0.6); // Varies building height
+        col += vec3(0.0, 0.05, 0.15) * skyline;
+
+        // Windows — tiny blinking lights
+        float wx = fract(p.x * 30.0);
+        float wy = fract(p.y * 20.0);
+        float winOn = hash(vec2(floor(p.x*30.0), floor(p.y*20.0 + floor(t))));
+        col += vec3(1.0, 0.9, 0.5) * step(0.9, winOn) * step(0.1, wx) * step(0.1, wy) * skyline;
+
+        // Neon street glow at the bottom
+        float street = smoothstep(-0.8, -0.5, -p.y);
+        col += vec3(0.0, 0.1, 0.3) * street;
+
+        // ═══ CHERUB WINGS (SYMMETRIC INTERFERENCE PATTERN) ═══
+        // Abstract representation: concentric arcs emanating from center top
+        vec2 wp = p - vec2(0.0, 0.6 + beat * 0.1); // Wing origin hovers above city
+        float wing = abs(length(wp) - 0.5);
+        wing = min(wing, abs(length(wp) - 0.7));
+        wing = min(wing, abs(length(wp) - 0.9));
+        float wingMask = smoothstep(0.02, 0.0, wing) * step(-0.2, wp.y); // Only lower half
+
+        col += vec3(0.5, 0.8, 1.0) * wingMask;
+
+        // Glowing halo (circle)
+        float halo = abs(length(p - vec2(0.0, 0.4)) - 0.25);
+        col += vec3(1.0, 0.9, 0.6) * 0.008 / max(halo, 0.001);
+
+        // Liturgical text flashing (Кириллица)
+        float textFlash = step(0.97, fract(t * 0.5));
+        float textLine = abs(p.y - 0.0);
+        col += vec3(1.0, 0.8, 0.0) * textFlash * smoothstep(0.02, 0.0, textLine);
+
+        // Neon rain (vertical streaks = punk graffiti)
+        float rain = fract(p.x * 50.0 + hash(vec2(floor(p.x*50.0), 0.0)) * 100.0);
+        float rainSpeed = hash(vec2(floor(p.x*50.0), 1.0)) * 5.0 + 2.0;
+        float rainY = fract(p.y * 2.0 + t * rainSpeed * hash(vec2(floor(p.x*50.0), 2.0)));
+        col += vec3(0.0, 0.3, 1.0) * step(0.97, rain) * step(0.9, 1.0 - rainY) * 0.5;
+
+        // Beat flash
+        col += vec3(0.0, 0.05, 0.1) * beat;
+
+        // CRT vignette
+        col *= 1.0 - length(p) * 0.35;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let renderer, scene, camera, uniforms;
+let beatVal = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c') });
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+
+    uniforms = {
+        r: { value: new THREE.Vector2(innerWidth, innerHeight) },
+        t: { value: 0 }, beat: { value: 0 }
+    };
+
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2),
+        new THREE.ShaderMaterial({
+            uniforms,
+            vertexShader: document.getElementById('vs').textContent,
+            fragmentShader: document.getElementById('fs').textContent
+        })
+    ));
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 160;
+
+    // Urban punk + church bell hybrid
+    const bell = new Tone.MetalSynth({
+        frequency: 200, envelope: { attack: 0.001, decay: 3, release: 3 },
+        harmonicity: 5.1, modulationIndex: 16, resonance: 3000, octaves: 1.5
+    }).toDestination();
+    bell.volume.value = -8;
+
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 5 }).toDestination();
+    kick.volume.value = 2;
+
+    const bass = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0.3, release: 0.1 }
+    });
+    const bassDist = new Tone.Distortion(0.7).toDestination();
+    const bassFilter = new Tone.Filter(800, "lowpass").toDestination();
+    bass.connect(bassDist); bassDist.connect(bassFilter);
+    bass.volume.value = -3;
+
+    // Punk urban bass line: G1-G1-D2-Bb1
+    const bassLine = ["G1", "G1", "D2", "Bb1"];
+    let bi = 0;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "16n", time);
+        Tone.Draw.schedule(() => { beatVal = 1.0; }, time);
+    }, "4n").start(0);
+
+    new Tone.Loop(time => {
+        bass.triggerAttackRelease(bassLine[bi % 4], "8n", time);
+        bi++;
+    }, "8n").start(0);
+
+    // Church bell strikes every 2 bars
+    new Tone.Loop(time => {
+        bell.triggerAttackRelease("2n", time);
+    }, "2m").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    beatVal *= 0.88;
+    uniforms.beat.value = beatVal;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

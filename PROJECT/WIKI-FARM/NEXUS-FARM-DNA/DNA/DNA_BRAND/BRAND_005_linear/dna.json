@@ -1,0 +1,1250 @@
+{
+  "meta": {
+    "source_url": "https://linear.app/",
+    "domain": "linear",
+    "brand_id": 5,
+    "pages_scanned": [
+      "/homepage",
+      "/about",
+      "/pricing",
+      "/"
+    ],
+    "total_pages": 4,
+    "logo": {
+      "type": "svg",
+      "file": "logo.svg",
+      "w": 88,
+      "h": 22
+    },
+    "og_meta": {
+      "title": "Linear – The system for product development",
+      "description": "Purpose-built for planning and building products with AI agents.",
+      "og:title": "Linear – The system for product development",
+      "og:description": "Purpose-built for planning and building products with AI agents.",
+      "og:image": "https://linear.app/static/og/homepage.jpg",
+      "twitter:card": "summary_large_image",
+      "twitter:site": "@linear",
+      "twitter:creator": "@linear",
+      "twitter:title": "Linear – The system for product development",
+      "twitter:description": "Purpose-built for planning and building products with AI agents.",
+      "twitter:image": "https://linear.app/static/og/homepage.jpg"
+    },
+    "favicons": [
+      "https://linear.app/favicon.ico",
+      "https://linear.app/static/favicon.svg",
+      "https://linear.app/static/apple-touch-icon.png?v=2"
+    ]
+  },
+  "colors": {
+    "backgrounds": [
+      {
+        "value": "#FFFFFF",
+        "count": 258
+      },
+      {
+        "value": "#00FF05",
+        "count": 32
+      },
+      {
+        "value": "#08090A",
+        "count": 26
+      },
+      {
+        "value": "#000000",
+        "count": 12
+      },
+      {
+        "value": "#0F1011",
+        "count": 12
+      },
+      {
+        "value": "#6366F1",
+        "count": 10
+      },
+      {
+        "value": "#23252A",
+        "count": 10
+      },
+      {
+        "value": "#E5E5E6",
+        "count": 10
+      },
+      {
+        "value": "#F34E52",
+        "count": 8
+      },
+      {
+        "value": "#27A644",
+        "count": 8
+      },
+      {
+        "value": "#EB5757",
+        "count": 6
+      },
+      {
+        "value": "#8B5CF6",
+        "count": 6
+      },
+      {
+        "value": "#FF0000",
+        "count": 6
+      },
+      {
+        "value": "#55CCFF",
+        "count": 6
+      },
+      {
+        "value": "#02B8CC",
+        "count": 6
+      },
+      {
+        "value": "#5E6AD2",
+        "count": 6
+      },
+      {
+        "value": "#3B3B3B",
+        "count": 4
+      },
+      {
+        "value": "#18191A",
+        "count": 3
+      },
+      {
+        "value": "#090A0B",
+        "count": 2
+      },
+      {
+        "value": "#101112",
+        "count": 2
+      },
+      {
+        "value": "#121414",
+        "count": 2
+      },
+      {
+        "value": "#121314",
+        "count": 2
+      },
+      {
+        "value": "#161718",
+        "count": 2
+      },
+      {
+        "value": "#10B981",
+        "count": 2
+      },
+      {
+        "value": "#06B6D4",
+        "count": 2
+      }
+    ],
+    "text": [
+      {
+        "value": "#F7F8F8",
+        "count": 4372
+      },
+      {
+        "value": "#62666D",
+        "count": 918
+      },
+      {
+        "value": "#8A8F98",
+        "count": 575
+      },
+      {
+        "value": "#D0D6E0",
+        "count": 395
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 252
+      },
+      {
+        "value": "#E2E4E7",
+        "count": 240
+      },
+      {
+        "value": "#F79CE0",
+        "count": 82
+      },
+      {
+        "value": "#000000",
+        "count": 58
+      },
+      {
+        "value": "#F7BF8B",
+        "count": 44
+      },
+      {
+        "value": "#08090A",
+        "count": 22
+      },
+      {
+        "value": "#FFDF9F",
+        "count": 20
+      },
+      {
+        "value": "#83DCDC",
+        "count": 18
+      },
+      {
+        "value": "#8FA6FF",
+        "count": 16
+      },
+      {
+        "value": "#E2E4E6",
+        "count": 4
+      },
+      {
+        "value": "#6D78D5",
+        "count": 2
+      },
+      {
+        "value": "#EB5757",
+        "count": 2
+      },
+      {
+        "value": "#27A644",
+        "count": 2
+      }
+    ],
+    "borders": [
+      {
+        "value": "#F7F8F8",
+        "count": 249
+      },
+      {
+        "value": "#FFFFFF",
+        "count": 159
+      },
+      {
+        "value": "#D0D6E0",
+        "count": 72
+      },
+      {
+        "value": "#23252A",
+        "count": 14
+      },
+      {
+        "value": "#E5E5E6",
+        "count": 10
+      },
+      {
+        "value": "#383B3F",
+        "count": 6
+      },
+      {
+        "value": "#24282C",
+        "count": 2
+      },
+      {
+        "value": "#323334",
+        "count": 2
+      }
+    ]
+  },
+  "typography": {
+    "families": [
+      {
+        "value": "Inter Variable",
+        "count": 6487
+      },
+      {
+        "value": "Berkeley Mono",
+        "count": 535
+      }
+    ],
+    "sizes": [
+      {
+        "value": "16px",
+        "count": 4420
+      },
+      {
+        "value": "13px",
+        "count": 673
+      },
+      {
+        "value": "14px",
+        "count": 548
+      },
+      {
+        "value": "15px",
+        "count": 434
+      },
+      {
+        "value": "13.3333px",
+        "count": 414
+      },
+      {
+        "value": "12px",
+        "count": 325
+      },
+      {
+        "value": "10px",
+        "count": 120
+      },
+      {
+        "value": "24px",
+        "count": 29
+      },
+      {
+        "value": "48px",
+        "count": 23
+      },
+      {
+        "value": "64px",
+        "count": 14
+      },
+      {
+        "value": "11px",
+        "count": 6
+      },
+      {
+        "value": "32px",
+        "count": 4
+      },
+      {
+        "value": "17px",
+        "count": 4
+      },
+      {
+        "value": "20px",
+        "count": 2
+      },
+      {
+        "value": "12.25px",
+        "count": 2
+      }
+    ],
+    "weights": [
+      {
+        "value": "400",
+        "count": 6432
+      },
+      {
+        "value": "510",
+        "count": 538
+      },
+      {
+        "value": "590",
+        "count": 44
+      },
+      {
+        "value": "300",
+        "count": 8
+      }
+    ],
+    "line_heights": [
+      {
+        "value": "24px",
+        "count": 5298
+      },
+      {
+        "value": "normal",
+        "count": 554
+      },
+      {
+        "value": "19.5px",
+        "count": 501
+      },
+      {
+        "value": "16.8px",
+        "count": 267
+      },
+      {
+        "value": "15px",
+        "count": 120
+      },
+      {
+        "value": "21px",
+        "count": 50
+      },
+      {
+        "value": "32px",
+        "count": 43
+      },
+      {
+        "value": "18px",
+        "count": 34
+      },
+      {
+        "value": "19.95px",
+        "count": 30
+      },
+      {
+        "value": "48px",
+        "count": 22
+      }
+    ],
+    "letter_spacings": [
+      {
+        "value": "-0.13px",
+        "count": 470
+      },
+      {
+        "value": "-0.165px",
+        "count": 432
+      },
+      {
+        "value": "-0.182px",
+        "count": 40
+      },
+      {
+        "value": "-0.15px",
+        "count": 32
+      },
+      {
+        "value": "-0.288px",
+        "count": 29
+      },
+      {
+        "value": "-1.056px",
+        "count": 23
+      },
+      {
+        "value": "-0.12px",
+        "count": 20
+      },
+      {
+        "value": "-1.408px",
+        "count": 14
+      },
+      {
+        "value": "-0.704px",
+        "count": 4
+      },
+      {
+        "value": "-0.24px",
+        "count": 2
+      }
+    ]
+  },
+  "geometry": {
+    "border_radii": [
+      {
+        "value": "6px",
+        "count": 86
+      },
+      {
+        "value": "2px",
+        "count": 84
+      },
+      {
+        "value": "50%",
+        "count": 76
+      },
+      {
+        "value": "9999px",
+        "count": 72
+      },
+      {
+        "value": "4px",
+        "count": 63
+      },
+      {
+        "value": "8px",
+        "count": 28
+      },
+      {
+        "value": "12px",
+        "count": 25
+      },
+      {
+        "value": "12px 12px 0px 0px",
+        "count": 22
+      },
+      {
+        "value": "22px",
+        "count": 10
+      },
+      {
+        "value": "2px 0px 0px 2px",
+        "count": 8
+      },
+      {
+        "value": "0px 2px 2px 0px",
+        "count": 8
+      },
+      {
+        "value": "16px",
+        "count": 6
+      },
+      {
+        "value": "4px 0px 0px 4px",
+        "count": 6
+      },
+      {
+        "value": "0px 4px 4px 0px",
+        "count": 6
+      },
+      {
+        "value": "7px",
+        "count": 4
+      },
+      {
+        "value": "20px",
+        "count": 4
+      },
+      {
+        "value": "400px",
+        "count": 2
+      },
+      {
+        "value": "1px",
+        "count": 2
+      },
+      {
+        "value": "5px",
+        "count": 2
+      }
+    ],
+    "box_shadows": [
+      {
+        "value": "rgba(0, 0, 0, 0.03) 0px 1.2px 0px 0px",
+        "count": 62
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.4) 0px 2px 4px 0px",
+        "count": 32
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset",
+        "count": 14
+      },
+      {
+        "value": "rgb(35, 37, 42) 0px 0px 0px 1px inset",
+        "count": 10
+      },
+      {
+        "value": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+        "count": 10
+      },
+      {
+        "value": "rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px",
+        "count": 9
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.2) 0px 0px 0px 1px",
+        "count": 6
+      },
+      {
+        "value": "rgba(8, 9, 10, 0.6) 0px 4px 32px 0px",
+        "count": 4
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.1) 0px 0px 0px 2px",
+        "count": 2
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.4) 0px 1px 0px 0px",
+        "count": 2
+      }
+    ]
+  },
+  "spacing": {
+    "paddings": [
+      {
+        "value": "0px 32px",
+        "count": 299
+      },
+      {
+        "value": "14px 32px",
+        "count": 212
+      },
+      {
+        "value": "0px 32px 0px 24px",
+        "count": 72
+      },
+      {
+        "value": "8px",
+        "count": 44
+      },
+      {
+        "value": "0px 12px",
+        "count": 40
+      },
+      {
+        "value": "0px 8px 0px 2px",
+        "count": 30
+      },
+      {
+        "value": "0px 6px",
+        "count": 29
+      },
+      {
+        "value": "0px 8px",
+        "count": 28
+      },
+      {
+        "value": "0px 0px 0px 32px",
+        "count": 20
+      },
+      {
+        "value": "12px 16px 12px 12px",
+        "count": 12
+      },
+      {
+        "value": "96px 0px 128px",
+        "count": 10
+      },
+      {
+        "value": "0px 0px 96px",
+        "count": 10
+      },
+      {
+        "value": "0px 0px 0px 26px",
+        "count": 10
+      },
+      {
+        "value": "0px 14px",
+        "count": 9
+      },
+      {
+        "value": "0px 46px",
+        "count": 9
+      }
+    ]
+  },
+  "gradients": [
+    "linear-gradient(rgba(11, 11, 11, 0.8) 0px, oklab(0.149574 0.00000683218 0.00000298768 / 0.761905) 100%)",
+    "radial-gradient(52.53% 57.5% at 50% 100%, rgba(8, 9, 10, 0) 0px, rgba(8, 9, 10, 0.5) 100%), linear-gradient(rgb(8, 9, 10) 10%, rgb(208, 214, 224) 100%)",
+    "radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.04) 0px, rgba(255, 255, 255, 0) 90%)",
+    "radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.04) 0px, rgba(255, 255, 255, 0) 100%)",
+    "radial-gradient(50% 50% at 50% 50%, rgb(255, 255, 255) 0px, rgba(255, 255, 255, 0) 90%)",
+    "linear-gradient(90deg, color(srgb 0 0 0 / 0) 0px, color(srgb 0.6 0.231373 0.231373 / 0.2) 100%), none",
+    "linear-gradient(90deg, color(srgb 0 0 0 / 0) 0px, color(srgb 0.129412 0.701961 1 / 0.2) 100%), none",
+    "radial-gradient(circle, rgba(255, 255, 255, 0.03) 0px, rgba(0, 0, 0, 0) 50%)",
+    "radial-gradient(circle, rgba(255, 255, 255, 0.04) 0px, rgba(0, 0, 0, 0) 50%)",
+    "repeating-linear-gradient(to right, rgb(35, 37, 42) 0px, rgb(35, 37, 42) 3px, rgba(0, 0, 0, 0) 3px, rgba(0, 0, 0, 0) 7px)"
+  ],
+  "animations": {
+    "transitions": [
+      {
+        "value": "0.15s",
+        "count": 502
+      },
+      {
+        "value": "0.1s",
+        "count": 195
+      },
+      {
+        "value": "0.16s",
+        "count": 93
+      },
+      {
+        "value": "0.16s, 0.16s",
+        "count": 82
+      },
+      {
+        "value": "0.4s",
+        "count": 52
+      },
+      {
+        "value": "0.25s",
+        "count": 14
+      },
+      {
+        "value": "0.2s",
+        "count": 3
+      },
+      {
+        "value": "0.1s, 0.1s",
+        "count": 2
+      }
+    ],
+    "easings": [
+      {
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "count": 137
+      },
+      {
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94), cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "count": 82
+      },
+      {
+        "value": "cubic-bezier(0.215, 0.61, 0.355, 1)",
+        "count": 53
+      },
+      {
+        "value": "ease-out",
+        "count": 50
+      },
+      {
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "count": 2
+      },
+      {
+        "value": "ease, ease",
+        "count": 2
+      }
+    ],
+    "animations": [
+      {
+        "value": "grid-dot-0-0-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-0-1-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-0-2-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-0-3-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-0-4-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-1-0-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-1-1-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-1-2-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-1-3-agent 3.2s",
+        "count": 8
+      },
+      {
+        "value": "grid-dot-1-4-agent 3.2s",
+        "count": 8
+      }
+    ]
+  },
+  "buttons": [
+    {
+      "text": "Product",
+      "bg": "#000000",
+      "color": "#8A8F98",
+      "border": "0px none rgb(138, 143, 152)",
+      "radius": "9999px",
+      "padding": "0px 12px",
+      "fontSize": "13px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Open app",
+      "bg": "#E5E5E6",
+      "color": "#08090A",
+      "border": "1px solid rgb(229, 229, 230)",
+      "radius": "9999px",
+      "padding": "0px 12px",
+      "fontSize": "13px",
+      "fontWeight": "510"
+    },
+    {
+      "text": "",
+      "bg": "#000000",
+      "color": "#F7F8F8",
+      "border": "0px none rgb(247, 248, 248)",
+      "radius": "0px",
+      "padding": "0px",
+      "fontSize": "16px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Linear",
+      "bg": "#000000",
+      "color": "#FFFFFF",
+      "border": "0px none rgb(255, 255, 255)",
+      "radius": "4px",
+      "padding": "0px 4px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "",
+      "bg": "#000000",
+      "color": "#62666D",
+      "border": "0px none rgb(98, 102, 109)",
+      "radius": "6px",
+      "padding": "0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "",
+      "bg": "#FFFFFF",
+      "color": "#E2E4E7",
+      "border": "1px solid rgb(36, 40, 44)",
+      "radius": "6px",
+      "padding": "0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Inbox",
+      "bg": "#000000",
+      "color": "#D0D6E0",
+      "border": "0px none rgb(208, 214, 224)",
+      "radius": "6px",
+      "padding": "0px 6px",
+      "fontSize": "13px",
+      "fontWeight": "510"
+    },
+    {
+      "text": "Faster app launch",
+      "bg": "#FFFFFF",
+      "color": "#D0D6E0",
+      "border": "0px none rgb(208, 214, 224)",
+      "radius": "6px",
+      "padding": "0px 6px",
+      "fontSize": "13px",
+      "fontWeight": "510"
+    },
+    {
+      "text": "",
+      "bg": "#000000",
+      "color": "#62666D",
+      "border": "0px none rgb(98, 102, 109)",
+      "radius": "4px",
+      "padding": "0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "",
+      "bg": "#000000",
+      "color": "#62666D",
+      "border": "0px none rgb(98, 102, 109)",
+      "radius": "0px",
+      "padding": "0px",
+      "fontSize": "13.3333px",
+      "fontWeight": "400"
+    }
+  ],
+  "layout": {
+    "max_widths": [
+      {
+        "value": "1436px",
+        "count": 38
+      },
+      {
+        "value": "100%",
+        "count": 12
+      },
+      {
+        "value": "calc(100% + 32px)",
+        "count": 6
+      },
+      {
+        "value": "1416px",
+        "count": 2
+      },
+      {
+        "value": "1320px",
+        "count": 2
+      },
+      {
+        "value": "480px",
+        "count": 2
+      },
+      {
+        "value": "560px",
+        "count": 2
+      },
+      {
+        "value": "512px",
+        "count": 2
+      },
+      {
+        "value": "520px",
+        "count": 2
+      },
+      {
+        "value": "1120px",
+        "count": 1
+      }
+    ],
+    "gaps": [
+      {
+        "value": "8px",
+        "count": 347
+      },
+      {
+        "value": "4px",
+        "count": 53
+      },
+      {
+        "value": "12px",
+        "count": 41
+      },
+      {
+        "value": "3px",
+        "count": 32
+      },
+      {
+        "value": "16px",
+        "count": 16
+      },
+      {
+        "value": "2px",
+        "count": 12
+      },
+      {
+        "value": "15px",
+        "count": 10
+      },
+      {
+        "value": "40px",
+        "count": 10
+      },
+      {
+        "value": "5px",
+        "count": 6
+      },
+      {
+        "value": "20px",
+        "count": 5
+      }
+    ]
+  },
+  "copy_dna": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "The productdevelopmentsystem for teamsand agentsThe product developmentsystem for teams and agentsThe product development system for teams and agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Faster app launch"
+      },
+      {
+        "tag": "H2",
+        "text": "A new species of product tool. Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products."
+      },
+      {
+        "tag": "H2",
+        "text": "Make product operations self-driving"
+      },
+      {
+        "tag": "H2",
+        "text": "Define the product direction"
+      },
+      {
+        "tag": "H2",
+        "text": "Move work forward across teams and agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Review PRs and agent output"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand progress at scale"
+      },
+      {
+        "tag": "H2",
+        "text": "Changelog"
+      },
+      {
+        "tag": "H2",
+        "text": "Built for the future. Available today."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Features"
+      },
+      {
+        "tag": "H3",
+        "text": "Company"
+      },
+      {
+        "tag": "H3",
+        "text": "Resources"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      },
+      {
+        "tag": "H1",
+        "text": "Pricing"
+      },
+      {
+        "tag": "H3",
+        "text": "Free"
+      },
+      {
+        "tag": "H3",
+        "text": "Basic"
+      },
+      {
+        "tag": "H3",
+        "text": "Business"
+      },
+      {
+        "tag": "H3",
+        "text": "Enterprise"
+      },
+      {
+        "tag": "H2",
+        "text": "Built for the future. Available today."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Features"
+      },
+      {
+        "tag": "H3",
+        "text": "Company"
+      },
+      {
+        "tag": "H3",
+        "text": "Resources"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      },
+      {
+        "tag": "H1",
+        "text": "Building tools for the next era of product development"
+      },
+      {
+        "tag": "H2",
+        "text": "A new species of product tool"
+      },
+      {
+        "tag": "H2",
+        "text": "Meet the team behind Linear"
+      },
+      {
+        "tag": "H2",
+        "text": "Backed by the best"
+      },
+      {
+        "tag": "H2",
+        "text": "Built for the future. Available today."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Features"
+      },
+      {
+        "tag": "H3",
+        "text": "Company"
+      },
+      {
+        "tag": "H3",
+        "text": "Resources"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      },
+      {
+        "tag": "H1",
+        "text": "The productdevelopmentsystem for teamsand agentsThe product developmentsystem for teams and agentsThe product development system for teams and agents"
+      },
+      {
+        "tag": "H3",
+        "text": "Faster app launch"
+      },
+      {
+        "tag": "H2",
+        "text": "A new species of product tool. Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products."
+      },
+      {
+        "tag": "H2",
+        "text": "Make product operations self-driving"
+      },
+      {
+        "tag": "H2",
+        "text": "Define the product direction"
+      },
+      {
+        "tag": "H2",
+        "text": "Move work forward across teams and agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Review PRs and agent output"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand progress at scale"
+      },
+      {
+        "tag": "H2",
+        "text": "Changelog"
+      },
+      {
+        "tag": "H2",
+        "text": "Built for the future. Available today."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Features"
+      },
+      {
+        "tag": "H3",
+        "text": "Company"
+      },
+      {
+        "tag": "H3",
+        "text": "Resources"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "ctas": [
+      "Favorites",
+      "Listen",
+      "1.1Linear Agent +",
+      "Pulse",
+      "Agents Insights",
+      "2.2Documents +",
+      "iOS",
+      "Performance",
+      "1.3Customer Requests +",
+      "Inbox",
+      "3.2Agents +",
+      "3.4Git automations +",
+      "2.4Visual planning +",
+      "2.1Projects +",
+      "3.3Linear MCP +",
+      "Open app",
+      "Reviews",
+      "3.5Cycles +",
+      "More",
+      "Agent tasks"
+    ],
+    "paragraphs": [
+      "Purpose-built for planning and building products. Designed for the AI era.",
+      "Render UI before vehicle_state sync when minimum required state is present, instead of blocking on full refresh during iOS startup.",
+      "Linear is shaped by the practices and principles of world-class product teams.",
+      "Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs.",
+      "Reduces noise and restores momentum to help teams ship with high velocity and focus.",
+      "Linear is shaped by the practices and principles of world-class product teams.",
+      "Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs.",
+      "Reduces noise and restores momentum to help teams ship with high velocity and focus.",
+      "Turn conversations and customer feedback into actionable issues that are routed, labeled, and prioritized for the right team.",
+      "Plan and navigate from idea to launch. Align your team with product initiatives, strategic roadmaps, and clear, up-to-date PRDs.",
+      "Build and deploy AI agents that work alongside your team. Work on complex tasks together or delegate entire issues end-to-end.",
+      "Understand code changes at a glance with structural diffs for human and agent output. Review, discuss, and merge — all within Linear.",
+      "Take the guesswork out of product development with project updates, analytics, and dashboards that surface what needs your attention.",
+      "iOS implementation is mostly complete, but Android updates are still work in progress",
+      "Risk of timeline slip if remaining design decisions aren’t finalized soon",
+      "Localization efforts have been completed",
+      "Everything else on track for launch in early September",
+      "You just have to use it and you will see, you will just feel it.",
+      "Our speed is intense and Linear helps us be action biased.",
+      "Linear powers over 25,000 product teams. From ambitious startups to major enterprises.",
+      "Trusted by more than 25,000 companies",
+      "AI is fundamentally changing how products get built. We are shaping what comes next.",
+      "Software development is at an inflection point. Artificial intelligence is fundamentally reshaping how products are built.",
+      "AI increases what teams can create, but it also raises the bar for clarity and coordination. At Linear, we are building the tools for this new era of product development. A purpose-built system where teams and agents operate together in a shared, structured environment.",
+      "Founded in 2019, Linear has become the tool of choice for more than 25,000 companies (including OpenAI, Coinbase, and Ramp) to plan, build, and ship their products.",
+      "Our team is distributed across North America and Europe, and we’re continuing to grow internationally. What unites us is relentless focus, fast execution, and a deep care for software craftsmanship.",
+      "We are designers and engineers. Problem solvers and storytellers. We are a diverse team of individuals, all makers at heart.",
+      "Purpose-built for planning and building products. Designed for the AI era.",
+      "Render UI before vehicle_state sync when minimum required state is present, instead of blocking on full refresh during iOS startup.",
+      "Linear is shaped by the practices and principles of world-class product teams.",
+      "Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs.",
+      "Reduces noise and restores momentum to help teams ship with high velocity and focus.",
+      "Linear is shaped by the practices and principles of world-class product teams.",
+      "Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs.",
+      "Reduces noise and restores momentum to help teams ship with high velocity and focus.",
+      "Turn conversations and customer feedback into actionable issues that are routed, labeled, and prioritized for the right team.",
+      "Plan and navigate from idea to launch. Align your team with product initiatives, strategic roadmaps, and clear, up-to-date PRDs.",
+      "Build and deploy AI agents that work alongside your team. Work on complex tasks together or delegate entire issues end-to-end.",
+      "Understand code changes at a glance with structural diffs for human and agent output. Review, discuss, and merge — all within Linear.",
+      "Take the guesswork out of product development with project updates, analytics, and dashboards that surface what needs your attention.",
+      "iOS implementation is mostly complete, but Android updates are still work in progress",
+      "Risk of timeline slip if remaining design decisions aren’t finalized soon",
+      "Localization efforts have been completed",
+      "Everything else on track for launch in early September",
+      "You just have to use it and you will see, you will just feel it.",
+      "Our speed is intense and Linear helps us be action biased.",
+      "Linear powers over 25,000 product teams. From ambitious startups to major enterprises."
+    ],
+    "tagline": ""
+  },
+  "accent_palette": {
+    "primary_font": "Inter Variable",
+    "accent_fonts": [],
+    "on_headings": [],
+    "on_spans_in_headings": [],
+    "on_serif_elements": [],
+    "on_badges": [
+      {
+        "hex": "#6366F1",
+        "score": 10
+      },
+      {
+        "hex": "#EB5757",
+        "score": 6
+      },
+      {
+        "hex": "#8B5CF6",
+        "score": 6
+      },
+      {
+        "hex": "#5E6AD2",
+        "score": 2
+      },
+      {
+        "hex": "#10B981",
+        "score": 2
+      },
+      {
+        "hex": "#06B6D4",
+        "score": 2
+      },
+      {
+        "hex": "#0F3338",
+        "score": 2
+      },
+      {
+        "hex": "#422222",
+        "score": 2
+      }
+    ],
+    "on_buttons": []
+  }
+}

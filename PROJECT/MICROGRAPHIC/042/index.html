@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>042 // VAN GOGH BLOB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #020b14; overflow: hidden; }
+        canvas { display: block; filter: contrast(1.2) saturate(1.5); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020b14; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: serif; font-size: 32px; color: #FFD700; font-style: italic; letter-spacing: 2px; }
+        #os { font-family: monospace; font-size: 12px; color: #45B6D4; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">Rhythmic_Blob.exe</div>
+    <div id="os">CLICK TO WAKE THE ENTITY</div>
+</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+let particles = [];
+let beatPulse = 0;
+
+const PALETTE = [
+    '#FFD700', // Gold
+    '#FFA500', // Orange
+    '#45B6D4', // Cyan
+    '#2B4A9C', // Deep Blue
+    '#0A1D37', // Dark Blue
+    '#FFFFFF'  // White
+];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); 
+    cx = cv.getContext('2d', { alpha: false });
+    
+    resize(); 
+    window.addEventListener('resize', resize);
+    
+    initParticles();
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cx.fillStyle = '#020b14';
+    cx.fillRect(0, 0, W, H);
+}
+
+function initParticles() {
+    const count = window.innerWidth > 800 ? 3000 : 1500;
+    for(let i=0; i<count; i++) {
+        // Distribute particles in a circular blob
+        const angle = Math.random() * Math.PI * 2;
+        const radius = Math.random() * 200;
+        particles.push({
+            baseRadius: radius,
+            angle: angle,
+            speed: Math.random() * 0.05 + 0.01,
+            color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+            size: Math.random() * 4 + 1,
+            offset: Math.random() * Math.PI * 2
+        });
+    }
+}
+
+// ── AUDIO ENGINE: DEEP RHYTHMIC PULSE ──
+function initAudio() {
+    Tone.Transport.bpm.value = 130;
+
+    // Deep tribal kick / heartbeat
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.2,
+        octaves: 5,
+        oscillator: { type: "sine" },
+        envelope: { attack: 0.001, decay: 0.6, sustain: 0, release: 1 }
+    }).toDestination();
+    kick.volume.value = 5;
+
+    // Swirling organic drone
+    const autoFilter = new Tone.AutoFilter("4n", 200, 4).toDestination().start();
+    const drone = new Tone.FMSynth({
+        harmonicity: 0.5,
+        modulationIndex: 10,
+        oscillator: { type: "sine" },
+        modulation: { type: "triangle" }
+    }).connect(autoFilter);
+    drone.volume.value = -10;
+
+    const loop = new Tone.Loop(time => {
+        // Trigger visual pulse
+        Tone.Draw.schedule(() => {
+            beatPulse = 1.0;
+        }, time);
+        
+        kick.triggerAttackRelease("C1", "8n", time);
+        
+        if (Math.random() > 0.5) {
+            drone.triggerAttackRelease("G2", "4n", time);
+        }
+    }, "4n").start(0);
+
+    // Fast hi-hat / organic rustle
+    const rustle = new Tone.NoiseSynth({
+        noise: { type: "pink" },
+        envelope: { attack: 0.01, decay: 0.05 }
+    }).toDestination();
+    rustle.volume.value = -20;
+    
+    new Tone.Loop(time => {
+        if (Math.random() > 0.3) {
+            rustle.triggerAttackRelease("16n", time);
+        }
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: SMOOTH VAN GOGH BLOB ──
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.01;
+    
+    // Smooth decay of the beat pulse
+    beatPulse *= 0.9;
+    
+    // Smooth fade for trails (no sharp squares)
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = 'rgba(2, 11, 20, 0.08)';
+    cx.fillRect(0, 0, W, H);
+
+    // Draw the blob
+    cx.globalCompositeOperation = 'lighter';
+    
+    const centerX = W / 2;
+    const centerY = H / 2;
+    
+    // Base radius of the blob deforms with the beat
+    const globalDeform = 1 + beatPulse * 0.5;
+
+    particles.forEach(p => {
+        // Swirling angle progression
+        p.angle += p.speed * (1 + beatPulse * 2);
+        
+        // Complex trigonometric deformation to make it look organic and "insane"
+        const noiseEffect = Math.sin(p.angle * 3 + T * 2) * Math.cos(p.angle * 2 - T);
+        const pulseEffect = Math.sin(T * 5 + p.offset) * 50 * beatPulse;
+        
+        const currentRadius = (p.baseRadius + noiseEffect * 50 + pulseEffect) * globalDeform;
+        
+        const x = centerX + Math.cos(p.angle) * currentRadius;
+        const y = centerY + Math.sin(p.angle) * currentRadius;
+        
+        // Draw the circular brush stroke
+        cx.beginPath();
+        cx.arc(x, y, p.size * (1 + beatPulse), 0, Math.PI * 2);
+        cx.fillStyle = p.color;
+        cx.fill();
+    });
+}
+</script>
+</body>
+</html>

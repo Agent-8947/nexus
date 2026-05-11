@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>055 // ORTHODOX PUNK</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #000; overflow: hidden; cursor: none; }
+        canvas { display: block; filter: contrast(1.5) saturate(1.2); }
+        
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer;
+        }
+        
+        .church-slavonic {
+            font-family: "Times New Roman", Times, serif;
+            color: #FFD700;
+            font-size: 8vw;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            text-shadow: 2px 2px 0px #FF0000, -2px -2px 0px #0000FF;
+            text-align: center;
+        }
+
+        #ui-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; display: flex; flex-direction: column;
+            justify-content: space-between; padding: 50px; z-index: 10;
+        }
+
+        .flash-text {
+            font-family: "Courier New", monospace;
+            color: #FF0000;
+            font-size: 2vw;
+            font-weight: bold;
+            display: none;
+            mix-blend-mode: difference;
+        }
+
+        /* CRT Scanlines */
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div class="church-slavonic">И С П О В Е Д Ь</div>
+</div>
+
+<div id="ui-layer">
+    <div class="flash-text" id="t1">SYSTEM ERROR: DIVINE INTERVENTION</div>
+    <div class="flash-text" id="t2" style="text-align: right; font-size: 5vw; color: #FFD700;">СИМЪ ПОБЕДИШИ</div>
+</div>
+
+<canvas id="c"></canvas>
+
+<script>
+let scene, camera, renderer;
+let crosses = [];
+let T = 0;
+let glitchActive = false;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    init3D();
+    initAudio();
+    animate();
+}
+
+function init3D() {
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x110000, 0.02);
+    
+    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 500);
+    camera.position.set(0, 0, 20);
+    
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x050000); // Very dark red/black
+
+    // Create an Orthodox Cross Geometry
+    // We merge 3 boxes: main vertical, upper horizontal, lower slanted
+    const matGold = new THREE.MeshStandardMaterial({ 
+        color: 0xFFD700, 
+        metalness: 0.9, 
+        roughness: 0.1,
+        emissive: 0x331100
+    });
+
+    const vGeo = new THREE.BoxGeometry(1, 10, 1);
+    const h1Geo = new THREE.BoxGeometry(6, 1, 1);
+    const h2Geo = new THREE.BoxGeometry(3, 1, 1); // Top small bar
+    const h3Geo = new THREE.BoxGeometry(4, 1, 1); // Bottom slanted bar
+
+    // Build the cross group
+    function createCross() {
+        const group = new THREE.Group();
+        
+        const v = new THREE.Mesh(vGeo, matGold);
+        group.add(v);
+        
+        const h1 = new THREE.Mesh(h1Geo, matGold);
+        h1.position.y = 1;
+        group.add(h1);
+
+        const h2 = new THREE.Mesh(h2Geo, matGold);
+        h2.position.y = 3.5;
+        group.add(h2);
+
+        const h3 = new THREE.Mesh(h3Geo, matGold);
+        h3.position.y = -2.5;
+        h3.rotation.z = Math.PI / 6; // Slanted
+        group.add(h3);
+
+        return group;
+    }
+
+    // Spawn a grid/array of crosses
+    for(let x = -30; x <= 30; x += 15) {
+        for(let z = -50; z <= 10; z += 15) {
+            let c = createCross();
+            c.position.set(x, 0, z);
+            scene.add(c);
+            crosses.push({ mesh: c, baseX: x, baseZ: z });
+        }
+    }
+
+    // Lighting
+    const ambient = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(ambient);
+
+    const redLight = new THREE.PointLight(0xff0000, 5, 100);
+    redLight.position.set(0, -10, 5);
+    scene.add(redLight);
+
+    const goldLight = new THREE.DirectionalLight(0xffd700, 1);
+    goldLight.position.set(0, 20, 10);
+    scene.add(goldLight);
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+}
+
+// ── AUDIO ENGINE: DARK BYZANTINE CHOIR + HARDBASS ──
+function initAudio() {
+    Tone.Transport.bpm.value = 110;
+
+    // Distorted Synth Choir (Organ/Drone)
+    const choir = new Tone.PolySynth(Tone.FMSynth, {
+        harmonicity: 1.0,
+        modulationIndex: 2,
+        oscillator: { type: "sawtooth" },
+        envelope: { attack: 1, decay: 1, sustain: 1, release: 2 }
+    }).toDestination();
+    
+    const reverb = new Tone.Reverb(10).toDestination();
+    const dist = new Tone.Distortion(0.8).connect(reverb);
+    choir.connect(dist);
+    choir.volume.value = -10;
+
+    // Massive Church Bell
+    const bell = new Tone.MetalSynth({
+        frequency: 100,
+        envelope: { attack: 0.01, decay: 4, release: 0.1 },
+        harmonicity: 4.1,
+        modulationIndex: 20,
+        resonance: 4000,
+        octaves: 1.5
+    }).connect(reverb);
+    bell.volume.value = -5;
+
+    // Aggressive Punk Kick (808 style)
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.05, octaves: 10,
+        envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0.1 }
+    }).toDestination();
+    const kickDist = new Tone.Distortion(2).toDestination();
+    kick.connect(kickDist);
+    kick.volume.value = 5;
+
+    // Sequence
+    new Tone.Loop(time => {
+        // Drone chord (Open fifths - archaic sound)
+        choir.triggerAttackRelease(["D2", "A2", "D3"], "1m", time);
+    }, "1m").start(0);
+
+    let step = 0;
+    new Tone.Loop(time => {
+        // Aggressive kick pattern
+        if (step % 8 === 0 || step % 8 === 3 || step % 8 === 6) {
+            kick.triggerAttackRelease("D0", "8n", time);
+            triggerGlitch();
+        }
+
+        // Bell on the 1 of every 2 bars
+        if (step % 16 === 0) {
+            bell.triggerAttackRelease("1n", time);
+        }
+
+        step++;
+    }, "8n").start(0);
+
+    Tone.Transport.start();
+}
+
+function triggerGlitch() {
+    glitchActive = true;
+    document.getElementById('t1').style.display = Math.random() > 0.5 ? 'block' : 'none';
+    document.getElementById('t2').style.display = Math.random() > 0.7 ? 'block' : 'none';
+    
+    setTimeout(() => {
+        glitchActive = false;
+        document.getElementById('t1').style.display = 'none';
+        document.getElementById('t2').style.display = 'none';
+    }, 100);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.01;
+
+    // Camera movement
+    camera.position.z -= 0.05; // Slow forward movement
+    
+    if (camera.position.z < -20) {
+        camera.position.z = 20; // Loop the corridor
+    }
+
+    // Camera Shake (Punk Element)
+    if (glitchActive) {
+        camera.position.x = (Math.random() - 0.5) * 2;
+        camera.position.y = (Math.random() - 0.5) * 2;
+        scene.fog.color.setHex(0xff0000); // Red fog flash
+    } else {
+        camera.position.x += (0 - camera.position.x) * 0.1;
+        camera.position.y += (0 - camera.position.y) * 0.1;
+        scene.fog.color.setHex(0x110000); // Return to dark red
+    }
+
+    // Floating animation for crosses
+    crosses.forEach((c, i) => {
+        c.mesh.position.y = Math.sin(T * 2 + i) * 2;
+        
+        // Glitch rotation
+        if (glitchActive && Math.random() > 0.8) {
+            c.mesh.rotation.z += Math.PI / 4;
+        } else {
+            // Slow return to upright
+            c.mesh.rotation.z += (0 - c.mesh.rotation.z) * 0.05;
+        }
+    });
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

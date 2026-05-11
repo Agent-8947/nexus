@@ -1,7 +1,0 @@
-{
-  "island_port": 443,
-  "log_level": "DEBUG",
-  "mongodb": {
-        "start_mongodb": true
-  }
-}

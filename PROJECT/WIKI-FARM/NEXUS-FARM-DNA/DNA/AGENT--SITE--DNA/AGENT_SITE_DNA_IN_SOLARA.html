@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Site DNA · Solara Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ============ Solara IMPACT DNA ============ */
+    --ink:#1A1A1A;
+    --ink-rgb:26,26,26;
+    --paper:#F5F5F0;
+    --paper-rgb:245,245,240;
+    --paper-tint:#E8E8E4;
+    --ink-tint:#333333;
+    --solara-accent:#C2410C;
+
+    /* ============ Typography (Solara) ============ */
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --serif-en:"Instrument Serif",Georgia,serif;
+    --serif-body-en:"Instrument Serif",Georgia,serif;
+    --serif-zh:"Instrument Serif",source-han-serif-sc,serif;
+    --sans-zh:"DM Sans",source-han-sans-sc,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;background:var(--ink);color:var(--paper);font-family:var(--sans-zh);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  /* ============ WebGL Dual Background ============ */
+  canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;transition:opacity 1.2s ease}
+  canvas#bg-light{opacity:0}
+  canvas#bg-dark{opacity:1}
+  body.light-bg canvas#bg-light{opacity:1}
+  body.light-bg canvas#bg-dark{opacity:0}
+
+  /* ============ Deck Container ============ */
+  #deck{position:fixed;inset:0;width:10000vw;height:100vh;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);z-index:10;will-change:transform}
+  .slide{width:100vw;height:100vh;flex:0 0 100vw;position:relative;padding:6vh 6vw 10vh 6vw;display:flex;flex-direction:column;overflow:hidden}
+  .slide.light{color:var(--ink)}
+  .slide.dark{color:var(--paper)}
+
+  /* Masks */
+  .slide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:background .7s ease}
+  .slide.light::before{background:rgba(var(--paper-rgb),.85);backdrop-filter:blur(5px)}
+  .slide.dark::before{background:rgba(var(--ink-rgb),.85);backdrop-filter:blur(5px)}
+  .slide.hero.light::before{background:rgba(var(--paper-rgb),.2);backdrop-filter:none}
+  .slide.hero.dark::before{background:rgba(var(--ink-rgb),.15);backdrop-filter:none}
+  .slide.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .slide.hero.light::after{background:linear-gradient(180deg,rgba(var(--paper-rgb),.4) 0%,rgba(var(--paper-rgb),0) 14%,rgba(var(--paper-rgb),0) 86%,rgba(var(--paper-rgb),.4) 100%)}
+  .slide.hero.dark::after{background:linear-gradient(180deg,rgba(var(--ink-rgb),.4) 0%,rgba(var(--ink-rgb),0) 14%,rgba(var(--ink-rgb),0) 86%,rgba(var(--ink-rgb),.4) 100%)}
+
+  /* ============ Chrome ============ */
+  .chrome{display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+
+  /* ============ Typography Hierarchy ============ */
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--solara-accent);margin-bottom:2.6vh;font-weight:500;}
+  .h-hero{font-family:var(--serif-zh);font-weight:400;font-size:9.5vw;line-height:.96;letter-spacing:-.04em;}
+  .h-xl{font-family:var(--serif-zh);font-weight:400;font-size:6.2vw;line-height:1.08;letter-spacing:-.04em;}
+  .h-sub{font-family:var(--serif-zh);font-weight:400;font-size:3.1vw;line-height:1.25;letter-spacing:-.02em;opacity:.8;}
+  .h-md{font-family:var(--serif-zh);font-weight:400;font-size:2.8vw;line-height:1.2;letter-spacing:-.02em;}
+  .lead{font-family:var(--sans-zh);font-weight:400;font-size:1.6vw;line-height:1.5;opacity:.86;}
+  .meta-row{display:flex;gap:1.2em;align-items:baseline;flex-wrap:wrap;font-family:var(--mono);font-size:max(12px,.92vw);letter-spacing:.16em;text-transform:uppercase;opacity:.6;}
+
+  /* ============ Layout Tools ============ */
+  .frame{flex:1;display:flex;flex-direction:column;min-height:0}
+  .grid-2-6-6{display:grid;grid-template-columns:1fr 1fr;gap:3vw 4vh;align-items:start}
+  .grid-2-8-4{display:grid;grid-template-columns:8fr 4fr;gap:3vw 4vh;align-items:start}
+  .grid-6{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:4vw 6vw;flex:1;align-content:center;padding:2vh 0}
+
+  /* ============ Stat ============ */
+  .stat-card{display:flex;flex-direction:column;gap:.8vh;align-items:flex-start;padding-top:1.6vh;border-top:1px solid currentColor;border-color:rgba(127,127,127,.3);}
+  .stat-card .stat-label{font-family:var(--mono);font-size:max(10px,.78vw);letter-spacing:.24em;text-transform:uppercase;color:var(--solara-accent);}
+  .stat-card .stat-nb{font-family:var(--serif-en);font-weight:400;font-size:6vw;line-height:.9;letter-spacing:-.04em;font-feature-settings:"tnum";margin-top:.4vh;}
+  .stat-card .stat-nb .stat-unit{font-family:var(--serif-zh);font-weight:400;font-size:.38em;letter-spacing:0;opacity:.72;margin-left:.14em;}
+  .stat-card .stat-note{font-family:var(--sans-zh);font-weight:400;font-size:max(13px,1.05vw);line-height:1.5;opacity:.72;margin-top:.6vh;}
+
+  /* ============ Callout ============ */
+  .callout{padding:3vh 2.4vw;border-left:3px solid var(--solara-accent);position:relative;font-family:var(--serif-zh);font-size:max(18px,1.6vw);line-height:1.4;opacity:.92; letter-spacing:-.02em;}
+  .slide.light .callout{background:rgba(194,65,12,.05)}
+  .slide.dark .callout{background:rgba(194,65,12,.1)}
+  .callout-src{display:block;margin-top:2vh;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;}
+
+  /* ============ Pipeline ============ */
+  .pipeline-section{margin-top:4.4vh;padding-top:2.8vh;border-top:1px dashed rgba(127,127,127,.32);}
+  .pipeline-section:first-of-type{border-top:0;padding-top:0;margin-top:3vh;}
+  .pipeline-label{font-family:var(--mono);font-size:max(11px,.85vw);letter-spacing:.24em;text-transform:uppercase;opacity:.62;margin-bottom:2.2vh;}
+  .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2vw;}
+  .pipeline[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+  .step{display:flex;flex-direction:column;gap:.8vh;padding-top:1.4vh;border-top:2px solid var(--solara-accent);}
+  .step-nb{font-family:var(--serif-en);font-style:italic;font-weight:400;font-size:1.4vw;opacity:.6;color:var(--solara-accent);}
+  .step-title{font-family:var(--serif-zh);font-weight:400;font-size:1.8vw;letter-spacing:-.02em;line-height:1.2;}
+  .step-desc{font-family:var(--sans-zh);font-weight:400;font-size:max(12px,.95vw);line-height:1.45;opacity:.72;}
+
+  /* ============ Navigation ============ */
+  #nav{position:fixed;left:50%;bottom:2.6vh;transform:translateX(-50%);z-index:30;display:flex;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  #nav .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s ease;border:0;padding:0}
+  #nav .dot:hover{background:var(--solara-accent);transform:scale(1.15)}
+  #nav .dot.active{background:var(--solara-accent);width:22px;border-radius:999px}
+  body.light-bg #nav{background:rgba(255,255,255,.25)}
+  body.light-bg #nav .dot{background:rgba(var(--ink-rgb),.25)}
+  body.light-bg #nav .dot.active{background:var(--solara-accent)}
+  #hint{position:fixed;bottom:3vh;right:3vw;z-index:30;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;mix-blend-mode:difference;color:#aaa}
+</style>
+</head>
+<body>
+
+<canvas id="bg-dark" class="bg"></canvas>
+<canvas id="bg-light" class="bg"></canvas>
+<div id="hint">← → SWIPE · ESC TO VIEW ALL</div>
+
+<div id="deck">
+
+<!-- 01 Cover -->
+<section class="slide hero dark">
+  <div class="chrome">
+    <div>NEXUS Engine · 2026</div>
+    <div>Vol.01</div>
+  </div>
+  <div class="frame" style="display:grid; gap:3vh; align-content:center; min-height:80vh">
+    <div class="kicker">Brand Intelligence</div>
+    <h1 class="h-hero">AGENT--SITE<br>--DNA</h1>
+    <h2 class="h-sub">Автоматизированное извлечение ДНК бренда</h2>
+    <p class="lead" style="max-width:60vw">
+      Превращаем любой веб-сайт в формализованный JSON-манифест, готовую дизайн-систему и GSAP-стратегию за 60 секунд.
+    </p>
+    <div class="meta-row" style="margin-top:2vh">
+      <span>NEXUS Core System</span><span>·</span><span>Production Ready</span>
+    </div>
+  </div>
+  <div class="foot">
+    <div>Презентация продукта · Styled by Solara</div>
+    <div>— 2026 —</div>
+  </div>
+</section>
+
+<!-- 02 Divider -->
+<section class="slide hero light">
+  <div class="chrome">
+    <div>Act I · Проблема</div>
+    <div>02 / 07</div>
+  </div>
+  <div class="frame" style="display:grid; gap:6vh; align-content:center; min-height:80vh">
+    <div class="kicker">The Chaos</div>
+    <h1 class="h-hero" style="font-size:8.5vw">Бренды теряют идентичность.</h1>
+    <p class="lead" style="max-width:55vw">
+      При ручном масштабировании контента неизбежно возникают искажения.
+    </p>
+  </div>
+  <div class="foot">
+    <div>Проблема ручного переноса</div>
+    <div>— · —</div>
+  </div>
+</section>
+
+<!-- 03 Compare -->
+<section class="slide light">
+  <div class="chrome">
+    <div>Контекст · The Shift</div>
+    <div>03 / 07</div>
+  </div>
+  <div class="frame grid-2-6-6" style="padding-top:5vh">
+    <div style="grid-column: span 2">
+        <div class="kicker">Before / After</div>
+        <h2 class="h-xl" style="margin-bottom:4vh">От хаоса к системе.</h2>
+    </div>
+
+    <div style="padding:3vh 2vw; border-left:2px solid rgba(0,0,0,0.1); opacity:.55">
+      <div class="kicker" style="opacity:.9; color:var(--ink)">Ручной аудит</div>
+      <h3 class="h-md" style="margin-top:2vh">Глазной анализ → Ошибки</h3>
+      <ul style="margin-top:3vh; padding-left:1.2em; display:flex; flex-direction:column; gap:1.4vh; font-size:max(14px,1.1vw); line-height:1.55">
+        <li>Дизайнер смотрит сайт и гадает шрифты</li>
+        <li>Эвристика вместо точных computed CSS</li>
+        <li>Потеря межстрочного расстояния и контраста</li>
+        <li>Непоследовательные анимации</li>
+      </ul>
+    </div>
+    <div style="padding:3vh 2vw; border-left:3px solid var(--solara-accent)">
+      <div class="kicker" style="opacity:.9">Agentic DNA</div>
+      <h3 class="h-md" style="margin-top:2vh">URL → Точный Manifest</h3>
+      <ul style="margin-top:3vh; padding-left:1.2em; display:flex; flex-direction:column; gap:1.4vh; font-size:max(14px,1.1vw); line-height:1.55">
+        <li>Playwright парсит реальный DOM</li>
+        <li>Извлечение Letter-Spacing и Line-Height</li>
+        <li>Автоматический Brandbook HTML</li>
+        <li>Motion Architect подбирает GSAP стратегии</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot">
+    <div>Page 03 · Смена парадигмы</div>
+    <div>Before / After</div>
+  </div>
+</section>
+
+<!-- 04 Stats -->
+<section class="slide dark">
+  <div class="chrome">
+    <div>Hard Data · Результаты</div>
+    <div>04 / 07</div>
+  </div>
+  <div class="frame" style="padding-top:6vh">
+    <div class="kicker">Что под капотом.</div>
+    <h2 class="h-xl">Архитектура 3.0.</h2>
+    <p class="lead" style="margin-bottom:5vh">Deterministic Extraction. Никаких галлюцинаций LLM на этапе парсинга.</p>
+
+    <div class="grid-6" style="margin-top:6vh">
+      <div class="stat-card">
+        <div class="stat-label">Precision</div>
+        <div class="stat-nb">100<span class="stat-unit">%</span></div>
+        <div class="stat-note">Точность CSS Computed Style</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Signals</div>
+        <div class="stat-nb">6</div>
+        <div class="stat-note">Векторов анализа бренда</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Speed</div>
+        <div class="stat-nb">15<span class="stat-unit">sec</span></div>
+        <div class="stat-note">Время полного анализа URL</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">GSAP Presets</div>
+        <div class="stat-nb">21</div>
+        <div class="stat-note">Готовых бизнес-анимаций</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Artifacts</div>
+        <div class="stat-nb">4</div>
+        <div class="stat-note">JSON, HTML, MD Strategy, MD Copy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Dependencies</div>
+        <div class="stat-nb">1</div>
+        <div class="stat-note">Playwright Chromium (Headless)</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div>NEXUS · Agent Architecture</div>
+    <div>Data Grid</div>
+  </div>
+</section>
+
+<!-- 05 Pipeline -->
+<section class="slide light">
+  <div class="chrome">
+    <div>Workflow · Пайплайн</div>
+    <div>05 / 07</div>
+  </div>
+  <div class="frame">
+    <div class="kicker">Pipeline · Конвейер</div>
+    <h2 class="h-xl">Как это работает.</h2>
+
+    <div class="pipeline-section">
+      <div class="pipeline-label">Phase 1 · Извлечение · Extraction Pipeline</div>
+      <div class="pipeline" data-cols="3">
+        <div class="step">
+          <div class="step-nb">01</div>
+          <div class="step-title">Ingest</div>
+          <div class="step-desc">CLI получает URL и запускает Chromium</div>
+        </div>
+        <div class="step">
+          <div class="step-nb">02</div>
+          <div class="step-title">Parse DOM</div>
+          <div class="step-desc">Сбор computed styles, шрифтов, цветов, межбуквенного интервала</div>
+        </div>
+        <div class="step">
+          <div class="step-nb">03</div>
+          <div class="step-title">Serialize</div>
+          <div class="step-desc">Сохранение чистой ДНК в формализованный `dna.json`</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-section">
+      <div class="pipeline-label">Phase 2 · Синтез · Synthesis Pipeline</div>
+      <div class="pipeline" data-cols="3">
+        <div class="step">
+          <div class="step-nb">04</div>
+          <div class="step-title">Brandbook</div>
+          <div class="step-desc">Генерация `brandbook.html` для визуальной верификации</div>
+        </div>
+        <div class="step">
+          <div class="step-nb">05</div>
+          <div class="step-title">Motion Architect</div>
+          <div class="step-desc">Скрипт анализирует Vibe бренда на основе 6 сигналов</div>
+        </div>
+        <div class="step">
+          <div class="step-nb">06</div>
+          <div class="step-title">Strategy</div>
+          <div class="step-desc">Выдача MD с GSAP-стратегией (Editorial / SaaS / Premium)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div>Page 05 · Pipeline</div>
+    <div>Workflow</div>
+  </div>
+</section>
+
+<!-- 06 Principle -->
+<section class="slide dark">
+  <div class="chrome">
+    <div>Design Principle · Архитектура</div>
+    <div>06 / 07</div>
+  </div>
+  <div class="frame grid-2-8-4" style="padding-top:6vh">
+    <div>
+      <div class="kicker">Жесткий контракт</div>
+      <h2 class="h-xl" style="margin-top:1vh; margin-bottom:3vh">Code over Guessing.</h2>
+
+      <p class="lead" style="margin-bottom:3vh">
+        Мы отказались от LLM-Vision для извлечения базовых стилей. Зрение AI галлюцинирует шрифты. DOM — никогда.
+      </p>
+
+      <p style="font-size:max(14px,1.15vw); line-height:1.75; opacity:.78; margin-bottom:2.4vh">
+        Скрипт `nexus_visual_analyzer.py` использует инъекцию JS для извлечения точных CSS-переменных, `letter-spacing`, `font-weight`. AI включается только на этапе стратегии (`DNA_MOTION_ARCHITECT`), когда детерминированный `dna.json` уже собран.
+      </p>
+
+      <div class="callout" style="margin-top:3vh">
+        "Точность пикселей не должна зависеть от температуры промпта."
+        <div class="callout-src">— NEXUS Philosophy</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;min-width:0;overflow:hidden;position:relative;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:4px;aspect-ratio:3/4;max-height:60vh">
+      <div style="padding:20px; font-family:var(--mono); font-size:12px; color:rgba(255,255,255,.6); white-space:pre-wrap; display:flex; align-items:center; height:100%">
+{
+ "brand_name": "Solara",
+ "typography": {
+  "headings": {
+   "fontFamily": "Instrument Serif",
+   "letterSpacing": "-0.04em"
+  }
+ },
+ "colors": {
+  "accent": "hsl(14.7, 95%, 52.9%)"
+ }
+}
+      </div>
+      <div style="padding-left:10px; padding-bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.6;">JSON Payload · DNA</div>
+    </div>
+  </div>
+  <div class="foot">
+    <div>Page 06 · Principle</div>
+    <div>Architecture</div>
+  </div>
+</section>
+
+<!-- 07 Question -->
+<section class="slide hero dark">
+  <div class="chrome">
+    <div>The Question</div>
+    <div>07 / 07</div>
+  </div>
+  <div class="frame" style="display:grid; gap:8vh; align-content:center; min-height:80vh">
+    <div class="kicker">Zero-Guessing Validation</div>
+    <h1 class="h-hero" style="font-size:7vw; line-height:1.15">
+      Готов ли ваш бренд<br>
+      к масштабированию<br>
+      через код?
+    </h1>
+    <p class="lead" style="max-width:50vw">
+      Run: `python run.py --url https://brand.com`
+    </p>
+  </div>
+  <div class="foot">
+    <div>NEXUS IDE Pipeline</div>
+    <div>— EOF —</div>
+  </div>
+</section>
+
+</div>
+
+<div id="nav"></div>
+
+<script>
+/* =============== WebGL Dual Backgrounds (Solara Adapted) =============== */
+const VS = `attribute vec2 position;void main(){gl_Position=vec4(position,0.0,1.0);}`;
+
+const FS_DARK = `precision highp float;
+uniform vec2 u_resolution;uniform float u_time;uniform vec2 u_mouse;
+vec3 palette(float t,vec3 a,vec3 b,vec3 c,vec3 d){return a+b*cos(6.28318*(c*t+d));}
+void main(){
+  vec2 uv=gl_FragCoord.xy/u_resolution.xy;
+  vec2 p=uv*2.0-1.0;p.x*=u_resolution.x/u_resolution.y;
+  vec2 m=u_mouse*2.0-1.0;m.x*=u_resolution.x/u_resolution.y;
+  float md=length(p-m);
+  float mr=sin(md*15.0-u_time*4.0)*exp(-md*3.0);p+=mr*0.08;
+  vec2 p0=p;
+  for(float i=1.0;i<4.0;i++){
+    p.x+=0.1/i*sin(i*3.0*p.y+u_time*0.4)+0.05;
+    p.y+=0.1/i*cos(i*2.0*p.x+u_time*0.3)-0.05;
+  }
+  float r=length(p);float ang=atan(p.y,p.x);
+  
+  // Solara Dark Palette (Warm darks, slight orange tint)
+  vec3 a=vec3(0.1,0.1,0.1);
+  vec3 b=vec3(0.05,0.02,0.0);
+  vec3 c=vec3(1.0,1.0,1.0);
+  vec3 d=vec3(0.1,0.05,0.0);
+  
+  vec3 col=palette(r*1.5+p0.x*0.5+u_time*0.1,a,b,c,d);
+  float disp=sin(r*25.0-u_time*1.5+ang*2.0)*0.5+0.5;
+  col+=vec3(disp*0.02,disp*0.01,disp*0.005);
+  float hi=pow(sin(p.x*4.0+p.y*3.0+u_time)*0.5+0.5,8.0);
+  col+=hi*0.1 * vec3(1.0, 0.4, 0.1); // Orange highlight
+  vec3 base=vec3(0.1,0.1,0.1);
+  col=mix(base,col,0.85);
+  gl_FragColor=vec4(col,1.0);
+}`;
+
+const FS_LIGHT = `precision highp float;
+uniform vec2 u_resolution;uniform float u_time;uniform vec2 u_mouse;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){
+  vec2 i=floor(p),f=fract(p);
+  float a=hash(i),b=hash(i+vec2(1,0));
+  float c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));
+  vec2 u=f*f*(3.0-2.0*f);
+  return mix(a,b,u.x)+(c-a)*u.y*(1.0-u.x)+(d-b)*u.x*u.y;
+}
+float fbm(vec2 p){
+  float v=0.0,a=0.5;
+  mat2 m=mat2(0.80,0.60,-0.60,0.80);
+  for(int i=0;i<5;i++){v+=a*noise(p);p=m*p*2.02;a*=0.5;}
+  return v;
+}
+void main(){
+  vec2 uv=gl_FragCoord.xy/u_resolution.xy;
+  vec2 p=uv;p.x*=u_resolution.x/u_resolution.y;
+  vec2 m=u_mouse;m.x*=u_resolution.x/u_resolution.y;
+  vec2 md=p-m;float dl=length(md);
+  p+=normalize(md+vec2(0.0001))*exp(-dl*5.0)*0.03;
+  vec2 q=vec2(fbm(p*1.8+u_time*0.07),fbm(p*1.8+vec2(5.2,1.3)+u_time*0.06));
+  vec2 r=vec2(fbm(p*2.0+q*1.3+vec2(1.7,9.2)+u_time*0.05),
+              fbm(p*2.0+q*1.3+vec2(8.3,2.8)+u_time*0.04));
+  float f=fbm(p*2.2+r*1.5);
+  
+  // Solara Light Palette (Paper F5F5F0 with slight warm/orange waves)
+  vec3 paper=vec3(0.96,0.96,0.94);
+  vec3 silver=vec3(0.90,0.88,0.85);
+  vec3 col=mix(silver,paper,f);
+  float ph=r.x*2.2+u_time*0.35;
+  col+=vec3(0.9,0.5,0.2)*sin(ph)*0.03; // Subtle orange
+  float hl=smoothstep(0.48,0.92,f);
+  col+=hl*0.05;
+  gl_FragColor=vec4(col,1.0);
+}`;
+
+const mouse={x:0.5,y:0.5};
+addEventListener('mousemove',e=>{mouse.x=e.clientX/innerWidth;mouse.y=e.clientY/innerHeight});
+
+function bootGL(canvasId, fsSrc){
+  const canvas=document.getElementById(canvasId);
+  const gl=canvas.getContext('webgl',{alpha:false,antialias:true});
+  if(!gl) return ()=>false;
+  const mk=(t,s)=>{const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh};
+  const prog=gl.createProgram();
+  gl.attachShader(prog,mk(gl.VERTEX_SHADER,VS));
+  gl.attachShader(prog,mk(gl.FRAGMENT_SHADER,fsSrc));
+  gl.linkProgram(prog);gl.useProgram(prog);
+  const buf=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+  const pos=gl.getAttribLocation(prog,'position');
+  gl.enableVertexAttribArray(pos);gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);
+  const lRes=gl.getUniformLocation(prog,'u_resolution');
+  const lT=gl.getUniformLocation(prog,'u_time');
+  const lM=gl.getUniformLocation(prog,'u_mouse');
+  const resize=()=>{
+    const d=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=innerWidth*d;canvas.height=innerHeight*d;
+    gl.viewport(0,0,canvas.width,canvas.height);
+  };
+  addEventListener('resize',resize);resize();
+  return (tSec)=>{
+    gl.uniform2f(lRes,canvas.width,canvas.height);
+    gl.uniform1f(lT,tSec);
+    gl.uniform2f(lM,mouse.x,1-mouse.y);
+    gl.drawArrays(gl.TRIANGLES,0,6);
+    return true;
+  };
+}
+const drawDark=bootGL('bg-dark',FS_DARK);
+const drawLight=bootGL('bg-light',FS_LIGHT);
+const t0=Date.now();
+(function loop(){
+  const t=(Date.now()-t0)/1000;
+  drawDark(t);drawLight(t);
+  requestAnimationFrame(loop);
+})();
+
+const deck=document.getElementById('deck');
+const slides=deck.querySelectorAll('.slide');
+const nav=document.getElementById('nav');
+let idx=0,total=slides.length,lock=false;
+
+deck.style.width=(total*100)+'vw';
+
+slides.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.className='dot';b.dataset.i=i;b.setAttribute('aria-label','Page '+(i+1));
+  b.onclick=()=>go(i);
+  nav.appendChild(b);
+});
+
+function go(n){
+  if(lock)return;
+  idx=Math.max(0,Math.min(total-1,n));
+  deck.style.transform=`translateX(${-idx*100}vw)`;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===idx));
+  nav.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  const el=slides[idx];
+  const th=el.dataset.theme || (el.classList.contains('light')?'light':(el.classList.contains('dark')?'dark':'dark'));
+  document.body.classList.toggle('light-bg',th==='light');
+  lock=true;setTimeout(()=>lock=false,700);
+}
+
+let overviewOn=false;
+const ov=document.createElement('div');
+ov.id='overview';
+ov.style.cssText='position:fixed;inset:0;z-index:100;background:rgba(var(--ink-rgb),.92);backdrop-filter:blur(12px);display:none;overflow-y:auto;padding:4vh 4vw';
+document.body.appendChild(ov);
+
+function buildOverview(){
+  ov.innerHTML='';
+  const grid=document.createElement('div');
+  grid.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:2vh 1.6vw;max-width:90vw;margin:0 auto';
+  slides.forEach((s,i)=>{
+    const card=document.createElement('div');
+    card.style.cssText='cursor:pointer;border-radius:6px;overflow:hidden;border:2px solid '+(i===idx?'rgba(var(--solara-accent),.8)':'rgba(255,255,255,.15)')+';transition:border-color .2s';
+    card.onmouseenter=()=>card.style.borderColor='var(--solara-accent)';
+    card.onmouseleave=()=>card.style.borderColor=i===idx?'var(--solara-accent)':'rgba(255,255,255,.15)';
+    const wrap=document.createElement('div');
+    wrap.style.cssText='width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;pointer-events:none;background:'+(s.classList.contains('light')?'var(--paper)':'var(--ink)');
+    const clone=s.cloneNode(true);
+    clone.style.cssText='width:100vw;height:100vh;transform:scale('+(1/4.5)+');transform-origin:top left;position:absolute;top:0;left:0;pointer-events:none';
+    wrap.appendChild(clone);
+    const label=document.createElement('div');
+    label.style.cssText='padding:6px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);opacity:.7';
+    label.textContent=(i+1)+' / '+total;
+    card.appendChild(wrap);
+    card.appendChild(label);
+    card.onclick=()=>{toggleOverview();go(i)};
+    grid.appendChild(card);
+  });
+  ov.appendChild(grid);
+}
+
+function toggleOverview(){
+  overviewOn=!overviewOn;
+  if(overviewOn){buildOverview();ov.style.display='block';}
+  else{ov.style.display='none';}
+}
+
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){e.preventDefault();toggleOverview();return;}
+  if(overviewOn)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '||e.key==='ArrowDown')go(idx+1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp'||e.key==='ArrowUp')go(idx-1);
+  if(e.key==='Home')go(0);
+  if(e.key==='End')go(total-1);
+});
+
+let wheelTO=null,wheelAcc=0;
+addEventListener('wheel',e=>{
+  wheelAcc+=e.deltaY+e.deltaX;
+  if(Math.abs(wheelAcc)>50){go(idx+(wheelAcc>0?1:-1));wheelAcc=0;}
+  clearTimeout(wheelTO);wheelTO=setTimeout(()=>wheelAcc=0,150);
+},{passive:true});
+
+let tx=0,ty=0;
+addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{
+  const dx=(e.changedTouches[0].clientX-tx);
+  const dy=(e.changedTouches[0].clientY-ty);
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))go(idx+(dx<0?1:-1));
+},{passive:true});
+
+go(0);
+</script>
+</body>
+</html>

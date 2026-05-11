@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>025 // NECROTIC COLLAPSE VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#020205;overflow:hidden}
+canvas{display:block;filter:contrast(1.7) saturate(1.2) brightness(0.8)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 0%,rgba(0,0,0,1) 90%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:12%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#00000a;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#808;text-transform:uppercase;text-shadow:0 0 15px rgba(255,0,255,0.6)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:13%;right:3%;font-family:monospace;font-size:10px;color:rgba(150,50,255,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">025 // NECROTIC COLLAPSE</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: HEAVY BASS & GLITCH ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Heavy Bass
+    const b1=ax.createOscillator();b1.type='sine';b1.frequency.value=40;
+    const g1=ax.createGain();g1.gain.value=0.7;
+    b1.connect(g1);g1.connect(_m);b1.start();
+    
+    // Glitch bursts
+    function glitch(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const bs=ax.sampleRate*0.05,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+        for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+        const n=ax.createBufferSource();n.buffer=b;
+        const ng=ax.createGain();ng.gain.setValueAtTime(0.5,now);ng.gain.exponentialRampToValueAtTime(0.001,now+0.05);
+        n.connect(ng);ng.connect(_m);n.start(now);
+        
+        glitchIntensity = 1.5;
+        setTimeout(glitch, 100 + Math.random()*1000);
+    }
+    setTimeout(glitch, 1000);
+}
+
+// ── VJ ENGINE: COLLAPSING PARTICLES ──
+class Particle {
+    constructor(x, y) {
+        this.x = x; this.y = y;
+        this.vx = (Math.random()-0.5)*5;
+        this.vy = (Math.random()-0.5)*5;
+        this.life = 1.0;
+        this.size = 2 + Math.random()*5;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.1; // gravity
+        this.life -= 0.02;
+    }
+}
+
+let particles = [];
+let sourceBlob = {x: 0, y: 0, r: 100};
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    if(W) {
+        sourceBlob.x = W/2 + Math.sin(T)*100;
+        sourceBlob.y = H/2 + Math.cos(T*0.7)*50;
+    }
+    
+    // Spawn particles from blob
+    if(Math.random()>0.5) {
+        const angle = Math.random()*Math.PI*2;
+        const dist = Math.random()*sourceBlob.r;
+        particles.push(new Particle(sourceBlob.x + Math.cos(angle)*dist, sourceBlob.y + Math.sin(angle)*dist));
+    }
+    
+    glitchIntensity *= 0.85;
+    
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(200,200,255,0.1)' : 'rgba(2,2,5,0.2)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    const offset = Math.sin(T*15) * 20 * glitchIntensity;
+    
+    function drawScene() {
+        // Draw source blob
+        cx.beginPath();
+        cx.arc(sourceBlob.x, sourceBlob.y, sourceBlob.r + Math.sin(T*10)*10*glitchIntensity, 0, Math.PI*2);
+        cx.fill();
+        
+        // Draw particles
+        particles.forEach((p, i) => {
+            p.update();
+            if(p.life <= 0) particles.splice(i, 1);
+            else {
+                cx.beginPath();
+                cx.arc(p.x, p.y, p.size * p.life, 0, Math.PI*2);
+                cx.fill();
+            }
+        });
+    }
+    
+    cx.save();
+    
+    // RED
+    cx.save(); cx.translate(offset, 0); cx.fillStyle = '#ff0055'; drawScene(); cx.restore();
+    // GREEN
+    cx.save(); cx.translate(-offset, offset); cx.fillStyle = '#00ffff'; drawScene(); cx.restore();
+    // BLUE
+    cx.save(); cx.translate(0, -offset); cx.fillStyle = '#aa00ff'; drawScene(); cx.restore();
+    
+    cx.restore();
+    cx.globalCompositeOperation = 'source-over';
+}
+</script>
+</body>
+</html>

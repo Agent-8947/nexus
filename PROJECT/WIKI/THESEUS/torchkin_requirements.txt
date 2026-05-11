@@ -1,2 +1,0 @@
-urdf_parser_py>=0.0.4
-torchlie

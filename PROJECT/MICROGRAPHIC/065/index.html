@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>065 // THE BELLS OF GEHENNA</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        canvas { display: block; filter: contrast(1.5) saturate(0.5); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: serif; font-size: 24px; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ КОЛОКОЛА ГЕЕННЫ ]</div>
+<canvas id="c"></canvas>
+
+<script>
+let scene, camera, renderer, bellGroup;
+let T = 0;
+let strike = false;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    init3D(); initAudio(); animate();
+}
+
+function init3D() {
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x000000, 0.02);
+
+    camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+    camera.position.set(0, -10, 30);
+    camera.lookAt(0, 0, 0);
+
+    // Renderer with autoClear false for motion blur trail effect
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c'), preserveDrawingBuffer: true, alpha: true});
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.autoClearColor = false;
+
+    // Create a Bell
+    bellGroup = new THREE.Group();
+    const bellMat = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 1, roughness: 0.1 });
+    
+    // Simplistic brutal bell shape (cylinder)
+    const bellGeo = new THREE.CylinderGeometry(5, 8, 15, 16, 1, true);
+    const bellMesh = new THREE.Mesh(bellGeo, bellMat);
+    bellMesh.position.y = -7.5; // Offset so it swings from the top
+
+    // Clapper
+    const clapperMesh = new THREE.Mesh(new THREE.SphereGeometry(2, 16, 16), bellMat);
+    clapperMesh.position.y = -15;
+
+    bellGroup.add(bellMesh);
+    bellGroup.add(clapperMesh);
+    
+    // Anchor point for pendulum
+    bellGroup.position.set(0, 15, 0);
+    scene.add(bellGroup);
+
+    // Lighting
+    scene.add(new THREE.AmbientLight(0xff0000, 0.1));
+    const flash = new THREE.PointLight(0xffffff, 0, 100);
+    flash.position.set(0, -10, 10);
+    flash.name = "flashLight";
+    scene.add(flash);
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 180; // Fast Punk D-Beat tempo
+
+    // Massive Bell Synthesis
+    const bell = new Tone.MetalSynth({
+        frequency: 80, envelope: { attack: 0.01, decay: 4, release: 1 },
+        harmonicity: 5.1, modulationIndex: 32, resonance: 4000, octaves: 1.5
+    });
+    const bDist = new Tone.Distortion(2).toDestination();
+    bell.chain(bDist, new Tone.Reverb(10).toDestination());
+    bell.volume.value = 0;
+
+    // D-beat drums
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 4 }).toDestination();
+    kick.volume.value = 5;
+    const snare = new Tone.NoiseSynth({ noise: { type: "white" }, envelope: { decay: 0.2 } }).toDestination();
+    snare.volume.value = 0;
+
+    let step = 0;
+    new Tone.Loop(time => {
+        // D-Beat pattern: K - K S - K S -
+        if(step % 8 === 0 || step % 8 === 3 || step % 8 === 6) kick.triggerAttackRelease("C1", "16n", time);
+        if(step % 8 === 4 || step % 8 === 7) snare.triggerAttackRelease("16n", time);
+
+        // Huge bell strike every 16 steps
+        if(step % 16 === 0) {
+            bell.triggerAttackRelease("1n", time);
+            strike = true;
+        }
+        
+        step++;
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.05;
+
+    // Motion blur clear
+    renderer.setClearColor(0x000000, 0.1);
+    renderer.clearColor();
+
+    // Violent pendulum swing
+    bellGroup.rotation.z = Math.sin(T) * (Math.PI / 3);
+    
+    // Lighting Flash sync
+    const fl = scene.getObjectByName("flashLight");
+    if(strike) {
+        fl.intensity = 10;
+        strike = false;
+        // Camera shake
+        camera.position.x = (Math.random()-0.5)*2;
+        camera.position.y = -10 + (Math.random()-0.5)*2;
+    } else {
+        fl.intensity += (0 - fl.intensity) * 0.1;
+        camera.position.x += (0 - camera.position.x) * 0.1;
+        camera.position.y += (-10 - camera.position.y) * 0.1;
+    }
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

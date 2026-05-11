@@ -1,5 +1,0 @@
-- [search](search)
-    - [binary_search](binary_search.py)
-    - [count_elem](count_elem.py)
-    - [first_occurance](first_occurance.py)
-    - [last_occurance](last_occurance.py)

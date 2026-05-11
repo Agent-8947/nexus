@@ -1,6 +1,0 @@
-[k8s-admission-control]
-  dashboard = true
-  denied-categories = [
-      "Identity and Access Management",
-      "Network Security",
-  ]

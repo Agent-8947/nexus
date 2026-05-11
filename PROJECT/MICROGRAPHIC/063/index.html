@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>063 // TRUE NORWEGIAN ORTHODOXY</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        canvas { display: block; filter: contrast(2) grayscale(1); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #fff; font-family: serif; font-size: 24px; cursor: pointer;
+            letter-spacing: 5px; text-transform: uppercase;
+        }
+        .flash {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 10vw; color: #fff; mix-blend-mode: difference; font-family: "Times New Roman", serif;
+            font-weight: 900; opacity: 0; pointer-events: none; text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ИСТИННАЯ ВЕРА ]</div>
+<div class="flash" id="txt">СМЕРТЬ</div>
+<canvas id="c"></canvas>
+
+<script>
+let cx, W, H, T=0;
+let lines = [];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    const cv = document.getElementById('c'); cx = cv.getContext('2d');
+    W = cv.width = innerWidth; H = cv.height = innerHeight;
+    initAudio(); animate();
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 210;
+
+    // "Buzzsaw" Black Metal Guitar Tone
+    const buzzsaw = new Tone.Synth({
+        oscillator: { type: "square8" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 1, release: 0.1 }
+    });
+    const highpass = new Tone.Filter(800, "highpass");
+    const dist = new Tone.Distortion(50); // Extreme distortion
+    buzzsaw.chain(highpass, dist, Tone.Destination);
+    buzzsaw.volume.value = -10;
+
+    // Raw Blast Beat
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.01 }).toDestination();
+    kick.volume.value = 5;
+
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "16n", time);
+        if(Math.random() > 0.5) {
+            buzzsaw.triggerAttackRelease(Math.random() > 0.5 ? "E2" : "F2", "16n", time);
+        } else {
+            buzzsaw.triggerAttackRelease(Math.random() > 0.5 ? "E3" : "Bb2", "16n", time);
+        }
+
+        // Add jagged lines to array
+        lines.push({
+            x: W/2, y: H/2, 
+            vx: (Math.random()-0.5)*50, vy: (Math.random()-0.5)*50,
+            life: 20
+        });
+
+    }, "16n").start(0);
+
+    new Tone.Loop(time => {
+        if(Math.random() > 0.5) {
+            document.getElementById('txt').style.opacity = 1;
+            setTimeout(() => document.getElementById('txt').style.opacity = 0, 50);
+        }
+    }, "2n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    // Lo-Fi Snow/Static background
+    cx.fillStyle = Math.random() > 0.9 ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+    cx.fillRect(0,0,W,H);
+
+    cx.strokeStyle = '#fff';
+    cx.lineWidth = 2;
+    cx.beginPath();
+    
+    for(let i=lines.length-1; i>=0; i--) {
+        let l = lines[i];
+        cx.moveTo(l.x, l.y);
+        l.x += l.vx; l.y += l.vy;
+        
+        // Randomly split (branching like a thorny black metal logo)
+        if(Math.random() > 0.8 && l.life > 10) {
+            lines.push({ x: l.x, y: l.y, vx: l.vx + (Math.random()-0.5)*20, vy: l.vy + (Math.random()-0.5)*20, life: l.life - 5 });
+        }
+        
+        cx.lineTo(l.x, l.y);
+        l.life--;
+        if(l.life <= 0) lines.splice(i, 1);
+    }
+    cx.stroke();
+
+    // Draw harsh crosses
+    if(Math.random() > 0.95) {
+        cx.fillStyle = '#fff';
+        let cxp = Math.random() * W, cyp = Math.random() * H, cs = Math.random() * 200;
+        cx.fillRect(cxp - cs/10, cyp - cs/2, cs/5, cs);
+        cx.fillRect(cxp - cs/3, cyp - cs/6, cs*0.66, cs/5);
+    }
+}
+</script>
+</body>
+</html>

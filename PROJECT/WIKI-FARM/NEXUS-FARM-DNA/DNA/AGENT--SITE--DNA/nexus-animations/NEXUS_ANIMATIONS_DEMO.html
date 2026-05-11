@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS Business Animations v3.0 — Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0a0a0a;
+        --fg: #f0f0f0;
+        --muted: #666;
+        --accent: #c8ff00;
+        --card-bg: #141414;
+        --border: #222;
+        --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; cursor: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+    /* Section layout */
+    section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 0; border-bottom: 1px solid var(--border); position: relative; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .section-title { font-size: clamp(36px, 5vw, 64px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+    .section-sub { font-size: 18px; color: var(--muted); max-width: 600px; margin-bottom: 40px; }
+
+    /* Trigger button */
+    .trigger-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); border-radius: 100px; background: transparent; color: var(--fg); font-family: inherit; font-size: 14px; cursor: pointer; transition: border-color 0.3s; }
+    .trigger-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Cards grid */
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .card p { font-size: 14px; color: var(--muted); }
+
+    /* Stats */
+    .stats-row { display: flex; gap: 60px; margin-top: 40px; }
+    .stat { text-align: center; }
+    .stat-number { font-size: 56px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* Progress bars */
+    .progress-wrap { margin-top: 40px; }
+    .progress-item { margin-bottom: 20px; }
+    .progress-item label { font-size: 13px; color: var(--muted); display: block; margin-bottom: 8px; }
+    .progress-track { width: 100%; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); transform-origin: left center; }
+
+    /* Image reveal */
+    .image-container { width: 100%; max-width: 700px; border-radius: var(--radius); overflow: hidden; margin-top: 40px; }
+    .image-container img { width: 100%; display: block; }
+
+    /* Divider line */
+    .divider { width: 100%; height: 1px; background: var(--accent); margin: 40px 0; }
+
+    /* CTA buttons */
+    .cta-btn { display: inline-block; padding: 16px 40px; background: var(--fg); color: var(--bg); border: none; border-radius: 100px; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; overflow: hidden; position: relative; }
+    .cta-btn-outline { display: inline-block; padding: 16px 40px; border: 1px solid var(--fg); background: transparent; color: var(--fg); border-radius: 100px; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; margin-left: 16px; }
+
+    /* Nav links demo */
+    .nav-links { display: flex; gap: 32px; margin-top: 40px; }
+    .nav-links a { color: var(--fg); text-decoration: none; font-size: 16px; font-weight: 500; }
+
+    /* Parallax section */
+    .parallax-section { position: relative; min-height: 60vh; overflow: hidden; display: flex; align-items: center; }
+    .parallax-bg { position: absolute; inset: -80px 0; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); z-index: 0; }
+    .parallax-content { position: relative; z-index: 1; }
+
+    /* Portfolio horizontal */
+    .portfolio-section { overflow: hidden; }
+    .portfolio-track { display: flex; gap: 24px; width: max-content; padding: 40px 0; }
+    .portfolio-item { width: 400px; height: 300px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; }
+
+    /* Typewriter */
+    .typewriter-text { font-family: 'DM Sans', monospace; font-size: 20px; color: var(--accent); min-height: 30px; }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-title { font-size: clamp(48px, 7vw, 96px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px; }
+    .hero-sub { font-size: 20px; color: var(--muted); max-width: 500px; margin-bottom: 40px; }
+
+    /* Pricing cards for tilt */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; text-align: center; }
+    .pricing-card .price { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; margin: 16px 0; }
+    .pricing-card .plan { font-size: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+    .pricing-card ul { list-style: none; margin-top: 24px; }
+    .pricing-card li { padding: 8px 0; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="container" style="text-align:center">
+        <p class="section-label">NEXUS BUSINESS ANIMATIONS v3.0</p>
+        <h1 class="hero-title" id="hero-word-reveal">Build Premium Digital Experiences</h1>
+        <p class="hero-sub" id="hero-line-reveal">21 production-grade GSAP presets for agencies, SaaS, and corporate sites.</p>
+        <div style="display:flex;gap:16px;justify-content:center;margin-top:20px">
+            <button class="cta-btn hoverable" id="primary-cta">Explore Presets</button>
+            <button class="cta-btn-outline hoverable">View Source</button>
+        </div>
+    </div>
+</section>
+
+<!-- 1. WORD REVEAL -->
+<section id="sec-word">
+    <div class="container">
+        <p class="section-label">01 / wordReveal</p>
+        <h2 class="section-title" id="word-target">Motion Defines Experience</h2>
+        <p class="section-sub">Splits text into words. Each word slides up from below the baseline clip.</p>
+        <button class="trigger-btn" onclick="triggerWordReveal()">Replay</button>
+    </div>
+</section>
+
+<!-- 2. CHAR REVEAL -->
+<section id="sec-char">
+    <div class="container">
+        <p class="section-label">02 / charReveal</p>
+        <h2 class="section-title" id="char-target">NEXUS</h2>
+        <p class="section-sub">Letter-by-letter reveal for short accent phrases and logotypes.</p>
+        <button class="trigger-btn" onclick="triggerCharReveal()">Replay</button>
+    </div>
+</section>
+
+<!-- 3. LINE REVEAL -->
+<section id="sec-line">
+    <div class="container">
+        <p class="section-label">03 / lineReveal</p>
+        <h2 class="section-title">Subtle Precision</h2>
+        <p class="section-sub" id="line-target">Clip-path wipe that reveals text from left to right, like drawing a curtain.</p>
+        <button class="trigger-btn" onclick="triggerLineReveal()">Replay</button>
+    </div>
+</section>
+
+<!-- 4. TYPEWRITER -->
+<section id="sec-typewriter">
+    <div class="container">
+        <p class="section-label">04 / typewriter</p>
+        <h2 class="section-title">Terminal Aesthetics</h2>
+        <div class="typewriter-text" id="typewriter-target">Deploy to production in under 60 seconds.</div>
+        <br><button class="trigger-btn" onclick="triggerTypewriter()">Replay</button>
+    </div>
+</section>
+
+<!-- 5. HEADING SPLIT -->
+<section id="sec-split">
+    <div class="container">
+        <p class="section-label">05 / headingSplit</p>
+        <h2 class="section-title" id="split-target">Design Forward</h2>
+        <p class="section-sub">Heading splits in half — left from left, right from right.</p>
+        <button class="trigger-btn" onclick="triggerSplit()">Replay</button>
+    </div>
+</section>
+
+<!-- 6-7. REVEAL UP + STAGGER -->
+<section id="sec-reveal">
+    <div class="container">
+        <p class="section-label">06-07 / revealUp + revealStagger</p>
+        <h2 class="section-title">Features That Ship</h2>
+        <p class="section-sub">Cards appear in cascade as you scroll past.</p>
+        <div class="cards-grid" id="stagger-grid">
+            <div class="card feature-card"><h3>Analytics</h3><p>Real-time metrics dashboard with zero-config setup.</p></div>
+            <div class="card feature-card"><h3>Automation</h3><p>CI/CD pipelines that deploy on every push to main.</p></div>
+            <div class="card feature-card"><h3>Security</h3><p>SOC2 compliant from day one. No exceptions.</p></div>
+            <div class="card feature-card"><h3>Scale</h3><p>From 10 to 10 million users without architecture changes.</p></div>
+            <div class="card feature-card"><h3>API-First</h3><p>Every feature available through a documented REST API.</p></div>
+            <div class="card feature-card"><h3>Support</h3><p>Enterprise support with guaranteed 4-hour response time.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. REVEAL IMAGE -->
+<section id="sec-image">
+    <div class="container">
+        <p class="section-label">08 / revealImage</p>
+        <h2 class="section-title">Awwwards-Grade Reveal</h2>
+        <p class="section-sub">Clip-path curtain with inner scale for cinematic impact.</p>
+        <div class="image-container" id="image-reveal">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='400'%3E%3Crect fill='%231a1a2e' width='700' height='400'/%3E%3Ctext x='350' y='200' text-anchor='middle' fill='%23666' font-family='sans-serif' font-size='24'%3EProduct Screenshot%3C/text%3E%3C/svg%3E" alt="Product">
+        </div>
+    </div>
+</section>
+
+<!-- 9. REVEAL LINE -->
+<section id="sec-divider">
+    <div class="container">
+        <p class="section-label">09 / revealLine</p>
+        <h2 class="section-title">Decorative Dividers</h2>
+        <div class="divider" id="line-divider"></div>
+        <p class="section-sub">Horizontal line draws itself left to right on scroll.</p>
+    </div>
+</section>
+
+<!-- 10-11. STATS -->
+<section id="sec-stats">
+    <div class="container">
+        <p class="section-label">10-11 / countUp + progressBar</p>
+        <h2 class="section-title">Numbers That Move</h2>
+        <div class="stats-row">
+            <div class="stat"><div class="stat-number" data-suffix="%">99</div><div class="stat-label">Uptime</div></div>
+            <div class="stat"><div class="stat-number" data-suffix="K+">150</div><div class="stat-label">Users</div></div>
+            <div class="stat"><div class="stat-number" data-suffix="x">4.2</div><div class="stat-label">Faster</div></div>
+            <div class="stat"><div class="stat-number" data-suffix="M">12</div><div class="stat-label">Requests/day</div></div>
+        </div>
+        <div class="progress-wrap">
+            <div class="progress-item"><label>Performance — 92%</label><div class="progress-track"><div class="progress-fill" data-target="92"></div></div></div>
+            <div class="progress-item"><label>Accessibility — 88%</label><div class="progress-track"><div class="progress-fill" data-target="88"></div></div></div>
+            <div class="progress-item"><label>SEO — 97%</label><div class="progress-track"><div class="progress-fill" data-target="97"></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- 12. PARALLAX -->
+<section class="parallax-section" id="sec-parallax">
+    <div class="parallax-bg" id="parallax-bg"></div>
+    <div class="container parallax-content">
+        <p class="section-label">12 / parallaxSection</p>
+        <h2 class="section-title">Depth Through Motion</h2>
+        <p class="section-sub">Background moves at a different rate than content, creating depth.</p>
+    </div>
+</section>
+
+<!-- 15-19. UI INTERACTIONS -->
+<section id="sec-ui">
+    <div class="container">
+        <p class="section-label">15-19 / UI Interactions</p>
+        <h2 class="section-title">Micro-Interactions</h2>
+        <p class="section-sub">Magnetic buttons, hover underlines, 3D card tilt.</p>
+        <div style="margin:40px 0">
+            <button class="cta-btn hoverable" id="magnetic-btn">Magnetic CTA</button>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link hoverable">Products</a>
+            <a href="#" class="nav-link hoverable">Solutions</a>
+            <a href="#" class="nav-link hoverable">Pricing</a>
+            <a href="#" class="nav-link hoverable">Company</a>
+        </div>
+        <div class="pricing-grid" style="margin-top:60px">
+            <div class="pricing-card tilt-card hoverable">
+                <div class="plan">Starter</div>
+                <div class="price">$0</div>
+                <ul><li>5 Projects</li><li>1GB Storage</li><li>Community Support</li></ul>
+            </div>
+            <div class="pricing-card tilt-card hoverable" style="border-color:var(--accent)">
+                <div class="plan">Pro</div>
+                <div class="price">$29</div>
+                <ul><li>Unlimited Projects</li><li>100GB Storage</li><li>Priority Support</li></ul>
+            </div>
+            <div class="pricing-card tilt-card hoverable">
+                <div class="plan">Enterprise</div>
+                <div class="price">Custom</div>
+                <ul><li>Dedicated Infra</li><li>SSO & SAML</li><li>SLA & Onboarding</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<section style="min-height:40vh">
+    <div class="container" style="text-align:center">
+        <p class="section-label">NEXUS BUSINESS ANIMATIONS v3.0</p>
+        <h2 class="section-title">21 Presets. Zero Bloat.</h2>
+        <p class="section-sub" style="margin:0 auto">Production-grade GSAP library for premium web experiences.</p>
+    </div>
+</section>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module">
+import { initNexusAnimations, makeMagnetic, hoverUnderline, customCursor,
+         buttonHover, cardTilt, countUp, typewriter, curtainIn } from './NEXUS_BUSINESS_ANIMATIONS.js';
+
+gsap.registerPlugin(ScrollTrigger);
+initNexusAnimations(gsap, ScrollTrigger);
+
+// ── Page transition ──
+curtainIn(gsap);
+
+// ── Hero word reveal ──
+gsap.effects.wordReveal("#hero-word-reveal");
+gsap.effects.lineReveal("#hero-line-reveal");
+
+// ── Custom cursor ──
+customCursor(gsap);
+
+// ── Magnetic button ──
+makeMagnetic(document.getElementById('magnetic-btn'), gsap, 35);
+makeMagnetic(document.getElementById('primary-cta'), gsap, 35);
+
+// ── Button hover (double text) ──
+buttonHover(document.getElementById('primary-cta'), gsap);
+
+// ── Nav underlines ──
+document.querySelectorAll('.nav-link').forEach(el => hoverUnderline(el, gsap));
+
+// ── Card tilt ──
+document.querySelectorAll('.tilt-card').forEach(el => cardTilt(el, 8));
+
+// ── Scroll reveals ──
+gsap.effects.revealStagger(".feature-card");
+gsap.effects.revealImage("#image-reveal");
+gsap.effects.revealLine("#line-divider");
+gsap.effects.parallaxSection("#parallax-bg");
+
+// ── Stats ──
+document.querySelectorAll('.stat-number').forEach(el => {
+    const suffix = el.dataset.suffix || '';
+    countUp(el, gsap, { suffix, ScrollTrigger });
+});
+
+// ── Progress bars ──
+document.querySelectorAll('.progress-fill').forEach(el => {
+    const target = parseInt(el.dataset.target) || 100;
+    gsap.effects.progressBar(el, { target });
+});
+
+// ── Replay triggers (exposed to window) ──
+const origWordText = "Motion Defines Experience";
+const origCharText = "NEXUS";
+const origLineText = "Clip-path wipe that reveals text from left to right, like drawing a curtain.";
+const origTypeText = "Deploy to production in under 60 seconds.";
+const origSplitText = "Design Forward";
+
+window.triggerWordReveal = () => {
+    const el = document.getElementById('word-target');
+    el.textContent = origWordText;
+    gsap.effects.wordReveal(el);
+};
+window.triggerCharReveal = () => {
+    const el = document.getElementById('char-target');
+    el.textContent = origCharText;
+    gsap.effects.charReveal(el);
+};
+window.triggerLineReveal = () => {
+    const el = document.getElementById('line-target');
+    el.style.clipPath = 'inset(0 100% 0 0)';
+    gsap.effects.lineReveal(el);
+};
+window.triggerTypewriter = () => {
+    const el = document.getElementById('typewriter-target');
+    el.textContent = origTypeText;
+    typewriter(el, gsap);
+};
+window.triggerSplit = () => {
+    const el = document.getElementById('split-target');
+    el.textContent = origSplitText;
+    gsap.effects.headingSplit(el);
+};
+</script>
+</body>
+</html>

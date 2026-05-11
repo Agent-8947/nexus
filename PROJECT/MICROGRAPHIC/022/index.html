@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>022 // NEURAL OVERLOAD VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#010301;overflow:hidden}
+canvas{display:block;filter:contrast(1.6) saturate(1.3) brightness(0.8)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 5%,rgba(0,0,0,0.99) 100%);z-index:15;pointer-events:none}
+.bar{position:absolute;left:0;width:100%;height:14%;background:#000;z-index:20;pointer-events:none}
+#bt{top:0}#bb{bottom:0}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000500;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Times New Roman',serif;font-size:14px;letter-spacing:14px;color:#2a2;text-transform:uppercase;text-shadow:0 0 15px rgba(0,255,0,0.6)}
+#os{font-family:'Times New Roman',serif;font-style:italic;font-size:12px;color:#666;letter-spacing:4px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{50%{opacity:0.2}}
+#tc{position:absolute;top:15%;right:3%;font-family:monospace;font-size:10px;color:rgba(50,255,50,0.5);z-index:30;letter-spacing:2px;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">022 // NEURAL OVERLOAD</div>
+<div id="os">initiate sequence</div>
+</div>
+<div id="vig"></div>
+<div class="bar" id="bt"></div>
+<div class="bar" id="bb"></div>
+<div id="tc">00:00:00</div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let glitchIntensity=0;
+let invert=false;
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    st=Date.now();
+    setInterval(()=>{if(!st)return;const s=Math.floor((Date.now()-st)/1000);document.getElementById('tc').textContent=`00:${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},1000);
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: HIGH-PITCHED CLICKS & DEEP DRONE ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.5;_m.connect(ax.destination);
+    
+    // Deep Drone
+    const drone=ax.createOscillator();drone.type='sawtooth';drone.frequency.value=45;
+    const lowpass=ax.createBiquadFilter();lowpass.type='lowpass';lowpass.frequency.value=100;
+    const dg=ax.createGain();dg.gain.value=0.5;
+    drone.connect(lowpass);lowpass.connect(dg);dg.connect(_m);drone.start();
+    
+    // High-Pitched Clicks (Synaptic firing)
+    function click(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const o=ax.createOscillator();o.type='square';
+        o.frequency.setValueAtTime(8000 + Math.random()*4000,now);
+        const og=ax.createGain();og.gain.setValueAtTime(0.3,now);og.gain.exponentialRampToValueAtTime(0.001,now+0.01);
+        o.connect(og);og.connect(_m);o.start(now);o.stop(now+0.01);
+        
+        glitchIntensity = 0.8;
+        setTimeout(click, 10 + Math.random()*200);
+    }
+    setTimeout(click, 1000);
+
+    // Burst
+    function burst(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        const bs=ax.sampleRate*0.1,b=ax.createBuffer(1,bs,ax.sampleRate),d=b.getChannelData(0);
+        for(let i=0;i<bs;i++)d[i]=Math.random()*2-1;
+        const n=ax.createBufferSource();n.buffer=b;
+        const ng=ax.createGain();ng.gain.setValueAtTime(0.7,now);ng.gain.exponentialRampToValueAtTime(0.001,now+0.1);
+        n.connect(ng);ng.connect(_m);n.start(now);
+        
+        invert = !invert;
+        setTimeout(burst, 2000 + Math.random()*3000);
+    }
+    setTimeout(burst, 3000);
+}
+
+// ── VJ ENGINE: NEURAL NET ──
+class Node {
+    constructor() {
+        this.x = Math.random()*W;
+        this.y = Math.random()*H;
+        this.vx = (Math.random()-0.5)*1;
+        this.vy = (Math.random()-0.5)*1;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if(this.x<0||this.x>W)this.vx*=-1;
+        if(this.y<0||this.y>H)this.vy*=-1;
+    }
+}
+
+let nodes = [];
+function initNodes() {
+    for(let i=0; i<40; i++) nodes.push(new Node());
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    
+    if(nodes.length === 0 && W) initNodes();
+    
+    glitchIntensity *= 0.9;
+    if(Math.random()>0.98) invert = !invert;
+    
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = invert ? 'rgba(200,220,200,0.1)' : 'rgba(1,5,1,0.15)';
+    cx.fillRect(0, 0, W, H);
+    
+    cx.globalCompositeOperation = invert ? 'difference' : 'screen';
+    
+    nodes.forEach(n => n.update());
+    
+    const offset = Math.sin(T*12) * 10 * glitchIntensity;
+    
+    cx.save();
+    
+    // Draw lines
+    function drawNet() {
+        cx.beginPath();
+        for(let i=0; i<nodes.length; i++) {
+            for(let j=i+1; j<nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if(dist < 150) {
+                    cx.moveTo(nodes[i].x, nodes[i].y);
+                    cx.lineTo(nodes[j].x, nodes[j].y);
+                }
+            }
+        }
+        cx.stroke();
+        
+        // Draw nodes
+        nodes.forEach(n => {
+            cx.beginPath();
+            cx.arc(n.x, n.y, 2 + glitchIntensity*3, 0, Math.PI*2);
+            cx.fill();
+        });
+    }
+    
+    // RED
+    cx.save(); cx.translate(offset, 0); cx.strokeStyle = '#ff0000'; cx.fillStyle = '#ff0000'; cx.lineWidth = 1;
+    drawNet(); cx.restore();
+    
+    // GREEN
+    cx.save(); cx.translate(-offset, offset); cx.strokeStyle = '#00ff00'; cx.fillStyle = '#00ff00'; cx.lineWidth = 1.5;
+    drawNet(); cx.restore();
+    
+    // BLUE
+    cx.save(); cx.translate(0, -offset); cx.strokeStyle = '#0000ff'; cx.fillStyle = '#0000ff'; cx.lineWidth = 0.5;
+    drawNet(); cx.restore();
+    
+    cx.restore();
+    cx.globalCompositeOperation = 'source-over';
+    
+    // Random scanlines
+    cx.fillStyle = `rgba(0,255,0,${0.05 + glitchIntensity*0.1})`;
+    for(let i=0; i<H; i+=4) {
+        if(Math.random()>0.8) cx.fillRect(0, i, W, 1);
+    }
+}
+</script>
+</body>
+</html>

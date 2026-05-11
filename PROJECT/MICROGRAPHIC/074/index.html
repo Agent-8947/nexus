@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>074 // MITOSIS OVERDRIVE (МИТОЗ: ПЕРЕГРУЗКА)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #00ffaa; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 10px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ACCELERATE MITOSIS ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    float smin(float a, float b, float k) {
+        float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+        return mix(b, a, h) - k * h * (1.0 - h);
+    }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        
+        // Extremely fast 0.5s cycle (120 BPM)
+        float cycle = mod(t, 0.5);
+        float progress = cycle / 0.5; // 0 to 1
+        
+        // Splitting logic
+        // Starts as 1, splits to 2, then 4.
+        float dist = mix(0.0, 0.4, pow(progress, 0.5));
+        
+        vec2 p1 = vec2(dist, dist);
+        vec2 p2 = vec2(-dist, dist);
+        vec2 p3 = vec2(dist, -dist);
+        vec2 p4 = vec2(-dist, -dist);
+        
+        // Spin them
+        float angle = t * 5.0;
+        mat2 rot = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+        
+        p1 = rot * p1; p2 = rot * p2; p3 = rot * p3; p4 = rot * p4;
+        
+        float d1 = length(uv - p1) - 0.05;
+        float d2 = length(uv - p2) - 0.05;
+        float d3 = length(uv - p3) - 0.05;
+        float d4 = length(uv - p4) - 0.05;
+        
+        // Blend them
+        float d = smin(smin(d1, d2, 0.2), smin(d3, d4, 0.2), 0.2);
+        
+        // Render
+        float mask = smoothstep(0.01, 0.0, d);
+        
+        vec3 col = vec3(0.0, 1.0, 0.5) * mask;
+        col += vec3(0.0, 1.0, 0.5) * (0.005 / max(d, 0.001)); // Glow
+        
+        // Extreme Strobe exactly at the reset
+        if(progress > 0.95) {
+            col = vec3(1.0);
+        }
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 120; // 0.5s per beat
+
+    // Glitchy burst
+    const noise = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
+    });
+    const filter = new Tone.Filter(5000, "highpass").toDestination();
+    noise.connect(filter);
+    
+    const synth = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0, release: 0.1 }
+    }).toDestination();
+    
+    // Trigger on every beat (which matches the 0.5s visual split reset)
+    new Tone.Loop(time => {
+        noise.triggerAttackRelease("16n", time);
+        synth.triggerAttackRelease("C6", "16n", time);
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

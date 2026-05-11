@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>043 // GPU SHADER CORE (OPTIMAL)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #000; overflow: hidden; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #00ffcc; letter-spacing: 5px; }
+        #os { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">GLSL_NEXUS_ENGINE</div>
+    <div id="os">[ INITIALIZE GPU COMPUTE ]</div>
+</div>
+<canvas id="c"></canvas>
+
+<!-- VERTEX SHADER -->
+<script id="vertexShader" type="x-shader/x-vertex">
+    void main() {
+        gl_Position = vec4(position, 1.0);
+    }
+</script>
+
+<!-- FRAGMENT SHADER (GLSL) -->
+<script id="fragmentShader" type="x-shader/x-fragment">
+    uniform vec2 u_resolution;
+    uniform float u_time;
+    uniform float u_audio;
+
+    // Palette function by Inigo Quilez
+    vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
+        return a + b*cos( 6.28318*(c*t+d) );
+    }
+
+    void main() {
+        // Normalized pixel coordinates (from -1 to 1)
+        vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
+        vec2 uv0 = uv;
+        vec3 finalColor = vec3(0.0);
+
+        // Fractal iteration
+        for (float i = 0.0; i < 4.0; i++) {
+            uv = fract(uv * 1.5) - 0.5;
+            
+            float d = length(uv) * exp(-length(uv0));
+            
+            // Neon Cyberpunk Palette
+            vec3 col = palette(length(uv0) + i*.4 + u_time*.4, 
+                               vec3(0.5, 0.5, 0.5),
+                               vec3(0.5, 0.5, 0.5),
+                               vec3(1.0, 1.0, 1.0),
+                               vec3(0.263, 0.416, 0.557));
+
+            d = sin(d*8. + u_time)/8.;
+            d = abs(d);
+            
+            // Audio reactivity injects energy into the fractal
+            d = pow(0.01 / d, 1.2 + u_audio * 0.5);
+
+            finalColor += col * d;
+        }
+
+        gl_FragColor = vec4(finalColor, 1.0);
+    }
+</script>
+
+<script>
+let camera, scene, renderer, uniforms;
+let audioMeter;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    initGPU();
+    initAudio();
+    animate();
+}
+
+function initGPU() {
+    const canvas = document.getElementById('c');
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false });
+    // Optimal: render at native resolution or lower for insane performance
+    renderer.setPixelRatio(window.devicePixelRatio > 1 ? 1 : 1); 
+    
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+
+    const geometry = new THREE.PlaneGeometry(2, 2);
+
+    uniforms = {
+        u_time: { value: 1.0 },
+        u_resolution: { value: new THREE.Vector2() },
+        u_audio: { value: 0.0 }
+    };
+
+    const material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: document.getElementById('vertexShader').textContent,
+        fragmentShader: document.getElementById('fragmentShader').textContent
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    onWindowResize();
+    window.addEventListener('resize', onWindowResize, false);
+}
+
+function onWindowResize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    uniforms.u_resolution.value.x = renderer.domElement.width;
+    uniforms.u_resolution.value.y = renderer.domElement.height;
+}
+
+// ── AUDIO ENGINE: TECHNO BASS WITH FFT METERING ──
+function initAudio() {
+    Tone.Transport.bpm.value = 125;
+
+    // Meter to feed the GPU
+    audioMeter = new Tone.Meter();
+
+    // Deep Techno Kick
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.05,
+        octaves: 4,
+        oscillator: { type: "square" },
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0, release: 1 }
+    }).connect(audioMeter).toDestination();
+
+    // Sub Bass
+    const bass = new Tone.FMSynth({
+        harmonicity: 1,
+        modulationIndex: 2,
+        oscillator: { type: "sine" },
+        modulation: { type: "square" }
+    }).connect(audioMeter).toDestination();
+    bass.volume.value = -5;
+
+    const loop = new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "8n", time);
+        if (Math.random() > 0.5) {
+            bass.triggerAttackRelease("C1", "16n", time + 0.25);
+        }
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    
+    // Time uniform
+    uniforms.u_time.value = time * 0.001;
+    
+    // Audio uniform (normalized to roughly 0.0 - 1.0)
+    if (audioMeter) {
+        let level = audioMeter.getValue();
+        // Tone.Meter returns db. -100 to 0. Convert to multiplier.
+        let linear = Math.pow(10, level / 20);
+        // Smooth out the value slightly
+        uniforms.u_audio.value += (linear - uniforms.u_audio.value) * 0.2;
+    }
+    
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

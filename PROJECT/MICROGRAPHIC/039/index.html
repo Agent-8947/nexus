@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>039 // ABSURD PSYCHEDELIC VIGNELLI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #000; overflow: hidden; }
+        canvas { display: block; filter: saturate(2) contrast(1.5); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #ff00ff; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        .grid-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+            background-size: 10vw 10vh;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()"></div>
+<div class="grid-line"></div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H, T = 0;
+const COLS = 12;
+const ROWS = 12;
+let cellW, cellH;
+
+const PALETTE = [
+    '#FF00FF', // Neon Magenta
+    '#00FFFF', // Cyan
+    '#FFFF00', // Acid Yellow
+    '#00FF00', // Lime
+    '#FF3300', // Neon Orange
+    '#3300FF'  // Electric Blue
+];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); 
+    cx = cv.getContext('2d');
+    
+    resize(); 
+    window.addEventListener('resize', resize);
+    
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cellW = W / COLS;
+    cellH = H / ROWS;
+}
+
+// ── AUDIO ENGINE: RIGID BUT PSYCHEDELIC ──
+function initAudio() {
+    Tone.Transport.bpm.value = 140;
+
+    // Strict rigid kick
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.05,
+        octaves: 2,
+        oscillator: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0 }
+    }).toDestination();
+    kick.volume.value = -5;
+
+    // Microtonal weird synth
+    const synth = new Tone.PolySynth(Tone.FMSynth, {
+        harmonicity: 1.5,
+        modulationIndex: 10,
+        oscillator: { type: "sine" },
+        modulation: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0 }
+    }).toDestination();
+    synth.volume.value = -12;
+
+    const loop = new Tone.Loop(time => {
+        // Kick on every beat
+        kick.triggerAttackRelease("C1", "8n", time);
+        
+        // Random absurd microtonal chords
+        if (Math.random() > 0.3) {
+            const f1 = 100 + Math.random() * 800;
+            const f2 = f1 * (1.1 + Math.random() * 0.5);
+            synth.triggerAttackRelease([f1, f2], "16n", time);
+        }
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+// ── VJ ENGINE: ABSURD VIGNELLI ──
+// Rigid grid logic but psychedelic rendering
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.05;
+    
+    // Clear with a random psychedelic color occasionally, else slight fade
+    if (Math.random() > 0.95) {
+        cx.fillStyle = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+        cx.globalCompositeOperation = 'source-over';
+        cx.fillRect(0, 0, W, H);
+    } else {
+        cx.fillStyle = 'rgba(0,0,0,0.1)';
+        cx.globalCompositeOperation = 'source-over';
+        cx.fillRect(0, 0, W, H);
+    }
+    
+    // Use Difference for that intense psychedelic overlap
+    cx.globalCompositeOperation = 'difference';
+    
+    // Draw rigid blocks aligned to grid
+    const numBlocks = 3;
+    for(let i=0; i<numBlocks; i++) {
+        const col = Math.floor(Math.random() * COLS);
+        const row = Math.floor(Math.random() * ROWS);
+        const spanC = Math.floor(Math.random() * 4) + 1;
+        const spanR = Math.floor(Math.random() * 4) + 1;
+        
+        const x = col * cellW;
+        const y = row * cellH;
+        const w = spanC * cellW;
+        const h = spanR * cellH;
+        
+        cx.fillStyle = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+        
+        // Either draw rectangle or circle fitting the grid bounds exactly
+        if (Math.random() > 0.5) {
+            cx.fillRect(x, y, w, h);
+        } else {
+            cx.beginPath();
+            // Circle centered in the grid span
+            cx.arc(x + w/2, y + h/2, Math.min(w, h)/2, 0, Math.PI * 2);
+            cx.fill();
+        }
+    }
+    
+    // Rigid borders (Vignelli constructivism constraint)
+    cx.globalCompositeOperation = 'source-over';
+    cx.strokeStyle = '#000';
+    cx.lineWidth = 10;
+    cx.strokeRect(0, 0, W, H);
+}
+</script>
+</body>
+</html>

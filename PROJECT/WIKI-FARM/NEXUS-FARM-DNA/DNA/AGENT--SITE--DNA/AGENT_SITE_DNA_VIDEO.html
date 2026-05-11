@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGENT SITE DNA — Vignelli Grid + Solara Text + Suprematism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-main: #FFFFFF;
+    --bg-alt: #F5F5F0;
+    --fg: #1A1A1A;
+    --fg-muted: #6B6B6B;
+    --accent: #C2410C;
+    --border: #1A1A1A;
+    --font: 'DM Sans', sans-serif;
+  }
+  
+  body {
+    margin: 0; padding: 0;
+    background: var(--bg-alt);
+    color: var(--fg);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow: hidden; 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── MALEVICH SUPREMATISM BACKGROUND (MAXIMUM) ── */
+  .malevich-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .m-shape { position: absolute; opacity: 0.15; mix-blend-mode: multiply; }
+  
+  /* Original Shapes */
+  .m-huge-circle { width: 60vw; height: 60vw; border-radius: 50%; background: var(--fg); top: -20vh; right: -15vw; opacity: 0.1; }
+  .m-wedge { width: 0; height: 0; border-left: 15vw solid transparent; border-right: 15vw solid transparent; border-bottom: 45vw solid var(--accent); top: 40vh; left: -5vw; transform: rotate(25deg); opacity: 0.2; }
+  .m-beam { width: 150vw; height: 12vw; background: var(--fg); top: 70vh; left: -10vw; transform: rotate(-15deg); opacity: 0.12; }
+  .m-small-rect { width: 15vw; height: 15vw; background: var(--accent); top: 15vh; left: 35vw; transform: rotate(45deg); opacity: 0.2; }
+  .m-line-cross { width: 1vw; height: 120vh; background: var(--fg); top: -10vh; right: 25vw; transform: rotate(10deg); opacity: 0.15; }
+
+  /* New Suprematism Shapes */
+  .m-wire-square { width: 25vw; height: 25vw; border: 1vw solid var(--fg); top: 50vh; right: 10vw; transform: rotate(15deg); opacity: 0.12; background: transparent; }
+  .m-red-dot { width: 8vw; height: 8vw; border-radius: 50%; background: var(--accent); top: 10vh; right: 40vw; opacity: 0.25; }
+  .m-black-triangle { width: 0; height: 0; border-top: 30vw solid var(--fg); border-right: 30vw solid transparent; top: -5vh; left: 20vw; opacity: 0.1; }
+  .m-floating-bar { width: 3vw; height: 40vw; background: var(--accent); top: 20vh; left: 70vw; transform: rotate(60deg); opacity: 0.15; }
+
+  /* ── VIGNELLI GRID SYSTEM ── */
+  .stage {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6vw;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .grid { 
+    display: grid; 
+    grid-template-columns: repeat(12, 1fr); 
+    gap: 3vw; 
+    width: 100%; 
+  }
+  
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-12 { grid-column: span 12; }
+
+  /* ── SOLARA TYPOGRAPHY (SCALED DOWN) ── */
+  .vignelli-line { border-top: 0.8vw solid var(--fg); width: 100%; margin-bottom: 2vw; }
+  .vignelli-line-thin { border-top: 0.2vw solid var(--fg); width: 100%; margin-bottom: 2vw; }
+
+  .kicker { 
+    font-size: clamp(14px, 1.2vw, 18px); 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    margin-top: 0.8vw; 
+  }
+
+  h1 {
+    font-size: clamp(50px, 8vw, 120px);
+    font-weight: 500;
+    line-height: 0.95;
+    margin: 0 0 1.5vw 0;
+    text-align: left;
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    font-size: clamp(30px, 4vw, 60px);
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 1.5vw 0;
+    text-align: left;
+    letter-spacing: -0.03em;
+  }
+
+  h3 { 
+    font-size: clamp(20px, 2vw, 30px); 
+    font-weight: 500; 
+    margin: 0 0 1vw 0; 
+  }
+  
+  p { 
+    margin: 0 0 2vw 0; 
+    color: var(--fg); 
+    font-size: clamp(18px, 1.5vw, 24px); 
+    font-weight: 400;
+    line-height: 1.4; 
+    text-align: left; 
+    max-width: 900px; 
+  }
+
+  .accent-italic {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+  }
+
+  .char { opacity: 0; display: inline-block; white-space: pre; }
+  .anim-item { opacity: 0; }
+</style>
+</head>
+<body>
+
+<div class="malevich-bg">
+  <div class="m-shape m-huge-circle"></div>
+  <div class="m-shape m-wedge"></div>
+  <div class="m-shape m-beam"></div>
+  <div class="m-shape m-small-rect"></div>
+  <div class="m-shape m-line-cross"></div>
+  <!-- Enhanced Shapes -->
+  <div class="m-shape m-wire-square"></div>
+  <div class="m-shape m-red-dot"></div>
+  <div class="m-shape m-black-triangle"></div>
+  <div class="m-shape m-floating-bar"></div>
+</div>
+
+<div class="stage">
+
+  <!-- SLIDE 1 -->
+  <div class="slide" id="slide1">
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker anim-item">01 / Problem</div>
+      </div>
+      <div class="col-9">
+        <div class="vignelli-line anim-item"></div>
+        <h1 class="typewriter">The Old Way.</h1>
+        <p class="typewriter" style="color: var(--fg-muted);">Guessing fonts.<br>Approximating colors.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SLIDE 2 -->
+  <div class="slide" id="slide2">
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker anim-item">02 / Solution</div>
+      </div>
+      <div class="col-9">
+        <div class="vignelli-line anim-item"></div>
+        <h1 class="typewriter">Deep Thinking.</h1>
+        <p class="typewriter">Your team does the strategic work. AGENT SITE DNA gives them exact DOM tokens at scale.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide" id="slide3">
+    <div class="grid">
+      <div class="col-12">
+        <div class="vignelli-line anim-item"></div>
+        <h1 class="typewriter" style="font-size: clamp(80px, 10vw, 160px); letter-spacing: -0.06em;">15 Seconds.</h1>
+        <h2 class="typewriter">From generic URL to <span class="accent-italic">Brand DNA.</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide" id="slide4">
+    <div class="grid">
+      <div class="col-12">
+        <div class="vignelli-line-thin anim-item"></div>
+        <h2 class="typewriter">Because <span class="accent-italic">DOM never lies.</span></h2>
+        
+        <div class="grid" style="margin-top: 4vw;">
+          <div class="col-4 anim-item">
+            <div class="vignelli-line-thin"></div>
+            <h3>1. Ingest</h3>
+            <p>Headless Chromium reads the real DOM.</p>
+          </div>
+          <div class="col-4 anim-item">
+            <div class="vignelli-line-thin"></div>
+            <h3>2. Parse</h3>
+            <p>100% precision computed styles.</p>
+          </div>
+          <div class="col-4 anim-item">
+            <div class="vignelli-line-thin" style="border-color: var(--accent);"></div>
+            <h3 style="color: var(--accent);">3. Architect</h3>
+            <p>JSON manifest & GSAP generated instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide" id="slide5">
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker anim-item">End / Start</div>
+      </div>
+      <div class="col-9">
+        <div class="vignelli-line anim-item"></div>
+        <h1 class="typewriter">No guessing.</h1>
+        <h2 class="typewriter">Just code.</h2>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  // ── TYPEWRITER UTILITY ──
+  document.querySelectorAll('.typewriter').forEach(el => {
+    const walk = (node) => {
+      if (node.nodeType === 3) { 
+        const text = node.nodeValue;
+        if (!text.trim() && !text.includes(' ')) return;
+        const chars = text.split('');
+        const fragment = document.createDocumentFragment();
+        chars.forEach(char => {
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.innerHTML = char === ' ' ? '&nbsp;' : char;
+          fragment.appendChild(span);
+        });
+        node.parentNode.replaceChild(fragment, node);
+      } else if (node.nodeType === 1 && !node.classList.contains('char')) {
+        Array.from(node.childNodes).forEach(walk);
+      }
+    };
+    walk(el);
+  });
+
+  // ── MALEVICH ENHANCED BACKGROUND ANIMATION ──
+  // Original Shapes
+  gsap.to(".m-huge-circle", { rotation: 360, x: -50, y: 50, duration: 60, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".m-wedge", { y: -100, rotation: 45, duration: 35, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".m-beam", { y: -150, rotation: -20, duration: 40, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".m-small-rect", { x: 200, y: -100, rotation: 180, duration: 30, repeat: -1, yoyo: true, ease: "linear" });
+  gsap.to(".m-line-cross", { x: -200, rotation: 0, duration: 45, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  
+  // New Shapes
+  gsap.to(".m-wire-square", { rotation: -135, scale: 1.2, x: -100, y: -50, duration: 40, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".m-red-dot", { y: 200, x: 100, scale: 0.5, duration: 25, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".m-black-triangle", { x: -100, y: 100, rotation: -15, duration: 50, repeat: -1, yoyo: true, ease: "linear" });
+  gsap.to(".m-floating-bar", { rotation: 120, x: -200, y: 150, duration: 35, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+  // ── MASTER CINEMATIC TIMELINE ──
+  const masterTl = gsap.timeline({ repeat: -1 });
+
+  const slides = [
+    document.getElementById('slide1'),
+    document.getElementById('slide2'),
+    document.getElementById('slide3'),
+    document.getElementById('slide4'),
+    document.getElementById('slide5')
+  ];
+
+  function buildSlideAnim(slide, holdTime = 2.5) {
+    const chars = slide.querySelectorAll('.char');
+    const animItems = slide.querySelectorAll('.anim-item');
+    
+    masterTl.set(slide, { autoAlpha: 1 });
+    
+    if (animItems.length > 0) {
+      masterTl.fromTo(animItems, 
+        { y: 40, autoAlpha: 0 }, 
+        { y: 0, autoAlpha: 1, duration: 1.2, stagger: 0.15, ease: "power4.out" }
+      );
+    }
+
+    if (chars.length > 0) {
+      masterTl.to(chars, {
+        opacity: 1,
+        duration: 0.01,
+        stagger: 0.03,
+        ease: "none"
+      }, "-=0.6"); 
+    }
+
+    masterTl.to({}, { duration: holdTime });
+
+    masterTl.to(slide.children, {
+      x: -50,
+      autoAlpha: 0,
+      duration: 0.8,
+      stagger: 0.05,
+      ease: "power3.in"
+    });
+    
+    masterTl.set(slide, { autoAlpha: 0 });
+  }
+
+  buildSlideAnim(slides[0], 2.5);
+  buildSlideAnim(slides[1], 3.5);
+  buildSlideAnim(slides[2], 2.5); 
+  buildSlideAnim(slides[3], 4.5);
+  buildSlideAnim(slides[4], 3.5);
+
+</script>
+</body>
+</html>

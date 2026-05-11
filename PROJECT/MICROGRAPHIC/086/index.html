@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>086 // СВЯЩЕННЫЙ ГЛИТЧ (SACRED GLITCH)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a0a; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #ffd700; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 10px; text-transform: uppercase; text-shadow: 0 0 10px #ffd700;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ ДЕКОДИРОВАТЬ ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / r.xy;
+        vec2 p = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+
+        // Mosaic effect
+        float size = 20.0;
+        vec2 grid = floor(uv * size) / size;
+        
+        // Gold base color
+        vec3 col = vec3(0.8, 0.6, 0.2) * (0.5 + 0.5 * sin(grid.x * 10.0 + grid.y * 10.0));
+        
+        // Religious symbol (Cross) in the grid
+        float cross_v = step(abs(grid.x - 0.5), 0.05) * step(abs(grid.y - 0.5), 0.3);
+        float cross_h = step(abs(grid.x - 0.5), 0.2) * step(abs(grid.y - 0.6), 0.05);
+        if (max(cross_v, cross_h) > 0.5) {
+            col = vec3(1.0, 0.9, 0.5); // Brighter gold for cross
+        }
+
+        // Glitch effect
+        float n = hash(vec2(floor(t * 10.0), 0.0));
+        if (n > 0.8) {
+            vec2 shift = vec2(hash(vec2(uv.y, t)) * 0.1, 0.0);
+            uv += shift;
+            grid = floor(uv * size) / size;
+            col = vec3(0.0, 0.5, 1.0); // Electric blue glitch
+        }
+
+        // Add some noise
+        col += vec3(hash(uv + t)) * 0.1;
+        
+        // Vignette
+        col *= 1.0 - length(p) * 0.5;
+
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+    window.addEventListener('resize', () => uniforms.r.value.set(innerWidth, innerHeight));
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 160;
+
+    const synth = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.005, decay: 0.1, sustain: 0.1, release: 0.1 }
+    }).toDestination();
+    synth.volume.value = -10;
+
+    const noise = new Tone.NoiseSynth({ envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }).toDestination();
+    noise.volume.value = -15;
+
+    new Tone.Loop(time => {
+        synth.triggerAttackRelease("C3", "16n", time);
+        if (Math.random() > 0.7) {
+            synth.triggerAttackRelease("E3", "16n", time + 0.125);
+        }
+    }, "8n").start(0);
+
+    new Tone.Loop(time => {
+        if (Math.random() > 0.5) {
+            noise.triggerAttackRelease("32n", time);
+        }
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

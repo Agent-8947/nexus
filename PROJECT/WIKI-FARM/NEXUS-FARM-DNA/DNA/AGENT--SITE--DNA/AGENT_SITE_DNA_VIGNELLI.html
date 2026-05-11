@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGENT SITE DNA — Vignelli Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F5F0;
+    --fg: #1A1A1A;
+    --accent: #C2410C;
+    --font: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2vw 4vw;
+  }
+
+  /* Vignelli heavy structural lines */
+  .vignelli-line {
+    border-top: 8px solid var(--fg);
+    margin: 4vw 0 2vw 0;
+  }
+
+  .vignelli-line-thin {
+    border-top: 2px solid var(--fg);
+    margin: 1.5vw 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 3vw;
+  }
+
+  /* Grid columns */
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-6 { grid-column: span 6; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-12 { grid-column: span 12; }
+
+  @media (max-width: 900px) {
+    .col-3, .col-4, .col-6, .col-8, .col-9 { grid-column: span 12; }
+    .grid { gap: 6vw; }
+  }
+
+  h1 {
+    font-size: clamp(80px, 15vw, 240px);
+    font-weight: 700;
+    line-height: 0.82;
+    letter-spacing: -0.04em;
+    margin: 0 0 2vw 0;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(50px, 7vw, 120px);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    margin: 0 0 2vw 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: clamp(24px, 2.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5vw 0;
+    text-transform: uppercase;
+  }
+
+  .kicker {
+    font-size: clamp(16px, 1.2vw, 24px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .lead {
+    font-size: clamp(24px, 3vw, 48px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2vw;
+  }
+
+  .text-body {
+    font-size: clamp(16px, 1.2vw, 22px);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .accent { 
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.03em;
+  }
+  
+  .stat-number {
+    font-size: clamp(80px, 10vw, 160px);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+  
+  section {
+    margin-bottom: 12vw;
+  }
+
+  .code-block {
+    font-family: var(--mono);
+    font-size: clamp(14px, 1.2vw, 20px);
+    background: var(--fg);
+    color: var(--bg);
+    padding: 2vw;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- Header / Hero -->
+  <header style="margin-top: 2vw; margin-bottom: 8vw;">
+    <div class="vignelli-line" style="border-top-width: 16px;"></div>
+    <h1>AGENT<br>SITE<br><span class="accent">DNA.</span></h1>
+    <div class="grid" style="margin-top: 4vw;">
+      <div class="col-8">
+        <div class="lead">
+          Превращаем любой веб-сайт в формализованный JSON-манифест, готовую дизайн-систему и GSAP-стратегию за 60 секунд.
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="text-body" style="padding-top: 0.5vw;">
+          <strong>System:</strong> NEXUS Core<br>
+          <strong>Status:</strong> Production Ready<br>
+          <strong>Year:</strong> 2026<br>
+          <strong>Aesthetic:</strong> Unimark / Vignelli
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section>
+    <div class="vignelli-line"></div>
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker">01 / ПРОБЛЕМА</div>
+      </div>
+      <div class="col-9">
+        <h2>THE CHAOS.</h2>
+        <div class="lead">Бренды теряют идентичность при ручном масштабировании контента.</div>
+        <div class="grid" style="margin-top: 4vw;">
+          <div class="col-6">
+            <div class="vignelli-line-thin"></div>
+            <h3>РУЧНОЙ АУДИТ</h3>
+            <p class="text-body" style="margin-top: 1.5vw;">Дизайнер смотрит сайт и гадает шрифты. Эвристика вместо точных CSS-значений. Потеря межстрочного расстояния. Непоследовательные анимации.</p>
+          </div>
+          <div class="col-6">
+            <div class="vignelli-line-thin" style="border-color: var(--accent)"></div>
+            <h3 class="accent">AGENTIC DNA</h3>
+            <p class="text-body" style="margin-top: 1.5vw;">URL превращается в точный манифест. Playwright парсит реальный DOM. 100% точность Computed Styles. Motion Architect подбирает стратегии.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline -->
+  <section>
+    <div class="vignelli-line"></div>
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker">02 / ПАЙПЛАЙН</div>
+      </div>
+      <div class="col-9">
+        <h2>WORKFLOW.</h2>
+        
+        <div class="vignelli-line-thin"></div>
+        <div class="grid" style="margin-bottom: 2vw; padding-top: 1vw;">
+          <div class="col-4">
+            <h3 class="accent">1. INGEST</h3>
+            <p class="text-body">CLI получает URL и запускает headless Chromium.</p>
+          </div>
+          <div class="col-4">
+            <h3 class="accent">2. PARSE DOM</h3>
+            <p class="text-body">Сбор computed styles, шрифтов, цветов, letter-spacing.</p>
+          </div>
+          <div class="col-4">
+            <h3 class="accent">3. SERIALIZE</h3>
+            <p class="text-body">Сохранение "чистой" ДНК в формализованный dna.json.</p>
+          </div>
+        </div>
+
+        <div class="vignelli-line-thin"></div>
+        <div class="grid" style="padding-top: 1vw;">
+          <div class="col-4">
+            <h3>4. BRANDBOOK</h3>
+            <p class="text-body">Генерация brandbook.html для визуальной верификации.</p>
+          </div>
+          <div class="col-4">
+            <h3>5. ARCHITECT</h3>
+            <p class="text-body">Скрипт анализирует Vibe бренда на основе 6 сигналов.</p>
+          </div>
+          <div class="col-4">
+            <h3>6. STRATEGY</h3>
+            <p class="text-body">Выдача MD с GSAP-стратегией.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section>
+    <div class="vignelli-line"></div>
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker">03 / АРХИТЕКТУРА</div>
+      </div>
+      <div class="col-9">
+        <h2>CODE OVER<br>GUESSING.</h2>
+        <div class="lead">Мы отказались от LLM-Vision для извлечения базовых стилей. Зрение AI галлюцинирует шрифты. DOM — никогда.</div>
+        
+        <div class="grid" style="margin-top: 6vw;">
+          <div class="col-6">
+            <div class="stat-number accent">100%</div>
+            <div class="vignelli-line-thin" style="margin: 1vw 0;"></div>
+            <h3>PRECISION</h3>
+            <p class="text-body">Точность CSS Computed Style.</p>
+          </div>
+          <div class="col-6">
+            <div class="stat-number">15<span style="font-size: 0.5em; letter-spacing: 0;">s</span></div>
+            <div class="vignelli-line-thin" style="margin: 1vw 0;"></div>
+            <h3>SPEED</h3>
+            <p class="text-body">Время полного анализа URL.</p>
+          </div>
+          <div class="col-6" style="margin-top: 2vw;">
+            <div class="stat-number">21</div>
+            <div class="vignelli-line-thin" style="margin: 1vw 0;"></div>
+            <h3>PRESETS</h3>
+            <p class="text-body">Готовых бизнес-анимаций GSAP.</p>
+          </div>
+          <div class="col-6" style="margin-top: 2vw;">
+            <div class="stat-number">6</div>
+            <div class="vignelli-line-thin" style="margin: 1vw 0;"></div>
+            <h3>SIGNALS</h3>
+            <p class="text-body">Векторов анализа бренда.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Solara Brandbook Addition -->
+  <section>
+    <div class="vignelli-line"></div>
+    <div class="grid">
+      <div class="col-3">
+        <div class="kicker">04 / BRANDBOOK</div>
+      </div>
+      <div class="col-9">
+        <h2>SOLARA IMPACT<br>DNA.</h2>
+        <div class="lead">Срез реальных данных из сгенерированного brandbook.html</div>
+        
+        <div class="grid" style="margin-top: 4vw;">
+          <div class="col-12">
+            <h3 class="accent">ПАЛИТРА</h3>
+            <div class="vignelli-line-thin" style="border-color: var(--accent)"></div>
+            <div style="display:flex; gap: 2vw; margin-top:2vw; flex-wrap: wrap;">
+              <div>
+                <div style="width: 120px; height: 120px; background: #1A1A1A; border: 1px solid #333;"></div>
+                <div class="text-body" style="margin-top:10px;">INK<br>#1A1A1A</div>
+              </div>
+              <div>
+                <div style="width: 120px; height: 120px; background: #F5F5F0; border: 1px solid #ccc;"></div>
+                <div class="text-body" style="margin-top:10px;">PAPER<br>#F5F5F0</div>
+              </div>
+              <div>
+                <div style="width: 120px; height: 120px; background: #C2410C; border: 1px solid #C2410C;"></div>
+                <div class="text-body" style="margin-top:10px;">ACCENT<br>#C2410C</div>
+              </div>
+              <div>
+                <div style="width: 120px; height: 120px; background: #0D9668; border: 1px solid #0D9668;"></div>
+                <div class="text-body" style="margin-top:10px;">SUCCESS<br>#0D9668</div>
+              </div>
+              <div>
+                <div style="width: 120px; height: 120px; background: #5046E5; border: 1px solid #5046E5;"></div>
+                <div class="text-body" style="margin-top:10px;">INFO<br>#5046E5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top: 4vw;">
+          <div class="col-6">
+            <h3>ТИПОГРАФИКА</h3>
+            <div class="vignelli-line-thin"></div>
+            <div style="font-family: 'Instrument Serif', serif; font-size: 60px; line-height: 1; letter-spacing: -0.04em;">Instrument Serif</div>
+            <p class="text-body" style="margin-top:1vw;">Используется для заголовков. Веса: 400. Letter-spacing: -0.04em.</p>
+            <div style="font-family: 'DM Sans', sans-serif; font-size: 40px; line-height: 1; margin-top:2vw; font-weight:700; letter-spacing: -0.02em;">DM Sans Bold</div>
+            <p class="text-body" style="margin-top:1vw;">Используется для UI и наборного текста. Веса: 400, 500, 600, 700.</p>
+          </div>
+          
+          <div class="col-6">
+            <h3>КОМПОНЕНТЫ</h3>
+            <div class="vignelli-line-thin"></div>
+            <div style="display:flex; flex-direction:column; gap: 1vw;">
+              <button style="background: #1A1A1A; color: #FFFFFF; border: none; border-radius: 7px; padding: 12px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor:pointer; align-self:flex-start;">Get a Walkthrough</button>
+              <button style="background: #FFFFFF; color: #1A1A1A; border: 1px solid #E8E8E4; border-radius: 7px; padding: 12px 24px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor:pointer; align-self:flex-start;">Log In</button>
+              <button style="background: #C2410C; color: #FFFFFF; border: none; border-radius: 10px; padding: 14px 30px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; cursor:pointer; align-self:flex-start;">Explore All 21 Solutions →</button>
+              <button style="background: transparent; color: #000000; border: none; border-bottom: 2px solid #000; border-radius: 0; padding: 0 0 2px 0; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor:pointer; align-self:flex-start; margin-top:1vw;">Learn More →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section>
+    <div class="vignelli-line" style="border-top-width: 16px;"></div>
+    <h2>ИСХОДНЫЙ КОД<br>НЕ ОШИБАЕТСЯ.</h2>
+    <div class="grid" style="margin-top: 4vw; padding-bottom: 6vw; align-items: end;">
+      <div class="col-6">
+        <div class="code-block">
+          > python run.py --url https://brand.com
+        </div>
+      </div>
+      <div class="col-6" style="text-align: right;">
+        <h1 style="font-size: 8vw; margin: 0; line-height: 0.7;">NEXUS.</h1>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  // NEXUS DNA: Motion Architect (Editorial/Classic Profile)
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. Vignelli Lines (clipRevealX)
+  gsap.utils.toArray('.vignelli-line, .vignelli-line-thin').forEach(line => {
+    gsap.from(line, {
+      scrollTrigger: { trigger: line, start: "top 95%" },
+      scaleX: 0,
+      transformOrigin: "left center",
+      duration: 1.8,
+      ease: "power4.inOut"
+    });
+  });
+
+  // 2. Headlines (textReveal profile)
+  gsap.utils.toArray('h1, h2').forEach(heading => {
+    gsap.from(heading, {
+      scrollTrigger: { trigger: heading, start: "top 90%" },
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "expo.out"
+    });
+  });
+
+  // 3. Content Blocks (fadeUp with stagger)
+  gsap.utils.toArray('.grid').forEach(grid => {
+    const cols = grid.querySelectorAll('[class^="col-"]');
+    if(cols.length > 0) {
+      gsap.from(cols, {
+        scrollTrigger: { trigger: grid, start: "top 85%" },
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+    }
+  });
+
+  // 4. Kickers (fadeScrub profile)
+  gsap.utils.toArray('.kicker').forEach(kicker => {
+    gsap.from(kicker, {
+      scrollTrigger: { trigger: kicker, start: "top 90%" },
+      opacity: 0,
+      x: -20,
+      duration: 1,
+      ease: "power2.out"
+    });
+  });
+</script>
+</body>
+</html>

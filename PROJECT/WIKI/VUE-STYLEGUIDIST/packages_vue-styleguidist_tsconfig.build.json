@@ -1,4 +1,0 @@
-{
-	"extends": "./tsconfig.json",
-	"exclude": ["**/*.spec.*", "**/*.cy.*", "**/node_modules/**", "**/test.vue3.ts"]
-}

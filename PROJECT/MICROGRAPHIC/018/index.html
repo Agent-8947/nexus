@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>018 // SCHIZOPHRENIA VJ SET</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{width:100%;height:100%;background:#000;overflow:hidden;cursor:none}
+canvas{display:block;filter:contrast(2.0) saturate(0.2) brightness(1.2)}
+#vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,transparent 5%,rgba(0,0,0,1) 100%);z-index:15;pointer-events:none}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;gap:20px}
+#ot{font-family:'Courier New',monospace;font-size:10px;letter-spacing:20px;color:#000;text-transform:uppercase;font-weight:bold}
+#os{font-family:'Courier New',monospace;font-size:10px;color:#000;letter-spacing:5px;animation:twitch 0.1s infinite}
+@keyframes twitch{0%{transform:translate(1px,1px)}25%{transform:translate(-1px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,-1px)}100%{transform:translate(0,0)}}
+</style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+<div id="ot">018 // WAKE UP</div>
+<div id="os">click</div>
+</div>
+<div id="vig"></div>
+<canvas id="c"></canvas>
+
+<script>
+let ax,st,cv,cx,W,H,T=0;
+let paranoiaLevel = 0;
+let flashText = "";
+const subliminals = ["THEY KNOW", "WAKE UP", "LOOK BEHIND YOU", "NOT REAL", "IT SEES YOU", "RUN", "GET OUT", "LIAR"];
+
+function begin(){
+    document.getElementById('overlay').style.display='none';
+    ax=new(window.AudioContext||window.webkitAudioContext)();
+    cv=document.getElementById('c');cx=cv.getContext('2d');
+    resize();window.addEventListener('resize',resize);
+    initAudio();
+    animate();
+}
+
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+
+// ── AUDIO: HALLUCINATIONS & PARANOIA ──
+let _m;
+function initAudio(){
+    _m=ax.createGain();_m.gain.value=0.6;_m.connect(ax.destination);
+    
+    // Tinnitus Tone (High pitched, annoying ringing)
+    const tinnitus = ax.createOscillator(); tinnitus.type = 'sine'; tinnitus.frequency.value = 11000;
+    const tinnitusGain = ax.createGain(); tinnitusGain.gain.value = 0.02;
+    tinnitus.connect(tinnitusGain); tinnitusGain.connect(_m); tinnitus.start();
+
+    // ── Auditory Hallucinations (Whispers) ──
+    function whisper(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        // FM Synthesis for "speech-like" alien garble
+        const carrier = ax.createOscillator(); carrier.type = 'sawtooth';
+        const mod = ax.createOscillator(); mod.type = 'sine';
+        const modGain = ax.createGain();
+        
+        // Randomize frequencies to sound like different "voices"
+        const baseFreq = 200 + Math.random()*800;
+        carrier.frequency.value = baseFreq;
+        mod.frequency.value = baseFreq * (Math.random() > 0.5 ? 0.5 : 2.0); // Harmonic mod
+        modGain.gain.value = baseFreq * (2 + Math.random()*5); // Mod index
+        
+        mod.connect(modGain); modGain.connect(carrier.frequency);
+        
+        // Bandpass to make it sound like it's coming through a telephone/wall
+        const filter = ax.createBiquadFilter(); filter.type = 'bandpass';
+        filter.frequency.value = 1000 + Math.random()*3000;
+        filter.Q.value = 10;
+        
+        // Envelope
+        const g = ax.createGain(); g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.5 + Math.random()*0.5, now + 0.1);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.5 + Math.random()*1.5);
+        
+        // Extreme Panning (Hard Left or Hard Right)
+        const panner = ax.createStereoPanner();
+        panner.pan.value = Math.random() > 0.5 ? -1 : 1;
+        
+        carrier.connect(filter); filter.connect(g); g.connect(panner); panner.connect(_m);
+        
+        carrier.start(now); mod.start(now);
+        carrier.stop(now + 2.1); mod.stop(now + 2.1);
+        
+        // Increase paranoia visually when voices speak
+        paranoiaLevel = 1.0;
+        
+        // Erratically schedule next voice
+        const nextTime = Math.random() > 0.8 ? 50 : 1000 + Math.random() * 4000;
+        setTimeout(whisper, nextTime);
+    }
+    setTimeout(whisper, 2000);
+
+    // ── Sensory Overload Bursts (Sudden Loud Noise) ──
+    function panicAttack(){
+        if(!ax||ax.state==='closed')return;
+        const now=ax.currentTime;
+        
+        const bs=ax.sampleRate*0.5; const b=ax.createBuffer(1,bs,ax.sampleRate); const d=b.getChannelData(0);
+        for(let i=0;i<bs;i++) d[i] = (Math.random()*2-1) * (i/bs); // Noise ramps up
+        
+        const n = ax.createBufferSource(); n.buffer = b;
+        const ng = ax.createGain(); ng.gain.setValueAtTime(0, now);
+        ng.gain.linearRampToValueAtTime(1.5, now + 0.4); // extremely loud
+        ng.gain.linearRampToValueAtTime(0, now + 0.45); // sudden cut to silence
+        
+        n.connect(ng); ng.connect(_m); n.start(now);
+        
+        // Trigger visual flash
+        flashText = subliminals[Math.floor(Math.random() * subliminals.length)];
+        
+        setTimeout(panicAttack, 5000 + Math.random() * 15000);
+    }
+    setTimeout(panicAttack, 8000);
+}
+
+// ── VJ ENGINE: FRAGMENTATION & PARANOIA ──
+
+function drawEye(x, y, scale, angle) {
+    cx.save();
+    cx.translate(x, y);
+    cx.rotate(angle);
+    cx.scale(scale, scale);
+    
+    // Outer shape
+    cx.beginPath();
+    cx.moveTo(-50, 0);
+    cx.quadraticCurveTo(0, -30, 50, 0);
+    cx.quadraticCurveTo(0, 30, -50, 0);
+    cx.strokeStyle = '#fff'; cx.lineWidth = 2; cx.stroke();
+    
+    // Pupil (Erratic tracking)
+    const pupilX = Math.sin(T*10 + x)*15;
+    const pupilY = Math.cos(T*15 + y)*10;
+    
+    cx.beginPath();
+    cx.arc(pupilX, pupilY, 10, 0, Math.PI*2);
+    cx.fillStyle = '#f00'; cx.fill();
+    
+    cx.restore();
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    T+=0.016;
+    paranoiaLevel *= 0.9; // Decay
+    
+    // Base clear - unstable, dirty
+    cx.fillStyle = Math.random() > 0.95 ? 'rgba(50,50,50,0.1)' : 'rgba(0,0,0,0.2)';
+    cx.fillRect(0,0,W,H);
+    
+    // 1. Manic Switching Logic (Randomly change geometry type)
+    cx.save();
+    cx.translate(W/2, H/2);
+    const mode = Math.floor((T*5) % 3);
+    
+    if(mode === 0) {
+        // Sharp erratic lines
+        cx.strokeStyle = 'rgba(255,255,255,0.5)';
+        cx.lineWidth = 1;
+        cx.beginPath();
+        for(let i=0; i<10; i++) cx.lineTo((Math.random()-0.5)*W, (Math.random()-0.5)*H);
+        cx.stroke();
+    } else if(mode === 1) {
+        // Organic blobs
+        cx.fillStyle = 'rgba(255,0,0,0.1)';
+        cx.beginPath();
+        for(let i=0; i<20; i++){
+            const a = (i/20)*Math.PI*2;
+            const r = 100 + Math.random()*200;
+            cx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
+        }
+        cx.fill();
+    } else {
+        // Paranoia Eyes
+        if(paranoiaLevel > 0.1) {
+            for(let i=0; i<5; i++){
+                drawEye((Math.random()-0.5)*W*0.8, (Math.random()-0.5)*H*0.8, 1 + Math.random()*2, Math.random()*Math.PI);
+            }
+        }
+    }
+    cx.restore();
+    
+    // 2. Fragment Slicing (Split mind effect)
+    // Copies random vertical/horizontal chunks and displaces them
+    if(Math.random() > 0.3) {
+        const sliceCount = 3 + Math.floor(Math.random() * 5 * paranoiaLevel);
+        for(let i=0; i<sliceCount; i++){
+            const sx = Math.random()*W;
+            const sy = Math.random()*H;
+            const sw = 50 + Math.random()*300;
+            const sh = 50 + Math.random()*300;
+            const dx = sx + (Math.random()-0.5)*100 * paranoiaLevel;
+            const dy = sy + (Math.random()-0.5)*100 * paranoiaLevel;
+            cx.drawImage(cv, sx, sy, sw, sh, dx, dy, sw, sh);
+        }
+    }
+    
+    // 3. Subliminal Flashes
+    if(flashText !== "") {
+        cx.fillStyle = Math.random() > 0.5 ? '#fff' : '#f00';
+        cx.fillRect(0,0,W,H); // Whiteout
+        
+        cx.fillStyle = '#000';
+        cx.font = '900 clamp(40px, 10vw, 150px) "Courier New", monospace';
+        cx.textAlign = 'center';
+        cx.textBaseline = 'middle';
+        
+        // Draw text multiple times jittered
+        for(let i=0; i<5; i++){
+            cx.fillText(flashText, W/2 + (Math.random()-0.5)*20, H/2 + (Math.random()-0.5)*20);
+        }
+        
+        flashText = ""; // Clear immediately (1 frame)
+    }
+    
+    // 4. Constant Micro-Glitches & TV Static
+    const staticData = cx.createImageData(W, 20); // Create small band of static
+    for(let i=0; i<staticData.data.length; i+=4){
+        const v = Math.random()*255;
+        staticData.data[i] = v; staticData.data[i+1] = v; staticData.data[i+2] = v;
+        staticData.data[i+3] = 255 * Math.random() * paranoiaLevel; // Opacity scales with paranoia
+    }
+    cx.putImageData(staticData, 0, Math.random()*H);
+    
+    // Total inversion (Sudden shift in reality)
+    if(Math.random() > 0.98) {
+        cx.globalCompositeOperation = 'difference';
+        cx.fillStyle = '#fff';
+        cx.fillRect(0,0,W,H);
+        cx.globalCompositeOperation = 'source-over';
+    }
+}
+</script>
+</body>
+</html>

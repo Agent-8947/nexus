@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>076 // DIGITAL HOMUNCULUS (ЦИФРОВОЙ ГОМУНКУЛ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #aaccff; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 15px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ AWAKEN HOMUNCULUS ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    // Rotation Matrix
+    mat2 rot(float a) {
+        float s = sin(a), c = cos(a);
+        return mat2(c, -s, s, c);
+    }
+
+    // Smooth Minimum (for organic blending of limbs)
+    float smin(float a, float b, float k) {
+        float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+        return mix(b, a, h) - k * h * (1.0 - h);
+    }
+
+    // SDF for a Capsule (limbs, torso)
+    float sdCapsule( vec3 p, vec3 a, vec3 b, float rad ) {
+        vec3 pa = p - a, ba = b - a;
+        float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
+        return length( pa - ba*h ) - rad;
+    }
+
+    // SDF for a Sphere (head)
+    float sdSphere(vec3 p, float s) {
+        return length(p) - s;
+    }
+
+    // Map the Humanoid Figure
+    float map(vec3 p) {
+        // Slow breathing / floating time
+        float move = t * 0.8; 
+        
+        // Main Body Anchors
+        vec3 pelvis = vec3(0.0, -0.3 + sin(move)*0.1, 0.0); // Floats up and down
+        vec3 shoulders = vec3(0.0, 0.6 + sin(move)*0.1, 0.0);
+        
+        // Torso
+        float d = sdCapsule(p, pelvis, shoulders, 0.18); 
+        
+        // Head (looks around slightly)
+        vec3 head = shoulders + vec3(0.0, 0.35, 0.0);
+        head.x += sin(move * 0.5) * 0.1;
+        head.z += cos(move * 0.5) * 0.1;
+        d = smin(d, sdSphere(p - head, 0.18), 0.15); // Blend neck
+        
+        // Arms (Slowly writhing / reaching out)
+        vec3 rShoulder = shoulders + vec3(0.3, 0.0, 0.0);
+        vec3 rElbow = rShoulder + vec3(0.2 + sin(move)*0.1, -0.4, 0.2 + cos(move)*0.2);
+        vec3 rHand = rElbow + vec3(0.1 + sin(move*1.2)*0.2, -0.4, 0.3 + cos(move*1.1)*0.2);
+        d = smin(d, sdCapsule(p, rShoulder, rElbow, 0.08), 0.08);
+        d = smin(d, sdCapsule(p, rElbow, rHand, 0.06), 0.05);
+        
+        vec3 lShoulder = shoulders + vec3(-0.3, 0.0, 0.0);
+        vec3 lElbow = lShoulder + vec3(-0.2 - sin(move*0.9)*0.1, -0.4, -0.1 + cos(move*1.3)*0.2);
+        vec3 lHand = lElbow + vec3(-0.1 - cos(move)*0.2, -0.3, 0.2 + sin(move)*0.2);
+        d = smin(d, sdCapsule(p, lShoulder, lElbow, 0.08), 0.08);
+        d = smin(d, sdCapsule(p, lElbow, lHand, 0.06), 0.05);
+
+        // Legs (Hanging, slightly bent)
+        vec3 rHip = pelvis + vec3(0.15, 0.0, 0.0);
+        vec3 rKnee = rHip + vec3(0.05, -0.5, 0.1 + sin(move*0.7)*0.1);
+        vec3 rFoot = rKnee + vec3(0.0, -0.5, -0.1 + cos(move)*0.1);
+        d = smin(d, sdCapsule(p, rHip, rKnee, 0.1), 0.1);
+        d = smin(d, sdCapsule(p, rKnee, rFoot, 0.07), 0.05);
+
+        vec3 lHip = pelvis + vec3(-0.15, 0.0, 0.0);
+        vec3 lKnee = lHip + vec3(-0.05, -0.4 + sin(move)*0.1, -0.1 + cos(move*0.8)*0.1);
+        vec3 lFoot = lKnee + vec3(-0.05, -0.4, 0.1);
+        d = smin(d, sdCapsule(p, lHip, lKnee, 0.1), 0.1);
+        d = smin(d, sdCapsule(p, lKnee, lFoot, 0.07), 0.05);
+        
+        // Add subtle geometric glitch / noise to the flesh
+        d += sin(p.x * 20.0 + t*5.0) * sin(p.y * 20.0) * sin(p.z * 20.0) * 0.005;
+
+        return d;
+    }
+
+    // Calculate Normal for lighting
+    vec3 calcNormal(vec3 p) {
+        vec2 e = vec2(0.001, 0.0);
+        return normalize(vec3(
+            map(p + e.xyy) - map(p - e.xyy),
+            map(p + e.yxy) - map(p - e.yxy),
+            map(p + e.yyx) - map(p - e.yyx)
+        ));
+    }
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * r.xy) / r.y;
+        
+        // Ray Origin (Camera) & Direction
+        vec3 ro = vec3(0.0, 0.2, -3.5); 
+        vec3 rd = normalize(vec3(uv, 1.0)); 
+        
+        // Rotate Camera around the Homunculus
+        float camAngle = t * 0.3;
+        ro.xz *= rot(camAngle);
+        rd.xz *= rot(camAngle);
+        
+        // Raymarching Loop
+        float d0 = 0.0;
+        float d = 0.0;
+        for(int i = 0; i < 80; i++) {
+            vec3 p = ro + rd * d0;
+            d = map(p);
+            if(d < 0.001 || d0 > 10.0) break;
+            d0 += d;
+        }
+        
+        vec3 col = vec3(0.0);
+        
+        // If we hit the object
+        if(d0 < 10.0) {
+            vec3 p = ro + rd * d0;
+            vec3 n = calcNormal(p);
+            
+            // Lighting Setup
+            vec3 light1 = normalize(vec3(1.0, 2.0, -2.0));
+            vec3 light2 = normalize(vec3(-2.0, -1.0, 1.0));
+            
+            float diff1 = max(dot(n, light1), 0.0);
+            float diff2 = max(dot(n, light2), 0.0);
+            float amb = 0.5 + 0.5 * n.y;
+            
+            // Material: Ethereal Digital Flesh
+            vec3 baseCol = vec3(0.1, 0.15, 0.2); // Dark blue/grey core
+            col = baseCol * amb;
+            col += vec3(0.5, 0.7, 1.0) * diff1 * 0.8; // Cool main light
+            col += vec3(1.0, 0.3, 0.5) * diff2 * 0.6; // Pink rim/bounce light
+            
+            // Rim lighting for that ghostly "hologram" feel
+            vec3 viewDir = normalize(ro - p);
+            float rim = 1.0 - max(dot(viewDir, n), 0.0);
+            col += vec3(0.2, 0.8, 1.0) * pow(rim, 3.0);
+            
+            // Specular gloss
+            vec3 reflectDir = reflect(-light1, n);
+            float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
+            col += vec3(1.0) * spec * 0.5;
+        }
+        
+        // Add digital void background
+        col += vec3(0.05, 0.05, 0.1) * (1.0 - length(uv));
+        
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    // Ethereal, lonely choir pad
+    const synth = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "sine" },
+        envelope: { attack: 2, decay: 1, sustain: 0.8, release: 4 }
+    }).toDestination();
+    
+    const reverb = new Tone.Reverb({ decay: 8, wet: 0.7 }).toDestination();
+    synth.connect(reverb);
+    synth.volume.value = -5;
+
+    // Slow, melancholic chord progression
+    const chords = [
+        ["C3", "G3", "Eb4"],
+        ["Ab2", "Eb3", "C4"],
+        ["F2", "C3", "Ab3"],
+        ["G2", "D3", "B3"]
+    ];
+    
+    let chordIndex = 0;
+    
+    new Tone.Loop(time => {
+        let chord = chords[chordIndex];
+        synth.triggerAttackRelease(chord, "2m", time);
+        chordIndex = (chordIndex + 1) % chords.length;
+    }, "2m").start(0);
+
+    Tone.Transport.bpm.value = 60;
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

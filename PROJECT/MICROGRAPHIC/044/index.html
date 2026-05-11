@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>044 // DEPRESSIVE DRONE AMBIENT</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #050505; overflow: hidden; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #050505; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 20px;
+        }
+        #ot { font-family: 'Helvetica Neue', sans-serif; font-size: 16px; color: #444; letter-spacing: 10px; font-weight: 300; text-transform: uppercase; }
+        #os { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; color: #222; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">Desolation</div>
+    <div id="os">[ AWAITING CONNECTION ]</div>
+</div>
+<canvas id="c"></canvas>
+
+<!-- VERTEX SHADER -->
+<script id="vertexShader" type="x-shader/x-vertex">
+    void main() {
+        gl_Position = vec4(position, 1.0);
+    }
+</script>
+
+<!-- FRAGMENT SHADER (GLSL) -->
+<script id="fragmentShader" type="x-shader/x-fragment">
+    uniform vec2 u_resolution;
+    uniform float u_time;
+
+    // Pseudo-random function
+    float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453123);
+    }
+
+    // Value Noise
+    float noise(vec2 x) {
+        vec2 i = floor(x);
+        vec2 f = fract(x);
+        f = f * f * (3.0 - 2.0 * f);
+        return mix(mix(hash(i + vec2(0.0, 0.0)), hash(i + vec2(1.0, 0.0)), f.x),
+                   mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+    }
+
+    // Fractal Brownian Motion
+    float fbm(vec2 p) {
+        float f = 0.0;
+        float w = 0.5;
+        for (int i = 0; i < 5; i++) {
+            f += w * noise(p);
+            p *= 2.0;
+            w *= 0.5;
+        }
+        return f;
+    }
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+        uv.x *= u_resolution.x / u_resolution.y;
+
+        // Slow, evolving fog
+        vec2 q = vec2(0.0);
+        q.x = fbm(uv + 0.05 * u_time);
+        q.y = fbm(uv + vec2(1.0));
+
+        vec2 r = vec2(0.0);
+        r.x = fbm(uv + 1.0 * q + vec2(1.7, 9.2) + 0.015 * u_time);
+        r.y = fbm(uv + 1.0 * q + vec2(8.3, 2.8) + 0.0126 * u_time);
+
+        float f = fbm(uv + r);
+
+        // Desaturated, dark, oppressive palette
+        vec3 color = mix(vec3(0.01, 0.01, 0.02), vec3(0.1, 0.12, 0.15), clamp((f * f) * 4.0, 0.0, 1.0));
+        color = mix(color, vec3(0.0, 0.0, 0.0), clamp(length(q), 0.0, 1.0));
+        color = mix(color, vec3(0.2, 0.2, 0.22), clamp(length(r.x), 0.0, 1.0));
+
+        // Vignette
+        float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+        color *= pow(vignette * 15.0, 0.2);
+
+        // Film grain
+        color += (hash(uv + u_time) - 0.5) * 0.03;
+
+        gl_FragColor = vec4(color, 1.0);
+    }
+</script>
+
+<script>
+let camera, scene, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    initGPU();
+    initAudio();
+    animate();
+}
+
+function initGPU() {
+    const canvas = document.getElementById('c');
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false });
+    renderer.setPixelRatio(window.devicePixelRatio > 1 ? 1 : 1); 
+    
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+
+    const geometry = new THREE.PlaneGeometry(2, 2);
+
+    uniforms = {
+        u_time: { value: 1.0 },
+        u_resolution: { value: new THREE.Vector2() }
+    };
+
+    const material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: document.getElementById('vertexShader').textContent,
+        fragmentShader: document.getElementById('fragmentShader').textContent
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    onWindowResize();
+    window.addEventListener('resize', onWindowResize, false);
+}
+
+function onWindowResize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    uniforms.u_resolution.value.x = renderer.domElement.width;
+    uniforms.u_resolution.value.y = renderer.domElement.height;
+}
+
+// ── AUDIO ENGINE: DEPRESSIVE DRONE AMBIENT ──
+function initAudio() {
+    // Huge infinite reverb
+    const reverb = new Tone.Reverb({
+        decay: 15,
+        preDelay: 0.1,
+        wet: 0.8
+    }).toDestination();
+
+    // Low rumble (Wind/Ocean/Void)
+    const filter = new Tone.Filter(200, "lowpass").connect(reverb);
+    const noise = new Tone.Noise("brown").connect(filter).start();
+    noise.volume.value = -10;
+
+    // LFO to modulate the noise filter (breathing void)
+    const lfo = new Tone.LFO(0.05, 50, 400).start();
+    lfo.connect(filter.frequency);
+
+    // Deep sub bass drone
+    const sub = new Tone.Oscillator(32.7, "sine").connect(reverb).start(); // C1
+    sub.volume.value = -5;
+    const subLfo = new Tone.LFO(0.1, -10, -5).start();
+    subLfo.connect(sub.volume);
+
+    // Melancholic FM Synth Pads (Detuned, slow)
+    const pad = new Tone.PolySynth(Tone.FMSynth, {
+        harmonicity: 1.01, // Slight dissonance
+        modulationIndex: 2,
+        oscillator: { type: "sine" },
+        modulation: { type: "triangle" },
+        envelope: { attack: 4, decay: 2, sustain: 1, release: 8 }
+    }).connect(reverb);
+    pad.volume.value = -20;
+
+    // Desolate notes (Dm(add9) vibe without resolution)
+    const notes = ["D2", "A2", "E3", "F3"];
+    
+    const loop = new Tone.Loop(time => {
+        // Randomly play a note with huge attack/release
+        if (Math.random() > 0.3) {
+            const note = notes[Math.floor(Math.random() * notes.length)];
+            pad.triggerAttackRelease(note, "2m", time);
+        }
+    }, "1m").start(0);
+
+    Tone.Transport.bpm.value = 60; // Very slow
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.u_time.value = time * 0.0002; // extremely slow visual evolution
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

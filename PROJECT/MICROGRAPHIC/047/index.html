@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>047 // ARTHOUSE ABSURDITY</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #FFFF00; overflow: hidden; cursor: none; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #FF00FF; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; gap: 0px;
+            mix-blend-mode: difference;
+        }
+        #ot { font-family: 'Times New Roman', serif; font-size: 10vw; color: #00FF00; font-style: italic; font-weight: bold; }
+        #os { font-family: 'Courier New', monospace; font-size: 2vw; color: #000; background: #FFF; padding: 10px; }
+        .absurd-text { position: absolute; font-family: 'Arial'; font-weight: 900; font-size: 8vw; color: #000; mix-blend-mode: difference; pointer-events: none; z-index: 50; display: none; }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="ot">ABSURD.</div>
+    <div id="os">CLICK TO MANIFEST</div>
+</div>
+<canvas id="c"></canvas>
+<div id="t1" class="absurd-text" style="top: 10%; left: 10%;">DO NOT LOOK</div>
+<div id="t2" class="absurd-text" style="bottom: 20%; right: 10%; font-size: 15vw;">WAKE UP</div>
+
+<script>
+let scene, camera, renderer;
+let absurdMesh, wireMesh;
+let dynamicTexture, ctx;
+let T = 0;
+let phase = 0;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    initVisuals();
+    initAudio();
+    animate();
+}
+
+function initVisuals() {
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xFFFF00); // Jarring yellow background
+    
+    camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 10;
+    
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Create a dynamic Canvas texture
+    const texCanvas = document.createElement('canvas');
+    texCanvas.width = 512;
+    texCanvas.height = 512;
+    ctx = texCanvas.getContext('2d');
+    dynamicTexture = new THREE.CanvasTexture(texCanvas);
+
+    // Bizarre Geometry (TorusKnot inside a Icosahedron)
+    const geo = new THREE.TorusKnotGeometry(4, 1.5, 200, 32);
+    const mat = new THREE.MeshBasicMaterial({ map: dynamicTexture });
+    absurdMesh = new THREE.Mesh(geo, mat);
+    scene.add(absurdMesh);
+
+    const wireGeo = new THREE.IcosahedronGeometry(8, 1);
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0xFF00FF, wireframe: true, wireframeLinewidth: 5 });
+    wireMesh = new THREE.Mesh(wireGeo, wireMat);
+    scene.add(wireMesh);
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+}
+
+function updateTexture() {
+    // Generate jarring, absurd texture every frame
+    ctx.fillStyle = Math.random() > 0.5 ? '#000000' : '#FFFFFF';
+    ctx.fillRect(0, 0, 512, 512);
+
+    ctx.fillStyle = Math.random() > 0.5 ? '#FF0000' : '#0000FF';
+    ctx.font = 'bold 80px Courier';
+    ctx.save();
+    ctx.translate(256, 256);
+    ctx.rotate(T * 10);
+    ctx.fillText("ERROR", -120, 0);
+    ctx.restore();
+
+    // Random stripes
+    if (Math.random() > 0.8) {
+        ctx.fillStyle = '#00FF00';
+        for(let i=0; i<10; i++) {
+            ctx.fillRect(0, Math.random() * 512, 512, Math.random() * 50);
+        }
+    }
+
+    dynamicTexture.needsUpdate = true;
+}
+
+// ── AUDIO ENGINE: ARTHOUSE FREE JAZZ / NOISE ──
+function initAudio() {
+    Tone.Transport.bpm.value = 160;
+
+    // Pristine, beautiful synth (mock piano)
+    const piano = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "sine" },
+        envelope: { attack: 0.01, decay: 1, sustain: 0, release: 2 }
+    }).toDestination();
+
+    // Harsh, clipping noise synth
+    const harsh = new Tone.MetalSynth({
+        frequency: 200,
+        envelope: { attack: 0.001, decay: 0.1, release: 0.01 },
+        harmonicity: 5.1,
+        modulationIndex: 32,
+        resonance: 4000,
+        octaves: 1.5
+    }).toDestination();
+    harsh.volume.value = 5;
+
+    // Deep sub drop
+    const drop = new Tone.MembraneSynth({ pitchDecay: 0.2, octaves: 10 }).toDestination();
+
+    // Absurd sequencer
+    const loop = new Tone.Loop(time => {
+        const r = Math.random();
+        
+        if (r < 0.3) {
+            // Beautiful chord out of nowhere
+            piano.triggerAttackRelease(["C4", "E4", "G4", "B4"], "8n", time);
+        } else if (r < 0.6) {
+            // Absolute noise garbage
+            harsh.triggerAttackRelease("32n", time);
+            harsh.triggerAttackRelease("32n", time + 0.1);
+            
+            // Visual Glitch mapping
+            scene.background.setHex(0xFF0000);
+            absurdMesh.scale.set(Math.random()*2, Math.random()*2, Math.random()*2);
+            document.getElementById('t1').style.display = 'block';
+        } else if (r < 0.8) {
+            // Deep sub drop
+            drop.triggerAttackRelease("C1", "2n", time);
+            scene.background.setHex(0x0000FF);
+            document.getElementById('t1').style.display = 'none';
+        } else {
+            // Silence & Reset
+            scene.background.setHex(0xFFFF00);
+            absurdMesh.scale.set(1, 1, 1);
+            document.getElementById('t2').style.display = Math.random() > 0.5 ? 'block' : 'none';
+        }
+
+    }, "4n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.01;
+
+    updateTexture();
+
+    // Wild camera and object rotations
+    absurdMesh.rotation.x += 0.01;
+    absurdMesh.rotation.y += 0.02;
+    
+    wireMesh.rotation.x -= 0.005;
+    wireMesh.rotation.z += 0.01;
+
+    // Camera FOV pulsing (Vertigo effect)
+    camera.fov = 90 + Math.sin(T * 5) * 40;
+    camera.updateProjectionMatrix();
+
+    // Random camera jumps
+    if (Math.random() > 0.98) {
+        camera.position.x = (Math.random() - 0.5) * 20;
+        camera.position.y = (Math.random() - 0.5) * 20;
+        camera.lookAt(0, 0, 0);
+    } else if (Math.random() > 0.95) {
+        camera.position.set(0, 0, 10);
+        camera.lookAt(0, 0, 0);
+    }
+
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>070 // CARNAL GEOMETRY (ПЛОТСКАЯ ГЕОМЕТРИЯ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #ff3366; font-family: serif; font-size: 24px; cursor: pointer;
+            letter-spacing: 10px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ CARNAL GEOMETRY ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / r.xy;
+        vec2 p = uv * 2.0 - 1.0;
+        p.x *= r.x / r.y;
+
+        // Rhythmic, slow pulsing (simulating breath/heartbeat)
+        float breath = sin(t * 1.5) * 0.5 + 0.5;
+
+        // Soft, organic, folding waves (simulating flesh and muscle)
+        float fold1 = sin(p.x * 2.0 + t * 0.5 + sin(p.y * 3.0));
+        float fold2 = cos(p.y * 1.5 - t * 0.7 + cos(p.x * 2.5));
+        float fold3 = sin(length(p) * 4.0 - t * 2.0);
+
+        float fluid = smoothstep(-1.5, 1.5, fold1 * fold2 + fold3 * 0.5);
+
+        // Carnal color palette
+        vec3 colDeep = vec3(0.3, 0.0, 0.05); // Deep crimson/blood
+        vec3 colFlesh = vec3(0.9, 0.3, 0.4); // Soft pink/red
+        vec3 colHighlight = vec3(1.0, 0.8, 0.8); // Wet specular reflection
+
+        // Mix based on organic movement
+        vec3 finalCol = mix(colDeep, colFlesh, fluid + breath * 0.2);
+        
+        // Add "wet" specular highlight where the folds peak
+        float spec = pow(smoothstep(0.6, 0.9, fluid), 8.0);
+        finalCol += colHighlight * spec * 0.6;
+
+        // Vignette to focus on the center
+        finalCol *= smoothstep(1.5, 0.4, length(p));
+
+        gl_FragColor = vec4(finalCol, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 90; // Slow, sensual tempo
+
+    // Deep, rhythmic heartbeat
+    const kick = new Tone.MembraneSynth({ pitchDecay: 0.2, octaves: 4 }).toDestination();
+    kick.volume.value = 5;
+
+    // Synthesized Heavy Breathing (Filtered Noise)
+    const breath = new Tone.NoiseSynth({
+        noise: { type: "pink" },
+        envelope: { attack: 2, decay: 1, sustain: 0.8, release: 2 }
+    });
+    
+    const breathFilter = new Tone.Filter(200, "lowpass").toDestination();
+    breath.connect(breathFilter);
+    breath.volume.value = -5;
+
+    // LFO to sweep the filter up and down (inhale/exhale effect)
+    const lfo = new Tone.LFO({
+        type: "sine",
+        min: 200,
+        max: 2000,
+        frequency: "1m"
+    }).start();
+    lfo.connect(breathFilter.frequency);
+
+    // Warm, enveloping sub-bass drone
+    const bass = new Tone.Oscillator(40, "sine").toDestination().start();
+    bass.volume.value = 0;
+
+    // Heartbeat pattern (Da-Dum ... Da-Dum)
+    new Tone.Loop(time => {
+        kick.triggerAttackRelease("C1", "8n", time);
+        kick.triggerAttackRelease("C1", "8n", time + 0.3); // Slight swing
+    }, "2n").start(0);
+
+    // Breath pattern (Inhale/Exhale every measure)
+    new Tone.Loop(time => {
+        breath.triggerAttackRelease("2n", time);
+    }, "1m").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

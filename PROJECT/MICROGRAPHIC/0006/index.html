@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0006 // DEPRESSIVE DRONE DOOM</title>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #020000;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #hydra-canvas { 
+            width: 100%; height: 100%; 
+            display: block; 
+            filter: contrast(1.8) brightness(0.7) sepia(0.3) hue-rotate(-20deg); 
+        }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000000; z-index: 9999; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            color: #4a0000; font-size: 12px; letter-spacing: 12px; 
+            text-shadow: 0 0 10px #4a0000; transition: opacity 4s ease;
+        }
+        .breathe { animation: breathe 6s ease-in-out infinite; }
+        @keyframes breathe { 50% { opacity: 0.2; } }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="initDoom()">
+    <div class="breathe">[ SUBMIT TO THE VOID ]</div>
+</div>
+<canvas id="hydra-canvas"></canvas>
+<script>
+let audioCtx, analyser;
+
+// Heavy distortion curve generator
+function makeDistortionCurve(amount) {
+  let k = typeof amount === 'number' ? amount : 50,
+    n_samples = 44100,
+    curve = new Float32Array(n_samples),
+    deg = Math.PI / 180,
+    i = 0,
+    x;
+  for ( ; i < n_samples; ++i ) {
+    x = i * 2 / n_samples - 1;
+    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+  }
+  return curve;
+}
+
+function initDoom() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 4000);
+
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 512;
+    analyser.smoothingTimeConstant = 0.98; // Very sluggish, massive inertia
+
+    // 1. Audio Architecture: Drone Doom
+    const distortion = audioCtx.createWaveShaper();
+    distortion.curve = makeDistortionCurve(600); // Extreme fuzz/clipping
+    distortion.oversample = '4x';
+
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 120; // Very muffled, dark
+    filter.Q.value = 5; // Resonant peak at the cutoff
+    
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.08; // Control the extreme volume of the distortion
+
+    distortion.connect(filter);
+    filter.connect(masterGain);
+    masterGain.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // Deep Sub Drone (C1)
+    const osc1 = audioCtx.createOscillator();
+    osc1.type = 'sawtooth';
+    osc1.frequency.value = 32.70; 
+
+    // Detuned Sub for slow, phasing beats
+    const osc2 = audioCtx.createOscillator();
+    osc2.type = 'square';
+    osc2.frequency.value = 33.10; 
+
+    // Oppressive 5th harmonic (G1)
+    const osc3 = audioCtx.createOscillator();
+    osc3.type = 'triangle';
+    osc3.frequency.value = 49.00; 
+
+    osc1.connect(distortion);
+    osc2.connect(distortion);
+    osc3.connect(distortion);
+
+    osc1.start();
+    osc2.start();
+    osc3.start();
+
+    // Macro modulation of the filter (glacial pace)
+    const lfo = audioCtx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.03; // ~33 seconds per cycle
+    const lfoGain = audioCtx.createGain();
+    lfoGain.gain.value = 80;
+    lfo.connect(lfoGain);
+    lfoGain.connect(filter.frequency);
+    lfo.start();
+
+    // Random tectonic impacts (simulating heavy drum strikes)
+    function playImpact() {
+        if(audioCtx.state === 'closed') return;
+        
+        const noiseNode = audioCtx.createBufferSource();
+        const bufferSize = audioCtx.sampleRate * 2.5; // 2.5 seconds of noise
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1; // White noise
+        }
+        noiseNode.buffer = buffer;
+        
+        const noiseFilter = audioCtx.createBiquadFilter();
+        noiseFilter.type = 'lowpass';
+        noiseFilter.frequency.setValueAtTime(80, audioCtx.currentTime); // Dark impact
+        noiseFilter.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + 2.5);
+
+        const noiseGain = audioCtx.createGain();
+        noiseGain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
+
+        noiseNode.connect(noiseFilter);
+        noiseFilter.connect(noiseGain);
+        noiseGain.connect(distortion); // Slam the noise through the distortion box
+
+        noiseNode.start();
+        
+        // Next impact in 8 to 20 seconds
+        setTimeout(playImpact, Math.random() * 12000 + 8000); 
+    }
+    playImpact();
+
+    // 2. Visual Architecture: Monolithic Void
+    const hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio: false });
+    
+    window.doomVal = 0;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    
+    function updateAudio() {
+        analyser.getByteFrequencyData(dataArray);
+        window.doomVal = dataArray[1] / 255; 
+        requestAnimationFrame(updateAudio);
+    }
+    updateAudio();
+
+    // Hydra Patch: Expanded Monolithic Bleeding Void
+    osc(1.5, 0.001, () => window.doomVal * 0.5)
+      .diff(src(o0).scale(0.995).rotate(0.0005)) // Extremely slow inward pull
+      .color(0.6, 0.02, 0.02) // Clotted blood color
+      .modulateScale(noise(1, 0.01).pixelate(4, 4), 0.1) // Harsh, low-res noise modulation
+      // --- EXPANDED COMPLEXITY ---
+      .layer(
+          voronoi(8, 0.5, 1) // Creeping dark cells
+          .color(0.2, 0.0, 0.0)
+          .mult(osc(10, 0.1, () => window.doomVal)) // Audio reactive texture
+          .mask(shape(4, 0.5, 0.1).scrollX(0.01).scrollY(-0.01)) // Floating dark geometries
+      )
+      .modulatePixelate(noise(3, 0.01), 100, 8) // Dynamic glitchy pixelation
+      .modulateRotate(osc(0.1, 0), 0.1) // Glacial rotation warp
+      // -------------------------
+      .blend(o0, 0.98) // Massive feedback smear
+      .out();
+}
+</script>
+</body>
+</html>

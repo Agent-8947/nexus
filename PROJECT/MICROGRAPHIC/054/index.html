@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>054 // VAN GOGH'S MADNESS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background: #050a1f; overflow: hidden; cursor: none; }
+        canvas { display: block; filter: contrast(1.2) saturate(1.5); }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #050a1f; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; color: #FFD700;
+            font-family: serif; font-style: italic; font-size: 30px; letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ EMBRACE THE MADNESS ]</div>
+<canvas id="c"></canvas>
+
+<script>
+let cv, cx, W, H;
+let particles = [];
+let T = 0;
+
+// Classic Van Gogh Palette (Starry Night / Sunflowers)
+const colors = ['#FFD700', '#FF8C00', '#191970', '#4682B4', '#F0E68C', '#ffffff', '#000033'];
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    
+    cv = document.getElementById('c'); 
+    cx = cv.getContext('2d', { alpha: false });
+    
+    resize(); 
+    window.addEventListener('resize', resize);
+    
+    initParticles();
+    initAudio();
+    animate();
+}
+
+function resize() { 
+    W = cv.width = innerWidth; 
+    H = cv.height = innerHeight; 
+    cx.fillStyle = '#050a1f';
+    cx.fillRect(0, 0, W, H);
+}
+
+function initParticles() {
+    const count = window.innerWidth > 800 ? 3000 : 1500;
+    for(let i=0; i<count; i++) {
+        particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: 0,
+            vy: 0,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            thickness: Math.random() * 4 + 1,
+            length: Math.random() * 10 + 5
+        });
+    }
+}
+
+// ── AUDIO ENGINE: FRANTIC, DISSONANT STRINGS & PULSE ──
+function initAudio() {
+    Tone.Transport.bpm.value = 160;
+
+    // Deep heartbeat pulse
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.1, octaves: 4,
+        envelope: { attack: 0.05, decay: 0.4, sustain: 0, release: 0.1 }
+    }).toDestination();
+    kick.volume.value = 2;
+
+    // Frantic Arpeggiator (simulating a mad violinist)
+    const strings = new Tone.FMSynth({
+        harmonicity: 3.01,
+        modulationIndex: 10,
+        oscillator: { type: "sawtooth" },
+        modulation: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0.2, release: 0.1 }
+    }).toDestination();
+    strings.volume.value = -12;
+
+    const delay = new Tone.FeedbackDelay("8n", 0.5).toDestination();
+    strings.connect(delay);
+
+    let arpNotes = ["C4", "Eb4", "F#4", "A4", "C5", "Eb5"];
+    let step = 0;
+
+    new Tone.Loop(time => {
+        // Heartbeat on the 1 and 2.5
+        if(step % 8 === 0 || step % 8 === 3) {
+            kick.triggerAttackRelease("C2", "8n", time);
+        }
+        
+        // Frantic strings every 16th note, modulating
+        let note = arpNotes[step % arpNotes.length];
+        
+        // Occasionally mutate the scale for dissonance
+        if(Math.random() > 0.95) {
+            arpNotes = arpNotes.map(n => Tone.Frequency(n).transpose(Math.random() > 0.5 ? 1 : -1).toNote());
+        }
+
+        strings.triggerAttackRelease(note, "16n", time);
+        
+        step++;
+    }, "16n").start(0);
+
+    // Deep chaotic noise wind
+    const wind = new Tone.NoiseSynth({
+        noise: { type: "brown" },
+        envelope: { attack: 1, decay: 0.1, sustain: 1, release: 1 }
+    }).toDestination();
+    wind.volume.value = -15;
+    
+    new Tone.Loop(time => {
+        wind.triggerAttackRelease("2m", time);
+    }, "2m").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    T += 0.005; // Turbulence speed
+    
+    // Draw thick impasto trails
+    cx.globalCompositeOperation = 'source-over';
+    cx.fillStyle = 'rgba(5, 10, 31, 0.08)'; // Deep blue starry night base
+    cx.fillRect(0, 0, W, H);
+
+    // Draw brush strokes
+    cx.globalCompositeOperation = 'lighter';
+    cx.lineCap = 'round';
+
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        
+        // Calculate vector flow field (The Madness)
+        // Highly turbulent combination of sines
+        let angle = Math.sin(p.x * 0.005 + T) * Math.cos(p.y * 0.005 - T*2) * Math.PI * 4;
+        angle += Math.sin(p.y * 0.01 + T*5); // High frequency jitter
+        
+        p.vx = Math.cos(angle) * 4;
+        p.vy = Math.sin(angle) * 4;
+
+        let nx = p.x + p.vx * p.length;
+        let ny = p.y + p.vy * p.length;
+
+        // Draw the stroke
+        cx.beginPath();
+        cx.moveTo(p.x, p.y);
+        cx.lineTo(nx, ny);
+        cx.lineWidth = p.thickness;
+        cx.strokeStyle = p.color;
+        cx.stroke();
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around
+        if (p.x < 0) p.x = W;
+        if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H;
+        if (p.y > H) p.y = 0;
+        
+        // Randomly reset some particles to create fresh strokes
+        if(Math.random() > 0.99) {
+            p.x = Math.random() * W;
+            p.y = Math.random() * H;
+        }
+    }
+}
+</script>
+</body>
+</html>

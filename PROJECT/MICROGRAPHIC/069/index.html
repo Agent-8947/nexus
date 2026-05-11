@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>069 // AMOEBA AND OIL (АМЕБА И НЕФТЬ)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; cursor: none; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10; display: flex; align-items: center;
+            justify-content: center; color: #aaff00; font-family: monospace; font-size: 24px; cursor: pointer;
+            letter-spacing: 10px; text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">[ АМЕБА И НЕФТЬ ]</div>
+<canvas id="c"></canvas>
+
+<script id="vs" type="x-shader/x-vertex">
+    void main() { gl_Position = vec4(position, 1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+    uniform float t;
+    uniform vec2 r;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+    float noise(vec2 p) {
+        vec2 i = floor(p); vec2 f = fract(p);
+        vec2 u = f*f*(3.0-2.0*f);
+        return mix(mix(hash(i), hash(i + vec2(1.0,0.0)), u.x),
+                   mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
+    }
+    
+    // Fractal Brownian Motion
+    float fbm(vec2 p) {
+        float v = 0.0; float a = 0.5;
+        mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+        for (int i = 0; i < 6; ++i) {
+            v += a * noise(p);
+            p = rot * p * 2.0;
+            a *= 0.5;
+        }
+        return v;
+    }
+
+    void main() {
+        vec2 uv = gl_FragCoord.xy / r.xy;
+        vec2 p = uv * 2.0 - 1.0;
+        p.x *= r.x / r.y;
+
+        // AMOEBA SHAPE
+        float angle = atan(p.y, p.x);
+        float radius = length(p);
+        
+        // Pulsating, morphing organic border
+        float amoebaShape = 0.4 
+            + 0.1 * sin(angle * 3.0 + t * 1.5) 
+            + 0.05 * sin(angle * 7.0 - t * 2.0)
+            + 0.02 * sin(angle * 15.0 + t * 5.0);
+            
+        float amoeba = smoothstep(amoebaShape + 0.02, amoebaShape - 0.02, radius);
+        
+        // Inner cellular details (nucleus pulsating)
+        float nucleus = smoothstep(0.15 + 0.05*sin(t*3.0), 0.1, radius);
+        vec3 amoebaCol = vec3(0.5, 0.9, 0.2) * amoeba; 
+        amoebaCol += vec3(0.8, 1.0, 0.4) * nucleus;
+
+        // OIL FLUID (Domain Warping)
+        vec2 q = vec2(fbm(p * 2.0 + t * 0.2), fbm(p * 2.0 + vec2(5.2, 1.3) - t * 0.15));
+        vec2 w = vec2(fbm(p * 3.0 + 4.0 * q + t * 0.3), fbm(p * 3.0 + 4.0 * q + vec2(8.3, 2.8) - t * 0.2));
+        float fluid = fbm(p * 4.0 + 5.0 * w);
+
+        // Iridescent oil color palette
+        vec3 oilCol = 0.5 + 0.5 * cos(3.0 + fluid * 15.0 + vec3(0.0, 1.5, 3.0) + t*0.5);
+        
+        // Make the oil heavily black with iridescent edges
+        float blackMask = smoothstep(0.4, 0.6, fluid);
+        oilCol *= blackMask;
+
+        // Wet specular highlight
+        oilCol += pow(fluid, 8.0) * vec3(1.0, 1.0, 1.0) * 0.5;
+
+        // MERGE: The oil creeps over and engulfs the amoeba
+        float toxicInvasion = smoothstep(0.3, 0.7, fluid + radius * 0.5 + noise(p*10.0 + t)*0.2);
+        
+        vec3 finalCol = mix(amoebaCol, oilCol, toxicInvasion);
+
+        // Add a dark vignette to focus on the center
+        finalCol *= smoothstep(1.5, 0.5, length(p));
+
+        gl_FragColor = vec4(finalCol, 1.0);
+    }
+</script>
+
+<script>
+let scene, camera, renderer, uniforms;
+
+async function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    await Tone.start();
+    initGPU(); initAudio(); animate();
+}
+
+function initGPU() {
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('c')});
+    renderer.setSize(innerWidth, innerHeight);
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    scene = new THREE.Scene();
+    
+    uniforms = { r: { value: new THREE.Vector2(innerWidth, innerHeight) }, t: { value: 0 } };
+    
+    const mat = new THREE.ShaderMaterial({
+        uniforms: uniforms, 
+        vertexShader: document.getElementById('vs').textContent, 
+        fragmentShader: document.getElementById('fs').textContent
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('resize', () => {
+        renderer.setSize(innerWidth, innerHeight);
+        uniforms.r.value.set(innerWidth, innerHeight);
+    });
+}
+
+function initAudio() {
+    Tone.Transport.bpm.value = 80;
+
+    // 1. Wet, squishy, bubbling amoeba sounds (FMSynth)
+    const squelch = new Tone.FMSynth({
+        harmonicity: 2,
+        modulationIndex: 10,
+        oscillator: { type: "sine" },
+        modulation: { type: "square" },
+        envelope: { attack: 0.1, decay: 0.2, sustain: 0.5, release: 0.5 }
+    }).toDestination();
+    
+    // AutoWah creates a "wet/bubbling" mouth filter effect
+    const wah = new Tone.AutoWah(50, 6, -30).toDestination();
+    wah.Q.value = 6;
+    squelch.connect(wah);
+    squelch.volume.value = -5;
+
+    // Randomize modulation to make it sound organic and unstable
+    const modLFO = new Tone.LFO(0.5, 2, 20).start();
+    modLFO.connect(squelch.modulationIndex);
+
+    // 2. Heavy, toxic sludge bass (Oil)
+    const sludge = new Tone.Oscillator(40, "sawtooth").start();
+    const sludgeFilter = new Tone.Filter(100, "lowpass").toDestination();
+    sludge.connect(sludgeFilter);
+    
+    const sludgeLFO = new Tone.LFO(0.1, 40, 150).start();
+    sludgeLFO.connect(sludgeFilter.frequency);
+    
+    // Subtle distortion for the oil
+    const dist = new Tone.Distortion(0.5).toDestination();
+    sludgeFilter.connect(dist);
+
+    // Random bubbling rhythm
+    new Tone.Loop(time => {
+        if(Math.random() > 0.6) {
+            let note = Math.random() > 0.5 ? "C3" : "E3";
+            squelch.triggerAttackRelease(note, "16n", time);
+        }
+    }, "16n").start(0);
+
+    Tone.Transport.start();
+}
+
+function animate(time) {
+    requestAnimationFrame(animate);
+    uniforms.t.value = time * 0.001;
+    renderer.render(scene, camera);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "project_name": "MICROGRAPHIC",
+  "current_state": "active_research",
+  "active_nodes": [
+    "0001",
+    "0002",
+    "0003",
+    "0004",
+    "0005",
+    "0006"
+  ],
+  "last_updated": "2026-05-09",
+  "focus_area": "Generative visuals and Web Audio API synthesis",
+  "external_tools_backlog": [
+    "hydra-synth",
+    "p5.js",
+    "veda"
+  ]
+}

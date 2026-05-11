@@ -1,7 +1,0 @@
-{
-  "name": "aliyun-oss-csharp-sdk",
-  "description": "Alibaba Cloud Object Storage Service (OSS) library for C#.",
-  "link": "https://github.com/aliyun/aliyun-oss-csharp-sdk",
-  "license": "MIT",
-  "notes": ""
-}

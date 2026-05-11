@@ -1,2 +1,0 @@
-[alias]
-build-ebpf = "run --package xtask --"

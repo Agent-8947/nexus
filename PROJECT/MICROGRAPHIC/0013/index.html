@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0013 // THE DEPARTURE (ARTHOUSE NARRATIVE)</title>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            width: 100%; height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+        #hydra-canvas {
+            width: 100%; height: 100%;
+            display: block;
+            filter: grayscale(1) contrast(1.6) brightness(0.6);
+        }
+        /* Black bars — Cinemascope 2.35:1 */
+        #bars-top, #bars-bottom {
+            position: absolute;
+            left: 0; width: 100%;
+            background: #000;
+            height: 12%;
+            z-index: 20;
+            pointer-events: none;
+        }
+        #bars-top { top: 0; }
+        #bars-bottom { bottom: 0; }
+
+        /* Narrative text engine */
+        #text-container {
+            position: absolute;
+            bottom: 16%;
+            left: 0; right: 0;
+            text-align: center;
+            z-index: 30;
+            pointer-events: none;
+            padding: 0 12%;
+        }
+        #scene-text {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-size: clamp(14px, 2.2vw, 22px);
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1.8s ease;
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        /* Act title */
+        #act-title {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(10px, 1.2vw, 14px);
+            font-weight: normal;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            z-index: 30;
+            opacity: 0;
+            transition: opacity 2s ease;
+            pointer-events: none;
+        }
+
+        /* Hard cut flash */
+        #flash {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fff;
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Overlay */
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer;
+            gap: 20px;
+        }
+        #overlay-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11px; letter-spacing: 8px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+        }
+        #overlay-sub {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-size: 13px; color: rgba(255,255,255,0.2);
+            letter-spacing: 2px;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes breathe { 50% { opacity: 0.4; } }
+
+        /* Timecode */
+        #timecode {
+            position: absolute;
+            top: 14%; left: 2%;
+            font-family: monospace;
+            font-size: 9px;
+            color: rgba(255,255,255,0.15);
+            letter-spacing: 1px;
+            z-index: 30;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" onclick="begin()">
+    <div id="overlay-title">0013 &nbsp;&nbsp;/&nbsp;&nbsp; the departure</div>
+    <div id="overlay-sub">press anywhere</div>
+</div>
+
+<div id="bars-top"></div>
+<div id="bars-bottom"></div>
+<div id="flash"></div>
+<div id="timecode">00:00:00</div>
+
+<div id="text-container">
+    <div id="scene-text"></div>
+</div>
+<div id="act-title"></div>
+
+<canvas id="hydra-canvas"></canvas>
+
+<script>
+// ─────────────────────────────────────────────────
+//  NARRATIVE SCREENPLAY
+// ─────────────────────────────────────────────────
+const screenplay = [
+    // [time_ms, type, content, duration_ms]
+    // type: "act" | "line" | "silence" | "flash"
+
+    { t: 0,      type: "act",    text: "I. The Last Morning" },
+    { t: 3000,   type: "line",   text: "She made coffee she would not drink." },
+    { t: 9000,   type: "line",   text: "He watched the steam disappear." },
+    { t: 15000,  type: "silence" },
+
+    { t: 22000,  type: "line",   text: "She said — I think I need to go." },
+    { t: 30000,  type: "line",   text: "He said — I know." },
+    { t: 36000,  type: "silence" },
+
+    { t: 42000,  type: "flash" },
+    { t: 42500,  type: "act",    text: "II. The Room After" },
+    { t: 46000,  type: "line",   text: "The cup was still warm." },
+    { t: 53000,  type: "line",   text: "He did not wash it." },
+    { t: 60000,  type: "silence" },
+
+    { t: 67000,  type: "line",   text: "Outside, November continued without permission." },
+    { t: 75000,  type: "silence" },
+
+    { t: 82000,  type: "flash" },
+    { t: 82500,  type: "act",    text: "III. No Resolution" },
+    { t: 86000,  type: "line",   text: "This is not the ending." },
+    { t: 93000,  type: "line",   text: "This is just the part where nothing happens." },
+    { t: 100000, type: "silence" },
+    { t: 107000, type: "line",   text: "…" },
+    { t: 115000, type: "silence" },
+    { t: 122000, type: "line",   text: "The cup got cold." },
+    { t: 130000, type: "line",   text: "He left it." },
+];
+
+// ─────────────────────────────────────────────────
+//  RUNTIME STATE
+// ─────────────────────────────────────────────────
+let audioCtx, hydra;
+let startTime = null;
+let tcInterval = null;
+
+// Visual params driven by narrative
+window.nx = {
+    tension: 0.0,
+    decay: 0.0,
+    act: 1
+};
+
+// ─────────────────────────────────────────────────
+//  ENTRY
+// ─────────────────────────────────────────────────
+function begin() {
+    document.getElementById('overlay').style.display = 'none';
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    initAudio();
+    initVisuals();
+    
+    startTime = Date.now();
+    scheduleScreenplay();
+    startTimecode();
+}
+
+// ─────────────────────────────────────────────────
+//  TIMECODE DISPLAY
+// ─────────────────────────────────────────────────
+function startTimecode() {
+    const el = document.getElementById('timecode');
+    tcInterval = setInterval(() => {
+        if (!startTime) return;
+        const s = Math.floor((Date.now() - startTime) / 1000);
+        const mm = String(Math.floor(s / 60)).padStart(2, '0');
+        const ss = String(s % 60).padStart(2, '0');
+        el.textContent = `00:${mm}:${ss}`;
+    }, 1000);
+}
+
+// ─────────────────────────────────────────────────
+//  SCREENPLAY ENGINE
+// ─────────────────────────────────────────────────
+function scheduleScreenplay() {
+    screenplay.forEach(ev => {
+        setTimeout(() => executeEvent(ev), ev.t);
+    });
+}
+
+function executeEvent(ev) {
+    const textEl = document.getElementById('scene-text');
+    const actEl = document.getElementById('act-title');
+    const flashEl = document.getElementById('flash');
+
+    switch(ev.type) {
+        case "line":
+            textEl.style.opacity = '0';
+            setTimeout(() => {
+                textEl.textContent = ev.text;
+                textEl.style.opacity = '1';
+                // Tick audio
+                playTextTick();
+            }, 200);
+            // Auto-hide after 6s
+            setTimeout(() => { textEl.style.opacity = '0'; }, 6500);
+            break;
+
+        case "act":
+            window.nx.act++;
+            window.nx.tension = Math.min(window.nx.act * 0.3, 1.0);
+            actEl.textContent = ev.text;
+            actEl.style.opacity = '1';
+            setTimeout(() => { actEl.style.opacity = '0'; }, 3500);
+            // Play act sting
+            playActSting();
+            break;
+
+        case "silence":
+            // Nothing on screen. The silence IS the content.
+            break;
+
+        case "flash":
+            flashEl.style.opacity = '0.9';
+            playHardCut();
+            setTimeout(() => { flashEl.style.opacity = '0'; }, 80);
+            break;
+    }
+}
+
+// ─────────────────────────────────────────────────
+//  AUDIO ENGINE
+// ─────────────────────────────────────────────────
+function initAudio() {
+    const master = audioCtx.createGain();
+    master.gain.value = 0.5;
+    master.connect(audioCtx.destination);
+    window.nx.master = master;
+
+    // Reverb (large empty room)
+    const irLen = audioCtx.sampleRate * 3;
+    const ir = audioCtx.createBuffer(2, irLen, audioCtx.sampleRate);
+    for(let i = 0; i < irLen; i++) {
+        const d = Math.exp(-i / (audioCtx.sampleRate * 1.2));
+        ir.getChannelData(0)[i] = (Math.random() * 2 - 1) * d;
+        ir.getChannelData(1)[i] = (Math.random() * 2 - 1) * d;
+    }
+    const conv = audioCtx.createConvolver();
+    conv.buffer = ir;
+    const convGain = audioCtx.createGain();
+    convGain.gain.value = 0.7;
+    conv.connect(convGain);
+    convGain.connect(master);
+    window.nx.reverb = conv;
+    window.nx.reverbGain = convGain;
+
+    // Hiss (analog decay) — constant, very low
+    const hissBuf = audioCtx.createBuffer(1, audioCtx.sampleRate, audioCtx.sampleRate);
+    for(let i = 0; i < hissBuf.length; i++) hissBuf.getChannelData(0)[i] = Math.random() * 2 - 1;
+    const hiss = audioCtx.createBufferSource();
+    hiss.buffer = hissBuf;
+    hiss.loop = true;
+    const hissFilter = audioCtx.createBiquadFilter();
+    hissFilter.type = 'lowpass';
+    hissFilter.frequency.value = 6000;
+    const hissGain = audioCtx.createGain();
+    hissGain.gain.value = 0.015;
+    hiss.connect(hissFilter);
+    hissFilter.connect(hissGain);
+    hissGain.connect(master);
+    hiss.start();
+
+    // Sub-bass drone (continuous, barely audible, oppressive)
+    const drone = audioCtx.createOscillator();
+    drone.type = 'sine';
+    drone.frequency.value = 42.5;
+    const droneLFO = audioCtx.createOscillator();
+    droneLFO.type = 'sine';
+    droneLFO.frequency.value = 0.07;
+    const droneLFOGain = audioCtx.createGain();
+    droneLFOGain.gain.value = 0.3;
+    droneLFO.connect(droneLFOGain);
+    droneLFOGain.connect(drone.frequency);
+    const droneGain = audioCtx.createGain();
+    droneGain.gain.value = 0;
+    droneGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 6);
+    drone.connect(droneGain);
+    droneGain.connect(master);
+    drone.start();
+    droneLFO.start();
+}
+
+// Minimalist piano tick when a line appears
+function playTextTick() {
+    const { master, reverb } = window.nx;
+    const now = audioCtx.currentTime;
+    const freqs = [196.00, 220.00, 246.94]; // G3, A3, B3 — sparse, bleak
+    const f = freqs[Math.floor(Math.random() * freqs.length)];
+    
+    const osc = audioCtx.createOscillator();
+    osc.type = 'triangle';
+    osc.frequency.value = f;
+
+    const mod = audioCtx.createOscillator();
+    mod.type = 'sine';
+    mod.frequency.value = f * 2.01;
+    const modGain = audioCtx.createGain();
+    modGain.gain.value = f * 0.5;
+    mod.connect(modGain);
+    modGain.connect(osc.frequency);
+    
+    const gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.04, now + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 3.5);
+    
+    osc.connect(gain);
+    gain.connect(reverb);
+    gain.connect(master);
+
+    mod.start(now);
+    osc.start(now);
+    mod.stop(now + 4);
+    osc.stop(now + 4);
+}
+
+// Act transition — a single low cello stab
+function playActSting() {
+    const { master, reverb } = window.nx;
+    const now = audioCtx.currentTime;
+    
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.value = 65.41; // C2 — grave
+    
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 200;
+    filter.Q.value = 3;
+    
+    const gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0.6, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 3.5);
+    
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(reverb);
+    
+    osc.start(now);
+    osc.stop(now + 4);
+}
+
+// Hard cut sound (single white noise transient)
+function playHardCut() {
+    const { master } = window.nx;
+    const now = audioCtx.currentTime;
+    const buf = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.05, audioCtx.sampleRate);
+    for(let i = 0; i < buf.length; i++) buf.getChannelData(0)[i] = Math.random() * 2 - 1;
+    const src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    const gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0.5, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+    src.connect(gain);
+    gain.connect(master);
+    src.start(now);
+}
+
+// ─────────────────────────────────────────────────
+//  VISUAL ENGINE (HYDRA)
+// ─────────────────────────────────────────────────
+function initVisuals() {
+    hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio: false });
+
+    // Reactive visuals using window.nx.tension
+    // Act I: Still, barely moving — a room in morning light
+    // Act II: Slow horizontal drag, like a memory dissolving
+    // Act III: Increasing grain and vertical drift
+
+    osc(1.5, 0.002, 0)
+      .thresh(() => 0.55 + window.nx.tension * 0.15, 0.05)
+      .diff(src(o0)
+            .scale(() => 0.998 - window.nx.tension * 0.002)
+            .scrollX(() => 0.0002 * window.nx.tension)
+            .scrollY(() => -0.0003 * window.nx.act * 0.5)
+      )
+      .color(1.0, 1.0, 1.0)
+      .modulate(noise(() => 1 + window.nx.tension * 3, 0.03), 
+                () => 0.04 + window.nx.tension * 0.08)
+      .blend(src(o0), () => 0.88 + window.nx.tension * 0.06)
+      .out();
+}
+</script>
+</body>
+</html>
